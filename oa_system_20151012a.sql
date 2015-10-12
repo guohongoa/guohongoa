@@ -106,11 +106,10 @@ DROP TABLE IF EXISTS `department_position_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `department_position_info` (
-  `department_position_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '部门职位id',
-  `department_position_name` varchar(20) NOT NULL COMMENT '部门名称',
-  `department_id` int(10) NOT NULL COMMENT '职位所属部门id',
-  PRIMARY KEY (`department_position_id`),
-  UNIQUE KEY `department_position_id_UNIQUE` (`department_position_id`)
+  `department_position_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '职位id',
+  `department_position_name` varchar(20) NOT NULL COMMENT '职位名称',
+  `department_position_state` int(11) NOT NULL COMMENT '职位的状态 0表示未启用 1表示启用',
+  PRIMARY KEY (`department_position_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -121,6 +120,31 @@ CREATE TABLE `department_position_info` (
 LOCK TABLES `department_position_info` WRITE;
 /*!40000 ALTER TABLE `department_position_info` DISABLE KEYS */;
 /*!40000 ALTER TABLE `department_position_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `department_to_department_position_info`
+--
+
+DROP TABLE IF EXISTS `department_to_department_position_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `department_to_department_position_info` (
+  `department_position_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '部门职位id',
+  `department_position_name` varchar(20) NOT NULL COMMENT '部门名称',
+  `department_id` int(10) NOT NULL COMMENT '职位所属部门id',
+  PRIMARY KEY (`department_position_id`),
+  UNIQUE KEY `department_position_id_UNIQUE` (`department_position_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `department_to_department_position_info`
+--
+
+LOCK TABLES `department_to_department_position_info` WRITE;
+/*!40000 ALTER TABLE `department_to_department_position_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `department_to_department_position_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -198,30 +222,6 @@ CREATE TABLE `menu_info` (
 LOCK TABLES `menu_info` WRITE;
 /*!40000 ALTER TABLE `menu_info` DISABLE KEYS */;
 /*!40000 ALTER TABLE `menu_info` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `position_info`
---
-
-DROP TABLE IF EXISTS `position_info`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `position_info` (
-  `position_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '职位id',
-  `position_name` varchar(20) NOT NULL COMMENT '职位名称',
-  `position_state` int(11) NOT NULL COMMENT '职位的状态 0表示未启用 1表示启用',
-  PRIMARY KEY (`position_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `position_info`
---
-
-LOCK TABLES `position_info` WRITE;
-/*!40000 ALTER TABLE `position_info` DISABLE KEYS */;
-/*!40000 ALTER TABLE `position_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -474,4 +474,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-12 10:03:42
+-- Dump completed on 2015-10-12 10:34:20
