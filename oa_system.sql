@@ -199,32 +199,6 @@ LOCK TABLES `function_group_info` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `menu_info`
---
-
-DROP TABLE IF EXISTS `menu_info`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `menu_info` (
-  `menu_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '菜单id',
-  `menu_name` varchar(20) NOT NULL COMMENT '菜单名称',
-  `menu_url` varchar(30) NOT NULL COMMENT '菜单路径',
-  `menu_parent_id` int(10) NOT NULL COMMENT '父级菜单id',
-  PRIMARY KEY (`menu_id`),
-  UNIQUE KEY `menu_id_UNIQUE` (`menu_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `menu_info`
---
-
-LOCK TABLES `menu_info` WRITE;
-/*!40000 ALTER TABLE `menu_info` DISABLE KEYS */;
-/*!40000 ALTER TABLE `menu_info` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `project_info`
 --
 
@@ -256,37 +230,63 @@ LOCK TABLES `project_info` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `role_info`
+-- Table structure for table `system_menu_info`
 --
 
-DROP TABLE IF EXISTS `role_info`;
+DROP TABLE IF EXISTS `system_menu_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `role_info` (
-  `role_id` int(10) unsigned NOT NULL COMMENT '管理角色，不同角色id，对应不同的分区管理权限',
-  `role_name` varchar(20) NOT NULL COMMENT '管理角色的具体职能名称',
-  PRIMARY KEY (`role_id`),
-  UNIQUE KEY `role_id_UNIQUE` (`role_id`)
+CREATE TABLE `system_menu_info` (
+  `system_menu_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '菜单id',
+  `system_menu_name` varchar(20) NOT NULL COMMENT '菜单名称',
+  `system_menu_url` varchar(30) NOT NULL COMMENT '菜单路径',
+  `system_menu_parent_id` int(10) NOT NULL COMMENT '父级菜单id',
+  PRIMARY KEY (`system_menu_id`),
+  UNIQUE KEY `menu_id_UNIQUE` (`system_menu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `role_info`
+-- Dumping data for table `system_menu_info`
 --
 
-LOCK TABLES `role_info` WRITE;
-/*!40000 ALTER TABLE `role_info` DISABLE KEYS */;
-/*!40000 ALTER TABLE `role_info` ENABLE KEYS */;
+LOCK TABLES `system_menu_info` WRITE;
+/*!40000 ALTER TABLE `system_menu_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `system_menu_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `role_menu_relationship_info`
+-- Table structure for table `system_role_info`
 --
 
-DROP TABLE IF EXISTS `role_menu_relationship_info`;
+DROP TABLE IF EXISTS `system_role_info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `role_menu_relationship_info` (
+CREATE TABLE `system_role_info` (
+  `system_role_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '管理角色，不同角色id，对应不同的分区管理权限',
+  `system_role_name` varchar(20) NOT NULL COMMENT '管理角色的具体职能名称',
+  PRIMARY KEY (`system_role_id`),
+  UNIQUE KEY `role_id_UNIQUE` (`system_role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `system_role_info`
+--
+
+LOCK TABLES `system_role_info` WRITE;
+/*!40000 ALTER TABLE `system_role_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `system_role_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `system_role_to_menu_relationship_info`
+--
+
+DROP TABLE IF EXISTS `system_role_to_menu_relationship_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `system_role_to_menu_relationship_info` (
   `role_id` int(10) NOT NULL COMMENT '角色id',
   `menu_id` int(10) NOT NULL COMMENT '菜单id',
   PRIMARY KEY (`role_id`)
@@ -294,12 +294,35 @@ CREATE TABLE `role_menu_relationship_info` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `role_menu_relationship_info`
+-- Dumping data for table `system_role_to_menu_relationship_info`
 --
 
-LOCK TABLES `role_menu_relationship_info` WRITE;
-/*!40000 ALTER TABLE `role_menu_relationship_info` DISABLE KEYS */;
-/*!40000 ALTER TABLE `role_menu_relationship_info` ENABLE KEYS */;
+LOCK TABLES `system_role_to_menu_relationship_info` WRITE;
+/*!40000 ALTER TABLE `system_role_to_menu_relationship_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `system_role_to_menu_relationship_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `system_user_to_role_relationship`
+--
+
+DROP TABLE IF EXISTS `system_user_to_role_relationship`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `system_user_to_role_relationship` (
+  `user_id` int(10) NOT NULL COMMENT '用户id',
+  `system_role_id` int(10) NOT NULL COMMENT '管理角色，不同的管理角色对应不同的菜单管理权限，一人可以承担多个权限',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `system_user_to_role_relationship`
+--
+
+LOCK TABLES `system_user_to_role_relationship` WRITE;
+/*!40000 ALTER TABLE `system_user_to_role_relationship` DISABLE KEYS */;
+/*!40000 ALTER TABLE `system_user_to_role_relationship` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -415,29 +438,6 @@ LOCK TABLES `user_message` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user_role_relationship`
---
-
-DROP TABLE IF EXISTS `user_role_relationship`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_role_relationship` (
-  `user_id` int(10) NOT NULL COMMENT '用户id',
-  `role_id` int(10) NOT NULL COMMENT '管理角色，不同的管理角色对应不同的菜单管理权限，一人可以承担多个权限',
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user_role_relationship`
---
-
-LOCK TABLES `user_role_relationship` WRITE;
-/*!40000 ALTER TABLE `user_role_relationship` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_role_relationship` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `work_record`
 --
 
@@ -474,4 +474,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-12 10:57:32
+-- Dump completed on 2015-10-12 11:14:01
