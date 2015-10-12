@@ -303,6 +303,33 @@ LOCK TABLES `system_role_to_menu_relationship_info` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `system_user_info`
+--
+
+DROP TABLE IF EXISTS `system_user_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `system_user_info` (
+  `user_id` int(10) unsigned NOT NULL COMMENT '用户id',
+  `user_name` varchar(45) NOT NULL COMMENT '用户名',
+  `user_password` varchar(10) NOT NULL COMMENT '用户密码，存储md5格式',
+  `user_previledge` int(11) NOT NULL COMMENT '用户权限',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
+  UNIQUE KEY `user_name_UNIQUE` (`user_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `system_user_info`
+--
+
+LOCK TABLES `system_user_info` WRITE;
+/*!40000 ALTER TABLE `system_user_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `system_user_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `system_user_to_role_relationship`
 --
 
@@ -383,33 +410,6 @@ LOCK TABLES `user_info` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user_login_info`
---
-
-DROP TABLE IF EXISTS `user_login_info`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_login_info` (
-  `user_id` int(10) unsigned NOT NULL COMMENT '用户id',
-  `user_name` varchar(45) NOT NULL COMMENT '用户名',
-  `user_password` varchar(10) NOT NULL COMMENT '用户密码，存储md5格式',
-  `user_previledge` int(11) NOT NULL COMMENT '用户权限',
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
-  UNIQUE KEY `user_name_UNIQUE` (`user_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user_login_info`
---
-
-LOCK TABLES `user_login_info` WRITE;
-/*!40000 ALTER TABLE `user_login_info` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_login_info` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user_message`
 --
 
@@ -474,4 +474,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-12 11:14:01
+-- Dump completed on 2015-10-12 11:19:46
