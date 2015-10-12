@@ -199,6 +199,32 @@ LOCK TABLES `function_group_info` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `menu_info`
+--
+
+DROP TABLE IF EXISTS `menu_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menu_info` (
+  `menu_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '菜单id',
+  `menu_name` varchar(20) NOT NULL COMMENT '菜单名称',
+  `menu_url` varchar(30) NOT NULL COMMENT '菜单路径',
+  `menu_parent_id` int(10) NOT NULL COMMENT '父级菜单id',
+  PRIMARY KEY (`menu_id`),
+  UNIQUE KEY `menu_id_UNIQUE` (`menu_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu_info`
+--
+
+LOCK TABLES `menu_info` WRITE;
+/*!40000 ALTER TABLE `menu_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `menu_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `project_info`
 --
 
@@ -448,4 +474,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-12 10:48:59
+-- Dump completed on 2015-10-12 10:57:32
