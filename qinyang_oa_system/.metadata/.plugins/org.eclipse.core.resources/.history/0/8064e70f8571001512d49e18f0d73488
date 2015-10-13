@@ -1,0 +1,5 @@
+package com.lance;
+
+public class HelloWorldController {
+
+}
