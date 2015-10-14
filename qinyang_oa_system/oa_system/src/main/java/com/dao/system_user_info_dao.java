@@ -19,7 +19,7 @@ public class system_user_info_dao
 		this.sqlSessionFactory=sqlSessionFactory;
 	}
 	
-	 public int insert(system_user_info _system_user_info){
+	 public boolean insert(system_user_info _system_user_info){
 	       int id = -1;
 	        SqlSession session = sqlSessionFactory.openSession();
 	 
@@ -30,6 +30,14 @@ public class system_user_info_dao
 	            session.close();
 	        }
 	        System.out.println("insert("+_system_user_info+") --> "+_system_user_info.get_user_id());
-	        return id;
+	        
+	        if(id==-1)
+	        {
+	        	return false;//插入失败
+	        }
+	        else
+	        {
+	        	return true;//插入成功
+	        }
 	    }
 }

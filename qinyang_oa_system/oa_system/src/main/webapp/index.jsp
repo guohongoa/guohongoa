@@ -9,9 +9,8 @@
  
 	<center>
 		<h3>
-			<!--<a href="hello?name=Eric">Click Here</a>  -->
-			<form action="hello.do" method="post">
-			   <p>用户名: <input type="text" name="用户m" /></p>
+			<form action="main.do" method="post">
+			   <p>用户名: <input type="text" name="username" /></p>
                <p>密 码: <input type="password" name="password" /></p>
                  <input type="submit" value="注册" /> 
                  <input type="reset" value="重置">

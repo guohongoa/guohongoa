@@ -2,8 +2,11 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
-<fullyQualifiedTypeName name="com.dao.system_user_info_dao"/>
 <fullyQualifiedTypeName name="com.mybatis.MyBatisConnectionFactory"/>
-<fullyQualifiedTypeName name="com.data.system_user_info"/>
+<fullyQualifiedTypeName name="com.viewcontroller.RegisterController"/>
+<fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+<fullyQualifiedTypeName name="com.dao.system_user_info_dao"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.data.system_user_info"/>
+<fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
 </qualifiedTypeNameHistroy>
