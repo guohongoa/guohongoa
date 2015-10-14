@@ -11,10 +11,10 @@
 		<h3>
 			<!--<a href="hello?name=Eric">Click Here</a>  -->
 			<form action="hello.do" method="post">
-			   <p>用户名: <input type="text" name="username" /></p>
+			   <p>用户名: <input type="text" name="用户m" /></p>
                <p>密 码: <input type="password" name="password" /></p>
-               注 册 <input type="submit" value="Submit" /> 
-               重 置 <input type="reset" value="Cancel">
+                 <input type="submit" value="注册" /> 
+                 <input type="reset" value="重置">
 			</form>
 		</h3>
 	</center>

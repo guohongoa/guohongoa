@@ -17,9 +17,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dao.system_user_info_dao;
 import com.data.system_user_info;
 import com.mybatis.MyBatisConnectionFactory;
+
+import org.apache.log4j.*;
  
 @Controller
 public class RegisterController {
+	
+	//注册log4j
+	final static Logger logger=Logger.getLogger(RegisterController.class);
+	
 	String message = "Welcome to Spring MVC!";
  
 	@RequestMapping("hello.do")
@@ -35,6 +41,8 @@ public class RegisterController {
 		
 		insert_system_user_info_to_sql();
 		
+		
+		
 		return mv;
 	}
 	
@@ -43,6 +51,7 @@ public class RegisterController {
 		system_user_info_dao _system_user_info_dao=new system_user_info_dao(MyBatisConnectionFactory.getSqlSessionFactory());
 		system_user_info _system_user_info=new system_user_info();
 		
+		//_system_user_info.set_user_id(11);
 		_system_user_info.set_user_name("demo1");
 		_system_user_info.set_user_password("123");
 		
