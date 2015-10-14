@@ -1,0 +1,5 @@
+package com.mybatis;
+
+public class mail_info_mybatis_connection_factory {
+
+}
