@@ -1,4 +1,7 @@
-/Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/main/java/com/mybatis/MyBatisConnectionFactory.java
-/Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/main/java/com/viewcontroller/RegisterController.java
 /Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/main/java/com/data/system_user_info.java
+/Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/main/java/com/dao/mail_info_dao.java
 /Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/main/java/com/dao/system_user_info_dao.java
+/Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/main/java/com/data/mail_info.java
+/Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/main/java/com/mybatis/mybatis_connection_factory.java
+/Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/main/java/com/viewcontroller/register_controller.java
+/Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/main/java/com/viewcontroller/send_mail_controller.java

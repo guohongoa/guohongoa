@@ -1,5 +1,7 @@
 package com.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -16,7 +18,7 @@ public class mail_info_dao
 	
 	 public boolean insert(mail_info _mail_info){
 	       int id = -1;
-	        SqlSession session = sqlSessionFactory.openSession();
+	        SqlSession session = this.sqlSessionFactory.openSession();
 	 
 	        try {
 	            id = session.insert("mail_info.insert", _mail_info);
@@ -35,4 +37,19 @@ public class mail_info_dao
 	        	return true;//插入成功
 	        }
 	    }
+	 
+	 public List<mail_info> select_all()
+	 {
+		 List<mail_info> mail_info_list=null;
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+	            mail_info_list = session.selectList("mail_info.select_all");
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("selectAll() --> "+mail_info_list);
+	        return mail_info_list;
+	 }
+	 
+	 
 }

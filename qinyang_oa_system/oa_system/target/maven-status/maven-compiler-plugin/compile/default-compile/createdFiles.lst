@@ -1,4 +1,0 @@
-com/data/system_user_info.class
-com/dao/system_user_info_dao.class
-com/mybatis/MyBatisConnectionFactory.class
-com/viewcontroller/RegisterController.class
