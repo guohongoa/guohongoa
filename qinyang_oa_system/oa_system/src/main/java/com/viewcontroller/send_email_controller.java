@@ -1,6 +1,9 @@
 package com.viewcontroller;
 
+
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dao.mail_info_dao;
 import com.data.mail_info;
-import com.mybatis.mail_info_mybatis_connection_factory;
+import com.mybatis.mybatis_connection_factory;
 
 @Controller
 public class send_email_controller
@@ -32,8 +35,10 @@ public class send_email_controller
 	   _mail_info.set_mail_content(mail_content);
 	   
 	   //添加系统时间
-	   SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	   String mail_addtime=df.toString();
+	   Date date=new Date();
+	   DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	   String mail_addtime=format.format(date);
+
 	   
 	   _mail_info.set_mail_addtime(mail_addtime);
 	   
@@ -44,7 +49,7 @@ public class send_email_controller
    
    private boolean send_mail_insert_db(mail_info _mail_info)  //发送邮件后插入数据库
 	{
-		mail_info_dao _mail_info_dao=new mail_info_dao(mail_info_mybatis_connection_factory.getSqlSessionFactory());
+		mail_info_dao _mail_info_dao=new mail_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		
 		boolean rs=_mail_info_dao.insert(_mail_info);
 		return rs;

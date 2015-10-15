@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.system_user_info_dao;
 import com.data.system_user_info;
-import com.mybatis.system_user_info_mybatis_connection_factory;
+import com.mybatis.mybatis_connection_factory;
 
 import org.apache.log4j.*;
  
@@ -64,7 +64,7 @@ public class register_controller {
 	
 	private boolean register_insert_db(system_user_info _system_user_info)
 	{
-		system_user_info_dao _system_user_info_dao=new system_user_info_dao(system_user_info_mybatis_connection_factory.getSqlSessionFactory());
+		system_user_info_dao _system_user_info_dao=new system_user_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		
 		boolean rs=_system_user_info_dao.insert(_system_user_info);
 		return rs;
