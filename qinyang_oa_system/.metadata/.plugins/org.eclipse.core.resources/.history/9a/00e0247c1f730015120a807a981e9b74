@@ -22,9 +22,7 @@ public class send_mail_controller
    
    public ModelAndView send_email_request(
 		    @RequestParam(value="mail_sender") String mail_sender ,
-		    @RequestParam(value="mail_sender_id") int mail_sender_id,
 			@RequestParam(value="mail_receiver") String mail_receiver,
-			@RequestParam(value="mail_receiver_id") int mail_receiver_id,
             @RequestParam(value="mail_title")  String mail_title,
             @RequestParam(value="mail_content") String mail_content
 		   )
@@ -34,9 +32,7 @@ public class send_mail_controller
 	   //初始化mail的object对象
 	   mail_info _mail_info=new mail_info();
 	   _mail_info.set_mail_sender(mail_sender);
-	   _mail_info.set_mail_sender_id(mail_sender_id);
 	   _mail_info.set_mail_receiver(mail_receiver);
-	   _mail_info.set_mail_receiver_id(mail_receiver_id);
 	   _mail_info.set_mail_title(mail_title);
 	   _mail_info.set_mail_content(mail_content);
 	   

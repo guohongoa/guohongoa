@@ -9,7 +9,9 @@
 <body>
      <form action="send_mail.do" method="post" id="mailform">
 			   <p>发送人：<input type="text" name="mail_sender" /></p>
+			   <p>发送人id：<input type="text" name="mail_sender_id" /></p>
                <p>接受人: <input type="text" name="mail_receiver" /></p>
+               <p>接受人id：<input type="text" name="mail_receiver_id" /></p>
                <p>标题：<input type="text" name="mail_title" /></p>
                <p>邮件内容：<textarea name="mail_content" cols="100" rows="10"></textarea></textarea></p>
                  <input type="submit" value="发送" /> 
