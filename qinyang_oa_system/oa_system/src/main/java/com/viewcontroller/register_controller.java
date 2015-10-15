@@ -25,10 +25,9 @@ public class register_controller {
 	
 	//注册log4j
 	final static Logger logger=Logger.getLogger(register_controller.class);
-	
-	String message = "Welcome to Spring MVC!";
+
  
-	@RequestMapping("main.do")
+	@RequestMapping("register.do")
 
 	public ModelAndView regiseter_request(
 			@RequestParam(value="username") String username,

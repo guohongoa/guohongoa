@@ -3,12 +3,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Spring 4 MVC -HelloWorld</title>
+<title>登陆成功</title>
 </head>
 <body>
 	<center>
-		<h2>${user_name}</h2>
-		<h2>${is_success}</h2>
+		<h2>用户名为${user_name}的用户${is_success}</h2>
 		<h2><a href="mail.jsp">邮件</a></h2>
 	</center>
 </body>

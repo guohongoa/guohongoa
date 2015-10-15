@@ -19,7 +19,8 @@ public class system_user_info_dao
 		this.sqlSessionFactory=sqlSessionFactory;
 	}
 	
-	 public boolean insert(system_user_info _system_user_info){
+	 public boolean insert(system_user_info _system_user_info)
+	 {
 	       int id = -1;
 	        SqlSession session = sqlSessionFactory.openSession();
 	 
@@ -39,5 +40,19 @@ public class system_user_info_dao
 	        {
 	        	return true;//插入成功
 	        }
-	    }
+	  }
+	 
+	  public system_user_info select_by_user_name(String user_name)
+	  {
+		  system_user_info _system_user_info = null;
+	        SqlSession session = sqlSessionFactory.openSession();
+	        try {
+	            _system_user_info = session.selectOne("system_user_info.select_by_user_name", user_name);
+	 
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("selectByUsername("+user_name+") --> "+_system_user_info);
+	        return _system_user_info;
+	  }
 }

@@ -2,10 +2,17 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
 <body>
-		<ul>
+		<table border="1">
+		    <tr><th>发送人</th><th>接受人</th><th>主题</th><th>内容</th><th>添加时间</th></tr>
 			<c:forEach var="mail_info" items="${mail_info_list}">
-				<li>${mail_info.get_mail_sender()}</li>
+				<tr>
+				<td>${mail_info.get_mail_sender()}</td>
+				<td>${mail_info.get_mail_receiver()}</td>
+				<td>${mail_info.get_mail_title()}</td>
+				<td>${mail_info.get_mail_content()}</td>
+				<td>${mail_info.get_mail_addtime()}</td>
+				</tr>
 			</c:forEach>
-		</ul>
+		</table>
 </body>
 </html>

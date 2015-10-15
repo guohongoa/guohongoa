@@ -5,11 +5,19 @@
  
 <mapper namespace="system_user_info">
  
-    
+    <resultMap id="result" type="system_user_info">
+        <result property="user_id" column="user_id"/>
+        <result property="user_name" column="user_name"/>
+        <result property="user_password" column="user_password"/>   
+   </resultMap>
  
     <insert id="insert" parameterType="system_user_info" >
         insert into system_user_info(user_name,user_password) values(#{user_name},#{user_password})
     </insert>
+    
+    <select id="select_by_user_name" parameterType="String" resultMap="result">
+        SELECT * FROM system_user_info WHERE user_name = #{user_name}
+    </select>
  
 </mapper>
 
