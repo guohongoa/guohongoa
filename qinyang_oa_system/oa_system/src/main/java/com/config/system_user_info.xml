@@ -11,13 +11,14 @@
         <result property="user_password" column="user_password"/>   
    </resultMap>
  
-    <insert id="insert" parameterType="system_user_info" >
+    <insert id="insert" parameterType="system_user_info"  useGeneratedKeys="true" keyProperty="user_id">
         insert into system_user_info(user_name,user_password) values(#{user_name},#{user_password})
     </insert>
     
     <select id="select_by_user_name" parameterType="String" resultMap="result">
         SELECT * FROM system_user_info WHERE user_name = #{user_name}
     </select>
+    
  
 </mapper>
 
