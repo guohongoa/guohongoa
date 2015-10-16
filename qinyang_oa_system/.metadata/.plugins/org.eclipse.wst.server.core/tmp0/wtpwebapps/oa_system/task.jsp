@@ -7,7 +7,7 @@
 <title>任务</title>
 </head>
 <body>
-     <form action="send_task.do" method="post" id="mailform">
+     <form action="send_task.do" method="post" id="taskform">
 			   <p>任务委派人：<input type="text" name="task_sender" /></p>
 			   <p>委派人id：<input type="text" name="task_sender_id" /></p>
                <p>任务执行人: <input type="text" name="task_receiver" /></p>

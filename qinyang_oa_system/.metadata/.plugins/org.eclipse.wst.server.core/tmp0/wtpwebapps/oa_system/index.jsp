@@ -26,6 +26,9 @@
 					<li>
 					    <a href="#panel-task" data-toggle="tab">任务</a>
 					</li>
+					<li>
+					    <a href="#panel-report" data-toggle="tab">汇报</a>
+					</li>
 					
 					
 				</ul>
@@ -53,6 +56,9 @@
 					</div>
 					<div class="tab-pane" id="panel-task">
 				 	    <h2><a href="task.jsp">发任务</a></h2>
+					</div>
+					<div class="tab-pane" id="panel-report">
+				 	    <h2><a href="report.jsp">发汇报</a></h2>
 					</div>
 				</div>
 			</div>
