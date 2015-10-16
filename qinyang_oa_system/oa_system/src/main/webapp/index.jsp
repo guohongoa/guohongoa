@@ -14,15 +14,23 @@
 		<div class="span12">
 			<div class="tabbable" id="tabs-105576">
 				<ul class="nav nav-tabs">
-					<li>
-						<a href="#panel-login" data-toggle="tab">用户登陆</a>
-					</li>
 					<li class="active">
-						<a href="#panel-register" data-toggle="tab">后台添加用户</a>
+						<a href="#panel-login" data-toggle="tab">个人</a>
 					</li>
+					<li>
+						<a href="#panel-register" data-toggle="tab">后台</a>
+					</li>
+					<li>
+						<a href="#panel-mail" data-toggle="tab">邮件</a>
+					</li>
+					<li>
+					    <a href="#panel-task" data-toggle="tab">任务</a>
+					</li>
+					
+					
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane" id="panel-login">
+					<div class="tab-pane active" id="panel-login">
 						<table border="0">
 							<form action="login.do" method="post">
 			                  <tr><td width="20%">用户名</td><td><input type="text" name="username" /></td></tr>
@@ -31,7 +39,7 @@
 			                </form>
 						</table>
 					</div>
-					<div class="tab-pane active" id="panel-register">
+					<div class="tab-pane " id="panel-register">
 						<table border="0">
 							<form action="register.do" method="post">
 			                  <tr><td width="20%">用户名</td><td><input type="text" name="username" /></td></tr>
@@ -39,6 +47,12 @@
                               <tr><td colspan="2" align="center"><input type="submit" value="添加用户" />&nbsp;&nbsp;<input type="reset" value="重置"></td></tr>
 			                </form>
 						</table>
+					</div>
+					<div class="tab-pane" id="panel-mail">
+					    <h2><a href="mail.jsp">发邮件</a></h2>
+					</div>
+					<div class="tab-pane" id="panel-task">
+				 	    <h2><a href="task.jsp">发任务</a></h2>
 					</div>
 				</div>
 			</div>

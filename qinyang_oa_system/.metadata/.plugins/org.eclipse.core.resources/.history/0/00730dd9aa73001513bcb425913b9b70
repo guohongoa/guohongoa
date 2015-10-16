@@ -1,0 +1,23 @@
+package com.viewcontroller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class send_task_controller 
+{
+	
+	@RequestMapping("send_task,do")
+	public void send_task_request(
+			@RequestParam(value="task_sender") String mail_sender ,
+		    @RequestParam(value="task_sender_id") int mail_sender_id,
+			@RequestParam(value="task_receiver") String mail_receiver,
+			@RequestParam(value="task_receiver_id") int mail_receiver_id,
+            @RequestParam(value="task_title")  String mail_title,
+            @RequestParam(value="task_content") String mail_content
+			)
+	{
+		
+	}
+}

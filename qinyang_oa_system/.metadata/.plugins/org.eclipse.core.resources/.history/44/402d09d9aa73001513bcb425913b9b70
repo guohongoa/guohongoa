@@ -1,0 +1,9 @@
+package com.data;
+
+public class task_info 
+{
+   private int     task_id;
+   private String  task_snder;
+   private int     task_sender_id;
+   private String  task_receiver;
+}

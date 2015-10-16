@@ -8,7 +8,6 @@
 <body>
 	<center>
 		<h2>用户名为${user_name}的用户${is_success}</h2>
-		<h2><a href="mail.jsp">邮件</a></h2>
 	</center>
 </body>
 </html>

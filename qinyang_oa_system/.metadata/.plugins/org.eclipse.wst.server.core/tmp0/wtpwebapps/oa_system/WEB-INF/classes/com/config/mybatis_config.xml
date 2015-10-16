@@ -7,7 +7,8 @@
 
     <typeAliases>
         <typeAlias alias="system_user_info" type="com.data.system_user_info"/> 
-        <typeAlias alias="mail_info" type="com.data.mail_info"/>      
+        <typeAlias alias="mail_info" type="com.data.mail_info"/>
+        <typeAlias alias="task_info" type="com.data.task_info"/>       
     </typeAliases>
  
     <environments default="development">
@@ -25,5 +26,6 @@
     <mappers>
        <mapper resource="com/config/system_user_info.xml"/>
        <mapper resource="com/config/mail_info.xml"/>
+       <mapper resource="com/config/task_info.xml"/>
     </mappers>
 </configuration>
