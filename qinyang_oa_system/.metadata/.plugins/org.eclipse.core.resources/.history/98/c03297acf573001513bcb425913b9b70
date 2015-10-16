@@ -75,7 +75,6 @@ public class register_controller {
 		user_info _user_info=new user_info();
 		
 		//将用户id和用户姓名同时插入系统用户表和用户信息表
-		//将配置表system_user_info插入数据中的  useGeneratedKeys="true" keyProperty="user_id"这两个属性添加可获取自增id
 		_user_info.set_user_id(_system_user_info.get_user_id());
 		_user_info.set_user_name(_system_user_info.get_user_name());
 		

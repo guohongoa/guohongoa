@@ -1305,3 +1305,7 @@ java.lang.NullPointerException: null
 2015-10-16 18:54:12,242 [Worker-351] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2015-10-16 18:54:12,243 [Worker-351] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2015-10-16 18:54:12,244 [Worker-351] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/test/resources
+2015-10-16 19:04:30,673 [Worker-357] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-16 19:04:30,675 [Worker-357] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-10-16 19:04:30,676 [Worker-357] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-16 19:04:30,677 [Worker-357] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/oa_system/src/test/resources
