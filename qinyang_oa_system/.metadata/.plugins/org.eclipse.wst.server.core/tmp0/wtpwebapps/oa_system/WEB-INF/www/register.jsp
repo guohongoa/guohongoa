@@ -8,6 +8,7 @@
 <body>
 	<center>
 		<h2>用户名为${user_name}的用户${is_success}</h2>
+		<a href="index.jsp">返回首页</a>
 	</center>
 </body>
 </html>

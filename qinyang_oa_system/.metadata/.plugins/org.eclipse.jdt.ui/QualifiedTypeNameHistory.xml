@@ -28,4 +28,5 @@
 <fullyQualifiedTypeName name="com.mybatis.mybatis_connection_factory"/>
 <fullyQualifiedTypeName name="com.dao.user_info_dao"/>
 <fullyQualifiedTypeName name="com.data.user_info"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.SessionAttributes"/>
 </qualifiedTypeNameHistroy>

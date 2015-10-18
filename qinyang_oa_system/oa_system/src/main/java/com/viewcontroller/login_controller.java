@@ -3,6 +3,7 @@ package com.viewcontroller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.system_user_info_dao;
@@ -11,6 +12,7 @@ import com.mybatis.mybatis_connection_factory;
 
 //登陆页请求，验证密码是否正确
 @Controller
+@SessionAttributes("username")
 public class login_controller 
 {
 
@@ -20,11 +22,11 @@ public class login_controller
 			@RequestParam(value="password") String password
 		  )
   {
-		System.out.println("tesdfsfaddddddddddd"+password);
 		
 	  system_user_info db_user_info=get_system_user_inf_by_user_name(username);
 	  
 	  ModelAndView mv=new ModelAndView();
+	  
 	  
 	  if(db_user_info!=null)
 	  {
@@ -37,6 +39,10 @@ public class login_controller
 	  if(db_user_password.equals(password))
 	  {
 		  mv.addObject("status", "登陆成功");
+		  
+		  //登陆成功后设置用户名session
+		  
+		  mv.addObject("username", username);
 	  }
 	  else
 	  {
