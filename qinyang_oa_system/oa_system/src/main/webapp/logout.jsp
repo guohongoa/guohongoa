@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:set var="username" scope="session" value=""/>
+<c:set var="system_user_info" scope="session" value=""/>
+<c:set var="system_user_name" scope="session" value=""/>
 <c:redirect url="index.jsp"/>
 </body>
 </html>

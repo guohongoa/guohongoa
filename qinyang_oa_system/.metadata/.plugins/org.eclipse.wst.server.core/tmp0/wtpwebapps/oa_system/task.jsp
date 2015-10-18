@@ -8,8 +8,8 @@
 </head>
 <body>
      <form action="send_task.do" method="post" id="taskform">
-			   <p>任务委派人：<input type="text" name="task_sender" /></p>
-			   <p>委派人id：<input type="text" name="task_sender_id" /></p>
+			   <p><input type="hidden" name="task_sender" value="${system_user_name}"/></p>
+			   <p><input type="hidden" name="task_sender_id" value="${system_user_id}"/></p>
                <p>任务执行人: <input type="text" name="task_receiver" /></p>
                <p>执行人id：<input type="text" name="task_receiver_id" /></p>
                <p>主题：<input type="text" name="task_title" /></p>

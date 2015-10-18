@@ -8,8 +8,8 @@
 </head>
 <body>
      <form action="send_mail.do" method="post" id="mailform">
-			   <p>发送人：<input type="text" name="mail_sender" /></p>
-			   <p>发送人id：<input type="text" name="mail_sender_id" /></p>
+			   <p><input type="hidden" name="mail_sender" value="${system_user_name}"/></p>
+			   <p><input type="hidden" name="mail_sender_id" value="${system_user_id}"/></p>
                <p>接受人: <input type="text" name="mail_receiver" /></p>
                <p>接受人id：<input type="text" name="mail_receiver_id" /></p>
                <p>标题：<input type="text" name="mail_title" /></p>

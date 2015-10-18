@@ -8,8 +8,8 @@
 </head>
 <body>
      <form action="send_report.do" method="post" id="reportform">
-			   <p>汇报人：<input type="text" name="report_sender" /></p>
-			   <p>汇报人id：<input type="text" name="report_sender_id" /></p>
+			   <p><input type="hidden" name="report_sender" value="${system_user_name}" /></p>
+			   <p><input type="hidden" name="report_sender_id" value="${system_user_id}"/></p>
                <p>汇报接受人: <input type="text" name="report_receiver" /></p>
                <p>接受人id：<input type="text" name="report_receiver_id" /></p>
                <p>主题：<input type="text" name="report_title" /></p>

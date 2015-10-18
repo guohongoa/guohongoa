@@ -35,9 +35,12 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="panel-login">
-					    <c:set var="username" scope="session" value="${username}"/>
+					    <c:if test="${not empty system_user_info}">
+					    <c:set var="system_user_name" scope="session" value="${system_user_info.get_user_name()}"/>
+					    <c:set var="system_user_id" scope="session" value="${system_user_info.get_user_id()}"/>
+					    </c:if>
 					    <c:choose>
-					    <c:when test="${empty username}">
+					    <c:when test="${empty system_user_name}">
 						   <table border="0">
 							 <form action="login.do" method="post">
 			                    <tr><td width="20%">用户名</td><td><input type="text" name="username" /></td></tr>
@@ -47,7 +50,8 @@
 						    </table>
 						</c:when>
 						<c:otherwise>
-						<h2>${username}</h2>
+						<h2>${system_user_name}</h2>
+						<h2>${system_user_id}</h2>
 						   <a href="logout.jsp">用户登出</a>
 						</c:otherwise>
 						</c:choose>

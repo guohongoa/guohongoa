@@ -8,11 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.system_user_info_dao;
 import com.data.system_user_info;
+import com.data.user_info;
 import com.mybatis.mybatis_connection_factory;
 
 //登陆页请求，验证密码是否正确
 @Controller
-@SessionAttributes("username")
+@SessionAttributes("system_user_info")
 public class login_controller 
 {
 
@@ -31,8 +32,7 @@ public class login_controller
 	  if(db_user_info!=null)
 	  {
 	  String db_user_password=db_user_info.get_user_password();
-	  
-	  System.out.println("ttdfdfa"+db_user_password);
+	  int db_user_id=db_user_info.get_user_id();
 	  
 	  
 	  //比较输入密码用数据库中密码是否一致
@@ -41,8 +41,8 @@ public class login_controller
 		  mv.addObject("status", "登陆成功");
 		  
 		  //登陆成功后设置用户名session
-		  
-		  mv.addObject("username", username);
+		  system_user_info _system_user_info=db_user_info;
+		  mv.addObject("system_user_info", _system_user_info);
 	  }
 	  else
 	  {
