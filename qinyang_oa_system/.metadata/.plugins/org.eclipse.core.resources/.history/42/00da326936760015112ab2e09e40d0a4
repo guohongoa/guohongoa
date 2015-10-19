@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<script type="text/javascript" src="http://www.francescomalagrino.com/BootstrapPageGenerator/3/js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="http://www.francescomalagrino.com/BootstrapPageGenerator/3/js/jquery-ui"></script>
+<link href="http://www.francescomalagrino.com/BootstrapPageGenerator/3/css/bootstrap-combined.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="http://101.200.196.121:8080/css/index.css"/>
+<script type="text/javascript" src="http://www.francescomalagrino.com/BootstrapPageGenerator/3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--header头部导航样式-->
+<div class="header">
+    <div class="h_content">
+        <!--左侧logo和文字-->
+        <div class="logo">
+            <i></i>
+            <span></span>
+        </div>
+        <!--右侧导航-->
+        <div class="menu">
+            <ul>
+                <li><a href="#panel-task" data-toggle="tab">任务</a></li>
+                <li><a href="#panel-notice" data-toggle="tab">公告</a></li>
+                <li><a href="#panel-document" data-toggle="tab">文档</a></li>
+                <li><a href="panel-mail" data-toggle="tab">邮件</a></li>
+                <li><a href="panel-management" data-toggle="tab">管理</a></li>
+                <li><a href="panel-setting" data-toggle="tab">设置</a></li>
+                <li><a href="panel-exit" data-toggle="tab">退出</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <div id="panel-task">
+               aaa
+            </div>
+            <div id="panel-notice">
+               bbb
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="tabbable" id="tabs-105576">
+				<ul class="nav nav-tabs">
+					<li class="active">
+						<a href="#panel-personal" data-toggle="tab">个人</a>
+					</li>
+					<li>
+						<a href="#panel-register" data-toggle="tab">后台</a>
+					</li>
+					<li>
+						<a href="#panel-mail" data-toggle="tab">邮件</a>
+					</li>
+					<li>
+					    <a href="#panel-task" data-toggle="tab">任务</a>
+					</li>
+					<li>
+					    <a href="#panel-report" data-toggle="tab">汇报</a>
+					</li>	
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="panel-personal">
+					    <h3><a href="home/personal.jsp">登陆</a></h3>
+					</div>
+					<div class="tab-pane " id="panel-register">
+						<h3><a href="home/register.jsp">注册</a></h3>
+						<h3><a href="home/userinfo.jsp">管理用户信息</a></h3>
+					</div>
+					<div class="tab-pane" id="panel-mail">
+					    <h3><a href="home/mail.jsp">发邮件</a></h3>
+					</div>
+					<div class="tab-pane" id="panel-task">
+				 	    <h3><a href="home/task.jsp">发任务</a></h3>
+					</div>
+					<div class="tab-pane" id="panel-report">
+				 	    <h3><a href="home/report.jsp">发汇报</a></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>  -->
+</body>
+</html>

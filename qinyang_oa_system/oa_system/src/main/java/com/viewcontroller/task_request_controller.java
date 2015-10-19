@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dao.mail_info_dao;
 import com.dao.task_info_dao;
-import com.data.mail_info;
 import com.data.task_info;
 import com.mybatis.mybatis_connection_factory;
 

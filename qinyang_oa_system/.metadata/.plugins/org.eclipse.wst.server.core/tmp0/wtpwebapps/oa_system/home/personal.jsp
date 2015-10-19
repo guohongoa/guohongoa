@@ -25,7 +25,6 @@
 	 <c:otherwise>
 		<h2>${system_user_name}</h2>
 		<h2>${system_user_id}</h2>
-		<a href="../middle/logout.jsp">用户登出</a>
 		<a href="../index.jsp">返回首页</a>
 	 </c:otherwise>
    </c:choose>

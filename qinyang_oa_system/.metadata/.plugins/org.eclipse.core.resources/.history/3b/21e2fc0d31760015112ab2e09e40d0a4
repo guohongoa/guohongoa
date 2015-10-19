@@ -1,0 +1,59 @@
+/*
+ * 登录页验证
+ */
+function isLogin(lname,lpass){
+    $.ajax({
+        type:"POST",
+        cache :false,
+        //todo:后台接口
+        url:"data/data.php",
+        dataType:"json",
+        data:{
+            "username":lname,
+            "password":lpass
+        },
+        success:function(response,status,xml){
+            //todo:当用户名密码不正确时，约定返回errno == -1
+            if(response.errno == -1){
+                $(".login-error").html("用户名或密码错误！")
+            }else{
+                $("#login").submit();
+            }
+        }
+    });
+}
+//提交不为空的验证，后台无需操作
+$("#login_btn").click(function(){
+    if(!$("#uname").val() || !$("#password").val()){
+        $(".login-error").html("请输入用户名和密码")
+    }else{
+        isLogin($("#uname").val(),$("#password").val());
+    }
+});
+/*
+* 增加员工时的验证
+*/
+//出生日期插件
+$("#addBri").focus(function(){
+    WdatePicker({
+        dateFmt : 'yyyy/MM/dd',
+        isShowWeek : true
+    });
+});
+// 入职日期时间插件
+$("#addDate").focus(function(){
+    WdatePicker({
+        dateFmt : 'yyyy/MM/dd',
+        isShowWeek : true
+    });
+});
+//验证各项不为空
+$(function() {
+    $("#addGo").click(function () {
+        if ($("#addNum").val()==""||$("#addName").val()=="") {
+            return false;
+        }else{
+            $("#addEmployees").submit();
+        }
+    })
+})

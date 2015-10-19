@@ -8,7 +8,6 @@
     <typeAliases>
         <typeAlias alias="system_user_info" type="com.data.system_user_info"/>
         <typeAlias alias="user_info" type="com.data.user_info"/> 
-        <typeAlias alias="mail_info" type="com.data.mail_info"/>
         <typeAlias alias="task_info" type="com.data.task_info"/>    
         <typeAlias alias="report_info" type="com.data.report_info"/> 
     </typeAliases>
@@ -28,7 +27,6 @@
     <mappers>
        <mapper resource="com/config/system_user_info.xml"/>
        <mapper resource="com/config/user_info.xml"/>
-       <mapper resource="com/config/mail_info.xml"/>
        <mapper resource="com/config/task_info.xml"/>
        <mapper resource="com/config/report_info.xml"/>
     </mappers>

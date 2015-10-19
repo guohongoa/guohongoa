@@ -16,3 +16,20 @@
 1445222557689	Rename resource 'response'
 1445224994673	Delete element
 1445225678452	Rename resource 'background.jsp'
+1445235953833	Delete element
+1445238832928	Delete element
+1445238876495	Delete element
+1445239036011	Move 'css' to 'www'
+1445239144399	Move 'www' to 'webapp'
+1445239163371	Move 'css' to 'webapp'
+1445239237920	Delete element
+1445239956682	Delete element
+1445239962378	Delete element
+1445241046823	Delete element
+1445245345327	Delete element
+1445245394700	Delete element
+1445245404748	Delete element
+1445245414670	Delete element
+1445245434601	Delete element
+1445245452037	Delete element
+1445245797708	Move 'www' to 'WEB-INF'
