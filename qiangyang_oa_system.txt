@@ -1,0 +1,1 @@
+1.webapp下home为主页模块、middle为中间跳转模块、WEB-INF/response为请求响应部分，index为起始页面

@@ -1,1 +1,9 @@
 1445137937394	Delete element
+1445217723104	Move 'background.jsp' to 'home'
+1445217728691	Move 'mail.jsp' to 'home'
+1445217739975	Move 'personal.jsp' to 'home'
+1445217744360	Move 'report.jsp' to 'home'
+1445217756442	Move 'task.jsp' to 'home'
+1445218227787	Rename resource 'www'
+1445218616428	Delete element
+1445219464186	Move 'logout.jsp' to 'middle'

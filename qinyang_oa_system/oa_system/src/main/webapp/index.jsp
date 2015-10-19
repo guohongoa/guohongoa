@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -16,7 +15,7 @@
 			<div class="tabbable" id="tabs-105576">
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a href="#panel-login" data-toggle="tab">个人</a>
+						<a href="#panel-personal" data-toggle="tab">个人</a>
 					</li>
 					<li>
 						<a href="#panel-register" data-toggle="tab">后台</a>
@@ -29,51 +28,23 @@
 					</li>
 					<li>
 					    <a href="#panel-report" data-toggle="tab">汇报</a>
-					</li>
-					
-					
+					</li>	
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane active" id="panel-login">
-					    <c:if test="${not empty system_user_info}">
-					    <c:set var="system_user_name" scope="session" value="${system_user_info.get_user_name()}"/>
-					    <c:set var="system_user_id" scope="session" value="${system_user_info.get_user_id()}"/>
-					    </c:if>
-					    <c:choose>
-					    <c:when test="${empty system_user_name}">
-						   <table border="0">
-							 <form action="login.do" method="post">
-			                    <tr><td width="20%">用户名</td><td><input type="text" name="username" /></td></tr>
-                                <tr><td width="20%">密  码</td><td><input type="password" name="password" /></td></tr>
-                                <tr><td colspan="2" align="center"><input type="submit" value="登陆" />&nbsp;&nbsp;<input type="reset" value="重置"></td></tr>
-			                </form>
-						    </table>
-						</c:when>
-						<c:otherwise>
-						<h2>${system_user_name}</h2>
-						<h2>${system_user_id}</h2>
-						   <a href="logout.jsp">用户登出</a>
-						</c:otherwise>
-						</c:choose>
-						
+					<div class="tab-pane active" id="panel-personal">
+					    <h3><a href="home/personal.jsp">登陆</a></h3>
 					</div>
 					<div class="tab-pane " id="panel-register">
-						<table border="0">
-							<form action="register.do" method="post">
-			                  <tr><td width="20%">用户名</td><td><input type="text" name="username" /></td></tr>
-                              <tr><td width="20%">密  码</td><td><input type="password" name="password" /></td></tr>
-                              <tr><td colspan="2" align="center"><input type="submit" value="添加用户" />&nbsp;&nbsp;<input type="reset" value="重置"></td></tr>
-			                </form>
-						</table>
+						<h3><a href="home/background.jsp">注册</a></h3>
 					</div>
 					<div class="tab-pane" id="panel-mail">
-					    <h2><a href="mail.jsp">发邮件</a></h2>
+					    <h3><a href="home/mail.jsp">发邮件</a></h3>
 					</div>
 					<div class="tab-pane" id="panel-task">
-				 	    <h2><a href="task.jsp">发任务</a></h2>
+				 	    <h3><a href="home/task.jsp">发任务</a></h3>
 					</div>
 					<div class="tab-pane" id="panel-report">
-				 	    <h2><a href="report.jsp">发汇报</a></h2>
+				 	    <h3><a href="home/report.jsp">发汇报</a></h3>
 					</div>
 				</div>
 			</div>
