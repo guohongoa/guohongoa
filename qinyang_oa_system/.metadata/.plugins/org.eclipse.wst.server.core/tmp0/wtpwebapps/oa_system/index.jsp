@@ -32,13 +32,15 @@
 				</ul>
 				<div class="tab-content">
 				    <div class="tab-pane active" id="panel-fiveservice">
-				 	    <h3><a href="home/task.jsp">发任务</a></h3>
-				 	    <h3><a href="home/report.jsp">发汇报</a></h3>
+				 	    <h3><a href="home/service.jsp">发起服务</a></h3>
+				 	    
+				 	    <!--<h3><a href="home/task.jsp">发任务</a></h3>
+				 	    <h3><a href="home/report.jsp">发汇报</a></h3>  -->
 					</div>
 					<div class="tab-pane" id="panel-management">
 					    <h3>管理</h3>
 					</div>
-					<div class="tab-pane " id="panel-message">
+					<div class="tab-pane" id="panel-message">
 						<h3>消息</h3>
 					</div>
 					<div class="tab-pane" id="panel-setting">
