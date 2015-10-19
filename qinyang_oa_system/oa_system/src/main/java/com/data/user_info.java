@@ -6,7 +6,7 @@ public class user_info
    private String  user_name;           //用户姓名
    private String  user_position;       //用户职位
    private int     user_position_level; //用户所属级别
-   private String  user_department;
+   private String  user_department;     //用户部门
    
    
    public int get_user_id()

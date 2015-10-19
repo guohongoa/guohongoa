@@ -7,3 +7,12 @@
 1445218227787	Rename resource 'www'
 1445218616428	Delete element
 1445219464186	Move 'logout.jsp' to 'middle'
+1445220753677	Rename resource 'send_mail_controller.java'
+1445220822970	Rename type 'register_controller'
+1445220878359	Delete element
+1445220945127	Rename type 'login_controller'
+1445220972192	Rename type 'send_report_controller'
+1445221017004	Rename type 'send_task_controller'
+1445222557689	Rename resource 'response'
+1445224994673	Delete element
+1445225678452	Rename resource 'background.jsp'

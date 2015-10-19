@@ -35,7 +35,8 @@
 					    <h3><a href="home/personal.jsp">登陆</a></h3>
 					</div>
 					<div class="tab-pane " id="panel-register">
-						<h3><a href="home/background.jsp">注册</a></h3>
+						<h3><a href="home/register.jsp">注册</a></h3>
+						<h3><a href="home/userinfo.jsp">管理用户信息</a></h3>
 					</div>
 					<div class="tab-pane" id="panel-mail">
 					    <h3><a href="home/mail.jsp">发邮件</a></h3>

@@ -20,6 +20,10 @@
     <select id="select_by_user_id" parameterType="int" resultMap="result">
         SELECT * FROM user_info WHERE user_id = #{user_id}
     </select>
+    
+    <select id="select_all" resultMap="result">
+        SELECT * FROM user_info;
+    </select>
  
 </mapper>
 
