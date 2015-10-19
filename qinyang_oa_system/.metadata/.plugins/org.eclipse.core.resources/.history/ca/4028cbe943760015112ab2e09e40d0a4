@@ -20,7 +20,6 @@
                 <tr><td width="20%">密  码</td><td><input type="password" name="password" /></td></tr>
                 <tr><td colspan="2" align="center"><input type="submit" value="登陆" />&nbsp;&nbsp;<input type="reset" value="重置"></td></tr>
 			</form>
-			<a href="../index.jsp">返回首页</a>
 	    </table>
 	   </c:when>
 	 <c:otherwise>
