@@ -35,3 +35,9 @@
 1445245797708	Move 'www' to 'WEB-INF'
 1445246928421	Rename resource 'WEB-INF'
 1445247353955	Rename resource 'response'
+1445319549896	Rename resource 'background_request_controller.java'
+1445319999136	Rename resource 'personal_request_controller.java'
+1445334846557	Delete element
+1445335355805	Rename resource 'task.html'
+1445335803117	Delete element
+1445335851622	Rename resource 'task.html'

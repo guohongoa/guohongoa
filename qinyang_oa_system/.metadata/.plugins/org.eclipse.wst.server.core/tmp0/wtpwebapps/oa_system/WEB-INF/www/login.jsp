@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:redirect url="index.jsp" />
+		<a href="index.jsp">返回首页</a>
 </body>
 </html>
