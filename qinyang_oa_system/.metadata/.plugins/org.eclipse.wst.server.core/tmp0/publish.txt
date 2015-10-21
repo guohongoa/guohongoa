@@ -1,3 +1,2 @@
 #Tomcat publish data
-#Wed Oct 21 14:12:53 CST 2015
-org.eclipse.jst.j2ee.server\:/binary\:/Users/Hanlu/.m2/repository/org/springframework/spring-web/4.0.1.RELEASE/spring-web-4.0.1.RELEASE.jar=WEB-INF/lib/spring-web-4.0.1.RELEASE.jar
+#Wed Oct 21 18:50:56 CST 2015

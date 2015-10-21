@@ -1,0 +1,49 @@
+1445137937394	Delete element
+1445217723104	Move 'background.jsp' to 'home'
+1445217728691	Move 'mail.jsp' to 'home'
+1445217739975	Move 'personal.jsp' to 'home'
+1445217744360	Move 'report.jsp' to 'home'
+1445217756442	Move 'task.jsp' to 'home'
+1445218227787	Rename resource 'www'
+1445218616428	Delete element
+1445219464186	Move 'logout.jsp' to 'middle'
+1445220753677	Rename resource 'send_mail_controller.java'
+1445220822970	Rename type 'register_controller'
+1445220878359	Delete element
+1445220945127	Rename type 'login_controller'
+1445220972192	Rename type 'send_report_controller'
+1445221017004	Rename type 'send_task_controller'
+1445222557689	Rename resource 'response'
+1445224994673	Delete element
+1445225678452	Rename resource 'background.jsp'
+1445235953833	Delete element
+1445238832928	Delete element
+1445238876495	Delete element
+1445239036011	Move 'css' to 'www'
+1445239144399	Move 'www' to 'webapp'
+1445239163371	Move 'css' to 'webapp'
+1445239237920	Delete element
+1445239956682	Delete element
+1445239962378	Delete element
+1445241046823	Delete element
+1445245345327	Delete element
+1445245394700	Delete element
+1445245404748	Delete element
+1445245414670	Delete element
+1445245434601	Delete element
+1445245452037	Delete element
+1445245797708	Move 'www' to 'WEB-INF'
+1445246928421	Rename resource 'WEB-INF'
+1445247353955	Rename resource 'response'
+1445319549896	Rename resource 'background_request_controller.java'
+1445319999136	Rename resource 'personal_request_controller.java'
+1445334846557	Delete element
+1445335355805	Rename resource 'task.html'
+1445335803117	Delete element
+1445335851622	Rename resource 'task.html'
+1445397460873	Rename resource 'system_input.jsp'
+1445405738110	Rename type 'regualtion_info_dao'
+1445418115070	Rename resource 'regulation_insert.jsp'
+1445424379045	Delete element
+1445424384539	Delete element
+1445424654554	Rename resource 'regulation_main.jsp'
