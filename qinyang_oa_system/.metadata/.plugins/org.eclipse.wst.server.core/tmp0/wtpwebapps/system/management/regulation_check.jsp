@@ -35,7 +35,7 @@
     <div class="left_menu">
         <h3>管理</h3>
         <ul>
-            <li><a href="serviceone.html">个人管理</a>
+            <li><a href="serviceone.html">人员管理</a>
             </li>
             <li><a href="serviceone.html">部门管理</a>
             </li>

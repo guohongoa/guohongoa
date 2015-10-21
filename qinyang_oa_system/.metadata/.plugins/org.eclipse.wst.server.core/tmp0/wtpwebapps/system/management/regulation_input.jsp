@@ -34,7 +34,7 @@
     <div class="left_menu">
         <h3>管理</h3>
         <ul>
-            <li><a >个人管理</a>
+            <li><a >人员管理</a>
             </li>
             <li><a >部门管理</a>
             </li>

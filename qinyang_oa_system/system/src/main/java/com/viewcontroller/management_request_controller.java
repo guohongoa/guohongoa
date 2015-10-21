@@ -10,16 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dao.department_info_dao;
 import com.dao.regulation_info_dao;
-import com.dao.report_info_dao;
+import com.data.department_info;
 import com.data.regulation_info;
-import com.data.report_info;
 import com.mybatis.mybatis_connection_factory;
 
 //所有管理页面请求
 @Controller
 public class management_request_controller 
 {
+	
+//-----------------------------------------------------------------------------------------
+	//制度管理部分
 	     //规章制度插入页面
 		@RequestMapping("regulation_insert.do")
 
@@ -66,9 +69,57 @@ public class management_request_controller
 		   mv.addObject("regulation_info_list", regulation_info_list);
 		   return mv;
 		}
+//----------------------------------------------------------------
+		//部门管理请求响应
+		@RequestMapping("department_insert.do")
+
+		public ModelAndView department_insert_request(
+				@RequestParam(value="department_name")        String department_name,
+				@RequestParam(value="department_num")         int    department_num,
+				@RequestParam(value="department_leader")      String department_leader,
+				@RequestParam(value="department_duty")        String department_duty
+				)
+		{
+			//将表单响应结果插入系统信息数据库
+			department_info _department_info=new department_info();
+			_department_info.set_department_name(department_name);
+			_department_info.set_department_num(department_num);
+			_department_info.set_department_duty(department_duty);
+			_department_info.set_department_leader(department_leader);
+			
+			
+			 Date date=new Date();
+			 DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			 String department_addtime=format.format(date);
+			 _department_info.set_department_addtime(department_addtime);
+			   
+			 boolean rs=department_insert_db(_department_info);
+			 
+			 ModelAndView mv=new ModelAndView();
+			 mv.addObject("result",rs);
+			 return mv;
+			
+			
+			
+		}
+		
+		@RequestMapping("management/department_check.do")
+		//查询所有制度条目
+		
+		public ModelAndView department_check_request()
+		{
+			
+		   ModelAndView mv=new ModelAndView("department_check");//页面重定向
+		   
+		   //得到查询所有条目的list
+		   
+		   List<department_info> department_info_list=get_department_info_list();
+		   mv.addObject("department_info_list", department_info_list);
+		   return mv;
+		}
 		
 	//-------------------------------------------------------------------------------
-		//数据库功能函数
+		//制度管理数据库功能函数
 		
 		private boolean regulation_insert_db(regulation_info _regulation_info)
 		{
@@ -87,6 +138,28 @@ public class management_request_controller
 			   return regulation_info_list;
 			   
 		   }
+		 
+		 //部门管理数据库功能函数
+		 
+		 private boolean department_insert_db(department_info _department_info)
+			{
+				department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				
+				boolean department_insert_rs=_department_info_dao.insert(_department_info);
+				
+				return department_insert_rs; 
+				
+			}
+		 
+		 private List<department_info> get_department_info_list()
+		   {
+			   List<department_info> department_info_list;
+			   department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			   department_info_list=_department_info_dao.select_all();
+			   return department_info_list;
+			   
+		   }
+		 
 
 
 }

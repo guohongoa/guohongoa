@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -45,29 +46,27 @@
     <!--右侧主要内容-->
     <div class="main">
         <div class="myservice">
-            <h3>管理&gt;制度管理</h3>
+            <h3>管理&gt;制度管理&gt;查看制度列表</h3>
             <div class="myservicetitle">
                 <ul>
-                    <li class="titleli">制度管理</li>
+                    <li class="titleli">所属部门</li>
+                    <li class="titleli">制度标题</li>
+                    <li class="titleli">制度资源</li>
+                    <li class="titleli">添加时间</li>
+                    <li class="titlelio">制度内容</li>
                 </ul>
             </div>
+            <c:forEach var="regulation_info" items="${regulation_info_list}">
             <div class="myservicecontent">
                 <ul>
-                    <li class="titleli"><a href="regulation_input.jsp">添加新制度</a></li>
+                    <li class="titleli">${regulation_info.get_regulation_department()}</li>
+                    <li class="titleli">${regulation_info.get_regulation_title()}</li>
+                    <li class="titleli">${regulation_info.get_regulation_resourceurl()}</li>
+                    <li class="titleli">${regulation_info.get_regulation_addtime()}</li>
+                    <li class="titlelio"><a href="mytaskcontent.html">${regulation_info.get_regulation_content()}</a></li>
                 </ul>
             </div>
-            <div class="myservicecontent">
-                <ul>
-                    <li class="titleli">
-                          <form action="regulation_check.do" method="post" name="form_regulation">
-                            <a href='javascript:document.form_regulation.submit();'><font color='#000000'>
-                              查看现有制度
-                            </font>
-                            </a>
-                          </form>
-                    </li>
-                </ul>
-            </div>
+		</c:forEach>
         </div>
     </div>
 </div>
