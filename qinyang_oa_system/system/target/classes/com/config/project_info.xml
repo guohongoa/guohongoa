@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project_info">
+
+	<resultMap id="result" type="project_info">
+		<result property="project_id" column="project_id" />
+		<result property="project_code" column="project_code" />
+		<result property="project_name" column="project_name" />
+		<result property="project_leader" column="project_leader" />
+		<result property="project_leaderphone" column="project_leaderphone" />
+		<result property="project_department" column="project_department" />
+		<result property="project_resourceurl" column="project_resourceurl" />
+		<result property="project_addtime" column="project_addtime" />
+		<result property="project_begintime" column="project_begintime" />
+		<result property="project_endtime" column="project_endtime" />
+		<result property="project_content" column="project_content" />
+	</resultMap>
+
+	<insert id="insert" parameterType="project_info">
+		insert into
+		project_info(project_code,project_name,project_leader,project_leaderphone,project_department,project_resourceurl,project_addtime,project_begintime,project_endtime,project_content)
+		values(#{project_code},#{project_name},#{project_leader},#{project_leaderphone},#{project_department},#{project_resourceurl},#{project_addtime},#{project_begintime},#{project_endtime},#{project_content});
+	</insert>
+
+	<select id="select_by_project_id" parameterType="int" resultMap="result">
+		SELECT * FROM project_info WHERE project_id = #{project_id};
+	</select>
+
+	<select id="select_all" resultMap="result">
+		SELECT * FROM project_info;
+	</select>
+
+</mapper>
+
+

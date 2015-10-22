@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.department_info_dao;
+import com.dao.project_info_dao;
 import com.dao.regulation_info_dao;
 import com.data.department_info;
+import com.data.project_info;
 import com.data.regulation_info;
 import com.mybatis.mybatis_connection_factory;
 
@@ -118,6 +120,50 @@ public class management_request_controller
 		   return mv;
 		}
 		
+		//-------------------------------------------------------------------------
+	    //项目管理部分
+		@RequestMapping("project_insert.do")
+
+		public ModelAndView project_insert_request(
+				@RequestParam(value="project_code")        int project_code,
+				@RequestParam(value="project_name")        String    project_name,
+				@RequestParam(value="project_leader")      String project_leader,
+				@RequestParam(value="project_leaderphone") int project_leaderphone,
+				@RequestParam(value="project_department")  String project_department,
+				@RequestParam(value="project_resourceurl") String project_resourceurl,
+				@RequestParam(value="project_begintime")      String project_begintime,
+				@RequestParam(value="project_endtime") String project_endtime
+				)
+		{
+			//将表单响应结果插入系统信息数据库
+		    project_info _project_info=new project_info();
+		    _project_info.set_project_code(project_code);
+		    _project_info.set_project_name(project_name);
+		    _project_info.set_project_leader(project_leader);
+		    _project_info.set_project_leaderphone(project_leaderphone);
+		    _project_info.set_project_department(project_department);
+		    _project_info.set_project_resourceurl(project_resourceurl);
+		    _project_info.set_project_begintime(project_begintime);
+		    _project_info.set_project_endtime(project_endtime);
+		    
+			
+			
+			 Date date=new Date();
+			 DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			 String project_addtime=format.format(date);
+			 _project_info.set_project_addtime(project_addtime);
+			   
+			 boolean rs=project_insert_db(_project_info);
+			 
+			 ModelAndView mv=new ModelAndView();
+			 mv.addObject("result",rs);
+			 return mv;
+			
+			
+			
+		}
+		
+		
 	//-------------------------------------------------------------------------------
 		//制度管理数据库功能函数
 		
@@ -159,6 +205,16 @@ public class management_request_controller
 			   return department_info_list;
 			   
 		   }
+		 
+		 //项目管理数据库功能函数
+		 private boolean project_insert_db(project_info _project_info)
+			{
+				project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				
+				boolean projectinsert_rs=_project_info_dao.insert(_project_info);
+				
+				return projectinsert_rs;
+			}
 		 
 
 

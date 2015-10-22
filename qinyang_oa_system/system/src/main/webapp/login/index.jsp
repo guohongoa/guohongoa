@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 
-
+<!-- sesssion验证 session中的用户名为空返回该页面 -->
 <c:choose>
 <c:when test="${empty system_user_name}">
 <body style="background-color: #e5e5e5;width: 100%;">

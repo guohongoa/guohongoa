@@ -47,7 +47,7 @@ public class department_info_dao
 		  department_info _department_info = null;
 	        SqlSession session = sqlSessionFactory.openSession();
 	        try {
-	            _department_info = session.selectOne("department_info_info.select_by_department_id", department_id);
+	            _department_info = session.selectOne("department_info.select_by_department_id", department_id);
 	 
 	        } finally {
 	            session.close();
