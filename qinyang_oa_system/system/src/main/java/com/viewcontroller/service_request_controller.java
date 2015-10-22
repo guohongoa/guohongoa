@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.service_info_dao;
+import com.data.department_info;
 import com.data.service_info;
 import com.mybatis.mybatis_connection_factory;
 
@@ -67,6 +68,21 @@ import com.mybatis.mybatis_connection_factory;
 			   
 			   	
 		}
+		
+		
+		@RequestMapping("service/service_check.do")
+		public ModelAndView service_check_request()
+		{
+			
+		   ModelAndView mv=new ModelAndView("service_check");//页面重定向
+		   
+		   //得到查询所有条目的list
+		   
+		   List<service_info> service_info_list=get_service_info_list();
+		   mv.addObject("service_info_list", service_info_list);
+		   return mv;
+		}
+		
 		
 		//发起任务时，将任务信息加入数据库
 		private boolean send_service_insert_db(service_info _service_info)  
