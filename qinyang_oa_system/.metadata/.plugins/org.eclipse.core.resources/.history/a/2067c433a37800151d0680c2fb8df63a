@@ -21,13 +21,13 @@ public class systeminfo_request_controller
 	@RequestMapping("login.do")
   public ModelAndView login_request(
 		  @RequestParam(value="user_name") String user_name,
-			@RequestParam(value="user_password") String user_password
+			@RequestParam(value="pas_sword") String user_password
 		  )
   {
 		
 	  system_user_info db_user_info=get_system_user_inf_by_user_name(user_name);
 	  
-	  ModelAndView mv=new ModelAndView("login/login_process");
+	  ModelAndView mv=new ModelAndView();
 	  
 	  
 	  if(db_user_info!=null)

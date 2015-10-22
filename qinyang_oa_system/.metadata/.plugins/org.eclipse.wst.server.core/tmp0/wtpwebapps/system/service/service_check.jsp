@@ -80,7 +80,7 @@
                     <li class="titlelio"><a href="mytaskcontent.html">${service_info.get_service_content()}</a></li>
                 </ul>
             </div>
-            </c:forEach>>
+            </c:forEach>
         </div>
     </div>
 </div>
