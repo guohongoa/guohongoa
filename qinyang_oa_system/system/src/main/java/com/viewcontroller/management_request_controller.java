@@ -132,7 +132,10 @@ public class management_request_controller
 				@RequestParam(value="project_department")  String project_department,
 				@RequestParam(value="project_resourceurl") String project_resourceurl,
 				@RequestParam(value="project_begintime")      String project_begintime,
-				@RequestParam(value="project_endtime") String project_endtime
+				@RequestParam(value="project_endtime") String project_endtime,
+				@RequestParam(value="project_content") String project_content,
+				@RequestParam(value="project_status")  int project_status,
+				@RequestParam(value="project_commiter")  String project_commiter
 				)
 		{
 			//将表单响应结果插入系统信息数据库
@@ -145,6 +148,9 @@ public class management_request_controller
 		    _project_info.set_project_resourceurl(project_resourceurl);
 		    _project_info.set_project_begintime(project_begintime);
 		    _project_info.set_project_endtime(project_endtime);
+		    _project_info.set_project_content(project_content);
+		    _project_info.set_project_status(project_status);
+		    _project_info.set_project_commiter(project_commiter);
 		    
 			
 			
@@ -162,6 +168,22 @@ public class management_request_controller
 			
 			
 		}
+		
+		@RequestMapping("management/project_check.do")
+		//查询所有制度条目
+		
+		public ModelAndView project_check_request()
+		{
+			
+		   ModelAndView mv=new ModelAndView("project_check");//页面重定向
+		   
+		   //得到查询所有条目的list
+		   
+		   List<project_info> project_info_list=get_project_info_list();
+		   mv.addObject("project_info_list", project_info_list);
+		   return mv;
+		}
+		
 		
 		
 	//-------------------------------------------------------------------------------
@@ -216,6 +238,14 @@ public class management_request_controller
 				return projectinsert_rs;
 			}
 		 
+		 private List<project_info> get_project_info_list()
+		   {
+			   List<project_info> project_info_list;
+			   project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			   project_info_list=_project_info_dao.select_all();
+			   return project_info_list;
+			   
+		   }
 
 
 }

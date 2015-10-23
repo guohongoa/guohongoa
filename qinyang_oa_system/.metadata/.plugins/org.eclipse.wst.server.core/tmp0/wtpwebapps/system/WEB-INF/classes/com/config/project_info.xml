@@ -17,12 +17,14 @@
 		<result property="project_begintime" column="project_begintime" />
 		<result property="project_endtime" column="project_endtime" />
 		<result property="project_content" column="project_content" />
+		<result property="project_status" column="project_status" />
+		<result property="project_commiter" column="project_commiter" />
 	</resultMap>
 
 	<insert id="insert" parameterType="project_info">
 		insert into
-		project_info(project_code,project_name,project_leader,project_leaderphone,project_department,project_resourceurl,project_addtime,project_begintime,project_endtime,project_content)
-		values(#{project_code},#{project_name},#{project_leader},#{project_leaderphone},#{project_department},#{project_resourceurl},#{project_addtime},#{project_begintime},#{project_endtime},#{project_content});
+		project_info(project_code,project_name,project_leader,project_leaderphone,project_department,project_resourceurl,project_addtime,project_begintime,project_endtime,project_content,project_status,project_commiter)
+		values(#{project_code},#{project_name},#{project_leader},#{project_leaderphone},#{project_department},#{project_resourceurl},#{project_addtime},#{project_begintime},#{project_endtime},#{project_content},#{project_status},#{project_commiter});
 	</insert>
 
 	<select id="select_by_project_id" parameterType="int" resultMap="result">

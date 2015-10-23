@@ -14,6 +14,12 @@ public class project_info
    private String project_endtime;    //项目结束时间
    private String project_content;    //项目内容
    
+   private int    project_status;     //项目状态，0为未审批，1为已审批
+   private String project_commiter;   //项目提交人
+   private String project_approver;   //项目审批人
+   private String project_approvetime;//项目审批时间
+   
+   
    public int get_project_id()
    {
 	   return this.project_id;
@@ -124,4 +130,43 @@ public class project_info
 	   this.project_content=project_content;
    }
    
+   public int get_project_status()
+   {
+	   return this.project_status;
+   }
+   
+   public void set_project_status(int project_status)
+   {
+	   this.project_status=project_status;
+   }
+   
+   public String get_project_commiter()
+   {
+	   return this.project_commiter;
+   }
+   
+   public void set_project_commiter(String project_commiter)
+   {
+	   this.project_commiter=project_commiter;
+   }
+   
+   public String get_project_approver()
+   {
+	   return this.project_approver;
+   }
+   
+   public void set_project_approver(String project_approver)
+   {
+	   this.project_approver=project_approver;
+   }
+   
+   public String get_project_approvetime()
+   {
+	   return this. project_approvetime;
+   }
+   
+   public void set_project_approvetime(String project_approvetime)
+   {
+	   this. project_approvetime=project_approvetime;
+   }
 }

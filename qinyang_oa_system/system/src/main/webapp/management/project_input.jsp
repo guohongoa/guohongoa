@@ -90,6 +90,8 @@
                     <tr>
                         <td colspan="2" >
                             <textarea name="project_content"></textarea>
+                            <input type="hidden" name="project_status" value="0"/>
+                            <input type="hidden" name="project_commiter" value="username"/>
                         </td>
                     </tr>
                 </table>
