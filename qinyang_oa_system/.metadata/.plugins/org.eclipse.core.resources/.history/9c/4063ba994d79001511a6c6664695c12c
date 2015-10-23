@@ -50,7 +50,7 @@
         <div class="task">
             <h3>管理&gt;制度管理&gt;加入新制度</h3>
 
-            <form id="taskgo" action="../regulation_insert.do" method="post"  accept-charset="utf-8">
+            <form id="taskgo" action="../regulation_insert.do" method="post">
                 <table>
                     <tr>
                         <td class="td1">所属部门</td>
