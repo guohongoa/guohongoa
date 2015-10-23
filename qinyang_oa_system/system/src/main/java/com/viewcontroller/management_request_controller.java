@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.department_info_dao;
+import com.dao.employee_info_dao;
 import com.dao.project_info_dao;
 import com.dao.regulation_info_dao;
 import com.data.department_info;
+import com.data.employee_info;
 import com.data.project_info;
 import com.data.regulation_info;
 import com.mybatis.mybatis_connection_factory;
@@ -184,7 +186,56 @@ public class management_request_controller
 		   return mv;
 		}
 		
-		
+   //-------------------------------------------------------------------------------
+		//人员管理请求响应
+		@RequestMapping("employee_insert.do")
+
+		public ModelAndView employee_insert_request(
+				@RequestParam(value="employee_code")        int employee_code,
+				@RequestParam(value="employee_birthdate")  String    employee_birthdate,
+				@RequestParam(value="employee_idcode")      String employee_idcode,
+				@RequestParam(value="employee_department") String employee_department,
+				@RequestParam(value="employee_position")  String employee_position,
+				@RequestParam(value="employee_address") String employee_address,
+				@RequestParam(value="employee_gender")      String employee_gender,
+				@RequestParam(value="employee_addworktime") String employee_addworktime,
+				@RequestParam(value="employee_leader") String employee_leader,
+				@RequestParam(value="employee_phone")  int employee_phone,
+				@RequestParam(value="employee_email")  String employee_email,
+				@RequestParam(value="employee_name")  String employee_name
+				)
+		{
+			//将表单响应结果插入员工信息数据库
+		     employee_info _employee_info=new employee_info();
+		     _employee_info.set_employee_code(employee_code);
+		     _employee_info.set_employee_birthdate(employee_birthdate);
+		     _employee_info.set_employee_idcode(employee_idcode);
+		     _employee_info.set_employee_department(employee_department);
+		     _employee_info.set_employee_position(employee_position);
+		     _employee_info.set_employee_address(employee_address);
+		     _employee_info.set_employee_gender(employee_gender);
+		     _employee_info.set_employee_addworktime(employee_addworktime);
+		     _employee_info.set_employee_leader(employee_leader);
+		     _employee_info.set_employee_phone(employee_phone);
+		     _employee_info.set_employee_email(employee_email);
+		     _employee_info.set_employee_name(employee_name);
+		    
+			
+			
+			 Date date=new Date();
+			 DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			 String employee_addtime=format.format(date);
+			 _employee_info.set_employee_addtime(employee_addtime);
+			   
+			 boolean rs=employee_insert_db(_employee_info);
+			 
+			 ModelAndView mv=new ModelAndView();
+			 mv.addObject("result",rs);
+			 return mv;
+			
+			
+			
+		}
 		
 	//-------------------------------------------------------------------------------
 		//制度管理数据库功能函数
@@ -246,6 +297,16 @@ public class management_request_controller
 			   return project_info_list;
 			   
 		   }
+		 
+		 //人员管理数据库功能函数
+		 private boolean employee_insert_db(employee_info _employee_info)
+			{
+				employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				
+				boolean employeeinsert_rs=_employee_info_dao.insert(_employee_info);
+				
+				return employeeinsert_rs;
+			}
 
 
 }

@@ -14,6 +14,7 @@
 		<typeAlias alias="regulation_info" type="com.data.regulation_info" />
 		<typeAlias alias="department_info" type="com.data.department_info" />
 		<typeAlias alias="project_info" type="com.data.project_info" />
+		<typeAlias alias="employee_info" type="com.data.employee_info" />
 	</typeAliases>
 
 	<environments default="development">
@@ -36,6 +37,7 @@
 		<mapper resource="com/config/service_info.xml" />
 		<mapper resource="com/config/regulation_info.xml" />
 		<mapper resource="com/config/department_info.xml" />
-		<mapper resource="com/config/project_info.xml" />		
+		<mapper resource="com/config/project_info.xml" />
+		<mapper resource="com/config/employee_info.xml" />		
 	</mappers>
 </configuration>
