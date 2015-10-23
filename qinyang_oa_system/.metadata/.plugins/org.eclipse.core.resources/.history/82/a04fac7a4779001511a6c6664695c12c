@@ -1,0 +1,8 @@
+package com.multipart_resolver;
+
+import org.springframework.context.ApplicationContext;
+
+public class MultipartResolver(ApplicationContext context)
+{
+
+}

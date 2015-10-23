@@ -61,3 +61,9 @@
 1445498615840	Rename resource 'service.jsp'
 1445501845261	Rename resource 'myservice.jsp'
 1445508603599	Rename resource 'login_after.jsp'
+1445572351981	Rename package 'multipart_resolver'
+1445572580532	Rename compilation unit 'initMultipartResolver.java'
+1445578106071	Delete element
+1445579250022	Delete element
+1445580068111	Move 'demo.jsp' to 'upload'
+1445580088667	Rename resource 'demo.jsp'

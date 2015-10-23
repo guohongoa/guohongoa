@@ -1,0 +1,5 @@
+package com.multipart_resolver;
+
+public class initMultipartResolver {
+
+}
