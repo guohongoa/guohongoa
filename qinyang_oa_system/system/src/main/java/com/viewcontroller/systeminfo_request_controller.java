@@ -59,6 +59,14 @@ public class systeminfo_request_controller
 	  
 	  return mv;
   }
+	
+	@RequestMapping("logout.do")
+	public ModelAndView logout_request()
+	{
+		ModelAndView mv=new ModelAndView("logout/index");
+		return mv;
+	}
+  
   
   //根据用户名从数据库返回system_user_info的对象
   private system_user_info get_system_user_inf_by_user_name(String user_name)

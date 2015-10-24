@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -8,6 +9,8 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/index.css"/>
 </head>
 <body>
+<c:choose>
+<c:when test="${not empty user_name}">
 <div class="header">
     <!--头部header区域-->
     <div class="h_content">
@@ -19,7 +22,12 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href="../login.html"><i class="icon"></i><span>退出</span></a></li>
+                <li> <form action="logout.do" method="post" name="form_logout">
+                            <a href='javascript:document.form_logout.submit();'><font color='#000000'>
+                            </font>
+                           <i class="icon"></i><span>退出</span> </a>
+                     </form>
+                 </li>
                 <li><a href=""><i class="icon_s icon"></i>设置</a></li>
                 <li><a href=""><i class="icon_m icon"></i>消息</a></li>
                 <li><a href=""><i class="icon_g icon"></i>管理</a></li>
@@ -81,5 +89,11 @@
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/My97DatePicker/WdatePicker.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/index.js"></script>
+</c:when>
+<c:otherwise>
+    <c:redirect url="login" />
+</c:otherwise>
+</c:choose>
+
 </body>
 </html>
