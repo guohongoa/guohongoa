@@ -237,6 +237,21 @@ public class management_request_controller
 			
 		}
 		
+		@RequestMapping("management/employee_check.do")
+		//查询所有制度条目
+		
+		public ModelAndView employee_check_request()
+		{
+			
+		   ModelAndView mv=new ModelAndView("employee_check");//页面重定向
+		   
+		   //得到查询所有条目的list
+		   
+		   List<employee_info> employee_info_list=get_employee_info_list();
+		   mv.addObject("employee_info_list", employee_info_list);
+		   return mv;
+		}
+		
 	//-------------------------------------------------------------------------------
 		//制度管理数据库功能函数
 		
@@ -307,6 +322,15 @@ public class management_request_controller
 				
 				return employeeinsert_rs;
 			}
+		 
+		 private List<employee_info> get_employee_info_list()
+		   {
+			   List<employee_info> employee_info_list;
+			   employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			   employee_info_list=_employee_info_dao.select_all();
+			   return employee_info_list;
+			   
+		   }
 
 
 }
