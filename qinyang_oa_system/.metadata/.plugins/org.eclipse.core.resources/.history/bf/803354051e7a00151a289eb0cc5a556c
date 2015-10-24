@@ -123,11 +123,9 @@ public class management_request_controller
 		}
 		
 		@RequestMapping("management/department_del.do")
-		 public void department_del_request(
-				 @RequestParam(value="department_id")    int department_id
-				 )
+		 public void department_del_request()
 		 {
-			del_department_from_id(department_id);
+			
 		 }
 		
 		//-------------------------------------------------------------------------
@@ -293,8 +291,6 @@ public class management_request_controller
 				
 			}
 		 
-		 
-		 
 		 private List<department_info> get_department_info_list()
 		   {
 			   List<department_info> department_info_list;
@@ -303,12 +299,6 @@ public class management_request_controller
 			   return department_info_list;
 			   
 		   }
-		 
-		 private void del_department_from_id(int department_id)
-		 {
-			 department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			 _department_info_dao.delete_from_id(department_id);
-		 }
 		 
 		 //项目管理数据库功能函数
 		 private boolean project_insert_db(project_info _project_info)

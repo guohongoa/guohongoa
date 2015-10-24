@@ -124,7 +124,7 @@ public class management_request_controller
 		
 		@RequestMapping("management/department_del.do")
 		 public void department_del_request(
-				 @RequestParam(value="department_id")    int department_id
+				 @RequestParam(value="department_id")        String department_id
 				 )
 		 {
 			del_department_from_id(department_id);

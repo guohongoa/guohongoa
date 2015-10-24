@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
+<form action="department_del.do" method="post" name="del_department">
+                    <input type="hidden" value=" ${department_info.get_department_id()}" name="department_id">
+                    </form>
 
 <div class="header">
     <!--头部header区域-->
@@ -68,15 +71,7 @@
                     <li class="titleli">${department_info.get_department_leader()}</li>
                     <li class="titleli">${department_info.get_department_addtime()}</li>
                     <li class="titleli">${department_info.get_department_duty()}</li>
-                    <li class="titlelio">
-                    <form action="department_del.do" method="post" name="del_department">
-                        <input type="hidden" name="department_id" value="${department_info.get_department_id()}">
-                        <input type="submit" value="删除">
-                    </form>
-                    
-                    
-                    
-                    </a>
+                    <li class="titlelio"><a href='javascript:document.del_department.submit();'>删除</a>
                     
                     
                     

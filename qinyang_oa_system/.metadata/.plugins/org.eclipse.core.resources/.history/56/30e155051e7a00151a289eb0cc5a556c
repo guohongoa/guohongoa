@@ -69,18 +69,5 @@ public class department_info_dao
 		        System.out.println("selectAll() --> "+department_info_list);
 		        return department_info_list;
 		 }
-	  
-	  public void delete_from_id(int department_id)
-	  {
-		  SqlSession session = sqlSessionFactory.openSession();
-		  
-	        try {
-	            session.delete("department_info.delete", department_id);
-	        } finally {
-	            session.commit();
-	            session.close();
-	        }
-	        System.out.println("delete("+department_id+")");
-	  }
 }
 

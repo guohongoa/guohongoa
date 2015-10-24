@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
-
 <div class="header">
     <!--头部header区域-->
     <div class="h_content">
@@ -38,9 +36,9 @@
         <ul>
             <li><a href="serviceone.html">人员管理</a>
             </li>
-            <li><a href="serviceone.html"class="active">部门管理</a>
+            <li><a href="serviceone.html" class="active">部门管理</a>
             </li>
-            <li><a href="serviceone.html" >制度管理</a>
+            <li><a href="index.html">制度管理</a>
             </li>
             <li><a href="serviceone.html" >项目管理</a>
             </li>
@@ -49,45 +47,29 @@
     <!--右侧主要内容-->
     <div class="main">
         <div class="myservice">
-            <h3>管理&gt;部门管理&gt;查看部门列表</h3>
+            <h3>管理&gt;部门管理</h3>
             <div class="myservicetitle">
                 <ul>
-                    <li class="titleli">部门名称</li>
-                    <li class="titleli">部门人数</li>
-                    <li class="titleli">部门负责人</li>
-                    <li class="titleli">添加时间</li>
-                    <li class="titleli">部门职责</li>
-                    <li class="titleli">删除</li>
+                    <li class="titleli">制度管理</li>
                 </ul>
             </div>
-            <c:forEach var="department_info" items="${department_info_list}">
             <div class="myservicecontent">
                 <ul>
-                    <li class="titleli">${department_info.get_department_name()}</li>
-                    <li class="titleli">${department_info.get_department_num()}</li>
-                    <li class="titleli">${department_info.get_department_leader()}</li>
-                    <li class="titleli">${department_info.get_department_addtime()}</li>
-                    <li class="titleli">${department_info.get_department_duty()}</li>
-                    <li class="titlelio">
-                    <form action="department_del.do" method="post" name="del_department">
-                        <input type="hidden" name="department_id" value="${department_info.get_department_id()}">
-                        <input type="submit" value="删除">
-                    </form>
-                    
-                    
-                    
-                    </a>
-                    
-                    
-                    
-                    <form id="taskgo" action="../department_delete.do" method="post" name="del_department">
-                    
-                    <a href='javascript:document.del_department.submit();'>删除</a>
-                    </form>
+                    <li class="titleli"><a href="department_input.jsp">添加新部门</a></li>
+                </ul>
+            </div>
+            <div class="myservicecontent">
+                <ul>
+                    <li class="titleli">
+                          <form action="department_check.do" method="post" name="form_department">
+                            <a href='javascript:document.form_department.submit();'><font color='#000000'>
+                              查看现有部门
+                            </font>
+                            </a>
+                          </form>
                     </li>
                 </ul>
             </div>
-		</c:forEach>
         </div>
     </div>
 </div>
