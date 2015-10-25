@@ -41,7 +41,7 @@ public class employee_info_dao
 	        }
 	  }
 	 
-	 //根据部门id查询部门信息
+	 //根据员工id查询员工信息
 	  public employee_info select_by_employee_id(int employee_id)
 	  {
 		  employee_info _employee_info = null;
@@ -56,7 +56,7 @@ public class employee_info_dao
 	        return _employee_info;
 	  }
 	  
-	  //查询所有部门信息
+	  //查询所有员工信息
 	  public List<employee_info> select_all()
 		 {
 			 List<employee_info> employee_info_list=null;
@@ -69,5 +69,19 @@ public class employee_info_dao
 		        System.out.println("selectAll() --> "+employee_info_list);
 		        return employee_info_list;
 		 }
+	  
+	  //根据id删除员工信息
+	  public void delete_from_id(int employee_id)
+	  {
+		  SqlSession session = sqlSessionFactory.openSession();
+		  
+	        try {
+	            session.delete("employee_info.delete", employee_id);
+	        } finally {
+	            session.commit();
+	            session.close();
+	        }
+	        System.out.println("delete("+employee_id+")");
+	  }
 }
 

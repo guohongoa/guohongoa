@@ -73,17 +73,6 @@
                         <input type="hidden" name="department_id" value="${department_info.get_department_id()}">
                         <input type="submit" value="删除">
                     </form>
-                    
-                    
-                    
-                    </a>
-                    
-                    
-                    
-                    <form id="taskgo" action="../department_delete.do" method="post" name="del_department">
-                    
-                    <a href='javascript:document.del_department.submit();'>删除</a>
-                    </form>
                     </li>
                 </ul>
             </div>

@@ -14,7 +14,7 @@
        <a href="index.jsp">3秒后系统会自动跳转，也可点击本处直接跳</a>  
 <script>
 function jumpurl(){
-  location='index.jsp';
+  location='../index.jsp';
 }
 setTimeout('jumpurl()',3000);
 </script> 

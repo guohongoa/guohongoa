@@ -51,6 +51,7 @@
             <h3>管理&gt;项目管理&gt;查看项目列表</h3>
             <div class="myservicetitle">
                 <ul>
+                    <li class="titleli">删除</li>
                     <li class="titleli">项目编号</li>
                     <li class="titleli">项目名称</li>
                     <li class="titleli">项目提交人</li>
@@ -64,6 +65,12 @@
             <c:forEach var="project_info" items="${project_info_list}">
             <div class="myservicecontent">
                 <ul>
+                    <li class="titleli">
+                      <form action="project_del.do" method="post" name="del_project">
+                        <input type="hidden" name="project_id" value="${project_info.get_project_id()}">
+                        <input type="submit" value="删除">
+                    </form>
+                    </li>
                     <li class="titleli">${project_info.get_project_code()}</li>
                     <li class="titleli">${project_info.get_project_name()}</li>
                     <li class="titleli">${project_info.get_project_commiter()}</li>

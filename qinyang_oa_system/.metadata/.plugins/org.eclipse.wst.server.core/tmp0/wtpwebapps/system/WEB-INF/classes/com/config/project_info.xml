@@ -34,6 +34,10 @@
 	<select id="select_all" resultMap="result">
 		SELECT * FROM project_info;
 	</select>
+	
+	<delete id="delete" parameterType="int">
+        DELETE FROM project_info WHERE project_id = #{project_id};
+    </delete>
 
 </mapper>
 

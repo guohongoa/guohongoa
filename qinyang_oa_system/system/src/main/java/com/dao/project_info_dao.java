@@ -69,5 +69,18 @@ public class project_info_dao
 		        System.out.println("selectAll() --> "+project_info_list);
 		        return project_info_list;
 		 }
+	  
+	  public void delete_from_id(int project_id)
+	  {
+		  SqlSession session = sqlSessionFactory.openSession();
+		  
+	        try {
+	            session.delete("project_info.delete", project_id);
+	        } finally {
+	            session.commit();
+	            session.close();
+	        }
+	        System.out.println("delete("+project_id+")");
+	  }
 }
 

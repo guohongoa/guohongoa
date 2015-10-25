@@ -194,6 +194,14 @@ public class management_request_controller
 		   return mv;
 		}
 		
+		@RequestMapping("management/project_del.do")
+		 public void project_del_request(
+				 @RequestParam(value="project_id")    int project_id
+				 )
+		 {
+			del_project_from_id(project_id);
+		 }
+		
    //-------------------------------------------------------------------------------
 		//人员管理请求响应
 		@RequestMapping("employee_insert.do")
@@ -259,6 +267,14 @@ public class management_request_controller
 		   mv.addObject("employee_info_list", employee_info_list);
 		   return mv;
 		}
+		
+		@RequestMapping("management/employee_del.do")
+		 public void employee_del_request(
+				 @RequestParam(value="employee_id")    int employee_id
+				 )
+		 {
+			del_employee_from_id(employee_id);
+		 }
 		
 	//-------------------------------------------------------------------------------
 		//制度管理数据库功能函数
@@ -329,6 +345,12 @@ public class management_request_controller
 			   
 		   }
 		 
+		 private void del_project_from_id(int project_id)
+		 {
+			 project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			 _project_info_dao.delete_from_id(project_id);
+		 }
+		 
 		 //人员管理数据库功能函数
 		 private boolean employee_insert_db(employee_info _employee_info)
 			{
@@ -347,6 +369,12 @@ public class management_request_controller
 			   return employee_info_list;
 			   
 		   }
+		 
+		 private void del_employee_from_id(int employee_id)
+		 {
+			 employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			 _employee_info_dao.delete_from_id(employee_id);
+		 }
 
 
 }

@@ -51,6 +51,7 @@
             <h3>管理&gt;人员管理&gt;查看人员列表</h3>
             <div class="myservicetitle">
                 <ul>
+                    <li class="titleli">删除</li>
                     <li class="titleli">员工编号</li>
                     <li class="titleli">员工姓名</li>
                     <li class="titleli">职务</li>
@@ -58,12 +59,19 @@
                     <li class="titleli">部门负责人</li>
                     <li class="titleli">入职日期</li>
                     <li class="titleli">联系电话</li>
-                    <li class="titleli">操作</li>
+                    
                 </ul>
             </div>
             <c:forEach var="employee_info" items="${employee_info_list}">
             <div class="myservicecontent">
                 <ul>
+                    <li class="titlelio">
+                    <form action="employee_del.do" method="post" name="del_employee">
+                        <input type="hidden" name="employee_id" value="${employee_info.get_employee_id()}">
+                        <input type="submit" value="删除">
+                    </form>
+                    
+                    </li>
                     <li class="titleli">${employee_info.get_employee_code()}</li>
                     <li class="titleli">${employee_info.get_employee_name()}</li>
                     <li class="titleli">${employee_info.get_employee_position()}</li>
@@ -71,7 +79,7 @@
                     <li class="titleli">${employee_info.get_employee_leader()}</li>
                     <li class="titleli">${employee_info.get_employee_addworktime()}</li>
                     <li class="titleli">${employee_info.get_employee_phone()}</li>
-                    <li class="titleli">查看</li>
+                    
                     
                 </ul>
             </div>

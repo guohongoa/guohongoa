@@ -39,7 +39,7 @@ public class systeminfo_request_controller
 	  //比较输入密码用数据库中密码是否一致
 	  if(db_user_password.equals(user_password))
 	  {
-		  mv.addObject("status", "登陆成功");
+		  mv.addObject("status", 0);//"登陆成功"
 		  
 		  //登陆成功后设置用户名session
 		  system_user_info _system_user_info=db_user_info;
@@ -49,17 +49,17 @@ public class systeminfo_request_controller
 	  
 	  else
 	  {
-		  mv.addObject("status", "用户名或密码错误");
+		  mv.addObject("status", 2);//"用户名或密码错误"
 	  }
 	  }
 	  else
 	  {
-		  mv.addObject("status", "用户名不存在");
+		  mv.addObject("status", 1);//"用户名不存在"
 	  }
 	  
 	  return mv;
   }
-	
+	//用户登出
 	@RequestMapping("logout.do")
 	public ModelAndView logout_request()
 	{

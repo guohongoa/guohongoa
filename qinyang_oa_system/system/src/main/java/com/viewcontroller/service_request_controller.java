@@ -20,7 +20,7 @@ import com.mybatis.mybatis_connection_factory;
 	public class service_request_controller 
 	{
 		//接收服务发送表单信息
-		@RequestMapping("send_service.do")
+		@RequestMapping("service/send_service.do")
 		public ModelAndView send_task_request(
 				@RequestParam(value="service_sender") String service_sender ,
 			    @RequestParam(value="service_sender_id") int service_sender_id,

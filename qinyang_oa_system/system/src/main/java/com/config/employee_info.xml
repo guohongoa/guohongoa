@@ -36,6 +36,10 @@
 	<select id="select_all" resultMap="result">
 		SELECT * FROM employee_info;
 	</select>
+	
+	<delete id="delete" parameterType="int">
+        DELETE FROM employee_info WHERE employee_id = #{employee_id};
+    </delete>
 
 </mapper>
 
