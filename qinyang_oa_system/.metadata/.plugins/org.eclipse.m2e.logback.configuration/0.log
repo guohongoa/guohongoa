@@ -3318,3 +3318,199 @@ java.lang.NullPointerException: null
 2015-10-25 17:37:15,916 [Worker-161] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2015-10-25 17:37:15,918 [Worker-161] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2015-10-25 17:37:15,918 [Worker-161] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:00:35,316 [Worker-173] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:00:35,320 [Worker-173] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:00:35,322 [Worker-173] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:00:35,322 [Worker-173] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:00:36,340 [Worker-173] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:00:36,341 [Worker-173] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:00:36,342 [Worker-173] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:00:36,342 [Worker-173] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:05:24,959 [Worker-180] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:05:24,961 [Worker-180] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:05:24,963 [Worker-180] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:05:24,963 [Worker-180] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:16:57,741 [Worker-178] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:16:57,742 [Worker-178] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:16:57,744 [Worker-178] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:16:57,744 [Worker-178] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:20:21,530 [Worker-183] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:20:21,531 [Worker-183] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:20:21,533 [Worker-183] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:20:21,533 [Worker-183] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:22:17,663 [Worker-184] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:22:17,665 [Worker-184] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:22:17,666 [Worker-184] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:22:17,667 [Worker-184] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:22:18,679 [Worker-184] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:22:18,688 [Worker-184] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:22:18,689 [Worker-184] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:22:18,690 [Worker-184] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:27:46,709 [Worker-190] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:27:46,711 [Worker-190] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:27:46,712 [Worker-190] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:27:46,713 [Worker-190] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:29:18,977 [Worker-192] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:29:18,979 [Worker-192] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:29:18,980 [Worker-192] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:29:18,980 [Worker-192] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:31:17,861 [Worker-183] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:31:17,862 [Worker-183] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:31:17,863 [Worker-183] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:31:17,864 [Worker-183] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:31:18,880 [Worker-190] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:31:18,889 [Worker-190] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:31:18,890 [Worker-190] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:31:18,891 [Worker-190] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:35:53,758 [Worker-194] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:35:53,759 [Worker-194] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:35:53,761 [Worker-194] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:35:53,761 [Worker-194] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:35:54,779 [Worker-183] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:35:54,787 [Worker-183] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:35:54,788 [Worker-183] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:35:54,788 [Worker-183] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:37:36,617 [Worker-194] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:37:36,619 [Worker-194] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:37:36,620 [Worker-194] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:37:36,621 [Worker-194] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:39:39,583 [Worker-183] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:39:39,586 [Worker-183] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:39:39,588 [Worker-183] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:39:39,588 [Worker-183] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:54:07,355 [Worker-205] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:54:07,357 [Worker-205] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:54:07,361 [Worker-205] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:54:07,362 [Worker-205] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 18:54:08,378 [Worker-203] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:54:08,379 [Worker-203] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 18:54:08,380 [Worker-203] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 18:54:08,381 [Worker-203] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 19:04:43,142 [Worker-214] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:04:43,144 [Worker-214] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 19:04:43,145 [Worker-214] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:04:43,145 [Worker-214] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 19:06:32,768 [Worker-215] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:06:32,770 [Worker-215] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 19:06:32,770 [Worker-215] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:06:32,771 [Worker-215] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 19:06:33,787 [Worker-214] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:06:33,796 [Worker-214] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 19:06:33,797 [Worker-214] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:06:33,797 [Worker-214] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 19:07:50,562 [Worker-218] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:07:50,563 [Worker-218] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 19:07:50,564 [Worker-218] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:07:50,565 [Worker-218] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 19:45:48,822 [Worker-232] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:45:48,825 [Worker-232] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 19:45:48,826 [Worker-232] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:45:48,827 [Worker-232] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 19:45:49,847 [Worker-234] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:45:49,855 [Worker-234] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 19:45:49,857 [Worker-234] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 19:45:49,857 [Worker-234] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 20:29:02,941 [Worker-257] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:29:02,946 [Worker-257] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 20:29:02,947 [Worker-257] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:29:02,947 [Worker-257] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 20:29:03,984 [Worker-257] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:29:03,985 [Worker-257] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 20:29:03,986 [Worker-257] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:29:03,990 [Worker-257] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 20:30:34,123 [Worker-257] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:30:34,124 [Worker-257] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 20:30:34,126 [Worker-257] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:30:34,127 [Worker-257] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 20:31:49,435 [Worker-256] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:31:49,436 [Worker-256] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 20:31:49,437 [Worker-256] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:31:49,437 [Worker-256] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 20:33:44,393 [Worker-258] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:33:44,394 [Worker-258] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 20:33:44,396 [Worker-258] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:33:44,396 [Worker-258] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 20:35:42,785 [Worker-258] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:35:42,793 [Worker-258] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 20:35:42,795 [Worker-258] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:35:42,795 [Worker-258] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 20:39:25,318 [Worker-258] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:39:25,319 [Worker-258] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 20:39:25,321 [Worker-258] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:39:25,322 [Worker-258] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-25 20:40:58,482 [Worker-257] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:40:58,484 [Worker-257] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-25 20:40:58,485 [Worker-257] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-25 20:40:58,486 [Worker-257] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 08:30:03,666 [Worker-340] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 08:30:03,673 [Worker-340] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 08:30:03,674 [Worker-340] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 08:30:03,675 [Worker-340] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 08:38:36,709 [Worker-349] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 08:38:36,709 [Worker-349] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 08:38:36,710 [Worker-349] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 08:38:36,714 [Worker-349] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 08:38:37,724 [Worker-349] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 08:38:37,733 [Worker-349] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 08:38:37,734 [Worker-349] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 08:38:37,734 [Worker-349] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 08:41:41,064 [Worker-353] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 08:41:41,065 [Worker-353] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 08:41:41,066 [Worker-353] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 08:41:41,067 [Worker-353] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 08:58:18,339 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 08:58:18,374 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-10-26 08:58:18,387 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 08:58:18,388 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 09:01:10,011 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 09:01:10,022 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 09:01:10,025 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 09:01:10,025 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 09:41:08,337 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 09:41:08,340 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 09:41:08,342 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 09:41:08,342 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 09:46:06,070 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 09:46:06,079 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 09:46:06,081 [Worker-30] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 09:46:06,082 [Worker-30] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 09:50:34,461 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 09:50:34,462 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 09:50:34,464 [Worker-34] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 09:50:34,465 [Worker-34] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 09:52:53,573 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 09:52:53,582 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 09:52:53,584 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 09:52:53,585 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 10:06:25,198 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:06:25,204 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 10:06:25,207 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:06:25,207 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 10:14:55,086 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:14:55,088 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 10:14:55,092 [Worker-43] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:14:55,092 [Worker-43] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 10:21:34,610 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:21:34,612 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 10:21:34,613 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:21:34,614 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 10:23:07,703 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:23:07,704 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 10:23:07,707 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:23:07,707 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 10:25:32,143 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:25:32,152 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 10:25:32,154 [Worker-46] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:25:32,155 [Worker-46] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 10:43:12,193 [Worker-57] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:43:12,195 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 10:43:12,197 [Worker-57] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:43:12,218 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 10:46:13,182 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:46:13,195 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 10:46:13,197 [Worker-50] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:46:13,198 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
+2015-10-26 10:51:10,714 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:51:10,718 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-10-26 10:51:10,720 [Worker-63] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2015-10-26 10:51:10,721 [Worker-63] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Hanlu/Desktop/qinyang_oa_system/system/src/test/resources
