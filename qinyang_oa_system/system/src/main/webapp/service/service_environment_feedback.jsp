@@ -50,7 +50,7 @@
                 </dl>
             </li>
             <li><a href="service_activity_deploy.jsp">文体活动服务</a></li>
-            <li><a href="wdfw.html">我的服务</a></li>
+            <li><a href="service_myservice_deploy.jsp">我的服务</a></li>
         </ul>
     </div>
     <!--右侧主要内容-->

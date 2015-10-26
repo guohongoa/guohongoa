@@ -37,7 +37,7 @@
     <div class="left_menu">
         <h3>五服务</h3>
         <ul>
-            <li><a class='active' href="service_law_feedback.jsp">法政法规服务</a>
+            <li><a class='active' href="service_law_deploy.jsp">法政法规服务</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="service_law_deploy.jsp" >安排</a><i></i></dd>
@@ -48,7 +48,7 @@
             <li><a href="service_harmony_deploy.jsp">和谐稳定服务</a></li>
             <li><a href="service_environment_deploy.jsp">环境卫生服务</a></li>
             <li><a href="service_activity_deploy.jsp">文体活动服务</a></li>
-            <li><a href="wdfw.html">我的服务</a></li>
+            <li><a href="service_myservice_deploy.jsp">我的服务</a></li>
         </ul>
     </div>
     <!--右侧主要内容-->
