@@ -53,4 +53,19 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		        System.out.println("selectAll() --> "+service_info_list);
 		        return service_info_list;
 		 }
+		 
+		 public List<service_info> select_by_service_category(int service_category)
+		 {
+			 List<service_info> service_info_list=null;
+			 SqlSession session=this.sqlSessionFactory.openSession();
+			 try {
+		           service_info_list = session.selectList("service_info.select_by_service_category",service_category);
+		        } finally {
+		            session.close();
+		        }
+		        System.out.println("select_by_service_category() --> "+service_info_list);
+		        return service_info_list;
+		 }
+		 
+		 
 }

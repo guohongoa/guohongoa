@@ -51,7 +51,7 @@
                     <dd><a href="#" class="activecolor">反馈</a></dd>
                 </dl>
             </li>
-            <li><a href="service_myservice_deploy.jsp">我的服务</a></li>
+            <li><a href="check_service_deploy_request.jsp">我的服务</a></li>
         </ul>
         
     </div>

@@ -48,7 +48,7 @@
             <li><a href="service_harmony_deploy.jsp">和谐稳定服务</a></li>
             <li><a href="service_environment_deploy.jsp">环境卫生服务</a></li>
             <li><a href="service_activity_deploy.jsp">文体活动服务</a></li>
-            <li><a href="service_myservice_deploy.jsp">我的服务</a></li>
+            <li><a href="check_service_deploy_request.jsp">我的服务</a></li>
         </ul>
     </div>
     <!--右侧主要内容-->

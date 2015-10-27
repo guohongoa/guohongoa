@@ -58,11 +58,9 @@ import com.mybatis.mybatis_connection_factory;
 			send_service_insert_db(_service_info);
 			
 			
-			//显示数据库列表信息
-			List<service_info> service_info_list=get_service_info_list();
+			//返回插入结果
 			
 			 ModelAndView mv=new ModelAndView();
-			   mv.addObject("service_info_list",service_info_list);  
 			   
 			   return mv;
 			   
@@ -71,14 +69,23 @@ import com.mybatis.mybatis_connection_factory;
 		
 		
 		@RequestMapping("service/service_check.do")
-		public ModelAndView service_check_request()
+		public ModelAndView service_check_request(
+				 @RequestParam(value="service_category")  int service_category
+				)
 		{
-			
-		   ModelAndView mv=new ModelAndView("service_check");//页面重定向
+	      ModelAndView mv;
+		  System.out.println(service_category);
+		  switch (service_category) {
+		        case 0:mv=new ModelAndView("service_myservice_deploy"); break;
+		        case 1:mv=new ModelAndView("service_myservice_feedback"); break;
+		        case 2:mv=new ModelAndView("service_myservice_getfeedback"); break;
+
+		default:mv=new ModelAndView();System.out.println("error"); break;
+		}
 		   
 		   //得到查询所有条目的list
 		   
-		   List<service_info> service_info_list=get_service_info_list();
+		   List<service_info> service_info_list=get_service_info_list_by_service_category(service_category);
 		   mv.addObject("service_info_list", service_info_list);
 		   return mv;
 		}
@@ -93,11 +100,11 @@ import com.mybatis.mybatis_connection_factory;
 			return rs;
 		}
 		
-		 private List<service_info> get_service_info_list()
+		 private List<service_info> get_service_info_list_by_service_category(int service_category)
 		   {
 			   List<service_info> service_info_list;
 			   service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			   service_info_list=_service_info_dao.select_all();
+			   service_info_list=_service_info_dao.select_by_service_category(service_category);
 			   return service_info_list;
 			   
 		   }

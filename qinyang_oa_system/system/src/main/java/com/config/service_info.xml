@@ -28,7 +28,11 @@
 	</insert>
 
 	<select id="select_by_service_msgid" parameterType="int" resultMap="result">
-		SELECT * FROM service_info_info WHERE service_msgid = #{service_msgid}
+		SELECT * FROM service_info WHERE service_msgid = #{service_msgid};
+	</select>
+	
+	<select id="select_by_service_category" parameterType="int" resultMap="result">
+		SELECT * FROM service_info WHERE service_category = #{service_category};
 	</select>
 
 	<select id="select_all" resultMap="result">
