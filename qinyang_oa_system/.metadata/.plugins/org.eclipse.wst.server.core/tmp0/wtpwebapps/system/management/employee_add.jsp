@@ -45,7 +45,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="#" class="activecolor">添加人员</a><i></i></dd>
-                    <dd><a href="">修改</a></dd>
+                    <dd><a href="employee_check_request.jsp">人员信息</a></dd>
                 </dl>
             </li>
         </ul>

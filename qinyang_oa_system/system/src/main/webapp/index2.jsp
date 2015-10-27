@@ -72,7 +72,7 @@
 <c:otherwise>
     <c:redirect url="index1.jsp" />
 </c:otherwise>
-</c:choose>>
+</c:choose>
 
 </body>
 </html>

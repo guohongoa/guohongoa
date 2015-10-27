@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -66,30 +67,18 @@
                     <li>状态</li>
                     <li>内容</li>
                 </ul>
+                <c:forEach var="project_info" items="${project_info_list}">
                 <ul class="tjglcontentc">
-                    <li>1</li>
-                    <li>打井</li>
-                    <li>王某</li>
-                    <li>刘某</li>
-                    <li>水利部</li>
-                    <li>2015.10.10</li>
-                    <li><select>
-                        <option>已审批</option>
-                    </select></li>
+                    <li>${project_info.get_project_code()}</li>
+                    <li>${project_info.get_project_name()}</li>
+                    <li>${project_info.get_project_commiter()}/${project_info.get_project_approver()}</li>
+                    <li>${project_info.get_project_leader()}</li>
+                    <li>${project_info.get_project_department()}</li>
+                    <li>${project_info.get_project_addtime()}</li>
+                    <li>${project_info.get_project_status()}</li>
                     <li><a href="" class="bulec">详细</a></li>
                 </ul>
-                <ul class="tjglcontentc">
-                    <li>2</li>
-                    <li>打井</li>
-                    <li>王某</li>
-                    <li>刘某</li>
-                    <li>水利部</li>
-                    <li>2015.10.10</li>
-                    <li><select>
-                        <option>已审批</option>
-                    </select></li>
-                    <li><a href="" class="bulec">详细</a></li>
-                </ul>
+                </c:forEach>
             </div>
         </div>
         <div class="page">

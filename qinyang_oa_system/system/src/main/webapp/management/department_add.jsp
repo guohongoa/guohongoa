@@ -42,8 +42,8 @@
             <li><a href="bmgl.html" class='active'> 部门管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="#" class="activecolor">添加管理</a><i></i></dd>
-                    <dd><a href="">修改</a></dd>
+                    <dd class="activea"><a href="#" class="activecolor">添加部门</a><i></i></dd>
+                    <dd><a href="department_check_request.jsp">部门信息</a></dd>
                 </dl>
             </li>
             <li><a href="rygltj.html">人员管理</a></li>

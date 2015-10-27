@@ -41,14 +41,14 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="#" class="activecolor">添加项目</a><i></i></dd>
-                    <dd><a href="">已审批</a></dd>
+                    <dd><a href="project_approved_check_request.jsp">已审批</a></dd>
                     <dd><a href="">待审批</a></dd>
                     <dd><a href="">未通过</a></dd>
                     <dd><a href="">审批项目</a></dd>
                 </dl>
             </li>
-            <li><a href="bmgl.html"> 部门管理</a></li>
-            <li><a href="rygltj.html">人员管理</a></li>
+            <li><a href="department_add.jsp"> 部门管理</a></li>
+            <li><a href="employee_add.jsp">人员管理</a></li>
         </ul>
     </div>
     <!--右侧主要内容-->
