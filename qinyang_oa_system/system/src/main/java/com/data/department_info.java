@@ -3,11 +3,15 @@ package com.data;
 public class department_info 
 {
    private int     department_id;    //部门id
+   private int     department_code;  //部门编号
    private String  department_name;  //部门名称
-   private int     department_num;   //部门人数
+   private String  department_parent;//上级部门
    private String  department_duty;  //部门职责
    private String  department_leader;//部门负责人
    private String  department_addtime;//记录添加时间
+   private int     department_leaderphone;//部门负责人电话
+   private String  department_resourceurl;//部门业务流程
+   private String  department_parentleader;
    
    public int get_department_id()
    {
@@ -17,6 +21,17 @@ public class department_info
    public void set_department_id(int department_id)
    {
 	   this.department_id=department_id;
+   }
+   
+  public int get_department_code()
+  {
+	  return this.department_code;
+  }
+   
+   
+   public void set_department_code(int department_code)
+   {
+	   this.department_code=department_code;
    }
    
    public String get_department_name()
@@ -29,14 +44,14 @@ public class department_info
 	   this.department_name=department_name;
    }
    
-   public int get_department_num()
+   public String get_department_parent()
    {
-	   return this.department_num;
+	   return this.department_parent;
    }
    
-   public void set_department_num(int department_num)
+   public void set_department_parent(String department_parent)
    {
-	   this.department_num=department_num;
+	   this.department_parent=department_parent;
    }
    
    public String get_department_duty()
@@ -69,6 +84,35 @@ public class department_info
 	   this.department_addtime=department_addtime;
    }
    
+   public int get_department_leaderphone()
+   {
+	  return this.department_leaderphone;
+   }
+   
+   public void set_department_leaderphone(int department_leaderphone)
+   {
+	   this.department_leaderphone=department_leaderphone;
+   }
+   
+   public String get_department_resourceurl()
+   {
+	   return this.department_resourceurl;
+   }
+   
+   public void set_department_resourceurl(String department_resourceurl)
+   {
+	   this.department_resourceurl=department_resourceurl;
+   }
+   
+   public String get_department_parentleader()
+   {
+	   return this.department_parentleader;
+   }
+   
+   public void set_department_parentleader(String department_parentleader)
+   {
+	   this.department_parentleader=department_parentleader;
+   }
    
    
 }

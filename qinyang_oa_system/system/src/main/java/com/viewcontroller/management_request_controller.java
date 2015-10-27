@@ -75,21 +75,28 @@ public class management_request_controller
 		}
 //----------------------------------------------------------------
 		//部门管理请求响应
-		@RequestMapping("department_insert.do")
+		@RequestMapping("management/department_insert.do")
 
 		public ModelAndView department_insert_request(
+				@RequestParam(value="department_code")        int    department_code,
 				@RequestParam(value="department_name")        String department_name,
-				@RequestParam(value="department_num")         int    department_num,
 				@RequestParam(value="department_leader")      String department_leader,
-				@RequestParam(value="department_duty")        String department_duty
+				@RequestParam(value="department_duty")        String department_duty,
+				@RequestParam(value="department_parent")      String department_parent,
+				@RequestParam(value="department_parentleader")String department_parentleader,
+				@RequestParam(value="department_leaderphone") int    department_leaderphone,
+				@RequestParam(value="department_resourceurl") String    department_resourceurl
 				)
 		{
 			//将表单响应结果插入系统信息数据库
 			department_info _department_info=new department_info();
+			_department_info.set_department_code(department_code);
 			_department_info.set_department_name(department_name);
-			_department_info.set_department_num(department_num);
 			_department_info.set_department_duty(department_duty);
 			_department_info.set_department_leader(department_leader);
+			_department_info.set_department_parent(department_parent);
+			_department_info.set_department_leaderphone(department_leaderphone);
+			_department_info.set_department_resourceurl(department_resourceurl);
 			
 			
 			 Date date=new Date();
@@ -207,18 +214,18 @@ public class management_request_controller
 		@RequestMapping("employee_insert.do")
 
 		public ModelAndView employee_insert_request(
-				@RequestParam(value="employee_code")        int employee_code,
-				@RequestParam(value="employee_birthdate")  String    employee_birthdate,
-				@RequestParam(value="employee_idcode")      String employee_idcode,
-				@RequestParam(value="employee_department") String employee_department,
-				@RequestParam(value="employee_position")  String employee_position,
-				@RequestParam(value="employee_address") String employee_address,
-				@RequestParam(value="employee_gender")      String employee_gender,
-				@RequestParam(value="employee_addworktime") String employee_addworktime,
-				@RequestParam(value="employee_leader") String employee_leader,
-				@RequestParam(value="employee_phone")  int employee_phone,
-				@RequestParam(value="employee_email")  String employee_email,
-				@RequestParam(value="employee_name")  String employee_name
+				@RequestParam(value="employee_code")        int employee_code,               //员工编号
+				@RequestParam(value="employee_birthdate")  String    employee_birthdate,     //员工出生日期
+				@RequestParam(value="employee_idcode")      String employee_idcode,          //员工身份证号
+				@RequestParam(value="employee_department") String employee_department,       //员工部门
+				@RequestParam(value="employee_position")  String employee_position,          //员工职位
+				@RequestParam(value="employee_address") String employee_address,             //员工住址
+				@RequestParam(value="employee_gender")      String employee_gender,             //员工性别
+				@RequestParam(value="employee_addworktime") String employee_addworktime,     //入职时间
+				@RequestParam(value="employee_leader") String employee_leader,               //部门负责人
+				@RequestParam(value="employee_phone")  int employee_phone,                   //员工电话
+				@RequestParam(value="employee_email")  String employee_email,                //员工邮件
+				@RequestParam(value="employee_name")  String employee_name                   //员工姓名
 				)
 		{
 			//将表单响应结果插入员工信息数据库

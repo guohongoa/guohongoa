@@ -7,7 +7,7 @@ public class employee_info
 	private int    employee_code;      //员工编号
 	private String employee_name;      //员工姓名
 	private String employee_position;  //员工职务
-	private String employee_gender;    //员工性别
+	private String employee_gender;    //员工性别   0为男性 1为女性
 	private String employee_department;//员工部门
 	private String employee_leader;    //部门负责人
 	private String employee_addworktime;//参加工作时间
@@ -60,7 +60,7 @@ public class employee_info
 		this.employee_position=employee_position;
 	}
 	
-	public String get_employee_gender(String employee_gender)
+	public String get_employee_gender()
 	{
 		return this.employee_gender;
 	}
