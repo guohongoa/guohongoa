@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
+<!--判断用户名session是否为空，判断是否登陆  -->
+<c:choose>
+<c:when test="${not empty user_name}">
 <div class="header">
     <!--头部header区域-->
     <div class="h_content">
@@ -48,8 +51,8 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="#" class="activecolor">安排的服务</a><i></i></dd>
-                    <dd><a href="check_service_feedback_service.jsp">反馈的服务</a></dd>
-                    <dd><a href="check_service_getfeedback_service.jsp">收到的反馈</a></dd>
+                    <dd><a href="check_service_feedback_request.jsp">反馈的服务</a></dd>
+                    <dd><a href="check_service_getfeedback_request.jsp">收到的反馈</a></dd>
                 </dl>
             </li>
         </ul>
@@ -88,5 +91,12 @@
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/My97DatePicker/WdatePicker.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/all.js"></script>
+
+</c:when>
+<c:otherwise>
+    <c:redirect url="../index1.jsp" />
+</c:otherwise>
+</c:choose>
+
 </body>
 </html>

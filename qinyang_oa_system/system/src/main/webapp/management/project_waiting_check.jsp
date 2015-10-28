@@ -41,10 +41,10 @@
             <li><a class='active' href="">项目管理</a>
                 <dl>
                     <dt></dt>
+                    <dd><a href="project_total_check_request.jsp">审批项目</a></dd>
                     <dd><a href="project_approved_check_request.jsp" >已审批</a></dd>
                     <dd><a href="project_waiting_check_request.jsp" class="activecolor">待审批</a></dd>
                     <dd><a href="project_refused_check_request.jsp">未通过</a></dd>
-                    <dd><a href="project_total_check_request.jsp">审批项目</a></dd>
                     <dd><a href="project_add.jsp">添加项目</a><i></i></dd>
                 </dl>
             </li>

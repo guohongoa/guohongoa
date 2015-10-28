@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>	
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -8,6 +9,10 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
+
+<c:choose>
+<c:when test="${not empty user_name}">
+
 <div class="header">
     <!--头部header区域-->
     <div class="h_content">
@@ -94,5 +99,12 @@
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/My97DatePicker/WdatePicker.js"></script>
 <script src=""></script>
+
+</c:when>
+<c:otherwise>
+    <c:redirect url="../index1.jsp" />
+</c:otherwise>
+</c:choose>
+
 </body>
 </html>
