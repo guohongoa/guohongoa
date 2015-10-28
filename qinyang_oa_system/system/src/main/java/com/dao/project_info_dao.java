@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.project_info;
+import com.data.service_info;
 
 public class project_info_dao 
 {
@@ -69,6 +70,21 @@ public class project_info_dao
 		        System.out.println("selectAll() --> "+project_info_list);
 		        return project_info_list;
 		 }
+	  
+	  public List<project_info> select_by_project_status(int project_status)
+	  {
+		  List<project_info> project_info_list=null;
+			 SqlSession session=this.sqlSessionFactory.openSession();
+			 try {
+		           project_info_list = session.selectList("project_info.select_by_project_status",project_status);
+		        } finally {
+		            session.close();
+		        }
+		        System.out.println("select_by_project_status() --> "+project_info_list);
+		        return project_info_list;
+	  }
+	  
+	  
 	  
 	  public void delete_from_id(int project_id)
 	  {

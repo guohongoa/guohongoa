@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="../css/all.css"/>
+    <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
 <div class="header">
@@ -40,33 +41,21 @@
             <li><a class='active' href="">项目管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="#">添加项目</a><i></i></dd>
-                    <dd><a href="" >已审批</a></dd>
-                    <dd><a href="">待审批</a></dd>
-                    <dd><a href="">未通过</a></dd>
-                    <dd><a href="" class="activecolor">审批项目</a></dd>
+                    <dd><a href="project_approved_check_request.jsp" >已审批</a></dd>
+                    <dd><a href="project_waiting_check_request.jsp">待审批</a></dd>
+                    <dd><a href="project_refused_check_request.jsp">未通过</a></dd>
+                    <dd><a href="project_total_check_request.jsp" class="activecolor">审批项目</a></dd>
+                    <dd><a href="project_add.jsp">添加项目</a><i></i></dd>
                 </dl>
             </li>
-            <li><a href="bmgl.html"> 部门管理</a></li>
-            <li><a href="rygltj.html">人员管理</a></li>
+            <li><a href="department_check_request.jsp"> 部门管理</a></li>
+            <li><a href="employee_check_request.jsp">人员管理</a></li>
         </ul>
     </div>
     <!--右侧主要内容-->
     <div class="main">
         <div class="xmgl">
-            <h3><a href="" class="gray">管理</a> &gt;<a href="" class="gray">项目管理</a>&gt;<a href="" class="gray">审批项目</a>
-                <span style="margin-left: 400px ">
-                    按
-                        <select style="font-size: 12px">
-                            <option>默认排序</option>
-                            <option>项目编号</option>
-                            <option>项目名称</option>
-                            <option>负责部门</option>
-                            <option>发送时间</option>
-                        </select>
-                    排序
-                </span>
-            </h3>
+            <h3><a href="" class="gray">管理</a> &gt;<a href="" class="gray">项目管理</a>&gt;<a href="" class="gray">审批项目</a></h3>
             <div class="tjglcontent">
                 <ul class="tjglcontentt">
                     <li>项目编号</li>
@@ -78,36 +67,18 @@
                     <li>状态</li>
                     <li>内容</li>
                 </ul>
+                <c:forEach var="project_info" items="${project_info_list}">
                 <ul class="tjglcontentc">
-                    <li>1</li>
-                    <li>打井</li>
-                    <li>王某</li>
-                    <li>刘某</li>
-                    <li>水利部</li>
-                    <li>2015.10.10</li>
-                    <li><select>
-                        <option>请选择</option>
-                        <option>已审批</option>
-                        <option>待审批</option>
-                        <option>未通过</option>
-                    </select></li>
+                    <li>${project_info.get_project_code()}</li>
+                    <li>${project_info.get_project_name()}</li>
+                    <li>${project_info.get_project_commiter()}/${project_info.get_project_approver()}</li>
+                    <li>${project_info.get_project_leader()}</li>
+                    <li>${project_info.get_project_department()}</li>
+                    <li>${project_info.get_project_addtime()}</li>
+                    <li>${project_info.get_project_status()}</li>
                     <li><a href="" class="bulec">详细</a></li>
                 </ul>
-                <ul class="tjglcontentc">
-                    <li>2</li>
-                    <li>打井</li>
-                    <li>王某</li>
-                    <li>刘某</li>
-                    <li>水利部</li>
-                    <li>2015.10.10</li>
-                    <li><select>
-                        <option>请选择</option>
-                        <option>已审批</option>
-                        <option>待审批</option>
-                        <option>未通过</option>
-                    </select></li>
-                    <li><a href="" class="bulec">详细</a></li>
-                </ul>
+                </c:forEach>
             </div>
         </div>
         <div class="page">
@@ -121,8 +92,8 @@
             <a href="">下一页</a>
         </div>
     </div>
-    <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/My97DatePicker/WdatePicker.js"></script>
+    <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
+    <script src="http://101.200.196.121:8080/oa/js/My97DatePicker/WdatePicker.js"></script>
     <script src=""></script>
 </body>
 </html>

@@ -41,15 +41,15 @@
             <li><a class='active' href="">项目管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="#">添加项目</a><i></i></dd>
-                    <dd><a href="" class="activecolor">已审批</a></dd>
-                    <dd><a href="">待审批</a></dd>
-                    <dd><a href="">未通过</a></dd>
-                    <dd><a href="">审批项目</a></dd>
+                    <dd><a href="project_approved_check_request.jsp" class="activecolor">已审批</a></dd>
+                    <dd><a href="project_waiting_check_request.jsp">待审批</a></dd>
+                    <dd><a href="project_refused_check_request.jsp">未通过</a></dd>
+                    <dd><a href="project_total_check_request.jsp">审批项目</a></dd>
+                    <dd><a href="project_add.jsp">添加项目</a><i></i></dd>
                 </dl>
             </li>
-            <li><a href="bmgl.html"> 部门管理</a></li>
-            <li><a href="rygltj.html">人员管理</a></li>
+            <li><a href="department_check_request.jsp"> 部门管理</a></li>
+            <li><a href="employee_check_request.jsp">人员管理</a></li>
         </ul>
     </div>
     <!--右侧主要内容-->

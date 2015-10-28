@@ -34,20 +34,20 @@
 <!--主体-->
 <div class="m_content">
     <!--左侧导航-->
-    <div class="left_menu" style="height: 265px">
+    <div class="left_menu" style="height: 370px">
         <h3>管理</h3>
         <ul>
             <li><a class='active' href="">项目管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="#" class="activecolor">添加项目</a><i></i></dd>
                     <dd><a href="project_approved_check_request.jsp">已审批</a></dd>
-                    <dd><a href="">待审批</a></dd>
-                    <dd><a href="">未通过</a></dd>
-                    <dd><a href="">审批项目</a></dd>
+                    <dd><a href="project_waiting_check_request.jsp">待审批</a></dd>
+                    <dd><a href="project_refused_check_request.jsp">未通过</a></dd>
+                    <dd><a href="project_total_check_request.jsp">审批项目</a></dd>
+                    <dd><a href="#" class="activecolor">添加项目</a><i></i></dd>
                 </dl>
             </li>
-            <li><a href="department_add.jsp"> 部门管理</a></li>
+            <li><a href="department_check_request.jsp"> 部门管理</a></li>
             <li><a href="employee_add.jsp">人员管理</a></li>
         </ul>
     </div>

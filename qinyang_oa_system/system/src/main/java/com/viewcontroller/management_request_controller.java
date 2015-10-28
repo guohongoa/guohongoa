@@ -188,12 +188,12 @@ public class management_request_controller
 		}
 		
 		@RequestMapping("management/project_check.do")
-		//查询所有制度条目
+		//查询所有项目条目
 		
 		public ModelAndView project_check_request()
 		{
 			
-		   ModelAndView mv=new ModelAndView("project_approved_check");//页面重定向
+		   ModelAndView mv=new ModelAndView("project_total_check");//页面重定向
 		   
 		   //得到查询所有条目的list
 		   
@@ -201,6 +201,34 @@ public class management_request_controller
 		   mv.addObject("project_info_list", project_info_list);
 		   return mv;
 		}
+		
+		@RequestMapping("management/project_check_by_status.do")
+		//根据输入状态查询项目条目
+		
+		public ModelAndView project_check_request(
+				@RequestParam(value="project_status")  int project_status
+				)
+		{
+			
+		   ModelAndView mv;
+		   System.out.println(project_status);
+		   switch (project_status) 
+		   {
+		      case 0: mv=new ModelAndView("project_waiting_check");break;//未审批请求，返回未审批页面
+		      case 1: mv=new ModelAndView("project_approved_check");break;//已审批请求，返回已审批页面
+		      case 2: mv=new ModelAndView("project_refused_check");break;//未通过请求，返回未通过页面
+
+		      default:mv=new ModelAndView();break;
+		    }
+		   
+		   
+		   //得到查询所有条目的list
+		   
+		   List<project_info> project_info_list=get_project_info_list_by_project_status(project_status);
+		   mv.addObject("project_info_list", project_info_list);
+		   return mv;
+		}
+		
 		
 		@RequestMapping("management/project_del.do")
 		 public void project_del_request(
@@ -352,6 +380,15 @@ public class management_request_controller
 			   return project_info_list;
 			   
 		   }
+		 
+		 //根据项目审批状态查询
+		 private List<project_info> get_project_info_list_by_project_status(int project_status)
+		 {
+			 List<project_info> project_info_list;
+			   project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			   project_info_list=_project_info_dao.select_by_project_status(project_status);
+			   return project_info_list;
+		 }
 		 
 		 private void del_project_from_id(int project_id)
 		 {

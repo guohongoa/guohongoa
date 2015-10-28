@@ -43,7 +43,7 @@
             <li><a href="service_economy_deploy.jsp"> 经济发展服务</a></li>
             <li><a href="service_harmony_deploy.jsp">和谐稳定服务</a></li>
             <li><a href="service_environment_deploy.jsp">环境卫生服务</a></li>
-            <li><a href="ervice_activity_deploy.jsp">文体活动服务</a></li>
+            <li><a href="service_activity_deploy.jsp">文体活动服务</a></li>
             <li><a class='active' href="check_service_deploy_request.jsp">我的服务</a>
                 <dl>
                     <dt></dt>

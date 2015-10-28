@@ -6,7 +6,7 @@
 <head>
 </head> 
 <script language="javascript"> 
-setTimeout("document.employee_check.submit()",300) 
+setTimeout("document.employee_check.submit()",10) 
 </script> 
 <!-- 提交检索员工信息-->
 <body > 

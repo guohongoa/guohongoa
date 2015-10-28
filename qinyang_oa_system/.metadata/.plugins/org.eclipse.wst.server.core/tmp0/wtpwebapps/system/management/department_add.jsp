@@ -37,16 +37,16 @@
     <div class="left_menu" style="height: 265px">
         <h3>管理</h3>
         <ul>
-            <li><a  href="">项目管理</a>
+            <li><a  href="project_approved_check_request.jsp">项目管理</a>
             </li>
-            <li><a href="bmgl.html" class='active'> 部门管理</a>
+            <li><a href="department_check_request.jsp" class='active'> 部门管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="#" class="activecolor">添加部门</a><i></i></dd>
-                    <dd><a href="department_check_request.jsp">部门信息</a></dd>
+                    <dd><a href="department_check_request.jsp" >部门信息</a></dd>
+                    <dd><a href="#" class="activecolor">添加部门</a><i></i></dd>      
                 </dl>
             </li>
-            <li><a href="rygltj.html">人员管理</a></li>
+            <li><a href="employee_check_request.jsp">人员管理</a></li>
         </ul>
     </div>
     <!--右侧主要内容-->

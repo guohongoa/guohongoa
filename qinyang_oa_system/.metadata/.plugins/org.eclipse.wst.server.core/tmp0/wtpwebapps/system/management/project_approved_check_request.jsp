@@ -6,11 +6,12 @@
 <head>
 </head> 
 <script language="javascript"> 
-setTimeout("document.project_check.submit()",300) 
+setTimeout("document.project_check.submit()",10) 
 </script> 
 <!-- 提交检索部门信息-->
 <body > 
-<form name="project_check" method="post" action="project_check.do"> 
+<form name="project_check" method="post" action="project_check_by_status.do"> 
+<input type="hidden" name="project_status" value="1">
 
 </form> 
 </body> 

@@ -6,7 +6,7 @@
 <head>
 </head> 
 <script language="javascript"> 
-setTimeout("document.form1.submit()",300) 
+setTimeout("document.form1.submit()",10) 
 </script> 
 <body > 
 <form name="form1" method="post" action="service_check.do"> 

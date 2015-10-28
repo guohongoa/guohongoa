@@ -32,7 +32,6 @@
 <fullyQualifiedTypeName name="com.data.regulation_info"/>
 <fullyQualifiedTypeName name="com.data.department_info"/>
 <fullyQualifiedTypeName name="com.dao.department_info_dao"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="com.data.project_info"/>
 <fullyQualifiedTypeName name="com.dao.project_info_dao"/>
 <fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
@@ -54,4 +53,5 @@
 <fullyQualifiedTypeName name="com.data.employee_info"/>
 <fullyQualifiedTypeName name="com.dao.employee_info_dao"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.ModelAndView"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

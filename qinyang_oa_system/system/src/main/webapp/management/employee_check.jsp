@@ -38,15 +38,15 @@
     <div class="left_menu" style="height: 265px">
         <h3>管理</h3>
         <ul>
-            <li><a class='active' href="">项目管理</a>
+            <li><a href="project_approved_check_request.jsp">项目管理</a>
             </li>
-            <li><a href="bmgl.html"> 部门管理</a>
+            <li><a href="department_check_request.jsp"> 部门管理</a>
             </li>
-            <li><a href="rygl.html">人员管理</a>
+            <li><a class='active' href="employee_check_request.jsp">人员管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="" class="activecolor">添加人员</a><i></i></dd>
-                    <dd><a href="">修改</a></dd>
+                    <dd><a href="employee_check_request.jsp" class="activecolor">人员信息</a></dd>
+                    <dd><a href="employee_add.jsp" >添加人员</a><i></i></dd>
                 </dl>
             </li>
         </ul>
@@ -54,7 +54,7 @@
     <!--右侧主要内容-->
     <div class="main">
         <div class="xmgl">
-            <h3><a href="" class="gray">管理</a> &gt;<a href="" class="gray">人员管理</a></h3>
+            <h3><a href="" class="gray">管理</a> &gt;<a href="" class="gray">人员管理</a> &gt;人员信息</h3>
             <div class="xmgltj">
                 <form action="">
                     <span>员工编号&nbsp;<input type="text"></span>

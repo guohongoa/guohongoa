@@ -38,22 +38,22 @@
     <div class="left_menu" style="height: 265px">
         <h3>管理</h3>
         <ul>
-            <li><a class='active' href="">项目管理</a>
+            <li><a  href="project_approved_check_request.jsp">项目管理</a>
             </li>
-            <li><a href="bmgl.html"> 部门管理</a>
+            <li><a class='active' href="department_check_request.jsp"> 部门管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="#" class="activecolor">添加部门</a><i></i></dd>
-                    <dd><a href="">部门信息</a></dd>
+                    <dd><a href="department_check_request.jsp" class="activecolor">部门信息</a></dd>
+                    <dd><a href="department_add.jsp" >添加部门</a><i></i></dd>
                 </dl>
             </li>
-            <li><a href="rygltj.html">人员管理</a></li>
+            <li><a href="employee_check_request.jsp">人员管理</a></li>
         </ul>
     </div>
     <!--右侧主要内容-->
     <div class="main">
         <div class="xmgl">
-            <h3><a href="" class="gray">管理</a> &gt;<a href="" class="gray">部门管理</a></h3>
+            <h3><a href="" class="gray">管理</a> &gt;<a href="" class="gray">部门管理</a> &gt;部门信息</h3>
             <div class="xmgltj">
                 <form action="">
                     <span>部门编号&nbsp;<input type="text"></span>

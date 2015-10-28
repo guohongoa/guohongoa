@@ -35,6 +35,10 @@
 		SELECT * FROM project_info;
 	</select>
 	
+	<select id="select_by_project_status" parameterType="int" resultMap="result">
+		SELECT * FROM project_info WHERE project_status = #{project_status};
+	</select>
+	
 	<delete id="delete" parameterType="int">
         DELETE FROM project_info WHERE project_id = #{project_id};
     </delete>
