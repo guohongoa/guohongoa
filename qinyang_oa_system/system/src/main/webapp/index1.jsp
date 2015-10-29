@@ -29,7 +29,7 @@
                 <li><a href="../kh/kh.html"><i class="icon_k icon"></i>考核</a></li>
                 <li><a href="../tz/tz.html"><i class="icon_t icon"></i>台账</a></li>
                 <li><a href="../gz/gz.html"><i class="icon_g icon"></i>工作</a></li>
-                <li><a href="../wfw/fza.html"><i></i>五服务</a></li>
+                <li><a href="service"><i></i>五服务</a></li>
                 <li><a href="../sl/sl.html"><i class="icon_l icon"></i>四联</a></li>
             </ul>
         </div>

@@ -83,8 +83,8 @@
                     </p>
                 </div>
                 <!-- 隐藏发送信息 -->
-                <input type="hidden" name="service_sender" value="user_name" />
-				<input type="hidden" name="service_sender_id" value="123" />
+                <input type="hidden" name="service_sender" value="${user_name}" />
+				<input type="hidden" name="service_sender_id" value="${user_id}" />
                 <input type="hidden" name="service_type" value="1" />      <!--经济发展服务为1-->
                 <input type="hidden" name="service_category" value="0" />  <!--安排为0-->
                 <input type="hidden" name="service_receiver_id" value="456" />

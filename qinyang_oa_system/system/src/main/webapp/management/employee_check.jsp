@@ -83,12 +83,11 @@
                     <li>${employee_info.get_employee_leader()}</li>
                     <li>${employee_info.get_employee_addworktime()}</li>
                     <li>${employee_info.get_employee_phone()}</li>
-                    <li>
-                        &nbsp;<select>
-                            <option>请选择</option>
-                            <option>查看</option>
-                            <option>修改</option>
-                        </select>
+                    <li>&nbsp;<input class="bulec btnc" type="button" value="修改"/>/
+                    <form action="employee_del.do" method="post">
+                       <input type="hidden" name="employee_id" value="${employee_info.get_employee_id()}">
+                       <input class="bulec btnc" type="submit" value="删除"/>
+                    </form>
                     </li>
                 </ul>
                 </c:forEach>

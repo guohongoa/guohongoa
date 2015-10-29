@@ -63,6 +63,7 @@
             <h3>任务&gt;我的服务&gt;安排的服务</h3>
             <div class="myservicetitle">
                 <ul>
+                    <li class="titleli">操作</li>
                     <li class="titleli">安排</li>
                     <li class="titleli">服务主题</li>
                     <li class="titleli">服务类型</li>
@@ -75,6 +76,13 @@
             <c:forEach var="service_info" items="${service_info_list}">
             <div class="myservicecontent">
                 <ul>
+                    <li class="titleli">
+                    <form action="service_del.do" method="post">
+                       <input type="hidden" name="service_msgid" value="${service_info.get_service_msgid()}" />  <!--删除服务id-->
+                       <input type="hidden" name="service_category" value="${service_info.get_service_category()}"/><!--删除服务的类别，返回页面时使用  -->
+                       <input class="bulec btnc" type="submit" value="删除" />
+                    </form>
+                    </li>
                     <li class="titleli">${service_info.get_service_category()}</li>
                     <li class="titleli">${service_info.get_service_theme()}</li>
                     <li class="titleli">${service_info.get_service_type()}</li>
@@ -82,6 +90,7 @@
                     <li class="titleli">${service_info.get_service_addtime()}</li>
                     <li class="titleli litime">${service_info.get_service_begintime()}-<br/>${service_info.get_service_endtime()}</li>
                     <li class="titlelio"><a href="mytaskcontent.html">${service_info.get_service_content()}</a></li>
+                    
                 </ul>
             </div>
             </c:forEach>

@@ -73,7 +73,7 @@
                     </div>
                     <div class="clear">
                         <p><span>部门负责人</span>
-                        <input class="btn200" type="text" name="department_leader"/></p>
+                        <input class="btn200" type="text" name="departmentd_leader"/></p>
                         <p><span>上级部门</span>
                         <input class="btn200" type="text" name="department_parent"/></p>
                     </div>

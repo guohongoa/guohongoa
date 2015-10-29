@@ -1,3 +1,4 @@
+
 package com.dao;
 
 import java.util.List;
@@ -67,5 +68,17 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		        return service_info_list;
 		 }
 		 
+		 public void delete_from_id(int service_msgid)
+		 {
+			 SqlSession session = sqlSessionFactory.openSession();
+			  
+		        try {
+		            session.delete("service_info.delete", service_msgid);
+		        } finally {
+		            session.commit();
+		            session.close();
+		        }
+		        System.out.println("delete("+service_msgid+")");
+		 }
 		 
 }

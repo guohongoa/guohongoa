@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dao.department_info_dao;
 import com.dao.service_info_dao;
 import com.data.department_info;
 import com.data.service_info;
@@ -67,7 +68,7 @@ import com.mybatis.mybatis_connection_factory;
 			   	
 		}
 		
-		
+		//五服务页面查询响应
 		@RequestMapping("service/service_check.do")
 		public ModelAndView service_check_request(
 				 @RequestParam(value="service_category")  int service_category
@@ -90,6 +91,31 @@ import com.mybatis.mybatis_connection_factory;
 		   return mv;
 		}
 		
+		//五服务页面删除响应
+		@RequestMapping("service/service_del.do")
+		 public ModelAndView department_del_request(
+				 
+				 @RequestParam(value="service_msgid")    int service_msgid,
+				 @RequestParam(value="service_category") int service_category
+				 
+				 )
+		 {
+			ModelAndView mv;
+			switch (service_category) 
+			   {
+			      case 0: mv=new ModelAndView("check_service_deploy_request");break;//未审批请求，返回未审批页面
+			      case 1: mv=new ModelAndView("check_service_feedback_request");break;//已审批请求，返回已审批页面
+			      case 2: mv=new ModelAndView("check_service_getfeedback_request");break;//未通过请求，返回未通过页面
+
+			      default:mv=new ModelAndView();break;
+			    }
+			
+			
+			
+			
+			del_service_from_id(service_msgid);
+			return mv;
+		 }
 		
 		//发起任务时，将任务信息加入数据库
 		private boolean send_service_insert_db(service_info _service_info)  
@@ -100,7 +126,7 @@ import com.mybatis.mybatis_connection_factory;
 			return rs;
 		}
 		
-		 private List<service_info> get_service_info_list_by_service_category(int service_category)
+		private List<service_info> get_service_info_list_by_service_category(int service_category)
 		   {
 			   List<service_info> service_info_list;
 			   service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
@@ -108,5 +134,14 @@ import com.mybatis.mybatis_connection_factory;
 			   return service_info_list;
 			   
 		   }
+		
+		 private void del_service_from_id(int service_msgid)
+		    {
+			 service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			 _service_info_dao.delete_from_id(service_msgid);
+		    }
 	}
+	
+	   
+	    
 

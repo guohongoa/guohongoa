@@ -82,7 +82,12 @@
                     <li>${department_info.get_department_parent()}</li>
                     <li>${department_info.get_department_parentleader()}</li>
                     <li>${department_info.get_department_leaderphone()}</li>
-                    <li>&nbsp;<input class="bulec btnc" type="button" value="修改"/>/<input class="bulec btnc" type="button" value="删除"/></li>
+                    <li>&nbsp;<input class="bulec btnc" type="button" value="修改"/>/
+                    <form action="department_del.do" method="post">
+                       <input type="hidden" name="department_id" value="${department_info.get_department_id()}"/>
+                       <input class="bulec btnc" type="submit" value="删除"/>
+                    </form>
+                    </li>
                 </ul>
                </c:forEach>
             </div>

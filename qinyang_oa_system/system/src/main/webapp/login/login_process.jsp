@@ -13,7 +13,8 @@
 <c:choose>
     <c:when test="${status == 0}">
        <h1>登陆成功</h1>
-       <c:set  var="user_name"  value="${system_user_info.get_user_name()}"  scope="session"  />  
+       <c:set  var="user_name"  value="${system_user_info.get_user_name()}"  scope="session"  />
+       <c:set  var="user_id"  value="${system_user_info.get_user_id()}"  scope="session"  />
        <a href="index.jsp">3秒后系统会自动跳转，也可点击本处直接跳</a>  
        <script>
         function jumpurl()

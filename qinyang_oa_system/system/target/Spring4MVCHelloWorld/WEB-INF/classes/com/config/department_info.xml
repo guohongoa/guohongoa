@@ -7,17 +7,20 @@
 
 	<resultMap id="result" type="department_info">
 		<result property="department_id" column="department_id" />
+		<result property="department_code" column="department_code" />
+		<result property="department_parent" column="department_parent" />
 		<result property="department_name" column="department_name" />
-		<result property="department_num" column="department_num" />
 		<result property="department_duty" column="department_duty" />
 		<result property="department_leader" column="department_leader" />
 		<result property="department_addtime" column="department_addtime" />
+		<result property="department_leaderphone" column="department_leaderphone" />
+		<result property="department_parentleader" column="department_parentleader" />
 	</resultMap>
 
 	<insert id="insert" parameterType="department_info">
 		insert into
-		department_info(department_name,department_num,department_duty,department_leader,department_addtime)
-		values(#{department_name},#{department_num},#{department_duty},#{department_leader},#{department_addtime});
+		department_info(department_name,department_code,department_parent,department_duty,department_leader,department_addtime,department_leaderphone,department_parentleader)
+		values(#{department_name},#{department_code},#{department_parent},#{department_duty},#{department_leader},#{department_addtime},#{department_leaderphone},#{department_parentleader});
 	</insert>
 
 	<select id="select_by_department_id" parameterType="int" resultMap="result">
@@ -27,6 +30,10 @@
 	<select id="select_all" resultMap="result">
 		SELECT * FROM department_info;
 	</select>
+	
+	<delete id="delete" parameterType="int">
+        DELETE FROM department_info WHERE department_id = #{department_id};
+    </delete>
 
 </mapper>
 

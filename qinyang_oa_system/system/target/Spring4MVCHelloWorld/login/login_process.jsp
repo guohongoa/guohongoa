@@ -1,20 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<!DOCTYPE html>
 <!-- 处理登陆后状态 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>${status}</h1>  
+<c:set  var="status"  value="${status}"/>
+<c:choose>
+    <c:when test="${status == 0}">
+       <h1>登陆成功</h1>
+       <c:set  var="user_name"  value="${system_user_info.get_user_name()}"  scope="session"  />  
        <a href="index.jsp">3秒后系统会自动跳转，也可点击本处直接跳</a>  
-<script>
-function jumpurl(){
-  location='index.jsp';
-}
-setTimeout('jumpurl()',3000);
-</script> 
+       <script>
+        function jumpurl()
+        {
+         location='index.jsp';
+         }
+         setTimeout('jumpurl()',3000);
+        </script> 
+    </c:when>
+    <c:when test="${status == 1}">
+        <h1>用户名不存在</h1>
+        <script>
+        function jumpurl()
+        {
+         location='index.jsp';
+         }
+         setTimeout('jumpurl()',2000);
+        </script>         
+    </c:when>
+    <c:otherwise>
+        <h1>用户名或密码错误</h1>
+        <script>
+        function jumpurl()
+        {
+         location='index.jsp';
+         }
+         setTimeout('jumpurl()',2000);
+        </script>    
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

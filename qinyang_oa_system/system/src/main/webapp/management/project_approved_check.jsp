@@ -66,6 +66,7 @@
                     <li>发送时间</li>
                     <li>状态</li>
                     <li>内容</li>
+                    <li>操作</li>
                 </ul>
                 <c:forEach var="project_info" items="${project_info_list}">
                 <ul class="tjglcontentc">
@@ -77,6 +78,12 @@
                     <li>${project_info.get_project_addtime()}</li>
                     <li>${project_info.get_project_status()}</li>
                     <li><a href="" class="bulec">详细</a></li>
+                    <li>&nbsp;<input class="bulec btnc" type="button" value="修改"/>/
+                    <form action="project_del.do" method="post">
+                       <input type="hidden" name="project_id" value="${project_info.get_project_id()}">
+                       <input class="bulec btnc" type="submit" value="删除"/>
+                    </form>
+                    </li>
                 </ul>
                 </c:forEach>
             </div>

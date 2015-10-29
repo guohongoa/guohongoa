@@ -1,4 +1,3 @@
-activeuserprofiles=MacBook-Air;Team
+activeuserprofiles=Lance;Team
 eclipse.preferences.version=1
-org.eclipse.rse.systemtype.local.systemType.defaultUserId=Hanlu
-useridperkey=MacBook-Air.Local\=Hanlu;
+org.eclipse.rse.systemtype.local.systemType.defaultUserId=lance
