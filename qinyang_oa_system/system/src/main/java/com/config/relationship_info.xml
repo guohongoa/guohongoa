@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="relationship_info">
+
+	<resultMap id="result" type="relationship_info">
+		<result property="relationship_id" column="relationship_id" />
+		<result property="relationship_owner_id" column="relationship_owner_id" />
+		<result property="relationship_owner_name" column="relationship_owner_name" />
+		<result property="relationship_friend_id" column="relationship_friend_id" />
+		<result property="relationship_friend_name" column="relationship_friend_name" />
+		<result property="relationship_category" column="relationship_category" />
+		<result property="relationship_group" column="relationship_group" />
+		<result property="relationship_comment" column="relationship_comment" />
+		<result property="relationship_addtime" column="relationship_addtime" />
+		
+	</resultMap>
+
+	<insert id="insert" parameterType="relationship_info">
+		insert into
+		relationship_info(relationship_owner_id,relationship_owner_name,relationship_friend_id,relationship_friend_name,relationship_category,relationship_group,relationship_comment,relationship_addtime)
+		values(#{relationship_owner_id},#{relationship_owner_name},#{relationship_friend_id},#{relationship_friend_name},#{relationship_category},#{relationship_group},#{relationship_comment},#{relationship_addtime})
+	</insert>
+
+</mapper>
+
+
