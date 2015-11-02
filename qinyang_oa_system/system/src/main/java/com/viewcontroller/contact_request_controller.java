@@ -1,22 +1,35 @@
 
 package com.viewcontroller;
 
+import java.io.ByteArrayOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
-import org.omg.DynamicAny._DynEnumStub;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.department_relationship_info_dao;
-import com.dao.project_info_dao;
 import com.dao.relationship_info_dao;
 import com.data.department_relationship_info;
-import com.data.project_info;
 import com.data.relationship_info;
 import com.mybatis.mybatis_connection_factory;
 
@@ -97,15 +110,29 @@ import com.mybatis.mybatis_connection_factory;
 		@RequestMapping("contact/department_relationship_check.do")
 		public ModelAndView department_relationship_check_request(
 				@RequestParam(value="department_relationship_upper_id") int department_relationship_upper_id
-				)
+				) throws ParserConfigurationException, TransformerException
 		{
-			System.out.println(department_relationship_upper_id);
 			//以输入上级部门id，查询所有对应关系
-			List<department_relationship_info> department_relationship_list=null;
-			department_relationship_list=get_department_ralationship_list_by_upper_id(department_relationship_upper_id);
+			List<department_relationship_info> department_relationship_list=new ArrayList<department_relationship_info>();
+			
+			List<department_relationship_info> department_relationship_level1_list=get_department_ralationship_list_by_upper_id(department_relationship_upper_id);
+			
+			List<department_relationship_info> department_relationship_level2_list=new ArrayList<department_relationship_info>();
+			for(department_relationship_info dinfo1:department_relationship_level1_list)
+			{
+				department_relationship_level2_list.addAll(get_department_ralationship_list_by_upper_id(dinfo1.get_department_relationship_downer_id()));
+			}
+			department_relationship_list.addAll(department_relationship_level2_list);
+			department_relationship_list.addAll(department_relationship_level1_list);
+			
+	
+			
+			
 			
 			ModelAndView mv=new ModelAndView("department_relationship_check");
+			String xml=convert_department_relationship_list_to_xml(department_relationship_list);
 			mv.addObject("department_relationship_list", department_relationship_list);
+			mv.addObject("xml", xml);
 			return mv;
 			
 		}
@@ -134,6 +161,76 @@ import com.mybatis.mybatis_connection_factory;
 			   department_relationship_info_dao _department_relationship_info_dao=new department_relationship_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 			   List<department_relationship_info> list=_department_relationship_info_dao.select_by_upper_id(department_relationship_upper_id);
 			   return list; 
+		}
+		
+		
+		//将查询数据结构转换为xml文件
+		private String convert_department_relationship_list_to_xml(List<department_relationship_info> list) throws ParserConfigurationException, TransformerException
+		{
+			
+			
+			String xmlStr=null;
+			String root_name=null;
+			String    root_id;
+			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder=factory.newDocumentBuilder();
+			Document document=builder.newDocument();
+		     document.setXmlVersion("1.0");
+			
+			
+			for(int i=1;i<=2;i++)
+			{
+			   for(department_relationship_info dinfo:list)
+			   {
+				   if(dinfo.get_department_relationship_upper_level()==i)
+				   {
+					   if(root_name==null)
+					   {
+						   System.out.println("root:"+dinfo.get_department_relationship_upper_name());
+						   root_name=dinfo.get_department_relationship_upper_name();
+						   root_id=dinfo.get_department_relationship_upper_id()+"";
+						   Element root=document.createElement("node"+(i-1));
+						   root.setAttribute("name", root_name);
+						   root.setAttribute("id", root_id);
+						   document.appendChild(root);
+					   }
+					   
+					   NodeList eles=document.getElementsByTagName("node"+(i-1));
+					   for(int m=0;m<eles.getLength();m++)
+					   {
+						   System.out.println("aaa");
+						   Element upper_ele=(Element)eles.item(m);
+						   if(upper_ele.getAttribute("id").equals(dinfo.get_department_relationship_upper_id()+""))
+						   {
+							   System.out.println("oooooo");
+							   Element downer_ele=document.createElement("node"+i);
+							   
+							   String node_name=dinfo.get_department_relationship_downer_name();
+							   String node_id=dinfo.get_department_relationship_downer_id()+"";
+							   downer_ele.setAttribute("name", node_name);
+							   downer_ele.setAttribute("id", node_id);
+							   upper_ele.appendChild(downer_ele);
+						   }
+					   }
+					   
+				   }
+			   }
+			}
+			
+			 TransformerFactory transFactory = TransformerFactory.newInstance();
+	         Transformer transFormer = transFactory.newTransformer();
+	         transFormer.setOutputProperty(OutputKeys.INDENT,"yes");
+	         DOMSource domSource = new DOMSource(document);
+
+	         //export string
+	         ByteArrayOutputStream bos = new ByteArrayOutputStream();
+	         transFormer.transform(domSource, new StreamResult(bos));
+	         xmlStr = bos.toString();
+				
+			
+			System.out.println(xmlStr);
+			
+			return xmlStr;
 		}
 		
 

@@ -14,6 +14,8 @@
        <h3>${department_relationship_info.get_department_relationship_downer_name()}</h3>
        <h3>${department_relationship_info.get_department_relationship_downer_id()}</h3>
    </c:forEach>
+   
+   ${xml}
 
 </body>
 </html>

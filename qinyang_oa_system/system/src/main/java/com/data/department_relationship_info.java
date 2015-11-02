@@ -61,7 +61,7 @@ public class department_relationship_info
 	   this.department_relationship_downer_id=department_relationship_downer_id;
    }
    
-   public int department_relationship_upper_level()
+   public int get_department_relationship_upper_level()
    {
 	   return this.department_relationship_upper_level;
    }
