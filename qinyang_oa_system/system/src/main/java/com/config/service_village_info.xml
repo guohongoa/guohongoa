@@ -18,5 +18,10 @@
 		 values(#{service_village_name},#{service_village_county_id},#{service_village_county_name},#{service_village_addtime});
 	</insert>
 
+    <select id="select_by_service_village_county_id" parameterType="int" resultMap="result">
+		SELECT * FROM service_village_info WHERE service_village_county_id = #{service_village_county_id};
+	</select>
+
+    
 
 </mapper>

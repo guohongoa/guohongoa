@@ -3,6 +3,7 @@ package com.viewcontroller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -158,6 +159,20 @@ import com.mybatis.mybatis_connection_factory;
 			   	
 		}
 		
+		@RequestMapping("service/service_village_check.do")
+		public ModelAndView service_village_check_request()
+		{
+	      ModelAndView mv=new ModelAndView("index2");
+		   
+		   
+		   //根据乡镇id分组，得到全部村庄信息的二维数组
+		   List<List<service_village_info>> village_list=get_village_list_by_county();
+		   mv.addObject("village_list", village_list);
+		   return mv;
+		}
+		
+		
+		
 		@RequestMapping("service/service_village_county_add.do")
 		public ModelAndView county_add_request(
 				@RequestParam(value="service_village_county_name")        String service_village_county_name    //五服务覆盖村庄名称  
@@ -231,6 +246,25 @@ import com.mybatis.mybatis_connection_factory;
 				
 				boolean rs=_service_village_info_dao.insert(_service_village_info);
 				return rs;
+			}
+			
+			private List<List<service_village_info>> get_village_list_by_county()
+			{
+				service_village_info_dao _service_village_info_dao=new service_village_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				
+				 List<List<service_village_info>> village_list=new ArrayList<List<service_village_info>>();
+				 
+				 List<service_village_county_info> service_village_county_list=_service_village_county_info_dao.select_all();
+				 
+				 for(service_village_county_info _county_info:service_village_county_list)
+				 {
+					 int service_village_county_id=_county_info.get_service_village_county_id();
+					 List<service_village_info> village_info_list=_service_village_info_dao.get_service_village_info_list_by_county_id(service_village_county_id);
+					 village_list.add(village_info_list);
+				 }
+				 
+				 return village_list;
 			}
 			
 			
