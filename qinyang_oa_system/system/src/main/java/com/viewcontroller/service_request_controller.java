@@ -125,15 +125,18 @@ import com.mybatis.mybatis_connection_factory;
 		@RequestMapping("service/service_village_add.do")
 		public ModelAndView village_add_request(
 				@RequestParam(value="service_village_name")        String service_village_name ,     //五服务覆盖村庄名称
-			    @RequestParam(value="service_village_county_id")   int    service_village_county_id, //五服务村庄所属乡镇id        
-				@RequestParam(value="service_village_county_name") String service_village_county_name//五服务村庄所属乡镇名称       
+			    @RequestParam(value="service_village_county_id")   int    service_village_county_id //五服务村庄所属乡镇id               
 				)
 		{
 			//初始化service_village_info对象
 			service_village_info _service_village_info=new service_village_info();
 			_service_village_info.set_service_village_name(service_village_name);
 			_service_village_info.set_service_village_county_id(service_village_county_id);
-			_service_village_info.set_service_village_county_name(service_village_county_name);
+			
+			//利用乡镇id，查询乡镇name，插入village信息表
+			service_village_county_info _service_village_county_info=get_service_village_county_info_by_id(service_village_county_id);
+			String county_name=_service_village_county_info.get_service_village_county_name();
+			_service_village_info.set_service_village_county_name(county_name);
 			
 			
 			
@@ -183,6 +186,20 @@ import com.mybatis.mybatis_connection_factory;
 			   	
 		}
 		
+		@RequestMapping("service/service_county_check.do")
+		public ModelAndView service_county_check_request()
+		{
+	      ModelAndView mv=new ModelAndView("service_village_add");
+		   
+		   //得到乡镇条目
+		   
+		   List<service_village_county_info> service_village_county_list=get_service_village_county_list();
+		   mv.addObject("service_village_county_list", service_village_county_list);
+		   return mv;
+		}
+		
+		
+		
 		//五服务消息信息对应数据库功能函数
 		private boolean send_service_insert_db(service_info _service_info)  
 		{
@@ -216,6 +233,8 @@ import com.mybatis.mybatis_connection_factory;
 				return rs;
 			}
 			
+			
+	   //五服务乡镇对应数据库功能函数
 			private boolean service_village_county_inset_db(service_village_county_info _service_village_info)
 			{
                      service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
@@ -223,6 +242,23 @@ import com.mybatis.mybatis_connection_factory;
 				boolean rs=_service_village_county_info_dao.insert(_service_village_info);
 				return rs;
 			}
+			
+			private List<service_village_county_info> get_service_village_county_list()
+			   {
+				   List<service_village_county_info> service_village_county_list;
+				   service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				   service_village_county_list=_service_village_county_info_dao.select_all();
+				   return service_village_county_list;
+			   }
+			
+			//根据id查询乡镇信息
+			private service_village_county_info get_service_village_county_info_by_id(int service_village_county_id)
+			{
+				service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				service_village_county_info _service_village_county_info=_service_village_county_info_dao.get_service_village_county_info_by_id(service_village_county_id);
+				return _service_village_county_info;
+			}
+		   
 	}
 	
 	

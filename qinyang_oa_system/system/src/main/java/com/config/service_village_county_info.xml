@@ -5,7 +5,7 @@
 
 <mapper namespace="service_village_county_info">
 
-	<resultMap id="result" type="service_village_info">
+	<resultMap id="result" type="service_village_county_info">
 		<result property="service_village_county_id" column="service_village_county_id" />
 		<result property="service_village_county_name" column="service_village_county_name" />
 		<result property="service_village_county_name" column="service_village_county_name" />
@@ -15,6 +15,14 @@
 		insert into service_village_county_info(service_village_county_id,service_village_county_name,service_village_county_addtime)
 		 values(#{service_village_county_id},#{service_village_county_name},#{service_village_county_addtime});
 	</insert>
+	
+	<select id="select_all" resultMap="result">
+		SELECT * FROM service_village_county_info;
+	</select>
+	
+	<select id="select_by_service_village_county_id" parameterType="int" resultMap="result">
+		SELECT * FROM service_village_county_info WHERE service_village_county_id = #{service_village_county_id};
+	</select>
 
 
 </mapper>
