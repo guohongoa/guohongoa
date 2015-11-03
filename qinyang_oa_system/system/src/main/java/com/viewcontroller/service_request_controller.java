@@ -13,9 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.department_info_dao;
 import com.dao.service_info_dao;
+import com.dao.service_village_county_info_dao;
 import com.dao.service_village_info_dao;
 import com.data.department_info;
 import com.data.service_info;
+import com.data.service_village_county_info;
 import com.data.service_village_info;
 import com.mybatis.mybatis_connection_factory;
 
@@ -121,7 +123,7 @@ import com.mybatis.mybatis_connection_factory;
 		 }
 		
 		@RequestMapping("service/service_village_add.do")
-		public ModelAndView send_task_request(
+		public ModelAndView village_add_request(
 				@RequestParam(value="service_village_name")        String service_village_name ,     //五服务覆盖村庄名称
 			    @RequestParam(value="service_village_county_id")   int    service_village_county_id, //五服务村庄所属乡镇id        
 				@RequestParam(value="service_village_county_name") String service_village_county_name//五服务村庄所属乡镇名称       
@@ -142,6 +144,34 @@ import com.mybatis.mybatis_connection_factory;
 			   _service_village_info.set_service_village_addtime(service_village_addtime);
 			   
 			  service_village_insert_db(_service_village_info);
+			
+			
+			//返回插入结果
+			
+			 ModelAndView mv=new ModelAndView();
+			   
+			   return mv;
+			   
+			   	
+		}
+		
+		@RequestMapping("service/service_village_county_add.do")
+		public ModelAndView county_add_request(
+				@RequestParam(value="service_village_county_name")        String service_village_county_name    //五服务覆盖村庄名称  
+				)
+		{
+			//初始化service_village_county_info对象
+			service_village_county_info _service_village_county_info=new service_village_county_info();
+			_service_village_county_info.set_service_village_county_name(service_village_county_name);
+			
+			
+			//添加系统时间
+			   Date date=new Date();
+			   DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			   String service_village_county_addtime=format.format(date);
+			   _service_village_county_info.set_service_village_county_addtime(service_village_county_addtime);
+			   
+			  service_village_county_inset_db(_service_village_county_info);
 			
 			
 			//返回插入结果
@@ -183,6 +213,14 @@ import com.mybatis.mybatis_connection_factory;
 				service_village_info_dao _service_village_info_dao=new service_village_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 				
 				boolean rs=_service_village_info_dao.insert(_service_village_info);
+				return rs;
+			}
+			
+			private boolean service_village_county_inset_db(service_village_county_info _service_village_info)
+			{
+                     service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				
+				boolean rs=_service_village_county_info_dao.insert(_service_village_info);
 				return rs;
 			}
 	}

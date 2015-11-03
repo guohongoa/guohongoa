@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="service_village_county_info">
+
+	<resultMap id="result" type="service_village_info">
+		<result property="service_village_county_id" column="service_village_county_id" />
+		<result property="service_village_county_name" column="service_village_county_name" />
+		<result property="service_village_county_name" column="service_village_county_name" />
+	</resultMap>
+
+	<insert id="insert" parameterType="service_village_county_info">
+		insert into service_village_county_info(service_village_county_id,service_village_county_name,service_village_county_addtime)
+		 values(#{service_village_county_id},#{service_village_county_name},#{service_village_county_addtime});
+	</insert>
+
+
+</mapper>

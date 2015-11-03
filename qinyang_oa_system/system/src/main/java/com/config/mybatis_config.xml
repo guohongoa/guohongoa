@@ -18,6 +18,7 @@
 		<typeAlias alias="relationship_info" type="com.data.relationship_info"/>
 		<typeAlias alias="department_relationship_info" type="com.data.department_relationship_info"/>
 		<typeAlias alias="service_village_info" type="com.data.service_village_info"/>
+		<typeAlias alias="service_village_county_info" type="com.data.service_village_county_info"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -44,6 +45,7 @@
 		<mapper resource="com/config/employee_info.xml" />
 		<mapper resource="com/config/relationship_info.xml"/>
 		<mapper resource="com/config/department_relationship_info.xml"/>
-		<mapper resource="com/config/service_village_info.xml"/>		
+		<mapper resource="com/config/service_village_info.xml"/>
+		<mapper resource="com/config/service_village_county_info.xml"/>		
 	</mappers>
 </configuration>
