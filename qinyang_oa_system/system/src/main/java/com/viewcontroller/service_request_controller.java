@@ -13,8 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.department_info_dao;
 import com.dao.service_info_dao;
+import com.dao.service_village_info_dao;
 import com.data.department_info;
 import com.data.service_info;
+import com.data.service_village_info;
 import com.mybatis.mybatis_connection_factory;
 
 	
@@ -118,7 +120,40 @@ import com.mybatis.mybatis_connection_factory;
 			return mv;
 		 }
 		
-		//发起任务时，将任务信息加入数据库
+		@RequestMapping("service/service_village_add.do")
+		public ModelAndView send_task_request(
+				@RequestParam(value="service_village_name")        String service_village_name ,     //五服务覆盖村庄名称
+			    @RequestParam(value="service_village_county_id")   int    service_village_county_id, //五服务村庄所属乡镇id        
+				@RequestParam(value="service_village_county_name") String service_village_county_name//五服务村庄所属乡镇名称       
+				)
+		{
+			//初始化service_village_info对象
+			service_village_info _service_village_info=new service_village_info();
+			_service_village_info.set_service_village_name(service_village_name);
+			_service_village_info.set_service_village_county_id(service_village_county_id);
+			_service_village_info.set_service_village_county_name(service_village_county_name);
+			
+			
+			
+			//添加系统时间
+			   Date date=new Date();
+			   DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			   String service_village_addtime=format.format(date);
+			   _service_village_info.set_service_village_addtime(service_village_addtime);
+			   
+			  service_village_insert_db(_service_village_info);
+			
+			
+			//返回插入结果
+			
+			 ModelAndView mv=new ModelAndView();
+			   
+			   return mv;
+			   
+			   	
+		}
+		
+		//五服务消息信息对应数据库功能函数
 		private boolean send_service_insert_db(service_info _service_info)  
 		{
 			service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
@@ -141,7 +176,18 @@ import com.mybatis.mybatis_connection_factory;
 			 service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 			 _service_info_dao.delete_from_id(service_msgid);
 		    }
+		 
+		//五服务村庄信息对应数据库功能函数
+			private boolean service_village_insert_db(service_village_info _service_village_info)
+			{
+				service_village_info_dao _service_village_info_dao=new service_village_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				
+				boolean rs=_service_village_info_dao.insert(_service_village_info);
+				return rs;
+			}
 	}
+	
+	
 	
 	   
 	    

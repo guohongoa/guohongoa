@@ -16,7 +16,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -164,7 +163,7 @@ import com.mybatis.mybatis_connection_factory;
 		}
 		
 		
-		//将查询数据结构转换为xml文件
+		//将查询数据结构转换为xml文件,便于
 		private String convert_department_relationship_list_to_xml(List<department_relationship_info> list) throws ParserConfigurationException, TransformerException
 		{
 			
@@ -198,11 +197,9 @@ import com.mybatis.mybatis_connection_factory;
 					   NodeList eles=document.getElementsByTagName("node"+(i-1));
 					   for(int m=0;m<eles.getLength();m++)
 					   {
-						   System.out.println("aaa");
 						   Element upper_ele=(Element)eles.item(m);
 						   if(upper_ele.getAttribute("id").equals(dinfo.get_department_relationship_upper_id()+""))
 						   {
-							   System.out.println("oooooo");
 							   Element downer_ele=document.createElement("node"+i);
 							   
 							   String node_name=dinfo.get_department_relationship_downer_name();
