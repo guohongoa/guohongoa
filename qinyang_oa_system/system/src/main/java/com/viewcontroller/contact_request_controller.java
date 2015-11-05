@@ -223,7 +223,7 @@ import com.mybatis.mybatis_connection_factory;
 					case 8: mv.addObject("contact_info_list5", contact_info_list);   break;
 					case 9: mv.addObject("contact_info_list7", contact_info_list);   break;
 					case 10:mv.addObject("contact_info_list11", contact_info_list);  break;
-					case 11:mv.addObject("contact_info_list6 ", contact_info_list);  break;
+					case 11:mv.addObject("contact_info_list6", contact_info_list);  break;
 
 					default:
 						    System.out.println("error");break;//不在列举范围之内，说明数据传输出错
