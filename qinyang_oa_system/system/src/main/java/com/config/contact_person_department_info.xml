@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="contact_person_department_info">
+
+	<resultMap id="result" type="contact_person_department_info">
+		<result property="contact_person_department_id" column="contact_person_department_id" />
+		<result property="contact_person_department_name" column="contact_person_department_name" />
+	</resultMap>
+
+	<insert id="insert" parameterType="contact_person_department_info">
+		insert into
+		contact_person_department_info(contact_person_department_id,contact_person_department_name)
+		values(#{contact_person_department_id},#{contact_person_department_name});
+	</insert>
+
+	<select id="select_all" resultMap="result">
+		SELECT * FROM contact_person_info;
+	</select>
+
+</mapper>
+
+

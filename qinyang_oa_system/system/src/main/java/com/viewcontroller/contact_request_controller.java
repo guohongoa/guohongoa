@@ -26,10 +26,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dao.contact_person_department_info_dao;
+import com.dao.contact_person_info_dao;
 import com.dao.department_relationship_info_dao;
 import com.dao.relationship_info_dao;
+import com.dao.service_village_county_info_dao;
+import com.dao.service_village_info_dao;
+import com.data.contact_person_department_info;
+import com.data.contact_person_info;
 import com.data.department_relationship_info;
 import com.data.relationship_info;
+import com.data.service_village_county_info;
+import com.data.service_village_info;
 import com.mybatis.mybatis_connection_factory;
 
 
@@ -136,6 +144,75 @@ import com.mybatis.mybatis_connection_factory;
 			
 		}
 		
+		//添加四联联系人请求响应
+		@RequestMapping("contact/contact_person_add.do")
+		public void contact_person_add_request(
+				@RequestParam(value="contact_person_name")          String   contact_person_name,
+				@RequestParam(value="contact_person_department_id") int      contact_person_department_id
+				)
+		{
+			contact_person_info _contact_person_info=new contact_person_info();
+			_contact_person_info.set_contact_person_name(contact_person_name);
+			_contact_person_info.set_contact_person_department_id(contact_person_department_id);
+			
+			String contact_person_department_name;//四联联络人（机构）所属组织名称
+			
+			//根据组织id，映射组织名称
+			
+			switch (contact_person_department_id) 
+			{
+			case 1:contact_person_department_name="市委常委";                 break;
+			case 2:contact_person_department_name="市政府 ";                  break;
+			case 3:contact_person_department_name="乡镇办党（工）委";           break;
+			case 4:contact_person_department_name="市直能部门";                break;
+			case 5:contact_person_department_name=" 农村（社区）党员干部";       break;
+			case 6:contact_person_department_name="镇办内设机构和基层站所   ";   break;
+			case 7:contact_person_department_name="党员群众服务中心嘉言民生代办员";break;
+			case 8:contact_person_department_name="农村(社区)党员组织";         break;
+			case 9:contact_person_department_name="村民小组";                 break;
+			case 10:contact_person_department_name="农村（社区）事务";          break;
+			case 11:contact_person_department_name="群众";                   break;
+
+			default:contact_person_department_name="输入错误";
+				    System.out.println("error");break;//不在列举范围之内，说明数据传输出错
+			}
+			
+			_contact_person_info.set_contact_person_department_name(contact_person_department_name);
+			
+			//添加系统时间
+			   Date date=new Date();
+			   DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			   String contact_person_addtime=format.format(date);
+			   _contact_person_info.set_contact_person_addtime(contact_person_addtime);
+			   //插入数据库
+			  contact_person_insert_db(_contact_person_info);
+		}
+		
+		//四联服务人员部门添加响应页
+		@RequestMapping("contact/contact_person_department_add.do")
+		public void contact_person_add_request(
+				@RequestParam(value="contact_person_department_id")          int    contact_person_department_id,
+				@RequestParam(value="contact_person_department_name")        String contact_person_department_name
+				)
+		{
+			contact_person_department_info _contact_person_department_info=new contact_person_department_info();
+			_contact_person_department_info.set_contact_person_department_id(contact_person_department_id);
+			_contact_person_department_info.set_contact_person_department_name(contact_person_department_name);
+			
+			contact_person_department_insert_db(_contact_person_department_info);
+		}
+		
+		@RequestMapping("contact/contact_person_check.do")
+		public ModelAndView contact_person_check_request()
+		{
+			 ModelAndView mv=new ModelAndView("index");
+			   //根据组织机构id分组，得到全部四联人员信息的二维数组
+			   List<List<contact_person_info>> contact_list=get_contact_list_by_department();
+			   mv.addObject("contact_list", contact_list);
+			   return mv;
+		}
+//-----------------－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+		
 		//发起任务时，将任务信息加入数据库
 		private boolean relationship_insert_db(relationship_info _relationship_info)  
 		{
@@ -228,6 +305,47 @@ import com.mybatis.mybatis_connection_factory;
 			System.out.println(xmlStr);
 			
 			return xmlStr;
+		}
+		
+   //四联人员或组织信息表数据库功能函数
+		
+		//人员插入数据库
+		private boolean contact_person_insert_db(contact_person_info _contact_person_info)  
+		{
+			contact_person_info_dao _contact_person_info_dao=new contact_person_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			
+			boolean rs=_contact_person_info_dao.insert(_contact_person_info);
+			return rs;
+		}
+	
+	   //组织插入数据库
+		private boolean contact_person_department_insert_db(contact_person_department_info _contact_person_department_info)
+		{
+			contact_person_department_info_dao _contact_person_department_info_dao=new contact_person_department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			
+			boolean rs=_contact_person_department_info_dao.insert(_contact_person_department_info);
+			return rs;
+		}
+		
+		//根据组织机构分组，查询全部四联人员信息
+		
+		private List<List<contact_person_info>> get_contact_list_by_department()
+		{
+			contact_person_info_dao _contact_person_info_dao=new contact_person_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			contact_person_department_info_dao _contact_person_department_info_dao=new contact_person_department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			
+			 List<List<contact_person_info>> person_list=new ArrayList<List<contact_person_info>>();
+			 
+			 List<contact_person_department_info> contact_person_department_list=_contact_person_department_info_dao.select_all();
+			 
+			 for(contact_person_department_info _county_info:contact_person_department_list)
+			 {
+				 int contact_person_department_id=_county_info.get_contact_person_department_id();
+				 List<contact_person_info> person_info_list=_contact_person_info_dao.get_contact_person_info_list_by_department_id(contact_person_department_id);
+				 person_list.add(person_info_list);
+			 }
+			 
+			 return person_list;
 		}
 		
 

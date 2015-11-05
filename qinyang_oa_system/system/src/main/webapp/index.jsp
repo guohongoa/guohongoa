@@ -28,12 +28,12 @@
         </div>
         <!--右侧导航部分-->
         <div class="menu">
-            <form id="login" action="dl/dlsy.html" method="post">
+            <form id="login" action="login.do" method="post">
                 <i></i><lable for="uname">用户名</lable>
-                <input id="uname" class="input100" name="uname" type="text"/>
+                <input id="uname" class="input100" name="user_name" type="text"/>
                 <i class="mimatu"></i><lable for="password" >密码</lable>
-                <input id="password" class="input100" name="password" type="password"/>
-                <input id="login_btn"  type="button" value="登录"/>
+                <input id="password" class="input100" name="user_password" type="password"/>
+                <input id="login_btn"  type="submit" value="登录"/>
             </form>
             <div class="login-error"></div>
         </div>
