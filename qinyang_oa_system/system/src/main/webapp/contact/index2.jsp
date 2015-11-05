@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -56,57 +56,238 @@
         <!--第一列-->
         <div class="silione">
             <span><i></i><b></b></span>
-            <c:forEach var="contact_person_info_list" items="${contact_list}">
-            <c:choose>
-             <c:when test="${contact_person_info_list.get(0).get_contact_person_department_id()==7}">
-                 <div class="swcw sili_content1">
-            </c:when>
-             <c:when test="${contact_person_info_list.get(0).get_contact_person_department_id()==1}">
-                 <div class="swcw sili_content2">
-            </c:when>
-            <c:when test="${contact_person_info_list.get(0).get_contact_person_department_id()==3}">
-                 <div class="swcw sili_content3">
-            </c:when>
-            <c:when test="${contact_person_info_list.get(0).get_contact_person_department_id()==5}">
-                 <div class="swcw sili_content4">
-            </c:when>
-            <c:when test="${contact_person_info_list.get(0).get_contact_person_department_id()==8}">
-                 <div class="swcw sili_content5">
-            </c:when>
-             <c:when test="${contact_person_info_list.get(0).get_contact_person_department_id()==11}">
-                 <div class="swcw sili_content6">
-            </c:when>
-             <c:when test="${contact_person_info_list.get(0).get_contact_person_department_id()==9}">
-                 <div class="swcw sili_content7">
-            </c:when>
-             <c:when test="${contact_person_info_list.get(0).get_contact_person_department_id()==2}">
-                 <div class="swcw sili_content8">
-            </c:when>
-            <c:when test="${contact_person_info_list.get(0).get_contact_person_department_id()==4}">
-                 <div class="swcw sili_content9">
-            </c:when>
-            <c:when test="${contact_person_info_list.get(0).get_contact_person_department_id()==6}">
-                 <div class="swcw sili_content10">
-            </c:when>
-            <c:otherwise>
-                 <div class="swcw sili_content11">
-            </c:otherwise>
-            </c:choose>
+            <div class="swcw sili_content1">
                 <h4> 党员群众服务中心<br>嘉言民生代办员</h4>
                 <div>
                     <ul>
-                     <c:forEach var="contact_person_info" items="${contact_person_info_list}">
-                        <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
-                     </c:forEach>
+                         <c:forEach var="contact_person_info" items="${contact_info_list1}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                        <li class="pop">
+                            <ul>
+                                <li><a href="">代办员1</a></li>
+                                <li><a href="">代办员2</a></li>
+                                <li><a href="">代办员3</a></li>
+                                <li><a href="">代办员4</a></li>
+                                <li><a href="">代办员5</a></li>
+                                <li><a href="">代办员6</a></li>
+                                <li><a href="">代办员7</a></li>
+                                <li><a href="">代办员8</a></li>
+                                <li><a href="">代办员9</a></li>
+                                <li><a href="">代办员10</a></li>
+                            </ul>
+                            <p class="clear"><a href="" class="openclose">收起</a></p>
+                        </li>
                     </ul>
                     <p class="clear"><a href="" class="closeopen">展开</a></p>
                     <i></i>
                 </div>
 
             </div>
-            </c:forEach>
         </div>
-  </div>>
+        <!--第二列-->
+        <div>
+            <div class="swcw sili_content2">
+                <h4>市委常委</h4>
+                <div>
+                    <ul>
+                        <c:forEach var="contact_person_info" items="${contact_info_list2}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                        <li class="pop">
+                            <ul>
+                                <li><a href="">常委</a></li>
+                            </ul>
+                            <p class="clear"><a href="" class="openclose">收起</a></p>
+                        </li>
+                    </ul>
+                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <i></i>
+                    <b></b>
+                    <em></em>
+                </div>
+
+            </div>
+            <div class="swcw sili_content3">
+                <h4>乡镇办党（工）委</h4>
+                <div>
+                    <ul>
+                         <c:forEach var="contact_person_info" items="${contact_info_list3}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                        <li class="pop">
+                            <ul>
+                                <li><a href="">党员委</a></li>
+                            </ul>
+                            <p class="clear"><a href="" class="openclose">收起</a></p>
+                        </li>
+                    </ul>
+                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <i></i>
+                    <b></b>
+                    <em></em>
+                </div>
+
+            </div>
+            <div class="swcw sili_content4">
+                <h4>农村（社区）党员干部</h4>
+                <div>
+                    <ul>
+                         <c:forEach var="contact_person_info" items="${contact_info_list4}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                        <li class="pop">
+                            <ul>
+                                <li><a href="">党员干部</a></li>
+                            </ul>
+                            <p class="clear"><a href="" class="openclose">收起</a></p>
+                        </li>
+                    </ul>
+                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <b></b>
+                    <em></em>
+                    <i></i>
+                    <sub></sub>
+                    <sup></sup>
+
+                </div>
+
+            </div>
+            <div class="swcw sili_content5">
+                <h4>农村（社区）党员组织</h4>
+                <div>
+                    <ul>
+                         <c:forEach var="contact_person_info" items="${contact_info_list5}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                        <li class="pop">
+                            <ul>
+                                <li><a href="">党员</a></li>
+                            </ul>
+                            <p class="clear"><a href="" class="openclose">收起</a></p>
+                        </li>
+                    </ul>
+                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <i></i>
+                </div>
+            </div>
+            <div class="swcw sili_content6">
+                <h4>群众</h4>
+                <div>
+                    <ul>
+                         <c:forEach var="contact_person_info" items="${contact_info_list6}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                        <li class="pop">
+                            <ul>
+                                <li><a href="">群众</a></li>
+                            </ul>
+                            <p class="clear"><a href="" class="openclose">收起</a></p>
+                        </li>
+                    </ul>
+                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <i></i>
+                    <b></b>
+                </div>
+            </div>
+        </div>
+        <!--第三列-->
+        <div>
+            <div class="swcw sili_content7">
+                <h4>村民小组</h4>
+               <div>
+                   <ul>
+                       <c:forEach var="contact_person_info" items="${contact_info_list7}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                       <li class="pop">
+                           <ul>
+                               <li><a href="">小组</a></li>
+                           </ul>
+                           <p class="clear"><a href="" class="openclose">收起</a></p>
+                       </li>
+                   </ul>
+                   <p class="clear"><a href="" class="closeopen">...展开</a></p>
+               </div>
+            </div>
+        </div>
+        <!--第四列-->
+        <div>
+            <div class="swcw sili_content8">
+                <h4>市政府</h4>
+                <div>
+                    <ul>
+                         <c:forEach var="contact_person_info" items="${contact_info_list8}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                        <li class="pop">
+                            <ul>
+                                <li><a href="">市政府</a></li>
+                            </ul>
+                            <p class="clear"><a href="" class="openclose">收起</a></p>
+                        </li>
+                    </ul>
+                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <i></i>
+                </div>
+            </div>
+            <div class="swcw sili_content9">
+                <h4>市直能部门</h4>
+                <div>
+                    <ul>
+                         <c:forEach var="contact_person_info" items="${contact_info_list9}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                        <li class="pop">
+                            <ul>
+                                <li><a href="">市职能</a></li>
+                            </ul>
+                            <p class="clear"><a href="" class="openclose">收起</a></p>
+                        </li>
+                    </ul>
+                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <i></i>
+                </div>
+            </div>
+            <div class="swcw sili_content10">
+                <h4>乡镇办内设机<br>构和基层站所</h4>
+                <div>
+                    <ul>
+                         <c:forEach var="contact_person_info" items="${contact_info_list10}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                        <li class="pop">
+                            <ul>
+                                <li><a href="">乡镇办</a></li>
+                            </ul>
+                            <p class="clear"><a href="" class="openclose">收起</a></p>
+                        </li>
+                    </ul>
+                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                </div>
+            </div>
+
+            <div class="swcw sili_content11">
+                <h4>农村（社区）事物</h4>
+                <div>
+                    <ul>
+                         <c:forEach var="contact_person_info" items="${contact_info_list11}">
+                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                        </c:forEach>
+                        <li class="pop">
+                            <ul>
+                                <li><a href="">党员</a></li>
+                            </ul>
+                            <p class="clear"><a href="" class="openclose">收起</a></p>
+                        </li>
+                    </ul>
+                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>

@@ -17,7 +17,7 @@
 	</insert>
 
 	<select id="select_all" resultMap="result">
-		SELECT * FROM contact_person_info;
+		SELECT * FROM contact_person_department_info;
 	</select>
 
 </mapper>

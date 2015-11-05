@@ -208,7 +208,27 @@ import com.mybatis.mybatis_connection_factory;
 			 ModelAndView mv=new ModelAndView("index2");
 			   //根据组织机构id分组，得到全部四联人员信息的二维数组
 			   List<List<contact_person_info>> contact_list=get_contact_list_by_department();
-			   mv.addObject("contact_list", contact_list);
+			   
+			   for(List<contact_person_info >contact_info_list:contact_list)
+			   {
+				   switch(contact_info_list.get(0).get_contact_person_department_id())
+				   {
+					case 1: mv.addObject("contact_info_list2", contact_info_list);   break;
+					case 2: mv.addObject("contact_info_list8", contact_info_list);   break;
+					case 3: mv.addObject("contact_info_list3", contact_info_list);   break;
+					case 4: mv.addObject("contact_info_list9", contact_info_list);   break;
+					case 5: mv.addObject("contact_info_list4", contact_info_list);   break;
+					case 6: mv.addObject("contact_info_list10", contact_info_list);  break;
+					case 7: mv.addObject("contact_info_list1", contact_info_list);   break;
+					case 8: mv.addObject("contact_info_list5", contact_info_list);   break;
+					case 9: mv.addObject("contact_info_list7", contact_info_list);   break;
+					case 10:mv.addObject("contact_info_list11", contact_info_list);  break;
+					case 11:mv.addObject("contact_info_list6 ", contact_info_list);  break;
+
+					default:
+						    System.out.println("error");break;//不在列举范围之内，说明数据传输出错
+				   }
+			   }
 			   return mv;
 		}
 //-----------------－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
@@ -338,9 +358,10 @@ import com.mybatis.mybatis_connection_factory;
 			 
 			 List<contact_person_department_info> contact_person_department_list=_contact_person_department_info_dao.select_all();
 			 
-			 for(contact_person_department_info _county_info:contact_person_department_list)
+			 for(contact_person_department_info _department_info:contact_person_department_list)
 			 {
-				 int contact_person_department_id=_county_info.get_contact_person_department_id();
+				 System.out.println(_department_info.get_contact_person_department_name());
+				 int contact_person_department_id=_department_info.get_contact_person_department_id();
 				 List<contact_person_info> person_info_list=_contact_person_info_dao.get_contact_person_info_list_by_department_id(contact_person_department_id);
 				 person_list.add(person_info_list);
 			 }
