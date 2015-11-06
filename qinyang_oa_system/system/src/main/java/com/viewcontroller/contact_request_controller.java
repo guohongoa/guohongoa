@@ -52,7 +52,7 @@ import com.data.relationship_info;
 			   _relationship_info.set_relationship_addtime(relationship_addtime);
 			   //插入数据库
 			  //relationship_insert_db(_relationship_info);
-			  com.dbconector.contact_db_connector.relationship_insert_db(_relationship_info);
+			  com.dbconnector.contact_db_connector.relationship_insert_db(_relationship_info);
 			
 			
 			
@@ -88,7 +88,7 @@ import com.data.relationship_info;
 			   _department_relationship_info.set_department_relationship_addtime(department_relationship_addtime);
 			   //插入数据库
 			 //department_relationship_insert_db(_department_relationship_info);
-			  com.dbconector.contact_db_connector.department_relationship_insert_db(_department_relationship_info);
+			  com.dbconnector.contact_db_connector.department_relationship_insert_db(_department_relationship_info);
 			
 			
 			
@@ -107,12 +107,12 @@ import com.data.relationship_info;
 			//以输入上级部门id，查询所有对应关系
 			List<department_relationship_info> department_relationship_list=new ArrayList<department_relationship_info>();
 			
-			List<department_relationship_info> department_relationship_level1_list= com.dbconector.contact_db_connector.get_department_ralationship_list_by_upper_id(department_relationship_upper_id);
+			List<department_relationship_info> department_relationship_level1_list= com.dbconnector.contact_db_connector.get_department_ralationship_list_by_upper_id(department_relationship_upper_id);
 			
 			List<department_relationship_info> department_relationship_level2_list=new ArrayList<department_relationship_info>();
 			for(department_relationship_info dinfo1:department_relationship_level1_list)
 			{
-				department_relationship_level2_list.addAll( com.dbconector.contact_db_connector.get_department_ralationship_list_by_upper_id(dinfo1.get_department_relationship_downer_id()));
+				department_relationship_level2_list.addAll( com.dbconnector.contact_db_connector.get_department_ralationship_list_by_upper_id(dinfo1.get_department_relationship_downer_id()));
 			}
 			department_relationship_list.addAll(department_relationship_level2_list);
 			department_relationship_list.addAll(department_relationship_level1_list);
@@ -122,7 +122,7 @@ import com.data.relationship_info;
 			
 			
 			ModelAndView mv=new ModelAndView("department_relationship_check");
-			String xml= com.dbconector.contact_db_connector.convert_department_relationship_list_to_xml(department_relationship_list);
+			String xml= com.dbconnector.contact_db_connector.convert_department_relationship_list_to_xml(department_relationship_list);
 			mv.addObject("department_relationship_list", department_relationship_list);
 			mv.addObject("xml", xml);
 			return mv;
@@ -170,7 +170,7 @@ import com.data.relationship_info;
 			   String contact_person_addtime=format.format(date);
 			   _contact_person_info.set_contact_person_addtime(contact_person_addtime);
 			   //插入数据库
-			   com.dbconector.contact_db_connector.contact_person_insert_db(_contact_person_info);
+			   com.dbconnector.contact_db_connector.contact_person_insert_db(_contact_person_info);
 		}
 		
 		//四联服务人员部门添加响应页
@@ -184,7 +184,7 @@ import com.data.relationship_info;
 			_contact_person_department_info.set_contact_person_department_id(contact_person_department_id);
 			_contact_person_department_info.set_contact_person_department_name(contact_person_department_name);
 			
-			 com.dbconector.contact_db_connector.contact_person_department_insert_db(_contact_person_department_info);
+			 com.dbconnector.contact_db_connector.contact_person_department_insert_db(_contact_person_department_info);
 		}
 		
 		@RequestMapping("contact/contact_person_check.do")
@@ -192,7 +192,7 @@ import com.data.relationship_info;
 		{
 			 ModelAndView mv=new ModelAndView("index");
 			   //根据组织机构id分组，得到全部四联人员信息的二维数组
-			   List<List<contact_person_info>> contact_list= com.dbconector.contact_db_connector.get_contact_list_by_department();
+			   List<List<contact_person_info>> contact_list= com.dbconnector.contact_db_connector.get_contact_list_by_department();
 			   
 			   for(List<contact_person_info >contact_info_list:contact_list)
 			   {

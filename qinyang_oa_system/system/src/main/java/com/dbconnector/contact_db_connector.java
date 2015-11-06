@@ -1,4 +1,4 @@
-package com.dbconector;
+package com.dbconnector;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
