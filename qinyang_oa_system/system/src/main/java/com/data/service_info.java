@@ -3,7 +3,6 @@ package com.data;
 public class service_info 
 {
   private int     service_msgid;        //服务消息id
-  private int     service_category;     //安排／反馈 0为安排的服务，1为反馈的服务，2为收到的服务反馈
   private String  service_theme;        //服务主题
   private int     service_type;         //0为法政法规服务，1为经济发展服务，2为和谐稳定服务，3为环境卫生服务，4为文体活动服务
   private int     service_sender_id;    //服务发送人id
@@ -14,6 +13,12 @@ public class service_info
   private String  service_begintime;    //服务开始时间
   private String  service_endtime;      //服务截至时间
   private String  service_content;      //服务的内容
+  private String  service_sender_phone; //服务联系人电话
+  private String  service_target;       //服务目标
+  private int     service_status;       //服务审批状态 0为等待审批 1为已通过，2为未通过
+  private String  service_comment;      //服务审批评语
+  private int     service_village_id;   //所属村庄id
+  private String  service_village_name; //所属村庄名称
   
   //类对象读写方法
   public int get_service_msgid()
@@ -24,17 +29,6 @@ public class service_info
   public void set_service_msgid(int service_msgid)
   {
 	  this.service_msgid=service_msgid;
-  }
-  
-  public int get_service_category()
-  {
-	  return this.service_category;
-	  
-  }
-  
-  public void set_service_category(int service_category)
-  {
-	  this.service_category=service_category;
   }
   
   public String get_service_theme()
@@ -135,5 +129,65 @@ public class service_info
   public void set_service_content(String service_content)
   {
 	  this.service_content=service_content;
+  }
+  
+  public String get_service_sender_phone()
+  {
+	  return this.service_sender_phone;
+  }
+  
+  public void set_service_sender_phone(String service_sender_phone)
+  {
+	  this.service_sender_phone=service_sender_phone;
+  }
+  
+  public String get_service_target()
+  {
+	  return this.service_target;
+  }
+  
+  public void set_service_target(String service_target)
+  {
+	  this.service_target=service_target;
+  }
+  
+  public int get_service_status()
+  {
+	  return this.service_status;
+  }
+  
+  public void set_service_status(int service_status)
+  {
+	  this.service_status=service_status;
+  }
+  
+  public String get_service_comment()
+  {
+	  return this.service_comment;
+  }
+  
+  public void set_service_comment(String service_comment)
+  {
+	  this.service_comment=service_comment;
+  }
+  
+  public int get_service_village_id()
+  {
+	  return this.service_village_id;
+  }
+  
+  public void set_service_village_id(int service_village_id)
+  {
+	  this.service_village_id=service_village_id;
+  }
+  
+  public String get_service_village_name()
+  {
+	  return this.service_village_name;
+  }
+  
+  public void set_service_village_name(String service_village_name)
+  {
+	  this.service_village_name=service_village_name;
   }
 }
