@@ -99,7 +99,7 @@
 <script src=""></script>
 </c:when>
 <c:otherwise>
-    <c:redirect url="../index1.jsp" />
+    <c:redirect url="../index.jsp" />
 </c:otherwise>
 </c:choose>
 </body>

@@ -75,7 +75,7 @@ import com.mybatis.mybatis_connection_factory;
 		}
 		
 		//五服务页面查询响应
-		@RequestMapping("service/service_check.do")
+		@RequestMapping("work/service_check.do")
 		public ModelAndView service_check_request(
 				 @RequestParam(value="service_category")  int service_category
 				)
@@ -83,7 +83,7 @@ import com.mybatis.mybatis_connection_factory;
 	      ModelAndView mv;
 		  System.out.println(service_category);
 		  switch (service_category) {
-		        case 0:mv=new ModelAndView("service_myservice_deploy"); break;
+		        case 0:mv=new ModelAndView("myservice"); break;
 		        case 1:mv=new ModelAndView("service_myservice_feedback"); break;
 		        case 2:mv=new ModelAndView("service_myservice_getfeedback"); break;
 

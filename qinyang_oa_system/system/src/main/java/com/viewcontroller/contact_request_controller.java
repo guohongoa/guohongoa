@@ -205,7 +205,7 @@ import com.mybatis.mybatis_connection_factory;
 		@RequestMapping("contact/contact_person_check.do")
 		public ModelAndView contact_person_check_request()
 		{
-			 ModelAndView mv=new ModelAndView("index2");
+			 ModelAndView mv=new ModelAndView("index");
 			   //根据组织机构id分组，得到全部四联人员信息的二维数组
 			   List<List<contact_person_info>> contact_list=get_contact_list_by_department();
 			   
