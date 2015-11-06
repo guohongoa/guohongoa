@@ -62,7 +62,7 @@ import com.mybatis.mybatis_connection_factory;
 			   String service_addtime=format.format(date);
 			   _service_info.set_service_addtime(service_addtime);
 			   
-			send_service_insert_db(_service_info);
+			com.dbconnector.service_db_connector.send_service_insert_db(_service_info);
 			
 			
 			//返回插入结果
@@ -92,7 +92,7 @@ import com.mybatis.mybatis_connection_factory;
 		   
 		   //得到查询所有条目的list
 		   
-		   List<service_info> service_info_list=get_service_info_list_by_service_category(service_category);
+		   List<service_info> service_info_list=com.dbconnector.service_db_connector.get_service_info_list_by_service_category(service_category);
 		   mv.addObject("service_info_list", service_info_list);
 		   return mv;
 		}
@@ -119,7 +119,7 @@ import com.mybatis.mybatis_connection_factory;
 			
 			
 			
-			del_service_from_id(service_msgid);
+			com.dbconnector.service_db_connector.del_service_from_id(service_msgid);
 			return mv;
 		 }
 		
@@ -135,7 +135,7 @@ import com.mybatis.mybatis_connection_factory;
 			_service_village_info.set_service_village_county_id(service_village_county_id);
 			
 			//利用乡镇id，查询乡镇name，插入village信息表
-			service_village_county_info _service_village_county_info=get_service_village_county_info_by_id(service_village_county_id);
+			service_village_county_info _service_village_county_info=com.dbconnector.service_db_connector.get_service_village_county_info_by_id(service_village_county_id);
 			String county_name=_service_village_county_info.get_service_village_county_name();
 			_service_village_info.set_service_village_county_name(county_name);
 			
@@ -147,7 +147,7 @@ import com.mybatis.mybatis_connection_factory;
 			   String service_village_addtime=format.format(date);
 			   _service_village_info.set_service_village_addtime(service_village_addtime);
 			   
-			  service_village_insert_db(_service_village_info);
+			  com.dbconnector.service_db_connector.service_village_insert_db(_service_village_info);
 			
 			
 			//返回插入结果
@@ -166,7 +166,7 @@ import com.mybatis.mybatis_connection_factory;
 		   
 		   
 		   //根据乡镇id分组，得到全部村庄信息的二维数组
-		   List<List<service_village_info>> village_list=get_village_list_by_county();
+		   List<List<service_village_info>> village_list=com.dbconnector.service_db_connector.get_village_list_by_county();
 		   mv.addObject("village_list", village_list);
 		   return mv;
 		}
@@ -189,7 +189,7 @@ import com.mybatis.mybatis_connection_factory;
 			   String service_village_county_addtime=format.format(date);
 			   _service_village_county_info.set_service_village_county_addtime(service_village_county_addtime);
 			   
-			  service_village_county_inset_db(_service_village_county_info);
+			  com.dbconnector.service_db_connector.service_village_county_inset_db(_service_village_county_info);
 			
 			
 			//返回插入结果
@@ -208,7 +208,7 @@ import com.mybatis.mybatis_connection_factory;
 		   
 		   //得到乡镇条目
 		   
-		   List<service_village_county_info> service_village_county_list=get_service_village_county_list();
+		   List<service_village_county_info> service_village_county_list=com.dbconnector.service_db_connector.get_service_village_county_list();
 		   mv.addObject("service_village_county_list", service_village_county_list);
 		   return mv;
 		}

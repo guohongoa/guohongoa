@@ -46,11 +46,11 @@ public class task_request_controller
 		   String task_addtime=format.format(date);
 		   _task_info.set_task_addtime(task_addtime);
 		   
-		send_task_insert_db(_task_info);
+		com.dbconnector.task_db_connector.send_task_insert_db(_task_info);
 		
 		
 		//显示数据库列表信息
-		List<task_info> task_info_list=get_task_info_list();
+		List<task_info> task_info_list=com.dbconnector.task_db_connector.get_task_info_list();
 		
 		 ModelAndView mv=new ModelAndView();
 		   mv.addObject("task_info_list",task_info_list);  
@@ -59,22 +59,4 @@ public class task_request_controller
 		   
 		   	
 	}
-	
-	//发起任务时，将任务信息加入数据库
-	private boolean send_task_insert_db(task_info _task_info)  
-	{
-		task_info_dao _task_info_dao=new task_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		
-		boolean rs=_task_info_dao.insert(_task_info);
-		return rs;
-	}
-	
-	 private List<task_info> get_task_info_list()
-	   {
-		   List<task_info> task_info_list;
-		   task_info_dao _task_info_dao=new task_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		   task_info_list=_task_info_dao.select_all();
-		   return task_info_list;
-		   
-	   }
 }
