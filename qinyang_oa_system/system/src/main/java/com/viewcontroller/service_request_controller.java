@@ -41,6 +41,7 @@ import com.data.service_village_info;
 			//初始化service_info对象
 			service_info _service_info=new service_info();
 			_service_info.set_service_sender(service_sender);
+			System.out.println(service_sender);
 			_service_info.set_service_sender_id(service_sender_id);
 			_service_info.set_service_receiver(service_receiver);
 			_service_info.set_service_receiver_id(service_receiver_id);

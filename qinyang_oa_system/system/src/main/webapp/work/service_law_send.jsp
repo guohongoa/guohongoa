@@ -74,7 +74,7 @@
                  <!--接受人对应id--><input type="hidden" name="service_receiver_id" value="123" />
                 <p><span>服务主题</span><input type="text" name="service_theme"/></p>
                 <p><span>服务类型</span><input type="text" value="法政法规服务" disabled="disabled"/></p>
-                <!--发送法政法规服务对应id--><input type="hidden" name="service_type" value＝"0" />
+                <!--发送法政法规服务对应id--><input type="hidden" name="service_type" value="0" />
                 <p><span>责任人</span><input type="text" name="service_sender" value="${user_name}" readonly="readonly"/></p>
                 <!--发送人对应id--><input type="hidden" name="service_sender_id" value="${user_id}" />
                 <p><span>联系电话</span><input type="text" value="12345678" name="service_sender_phone"/></p>
@@ -85,7 +85,7 @@
                  <!--五服务审批状态--><input type="hidden" name="service_status" value="0"> <!--初始状态均为未审批，值为0-->
                  <!--所属村庄id-->   <input type="hidden" name="service_village_id" value="1">
                  <!--所属村庄名称-->  <input type="hidden" name="service_village_name" value="致富村">
-                <p class="tztj_btn"><b class="login-error"></b><button>提交</button></p>
+                <p class="tztj_btn"><b class="login-error"></b><input type="submit" name="submit" value="提交"></p>
             </form>
         </div>
     </div>
