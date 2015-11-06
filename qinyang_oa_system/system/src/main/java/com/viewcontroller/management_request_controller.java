@@ -49,7 +49,7 @@ public class management_request_controller
 			 String regulation_addtime=format.format(date);
 			 _regulation_info.set_regulation_addtime(regulation_addtime);
 			   
-			 boolean rs=regulation_insert_db(_regulation_info);
+			 boolean rs=com.dbconnector.management_db_connector.regulation_insert_db(_regulation_info);
 			 
 			 ModelAndView mv=new ModelAndView();
 			 mv.addObject("result",rs);
@@ -69,7 +69,7 @@ public class management_request_controller
 		   
 		   //得到查询所有条目的list
 		   
-		   List<regulation_info> regulation_info_list=get_regulation_info_list();
+		   List<regulation_info> regulation_info_list=com.dbconnector.management_db_connector.get_regulation_info_list();
 		   mv.addObject("regulation_info_list", regulation_info_list);
 		   return mv;
 		}
@@ -105,7 +105,7 @@ public class management_request_controller
 			 String department_addtime=format.format(date);
 			 _department_info.set_department_addtime(department_addtime);
 			   
-			 boolean rs=department_insert_db(_department_info);
+			 boolean rs=com.dbconnector.management_db_connector.department_insert_db(_department_info);
 			 
 			 ModelAndView mv=new ModelAndView();
 			 mv.addObject("result",rs);
@@ -125,7 +125,7 @@ public class management_request_controller
 		   
 		   //得到查询所有条目的list
 		   
-		   List<department_info> department_info_list=get_department_info_list();
+		   List<department_info> department_info_list=com.dbconnector.management_db_connector.get_department_info_list();
 		   mv.addObject("department_info_list", department_info_list);
 		   return mv;
 		}
@@ -135,7 +135,7 @@ public class management_request_controller
 				 @RequestParam(value="department_id")    int department_id
 				 )
 		 {
-			del_department_from_id(department_id);
+			com.dbconnector.management_db_connector.del_department_from_id(department_id);
 		 }
 		
 		//-------------------------------------------------------------------------
@@ -177,7 +177,7 @@ public class management_request_controller
 			 String project_addtime=format.format(date);
 			 _project_info.set_project_addtime(project_addtime);
 			   
-			 boolean rs=project_insert_db(_project_info);
+			 boolean rs=com.dbconnector.management_db_connector.project_insert_db(_project_info);
 			 
 			 ModelAndView mv=new ModelAndView();
 			 mv.addObject("result",rs);
@@ -197,7 +197,7 @@ public class management_request_controller
 		   
 		   //得到查询所有条目的list
 		   
-		   List<project_info> project_info_list=get_project_info_list();
+		   List<project_info> project_info_list=com.dbconnector.management_db_connector.get_project_info_list();
 		   mv.addObject("project_info_list", project_info_list);
 		   return mv;
 		}
@@ -224,7 +224,7 @@ public class management_request_controller
 		   
 		   //得到查询所有条目的list
 		   
-		   List<project_info> project_info_list=get_project_info_list_by_project_status(project_status);
+		   List<project_info> project_info_list=com.dbconnector.management_db_connector.get_project_info_list_by_project_status(project_status);
 		   mv.addObject("project_info_list", project_info_list);
 		   return mv;
 		}
@@ -235,7 +235,7 @@ public class management_request_controller
 				 @RequestParam(value="project_id")    int project_id
 				 )
 		 {
-			del_project_from_id(project_id);
+			com.dbconnector.management_db_connector.del_project_from_id(project_id);
 		 }
 		
    //-------------------------------------------------------------------------------
@@ -279,7 +279,7 @@ public class management_request_controller
 			 String employee_addtime=format.format(date);
 			 _employee_info.set_employee_addtime(employee_addtime);
 			   
-			 boolean rs=employee_insert_db(_employee_info);
+			 boolean rs=com.dbconnector.management_db_connector.employee_insert_db(_employee_info);
 			 
 			 ModelAndView mv=new ModelAndView();
 			 mv.addObject("result",rs);
@@ -299,7 +299,7 @@ public class management_request_controller
 		   
 		   //得到查询所有条目的list
 		   
-		   List<employee_info> employee_info_list=get_employee_info_list();
+		   List<employee_info> employee_info_list=com.dbconnector.management_db_connector.get_employee_info_list();
 		   mv.addObject("employee_info_list", employee_info_list);
 		   return mv;
 		}
@@ -309,117 +309,13 @@ public class management_request_controller
 				 @RequestParam(value="employee_id")    int employee_id
 				 )
 		 {
-			del_employee_from_id(employee_id);
+			com.dbconnector.management_db_connector.del_employee_from_id(employee_id);
 		 }
 		
 	//-------------------------------------------------------------------------------
 		//制度管理数据库功能函数
 		
-		private boolean regulation_insert_db(regulation_info _regulation_info)
-		{
-			regulation_info_dao _regulation_info_dao=new regulation_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			
-			boolean regulationinsert_rs=_regulation_info_dao.insert(_regulation_info);
-			
-			return regulationinsert_rs;
-		}
 		
-		 private List<regulation_info> get_regulation_info_list()
-		   {
-			   List<regulation_info> regulation_info_list;
-			   regulation_info_dao _regulation_info_dao=new regulation_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			   regulation_info_list=_regulation_info_dao.select_all();
-			   return regulation_info_list;
-			   
-		   }
-		 
-		 //部门管理数据库功能函数
-		 
-		 private boolean department_insert_db(department_info _department_info)
-			{
-				department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-				
-				boolean department_insert_rs=_department_info_dao.insert(_department_info);
-				
-				return department_insert_rs; 
-				
-			}
-		 
-		 
-		 
-		 private List<department_info> get_department_info_list()
-		   {
-			   List<department_info> department_info_list;
-			   department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			   department_info_list=_department_info_dao.select_all();
-			   return department_info_list;
-			   
-		   }
-		 
-		 private void del_department_from_id(int department_id)
-		 {
-			 department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			 _department_info_dao.delete_from_id(department_id);
-		 }
-		 
-		 //项目管理数据库功能函数
-		 private boolean project_insert_db(project_info _project_info)
-			{
-				project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-				
-				boolean projectinsert_rs=_project_info_dao.insert(_project_info);
-				
-				return projectinsert_rs;
-			}
-		 
-		 private List<project_info> get_project_info_list()
-		   {
-			   List<project_info> project_info_list;
-			   project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			   project_info_list=_project_info_dao.select_all();
-			   return project_info_list;
-			   
-		   }
-		 
-		 //根据项目审批状态查询
-		 private List<project_info> get_project_info_list_by_project_status(int project_status)
-		 {
-			 List<project_info> project_info_list;
-			   project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			   project_info_list=_project_info_dao.select_by_project_status(project_status);
-			   return project_info_list;
-		 }
-		 
-		 private void del_project_from_id(int project_id)
-		 {
-			 project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			 _project_info_dao.delete_from_id(project_id);
-		 }
-		 
-		 //人员管理数据库功能函数
-		 private boolean employee_insert_db(employee_info _employee_info)
-			{
-				employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-				
-				boolean employeeinsert_rs=_employee_info_dao.insert(_employee_info);
-				
-				return employeeinsert_rs;
-			}
-		 
-		 private List<employee_info> get_employee_info_list()
-		   {
-			   List<employee_info> employee_info_list;
-			   employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			   employee_info_list=_employee_info_dao.select_all();
-			   return employee_info_list;
-			   
-		   }
-		 
-		 private void del_employee_from_id(int employee_id)
-		 {
-			 employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			 _employee_info_dao.delete_from_id(employee_id);
-		 }
 
 
 }

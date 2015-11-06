@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import com.dao.report_info_dao;
 import com.data.report_info;
-import com.mybatis.mybatis_connection_factory;
 
 @Controller
 public class report_request_controller 
@@ -45,11 +43,11 @@ public class report_request_controller
 		   String report_addtime=format.format(date);
 		   _report_info.set_report_addtime(report_addtime);
 		   
-		send_report_insert_db(_report_info);
+		com.dbconnector.report_db_connector.send_report_insert_db(_report_info);
 		
 		
 		//显示数据库列表信息
-		List<report_info> report_info_list=get_report_info_list();
+		List<report_info> report_info_list=com.dbconnector.report_db_connector.get_report_info_list();
 		
 		 ModelAndView mv=new ModelAndView();
 		   mv.addObject("report_info_list",report_info_list);  
@@ -59,21 +57,5 @@ public class report_request_controller
 		   	
 	}
 	
-	//发起任务时，将任务信息加入数据库
-	private boolean send_report_insert_db(report_info _report_info)  
-	{
-		report_info_dao _report_info_dao=new report_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		
-		boolean rs=_report_info_dao.insert(_report_info);
-		return rs;
-	}
 	
-	 private List<report_info> get_report_info_list()
-	   {
-		   List<report_info> report_info_list;
-		   report_info_dao _report_info_dao=new report_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		   report_info_list=_report_info_dao.select_all();
-		   return report_info_list;
-		   
-	   }
 }
