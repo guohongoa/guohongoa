@@ -43,6 +43,11 @@
 	<delete id="delete" parameterType="int">
         DELETE FROM service_info WHERE service_msgid = #{service_msgid};
     </delete>
+    
+    <select id="select_by_service_sender_id" parameterType="int"
+		resultMap="result">
+		SELECT * FROM service_info WHERE service_sender_id = #{service_sender_id}
+	</select>
 
 </mapper>
 

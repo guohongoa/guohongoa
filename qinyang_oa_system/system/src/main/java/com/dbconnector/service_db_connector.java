@@ -22,11 +22,11 @@ public class service_db_connector
 				return rs;
 			}
 			
-			public static List<service_info> get_service_info_list_by_service_category(int service_category)
+			public static List<service_info> get_service_info_list_by_service_sender_id(int service_sender_id)
 			   {
 				   List<service_info> service_info_list;
 				   service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-				   service_info_list=_service_info_dao.select_by_service_category(service_category);
+				   service_info_list=_service_info_dao.select_by_service_sender_id(service_sender_id);
 				   return service_info_list;
 				   
 			   }

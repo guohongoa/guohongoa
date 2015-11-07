@@ -9,6 +9,25 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
+<c:set var="service_type" scope="session" value="1"/>
+<c:choose>
+  <c:when test="${service_type==0}">
+      <c:set var="service_type_name" value="政策法规服务"/>
+  </c:when>
+  <c:when test="${service_type==1}">
+      <c:set var="service_type_name" value="经济发展服务"/>
+  </c:when>
+  <c:when test="${service_type==2}">
+      <c:set var="service_type_name" value="和谐稳定服务"/>
+  </c:when>
+  <c:when test="${service_type==3}">
+      <c:set var="service_type_name" value="环境卫生服务"/>
+  </c:when>
+  <c:when test="${service_type==4}">
+      <c:set var="service_type_name" value="文体活动服务"/>
+  </c:when>          
+</c:choose>
+
 <!--header为导航容器-->
 <div class="header">
     <!--头部header区域内容部分-->
@@ -56,7 +75,7 @@
     <div class="left_menu tzlb" style="height: 175px">
         <h3><a href="">五服务</a></h3>
         <ul>
-            <li><a href="" class="active">法政法规服务</a>
+            <li><a href="" class="active">${service_type_name}</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="" class="red">发起服务</a><i></i></dd>
@@ -67,14 +86,14 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">五服务</a>&gt;<span>法政法规服务</span></h4>
+        <h4><a href="">工作</a>&gt;<a href="">五服务</a>&gt;<span>${service_type_name}</span></h4>
         <div class="tztj">
             <form id="post_tz" action="send_service.do" method="post">
                 <p><span>汇报给</span><input class="input600" type="text" name="service_receiver"/></p>
                  <!--接受人对应id--><input type="hidden" name="service_receiver_id" value="123" />
                 <p><span>服务主题</span><input type="text" name="service_theme"/></p>
-                <p><span>服务类型</span><input type="text" value="法政法规服务" disabled="disabled"/></p>
-                <!--发送法政法规服务对应id--><input type="hidden" name="service_type" value="0" />
+                <p><span>服务类型</span><input type="text" value="${service_type_name}" disabled="disabled"/></p>
+                <!--发送法政法规服务对应id--><input type="hidden" name="service_type" value="${service_type}" />
                 <p><span>责任人</span><input type="text" name="service_sender" value="${user_name}" readonly="readonly"/></p>
                 <!--发送人对应id--><input type="hidden" name="service_sender_id" value="${user_id}" />
                 <p><span>联系电话</span><input type="text" value="12345678" name="service_sender_phone"/></p>
@@ -85,7 +104,7 @@
                  <!--五服务审批状态--><input type="hidden" name="service_status" value="0"> <!--初始状态均为未审批，值为0-->
                  <!--所属村庄id-->   <input type="hidden" name="service_village_id" value="1">
                  <!--所属村庄名称-->  <input type="hidden" name="service_village_name" value="致富村">
-                <p class="tztj_btn"><b class="login-error"></b><input type="submit" name="submit" value="提交"></p>
+                <p class="tztj_btn"><b class="login-error"></b><button>提交</button></p>
             </form>
         </div>
     </div>

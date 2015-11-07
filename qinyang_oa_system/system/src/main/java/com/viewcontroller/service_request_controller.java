@@ -76,25 +76,17 @@ import com.data.service_village_info;
 			   	
 		}
 		
-		//五服务页面查询响应
-		@RequestMapping("work/service_check.do")
-		public ModelAndView service_check_request(
-				 @RequestParam(value="service_category")  int service_category
+		//五服务根据用户id响应页面
+		@RequestMapping("work/service_check_by_user.do")
+		public ModelAndView service_checkk_by_user_request(
+				 @RequestParam(value="service_sender_id")  int service_sender_id
 				)
 		{
-	      ModelAndView mv;
-		  System.out.println(service_category);
-		  switch (service_category) {
-		        case 0:mv=new ModelAndView("myservice"); break;
-		        case 1:mv=new ModelAndView("service_myservice_feedback"); break;
-		        case 2:mv=new ModelAndView("service_myservice_getfeedback"); break;
-
-		default:mv=new ModelAndView();System.out.println("error"); break;
-		}
+	      ModelAndView mv=new ModelAndView("myservice");
 		   
 		   //得到查询所有条目的list
 		   
-		   List<service_info> service_info_list=com.dbconnector.service_db_connector.get_service_info_list_by_service_category(service_category);
+		   List<service_info> service_info_list=com.dbconnector.service_db_connector.get_service_info_list_by_service_sender_id(service_sender_id);
 		   mv.addObject("service_info_list", service_info_list);
 		   return mv;
 		}

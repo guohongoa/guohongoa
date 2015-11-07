@@ -55,16 +55,16 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		        return service_info_list;
 		 }
 		 
-		 public List<service_info> select_by_service_category(int service_category)
+		 public List<service_info> select_by_service_sender_id(int service_sender_id)
 		 {
 			 List<service_info> service_info_list=null;
 			 SqlSession session=this.sqlSessionFactory.openSession();
 			 try {
-		           service_info_list = session.selectList("service_info.select_by_service_category",service_category);
+		           service_info_list = session.selectList("service_info.select_by_service_sender_id",service_sender_id);
 		        } finally {
 		            session.close();
 		        }
-		        System.out.println("select_by_service_category() --> "+service_info_list);
+		        System.out.println("select_by_service_sender_id() --> "+service_info_list);
 		        return service_info_list;
 		 }
 		 
