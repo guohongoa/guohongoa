@@ -11,7 +11,7 @@ import com.data.service_info;
 
 public class service_info_dao 
 {
-private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
+    private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 	
 	public service_info_dao(SqlSessionFactory sqlSessionFactory) 
 	{

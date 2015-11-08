@@ -21,7 +21,7 @@ import com.data.service_village_info;
 	{
 		//接收服务发送表单信息
 		@RequestMapping("work/send_service.do")
-		public ModelAndView send_task_request(
+		public ModelAndView send_service_request(
 				@RequestParam(value="service_sender") String service_sender ,
 			    @RequestParam(value="service_sender_id") int service_sender_id,
 				@RequestParam(value="service_receiver") String service_receiver,

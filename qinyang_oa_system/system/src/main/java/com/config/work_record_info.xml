@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="work_record_info">
+
+	<resultMap id="result" type="work_record_info">
+		<result property="service_work_record_id" column="work_record_id" />
+		<result property="work_record_creater" column="work_record_creater" />
+		<result property="work_record_position" column="work_record_position" />
+		<result property="work_record_department" column="work_record_department" />
+		<result property="work_record_leader" column="work_record_leader" />
+		<result property="work_record_communist" column="work_record_communist" />
+		<result property="work_record_date" column="work_record_date" />
+		<result property="work_record_plan" column="work_record_plan" />
+		<result property="work_record_effect" column="work_record_effect" />
+		<result property="work_record_addtime" column="work_record_addtime" />
+		
+	</resultMap>
+
+	<insert id="insert" parameterType="work_record_info">
+		insert into
+		work_record_info(work_record_creater,work_record_position,work_record_department,work_record_leader,work_record_communist,work_record_date,work_record_plan,work_record_effect,work_record_addtime)
+		values(#{work_record_creater},#{work_record_position},#{work_record_department},#{work_record_leader},#{work_record_communist},#{work_record_date},#{work_record_plan},#{work_record_effect},#{work_record_addtime});
+	</insert>
+
+</mapper>
+
+
