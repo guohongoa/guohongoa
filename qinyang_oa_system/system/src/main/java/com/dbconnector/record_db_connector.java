@@ -25,4 +25,12 @@ public class record_db_connector
 		   record_info_list=_record_info_dao.select_by_work_record_creatorid(work_record_creatorid);
 		   return record_info_list;
 	}
+	
+	public static work_record_info get_work_record_info_by_work_record_id(int work_record_id)
+	{
+		work_record_info _work_record_info;
+		work_record_info_dao _record_info_dao=new work_record_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		_work_record_info=_record_info_dao.select_by_work_record_id(work_record_id);
+		return _work_record_info;
+	}
 }

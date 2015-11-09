@@ -30,6 +30,12 @@
 	<select id="select_by_work_record_creatorid" parameterType="int" resultMap="result">
 		SELECT * FROM work_record_info WHERE work_record_creatorid = #{work_record_creatorid};
 	</select>
+	
+	
+	
+	<select id="select_by_work_record_id" parameterType="int" resultMap="result">
+		SELECT * FROM work_record_info WHERE work_record_id = #{work_record_id};
+	</select>
 
 </mapper>
 

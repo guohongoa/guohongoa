@@ -56,4 +56,18 @@ public class work_record_info_dao
 	        System.out.println("select_by_work_record_creatorid() --> "+work_record_info_list);
 	        return work_record_info_list;
 	 }
+	 
+	 
+	 public work_record_info select_by_work_record_id(int work_record_id)
+	 {
+		 work_record_info _work_record_info=null;
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 _work_record_info= session.selectOne("work_record_info.select_by_work_record_id",work_record_id);
+		     }finally{
+	            session.close();
+	        }
+	        System.out.println("select_by_work_record_id --> "+_work_record_info.get_work_record_id());
+	        return _work_record_info;
+	 }
 }

@@ -66,7 +66,7 @@ public class record_request_controller
 		
 		//台账根据用户id响应页面
 				@RequestMapping("work/rocord_check_by_user.do")
-				public ModelAndView service_checkk_by_user_request(
+				public ModelAndView record_check_by_user_request(
 						 @RequestParam(value="work_record_creatorid")  int work_record_creatorid
 						)
 				{
@@ -77,5 +77,18 @@ public class record_request_controller
 				   List<work_record_info> work_record_info_list=com.dbconnector.record_db_connector.get_work_record_info_list_by_work_record_creatorid( work_record_creatorid);
 				   mv.addObject("work_record_info_list", work_record_info_list);
 				   return mv;
+				}
+	  
+		//根据台账id查询具体
+				
+				@RequestMapping("work/check_record_detail.do")
+				public ModelAndView check_record_detail_request(
+						@RequestParam(value="work_record_id") int work_record_id
+						)
+				{
+					ModelAndView mv=new ModelAndView("record_detail");
+					work_record_info _work_record_info=com.dbconnector.record_db_connector.get_work_record_info_by_work_record_id(work_record_id);
+					mv.addObject("work_record_info",_work_record_info);
+					return mv;
 				}
 }
