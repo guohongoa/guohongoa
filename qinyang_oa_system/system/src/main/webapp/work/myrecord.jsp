@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -57,46 +59,54 @@
             <li><a href="" class="active">全部台帐</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="#" class="red">添加台帐</a><i></i></dd>
-                    <dd><a href="" >修改台帐</a></dd>
-                    <dd><a href="">我的台帐</a></dd>
+                    <dd class="activea"><a href="#">添加台帐</a><i></i></dd>
+                    <dd><a href="">修改台帐</a></dd>
+                    <dd><a href="" class="red">我的台帐</a></dd>
                 </dl>
             </li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">台帐</a>&gt;<span>添加台帐</span></h4>
-        <!--需要提交给后台的数据-->
-        <div class="tztj">
-            <form id="post_tz" action="record_add.do" method="post">
-                <p><span>建账人</span><input class="input600" type="text" name="work_record_creator" value="${user_name}" readonly="readonly"/></p>
-                <!--自动提交建帐人用户id--><input type="hidden" name="work_record_creatorid" value="${user_id}"/>
-                <p><span>职务</span><input type="text" name="work_record_position" value="我的职务" readonly="readonly"/></p>
-                <p><span>所属部门</span><input type="text" name="work_record_department" value="我所属的部门" readonly="readonly"/></p>
-                <p><span>直接上级</span><input type="text" name="work_record_leader" value="我的上级" readonly="readonly"/></p>
-                <p><span style="line-height:15px">党员联系<br>人姓名</span><input type="text" name="work_record_communist"/></p>
-                <p><span>建账日期</span><input type="text" class="timedata" name="work_record_date"/></p>
-                <p><span >工作计划</span><textarea name="work_record_plan"></textarea></p>
-                <p><span>落实情况</span><textarea name="work_record_effect"></textarea></p>
-                <p class="tztj_btn"><b class="login-error"></b><button>提交</button></p>
-            </form>
+        <h4><a href="">工作</a>&gt;<a href="">台帐</a>&gt;<span>我的台帐</span>
+        </h4>
+        <div class="contentlist">
+            <ul class="contentlisttt tzlb_content">
+                <li>建账人</li>
+                <li>职务</li>
+                <li>所属部门</li>
+                <li>直接上级</li>
+                <li style="line-height: 20px">党员<br>联系人姓名</li>
+                <li>建账日期</li>
+                <li>内容</li>
+                <li>操作</li>
+            </ul>
+            <c:forEach var="work_record_info" items="${work_record_info_list}">
+            <ul class="tzlb_content">
+                <li>${work_record_info.get_work_record_creator()}</li>
+                <li>${work_record_info.get_work_record_position()}</li>
+                <li>${work_record_info.get_work_record_department()}</li>
+                <li>${work_record_info.get_work_record_leader()}</li>
+                <li>${work_record_info.get_work_record_communist()}</li>
+                <li>${work_record_info.get_work_record_date()}</li>
+                <li><a href="">详细</a></li>
+                <li><a href="">查看</a></li>
+            </ul>
+            </c:forEach>
         </div>
+    </div>
+    <div class="page">
+        <a href="" class="bulec">1</a>
+        <a href="">2</a>
+        <a href="">3</a>
+        <a href="">4</a>
+        <a href="">5</a>
+        <a href="">6</a>
+        <a href="">上一页</a>
+        <a href="">下一页</a>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
-<script src="http://101.200.196.121:8080/oa/js/My97DatePicker/WdatePicker.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
-<script>
-    //提交不为空的验证，后台无需操作
-    $(".tztj_btn button").click(function(){
-        if(!$("input").val() || !$("textarea").val()){
-            $(".login-error").html("提交不成功：信息填写不完整");
-            return false
-        }else{
-            $("#post_tz").submit();
-        }
-    });
-</script>
 </body>
 </html>

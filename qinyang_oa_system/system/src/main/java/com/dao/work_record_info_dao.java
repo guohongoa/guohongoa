@@ -1,5 +1,7 @@
 package com.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -38,5 +40,20 @@ public class work_record_info_dao
 	        {
 	        	return true;//插入成功
 	        }
+	 }
+	
+
+	//根据用户id查询台账信息
+	 public List<work_record_info> select_by_work_record_creatorid(int work_record_creatorid)
+	 {
+		 List<work_record_info> work_record_info_list=null;
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 work_record_info_list = session.selectList("work_record_info.select_by_work_record_creatorid",work_record_creatorid);
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("select_by_work_record_creatorid() --> "+work_record_info_list);
+	        return work_record_info_list;
 	 }
 }

@@ -78,7 +78,7 @@ import com.data.service_village_info;
 		
 		//五服务根据用户id响应页面
 		@RequestMapping("work/service_check_by_user.do")
-		public ModelAndView service_checkk_by_user_request(
+		public ModelAndView service_check_by_user_request(
 				 @RequestParam(value="service_sender_id")  int service_sender_id
 				)
 		{

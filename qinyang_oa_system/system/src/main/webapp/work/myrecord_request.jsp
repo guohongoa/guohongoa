@@ -7,12 +7,12 @@
 <head>
 </head> 
 <script language="javascript"> 
-setTimeout("document.service_check.submit()",10) 
+setTimeout("document.record_check.submit()",10) 
 </script> 
-<!-- 根据五服务发起者id筛选信息-->
+<!-- 提交检索部门信息-->
 <body > 
-<form name="service_check" method="post" action="service_check_by_user.do"> 
-   <input type="hidden" name="service_sender_id" value="${user_id}" />
+<form name="record_check" method="post" action="rocord_check_by_user.do"> 
+   <input type="hidden" name="work_record_creatorid" value="${user_id}" />
 </form> 
 </body> 
 </html>

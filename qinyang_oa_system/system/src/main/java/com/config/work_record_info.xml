@@ -6,8 +6,9 @@
 <mapper namespace="work_record_info">
 
 	<resultMap id="result" type="work_record_info">
-		<result property="service_work_record_id" column="work_record_id" />
-		<result property="work_record_creater" column="work_record_creater" />
+		<result property="work_record_id" column="work_record_id" />
+		<result property="work_record_creator" column="work_record_creator" />
+		<result property="work_record_creatorid" column="work_record_creatorid" />
 		<result property="work_record_position" column="work_record_position" />
 		<result property="work_record_department" column="work_record_department" />
 		<result property="work_record_leader" column="work_record_leader" />
@@ -21,9 +22,14 @@
 
 	<insert id="insert" parameterType="work_record_info">
 		insert into
-		work_record_info(work_record_creater,work_record_position,work_record_department,work_record_leader,work_record_communist,work_record_date,work_record_plan,work_record_effect,work_record_addtime)
-		values(#{work_record_creater},#{work_record_position},#{work_record_department},#{work_record_leader},#{work_record_communist},#{work_record_date},#{work_record_plan},#{work_record_effect},#{work_record_addtime});
+		work_record_info(work_record_creator,work_record_creatorid,work_record_position,work_record_department,work_record_leader,work_record_communist,work_record_date,work_record_plan,work_record_effect,work_record_addtime)
+		values(#{work_record_creator},#{work_record_creatorid},#{work_record_position},#{work_record_department},#{work_record_leader},#{work_record_communist},#{work_record_date},#{work_record_plan},#{work_record_effect},#{work_record_addtime});
 	</insert>
+	
+	
+	<select id="select_by_work_record_creatorid" parameterType="int" resultMap="result">
+		SELECT * FROM work_record_info WHERE work_record_creatorid = #{work_record_creatorid};
+	</select>
 
 </mapper>
 

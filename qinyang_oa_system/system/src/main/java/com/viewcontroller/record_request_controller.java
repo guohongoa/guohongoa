@@ -3,6 +3,7 @@ package com.viewcontroller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,10 +17,12 @@ import com.data.work_record_info;
 @Controller
 public class record_request_controller 
 {
-		//接收服务发送表单信息
+		//接收台账发送表单信息
 		@RequestMapping("work/record_add.do")
 		public ModelAndView record_add_request(
-				@RequestParam(value="work_record_creater")    String    work_record_creater ,    //台账建帐人
+				@RequestParam(value="work_record_creator")    String    work_record_creator ,    //台账建帐人
+				
+				@RequestParam(value="work_record_creatorid")   int       work_record_creatorid,  //台账建帐人id
 			    @RequestParam(value="work_record_position")   String    work_record_position,    //台账创建人职务
 				@RequestParam(value="work_record_department") String    work_record_department,  //台账创建人部门
 				@RequestParam(value="work_record_leader")     String    work_record_leader,      //台账创建人上级联系人
@@ -31,7 +34,8 @@ public class record_request_controller
 		{
 			//初始化work_record_info对象
 			work_record_info _work_record_info=new work_record_info();
-			_work_record_info.set_work_record_creater(work_record_creater);
+			_work_record_info.set_work_record_creator(work_record_creator);
+			_work_record_info.set_work_record_creatorid(work_record_creatorid);
 			_work_record_info.set_work_record_position(work_record_position);
 			_work_record_info.set_work_record_department(work_record_department);
 			_work_record_info.set_work_record_leader(work_record_leader);
@@ -59,4 +63,19 @@ public class record_request_controller
 			   
 			   	
 		}
+		
+		//台账根据用户id响应页面
+				@RequestMapping("work/rocord_check_by_user.do")
+				public ModelAndView service_checkk_by_user_request(
+						 @RequestParam(value="work_record_creatorid")  int work_record_creatorid
+						)
+				{
+			      ModelAndView mv=new ModelAndView("myrecord");
+				   
+				   //得到查询所有条目的list
+				   
+				   List<work_record_info> work_record_info_list=com.dbconnector.record_db_connector.get_work_record_info_list_by_work_record_creatorid( work_record_creatorid);
+				   mv.addObject("work_record_info_list", work_record_info_list);
+				   return mv;
+				}
 }

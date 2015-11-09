@@ -3,7 +3,8 @@ package com.data;
 public class work_record_info 
 {
   private int    work_record_id;         //台账记录id
-  private String work_record_creater;    //台账建帐人
+  private String work_record_creator;    //台账建帐人
+  private int    work_record_creatorid;    //台账建帐人id
   private String work_record_position;   //台账创建人职务
   private String work_record_department; //台账创建人部门
   private String work_record_leader;     //台账创建人上级联系人
@@ -23,14 +24,24 @@ public class work_record_info
 	  this.work_record_id=work_record_id;
   }
   
-  public String get_work_record_creater()
+  public String get_work_record_creator()
   {
-	  return this.work_record_creater;
+	  return this.work_record_creator;
   }
   
-  public void set_work_record_creater(String work_record_creater)
+  public void set_work_record_creator(String work_record_creator)
   {
-	  this.work_record_creater=work_record_creater;
+	  this.work_record_creator=work_record_creator;
+  }
+  
+  public int get_work_record_creatorid()
+  {
+	  return this.work_record_creatorid;
+  }
+  
+  public void set_work_record_creatorid(int work_record_creatorid)
+  {
+	  this.work_record_creatorid=work_record_creatorid;
   }
   
   public String get_work_record_position()
