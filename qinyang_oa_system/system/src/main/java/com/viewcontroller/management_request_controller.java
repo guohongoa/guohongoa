@@ -65,7 +65,7 @@ public class management_request_controller
 		public ModelAndView regulation_check_request()
 		{
 			
-		   ModelAndView mv=new ModelAndView("regulation_check");//页面重定向
+		   ModelAndView mv=new ModelAndView("regulation_check.jsp");//页面重定向
 		   
 		   //得到查询所有条目的list
 		   
@@ -121,7 +121,7 @@ public class management_request_controller
 		public ModelAndView department_check_request()
 		{
 			
-		   ModelAndView mv=new ModelAndView("department_check");//页面重定向
+		   ModelAndView mv=new ModelAndView("department_check.jsp");//页面重定向
 		   
 		   //得到查询所有条目的list
 		   
@@ -193,7 +193,7 @@ public class management_request_controller
 		public ModelAndView project_check_request()
 		{
 			
-		   ModelAndView mv=new ModelAndView("project_total_check");//页面重定向
+		   ModelAndView mv=new ModelAndView("project_total_check.jsp");//页面重定向
 		   
 		   //得到查询所有条目的list
 		   
@@ -214,9 +214,9 @@ public class management_request_controller
 		   System.out.println(project_status);
 		   switch (project_status) 
 		   {
-		      case 0: mv=new ModelAndView("project_waiting_check");break;//未审批请求，返回未审批页面
-		      case 1: mv=new ModelAndView("project_approved_check");break;//已审批请求，返回已审批页面
-		      case 2: mv=new ModelAndView("project_refused_check");break;//未通过请求，返回未通过页面
+		      case 0: mv=new ModelAndView("project_waiting_check.jsp");break;//未审批请求，返回未审批页面
+		      case 1: mv=new ModelAndView("project_approved_check.jsp");break;//已审批请求，返回已审批页面
+		      case 2: mv=new ModelAndView("project_refused_check.jsp");break;//未通过请求，返回未通过页面
 
 		      default:mv=new ModelAndView();break;
 		    }
@@ -295,7 +295,7 @@ public class management_request_controller
 		public ModelAndView employee_check_request()
 		{
 			
-		   ModelAndView mv=new ModelAndView("employee_check");//页面重定向
+		   ModelAndView mv=new ModelAndView("employee_check.jsp");//页面重定向
 		   
 		   //得到查询所有条目的list
 		   

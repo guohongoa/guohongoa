@@ -27,7 +27,7 @@ public class systeminfo_request_controller
 		
 	  system_user_info db_user_info=get_system_user_inf_by_user_name(user_name);
 	  
-	  ModelAndView mv=new ModelAndView("login/login_process");
+	  ModelAndView mv=new ModelAndView("login/login_process.jsp");
 	  
 	  
 	  if(db_user_info!=null)
@@ -63,7 +63,7 @@ public class systeminfo_request_controller
 	@RequestMapping("logout.do")
 	public ModelAndView logout_request()
 	{
-		ModelAndView mv=new ModelAndView("logout/index");
+		ModelAndView mv=new ModelAndView("logout/index.jsp");
 		return mv;
 	}
   

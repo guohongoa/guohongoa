@@ -64,13 +64,6 @@
             <ul>
                 <c:forEach var="service_village_info" items="${service_village_info_list}">
                 <li>
-                <!-- <form name='check_service_detail_form' action='check_service_detail_by_service_village_id.do' method='post'>
-                    
-                     <input type='hidden' name='service_village_id' value='${service_village_info.get_service_village_id()}'/> 
-                     <input type='hidden' name="service_type" value='0'/>
-                     <a href='javascript:document.check_service_detail_form.submit();'>${service_village_info.get_service_village_name()}</a>
-                  </form>    
-                -->
                   <a href="check_service_detail_request.jsp?service_village_id=${service_village_info.get_service_village_id()}&service_type=0">${service_village_info.get_service_village_name()}</a>
                 </li>
                 </c:forEach>

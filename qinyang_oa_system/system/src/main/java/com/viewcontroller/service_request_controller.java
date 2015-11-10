@@ -104,9 +104,9 @@ import com.data.work_record_info;
 			ModelAndView mv;
 			switch (service_category) 
 			   {
-			      case 0: mv=new ModelAndView("check_service_deploy_request");break;//未审批请求，返回未审批页面
-			      case 1: mv=new ModelAndView("check_service_feedback_request");break;//已审批请求，返回已审批页面
-			      case 2: mv=new ModelAndView("check_service_getfeedback_request");break;//未通过请求，返回未通过页面
+			      case 0: mv=new ModelAndView("check_service_deploy_request.jsp");break;//未审批请求，返回未审批页面
+			      case 1: mv=new ModelAndView("check_service_feedback_request.jsp");break;//已审批请求，返回已审批页面
+			      case 2: mv=new ModelAndView("check_service_getfeedback_request.jsp");break;//未通过请求，返回未通过页面
 
 			      default:mv=new ModelAndView();break;
 			    }
@@ -157,7 +157,7 @@ import com.data.work_record_info;
 		@RequestMapping("service/service_village_check.do")
 		public ModelAndView service_village_check_request()
 		{
-	      ModelAndView mv=new ModelAndView("index");
+	      ModelAndView mv=new ModelAndView("index.jsp");
 		   
 		   
 		   //根据乡镇id分组，得到全部村庄信息的二维数组
@@ -199,7 +199,7 @@ import com.data.work_record_info;
 		@RequestMapping("service/service_county_check.do")
 		public ModelAndView service_county_check_request()
 		{
-	      ModelAndView mv=new ModelAndView("service_village_add");
+	      ModelAndView mv=new ModelAndView("service_village_add.jsp");
 		   
 		   //得到乡镇条目
 		   
@@ -216,7 +216,7 @@ import com.data.work_record_info;
 				@RequestParam(value="service_type")  int service_type
 	    )
 		{
-			ModelAndView mv=new ModelAndView("service_detail_by_village&type");
+			ModelAndView mv=new ModelAndView("service_detail_by_village&type.jsp?service_village_id="+service_village_id+"&service_type="+service_type);
 			//System.out.println("output1:"+service_type);
 			//System.out.println("output2:"+service_village_id);
 			

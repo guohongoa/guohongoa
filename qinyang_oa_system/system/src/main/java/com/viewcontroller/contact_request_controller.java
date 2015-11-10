@@ -88,7 +88,7 @@ import com.data.relationship_info;
 			
 			
 			
-			 ModelAndView mv=new ModelAndView("department_relationship_add");
+			 ModelAndView mv=new ModelAndView("department_relationship_add.jsp");
 			  
 			   
 			   return mv;
@@ -116,7 +116,7 @@ import com.data.relationship_info;
 			
 			
 			
-			ModelAndView mv=new ModelAndView("department_relationship_check");
+			ModelAndView mv=new ModelAndView("department_relationship_check.jsp");
 			String xml= com.dbconnector.contact_db_connector.convert_department_relationship_list_to_xml(department_relationship_list);
 			mv.addObject("department_relationship_list", department_relationship_list);
 			mv.addObject("xml", xml);
@@ -185,7 +185,7 @@ import com.data.relationship_info;
 		@RequestMapping("contact/contact_person_check.do")
 		public ModelAndView contact_person_check_request()
 		{
-			 ModelAndView mv=new ModelAndView("index");
+			 ModelAndView mv=new ModelAndView("index.jsp");
 			   //根据组织机构id分组，得到全部四联人员信息的二维数组
 			   List<List<contact_person_info>> contact_list= com.dbconnector.contact_db_connector.get_contact_list_by_department();
 			   

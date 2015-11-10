@@ -70,7 +70,7 @@ public class record_request_controller
 						 @RequestParam(value="work_record_creatorid")  int work_record_creatorid
 						)
 				{
-			      ModelAndView mv=new ModelAndView("myrecord");
+			      ModelAndView mv=new ModelAndView("myrecord.jsp");
 				   
 				   //得到查询所有条目的list
 				   
@@ -86,7 +86,7 @@ public class record_request_controller
 						@RequestParam(value="work_record_id") int work_record_id
 						)
 				{
-					ModelAndView mv=new ModelAndView("record_detail");
+					ModelAndView mv=new ModelAndView("record_detail.jsp");
 					work_record_info _work_record_info=com.dbconnector.record_db_connector.get_work_record_info_by_work_record_id(work_record_id);
 					mv.addObject("work_record_info",_work_record_info);
 					return mv;
