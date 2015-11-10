@@ -10,8 +10,9 @@
    setTimeout("document.form1.submit()",10) 
 </script> 
 <body > 
-<!--查询所有镇名称-->
-<form name="form1" method="post" action="service_county_check.do">
+<form name="form1" method="post" action="check_service_detail_by_service_village_id.do"> 
+     <input type='hidden' name='service_village_id' value='${param.service_village_id}'/> 
+     <input type='hidden' name='service_type' value='${param.service_type}'/> 
 </form> 
 </body> 
 </html> 

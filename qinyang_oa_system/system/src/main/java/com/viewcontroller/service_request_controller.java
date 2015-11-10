@@ -217,6 +217,9 @@ import com.data.work_record_info;
 	    )
 		{
 			ModelAndView mv=new ModelAndView("service_detail_by_village&type");
+			//System.out.println("output1:"+service_type);
+			//System.out.println("output2:"+service_village_id);
+			
 			
 			service_info _service_info=new service_info();
 			_service_info.set_service_village_id(service_village_id);

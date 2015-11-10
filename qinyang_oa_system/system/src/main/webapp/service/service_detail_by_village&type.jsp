@@ -75,7 +75,7 @@
                 <li>操作</li>
             </ul>
             <!-- 循环对应村和类型五服务信息 -->
-            <c:forEach var="service_village_info_list" items="${village_list}">
+            <c:forEach var="service_info" items="${service_info_list}">
             <ul class="wufuwu">
                 <li class="lg_li">${service_info.get_service_theme()}</li>
                 <li>${service_info.get_service_sender()}</li>

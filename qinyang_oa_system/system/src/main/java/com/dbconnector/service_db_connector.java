@@ -35,6 +35,8 @@ public class service_db_connector
 			public static List<service_info> get_service_info_list_by_service_village_id_and_service_type(service_info _service_info)
 			   {
 				   List<service_info> service_info_list;
+				   //System.out.println("output3:"+_service_info.get_service_village_id());
+				   //System.out.println("output4:"+_service_info.get_service_type());
 				   service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 				   service_info_list=_service_info_dao.select_by_service_village_id_and_service_type(_service_info);
 				   return service_info_list;

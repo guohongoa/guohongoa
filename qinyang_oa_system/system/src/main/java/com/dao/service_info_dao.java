@@ -75,11 +75,13 @@ public class service_info_dao
 			 List<service_info> service_info_list=null;
 			 SqlSession session=this.sqlSessionFactory.openSession();
 			 try {
-		           service_info_list = session.selectList("service_info.select_by_service_village_id_and_service_type",_service_info);
+				     System.out.println("output5:"+_service_info.get_service_village_id());
+				     System.out.println("output6:"+_service_info.get_service_type()); 
+				  service_info_list = session.selectList("service_info.select_by_service_village_id_and_service_type",_service_info);
 		        } finally {
 		            session.close();
 		        }
-		        System.out.println("select_by_service_village_id() --> "+service_info_list);
+		        System.out.println("select_by_service_village_id_and_service_type --> "+service_info_list);
 		        return service_info_list;
 		 }
 		 
