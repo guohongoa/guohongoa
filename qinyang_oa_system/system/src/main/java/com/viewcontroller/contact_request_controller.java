@@ -208,6 +208,8 @@ import com.data.relationship_info;
 					default:
 						    System.out.println("error");break;//不在列举范围之内，说明数据传输出错
 				   }
+				   
+				   mv.addObject("is_request",1);
 			   }
 			   return mv;
 		}

@@ -8,15 +8,9 @@
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
     <!--判断是否登陆  -->
-    <c:choose>
-       <c:when test="${not empty user_name}">
-       </c:when>
-       <c:otherwise>
-       </c:otherwise>
-    </c:choose>
+    
 </head>
-<body style="background-color: #e5e5e5">
-
+<body style="background-color: #e5e5e5"> 
 <!--nav为导航容器-->
 <div class="header">
     <!--头部导航nav区域内容部分-->
@@ -27,7 +21,9 @@
             <span></span>
         </div>
         <!--右侧导航部分-->
-        <div class="menu">
+        <c:choose>
+        <c:when test="${empty user_name}">
+           <div class="menu">
             <form id="login" action="login.do" method="post">
                 <i></i><lable for="uname">用户名</lable>
                 <input id="uname" class="input100" name="user_name" type="text"/>
@@ -36,9 +32,28 @@
                 <input id="login_btn"  type="submit" value="登录"/>
             </form>
             <div class="login-error"></div>
-        </div>
+          </div>
+        </c:when>
+        <c:otherwise>
+               <div class="menu">
+                  <ul>
+                     <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
+                     <li><a href=""><i class="icon"></i>设置</a></li>
+                     <li><a href=""><i></i>退出</a></li>
+                  </ul>
+               <div>
+                   <ul class="hide">
+                    <li><a href="">你有<span>1</span>条工作提醒</a></li>
+                    <li><a href="">你有<span>2</span>条服务提醒</a></li>
+                    <li class="bordernone"><a href="">你有<span>3</span>条带审核记录</a></li>
+                   </ul>
+               </div>
+            </div>
+        </c:otherwise>
+        </c:choose>
     </div>
 </div>
+ 
 <!--主体-->
 <!--section为主体容器-->
 <div class="section clear">
@@ -47,8 +62,8 @@
         <!--第一行-->
         <div class="section_content_row">
             <!--第一行第一列 四联模块-->
-            <div class="mokuai mokuail">
-                <a class="mokuaitu">
+            <div class="mokuai mokuail" >
+                <a class="mokuaitu" href="contact/">
                     <img src="http://101.200.196.121:8080/oa/css/images/sl_03.jpg" alt=""/>
                     <i style="display: none"></i>
                     <span style="display: none">· 市委常委联系乡镇（办事处）党（工）委<br/>
@@ -56,10 +71,10 @@
 · 村（社区）党员干部联系党员<br/>
 · 党员联系群众</span>
                 </a>
-                <h4><a href="" >四联</a></h4>
+                <h4><a href="contact/" >四联</a></h4>
             </div>
             <div class="mokuai">
-                <a class="mokuaitu">
+                <a class="mokuaitu"  href="service/">
                     <img src="http://101.200.196.121:8080/oa/css/images/wfw_05.jpg" alt=""/>
                     <i style="display: none"></i>
                     <span style="display: none">· 市委常委联系乡镇（办事处）党（工）委<br/>
@@ -67,10 +82,10 @@
 · 村（社区）党员干部联系党员<br/>
 · 党员联系群众</span>
                 </a>
-                <h4><a href="" >五服务</a></h4>
+                <h4><a href="service/" >五服务</a></h4>
             </div>
             <div class="mokuai marginr">
-                <a class="mokuaitu">
+                <a class="mokuaitu" href="work/">
                     <img src="http://101.200.196.121:8080/oa/css/images/gz_07.jpg" alt=""/>
                     <i style="display: none"></i>
                     <span style="display: none">· 市委常委联系乡镇（办事处）党（工）委<br/>
@@ -78,7 +93,7 @@
 · 村（社区）党员干部联系党员<br/>
 · 党员联系群众</span>
                 </a>
-                <h4><a href="" >工作</a></h4>
+                <h4><a href="work/" >工作</a></h4>
             </div>
         </div>
         <!--第二行-->

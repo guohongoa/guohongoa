@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
+ <c:choose>
+ <c:when test="${not empty is_request}">
 <!--header为导航容器-->
 <div class="header">
     <!--头部header区域内容部分-->
@@ -38,10 +40,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
         <li><a href="" class="active">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="">工作</a></li>
+        <li><a href="../service">五服务</a></li>
+        <li><a href="../work">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -291,5 +293,10 @@
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+</c:when>
+<c:otherwise>
+   <c:redirect url="check_contact_person_request.jsp" />
+</c:otherwise>
+</c:choose>
 </body>
 </html>
