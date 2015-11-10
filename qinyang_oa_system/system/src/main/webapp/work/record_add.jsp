@@ -36,10 +36,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="" class="active">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/">四联</a></li>
+        <li><a href="../service/">五服务</a></li>
+        <li><a href="../work/" class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -58,7 +58,6 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="#" class="red">添加台帐</a><i></i></dd>
-                    <dd><a href="" >修改台帐</a></dd>
                     <dd><a href="">我的台帐</a></dd>
                 </dl>
             </li>

@@ -40,10 +40,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="" class="active">五服务</a></li>
-        <li><a href="">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/">四联</a></li>
+        <li><a href="../service/" class="active">五服务</a></li>
+        <li><a href="../work/">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -119,7 +119,7 @@
             <c:when test="${service_type==3}">
               <h4><a href="">服务</a>&gt;<span>环境卫生服务</span></h4>
             </c:when>
-            <c:when test="${service_type==3}">
+            <c:when test="${service_type==4}">
               <h4><a href="">服务</a>&gt;<span>文体活动服务</span></h4>
             </c:when>
         </c:choose>

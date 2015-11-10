@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
-<c:set var="service_type" scope="session" value="1"/>
+<c:set var="service_type" scope="session" value="0"/>
 <c:choose>
   <c:when test="${service_type==0}">
-      <c:set var="service_type_name" value="政策法规服务"/>
+      <c:set var="service_type_name" value="法政法规服务"/>
   </c:when>
   <c:when test="${service_type==1}">
       <c:set var="service_type_name" value="经济发展服务"/>
@@ -57,10 +57,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="" class="active">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/">四联</a></li>
+        <li><a href="../service/">五服务</a></li>
+        <li><a href="../work/" class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>

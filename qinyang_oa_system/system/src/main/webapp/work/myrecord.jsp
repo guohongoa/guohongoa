@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -38,10 +40,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="" class="active">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/">四联</a></li>
+        <li><a href="../service/">五服务</a></li>
+        <li><a href="../work/" class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -56,19 +58,29 @@
     <div class="left_menu tzlb">
         <h3><a href="">台帐</a></h3>
         <ul>
-            <li><a href="" class="active">全部台帐</a>
+            <li><a href="myrecord_request.jsp" class="active">全部台帐</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="#">添加台帐</a><i></i></dd>
-                    <dd><a href="">修改台帐</a></dd>
-                    <dd><a href="" class="red">我的台帐</a></dd>
+                    <dd class="activea"><a href="record_add.jsp">添加台帐</a><i></i></dd>
+                    <dd><a href="">我的台帐</a></dd>
                 </dl>
             </li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">台帐</a>&gt;<span>我的台帐</span>
+        <h4><a href="">工作</a>&gt;<a href="">台帐</a>&gt;<span>全部台帐</span>
+            <span class="sort">按
+                <select>
+                    <option>请选择</option>
+                    <option>时间</option>
+                    <option>职务</option>
+                    <option>所属部门</option>
+                    <option>建账人</option>
+                    <option>直接上级</option>
+                </select>
+                排序
+            </span>
         </h4>
         <div class="contentlist">
             <ul class="contentlisttt tzlb_content">
@@ -81,6 +93,7 @@
                 <li>内容</li>
                 <li>操作</li>
             </ul>
+            <!-- 循环台账列表信息 -->
             <c:forEach var="work_record_info" items="${work_record_info_list}">
             <ul class="tzlb_content">
                 <li>${work_record_info.get_work_record_creator()}</li>
@@ -113,5 +126,14 @@
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+<script>
+    $(".tzxlms a").click(function(){
+        $(this).parent().css({overflow:"visible"}).find("div").show();
+        return false
+    })
+    $(".tzxlms").mouseleave(function(){
+        $(this).css({overflow:"hidden"}).find("div").hide();
+    })
+</script>
 </body>
 </html>

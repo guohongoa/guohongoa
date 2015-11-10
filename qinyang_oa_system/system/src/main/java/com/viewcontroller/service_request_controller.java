@@ -83,7 +83,7 @@ import com.data.work_record_info;
 				 @RequestParam(value="service_sender_id")  int service_sender_id
 				)
 		{
-	      ModelAndView mv=new ModelAndView("myservice");
+	      ModelAndView mv=new ModelAndView("myservice.jsp");
 		   
 		   //得到查询所有条目的list
 		   

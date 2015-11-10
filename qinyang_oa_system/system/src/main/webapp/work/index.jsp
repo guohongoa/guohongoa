@@ -65,17 +65,16 @@
     </div>
     <div class="tz">
         <div class="hover_tt">
-            <a href=""></a>
+            <a href="myrecord_request.jsp"></a>
         </div>
         <ul>
-            <li><a href="">添加台帐</a></li>
-            <li><a href="">修改台帐</a></li>
-            <li><a href="">我的台帐</a></li>
+            <li><a href="record_add.jsp">添加台帐</a></li>
+            <li><a href="myrecord_request.jsp">我的台帐</a></li>
         </ul>
     </div>
     <div class="fw">
         <div class="hover_tt">
-            <a href=""></a>
+            <a href="myservice_request.jsp"></a>
         </div>
         <ul>
             <li><a href="">政策法规服务</a></li>
