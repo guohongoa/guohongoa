@@ -40,8 +40,8 @@
     <ul>
         <li><a href="" class="bordernone">首页</a></li>
         <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="" class="active">工作</a></li>
+        <li><a href="" class="active">五服务</a></li>
+        <li><a href="">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -52,47 +52,38 @@
 </div>
 <!--主体-->
 <div class="content">
-    <!--左侧固定导航-->
-    <div class="left_menu tzlb" style="height: 175px">
+    <div class="left_menu">
         <h3><a href="">五服务</a></h3>
         <ul>
-            <li><a href="" class="active">法政法规服务</a>
-                <dl>
-                    <dt></dt>
-                    <dd class="activea"><a href="#">发起服务</a><i></i></dd>
-                    <dd><a href="" >我的服务</a></dd>
-                </dl>
-            </li>
+            <li><a href="" class="active">法政法规服务</a></li>
+            <li><a href="">经济发展服务</a></li>
+            <li><a href="">和谐稳定服务</a></li>
+            <li><a href="">环境卫生服务</a></li>
+            <li><a href="">文体活动服务</a></li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">五服务</a>&gt;<span>法政法规服务</span>
-        </h4>
+        <h4><a href="">服务</a>&gt;<span>法政法规服务</span></h4>
         <div class="contentlist">
-            <ul class="contentlisttt wfwlb_content ">
-                <li>汇报给</li>
-                <li>服务主题</li>
-                <li>服务类型</li>
-                <li>直接上级</li>
-                <li>责任人</li>
-                <li>工作目标</li>
-                <li>服务周期</li>
-                <li>服务内容</li>
-                <li>发送时间</li>
+            <ul class="contentlisttt wufuwu">
+                <li class="lg_li">服务主题</li>
+                <li>负责人</li>
+                <li>活动时间</li>
+                <li>起始时间</li>
+                <li class="lg_li">服务内容</li>
+                <li>操作</li>
             </ul>
-             <c:forEach var="service_info" items="${service_info_list}">
-             <ul class="wfwlb_content">
-                <li>${service_info.get_service_receiver()}</li>
-                <li>${service_info.get_service_theme()}</li>
-                <li>${service_info.get_service_type()}</li>
+            <!-- 循环对应村和类型五服务信息 -->
+            <c:forEach var="service_village_info_list" items="${village_list}">
+            <ul class="wufuwu">
+                <li class="lg_li">${service_info.get_service_theme()}</li>
                 <li>${service_info.get_service_sender()}</li>
-                <li>${service_info.get_service_sender()}</li>
-                <li class="overflow">${service_info.get_service_target()}</li>
-                <li style="line-height: 20px">${service_info.get_service_begintime()}-<br/>${service_info.get_service_endtime()}</li>
-                <li><a href="">查看</a></li>
-                <li>${service_info.get_service_addtime()}</li>
-              </ul>
+                <li>2015.10.10</li>
+                <li class="sm_lh"><span>${service_info.get_service_begintime()}</span>-<br/><span>${service_info.get_service_endtime()}</span></li>
+                <li class="lg_li"><span>服务内容描述服务内容描述服务内容描述服务内容描述服务内容描述服务内容描述服务内容描述</span></li>
+                <li><a href="">查看详细</a></li>
+            </ul>
             </c:forEach>
         </div>
     </div>

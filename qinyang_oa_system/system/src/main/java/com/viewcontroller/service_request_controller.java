@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.data.service_info;
 import com.data.service_village_county_info;
 import com.data.service_village_info;
+import com.data.work_record_info;
 
 	
 	@Controller
@@ -156,7 +157,7 @@ import com.data.service_village_info;
 		@RequestMapping("service/service_village_check.do")
 		public ModelAndView service_village_check_request()
 		{
-	      ModelAndView mv=new ModelAndView("index2");
+	      ModelAndView mv=new ModelAndView("index");
 		   
 		   
 		   //根据乡镇id分组，得到全部村庄信息的二维数组
@@ -207,7 +208,23 @@ import com.data.service_village_info;
 		   return mv;
 		}
 		
-		
+		//根据村庄及服务的类型查询五服务对应具体信息内容
+		@RequestMapping("service/check_service_detail_by_service_village_id.do")
+		public ModelAndView service_detail_check_request
+		(
+				@RequestParam(value="service_village_id")  int service_village_id,
+				@RequestParam(value="service_type")  int service_type
+	    )
+		{
+			ModelAndView mv=new ModelAndView("service_detail_by_village&type");
+			
+			service_info _service_info=new service_info();
+			_service_info.set_service_village_id(service_village_id);
+			_service_info.set_service_type(service_type);
+			List<service_info> service_info_list=com.dbconnector.service_db_connector.get_service_info_list_by_service_village_id_and_service_type(_service_info);
+			mv.addObject("service_info_list",service_info_list);
+			return mv;
+		}
 		
 		
 		   

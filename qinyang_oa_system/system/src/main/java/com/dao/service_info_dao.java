@@ -68,6 +68,21 @@ public class service_info_dao
 		        return service_info_list;
 		 }
 		 
+		
+		 
+		 public List<service_info>  select_by_service_village_id_and_service_type(service_info _service_info)
+		 {
+			 List<service_info> service_info_list=null;
+			 SqlSession session=this.sqlSessionFactory.openSession();
+			 try {
+		           service_info_list = session.selectList("service_info.select_by_service_village_id_and_service_type",_service_info);
+		        } finally {
+		            session.close();
+		        }
+		        System.out.println("select_by_service_village_id() --> "+service_info_list);
+		        return service_info_list;
+		 }
+		 
 		 public void delete_from_id(int service_msgid)
 		 {
 			 SqlSession session = sqlSessionFactory.openSession();

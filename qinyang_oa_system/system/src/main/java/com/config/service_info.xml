@@ -46,7 +46,13 @@
     
     <select id="select_by_service_sender_id" parameterType="int"
 		resultMap="result">
-		SELECT * FROM service_info WHERE service_sender_id = #{service_sender_id}
+		SELECT * FROM service_info WHERE service_sender_id = #{service_sender_id};
+	</select>
+	
+	
+	<select id="select_by_service_village_id_and_service_type" parameterType="service_info"
+		resultMap="result">
+		SELECT * FROM service_info WHERE service_village_id = #{service_village_id} AND service_type= #{service_type};
 	</select>
 
 </mapper>
