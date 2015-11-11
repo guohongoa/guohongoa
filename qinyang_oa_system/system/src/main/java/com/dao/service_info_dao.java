@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.service_info;
+import com.selector.service_selector;
 
 
 public class service_info_dao 
@@ -75,9 +76,12 @@ public class service_info_dao
 			 List<service_info> service_info_list=null;
 			 SqlSession session=this.sqlSessionFactory.openSession();
 			 try {
-				     System.out.println("output5:"+_service_info.get_service_village_id());
-				     System.out.println("output6:"+_service_info.get_service_type()); 
-				  service_info_list = session.selectList("service_info.select_by_service_village_id_and_service_type",_service_info);
+				  service_selector _service_selector=new service_selector();//五服务加分页信息
+				  _service_selector.set_service_village_id(_service_info.get_service_village_id());
+				  _service_selector.set_service_type(_service_info.get_service_type());
+				  _service_selector.set_servcie_begin(11);
+				  _service_selector.set_service_num(11);
+				  service_info_list = session.selectList("service_info.select_by_service_village_id_and_service_type",_service_selector);
 		        } finally {
 		            session.close();
 		        }
