@@ -8,7 +8,8 @@
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
     <c:set var="service_village_id" value="${param.service_village_id}"/>
-     <c:set var="service_type" value="${param.service_type}"/>
+    <c:set var="service_type" value="${param.service_type}"/>
+    <c:set var="service_page" value="${param.service_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -60,45 +61,45 @@
          <c:when test="${service_type==0}">
             <ul>
                <li><a href="" class="active">法政法规服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=1">经济发展服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=2">和谐稳定服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=3">环境卫生服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=4">文体活动服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=1&service_page=1">经济发展服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=2&service_page=1">和谐稳定服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=3&service_page=1">环境卫生服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=4&service_page=1">文体活动服务</a></li>
             </ul>
           </c:when>
            <c:when test="${service_type==1}">
             <ul>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0">法政法规服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=1">法政法规服务</a></li>
                <li><a href="" class="active">经济发展服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=2">和谐稳定服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=3">环境卫生服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=4">文体活动服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=2&service_page=1">和谐稳定服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=3&service_page=1">环境卫生服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=4&service_page=1">文体活动服务</a></li>
             </ul>
           </c:when>
           <c:when test="${service_type==2}">
             <ul>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0">法政法规服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=1">经济发展服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=1">法政法规服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=1&service_page=1">经济发展服务</a></li>
                <li><a href="" class="active">和谐稳定服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=3">环境卫生服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=4">文体活动服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=3&service_page=1">环境卫生服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=4&service_page=1">文体活动服务</a></li>
             </ul>
           </c:when>
           <c:when test="${service_type==3}">
             <ul>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0">法政法规服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=1">经济发展服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=2">和谐稳定服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=1">法政法规服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=1&service_page=1">经济发展服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=2&service_page=1">和谐稳定服务</a></li>
                <li><a href="" class="active">环境卫生服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=4">文体活动服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=4&service_page=1">文体活动服务</a></li>
             </ul>
           </c:when>
           <c:when test="${service_type==4}">
             <ul>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0">法政法规服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=1">经济发展服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=2">和谐稳定服务</a></li>
-               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=3">环境卫生服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=1">法政法规服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=1&service_page=1">经济发展服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=2&service_page=1">和谐稳定服务</a></li>
+               <li><a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=3&service_page=1">环境卫生服务</a></li>
                <li><a href="" class="active">文体活动服务</a></li>
             </ul>
           </c:when>
@@ -145,16 +146,42 @@
             </c:forEach>
         </div>
     </div>
-    <div class="page">
-        <a href="" class="bulec">1</a>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
+    <c:choose>
+      <c:when test="${service_page==1}">
+      <div class="page">
         <a href="">上一页</a>
+        <a href="" class="bulec">1</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=2">2</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=3">3</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=4">4</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=5">5</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=2">下一页</a>
+      </div>
+      </c:when>
+      <c:when test="${service_page==2}">
+      <div class="page">
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=1">上一页</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=1">1</a>
+        <a href="" class="bulec">2</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=3">3</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=4">4</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=5">5</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=3">下一页</a>
+      </div>
+      </c:when>
+      <c:otherwise>
+      <div class="page">
+        <a href="">上一页</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=${service_page-2}">${service_page-2}</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=${service_page-1}">${service_page-1}</a>
+        <a class="bulec" href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=${service_page}">${service_page}</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=${service_page+1}">${service_page+1}</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=${service_page+2}">${service_page+2}</a>
         <a href="">下一页</a>
-    </div>
+      </div>>
+      </c:otherwise>
+    </c:choose>
+    
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>

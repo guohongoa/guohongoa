@@ -12,7 +12,8 @@
 <body > 
 <form name="form1" method="post" action="check_service_detail_by_service_village_id.do"> 
      <input type='hidden' name='service_village_id' value='${param.service_village_id}'/> 
-     <input type='hidden' name='service_type' value='${param.service_type}'/> 
+     <input type='hidden' name='service_type' value='${param.service_type}'/>
+     <input type='hidden' name='service_page' value='${param.service_page}'/> 
 </form> 
 </body> 
 </html> 

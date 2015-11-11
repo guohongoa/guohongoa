@@ -64,7 +64,7 @@
             <ul>
                 <c:forEach var="service_village_info" items="${service_village_info_list}">
                 <li>
-                  <a href="check_service_detail_request.jsp?service_village_id=${service_village_info.get_service_village_id()}&service_type=0">${service_village_info.get_service_village_name()}</a>
+                  <a href="check_service_detail_request.jsp?service_village_id=${service_village_info.get_service_village_id()}&service_type=0&service_page=1">${service_village_info.get_service_village_name()}</a>
                 </li>
                 </c:forEach>
                 <li><a href="" class="clickall">全部&gt;&gt;</a></li>

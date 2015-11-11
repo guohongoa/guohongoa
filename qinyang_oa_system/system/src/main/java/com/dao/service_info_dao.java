@@ -71,7 +71,7 @@ public class service_info_dao
 		 
 		
 		 
-		 public List<service_info>  select_by_service_village_id_and_service_type(service_info _service_info)
+		 public List<service_info>  select_by_service_village_id_and_service_type(service_info _service_info,int service_page)
 		 {
 			 List<service_info> service_info_list=null;
 			 SqlSession session=this.sqlSessionFactory.openSession();
@@ -79,7 +79,8 @@ public class service_info_dao
 				  service_selector _service_selector=new service_selector();//五服务加分页信息
 				  _service_selector.set_service_village_id(_service_info.get_service_village_id());
 				  _service_selector.set_service_type(_service_info.get_service_type());
-				  _service_selector.set_servcie_begin(11);
+				  //固定一页最多取十一条数据
+				  _service_selector.set_servcie_begin(11*(service_page-1));
 				  _service_selector.set_service_num(11);
 				  service_info_list = session.selectList("service_info.select_by_service_village_id_and_service_type",_service_selector);
 		        } finally {

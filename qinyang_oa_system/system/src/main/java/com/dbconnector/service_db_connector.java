@@ -32,13 +32,13 @@ public class service_db_connector
 			   }
 			
 			//使用村庄id和服务类型查询五服务信息列表
-			public static List<service_info> get_service_info_list_by_service_village_id_and_service_type(service_info _service_info)
+			public static List<service_info> get_service_info_list_by_service_village_id_and_service_type(service_info _service_info,int service_page)
 			   {
 				   List<service_info> service_info_list;
 				   //System.out.println("output3:"+_service_info.get_service_village_id());
 				   //System.out.println("output4:"+_service_info.get_service_type());
 				   service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-				   service_info_list=_service_info_dao.select_by_service_village_id_and_service_type(_service_info);
+				   service_info_list=_service_info_dao.select_by_service_village_id_and_service_type(_service_info,service_page);
 				   return service_info_list;
 				   
 			   }

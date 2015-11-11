@@ -213,18 +213,15 @@ import com.data.work_record_info;
 		public ModelAndView service_detail_check_request
 		(
 				@RequestParam(value="service_village_id")  int service_village_id,
-				@RequestParam(value="service_type")  int service_type
+				@RequestParam(value="service_type")        int service_type,
+				@RequestParam(value="service_page")        int service_page
 	    )
 		{
-			ModelAndView mv=new ModelAndView("service_detail_by_village&type.jsp?service_village_id="+service_village_id+"&service_type="+service_type);
-			//System.out.println("output1:"+service_type);
-			//System.out.println("output2:"+service_village_id);
-			
-			
+			ModelAndView mv=new ModelAndView("service_detail_by_village&type.jsp?service_village_id="+service_village_id+"&service_type="+service_type+"&service_page="+service_page);
 			service_info _service_info=new service_info();
 			_service_info.set_service_village_id(service_village_id);
 			_service_info.set_service_type(service_type);
-			List<service_info> service_info_list=com.dbconnector.service_db_connector.get_service_info_list_by_service_village_id_and_service_type(_service_info);
+			List<service_info> service_info_list=com.dbconnector.service_db_connector.get_service_info_list_by_service_village_id_and_service_type(_service_info,service_page);
 			mv.addObject("service_info_list",service_info_list);
 			return mv;
 		}
