@@ -23,6 +23,7 @@
 		<typeAlias alias="contact_person_department_info" type="com.data.contact_person_department_info"/>
 		<typeAlias alias="work_record_info" type="com.data.work_record_info"/>
 		<typeAlias alias="service_selector" type="com.selector.service_selector"/>
+		<typeAlias alias="work_record_selector" type="com.selector.work_record_selector"/>
 	</typeAliases>
 
 	<environments default="development">

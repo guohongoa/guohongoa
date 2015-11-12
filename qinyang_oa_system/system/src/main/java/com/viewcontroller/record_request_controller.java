@@ -67,16 +67,23 @@ public class record_request_controller
 		//台账根据用户id响应页面
 				@RequestMapping("work/rocord_check_by_user.do")
 				public ModelAndView record_check_by_user_request(
-						 @RequestParam(value="work_record_creatorid")  int work_record_creatorid
+						 @RequestParam(value="work_record_creatorid")  int work_record_creatorid,
+						 @RequestParam(value="record_page")            int record_page
 						)
 				{
-			      ModelAndView mv=new ModelAndView("myrecord.jsp");
+			     
 				   
 				   //得到查询所有条目的list
 				   
-				   List<work_record_info> work_record_info_list=com.dbconnector.record_db_connector.get_work_record_info_list_by_work_record_creatorid( work_record_creatorid);
+				   List<work_record_info> work_record_info_list=com.dbconnector.record_db_connector.get_work_record_info_list_by_work_record_creatorid( work_record_creatorid,record_page);
+				   
+				   int record_total_page=com.dbconnector.record_db_connector.get_record_total_page_by_user(work_record_creatorid);
+				   
+				   ModelAndView mv=new ModelAndView("myrecord.jsp?record_page="+record_page+"&record_total_page="+record_total_page);
+				   
 				   mv.addObject("work_record_info_list", work_record_info_list);
 				   return mv;
+				   
 				}
 	  
 		//根据台账id查询具体

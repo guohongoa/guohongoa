@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.service_info;
 import com.data.work_record_info;
+import com.selector.service_selector;
+import com.selector.work_record_selector;
 
 public class work_record_info_dao 
 {
@@ -44,17 +46,46 @@ public class work_record_info_dao
 	
 
 	//根据用户id查询台账信息
-	 public List<work_record_info> select_by_work_record_creatorid(int work_record_creatorid)
+	 public List<work_record_info> select_by_work_record_creatorid(int work_record_creatorid,int record_page)
 	 {
 		 List<work_record_info> work_record_info_list=null;
 		 SqlSession session=this.sqlSessionFactory.openSession();
 		 try {
-			 work_record_info_list = session.selectList("work_record_info.select_by_work_record_creatorid",work_record_creatorid);
+			 work_record_selector _work_record_selector=new work_record_selector();//台账加分页信息
+			  _work_record_selector.set_work_record_creatorid(work_record_creatorid);
+			  //固定一页最多取十一条数据
+			  _work_record_selector.set_work_record_begin(11*(record_page-1));
+			  _work_record_selector.set_work_record_num(11);
+			 
+			 work_record_info_list = session.selectList("work_record_info.select_by_work_record_creatorid",_work_record_selector);
 	        } finally {
 	            session.close();
 	        }
 	        System.out.println("select_by_work_record_creatorid() --> "+work_record_info_list);
 	        return work_record_info_list;
+	 }
+	 
+	 public int get_record_total_num_by_by_user(int work_record_creatorid)
+	 {
+		 int record_total_num;
+		 List<work_record_info> work_record_info_list=null;
+		 
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 work_record_selector _work_record_selector=new work_record_selector();//台账加分页信息
+			 _work_record_selector.set_work_record_creatorid(work_record_creatorid);
+			  
+			  _work_record_selector.set_work_record_begin(0);
+			  _work_record_selector.set_work_record_num(99999999);
+			  
+			  work_record_info_list = session.selectList("work_record_info.select_by_work_record_creatorid",_work_record_selector);
+			  record_total_num =work_record_info_list.size();
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("work_record_info.select_by_work_record_creatorid --> "+work_record_info_list);
+		 
+		 return record_total_num;
 	 }
 	 
 	 

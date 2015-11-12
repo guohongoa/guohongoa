@@ -9,6 +9,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <c:set var="record_page" value="${param.record_page}"/>
+    <c:set var="record_total_page" value="${param.record_total_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -113,16 +115,65 @@
             </c:forEach>
         </div>
     </div>
-    <div class="page">
-        <a href="" class="bulec">1</a>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
-        <a href="">上一页</a>
-        <a href="">下一页</a>
-    </div>
+   <c:choose>
+      <c:when test="${record_page==1}">
+      <div class="page">
+        <a href="myrecord_request.jsp?record_page=1">上一页</a>
+        <a href="myrecord_request.jsp?record_page=1" class="bulec">1</a>
+        <a href="myrecord_request.jsp?record_page=2">2</a>
+        <a href="myrecord_request.jsp?record_page=3">3</a>
+        <a href="myrecord_request.jsp?record_page=4">4</a>
+        <a href="myrecord_request.jsp?record_page=5">5</a>
+        <a href="myrecord_request.jsp?record_page=2">下一页</a>
+        <a>共${record_total_page}页</a>
+        <form method="get" action="rocord_check_by_user.do">
+        <a>
+           到&nbsp;<input type="text" name="record_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="work_record_creatorid" value="${user_id}" />
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:when test="${record_page==2}">
+      <div class="page">
+        <a href="myrecord_request.jsp?record_page=1">上一页</a>
+        <a href="myrecord_request.jsp?record_page=1">1</a>
+        <a href="myrecord_request.jsp?record_page=2" class="bulec">2</a>
+        <a href="myrecord_request.jsp?record_page=3">3</a>
+        <a href="myrecord_request.jsp?record_page=4">4</a>
+        <a href="myrecord_request.jsp?record_page=5">5</a>
+        <a href="myrecord_request.jsp?record_page=3">下一页</a>
+        <a>共${record_total_page}页</a>
+        <form method="get" action="rocord_check_by_user.do">
+        <a>
+           到&nbsp;<input type="text" name="record_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="work_record_creatorid" value="${user_id}" />
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:otherwise>
+      <div class="page">
+        <a href="myrecord_request.jsp?record_page=${record_page-1}">上一页</a>
+        <a href="myrecord_request.jsp?record_page=${record_page-2}">${record_page-2}</a>
+        <a href="myrecord_request.jsp?record_page=${record_page-1}">${record_page-1}</a>
+        <a class="bulec" href="myrecord_request.jsp?record_page=${record_page}">${record_page}</a>
+        <a href="myrecord_request.jsp?service_page=${record_page+1}">${record_page+1}</a>
+        <a href="myrecord_request.jsp?service_page=${record_page+2}">${record_page+2}</a>
+        <a href="myrecord_request.jsp?service_page=${record_page+1}">下一页</a>
+        <a>共${record_total_page}页</a>
+        <form method="get" action="rocord_check_by_user.do">
+        <a>
+           到&nbsp;<input type="text" name="record_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="work_record_creatorid" value="${user_id}" />
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:otherwise>
+    </c:choose>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>

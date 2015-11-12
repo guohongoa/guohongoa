@@ -27,8 +27,8 @@
 	</insert>
 	
 	
-	<select id="select_by_work_record_creatorid" parameterType="int" resultMap="result">
-		SELECT * FROM work_record_info WHERE work_record_creatorid = #{work_record_creatorid};
+	<select id="select_by_work_record_creatorid" parameterType="work_record_selector" resultMap="result">
+		SELECT * FROM work_record_info WHERE work_record_creatorid = #{work_record_creatorid} limit #{work_record_begin},#{work_record_num};
 	</select>
 	
 	
