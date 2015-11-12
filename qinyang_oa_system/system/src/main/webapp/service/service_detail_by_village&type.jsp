@@ -142,7 +142,7 @@
                 <li>2015.10.10</li>
                 <li class="sm_lh"><span>${service_info.get_service_begintime()}</span>-<br/><span>${service_info.get_service_endtime()}</span></li>
                 <li class="lg_li"><span>服务内容描述服务内容描述服务内容描述服务内容描述服务内容描述服务内容描述服务内容描述</span></li>
-                <li><a href="">查看详细</a></li>
+                <li><a href="check_service_info_request.jsp?service_msgid=${service_info.get_service_msgid()}&service_page=${service_page}">查看详细</a></li>
             </ul>
             </c:forEach>
         </div>

@@ -124,4 +124,11 @@ public class service_db_connector
 					service_village_county_info _service_village_county_info=_service_village_county_info_dao.get_service_village_county_info_by_id(service_village_county_id);
 					return _service_village_county_info;
 				}
+				
+				public static service_info get_service_info_by_service_msgid(int service_msgid)
+				{
+					service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					service_info _service_info=_service_info_dao.get_service_info_by_service_msgid(service_msgid);
+					return _service_info;
+				}
 }

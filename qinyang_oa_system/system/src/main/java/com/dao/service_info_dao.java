@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.data.department_info;
 import com.data.service_info;
 import com.selector.service_selector;
 
@@ -137,6 +138,20 @@ public class service_info_dao
 		        System.out.println("select_by_service_village_id_and_service_type --> "+service_info_list);
 			 
 			 return service_total_num;
+		 }
+		 
+		 public service_info get_service_info_by_service_msgid(int service_msgid)
+		 {
+			 service_info _service_info = null;
+		        SqlSession session = sqlSessionFactory.openSession();
+		        try {
+		            _service_info = session.selectOne("service_info.select_by_service_msgid", service_msgid);
+		 
+		        } finally {
+		            session.close();
+		        }
+		        System.out.println("select_by_service_msgid("+service_msgid+") --> "+_service_info);
+		        return _service_info;
 		 }
 		 
 		 public void delete_from_id(int service_msgid)

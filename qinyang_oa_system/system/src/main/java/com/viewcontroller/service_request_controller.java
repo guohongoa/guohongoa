@@ -243,7 +243,19 @@ import com.data.work_record_info;
 			return mv;
 		}
 		
-		
+		//根据服务消息id查看单条服务详情
+			@RequestMapping("service/check_service_info_by_service_msgid.do")
+			public ModelAndView service_info_check_request(
+					@RequestParam(value="service_msgid")       int service_msgid,
+					@RequestParam(value="service_page")        int service_page
+					)
+			{
+				
+				service_info _service_info=com.dbconnector.service_db_connector.get_service_info_by_service_msgid(service_msgid);
+				ModelAndView mv=new ModelAndView("service_detail_by_msg.jsp?service_page="+service_page);
+				mv.addObject("service_info", _service_info);
+				return mv;
+			}
 		   
 	}
 	
