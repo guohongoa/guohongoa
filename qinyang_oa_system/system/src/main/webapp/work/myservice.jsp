@@ -112,6 +112,7 @@
         <form method="get" action="service_check_by_user.do">
         <a>
            到&nbsp;<input type="text" name="service_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="service_sender_id" value="${user_id}" />
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -130,6 +131,7 @@
         <form method="get" action="service_check_by_user.do">
         <a>
            到&nbsp;<input type="text" name="service_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="service_sender_id" value="${user_id}" />
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -148,6 +150,7 @@
         <form method="get" action="service_check_by_user.do">
         <a>
            到&nbsp;<input type="text" name="service_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="service_sender_id" value="${user_id}" />
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
