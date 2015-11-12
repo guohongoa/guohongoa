@@ -10,6 +10,7 @@
     <c:set var="service_village_id" value="${param.service_village_id}"/>
     <c:set var="service_type" value="${param.service_type}"/>
     <c:set var="service_page" value="${param.service_page}"/>
+     <c:set var="service_total_page" value="${param.service_total_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -149,36 +150,63 @@
     <c:choose>
       <c:when test="${service_page==1}">
       <div class="page">
-        <a href="">上一页</a>
-        <a href="" class="bulec">1</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=2">2</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=3">3</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=4">4</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=5">5</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=2">下一页</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=1">上一页</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=1" class="bulec">1</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=2">2</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=3">3</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=4">4</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=5">5</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=2">下一页</a>
+        <a>共${service_total_page}页</a>
+        <form method="get" action="check_service_detail_by_service_village_id.do">
+        <a>
+           到&nbsp;<input type="text" name="service_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="service_village_id" value="${service_village_id}"/>
+             <input type="hidden" name="service_type" value="${service_type}"/>
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
       </div>
       </c:when>
       <c:when test="${service_page==2}">
       <div class="page">
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=1">上一页</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=1">1</a>
-        <a href="" class="bulec">2</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=3">3</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=4">4</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=5">5</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=3">下一页</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=1">上一页</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=1">1</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=2" class="bulec">2</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=3">3</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=4">4</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=5">5</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=3">下一页</a>
+        <a>共${service_total_page}页</a>
+        <form method="get" action="check_service_detail_by_service_village_id.do">
+        <a>
+           到&nbsp;<input type="text" name="service_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="service_village_id" value="${service_village_id}"/>
+             <input type="hidden" name="service_type" value="${service_type}"/>
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
       </div>
       </c:when>
       <c:otherwise>
       <div class="page">
-        <a href="">上一页</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=${service_page-2}">${service_page-2}</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=${service_page-1}">${service_page-1}</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=${service_page-1}">上一页</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=${service_page-2}">${service_page-2}</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=${service_page-1}">${service_page-1}</a>
         <a class="bulec" href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=${service_page}">${service_page}</a>
-        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=${service_page+1}">${service_page+1}</a>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=${service_page+1}">${service_page+1}</a>
         <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=0&service_page=${service_page+2}">${service_page+2}</a>
-        <a href="">下一页</a>
-      </div>>
+        <a href="check_service_detail_request.jsp?service_village_id=${service_village_id}&service_type=${service_type}&service_page=${service_page+1}">下一页</a>
+        <a>共${service_total_page}页</a>
+        <form method="get" action="check_service_detail_by_service_village_id.do">
+        <a>
+           到&nbsp;<input type="text" name="service_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="service_village_id" value="${service_village_id}"/>
+             <input type="hidden" name="service_type" value="${service_type}"/>
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
       </c:otherwise>
     </c:choose>
     

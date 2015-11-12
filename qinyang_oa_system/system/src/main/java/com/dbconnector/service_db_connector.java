@@ -22,26 +22,47 @@ public class service_db_connector
 				return rs;
 			}
 			
-			public static List<service_info> get_service_info_list_by_service_sender_id(int service_sender_id)
+			public static List<service_info> get_service_info_list_by_service_sender_id(int service_sender_id,int service_page)
 			   {
 				   List<service_info> service_info_list;
 				   service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-				   service_info_list=_service_info_dao.select_by_service_sender_id(service_sender_id);
+				   service_info_list=_service_info_dao.select_by_service_sender_id(service_sender_id,service_page);
 				   return service_info_list;
 				   
 			   }
 			
-			//使用村庄id和服务类型查询五服务信息列表
+			//查询指定发送用户的分页数量
+			public static int get_service_total_page_by_user(int service_sender_id)
+			{
+				int service_total_num;
+				int service_total_page;
+				service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				service_total_num=_service_info_dao.get_service_total_num_by_by_user(service_sender_id);
+				service_total_page=(int)Math.ceil((float)service_total_num/11.0f);
+				return service_total_page;
+			}
+			
+			//使用村庄id、服务类型及页数查询五服务信息列表
 			public static List<service_info> get_service_info_list_by_service_village_id_and_service_type(service_info _service_info,int service_page)
 			   {
 				   List<service_info> service_info_list;
-				   //System.out.println("output3:"+_service_info.get_service_village_id());
-				   //System.out.println("output4:"+_service_info.get_service_type());
 				   service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 				   service_info_list=_service_info_dao.select_by_service_village_id_and_service_type(_service_info,service_page);
 				   return service_info_list;
 				   
 			   }
+			
+			public static int get_service_total_page_by_service_village_id_and_service_type(service_info _service_info)
+			{
+				int service_total_num;
+				int service_total_page;
+				service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+				service_total_num=_service_info_dao.get_service_total_num_by_service_village_id_and_service_type(_service_info);
+				service_total_page=(int)Math.ceil((float)service_total_num/11.0f);
+				return service_total_page;
+			}
+			
+			
 			
 			
 			 public static void del_service_from_id(int service_msgid)

@@ -74,7 +74,7 @@
     </div>
     <div class="fw">
         <div class="hover_tt">
-            <a href="myservice_request.jsp"></a>
+            <a href="myservice_request.jsp?service_page=1"></a>
         </div>
         <ul>
             <li><a href="">政策法规服务</a></li>

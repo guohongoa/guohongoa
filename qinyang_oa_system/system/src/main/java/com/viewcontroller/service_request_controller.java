@@ -78,16 +78,23 @@ import com.data.work_record_info;
 		}
 		
 		//五服务根据用户id响应页面
+		//根据用户id和分页查询
 		@RequestMapping("work/service_check_by_user.do")
 		public ModelAndView service_check_by_user_request(
-				 @RequestParam(value="service_sender_id")  int service_sender_id
+				 @RequestParam(value="service_sender_id")  int service_sender_id,
+				 @RequestParam(value="service_page")       int service_page
+				 
 				)
 		{
-	      ModelAndView mv=new ModelAndView("myservice.jsp");
+	      
 		   
 		   //得到查询所有条目的list
 		   
-		   List<service_info> service_info_list=com.dbconnector.service_db_connector.get_service_info_list_by_service_sender_id(service_sender_id);
+		   List<service_info> service_info_list=com.dbconnector.service_db_connector.get_service_info_list_by_service_sender_id(service_sender_id,service_page);
+		   
+		   int service_total_page=com.dbconnector.service_db_connector.get_service_total_page_by_user(service_sender_id);
+		   
+		   ModelAndView mv=new ModelAndView("myservice.jsp?service_page="+service_page+"&service_total_page="+service_total_page);
 		   mv.addObject("service_info_list", service_info_list);
 		   return mv;
 		}
@@ -217,11 +224,21 @@ import com.data.work_record_info;
 				@RequestParam(value="service_page")        int service_page
 	    )
 		{
-			ModelAndView mv=new ModelAndView("service_detail_by_village&type.jsp?service_village_id="+service_village_id+"&service_type="+service_type+"&service_page="+service_page);
+			
 			service_info _service_info=new service_info();
 			_service_info.set_service_village_id(service_village_id);
 			_service_info.set_service_type(service_type);
+			
+			//使用服务种类、村庄id及页数条件查询对应的服务对象list
+			
 			List<service_info> service_info_list=com.dbconnector.service_db_connector.get_service_info_list_by_service_village_id_and_service_type(_service_info,service_page);
+			
+			int service_total_page=com.dbconnector.service_db_connector.get_service_total_page_by_service_village_id_and_service_type(_service_info);
+			
+			//查询列表显示总页数
+			
+			ModelAndView mv=new ModelAndView("service_detail_by_village&type.jsp?service_village_id="+service_village_id+"&service_type="+service_type+"&service_page="+service_page+"&service_total_page="+service_total_page);
+		    //返回当页查询条目列表		
 			mv.addObject("service_info_list",service_info_list);
 			return mv;
 		}

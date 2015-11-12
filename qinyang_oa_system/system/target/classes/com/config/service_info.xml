@@ -44,9 +44,9 @@
         DELETE FROM service_info WHERE service_msgid = #{service_msgid};
     </delete>
     
-    <select id="select_by_service_sender_id" parameterType="int"
+    <select id="select_by_service_sender_id" parameterType="service_selector"
 		resultMap="result">
-		SELECT * FROM service_info WHERE service_sender_id = #{service_sender_id};
+		SELECT * FROM service_info WHERE service_sender_id = #{service_sender_id} limit #{service_begin},#{service_num};;
 	</select>
 	
 	
