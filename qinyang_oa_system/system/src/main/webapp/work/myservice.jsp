@@ -92,7 +92,7 @@
                 <li>${service_info.get_service_sender()}</li>
                 <li class="overflow">${service_info.get_service_target()}</li>
                 <li style="line-height: 20px">${service_info.get_service_begintime()}-<br/>${service_info.get_service_endtime()}</li>
-                <li><a href="">查看</a></li>
+                <li><a href="myservice_info_request.jsp?service_msgid=${service_info.get_service_msgid()}&service_page=${service_page}">查看</a></li>
                 <li>${service_info.get_service_addtime()}</li>
               </ul>
             </c:forEach>

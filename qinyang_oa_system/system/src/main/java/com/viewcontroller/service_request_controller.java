@@ -243,7 +243,7 @@ import com.data.work_record_info;
 			return mv;
 		}
 		
-		//根据服务消息id查看单条服务详情
+		//根据服务消息id查看单条服务详情,五服务页面索引
 			@RequestMapping("service/check_service_info_by_service_msgid.do")
 			public ModelAndView service_info_check_request(
 					@RequestParam(value="service_msgid")       int service_msgid,
@@ -253,6 +253,20 @@ import com.data.work_record_info;
 				
 				service_info _service_info=com.dbconnector.service_db_connector.get_service_info_by_service_msgid(service_msgid);
 				ModelAndView mv=new ModelAndView("service_detail_by_msg.jsp?service_page="+service_page);
+				mv.addObject("service_info", _service_info);
+				return mv;
+			}
+			
+			//根据服务消息id查看单条服务详情,工作页面索引
+			@RequestMapping("work/check_service_info_by_service_msgid2.do")
+			public ModelAndView service_info_check_request2(
+					@RequestParam(value="service_msgid")       int service_msgid,
+					@RequestParam(value="service_page")        int service_page
+					)
+			{
+				
+				service_info _service_info=com.dbconnector.service_db_connector.get_service_info_by_service_msgid(service_msgid);
+				ModelAndView mv=new ModelAndView("service_datail.jsp?service_page="+service_page);
 				mv.addObject("service_info", _service_info);
 				return mv;
 			}

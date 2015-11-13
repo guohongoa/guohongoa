@@ -105,12 +105,7 @@
                 <li>${work_record_info.get_work_record_communist()}</li>
                 <li>${work_record_info.get_work_record_date()}</li>
                 <li>内容</li>
-                <li>
-                   <form name='check_record_detail_form' action='check_record_detail.do' method='post'>
-                     <input type='hidden' name='work_record_id' value='${work_record_info.get_work_record_id()}'/> 
-                     <a href='javascript:document.check_record_detail_form.submit();'>查看</a>
-                   </form>
-                </li>
+                <li><a href="myrecord_info_request.jsp?work_record_id=${work_record_info.get_work_record_id()}&record_page=${record_page}">查看详细</a></li>
             </ul>
             </c:forEach>
         </div>

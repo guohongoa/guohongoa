@@ -88,14 +88,16 @@ public class record_request_controller
 	  
 		//根据台账id查询具体
 				
-				@RequestMapping("work/check_record_detail.do")
-				public ModelAndView check_record_detail_request(
-						@RequestParam(value="work_record_id") int work_record_id
-						)
-				{
-					ModelAndView mv=new ModelAndView("record_detail.jsp");
-					work_record_info _work_record_info=com.dbconnector.record_db_connector.get_work_record_info_by_work_record_id(work_record_id);
-					mv.addObject("work_record_info",_work_record_info);
-					return mv;
-				}
+				@RequestMapping("work/check_record_info_by_work_record_id.do")
+				  public ModelAndView check_record_info_request(
+						  @RequestParam(value="work_record_id") int work_record_id,
+						  @RequestParam(value="record_page") int record_page
+						  )
+				  {
+					 ModelAndView mv=new ModelAndView("record_detail.jsp?record_page="+record_page);
+					 work_record_info _work_record_info=com.dbconnector.record_db_connector.get_work_record_info_by_work_record_id(work_record_id);
+					 mv.addObject("work_record_info",_work_record_info);
+					 return mv;
+				
+				  }
 }

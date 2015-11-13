@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+     <c:set var="record_page" value="${param.record_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -38,10 +39,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="" class="active">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/">四联</a></li>
+        <li><a href="../service/">五服务</a></li>
+        <li><a href="../work/" class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -65,7 +66,7 @@
     </div>
 
     <div class="wdtzxq_btn">
-        <a href="">修改</a> &nbsp; <a href="">返回</a>
+        <a href="myrecord_request.jsp?record_page=${record_page}">返回</a>
     </div>
 </div>
 <div class="footer"></div>
