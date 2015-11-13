@@ -8,12 +8,14 @@
 	<resultMap id="result" type="service_village_county_info">
 		<result property="service_village_county_id" column="service_village_county_id" />
 		<result property="service_village_county_name" column="service_village_county_name" />
-		<result property="service_village_county_name" column="service_village_county_name" />
+		<result property="service_village_county_leader" column="service_village_county_leader"/>
+		<result property="service_village_county_leaderphone" column="service_village_county_leaderphone"/>
+		<result property="service_village_county_addtime" column="service_village_county_addtime" />
 	</resultMap>
 
-	<insert id="insert" parameterType="service_village_county_info">
-		insert into service_village_county_info(service_village_county_id,service_village_county_name,service_village_county_addtime)
-		 values(#{service_village_county_id},#{service_village_county_name},#{service_village_county_addtime});
+	<insert id="insert" parameterType="service_village_county_info" useGeneratedKeys="true" keyProperty="service_village_county_id">
+		insert into service_village_county_info(service_village_county_name,service_village_county_leader,service_village_county_leaderphone,service_village_county_addtime)
+		 values(#{service_village_county_name},#{service_village_county_leader},#{service_village_county_leaderphone},#{service_village_county_addtime});
 	</insert>
 	
 	<select id="select_all" resultMap="result">

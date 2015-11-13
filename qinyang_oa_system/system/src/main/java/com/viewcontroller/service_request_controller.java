@@ -191,8 +191,8 @@ import com.data.work_record_info;
 			   String service_village_county_addtime=format.format(date);
 			   _service_village_county_info.set_service_village_county_addtime(service_village_county_addtime);
 			   
-			  com.dbconnector.service_db_connector.service_village_county_inset_db(_service_village_county_info);
-			
+			  int service_village_county_id=com.dbconnector.service_db_connector.service_village_county_insert_db(_service_village_county_info);
+			  System.out.println("ttttttttttttt"+service_village_county_id);
 			
 			//返回插入结果
 			

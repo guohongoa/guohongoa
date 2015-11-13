@@ -72,12 +72,25 @@ public class service_db_connector
 			    }
 			 
 			//五服务村庄信息对应数据库功能函数
-				public static boolean service_village_insert_db(service_village_info _service_village_info)
+			 //同镇村庄批量输入数据库
+				public static void service_village_insert_db(String str_service_village_names,int service_village_county_id,String service_village_county_name,String service_village_addtime)
 				{
+					
+					String [] service_village_name_array=str_service_village_names.split(" "); //将以空格隔开的字符串变为数组
+					
 					service_village_info_dao _service_village_info_dao=new service_village_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 					
-					boolean rs=_service_village_info_dao.insert(_service_village_info);
-					return rs;
+					for(String service_village_name:service_village_name_array)
+					{
+					   service_village_info _service_village_info=new service_village_info();
+					   _service_village_info.set_service_village_name(service_village_name);
+					   _service_village_info.set_service_village_county_id(service_village_county_id);
+					   _service_village_info.set_service_village_county_name(service_village_county_name);
+					   _service_village_info.set_service_village_addtime(service_village_addtime);
+						boolean rs=_service_village_info_dao.insert(_service_village_info);
+						System.out.println(rs);
+					}
+					
 				}
 				
 				public static List<List<service_village_info>> get_village_list_by_county()
@@ -101,12 +114,12 @@ public class service_db_connector
 				
 				
 		   //五服务乡镇对应数据库功能函数
-				public static boolean service_village_county_inset_db(service_village_county_info _service_village_info)
+				public static int service_village_county_insert_db(service_village_county_info _service_village_county_info)
 				{
 	                     service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 					
-					boolean rs=_service_village_county_info_dao.insert(_service_village_info);
-					return rs;
+					     int  service_village_county_id=_service_village_county_info_dao.insert(_service_village_county_info);
+					     return service_village_county_id;
 				}
 				
 				public static List<service_village_county_info> get_service_village_county_list()

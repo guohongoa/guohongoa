@@ -16,27 +16,21 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		this.sqlSessionFactory=sqlSessionFactory;
 	}
 		
-		public boolean insert(service_village_county_info _service_village_county_info)
+		public int insert(service_village_county_info _service_village_county_info)
 		{
-		       int id = -1;
+		       int  service_village_county_id=-1;
 		        SqlSession session = this.sqlSessionFactory.openSession();
 		 
 		        try {
-		            id = session.insert("service_village_county_info.insert", _service_village_county_info);
+		            session.insert("service_village_county_info.insert", _service_village_county_info);
+		            service_village_county_id =_service_village_county_info.get_service_village_county_id();
 		        } finally {
 		            session.commit();
 		            session.close();
 		        }
 		        System.out.println("insert("+_service_village_county_info+") --> "+_service_village_county_info.get_service_village_county_id());
+		        return service_village_county_id;
 		        
-		        if(id==-1)
-		        {
-		        	return false;//插入失败
-		        }
-		        else
-		        {
-		        	return true;//插入成功
-		        }
 		 }
 		
 		 public List<service_village_county_info> select_all()
