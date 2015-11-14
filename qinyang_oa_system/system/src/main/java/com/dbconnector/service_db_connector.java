@@ -112,6 +112,23 @@ public class service_db_connector
 					 return village_list;
 				}
 				
+				//根据查询当页乡镇id，返回所有对应村庄的服务列表
+				public static List<service_village_info> get_service_village_info_list_by_couty_list(List<service_village_county_info> service_village_county_info_list)
+				{
+					service_village_info_dao _service_village_info_dao=new service_village_info_dao(mybatis_connection_factory.getSqlSessionFactory()); 
+					
+					List<service_village_info> service_village_info_list=new ArrayList<service_village_info>();
+					 
+					//遍历五服务乡镇列表，根据id，逐个添加对应村庄信息
+					 for(service_village_county_info county_info:service_village_county_info_list)
+					 {  
+						 int service_village_county_id=county_info.get_service_village_county_id();
+						 List <service_village_info> current_village_info_list=_service_village_info_dao.get_service_village_info_list_by_county_id(service_village_county_id);
+						 service_village_info_list.addAll(current_village_info_list);
+					 }
+					 
+					 return service_village_info_list;
+				}
 				
 		   //五服务乡镇对应数据库功能函数
 				public static int service_village_county_insert_db(service_village_county_info _service_village_county_info)
@@ -144,4 +161,6 @@ public class service_db_connector
 					service_info _service_info=_service_info_dao.get_service_info_by_service_msgid(service_msgid);
 					return _service_info;
 				}
+				
+				
 }

@@ -125,41 +125,6 @@ import com.data.work_record_info;
 			return mv;
 		 }
 		
-		@RequestMapping("service/service_village_add.do")
-		public ModelAndView village_add_request(
-				@RequestParam(value="service_village_name")        String service_village_name ,     //五服务覆盖村庄名称
-			    @RequestParam(value="service_village_county_id")   int    service_village_county_id //五服务村庄所属乡镇id               
-				)
-		{
-			//初始化service_village_info对象
-			service_village_info _service_village_info=new service_village_info();
-			_service_village_info.set_service_village_name(service_village_name);
-			_service_village_info.set_service_village_county_id(service_village_county_id);
-			
-			//利用乡镇id，查询乡镇name，插入village信息表
-			service_village_county_info _service_village_county_info=com.dbconnector.service_db_connector.get_service_village_county_info_by_id(service_village_county_id);
-			String county_name=_service_village_county_info.get_service_village_county_name();
-			_service_village_info.set_service_village_county_name(county_name);
-			
-			
-			
-			//添加系统时间
-			   Date date=new Date();
-			   DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			   String service_village_addtime=format.format(date);
-			   _service_village_info.set_service_village_addtime(service_village_addtime);
-			   
-			  com.dbconnector.service_db_connector.service_village_insert_db(_service_village_info);
-			
-			
-			//返回插入结果
-			
-			 ModelAndView mv=new ModelAndView();
-			   
-			   return mv;
-			   
-			   	
-		}
 		
 		@RequestMapping("service/service_village_check.do")
 		public ModelAndView service_village_check_request()

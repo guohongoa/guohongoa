@@ -3,6 +3,7 @@ package com.viewcontroller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.data.service_village_county_info;
+import com.data.service_village_info;
 
 @Controller
 public class village_request_controller 
@@ -48,5 +50,19 @@ public class village_request_controller
 		   return mv;
 		   
 		   	
+	}
+	
+	@RequestMapping("management/check_service_village_detail.do")
+	public ModelAndView service_village_check_request()
+	{
+      ModelAndView mv=new ModelAndView("village_detail.jsp");
+	   
+	   
+	   //返回
+	   List<service_village_county_info> service_village_county_info_list=com.dbconnector.service_db_connector.get_service_village_county_list();
+	   List<service_village_info> service_village_info_list=com.dbconnector.service_db_connector.get_service_village_info_list_by_couty_list(service_village_county_info_list);
+	   mv.addObject("service_village_county_info_list", service_village_county_info_list);
+	   mv.addObject("service_village_info_list",service_village_info_list);
+	   return mv;
 	}
 }
