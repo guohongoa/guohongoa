@@ -6,7 +6,7 @@ public class department_info
    private int     department_code;  //部门编号
    private String  department_name;  //部门名称
    private String  department_parent;//上级部门
-   private String  department_duty;  //部门职责
+   private String  department_regulation;  //部门职责
    private String  department_leader;//部门负责人
    private String  department_addtime;//记录添加时间
    private int     department_leaderphone;//部门负责人电话
@@ -54,14 +54,14 @@ public class department_info
 	   this.department_parent=department_parent;
    }
    
-   public String get_department_duty()
+   public String get_department_regulation()
    {
-	   return this.department_duty;
+	   return this.department_regulation;
    }
    
-   public void set_department_duty(String department_duty)
+   public void set_department_regulation(String department_regulation)
    {
-	   this.department_duty=department_duty;
+	   this.department_regulation=department_regulation;
    }
    
    public String get_department_leader()

@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dao.department_info_dao;
-import com.dao.employee_info_dao;
-import com.dao.project_info_dao;
 import com.data.department_info;
 import com.data.employee_info;
 import com.data.project_info;
@@ -32,7 +29,7 @@ public class management_request_controller
 				@RequestParam(value="department_code")        int    department_code,
 				@RequestParam(value="department_name")        String department_name,
 				@RequestParam(value="department_leader")      String department_leader,
-				@RequestParam(value="department_duty")        String department_duty,
+				@RequestParam(value="department_regulation")  String department_regulation,
 				@RequestParam(value="department_parent")      String department_parent,
 				@RequestParam(value="department_parentleader")String department_parentleader,
 				@RequestParam(value="department_leaderphone") int    department_leaderphone,
@@ -43,7 +40,7 @@ public class management_request_controller
 			department_info _department_info=new department_info();
 			_department_info.set_department_code(department_code);
 			_department_info.set_department_name(department_name);
-			_department_info.set_department_duty(department_duty);
+			_department_info.set_department_regulation(department_regulation);
 			_department_info.set_department_leader(department_leader);
 			_department_info.set_department_parent(department_parent);
 			_department_info.set_department_parentleader(department_parentleader);
@@ -191,37 +188,33 @@ public class management_request_controller
 		
    //-------------------------------------------------------------------------------
 		//人员管理请求响应
-		@RequestMapping("employee_insert.do")
+		@RequestMapping("management/employee_insert.do")
 
 		public ModelAndView employee_insert_request(
-				@RequestParam(value="employee_code")        int employee_code,               //员工编号
 				@RequestParam(value="employee_birthdate")  String    employee_birthdate,     //员工出生日期
 				@RequestParam(value="employee_idcode")      String employee_idcode,          //员工身份证号
 				@RequestParam(value="employee_department") String employee_department,       //员工部门
 				@RequestParam(value="employee_position")  String employee_position,          //员工职位
-				@RequestParam(value="employee_address") String employee_address,             //员工住址
 				@RequestParam(value="employee_gender")      String employee_gender,             //员工性别
 				@RequestParam(value="employee_addworktime") String employee_addworktime,     //入职时间
 				@RequestParam(value="employee_leader") String employee_leader,               //部门负责人
 				@RequestParam(value="employee_phone")  int employee_phone,                   //员工电话
-				@RequestParam(value="employee_email")  String employee_email,                //员工邮件
-				@RequestParam(value="employee_name")  String employee_name                   //员工姓名
+				@RequestParam(value="employee_name")  String employee_name,                 //员工姓名
+				@RequestParam(value="employee_duty")  String employee_duty
 				)
 		{
 			//将表单响应结果插入员工信息数据库
 		     employee_info _employee_info=new employee_info();
-		     _employee_info.set_employee_code(employee_code);
 		     _employee_info.set_employee_birthdate(employee_birthdate);
 		     _employee_info.set_employee_idcode(employee_idcode);
 		     _employee_info.set_employee_department(employee_department);
 		     _employee_info.set_employee_position(employee_position);
-		     _employee_info.set_employee_address(employee_address);
 		     _employee_info.set_employee_gender(employee_gender);
 		     _employee_info.set_employee_addworktime(employee_addworktime);
 		     _employee_info.set_employee_leader(employee_leader);
 		     _employee_info.set_employee_phone(employee_phone);
-		     _employee_info.set_employee_email(employee_email);
 		     _employee_info.set_employee_name(employee_name);
+		     _employee_info.set_employee_duty(employee_duty);
 		    
 			
 			
@@ -246,7 +239,7 @@ public class management_request_controller
 		public ModelAndView employee_check_request()
 		{
 			
-		   ModelAndView mv=new ModelAndView("employee_check.jsp");//页面重定向
+		   ModelAndView mv=new ModelAndView("employee_check1.jsp");//页面重定向
 		   
 		   //得到查询所有条目的list
 		   

@@ -4,7 +4,6 @@ package com.data;
 public class employee_info 
 {
 	private int    employee_id;        //员工id
-	private int    employee_code;      //员工编号
 	private String employee_name;      //员工姓名
 	private String employee_position;  //员工职务
 	private String employee_gender;    //员工性别   0为男性 1为女性
@@ -16,8 +15,7 @@ public class employee_info
 	
 	private String employee_birthdate;   //出生日期
     private String employee_idcode;      //身份证号
-    private String employee_email;       //员工email
-    private String employee_address;
+    private String employee_duty;        //员工职责
     
 	
 	public int get_employee_id()
@@ -28,16 +26,6 @@ public class employee_info
 	public void set_employee_id(int employee_id)
 	{
 		this.employee_id=employee_id;
-	}
-	
-	public int get_employee_code()
-	{
-		return this.employee_code;
-	}
-	
-	public void set_employee_code(int employee_code)
-	{
-		this.employee_code=employee_code;
 	}
 	
 	public String get_employee_name()
@@ -141,26 +129,16 @@ public class employee_info
 		this.employee_idcode=employee_idcode;
 	}
 	
-	public String get_employee_email()
+	
+	public String get_employee_duty()
 	{
-	   return this.employee_email;
+		return this.employee_duty;
 	}
 	
-	public void set_employee_email(String employee_email)
+	public void set_employee_duty(String employee_duty)
 	{
-		this.employee_email=employee_email;
+		this.employee_duty=employee_duty;
 	}
-	
-	public String get_employee_address()
-	{
-		return this.employee_address;
-	}
-	
-	public void set_employee_address(String employee_address)
-	{
-		this.employee_address=employee_address;
-	}
-	
 	
 
 }

@@ -7,7 +7,6 @@
 
 	<resultMap id="result" type="employee_info">
 		<result property="employee_id" column="employee_id" />
-		<result property="employee_code" column="employee_code" />
 		<result property="employee_name" column="employee_name" />
 		<result property="employee_position" column="employee_position" />
 		<result property="employee_gender" column="employee_gender" />
@@ -19,14 +18,13 @@
 		
 		<result property="employee_birthdate" column="employee_birthdate" />
 		<result property="employee_idcode" column="employee_idcode" />
-		<result property="employee_email" column="employee_email" />
-		<result property="employee_address" column="employee_address" />
+		<result property="employee_duty" column="employee_duty" />
 	</resultMap>
 
 	<insert id="insert" parameterType="employee_info">
 		insert into
-		employee_info(employee_code,employee_name,employee_position,employee_gender,employee_department,employee_leader,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_email,employee_address)
-		values(#{employee_code},#{employee_name},#{employee_position},#{employee_gender},#{employee_department},#{employee_leader},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_email},#{employee_address});
+		employee_info(employee_name,employee_position,employee_gender,employee_department,employee_leader,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_duty)
+		values(#{employee_name},#{employee_position},#{employee_gender},#{employee_department},#{employee_leader},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_duty});
 	</insert>
 
 	<select id="select_by_employee_id" parameterType="int" resultMap="result">
@@ -40,7 +38,6 @@
 	<delete id="delete" parameterType="int">
         DELETE FROM employee_info WHERE employee_id = #{employee_id};
     </delete>
-
 </mapper>
 
 
