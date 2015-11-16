@@ -5,34 +5,15 @@ import java.util.List;
 import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.project_info_dao;
-import com.dao.regulation_info_dao;
 import com.data.department_info;
 import com.data.employee_info;
 import com.data.project_info;
-import com.data.regulation_info;
 import com.mybatis.mybatis_connection_factory;
 
 
 //管理页面数据库连接函数类
 public class management_db_connector 
 {
-	public static boolean regulation_insert_db(regulation_info _regulation_info)
-	{
-		regulation_info_dao _regulation_info_dao=new regulation_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		
-		boolean regulationinsert_rs=_regulation_info_dao.insert(_regulation_info);
-		
-		return regulationinsert_rs;
-	}
-	
-	 public static List<regulation_info> get_regulation_info_list()
-	   {
-		   List<regulation_info> regulation_info_list;
-		   regulation_info_dao _regulation_info_dao=new regulation_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		   regulation_info_list=_regulation_info_dao.select_all();
-		   return regulation_info_list;
-		   
-	   }
 	 
 	 //部门管理数据库功能函数
 	 

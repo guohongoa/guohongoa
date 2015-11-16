@@ -11,7 +11,6 @@
 		<typeAlias alias="task_info" type="com.data.task_info" />
 		<typeAlias alias="report_info" type="com.data.report_info" />
 		<typeAlias alias="service_info" type="com.data.service_info" />
-		<typeAlias alias="regulation_info" type="com.data.regulation_info" />
 		<typeAlias alias="department_info" type="com.data.department_info" />
 		<typeAlias alias="project_info" type="com.data.project_info" />
 		<typeAlias alias="employee_info" type="com.data.employee_info" />
@@ -44,7 +43,6 @@
 		<mapper resource="com/config/task_info.xml" />
 		<mapper resource="com/config/report_info.xml" />
 		<mapper resource="com/config/service_info.xml" />
-		<mapper resource="com/config/regulation_info.xml" />
 		<mapper resource="com/config/department_info.xml" />
 		<mapper resource="com/config/project_info.xml" />
 		<mapper resource="com/config/employee_info.xml" />

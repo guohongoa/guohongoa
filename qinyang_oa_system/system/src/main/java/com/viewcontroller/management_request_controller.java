@@ -13,11 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.project_info_dao;
-import com.dao.regulation_info_dao;
 import com.data.department_info;
 import com.data.employee_info;
 import com.data.project_info;
-import com.data.regulation_info;
 import com.mybatis.mybatis_connection_factory;
 
 //所有管理页面请求
@@ -26,54 +24,7 @@ public class management_request_controller
 {
 	
 //-----------------------------------------------------------------------------------------
-	//制度管理部分
-	     //规章制度插入页面
-		@RequestMapping("regulation_insert.do")
-
-		public ModelAndView regulation_insert_request(
-				@RequestParam(value="regulation_department")  String regulation_department,
-				@RequestParam(value="regulation_title")       String regulation_title,
-				@RequestParam(value="regulation_content")     String regulation_content,
-				@RequestParam(value="regulation_resourceurl") String regulation_resourceurl
-				)
-		{
-			//将表单响应结果插入系统信息数据库
-			regulation_info _regulation_info=new regulation_info();
-			_regulation_info.set_regulation_department(regulation_department);
-			_regulation_info.set_regulation_title(regulation_title);
-			_regulation_info.set_regulation_content(regulation_content);
-			_regulation_info.set_regulation_resourceurl(regulation_resourceurl);
-			
-			 Date date=new Date();
-			 DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			 String regulation_addtime=format.format(date);
-			 _regulation_info.set_regulation_addtime(regulation_addtime);
-			   
-			 boolean rs=com.dbconnector.management_db_connector.regulation_insert_db(_regulation_info);
-			 
-			 ModelAndView mv=new ModelAndView();
-			 mv.addObject("result",rs);
-			 return mv;
-			
-			
-			
-		}
-		
-		@RequestMapping("management/regulation_check.do")
-		//查询所有制度条目
-		
-		public ModelAndView regulation_check_request()
-		{
-			
-		   ModelAndView mv=new ModelAndView("regulation_check.jsp");//页面重定向
-		   
-		   //得到查询所有条目的list
-		   
-		   List<regulation_info> regulation_info_list=com.dbconnector.management_db_connector.get_regulation_info_list();
-		   mv.addObject("regulation_info_list", regulation_info_list);
-		   return mv;
-		}
-//----------------------------------------------------------------
+	
 		//部门管理请求响应
 		@RequestMapping("management/department_insert.do")
 
