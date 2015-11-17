@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.data.department_info;
 import com.data.employee_info;
 import com.data.project_info;
+import com.data.service_group_info;
 import com.mybatis.mybatis_connection_factory;
 
 //所有管理页面请求
@@ -87,104 +88,7 @@ public class management_request_controller
 		 }
 		
 		//-------------------------------------------------------------------------
-	    //项目管理部分
-		@RequestMapping("project_insert.do")
-
-		public ModelAndView project_insert_request(
-				@RequestParam(value="project_code")        int project_code,
-				@RequestParam(value="project_name")        String    project_name,
-				@RequestParam(value="project_leader")      String project_leader,
-				@RequestParam(value="project_leaderphone") int project_leaderphone,
-				@RequestParam(value="project_department")  String project_department,
-				@RequestParam(value="project_resourceurl") String project_resourceurl,
-				@RequestParam(value="project_begintime")      String project_begintime,
-				@RequestParam(value="project_endtime") String project_endtime,
-				@RequestParam(value="project_content") String project_content,
-				@RequestParam(value="project_status")  int project_status,
-				@RequestParam(value="project_commiter")  String project_commiter
-				)
-		{
-			//将表单响应结果插入系统信息数据库
-		    project_info _project_info=new project_info();
-		    _project_info.set_project_code(project_code);
-		    _project_info.set_project_name(project_name);
-		    _project_info.set_project_leader(project_leader);
-		    _project_info.set_project_leaderphone(project_leaderphone);
-		    _project_info.set_project_department(project_department);
-		    _project_info.set_project_resourceurl(project_resourceurl);
-		    _project_info.set_project_begintime(project_begintime);
-		    _project_info.set_project_endtime(project_endtime);
-		    _project_info.set_project_content(project_content);
-		    _project_info.set_project_status(project_status);
-		    _project_info.set_project_commiter(project_commiter);
-		    
-			
-			
-			 Date date=new Date();
-			 DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			 String project_addtime=format.format(date);
-			 _project_info.set_project_addtime(project_addtime);
-			   
-			 boolean rs=com.dbconnector.management_db_connector.project_insert_db(_project_info);
-			 
-			 ModelAndView mv=new ModelAndView();
-			 mv.addObject("result",rs);
-			 return mv;
-			
-			
-			
-		}
-		
-		@RequestMapping("management/project_check.do")
-		//查询所有项目条目
-		
-		public ModelAndView project_check_request()
-		{
-			
-		   ModelAndView mv=new ModelAndView("project_total_check.jsp");//页面重定向
-		   
-		   //得到查询所有条目的list
-		   
-		   List<project_info> project_info_list=com.dbconnector.management_db_connector.get_project_info_list();
-		   mv.addObject("project_info_list", project_info_list);
-		   return mv;
-		}
-		
-		@RequestMapping("management/project_check_by_status.do")
-		//根据输入状态查询项目条目
-		
-		public ModelAndView project_check_request(
-				@RequestParam(value="project_status")  int project_status
-				)
-		{
-			
-		   ModelAndView mv;
-		   System.out.println(project_status);
-		   switch (project_status) 
-		   {
-		      case 0: mv=new ModelAndView("project_waiting_check.jsp");break;//未审批请求，返回未审批页面
-		      case 1: mv=new ModelAndView("project_approved_check.jsp");break;//已审批请求，返回已审批页面
-		      case 2: mv=new ModelAndView("project_refused_check.jsp");break;//未通过请求，返回未通过页面
-
-		      default:mv=new ModelAndView();break;
-		    }
-		   
-		   
-		   //得到查询所有条目的list
-		   
-		   List<project_info> project_info_list=com.dbconnector.management_db_connector.get_project_info_list_by_project_status(project_status);
-		   mv.addObject("project_info_list", project_info_list);
-		   return mv;
-		}
-		
-		
-		@RequestMapping("management/project_del.do")
-		 public void project_del_request(
-				 @RequestParam(value="project_id")    int project_id
-				 )
-		 {
-			com.dbconnector.management_db_connector.del_project_from_id(project_id);
-		 }
+	  
 		
    //-------------------------------------------------------------------------------
 		//人员管理请求响应
@@ -257,7 +161,56 @@ public class management_request_controller
 		 }
 		
 	//-------------------------------------------------------------------------------
-		//制度管理数据库功能函数
+		//五服务功能小组管理
+		
+		@RequestMapping("management/service_group_add.do")
+		public ModelAndView group_add_request(
+				
+				@RequestParam(value="service_village_county_name")  String    service_village_county_name,  //五服务功能小组所属乡镇名称
+				
+				@RequestParam(value="service_village_county_id")    int          service_village_county_id,    //五服务乡镇id
+				@RequestParam(value="service_village_name")         String       service_village_name,         //五服务小组所属村名
+				@RequestParam(value="service_village_id")           int       service_village_id,      //五服务小组所属村庄id
+				
+				@RequestParam(value="service_type")                 int       service_type,              //五服务小组服务类别
+				
+				
+				@RequestParam(value="service_group_leader")         String    service_group_leader,         //责任人
+				@RequestParam(value="service_group_phone")          String    service_group_phone,          //负责人电话
+				@RequestParam(value="service_group_duty")           String    service_group_duty,           //五服务小组小组职责
+				@RequestParam(value="service_group_member")         String    service_group_member          //五服务小组成员
+				
+				)
+		{
+			System.out.println(service_type);
+
+			
+			service_group_info _service_group_info=new service_group_info();
+			_service_group_info.set_service_village_county_name(service_village_county_name);
+			_service_group_info.set_service_village_county_id(service_village_county_id);
+			_service_group_info.set_service_village_name(service_village_name);
+			_service_group_info.set_service_village_id(service_village_id);
+			_service_group_info.set_service_type(service_type);
+			_service_group_info.set_service_group_leader(service_group_leader);
+			_service_group_info.set_service_group_phone(service_group_phone);
+			_service_group_info.set_service_group_duty(service_group_duty);
+			_service_group_info.set_service_group_member(service_group_member);
+			
+			
+			
+			 Date date=new Date();
+			 DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			 String service_group_addtime=format.format(date);
+			 _service_group_info.set_service_group_addtime(service_group_addtime);
+			 
+			   
+			 boolean rs=com.dbconnector.management_db_connector.service_group_insert_db(_service_group_info);
+			 
+			 ModelAndView mv=new ModelAndView();
+			 mv.addObject("result",rs);
+			 
+			 return mv;
+		}
 		
 		
 

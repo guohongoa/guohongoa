@@ -12,7 +12,6 @@
 		<typeAlias alias="report_info" type="com.data.report_info" />
 		<typeAlias alias="service_info" type="com.data.service_info" />
 		<typeAlias alias="department_info" type="com.data.department_info" />
-		<typeAlias alias="project_info" type="com.data.project_info" />
 		<typeAlias alias="employee_info" type="com.data.employee_info" />
 		<typeAlias alias="relationship_info" type="com.data.relationship_info"/>
 		<typeAlias alias="department_relationship_info" type="com.data.department_relationship_info"/>
@@ -23,6 +22,7 @@
 		<typeAlias alias="work_record_info" type="com.data.work_record_info"/>
 		<typeAlias alias="service_selector" type="com.selector.service_selector"/>
 		<typeAlias alias="work_record_selector" type="com.selector.work_record_selector"/>
+		<typeAlias alias="service_group_info" type="com.data.service_group_info"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -44,7 +44,6 @@
 		<mapper resource="com/config/report_info.xml" />
 		<mapper resource="com/config/service_info.xml" />
 		<mapper resource="com/config/department_info.xml" />
-		<mapper resource="com/config/project_info.xml" />
 		<mapper resource="com/config/employee_info.xml" />
 		<mapper resource="com/config/relationship_info.xml"/>
 		<mapper resource="com/config/department_relationship_info.xml"/>
@@ -52,6 +51,8 @@
 		<mapper resource="com/config/service_village_county_info.xml"/>
 		<mapper resource="com/config/contact_person_info.xml"/>
 		<mapper resource="com/config/contact_person_department_info.xml"/>
-		<mapper resource="com/config/work_record_info.xml"/>		
+		<mapper resource="com/config/work_record_info.xml"/>
+		<mapper resource="com/config/service_group_info.xml"/>
+				
 	</mappers>
 </configuration>

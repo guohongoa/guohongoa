@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
-import com.dao.project_info_dao;
+import com.dao.service_group_info_dao;
 import com.data.department_info;
 import com.data.employee_info;
-import com.data.project_info;
+import com.data.service_group_info;
 import com.mybatis.mybatis_connection_factory;
 
 
@@ -43,40 +43,7 @@ public class management_db_connector
 		 department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		 _department_info_dao.delete_from_id(department_id);
 	 }
-	 
-	 //项目管理数据库功能函数
-	 public static boolean project_insert_db(project_info _project_info)
-		{
-			project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			
-			boolean projectinsert_rs=_project_info_dao.insert(_project_info);
-			
-			return projectinsert_rs;
-		}
-	 
-	 public static List<project_info> get_project_info_list()
-	   {
-		   List<project_info> project_info_list;
-		   project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		   project_info_list=_project_info_dao.select_all();
-		   return project_info_list;
-		   
-	   }
-	 
-	 //根据项目审批状态查询
-	 public static List<project_info> get_project_info_list_by_project_status(int project_status)
-	 {
-		 List<project_info> project_info_list;
-		   project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		   project_info_list=_project_info_dao.select_by_project_status(project_status);
-		   return project_info_list;
-	 }
-	 
-	 public static void del_project_from_id(int project_id)
-	 {
-		 project_info_dao _project_info_dao=new project_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		 _project_info_dao.delete_from_id(project_id);
-	 }
+	
 	 
 	 //人员管理数据库功能函数
 	 public static boolean employee_insert_db(employee_info _employee_info)
@@ -101,5 +68,17 @@ public class management_db_connector
 	 {
 		 employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		 _employee_info_dao.delete_from_id(employee_id);
+	 }
+	 
+	 //-------------------------------------------------------
+	 //五服务小组
+	 
+	 public static boolean service_group_insert_db(service_group_info _service_group_info)
+	 {
+		    service_group_info_dao _service_group_info_dao=new service_group_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			
+			boolean serviceinsert_rs=_service_group_info_dao.insert( _service_group_info);
+			
+			return serviceinsert_rs;
 	 }
 }
