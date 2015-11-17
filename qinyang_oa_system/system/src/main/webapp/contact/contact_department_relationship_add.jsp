@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="department_relationship_check.do" method="post" name="department_relationship_form" >
-    <input type="text" name="department_relationship_upper_id" value="1"/>
-    <input type="submit" name="submit" value="提交"/>
-</form>
 
 </body>
 </html>

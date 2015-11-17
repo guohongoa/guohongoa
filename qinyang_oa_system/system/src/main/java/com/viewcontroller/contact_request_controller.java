@@ -3,19 +3,16 @@ package com.viewcontroller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
-import com.data.department_relationship_info;
+import com.data.employee_info;
 import com.data.relationship_info;
 
 
@@ -58,71 +55,7 @@ import com.data.relationship_info;
 			   return mv;
 		}
 		
-		//部门关系添加请求
-		@RequestMapping("contact/department_relationship_add.do")
-		public ModelAndView department_relationship_add_request(
-				@RequestParam(value="department_relationship_upper_name")     String    department_relationship_upper_name , //主方id
-			    @RequestParam(value="department_relationship_upper_id")       int       department_relationship_upper_id,
-				@RequestParam(value="department_relationship_downer_name")    String    department_relationship_downer_name,
-				@RequestParam(value="department_relationship_downer_id")      int       department_relationship_downer_id,
-	            @RequestParam(value="department_relationship_upper_level")    int       department_relationship_upper_level
-				)
-		{
-			//初始化relationship_info对象
-		    department_relationship_info _department_relationship_info=new department_relationship_info();
-		    _department_relationship_info.set_department_relationship_upper_name(department_relationship_upper_name);
-		    _department_relationship_info.set_department_relationship_upper_id(department_relationship_upper_id);
-		    _department_relationship_info.set_department_relationship_downer_id(department_relationship_downer_id);
-		    _department_relationship_info.set_department_relationship_downer_name(department_relationship_downer_name);
-		    _department_relationship_info.set_department_relationship_upper_level(department_relationship_upper_level);
-			
-			//添加系统时间
-			   Date date=new Date();
-			   DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			   String department_relationship_addtime=format.format(date);
-			   _department_relationship_info.set_department_relationship_addtime(department_relationship_addtime);
-			   //插入数据库
-			 //department_relationship_insert_db(_department_relationship_info);
-			  com.dbconnector.contact_db_connector.department_relationship_insert_db(_department_relationship_info);
-			
-			
-			
-			
-			 ModelAndView mv=new ModelAndView("department_relationship_add.jsp");
-			  
-			   
-			   return mv;
-		}
 		
-		@RequestMapping("contact/department_relationship_check.do")
-		public ModelAndView department_relationship_check_request(
-				@RequestParam(value="department_relationship_upper_id") int department_relationship_upper_id
-				) throws ParserConfigurationException, TransformerException
-		{
-			//以输入上级部门id，查询所有对应关系
-			List<department_relationship_info> department_relationship_list=new ArrayList<department_relationship_info>();
-			
-			List<department_relationship_info> department_relationship_level1_list= com.dbconnector.contact_db_connector.get_department_ralationship_list_by_upper_id(department_relationship_upper_id);
-			
-			List<department_relationship_info> department_relationship_level2_list=new ArrayList<department_relationship_info>();
-			for(department_relationship_info dinfo1:department_relationship_level1_list)
-			{
-				department_relationship_level2_list.addAll( com.dbconnector.contact_db_connector.get_department_ralationship_list_by_upper_id(dinfo1.get_department_relationship_downer_id()));
-			}
-			department_relationship_list.addAll(department_relationship_level2_list);
-			department_relationship_list.addAll(department_relationship_level1_list);
-			
-	
-			
-			
-			
-			ModelAndView mv=new ModelAndView("department_relationship_check.jsp");
-			String xml= com.dbconnector.contact_db_connector.convert_department_relationship_list_to_xml(department_relationship_list);
-			mv.addObject("department_relationship_list", department_relationship_list);
-			mv.addObject("xml", xml);
-			return mv;
-			
-		}
 		
 		//添加四联联系人请求响应
 		@RequestMapping("contact/contact_person_add.do")
@@ -213,6 +146,38 @@ import com.data.relationship_info;
 			   }
 			   return mv;
 		}
+		
+		//查看四联部门列表
+		@RequestMapping("contact/contact_department_check.do")
+		public ModelAndView contact_department_check_request()
+		{
+			ModelAndView mv=new ModelAndView("department_check.jsp");
+			List<contact_person_department_info> contact_person_department_info_list=com.dbconnector.contact_db_connector.get_contact_person_department_info();
+			mv.addObject("contact_person_department_info_list", contact_person_department_info_list);
+			return mv;
+		}
+		
+		//四联部门添加子部门
+				@RequestMapping("contact/department_add_son.do")
+				public void deppartment_add_son(
+						@RequestParam(value="contact_person_department_id")                int    contact_person_department_id,       //部门id
+						@RequestParam(value="contact_person_department_sononeid")          int    contact_person_department_sononeid, //下属部门一
+						@RequestParam(value="contact_person_department_sontwoid")          int    contact_person_department_sontwoid, //下属部门二
+						@RequestParam(value="contact_person_department_sonthreeid")        int    contact_person_department_sonthreeid//下属部门三
+						)
+				{
+					System.out.println("llllllllllll");
+					contact_person_department_info _contact_person_department_info=new contact_person_department_info();
+					_contact_person_department_info.set_contact_person_department_id(contact_person_department_id);
+					_contact_person_department_info.set_contact_person_department_sononeid(contact_person_department_sononeid);
+					_contact_person_department_info.set_contact_person_department_sontwoid(contact_person_department_sontwoid);
+					_contact_person_department_info.set_contact_person_department_sonthreeid(contact_person_department_sonthreeid);
+					
+					
+					
+					//为部门添加下属部门
+					boolean rs=com.dbconnector.contact_db_connector.contact_person_department_add_son( _contact_person_department_info);
+				}
 	}
 
 		

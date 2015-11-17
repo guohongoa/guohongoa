@@ -8,6 +8,10 @@
 	<resultMap id="result" type="contact_person_department_info">
 		<result property="contact_person_department_id" column="contact_person_department_id" />
 		<result property="contact_person_department_name" column="contact_person_department_name" />
+		
+		<result property="contact_person_department_sononeid" column="contact_person_department_sononeid" />
+		<result property="contact_person_department_sontwoid" column="contact_person_department_sontwoid" />
+		<result property="contact_person_department_sonthreeid" column="contact_person_department_sonthreeid" />
 	</resultMap>
 
 	<insert id="insert" parameterType="contact_person_department_info">
@@ -19,6 +23,14 @@
 	<select id="select_all" resultMap="result">
 		SELECT * FROM contact_person_department_info;
 	</select>
+	
+	<update id="update" parameterType="contact_person_department_info">
+        UPDATE contact_person_department_info
+        SET contact_person_department_sononeid = #{contact_person_department_sononeid},
+            contact_person_department_sontwoid = #{contact_person_department_sontwoid},
+            contact_person_department_sonthreeid = #{contact_person_department_sonthreeid}
+        WHERE contact_person_department_id = #{contact_person_department_id} 
+    </update>
 
 </mapper>
 

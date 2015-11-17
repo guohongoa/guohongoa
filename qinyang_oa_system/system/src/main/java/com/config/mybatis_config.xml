@@ -14,7 +14,6 @@
 		<typeAlias alias="department_info" type="com.data.department_info" />
 		<typeAlias alias="employee_info" type="com.data.employee_info" />
 		<typeAlias alias="relationship_info" type="com.data.relationship_info"/>
-		<typeAlias alias="department_relationship_info" type="com.data.department_relationship_info"/>
 		<typeAlias alias="service_village_info" type="com.data.service_village_info"/>
 		<typeAlias alias="service_village_county_info" type="com.data.service_village_county_info"/>
 		<typeAlias alias="contact_person_info" type="com.data.contact_person_info"/>
@@ -46,7 +45,6 @@
 		<mapper resource="com/config/department_info.xml" />
 		<mapper resource="com/config/employee_info.xml" />
 		<mapper resource="com/config/relationship_info.xml"/>
-		<mapper resource="com/config/department_relationship_info.xml"/>
 		<mapper resource="com/config/service_village_info.xml"/>
 		<mapper resource="com/config/service_village_county_info.xml"/>
 		<mapper resource="com/config/contact_person_info.xml"/>

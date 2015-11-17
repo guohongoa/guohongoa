@@ -54,5 +54,28 @@ public class contact_person_department_info_dao
 	        return contact_person_department_info_list;
 	 }
 	 
+	 public boolean update(contact_person_department_info _contact_person_department_info)
+	 {
+		 int id = -1;
+	      SqlSession session = sqlSessionFactory.openSession();
 	 
+	      try {
+	          id = session.update("contact_person_department_info.update",_contact_person_department_info);
+	 
+	      } finally {
+	          session.commit();
+	          session.close();
+	      }
+	      System.out.println("update("+_contact_person_department_info+") --> updated");
+	      
+	      if(id==-1)
+	        {
+	        	return false;//修改失败
+	        }
+	        else
+	        {
+	        	return true;//修改成功
+	        }
+	 }
+
 }
