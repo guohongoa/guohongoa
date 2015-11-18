@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -28,7 +29,7 @@
                 <ul class="hide">
                     <li><a href="">你有<span>1</span>条工作提醒</a></li>
                     <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>条带审核记录</a></li>
+                    <li class="bordernone"><a href="">你有<span>3</span>条待审核记录</a></li>
                 </ul>
             </div>
         </div>
@@ -57,8 +58,8 @@
             <li><a href="" class="active">村镇管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="" class="red">添加村镇</a><i></i></dd>
-                    <dd><a href="" >修改</a></dd>
+                    <dd class="activea"><a href="">添加村镇</a><i></i></dd>
+                    <dd><a href="" class="red">修改</a></dd>
                 </dl>
             </li>
             <li><a href="" >部门管理</a></li>
@@ -70,45 +71,20 @@
     <div class="right_content">
         <h4><a href="">管理</a>&gt;<a href="">村镇管理</a>&gt;<span>添加村镇</span></h4>
         <div class="tztj">
-            <form id="post_city" action="village_add.do" method="post">
-                <p><span>镇(县)名</span><input class="input600" type="text" name="service_village_county_name"/></p>
-                <p><span>负责人</span><input type="text" name="service_village_county_leader" /></p>
-                <p><span>电话</span><input type="text" name="service_village_county_leaderphone"/></p>
-                <!--  
-                <div class="checkradio"><input class="shoudong" type="radio" name="sex" checked="checked">手动添加村</div>
-                <p><span>包含村</span><textarea class="shuru"></textarea></p>
-                <div class="checkradio"><input class="piliang" type="radio" name="sex">批量导入村</div>
-                <p><span>包含村</span><textarea class="daoru"></textarea></p>
-                <p><span></span><input class="daoru" style="border: none" type="file"/></p>
-                -->
-                <!-- 以空格分割输入该镇所有村名称 -->
-                <p><span>包含村</span><textarea class="shuru" name="str_service_village_names" form="post_city"></textarea></p>
-                <p class="tztj_btn"><b class="login-error"></b><button>提交</button></p>
+            <form id="post_city" action="" method="post">
+               <input type="hidden" name="service_village_county_id" value="${service_village_county_info.get_service_village_county_id()}">
+                <p><span>镇(县)名</span><input class="input600" type="text" name="service_village_county_name" value="${service_village_county_info.get_service_village_county_name()}"/></p>
+                <p><span>负责人</span><input type="text" name="service_village_county_leader" value="${service_village_county_info.get_service_village_county_leader()}"/></p>
+                <p><span>电话</span><input type="text" name="service_village_county_leaderphone" value="${service_village_county_info.get_service_village_county_leaderphone()}"/></p>
+                <p><span>包含村</span><textarea name="str_service_village_names" form="post_city">${str_service_village_names}</textarea></p>
+                <p class="tztj_btn"><b class="login-error"></b><button>确定修改</button>
+                    <a href="czglxg.html">重置</a>
+                </p>
             </form>
         </div>
     </div>
-</div> 
+</div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
-<script>
-    //提交不为空的验证
-    $(".tztj_btn button").click(function(){
-        if(!$("input").val() || !$("textarea").val()){
-            $(".login-error").html("提交不成功：信息填写不完整");
-            return false
-        }else{
-            $("#post_city").submit();
-        }
-    });
-    //手动添加与批量导入的选择
-    $(".shoudong").click(function(){
-        $(".daoru").attr("disabled","disabled").css({background:"#ccc"});
-        $(".shuru").removeAttr("disabled")
-    })
-    $(".piliang").click(function(){
-      $(".shuru").attr("disabled","disabled");
-      $(".daoru").removeAttr("disabled")
-    })
-</script>
 </body>
 </html>

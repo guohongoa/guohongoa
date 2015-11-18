@@ -65,4 +65,24 @@ public class village_request_controller
 	   mv.addObject("service_village_info_list",service_village_info_list);
 	   return mv;
 	}
+	
+	//管理页面乡镇下属村镇修改页面显示请求
+	@RequestMapping("management/village_modify.do")
+	public ModelAndView village_modify_request(
+			@RequestParam(value="service_village_county_id")        int service_village_county_id
+			)
+	{
+		ModelAndView mv=new ModelAndView("village_modify.jsp");
+		//返回村镇信息
+		service_village_county_info _service_village_county_info=com.dbconnector.service_db_connector.get_service_village_county_info_by_id(service_village_county_id);
+		
+		//返回村镇对应村庄名称，以空格分隔
+		
+		String str_service_village_names=com.dbconnector.service_db_connector.get_service_village_names_by_count_id(service_village_county_id);
+		
+		mv.addObject("service_village_county_info", _service_village_county_info);
+		mv.addObject("str_service_village_names", str_service_village_names);
+		
+		return mv;
+	}
 }

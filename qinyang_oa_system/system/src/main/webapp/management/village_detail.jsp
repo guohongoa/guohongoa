@@ -107,6 +107,9 @@
                         <option>删除</option>
                         <option>查看</option>
                     </select>
+                    <a href="village_modify_request.jsp?service_village_county_id=${service_village_county_info.get_service_village_county_id()}">
+                    修改
+                    </a>
                 </li>
             </ul>
             </c:forEach>

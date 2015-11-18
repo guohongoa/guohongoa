@@ -162,5 +162,26 @@ public class service_db_connector
 					return _service_info;
 				}
 				
+				public static String get_service_village_names_by_count_id(int service_village_county_id)
+				{
+					String str_service_village_names="";
+					service_village_info_dao _service_village_info_dao=new service_village_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					List<service_village_info> service_village_info_list=_service_village_info_dao.get_service_village_info_list_by_county_id(service_village_county_id);
+					
+					int i=0;
+					for(service_village_info sinfo:service_village_info_list)
+					{
+						i++;
+						if(i!=0)
+						{
+							str_service_village_names=str_service_village_names+" ";
+						}
+						str_service_village_names=str_service_village_names+sinfo.get_service_village_name();
+					}
+					
+					return str_service_village_names;
+				}
+				
+				
 				
 }
