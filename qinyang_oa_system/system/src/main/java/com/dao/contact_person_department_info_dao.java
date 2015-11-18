@@ -77,5 +77,19 @@ public class contact_person_department_info_dao
 	        	return true;//修改成功
 	        }
 	 }
+	 
+	 public contact_person_department_info get_contact_person_department_info_by_id(int contact_person_department_id)
+	 {
+		 contact_person_department_info _contact_person_department_info = null;
+	        SqlSession session = sqlSessionFactory.openSession();
+	        try {
+	        	_contact_person_department_info = session.selectOne("contact_person_department_info.selectById", contact_person_department_id);
+	 
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("selectById("+contact_person_department_id+") --> "+_contact_person_department_info);
+	        return _contact_person_department_info;
+	 }
 
 }

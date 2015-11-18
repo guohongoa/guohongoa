@@ -4,7 +4,9 @@ package com.viewcontroller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -163,20 +165,46 @@ import com.data.relationship_info;
 						@RequestParam(value="contact_person_department_id")                int    contact_person_department_id,       //部门id
 						@RequestParam(value="contact_person_department_sononeid")          int    contact_person_department_sononeid, //下属部门一
 						@RequestParam(value="contact_person_department_sontwoid")          int    contact_person_department_sontwoid, //下属部门二
-						@RequestParam(value="contact_person_department_sonthreeid")        int    contact_person_department_sonthreeid//下属部门三
+						@RequestParam(value="contact_person_department_sonthreeid")        int    contact_person_department_sonthreeid,//下属部门三
+						@RequestParam(value="contact_person_department_sonfourid")        int     contact_person_department_sonfourid
+						
 						)
 				{
-					System.out.println("llllllllllll");
 					contact_person_department_info _contact_person_department_info=new contact_person_department_info();
 					_contact_person_department_info.set_contact_person_department_id(contact_person_department_id);
 					_contact_person_department_info.set_contact_person_department_sononeid(contact_person_department_sononeid);
 					_contact_person_department_info.set_contact_person_department_sontwoid(contact_person_department_sontwoid);
 					_contact_person_department_info.set_contact_person_department_sonthreeid(contact_person_department_sonthreeid);
+					_contact_person_department_info.set_contact_person_department_sonfourid(contact_person_department_sonfourid);
 					
 					
 					
 					//为部门添加下属部门
 					boolean rs=com.dbconnector.contact_db_connector.contact_person_department_add_son( _contact_person_department_info);
+				}
+				
+		   //四联直线联系图显示
+				@RequestMapping("contact/contact_department_detail_check.do")
+				public ModelAndView department_detail_check(
+						@RequestParam(value="contact_person_department_id")         int    contact_person_department_id     //查询部门id
+						)
+				{
+					Map<String, contact_person_department_info> contact_map;//四联部门联络树xml文件
+					//根据输入根结点id，返回xml文件
+					contact_map=com.dbconnector.contact_db_connector.get_contact_map(contact_person_department_id);
+					
+					ModelAndView mv=new ModelAndView("department_detail.jsp");
+					
+					//遍历map，将联络树数据用key，value模式导入前端页面
+					for(String node_code:contact_map.keySet())
+					{
+						mv.addObject(node_code,contact_map.get(node_code));
+						System.out.println(node_code+contact_map.get(node_code).get_contact_person_department_name());
+					}
+					
+					return mv;
+					
+					
 				}
 	}
 

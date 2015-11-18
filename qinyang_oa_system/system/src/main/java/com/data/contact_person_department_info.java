@@ -10,6 +10,9 @@ public class contact_person_department_info
     private int     contact_person_department_sononeid;      //四联该部门下级部门一id
     private int     contact_person_department_sontwoid;      //四联该部门下级部门二id
     private int     contact_person_department_sonthreeid;    //四联该部门下级部门三id
+    private int     contact_person_department_sonfourid;     //四联该部门下级部门四id
+    
+    private int     contact_person_department_type;          //0为党委，联络图中显示为红，1为职能部门，联络图显示为蓝
     
     public int get_contact_person_department_id()
     {
@@ -64,4 +67,23 @@ public class contact_person_department_info
     	this.contact_person_department_sonthreeid=contact_person_department_sonthreeid;
     }
     
+    public int get_contact_person_department_sonfourid()
+    {
+    	return this.contact_person_department_sonfourid;
+    }
+    
+    public void set_contact_person_department_sonfourid(int contact_person_department_sonfourid)
+    {
+    	this.contact_person_department_sonfourid=contact_person_department_sonfourid;
+    }
+    
+    public int get_contact_person_department_type()
+    {
+    	return this.contact_person_department_type;
+    }
+    
+    public void set_contact_person_department_type(int contact_person_department_type)
+    {
+    	this.contact_person_department_type=contact_person_department_type;
+    }
 }

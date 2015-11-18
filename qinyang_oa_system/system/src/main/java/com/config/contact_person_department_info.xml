@@ -12,6 +12,8 @@
 		<result property="contact_person_department_sononeid" column="contact_person_department_sononeid" />
 		<result property="contact_person_department_sontwoid" column="contact_person_department_sontwoid" />
 		<result property="contact_person_department_sonthreeid" column="contact_person_department_sonthreeid" />
+		<result property="contact_person_department_sonfourid" column="contact_person_department_sonfourid" />
+		<result property="contact_person_department_type" column="contact_person_department_type" />
 	</resultMap>
 
 	<insert id="insert" parameterType="contact_person_department_info">
@@ -28,9 +30,14 @@
         UPDATE contact_person_department_info
         SET contact_person_department_sononeid = #{contact_person_department_sononeid},
             contact_person_department_sontwoid = #{contact_person_department_sontwoid},
-            contact_person_department_sonthreeid = #{contact_person_department_sonthreeid}
+            contact_person_department_sonthreeid = #{contact_person_department_sonthreeid},
+            contact_person_department_sonfourid = #{contact_person_department_sonfourid}
         WHERE contact_person_department_id = #{contact_person_department_id} 
     </update>
+    
+    <select id="selectById" parameterType="int" resultMap="result">
+        SELECT * FROM contact_person_department_info WHERE contact_person_department_id = #{contact_person_department_id}
+    </select>
 
 </mapper>
 

@@ -61,6 +61,22 @@
           <option value="11">群众                     </option>
           <option value="0">  无                       </option>
           </select>
+          
+       <li>下级部门四</li>
+       <select name="contact_person_department_sonfourid">
+          <option value="1">市委常委                   </option>
+          <option value="2">市政府                     </option>
+          <option value="3">乡镇办党（工）委             </option>
+          <option value="4">市直能部门                  </option>
+          <option value="5">农村（社区）党员干部          </option>
+          <option value="6">乡镇办内设机构和基层站所       </option>
+          <option value="7">党员群众服务中心嘉言民生代办员  </option>
+          <option value="8">农村(社区)党员组织           </option>
+          <option value="9">村民小组                   </option>
+          <option value="10">农村（社区）事务            </option>
+          <option value="11">群众                     </option>
+          <option value="0">  无                       </option>
+          </select>
        <input type="submit" name="submit" value="提交">
     </form>
 </body>
