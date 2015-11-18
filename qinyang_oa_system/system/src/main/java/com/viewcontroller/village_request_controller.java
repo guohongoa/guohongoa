@@ -85,4 +85,28 @@ public class village_request_controller
 		
 		return mv;
 	}
+	
+	//管理页面村镇管理修改提交请求响应
+	@RequestMapping("management/village_update_commit.do")
+	public void  village_update_commit_request(
+			
+			
+			@RequestParam(value="service_village_county_id")           int    service_village_county_id,
+			@RequestParam(value="service_village_county_name")         String service_village_county_name,
+			@RequestParam(value="service_village_county_leader")       String service_village_county_leader,
+			@RequestParam(value="service_village_county_leaderphone")  String service_village_county_leaderphone,
+			@RequestParam(value="str_service_village_names")           String str_service_village_names
+			
+			)
+	{
+		service_village_county_info _service_village_county_info=new service_village_county_info();
+		_service_village_county_info.set_service_village_county_id(service_village_county_id);
+		_service_village_county_info.set_service_village_county_name(service_village_county_name);
+		_service_village_county_info.set_service_village_county_leader(service_village_county_leader);
+		_service_village_county_info.set_service_village_county_leaderphone(service_village_county_leaderphone);
+
+		
+		boolean rs=com.dbconnector.service_db_connector.update_county_info(_service_village_county_info);
+		
+	}
 }

@@ -182,6 +182,13 @@ public class service_db_connector
 					return str_service_village_names;
 				}
 				
-				
+				public  static boolean update_county_info(service_village_county_info _service_village_county_info)
+				{
+					boolean rs;
+					service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					rs=_service_village_county_info_dao.update_county_info(_service_village_county_info);
+					
+				    return rs;
+				}
 				
 }

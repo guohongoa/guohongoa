@@ -71,7 +71,7 @@
     <div class="right_content">
         <h4><a href="">管理</a>&gt;<a href="">村镇管理</a>&gt;<span>添加村镇</span></h4>
         <div class="tztj">
-            <form id="post_city" action="" method="post">
+            <form id="post_city" action="village_update_commit.do" method="post">
                <input type="hidden" name="service_village_county_id" value="${service_village_county_info.get_service_village_county_id()}">
                 <p><span>镇(县)名</span><input class="input600" type="text" name="service_village_county_name" value="${service_village_county_info.get_service_village_county_name()}"/></p>
                 <p><span>负责人</span><input type="text" name="service_village_county_leader" value="${service_village_county_info.get_service_village_county_leader()}"/></p>

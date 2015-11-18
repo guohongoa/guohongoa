@@ -59,4 +59,30 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		        System.out.println("selectByUserid("+service_village_county_id+") --> "+_service_village_county_info);
 		        return _service_village_county_info;
 		 }
+		 
+		 //修改村镇管理乡镇信息
+		 
+		 public boolean update_county_info(service_village_county_info _service_village_county_info)
+		 {
+			 int id = -1;
+		      SqlSession session = sqlSessionFactory.openSession();
+		 
+		      try {
+		          id = session.update("service_village_county_info.update",_service_village_county_info);
+		 
+		      } finally {
+		          session.commit();
+		          session.close();
+		      }
+		      System.out.println("update("+_service_village_county_info+") --> updated");
+		      
+		      if(id==-1)
+		        {
+		        	return false;//修改失败
+		        }
+		        else
+		        {
+		        	return true;//修改成功
+		        }
+		 }
 }

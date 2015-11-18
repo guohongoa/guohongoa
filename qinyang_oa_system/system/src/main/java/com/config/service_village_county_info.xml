@@ -26,5 +26,12 @@
 		SELECT * FROM service_village_county_info WHERE service_village_county_id = #{service_village_county_id};
 	</select>
 
+    <update id="update" parameterType="service_village_county_info">
+        UPDATE service_village_county_info
+        SET service_village_county_name = #{service_village_county_name},
+            service_village_county_leader = #{service_village_county_leader},
+            service_village_county_leaderphone = #{service_village_county_leaderphone}
+        WHERE service_village_county_id = #{service_village_county_id} 
+    </update>
 
 </mapper>
