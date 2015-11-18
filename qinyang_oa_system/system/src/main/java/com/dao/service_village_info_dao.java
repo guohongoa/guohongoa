@@ -52,4 +52,29 @@ public class service_village_info_dao
 		        System.out.println("select_by_service_category() --> "+service_village_info_list);
 		        return service_village_info_list;
 		}
+		
+		public boolean delete_villages_by_county_id(int service_village_county_id)
+		{
+			int id=-1;
+			SqlSession session = sqlSessionFactory.openSession();
+			 
+	        try {
+	            id=session.delete("service_village_info.delete_by_county_id",  service_village_county_id);
+	        } finally {
+	            session.commit();
+	            session.close();
+	        }
+	        System.out.println("delete("+service_village_county_id+")");
+	        
+	        if(id==-1)
+	        {
+	        	return false;//删除失败
+	        }
+	        else
+	        {
+	        	return true;//删除成功
+	        }
+	 
+	    }
+		
 }

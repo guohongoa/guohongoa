@@ -104,9 +104,14 @@ public class village_request_controller
 		_service_village_county_info.set_service_village_county_name(service_village_county_name);
 		_service_village_county_info.set_service_village_county_leader(service_village_county_leader);
 		_service_village_county_info.set_service_village_county_leaderphone(service_village_county_leaderphone);
+		
+		 Date date=new Date();
+		 DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		 String service_village_addtime=format.format(date);
 
 		
 		boolean rs=com.dbconnector.service_db_connector.update_county_info(_service_village_county_info);
+		boolean rs2=com.dbconnector.service_db_connector.update_villages_name(service_village_county_id, service_village_county_name, service_village_addtime, str_service_village_names);
 		
 	}
 }

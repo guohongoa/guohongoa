@@ -167,4 +167,6 @@ public class service_info_dao
 		        System.out.println("delete("+service_msgid+")");
 		 }
 		 
+		 
+		 
 }

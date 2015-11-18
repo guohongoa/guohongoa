@@ -182,12 +182,49 @@ public class service_db_connector
 					return str_service_village_names;
 				}
 				
+				//更新乡镇信息
 				public  static boolean update_county_info(service_village_county_info _service_village_county_info)
 				{
 					boolean rs;
 					service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 					rs=_service_village_county_info_dao.update_county_info(_service_village_county_info);
 					
+				    return rs;
+				}
+				
+				//更新乡镇下属村庄信息
+				public static boolean update_villages_name(int service_village_county_id,String service_village_county_name,String service_village_addtime,String str_service_village_names)
+				{
+					//先删除再添加
+					
+					boolean rs;
+					service_village_info_dao _service_village_info_dao=new service_village_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					boolean rs1=_service_village_info_dao.delete_villages_by_county_id(service_village_county_id);
+					boolean rs2=true;
+					String [] service_village_name_array=str_service_village_names.split(" ");
+					for(String service_village_name:service_village_name_array)
+					{
+					   service_village_info _service_village_info=new service_village_info();
+					   _service_village_info.set_service_village_name(service_village_name);
+					   _service_village_info.set_service_village_county_id(service_village_county_id);
+					   _service_village_info.set_service_village_county_name(service_village_county_name);
+					   _service_village_info.set_service_village_addtime(service_village_addtime);
+					   
+						boolean rs_temp=_service_village_info_dao.insert(_service_village_info);
+						if(rs_temp==false)
+						{
+							rs2=true;
+						}
+		
+					}
+					if(rs1||rs2)
+					{
+						rs=true;
+					}
+					else
+					{
+						rs=false;
+					}
 				    return rs;
 				}
 				

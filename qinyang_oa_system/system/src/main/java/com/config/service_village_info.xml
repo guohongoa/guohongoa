@@ -22,6 +22,9 @@
 		SELECT * FROM service_village_info WHERE service_village_county_id = #{service_village_county_id};
 	</select>
 
+    <delete id="delete_by_county_id" parameterType="int">
+        DELETE from service_village_info WHERE service_village_county_id = #{service_village_county_id}
+    </delete>
     
 
 </mapper>
