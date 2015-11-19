@@ -3,6 +3,7 @@ package com.viewcontroller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.data.contact_node;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
 import com.data.relationship_info;
@@ -191,14 +194,37 @@ import com.data.relationship_info;
 					//根据输入根结点id，返回xml文件
 					contact_map=com.dbconnector.contact_db_connector.get_contact_map(contact_person_department_id);
 					
-					ModelAndView mv=new ModelAndView("department_detail.jsp");
+					ModelAndView mv=new ModelAndView("department_detail1.jsp");
 					
+					List<contact_node> contact_node_list=new ArrayList<contact_node>();
 					//遍历map，将联络树数据用key，value模式导入前端页面
 					for(String node_code:contact_map.keySet())
 					{
-						mv.addObject(node_code,contact_map.get(node_code));
+						//mv.addObject(node_code,contact_map.get(node_code));
+						contact_node _contact_node=new contact_node();
+						_contact_node.set_contact_node_code(node_code);//结点编号
+						_contact_node.set_contact_person_department_id(contact_map.get(node_code).get_contact_person_department_id());//部门id
+						_contact_node.set_contact_person_department_name(contact_map.get(node_code).get_contact_person_department_name());//部门名称
+						_contact_node.set_contact_person_department_type(contact_map.get(node_code).get_contact_person_department_type());//部门类型，决定显示红蓝
+	                    _contact_node.set_contact_node_level(node_code.length()-5);//字符串长度决定层级
+						contact_node_list.add(_contact_node);
+						
 						System.out.println(node_code+contact_map.get(node_code).get_contact_person_department_name());
 					}
+					
+					for(int i=0;i<=7;i++)
+					{
+						List<contact_node> contact_node_child_list=new ArrayList<contact_node>();
+						for(contact_node _contact_node:contact_node_list)
+						{
+							if(_contact_node.get_contact_node_level()==i)
+							{
+								contact_node_child_list.add(_contact_node);
+							}
+						}
+						mv.addObject("contact_node_list"+i,contact_node_child_list);
+					}
+					
 					
 					return mv;
 					
