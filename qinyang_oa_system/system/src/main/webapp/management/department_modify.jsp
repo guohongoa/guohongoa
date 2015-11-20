@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -60,7 +61,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="">添加部门</a><i></i></dd>
-                    <dd><a href="" >修改</a></dd>
+                    <dd><a href="" class="red">修改</a></dd>
                 </dl>
             </li>
             <li><a href="">人员管理</a></li>
@@ -69,55 +70,44 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<span>部门管理</span></h4>
-        <h5><span>部门编号</span><input type="text"/>
-            <span>部门名称</span><input type="text"/>
-            <a href="">查找</a>
-            <a href="">添加部门</a>
-        </h5>
-        <div class="contentlist">
-            <ul class="contentlisttt tzlb_content">
-                <li>部门编号</li>
-                <li>部门名称</li>
-                <li>负责人</li>
-                <li>工作制度</li>
-                <li>上级部门</li>
-                <li>上级联系人</li>
-                <li>联系电话</li>
-                <li>操作</li>
-            </ul>
-            <c:forEach var="department_info" items="${department_info_list}">
-            <ul class="tzlb_content">
-                <li>${department_info.get_department_code()}</li>
-                <li>${department_info.get_department_name()}</li>
-                <li>${department_info.get_department_leader()}</li>
-                <li><a href="">详细</a></li>
-                <li>${department_info.get_department_parent()}</li>
-                <li>${department_info.get_department_parentleader()}</li>
-                <li>${department_info.get_department_leaderphone()}</li>
-                <li>
-                    <select>
-                        <option>修改</option>
-                        <option>删除</option>
-                        <option>查看</option>
-                    </select>
-                     <a href="department_modify_request.jsp?department_id=${department_info.get_department_id()}">
-                         修改
-                    </a>
-                </li>
-            </ul>
-            </c:forEach>
+        <h4><a href="">管理</a>&gt;<a href="">部门管理</a>&gt;<span>添加部门</span></h4>
+        <div class="bmtj ">
+            <form action="department_modify_commit.do" method="post">
+                <input type="hidden" name="department_id" value="${department_info.get_department_id()}">
+                <div>
+                    <p><span>部门编号</span>
+                        <input class="input200" type="text" name="department_code" value="${department_info.get_department_code()}"/></p>
+
+                    <p><span>部门名称</span>
+                        <input class="input200" type="text" name="department_name" value="${department_info.get_department_name()}"/></p>
+                </div>
+                <div class="shangchuan">
+                    <p><span>工作制度</span>
+                        <textarea name="department_regulation">${department_info.get_department_regulation()}</textarea></p>
+
+                    <p><span>上传流程</span>
+                        <input type="file" value=""/>
+                    </p>
+                </div>
+                <div class="clear">
+                    <p><span>部门负责人</span>
+                        <input class="input200" type="text" name="department_leader" value="${department_info.get_department_leader()}"/></p>
+
+                    <p><span>上级部门</span>
+                        <input class="input200" type="text" name="department_parent" value="${department_info.get_department_parent()}"/></p>
+                </div>
+                <div>
+                    <p><span>上级联系人</span>
+                        <input class="input200" type="text" name="department_parentleader" value="${department_info.get_department_parent()}"/></p>
+
+                    <p><span>联系电话</span>
+                        <input class="input200" type="text"  name="department_leaderphone" value="${department_info.get_department_leaderphone()}"/></p>
+                </div>
+                <div class="clear tianjiabtn">
+                    <input type="submit" name="submit" value="添加"/><input type="reset" value="重置"/>
+                </div>
+            </form>
         </div>
-    </div>
-    <div class="page">
-        <a href="" class="bulec">1</a>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
-        <a href="">上一页</a>
-        <a href="">下一页</a>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>

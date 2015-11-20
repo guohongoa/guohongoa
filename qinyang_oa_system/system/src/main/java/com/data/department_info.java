@@ -9,7 +9,7 @@ public class department_info
    private String  department_regulation;  //部门职责
    private String  department_leader;//部门负责人
    private String  department_addtime;//记录添加时间
-   private int     department_leaderphone;//部门负责人电话
+   private String     department_leaderphone;//部门负责人电话
    private String  department_resourceurl;//部门业务流程
    private String  department_parentleader;
    
@@ -84,12 +84,12 @@ public class department_info
 	   this.department_addtime=department_addtime;
    }
    
-   public int get_department_leaderphone()
+   public String get_department_leaderphone()
    {
 	  return this.department_leaderphone;
    }
    
-   public void set_department_leaderphone(int department_leaderphone)
+   public void set_department_leaderphone(String department_leaderphone)
    {
 	   this.department_leaderphone=department_leaderphone;
    }

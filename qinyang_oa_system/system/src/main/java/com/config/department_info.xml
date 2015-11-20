@@ -34,6 +34,19 @@
 	<delete id="delete" parameterType="int">
         DELETE FROM department_info WHERE department_id = #{department_id};
     </delete>
+    
+    
+    <update id="update" parameterType="department_info">
+        UPDATE department_info
+        SET department_code       = #{department_code},
+            department_name       = #{department_name},
+            department_regulation = #{department_regulation},
+            department_leader     = #{department_leader},
+            department_parent     = #{department_parent},
+            department_parentleader=#{department_parentleader},
+            department_leaderphone= #{department_leaderphone}
+        WHERE department_id = #{department_id} 
+    </update>
 
 </mapper>
 

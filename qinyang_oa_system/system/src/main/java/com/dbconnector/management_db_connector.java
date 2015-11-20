@@ -5,9 +5,12 @@ import java.util.List;
 import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.service_group_info_dao;
+import com.dao.service_info_dao;
+import com.dao.service_village_county_info_dao;
 import com.data.department_info;
 import com.data.employee_info;
 import com.data.service_group_info;
+import com.data.service_info;
 import com.mybatis.mybatis_connection_factory;
 
 
@@ -38,12 +41,27 @@ public class management_db_connector
 		   
 	   }
 	 
+	 public static department_info get_department_info_by_id(int department_id)
+	 {
+		 department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 department_info _department_info=_department_info_dao.select_by_department_id(department_id);
+			return _department_info;
+	 }
+	 
 	 public static void del_department_from_id(int department_id)
 	 {
 		 department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		 _department_info_dao.delete_from_id(department_id);
 	 }
 	
+	 public static boolean update_department_info(department_info _department_info)
+	 {
+		    boolean rs;
+			department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			rs=_department_info_dao.update_department_info(_department_info);
+			
+		    return rs;
+	 }
 	 
 	 //人员管理数据库功能函数
 	 public static boolean employee_insert_db(employee_info _employee_info)

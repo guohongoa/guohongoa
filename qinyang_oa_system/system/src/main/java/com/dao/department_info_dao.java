@@ -82,5 +82,30 @@ public class department_info_dao
 	        }
 	        System.out.println("delete("+department_id+")");
 	  }
+	  
+	  //修改更新部门管理
+	  public boolean update_department_info(department_info _department_info)
+	  {
+		  int id = -1;
+	      SqlSession session = sqlSessionFactory.openSession();
+	 
+	      try {
+	          id = session.update("department_info.update",_department_info);
+	 
+	      } finally {
+	          session.commit();
+	          session.close();
+	      }
+	      System.out.println("update("+_department_info+") --> updated");
+	      
+	      if(id==-1)
+	        {
+	        	return false;//修改失败
+	        }
+	        else
+	        {
+	        	return true;//修改成功
+	        }
+	  }
 }
 

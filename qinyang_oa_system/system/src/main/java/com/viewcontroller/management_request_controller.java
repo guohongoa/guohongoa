@@ -14,6 +14,7 @@ import com.data.department_info;
 import com.data.employee_info;
 import com.data.project_info;
 import com.data.service_group_info;
+import com.data.service_village_county_info;
 import com.mybatis.mybatis_connection_factory;
 
 //所有管理页面请求
@@ -33,7 +34,7 @@ public class management_request_controller
 				@RequestParam(value="department_regulation")  String department_regulation,
 				@RequestParam(value="department_parent")      String department_parent,
 				@RequestParam(value="department_parentleader")String department_parentleader,
-				@RequestParam(value="department_leaderphone") int    department_leaderphone,
+				@RequestParam(value="department_leaderphone") String    department_leaderphone,
 				@RequestParam(value="department_resourceurl") String    department_resourceurl
 				)
 		{
@@ -86,6 +87,53 @@ public class management_request_controller
 		 {
 			com.dbconnector.management_db_connector.del_department_from_id(department_id);
 		 }
+		
+		//部门管理修改显示页面
+		@RequestMapping("management/department_modify.do")
+		
+		public ModelAndView department_modify_check_request(
+		    @RequestParam(value="department_id")        int    department_id
+				)
+		{
+			ModelAndView mv=new ModelAndView("department_modify.jsp");
+			department_info _department_info=com.dbconnector.management_db_connector.get_department_info_by_id(department_id);
+			
+			
+			mv.addObject("department_info",_department_info);
+			
+			return mv;
+		}
+		
+		@RequestMapping("management/department_modify_commit.do")
+		
+		public void department_modify_commit_request(
+				@RequestParam(value="department_id")              int      department_id,
+				@RequestParam(value="department_name")            String    department_name,
+				@RequestParam(value="department_code")            int      department_code,
+				@RequestParam(value="department_regulation")      String   department_regulation,
+				@RequestParam(value="department_leader")          String  department_leader,
+				@RequestParam(value="department_parent")          String  department_parent,
+				@RequestParam(value="department_parentleader")    String  department_parentleader,
+				@RequestParam(value="department_leaderphone")    String  department_leaderphone
+				
+				)
+		{
+			department_info _department_info=new department_info();
+			_department_info.set_department_id(department_id);
+			_department_info.set_department_name(department_name);
+			_department_info.set_department_code(department_code);
+			_department_info.set_department_regulation(department_regulation);
+			_department_info.set_department_leaderphone(department_leaderphone);
+			_department_info.set_department_leader(department_leaderphone);
+			_department_info.set_department_parent(department_parent);
+			_department_info.set_department_parentleader(department_parentleader);
+			
+			
+			boolean rs=com.dbconnector.management_db_connector.update_department_info(_department_info);
+			
+			
+		}
+		
 		
 		//-------------------------------------------------------------------------
 	  
