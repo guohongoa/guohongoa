@@ -83,5 +83,30 @@ public class employee_info_dao
 	        }
 	        System.out.println("delete("+employee_id+")");
 	  }
+	  
+	  public boolean update_employee_info(employee_info _employee_info)
+	  {
+		  int id = -1;
+	      SqlSession session = sqlSessionFactory.openSession();
+	 
+	      try {
+	          id = session.update("employee_info.update",_employee_info);
+	 
+	      } finally {
+	          session.commit();
+	          session.close();
+	      }
+	      System.out.println("update("+_employee_info+") --> updated");
+	      
+	      if(id==-1)
+	        {
+	        	return false;//修改失败
+	        }
+	        else
+	        {
+	        	return true;//修改成功
+	        }
+	  }
+	  
 }
 

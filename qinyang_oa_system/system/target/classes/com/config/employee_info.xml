@@ -38,6 +38,22 @@
 	<delete id="delete" parameterType="int">
         DELETE FROM employee_info WHERE employee_id = #{employee_id};
     </delete>
+    
+    <update id="update" parameterType="employee_info">
+        UPDATE employee_info
+        SET employee_name         = #{employee_name},
+            employee_gender       = #{employee_gender},
+            employee_birthdate    = #{employee_birthdate},
+            employee_idcode       = #{employee_idcode},
+            employee_position     = #{employee_position},
+            employee_addworktime  = #{employee_addworktime},
+            employee_department   = #{employee_department},
+            employee_leader       = #{employee_leader},
+            employee_phone        = #{employee_phone},
+            employee_duty         = #{employee_duty}
+            
+        WHERE employee_id = #{employee_id} 
+    </update>
 </mapper>
 
 

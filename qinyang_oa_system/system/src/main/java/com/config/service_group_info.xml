@@ -30,4 +30,10 @@
 		SELECT * FROM service_group_info;
 	</select>
 
+   
+    
+    <select id="select_by_service_group_info_id" parameterType="int" resultMap="result">
+		SELECT * FROM service_group_info WHERE service_group_id = #{service_group_id};
+	</select>
+	
 </mapper>

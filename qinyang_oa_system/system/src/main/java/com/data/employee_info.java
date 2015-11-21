@@ -10,7 +10,7 @@ public class employee_info
 	private String employee_department;//员工部门
 	private String employee_leader;    //部门负责人
 	private String employee_addworktime;//参加工作时间
-	private int    employee_phone;      //员工电话
+	private String    employee_phone;      //员工电话
 	private String employee_addtime;    //记录添加时间
 	
 	private String employee_birthdate;   //出生日期
@@ -89,12 +89,12 @@ public class employee_info
 		this.employee_addworktime=employee_addworktime;
 	}
 	
-	public int get_employee_phone()
+	public String get_employee_phone()
 	{
 		return this.employee_phone;
 	}
 	
-	public void set_employee_phone(int employee_phone)
+	public void set_employee_phone(String employee_phone)
 	{
 		this.employee_phone=employee_phone;
 	}

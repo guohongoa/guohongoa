@@ -191,7 +191,7 @@ public class management_request_controller
 		public ModelAndView employee_check_request()
 		{
 			
-		   ModelAndView mv=new ModelAndView("employee_check1.jsp");//页面重定向
+		   ModelAndView mv=new ModelAndView("employee_check.jsp");//页面重定向
 		   
 		   //得到查询所有条目的list
 		   
@@ -207,6 +207,59 @@ public class management_request_controller
 		 {
 			com.dbconnector.management_db_connector.del_employee_from_id(employee_id);
 		 }
+		
+		//显示员工管理修改内容
+		@RequestMapping("management/employee_modify.do")
+		public ModelAndView employee_modify_check_request(
+			    @RequestParam(value="employee_id")        int    employee_id
+					)
+			{
+				ModelAndView mv=new ModelAndView("employee_modify.jsp");
+				employee_info _employee_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id);
+				
+				
+				mv.addObject("employee_info",_employee_info);
+				
+				return mv;
+			}
+		
+		@RequestMapping("management/employee_modify_commit.do")
+			public void employee_modify_commit_request(
+					@RequestParam(value="employee_id")                int     employee_id,
+					@RequestParam(value="employee_name")              String  employee_name,
+					@RequestParam(value="employee_gender")            String  employee_gender,
+					@RequestParam(value="employee_birthdate")         String  employee_birthdate,
+					@RequestParam(value="employee_idcode")            String  employee_idcode,
+					@RequestParam(value="employee_position")          String  employee_position,
+					@RequestParam(value="employee_addworktime")       String  employee_addworktime,
+					@RequestParam(value="employee_department")        String  employee_department,
+					@RequestParam(value="employee_leader")            String  employee_leader,
+					@RequestParam(value="employee_phone")             String  employee_phone,
+					@RequestParam(value="employee_duty")              String  employee_duty
+					
+					
+					)
+			{
+				employee_info _employee_info=new employee_info();
+				_employee_info.set_employee_id(employee_id);
+				_employee_info.set_employee_name(employee_name);
+				_employee_info.set_employee_gender(employee_gender);
+				_employee_info.set_employee_birthdate(employee_birthdate);
+				_employee_info.set_employee_idcode(employee_idcode);
+				_employee_info.set_employee_position(employee_position);
+				_employee_info.set_employee_addworktime(employee_addworktime);
+				_employee_info.set_employee_department(employee_department);
+				_employee_info.set_employee_leader(employee_leader);
+				_employee_info.set_employee_phone(employee_phone);
+				_employee_info.set_employee_duty(employee_duty);
+				
+				
+				
+				
+				boolean rs=com.dbconnector.management_db_connector.update_employee_info(_employee_info);
+				
+				
+			}
 		
 	//-------------------------------------------------------------------------------
 		//五服务功能小组管理
@@ -260,7 +313,35 @@ public class management_request_controller
 			 return mv;
 		}
 		
+		@RequestMapping("management/service_group_check.do")
+		//五服务小组信息查看
+		public ModelAndView service_group_check_request()
+		{
+			
+		   ModelAndView mv=new ModelAndView("service_group_check.jsp");//页面重定向
+		   
+		   //得到查询所有条目的list
+		   
+		   List<service_group_info> service_group_info_list=com.dbconnector.management_db_connector.get_service_group_list();
+		   mv.addObject("service_group_info_list",service_group_info_list);
+		   return mv;
+		}
+		
 		
 
+			//显示五服务小组修改内容
+			@RequestMapping("management/service_group_modify.do")
+			public ModelAndView service_group_modify_check_request(
+				    @RequestParam(value="service_group_id")        int    service_group_id
+						)
+				{
+					ModelAndView mv=new ModelAndView("service_group_modify.jsp");
+					service_group_info _service_group_info=com.dbconnector.management_db_connector.get_service_group_info_by_id(service_group_id);
+					
+					
+					mv.addObject("service_group_info",_service_group_info);
+					
+					return mv;
+				}
 
 }

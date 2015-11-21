@@ -56,63 +56,41 @@
         <h3><a href="">管理</a></h3>
         <ul>
             <li><a href="">村镇管理</a></li>
-            <li><a href="">部门管理</a></li>
-            <li><a href=""  class="active">人员管理</a>
+            <li><a href="" class="active">部门管理</a>
+            </li>
+            <li><a href="">人员管理</a></li>
+            <li><a href="">五服务小组管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="">添加人员</a><i></i></dd>
-                    <dd><a href="" >修改</a></dd>
+                    <dd class="activea"><a href="" >添加小组成员</a><i></i></dd>
+                    <dd><a href="" class="red">修改</a></dd>
                 </dl>
             </li>
-            <li><a href="">五服务小组管理</a></li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<span>员工管理</span></h4>
-        <h5><span>员工姓名</span><input type="text"/>
-            <span>员工电话</span><input type="text"/>
-            <a href="">查找</a>
-            <a href="">添加员工</a>
-        </h5>
-        <div class="contentlist">
-            <ul class="contentlisttt ">
-                <li>姓名</li>
-                <li>性别</li>
-                <li>职务</li>
-                <li>所属部门</li>
-                <li>直接上级</li>
-                <li>联系电话</li>
-                <li>操作</li>
-            </ul>
-            <c:forEach var="employee_info" items="${employee_info_list}">
-            <ul>
-                <li>${employee_info.get_employee_name()}</li>
-                <li>${employee_info.get_employee_gender()}</li>
-                <li>${employee_info.get_employee_position()}</li>
-                <li>${employee_info.get_employee_department()}</li>
-                <li>${employee_info.get_employee_leader()}</li>
-                <li>${employee_info.get_employee_phone()}</li>
-                <li>
-                    <select>
-                        <option>修改</option>
-                        <option>删除</option>
-                        <option>查看</option>
+        <h4><a href="">管理</a>&gt;<a href="">五服务小组管理</a>&gt;<span>添加小组成员</span></h4>
+        <div class="tztj">
+            <form  action="" method="post">
+                <p><span>镇(县)名</span><input name="service_village_county_name" class="input600" type="text" value="${service_group_info.get_service_village_county_name()}"/></p>
+                <p><span>村名</span><input type="text" name="service_village_name" value="${service_group_info.get_service_village_name()}"/></p>
+                <p><span>服务类型</span>
+                    <select name="service_type">
+                        <option value="0">法政法规服务</option>
+                        <option value="1">经济发展服务</option>
+                        <option value="2">和谐稳定服务</option>
+                        <option value="3">环境卫生服务</option>
+                        <option value="4">文体活动服务</option>
                     </select>
-                </li>
-            </ul>
-            </c:forEach>
+                </p>
+                <p><span>责任人</span><input name="service_group_leader" type="text" value="${service_group_info.get_service_group_leader()}"/></p>
+                <p><span>联系电话</span><input type="text" name="service_group_phone" value="${service_group_info.get_service_group_phone()}"/></p>
+                <p><span>小组职责</span><textarea name="service_group_duty">${service_group_info.get_service_group_duty()}</textarea></p>
+                <p><span>小组成员</span><textarea  name="service_group_member">${service_group_info.get_service_group_member()}</textarea></p>
+                <p class="tztj_btn"><b class="login-error"></b><button>确定修改</button></p>
+            </form>
         </div>
-    </div>
-    <div class="page">
-        <a href="" class="bulec">1</a>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
-        <a href="">上一页</a>
-        <a href="">下一页</a>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
