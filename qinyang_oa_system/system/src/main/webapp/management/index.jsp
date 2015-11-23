@@ -9,6 +9,6 @@
 </head>
 <body>
   <!--管理主页面跳转 -->
-  <c:redirect url="project_approved_check_request.jsp" />
+  <c:redirect url="village_check_request.jsp" />
 </body>
 </html>

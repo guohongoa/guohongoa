@@ -29,11 +29,21 @@
 	<select id="select_all" resultMap="result">
 		SELECT * FROM service_group_info;
 	</select>
-
-   
     
     <select id="select_by_service_group_info_id" parameterType="int" resultMap="result">
 		SELECT * FROM service_group_info WHERE service_group_id = #{service_group_id};
 	</select>
+	
+	 <update id="update" parameterType="service_group_info">
+        UPDATE service_group_info
+        SET service_village_county_name       = #{service_village_county_name},
+            service_village_name        = #{service_village_name},
+            service_type                = #{service_type},
+            service_group_leader        = #{service_group_leader},
+            service_group_phone         = #{service_group_phone},
+            service_group_duty          = #{service_group_duty},
+            service_group_member        = #{service_group_member}
+        WHERE service_group_id = #{service_group_id}
+    </update>
 	
 </mapper>

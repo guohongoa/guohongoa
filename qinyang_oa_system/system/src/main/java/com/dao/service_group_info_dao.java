@@ -66,4 +66,28 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 	        System.out.println("selectByUserid("+service_group_id+") --> "+_service_group_info);
 	        return _service_group_info;
 		}
+		
+		public boolean update_service_group_info(service_group_info _service_group_info)
+		{
+			int id = -1;
+		      SqlSession session = sqlSessionFactory.openSession();
+		 
+		      try {
+		          id = session.update("service_group_info.update",_service_group_info);
+		 
+		      } finally {
+		          session.commit();
+		          session.close();
+		      }
+		      System.out.println("update("+_service_group_info+") --> updated");
+		      
+		      if(id==-1)
+		        {
+		        	return false;//修改失败
+		        }
+		        else
+		        {
+		        	return true;//修改成功
+		        }
+		}
 }

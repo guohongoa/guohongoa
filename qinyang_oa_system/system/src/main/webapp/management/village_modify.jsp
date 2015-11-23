@@ -53,23 +53,22 @@
 <!--主体-->
 <div class="content">
     <div class="left_menu tzlb" style="height: 325px">
-        <h3><a href="">管理</a></h3>
+        <h3>管理</h3>
         <ul>
-            <li><a href="" class="active">村镇管理</a>
+            <li><a href="village_check_request.jsp" class="active">村镇管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="">添加村镇</a><i></i></dd>
-                    <dd><a href="" class="red">修改</a></dd>
+                    <dd class="activea"><a href="village_add.jsp">添加村镇</a><i></i></dd>
                 </dl>
             </li>
-            <li><a href="" >部门管理</a></li>
-            <li><a href="">人员管理</a></li>
-            <li><a href="">五服务小组管理</a></li>
+            <li><a href="department_check_request.jsp" >部门管理</a></li>
+            <li><a href="employee_check_request.jsp">人员管理</a></li>
+            <li><a href="service_group_check_request.jsp" >五服务小组管理</a></li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<a href="">村镇管理</a>&gt;<span>添加村镇</span></h4>
+        <h4><a href="">管理</a>&gt;<a href="">村镇管理</a>&gt;<span>修改信息</span></h4>
         <div class="tztj">
             <form id="post_city" action="village_update_commit.do" method="post">
                <input type="hidden" name="service_village_county_id" value="${service_village_county_info.get_service_village_county_id()}">

@@ -150,7 +150,7 @@ public class management_request_controller
 				@RequestParam(value="employee_gender")      String employee_gender,             //员工性别
 				@RequestParam(value="employee_addworktime") String employee_addworktime,     //入职时间
 				@RequestParam(value="employee_leader") String employee_leader,               //部门负责人
-				@RequestParam(value="employee_phone")  int employee_phone,                   //员工电话
+				@RequestParam(value="employee_phone")  String employee_phone,                   //员工电话
 				@RequestParam(value="employee_name")  String employee_name,                 //员工姓名
 				@RequestParam(value="employee_duty")  String employee_duty
 				)
@@ -344,4 +344,35 @@ public class management_request_controller
 					return mv;
 				}
 
+			@RequestMapping("management/service_group_modify_commit.do")
+			public void service_group_modify_commit_request(
+					@RequestParam(value="service_group_id")                int     service_group_id,
+					@RequestParam(value="service_village_county_name")     String service_village_county_name,
+					@RequestParam(value="service_village_name")            String service_village_name,
+					@RequestParam(value="service_type")                    int    service_type,
+					@RequestParam(value="service_group_leader")            String service_group_leader,
+					@RequestParam(value="service_group_phone")             String  service_group_phone,
+					@RequestParam(value="service_group_duty")              String  service_group_duty,
+					@RequestParam(value="service_group_member")            String  service_group_member
+					
+					
+					)
+			{
+				System.out.println("sssssss");
+				service_group_info _service_group_info=new service_group_info();
+				_service_group_info.set_service_group_id(service_group_id);
+				_service_group_info.set_service_village_county_name(service_village_county_name);
+				_service_group_info.set_service_village_name(service_village_name);
+				_service_group_info.set_service_type(service_type);
+				_service_group_info.set_service_group_leader(service_group_leader);
+				_service_group_info.set_service_group_phone(service_group_phone);
+				_service_group_info.set_service_group_duty(service_group_duty);
+				_service_group_info.set_service_group_member(service_group_member);
+				
+				
+				
+				boolean rs=com.dbconnector.management_db_connector.update_service_group_info(_service_group_info);
+				
+				
+			}
 }

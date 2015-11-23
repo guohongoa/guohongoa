@@ -131,4 +131,13 @@ public class management_db_connector
 		 service_group_info _service_group_info=_service_group_info_dao.select_by_id(service_group_id);
 			return _service_group_info;
 	 }
+	 
+	 public static boolean update_service_group_info(service_group_info _service_group_info)
+	 {
+		 boolean rs;
+		 service_group_info_dao _service_group_info_dao=new service_group_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		rs=_service_group_info_dao.update_service_group_info(_service_group_info);
+		
+	    return rs;
+	 }
 }
