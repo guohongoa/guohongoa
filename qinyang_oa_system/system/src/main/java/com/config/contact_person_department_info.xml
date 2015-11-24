@@ -35,9 +35,11 @@
         WHERE contact_person_department_id = #{contact_person_department_id} 
     </update>
     
-    <select id="selectById" parameterType="int" resultMap="result">
+    <select id="select_by_department_id" parameterType="int" resultMap="result">
         SELECT * FROM contact_person_department_info WHERE contact_person_department_id = #{contact_person_department_id}
     </select>
+    
+    
 
 </mapper>
 

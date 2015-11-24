@@ -108,5 +108,22 @@ public class employee_info_dao
 	        }
 	  }
 	  
+	  //根据部门和上级领导id查询
+	  public employee_info get_employee_info_by_parent_id_and_department_id(int employee_leader_id,int employee_department_id)
+	  {
+		  employee_info _employee_info = new employee_info();
+		  
+		  _employee_info.set_employee_leader_id(employee_leader_id);
+		  _employee_info.set_employee_department_id(employee_department_id);
+	        SqlSession session = sqlSessionFactory.openSession();
+	        try {
+	            _employee_info = session.selectOne("employee_info.select_by_parent_id_and_department_id",_employee_info);
+	 
+	        } finally {
+	            session.close();
+	        }
+	        return _employee_info;
+	  }
+	  
 }
 

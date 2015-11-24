@@ -18,6 +18,12 @@ public class employee_info
     private String employee_duty;        //员工职责
     
 	
+    public employee_info()
+    {
+    	employee_id=-1;
+    }
+    
+    
 	public int get_employee_id()
 	{
 		return this.employee_id;

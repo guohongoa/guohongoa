@@ -10,6 +10,7 @@ setTimeout("document.department_detail_form.submit()",10)
 </script> 
 <body > 
 <form name="department_detail_form" method="post" action="contact_department_detail_check.do">
+   <input type="hidden" name="employee_id" value="1">   <!--输入员工编号-->
    <input type="hidden" name="contact_person_department_id" value="1"> 
 </form> 
 </body> 

@@ -187,12 +187,13 @@ import com.data.relationship_info;
 		   //四联直线联系图显示
 				@RequestMapping("contact/contact_department_detail_check.do")
 				public ModelAndView department_detail_check(
-						@RequestParam(value="contact_person_department_id")         int    contact_person_department_id     //查询部门id
+						@RequestParam(value="contact_person_department_id")         int    contact_person_department_id,    //查询人员部门id
+						@RequestParam(value="employee_id")                          int    employee_id                      //查询人员id
 						)
 				{
-					Map<String, contact_person_department_info> contact_map;//四联部门联络树xml文件
-					//根据输入根结点id，返回xml文件
-					contact_map=com.dbconnector.contact_db_connector.get_contact_map(contact_person_department_id);
+	
+					Map<String, contact_node> contact_map;//四联人员联络树
+					contact_map=com.dbconnector.contact_db_connector.get_contact_map(contact_person_department_id,employee_id);
 					
 					ModelAndView mv=new ModelAndView("department_detail1.jsp");
 					
@@ -200,14 +201,8 @@ import com.data.relationship_info;
 					//遍历map，将联络树数据用key，value模式导入前端页面
 					for(String node_code:contact_map.keySet())
 					{
-						//mv.addObject(node_code,contact_map.get(node_code));
-						contact_node _contact_node=new contact_node();
-						_contact_node.set_contact_node_code(node_code);//结点编号
-						_contact_node.set_contact_person_department_id(contact_map.get(node_code).get_contact_person_department_id());//部门id
-						_contact_node.set_contact_person_department_name(contact_map.get(node_code).get_contact_person_department_name());//部门名称
-						_contact_node.set_contact_person_department_type(contact_map.get(node_code).get_contact_person_department_type());//部门类型，决定显示红蓝
-	                    _contact_node.set_contact_node_level(node_code.length()-5);//字符串长度决定层级
-						contact_node_list.add(_contact_node);
+						
+						contact_node_list.add(contact_map.get(node_code));
 						
 						System.out.println(node_code+contact_map.get(node_code).get_contact_person_department_name());
 					}

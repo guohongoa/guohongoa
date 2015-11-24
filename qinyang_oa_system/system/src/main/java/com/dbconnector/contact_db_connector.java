@@ -9,6 +9,7 @@ import com.dao.contact_person_department_info_dao;
 import com.dao.contact_person_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.relationship_info_dao;
+import com.data.contact_node;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
 import com.data.employee_info;
@@ -93,35 +94,36 @@ public class contact_db_connector
 	
 	
 	//根据输入跟结点id，返回联络结点树xml字符串
-	public static Map<String, contact_person_department_info> get_contact_map(int contact_person_department_id)
+	public static Map<String, contact_node> get_contact_map(int contact_person_department_id,int employee_id)
 	{
 		contact_person_department_info_dao _contact_person_department_info_dao=new contact_person_department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		
 		//联络结点树map
 		String node_code="node"; //结点键值，根结点为node1，一级第一个结点为node11，一级第二个结点为node12，二级一级第一个结点的子结点为node111，第二个为node112依次类推
-		Map<String, contact_person_department_info> contact_map=new HashMap<String, contact_person_department_info>();//key为结点序数，value为部门对象
+		Map<String, contact_node> contact_map=new HashMap<String, contact_node>();//key为结点序数，value为部门对象
 		
 		int root_id=contact_person_department_id;
-		contact_person_department_info root_department_info=_contact_person_department_info_dao.get_contact_person_department_info_by_id(root_id);
 		node_code=node_code+1;//首先设置根结点为1
-	    contact_map.put(node_code, root_department_info);
+		contact_node root_node_info=_contact_person_department_info_dao.get_contact_node_by_id(root_id,employee_id,node_code);
+	    contact_map.put(node_code, root_node_info);
 	    
 		//递归获得所有结点map
-	   	contact_map=get_son_contact_map(contact_map, root_department_info, node_code);	 
+	   	contact_map=get_son_contact_map(contact_map, root_node_info, node_code);	 
 		
 		return contact_map;
 	}
 	
 	
-	private static Map<String, contact_person_department_info> get_son_contact_map( Map<String, contact_person_department_info> current_contact_map,contact_person_department_info parent_department_info,String parent_node_code)
+	private static Map<String, contact_node> get_son_contact_map( Map<String, contact_node> current_contact_map,contact_node parent_node,String parent_node_code)
 	{
 		contact_person_department_info_dao _contact_person_department_info_dao=new contact_person_department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		employee_info_dao                  _employee_info_dao                 =new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory()); 
 		
+		contact_person_department_info _contact_person_department_info=_contact_person_department_info_dao.get_department_info_by_id(parent_node.get_contact_person_department_id());
 		
-		int node1_id=parent_department_info.get_contact_person_department_sononeid();
-	    int node2_id=parent_department_info.get_contact_person_department_sontwoid();
-	    int node3_id=parent_department_info.get_contact_person_department_sonthreeid();
-	    int node4_id=parent_department_info.get_contact_person_department_sonfourid();
+		int node1_id=  _contact_person_department_info.get_contact_person_department_sononeid();
+	    int node2_id=  _contact_person_department_info.get_contact_person_department_sontwoid();
+	    int node3_id=  _contact_person_department_info.get_contact_person_department_sonthreeid();
+	    int node4_id=  _contact_person_department_info.get_contact_person_department_sonfourid();
 	    
 	    List<Integer> node_son_id_list=new ArrayList<Integer>();
 	    node_son_id_list.add(new Integer(node1_id));
@@ -137,11 +139,19 @@ public class contact_db_connector
 	    int node_son_id=node_son_id_wrapper.intValue();
 	    if(node_son_id!=0)
 	    {
-	    	contact_person_department_info node_son_department_info=_contact_person_department_info_dao.get_contact_person_department_info_by_id(node_son_id);
-	    	String son_node_code=parent_node_code+n;
-            current_contact_map.put(son_node_code,node_son_department_info);
 	    	
-	    	current_contact_map=get_son_contact_map(current_contact_map, node_son_department_info, son_node_code);
+	    	
+	    	String son_node_code=parent_node_code+n;
+	    	int son_employee_id;
+	    	employee_info _employee_info=_employee_info_dao.get_employee_info_by_parent_id_and_department_id(parent_node.get_contact_person_id(),node_son_id);
+	    	if(_employee_info!=null)
+	    	{
+	        son_employee_id=_employee_info.get_employee_id();
+	    	contact_node node_son_info=_contact_person_department_info_dao.get_contact_node_by_id(node_son_id, son_employee_id, son_node_code);
+            current_contact_map.put(son_node_code,node_son_info);
+	    	
+	    	current_contact_map=get_son_contact_map(current_contact_map, node_son_info, son_node_code);
+	    	}
 	    }
 	    }
 	    

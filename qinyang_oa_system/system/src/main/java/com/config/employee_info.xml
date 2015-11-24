@@ -54,6 +54,13 @@
             
         WHERE employee_id = #{employee_id} 
     </update>
+    
+    
+    
+    <select id="select_by_parent_id_and_department_id" parameterType="employee_info" resultMap="result">
+		SELECT * FROM employee_info WHERE employee_department_id = #{employee_department_id} AND employee_leader_id = #{employee_leader_id};
+	</select>
+	
 </mapper>
 
 

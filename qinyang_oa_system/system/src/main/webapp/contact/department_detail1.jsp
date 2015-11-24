@@ -206,7 +206,7 @@ $(document).ready(function(){
            <c:forEach var="contact_node" items="${contact_node_list0}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
                 <ul>
-                    <li>姓名：<span>A1</span></li>
+                    <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
                     <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
                     <li>职务：<span>职务</span></li>
                     <li>职责：<span>职责描述</span></li>
@@ -231,8 +231,8 @@ $(document).ready(function(){
            <c:forEach var="contact_node" items="${contact_node_list1}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
                 <ul>
-                    <li>姓名：<span>A1</span></li>
-                    <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
+                    <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
+                    <li>部门：<span>AA</span></li>
                     <li>职务：<span>职务</span></li>
                     <li>职责：<span>职责描述</span></li>
                     <li>电话：<span>1300000000</span></li>
@@ -256,8 +256,8 @@ $(document).ready(function(){
            <c:forEach var="contact_node" items="${contact_node_list2}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
                 <ul>
-                    <li>姓名：<span>A1</span></li>
-                    <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
+                    <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
+                    <li>部门：<span>bb</span></li>
                     <li>职务：<span>职务</span></li>
                     <li>职责：<span>职责描述</span></li>
                     <li>电话：<span>1300000000</span></li>
@@ -281,8 +281,8 @@ $(document).ready(function(){
            <c:forEach var="contact_node" items="${contact_node_list3}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
                 <ul>
-                    <li>姓名：<span>A1</span></li>
-                    <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
+                    <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
+                    <li>部门：<span>cc</span></li>
                     <li>职务：<span>职务</span></li>
                     <li>职责：<span>职责描述</span></li>
                     <li>电话：<span>1300000000</span></li>
@@ -306,8 +306,8 @@ $(document).ready(function(){
            <c:forEach var="contact_node" items="${contact_node_list4}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
                 <ul>
-                    <li>姓名：<span>A1</span></li>
-                    <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
+                    <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
+                    <li>部门：<span>dd</span></li>
                     <li>职务：<span>职务</span></li>
                     <li>职责：<span>职责描述</span></li>
                     <li>电话：<span>1300000000</span></li>
@@ -331,8 +331,8 @@ $(document).ready(function(){
            <c:forEach var="contact_node" items="${contact_node_list5}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
                 <ul>
-                    <li>姓名：<span>A1</span></li>
-                    <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
+                    <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
+                    <li>部门：<span>ee</span></li>
                     <li>职务：<span>职务</span></li>
                     <li>职责：<span>职责描述</span></li>
                     <li>电话：<span>1300000000</span></li>
@@ -356,8 +356,8 @@ $(document).ready(function(){
            <c:forEach var="contact_node" items="${contact_node_list6}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
                 <ul>
-                    <li>姓名：<span>A1</span></li>
-                    <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
+                    <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
+                    <li>部门：<span>fff</span></li>
                     <li>职务：<span>职务</span></li>
                     <li>职责：<span>职责描述</span></li>
                     <li>电话：<span>1300000000</span></li>
@@ -382,8 +382,8 @@ $(document).ready(function(){
            <c:forEach var="contact_node" items="${contact_node_list7}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
                 <ul>
-                    <li>姓名：<span>A1</span></li>
-                    <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
+                    <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
+                    <li>部门：<span>zzz</span></li>
                     <li>职务：<span>职务</span></li>
                     <li>职责：<span>职责描述</span></li>
                     <li>电话：<span>1300000000</span></li>
