@@ -10,8 +10,8 @@
 		<result property="employee_name" column="employee_name" />
 		<result property="employee_position" column="employee_position" />
 		<result property="employee_gender" column="employee_gender" />
-		<result property="employee_department" column="employee_department" />
-		<result property="employee_leader" column="employee_leader" />
+		<result property="employee_department_id" column="employee_department_id" />
+		<result property="employee_leader_id" column="employee_leader_id" />
 		<result property="employee_addworktime" column="employee_addworktime" />
 		<result property="employee_phone" column="employee_phone" />
 		<result property="employee_addtime" column="employee_addtime" />
@@ -23,8 +23,8 @@
 
 	<insert id="insert" parameterType="employee_info">
 		insert into
-		employee_info(employee_name,employee_position,employee_gender,employee_department,employee_leader,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_duty)
-		values(#{employee_name},#{employee_position},#{employee_gender},#{employee_department},#{employee_leader},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_duty});
+		employee_info(employee_name,employee_position,employee_gender,employee_department_id,employee_leader_id,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_duty)
+		values(#{employee_name},#{employee_position},#{employee_gender},#{employee_department_id},#{employee_leader_id},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_duty});
 	</insert>
 
 	<select id="select_by_employee_id" parameterType="int" resultMap="result">
@@ -47,8 +47,8 @@
             employee_idcode       = #{employee_idcode},
             employee_position     = #{employee_position},
             employee_addworktime  = #{employee_addworktime},
-            employee_department   = #{employee_department},
-            employee_leader       = #{employee_leader},
+            employee_department_id   = #{employee_department_id},
+            employee_leader_id       = #{employee_leader_id},
             employee_phone        = #{employee_phone},
             employee_duty         = #{employee_duty}
             

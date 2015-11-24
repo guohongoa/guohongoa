@@ -56,12 +56,12 @@
         <h3>管理</h3>
         <ul>
             <li><a href="village_check_request.jsp">村镇管理</a></li>
-            <li><a href="department_check.jsp">部门管理</a>
+            <li><a href="department_check_request.jsp" >部门管理</a>
             </li>
-            <li><a href="employee_check.jsp" class="active">人员管理</a>
+            <li><a href="employee_check_request.jsp" class="active">人员管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="employee_add.jsp" class="red">添加人员</a><i></i></dd>
+                    <dd class="activea"><a href="＃" class="red">添加人员</a><i></i></dd>
                 </dl>
             </li>
             <li><a href="service_group_check_request.jsp">五服务小组管理</a></li>
@@ -69,54 +69,59 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<a href="">人员管理</a>&gt;<span>修改信息</span></h4>
+        <h4><a href="">管理</a>&gt;<a href="">人员管理</a>&gt;<span>添加人员</span></h4>
         <div class="bmtj ">
-            <form action="employee_modify_commit.do" method="post"> 
-               <input type="hidden" name="employee_id" value="${employee_info.get_employee_id()}"/>
+            <form action="./employee_insert.do" method="post" id="employee_insert">
                 <div>
                     <p><span>员工姓名</span>
-                        <input class="input200" type="text" name="employee_name" value="${employee_info.get_employee_name()}"/></p>
+                        <input class="input200" type="text" name="employee_name"/></p>
                     <p><span>员工性别</span>
-                      <c:choose>
-                         <c:when test="${employee_info.get_employee_gender()==0}">
-                             <input  type="radio" name="employee_gender" value="0" checked/>男
-                             <input  type="radio" name="employee_gender" value="1"/>女
-                         </c:when>
-                         <c:otherwise>
-                               <input  type="radio" name="employee_gender" value="0"/>男
-                               <input  type="radio" name="employee_gender" value="1" checked/>女
-                         </c:otherwise>
-                      </c:choose>
+                        <input  type="radio" name="employee_gender" value="0" checked />男
+                        <input  type="radio" name="employee_gender" value="1"/>女
                     </p>
                 </div>
                 <div class="clear">
                     <p><span>出生日期</span>
-                        <input class="input200 timedata" type="text" name="employee_birthdate" value="${employee_info.get_employee_birthdate()}"/></p>
+                        <input class="input200 timedata" type="text" name="employee_birthdate"/></p>
                     <p><span>身份证号</span>
-                        <input class="input200" type="text" name="employee_idcode" value="${employee_info.get_employee_idcode()}"/></p>
+                        <input class="input200" type="text" name="employee_idcode"/></p>
                 </div>
                 <div class="clear">
+
                     <p><span>职&nbsp;&nbsp;务</span>
-                        <input class="input200" type="text" name="employee_position" value="${employee_info.get_employee_position()}"/></p>
+                        <input class="input200" type="text" name="employee_position"/></p>
                     <p><span>入职日期</span>
-                        <input class="input200 timedata" name="employee_addworktime" type="text" value="${employee_info.get_employee_addworktime()}"/></p>
+                        <input class="input200 timedata" type="text" name="employee_addworktime"/></p>
                 </div>
                 <div>
                     <p><span>所属部门</span>
-                        <input class="input200" name="employee_department_id" type="text" value="${employee_info.get_employee_department_id()}"/></p>
+                        <!--传入部门id-->
+                        <select name="employee_department_id" form="employee_insert" >
+                         <c:forEach var="department_info" items="${department_info_list}" >
+                            <option value ="${department_info.get_department_id()}">${department_info.get_department_name()}</option>
+                         </c:forEach>    
+                         </select>
+                     </p>
                     <p><span>直接上级</span>
-                        <input class="input200" name="employee_leader_id" type="text" value="${employee_info.get_employee_leader_id()}"/></p>
+                          <select name="employee_leader_id" form="employee_insert" >
+                          <c:forEach var="employee_info" items="${employee_info_list}" >
+                            <option value ="${employee_info.get_employee_id()}">${employee_info.get_employee_name()}</option>
+                         </c:forEach>
+                             <option value="-1">无</option>   
+                         </select>
+                     </p>
                 </div>
                 <div>
 
                     <p><span>联系电话</span>
-                        <input class="input200" type="text" name="employee_phone" value="${employee_info.get_employee_phone()}"/></p>
+                        <input class="input200" type="text" name="employee_phone"/></p>
                     <p><span>工作职责</span>
-                        <input class="input200"  type="text" name="employee_duty" value="${employee_info.get_employee_duty()}"/></p>
+                        <input class="input200" type="text" name="employee_duty" /></p>
+
                 </div>
 
                 <div class="clear tianjiabtn">
-                    <input type="submit" name="submit" value="修改"/><input type="reset" value="重置"/>
+                    <input type="submit" value="添加"/><input type="reset" value="重置"/>
                 </div>
             </form>
         </div>

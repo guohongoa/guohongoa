@@ -89,8 +89,8 @@
                 <li>${employee_info.get_employee_name()}</li>
                 <li>${employee_info.get_employee_gender()}</li>
                 <li>${employee_info.get_employee_position()}</li>
-                <li>${employee_info.get_employee_department()}</li>
-                <li>${employee_info.get_employee_leader()}</li>
+                <li>${employee_info.get_employee_department_id()}</li>
+                <li>${employee_info.get_employee_leader_id()}</li>
                 <li>${employee_info.get_employee_phone()}</li>
                 <li>
                     <select>

@@ -2,6 +2,7 @@ package com.viewcontroller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -145,11 +146,11 @@ public class management_request_controller
 		public ModelAndView employee_insert_request(
 				@RequestParam(value="employee_birthdate")  String    employee_birthdate,     //员工出生日期
 				@RequestParam(value="employee_idcode")      String employee_idcode,          //员工身份证号
-				@RequestParam(value="employee_department") String employee_department,       //员工部门
+				@RequestParam(value="employee_department_id") int employee_department_id,       //员工部门id
 				@RequestParam(value="employee_position")  String employee_position,          //员工职位
 				@RequestParam(value="employee_gender")      String employee_gender,             //员工性别
 				@RequestParam(value="employee_addworktime") String employee_addworktime,     //入职时间
-				@RequestParam(value="employee_leader") String employee_leader,               //部门负责人
+				@RequestParam(value="employee_leader_id") int employee_leader_id,               //部门负责人
 				@RequestParam(value="employee_phone")  String employee_phone,                   //员工电话
 				@RequestParam(value="employee_name")  String employee_name,                 //员工姓名
 				@RequestParam(value="employee_duty")  String employee_duty
@@ -159,11 +160,11 @@ public class management_request_controller
 		     employee_info _employee_info=new employee_info();
 		     _employee_info.set_employee_birthdate(employee_birthdate);
 		     _employee_info.set_employee_idcode(employee_idcode);
-		     _employee_info.set_employee_department(employee_department);
+		     _employee_info.set_employee_department_id(employee_department_id);
 		     _employee_info.set_employee_position(employee_position);
 		     _employee_info.set_employee_gender(employee_gender);
 		     _employee_info.set_employee_addworktime(employee_addworktime);
-		     _employee_info.set_employee_leader(employee_leader);
+		     _employee_info.set_employee_leader_id(employee_leader_id);
 		     _employee_info.set_employee_phone(employee_phone);
 		     _employee_info.set_employee_name(employee_name);
 		     _employee_info.set_employee_duty(employee_duty);
@@ -232,8 +233,8 @@ public class management_request_controller
 					@RequestParam(value="employee_idcode")            String  employee_idcode,
 					@RequestParam(value="employee_position")          String  employee_position,
 					@RequestParam(value="employee_addworktime")       String  employee_addworktime,
-					@RequestParam(value="employee_department")        String  employee_department,
-					@RequestParam(value="employee_leader")            String  employee_leader,
+					@RequestParam(value="employee_department_id")     int  employee_department_id,
+					@RequestParam(value="employee_leader_id")         int  employee_leader_id,
 					@RequestParam(value="employee_phone")             String  employee_phone,
 					@RequestParam(value="employee_duty")              String  employee_duty
 					
@@ -248,8 +249,8 @@ public class management_request_controller
 				_employee_info.set_employee_idcode(employee_idcode);
 				_employee_info.set_employee_position(employee_position);
 				_employee_info.set_employee_addworktime(employee_addworktime);
-				_employee_info.set_employee_department(employee_department);
-				_employee_info.set_employee_leader(employee_leader);
+				_employee_info.set_employee_department_id(employee_department_id);
+				_employee_info.set_employee_leader_id(employee_leader_id);
 				_employee_info.set_employee_phone(employee_phone);
 				_employee_info.set_employee_duty(employee_duty);
 				
@@ -358,7 +359,6 @@ public class management_request_controller
 					
 					)
 			{
-				System.out.println("sssssss");
 				service_group_info _service_group_info=new service_group_info();
 				_service_group_info.set_service_group_id(service_group_id);
 				_service_group_info.set_service_village_county_name(service_village_county_name);
@@ -372,6 +372,24 @@ public class management_request_controller
 				
 				
 				boolean rs=com.dbconnector.management_db_connector.update_service_group_info(_service_group_info);
+				
+				
+			}
+			
+			@RequestMapping("management/employee_add_check.do")
+			public ModelAndView employee_add_check_request(
+					
+					)
+			{
+				//读取所有部门和人员信息，将其转入下拉框中，下一版改进版实现信息刷选、动态显示、二级联动
+				List<department_info> department_info_list=com.dbconnector.management_db_connector.get_department_info_list(); 
+				List<employee_info> employee_info_list=com.dbconnector.management_db_connector.get_employee_info_list();
+				
+				ModelAndView mv=new ModelAndView("employee_add_display.jsp");
+				
+				mv.addObject("department_info_list",department_info_list);
+				mv.addObject("employee_info_list", employee_info_list);
+				return mv;
 				
 				
 			}

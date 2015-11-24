@@ -7,10 +7,10 @@ public class employee_info
 	private String employee_name;      //员工姓名
 	private String employee_position;  //员工职务
 	private String employee_gender;    //员工性别   0为男性 1为女性
-	private String employee_department;//员工部门
-	private String employee_leader;    //部门负责人
+	private int    employee_department_id;//员工部门
+	private int    employee_leader_id;    //部门负责人
 	private String employee_addworktime;//参加工作时间
-	private String    employee_phone;      //员工电话
+	private String employee_phone;      //员工电话
 	private String employee_addtime;    //记录添加时间
 	
 	private String employee_birthdate;   //出生日期
@@ -59,24 +59,24 @@ public class employee_info
 	}
 	
 	
-	public String get_employee_department()
+	public int get_employee_department_id()
 	{
-		return this.employee_department;
+		return this.employee_department_id;
 	}
 	
-	public void set_employee_department(String employee_department)
+	public void set_employee_department_id(int employee_department_id)
 	{
-		this.employee_department=employee_department;
+		this.employee_department_id=employee_department_id;
 	}
 	
-	public String get_employee_leader()
+	public int get_employee_leader_id()
 	{
-		return this.employee_leader;
+		return this.employee_leader_id;
 	}
 	
-	public void set_employee_leader(String employee_leader)
+	public void set_employee_leader_id(int employee_leader_id)
 	{
-		this.employee_leader=employee_leader;
+		this.employee_leader_id=employee_leader_id;
 	}
 	
 	public String get_employee_addworktime()
