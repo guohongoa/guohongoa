@@ -61,6 +61,12 @@
 		SELECT * FROM employee_info WHERE employee_department_id = #{employee_department_id} AND employee_leader_id = #{employee_leader_id};
 	</select>
 	
+
+	
+	 <select id="select_by_employee_department_id" parameterType="int" resultMap="result">
+		SELECT * FROM employee_info WHERE employee_department_id = #{employee_department_id};
+	</select>
+	
 </mapper>
 
 

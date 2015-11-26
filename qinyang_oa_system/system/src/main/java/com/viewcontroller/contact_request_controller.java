@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.data.contact_node;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
+import com.data.employee_info;
 import com.data.relationship_info;
 
 
@@ -123,11 +124,13 @@ import com.data.relationship_info;
 		{
 			 ModelAndView mv=new ModelAndView("index.jsp");
 			   //根据组织机构id分组，得到全部四联人员信息的二维数组
-			   List<List<contact_person_info>> contact_list= com.dbconnector.contact_db_connector.get_contact_list_by_department();
+			   List<List<employee_info>> contact_list= com.dbconnector.contact_db_connector.get_contact_list_by_department();
 			   
-			   for(List<contact_person_info >contact_info_list:contact_list)
+			   for(List<employee_info >contact_info_list:contact_list)
 			   {
-				   switch(contact_info_list.get(0).get_contact_person_department_id())
+				   if(contact_info_list.size()!=0)  //判断查询队列是否为非空
+				   {
+				   switch(contact_info_list.get(0).get_employee_department_id())
 				   {
 					case 1: mv.addObject("contact_info_list2", contact_info_list);   break;
 					case 2: mv.addObject("contact_info_list8", contact_info_list);   break;
@@ -143,6 +146,7 @@ import com.data.relationship_info;
 
 					default:
 						    System.out.println("error");break;//不在列举范围之内，说明数据传输出错
+				   }
 				   }
 				   
 				   mv.addObject("is_request",1);
@@ -195,7 +199,7 @@ import com.data.relationship_info;
 					Map<String, contact_node> contact_map;//四联人员联络树
 					contact_map=com.dbconnector.contact_db_connector.get_contact_map(contact_person_department_id,employee_id);
 					
-					ModelAndView mv=new ModelAndView("department_detail1.jsp");
+					ModelAndView mv=new ModelAndView("department_detail.jsp");
 					
 					List<contact_node> contact_node_list=new ArrayList<contact_node>();
 					//遍历map，将联络树数据用key，value模式导入前端页面

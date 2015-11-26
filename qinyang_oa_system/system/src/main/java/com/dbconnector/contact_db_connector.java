@@ -52,12 +52,12 @@ public class contact_db_connector
 	
 	//根据组织机构分组，查询全部四联人员信息
 	
-	public static List<List<contact_person_info>> get_contact_list_by_department()
+	public static List<List<employee_info>> get_contact_list_by_department()
 	{
-		contact_person_info_dao _contact_person_info_dao=new contact_person_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		contact_person_department_info_dao _contact_person_department_info_dao=new contact_person_department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		
-		 List<List<contact_person_info>> person_list=new ArrayList<List<contact_person_info>>();
+		 List<List<employee_info>> person_list=new ArrayList<List<employee_info>>();
 		 
 		 List<contact_person_department_info> contact_person_department_list=_contact_person_department_info_dao.select_all();
 		 
@@ -65,8 +65,8 @@ public class contact_db_connector
 		 {
 			 System.out.println(_department_info.get_contact_person_department_name());
 			 int contact_person_department_id=_department_info.get_contact_person_department_id();
-			 List<contact_person_info> person_info_list=_contact_person_info_dao.get_contact_person_info_list_by_department_id(contact_person_department_id);
-			 person_list.add(person_info_list);
+			 List<employee_info> employee_info_list=_employee_info_dao.get_employee_info_list_by_department_id(contact_person_department_id);
+			 person_list.add(employee_info_list);
 		 }
 		 
 		 return person_list;

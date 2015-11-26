@@ -8,7 +8,6 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>Spring4MVCHelloWorld Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-
 	<properties>
 		<spring.version>4.0.1.RELEASE</spring.version>
 	</properties>
@@ -109,6 +108,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>Spring4MVCHelloWorld</finalName>
+		<finalName>guohongoa</finalName>
 	</build>
 </project>

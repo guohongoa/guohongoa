@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.data.employee_info;
 import com.data.service_info;
 import com.data.service_village_county_info;
 import com.data.service_village_info;
@@ -233,6 +234,27 @@ import com.data.work_record_info;
 				service_info _service_info=com.dbconnector.service_db_connector.get_service_info_by_service_msgid(service_msgid);
 				ModelAndView mv=new ModelAndView("service_datail.jsp?service_page="+service_page);
 				mv.addObject("service_info", _service_info);
+				return mv;
+			}
+			
+			//返回个人信息，将上级信息
+			@RequestMapping("work/service_send_display.do")
+			public ModelAndView service_send_display(
+					@RequestParam(value="employee_id")       int employee_id
+					)
+			{
+				ModelAndView mv=new ModelAndView("service_send_display.jsp");
+				employee_info _employee_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id);
+				int parent_id=_employee_info.get_employee_leader_id();
+				System.out.println(parent_id);
+				employee_info partent_info=com.dbconnector.management_db_connector.get_employee_info_by_id(parent_id);
+				String leader_name="无";
+				if(partent_info!=null)
+				{
+				leader_name=partent_info.get_employee_name();
+				}
+				mv.addObject("leader",leader_name);
+				
 				return mv;
 			}
 		   

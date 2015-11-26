@@ -64,7 +64,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="record_add.jsp">添加台帐</a><i></i></dd>
-                    <dd><a href="">我的台帐</a></dd>
+                    <dd><a href="myrecord_request.jsp?record_page=1">我的台帐</a></dd>
                 </dl>
             </li>
         </ul>

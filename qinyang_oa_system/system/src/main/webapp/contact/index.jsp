@@ -63,7 +63,7 @@
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list1}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>
@@ -94,7 +94,7 @@
                 <div>
                     <ul>
                         <c:forEach var="contact_person_info" items="${contact_info_list2}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="check_contact_department_detail_request.jsp?employee_id=${contact_person_info.get_employee_id()}&employee_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>
@@ -115,7 +115,7 @@
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list3}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="check_contact_department_detail_request.jsp?employee_id=${contact_person_info.get_employee_id()}&employee_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>
@@ -136,7 +136,7 @@
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list4}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="check_contact_department_detail_request.jsp?employee_id=${contact_person_info.get_employee_id()}&employee_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>
@@ -160,7 +160,7 @@
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list5}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="check_contact_department_detail_request.jsp?employee_id=${contact_person_info.get_employee_id()}&employee_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>
@@ -178,7 +178,7 @@
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list6}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="check_contact_department_detail_request.jsp?employee_id=${contact_person_info.get_employee_id()}&employee_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>
@@ -200,7 +200,7 @@
                <div>
                    <ul>
                        <c:forEach var="contact_person_info" items="${contact_info_list7}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="check_contact_department_detail_request.jsp?employee_id=${contact_person_info.get_employee_id()}&employee_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_contact_person_name()}</a></li>
                         </c:forEach>
                        <li class="pop">
                            <ul>
@@ -220,7 +220,7 @@
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list8}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="check_contact_department_detail_request.jsp?employee_id=${contact_person_info.get_employee_id()}&employee_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>
@@ -234,11 +234,11 @@
                 </div>
             </div>
             <div class="swcw sili_content9">
-                <h4>市直能部门</h4>
+                <h4>市职能部门</h4>
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list9}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="check_contact_department_detail_request.jsp?employee_id=${contact_person_info.get_employee_id()}&employee_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>
@@ -256,7 +256,7 @@
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list10}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="check_contact_department_detail_request.jsp?employee_id=${contact_person_info.get_employee_id()}&employee_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>
@@ -274,7 +274,7 @@
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list11}">
-                           <li><a href="">${contact_person_info.get_contact_person_name()}</a></li>
+                           <li><a href="check_contact_department_detail_request.jsp?employee_id=${contact_person_info.get_employee_id()}&employee_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>

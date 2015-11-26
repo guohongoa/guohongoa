@@ -62,7 +62,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="service_send.jsp">发起服务</a><i></i></dd>
-                    <dd><a href="myservice_request.jsp" >我的服务</a></dd>
+                    <dd><a href="myservice_request.jsp?service_page=1" >我的服务</a></dd>
                 </dl>
             </li>
         </ul>

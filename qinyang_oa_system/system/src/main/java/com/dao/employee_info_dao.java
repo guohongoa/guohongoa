@@ -4,6 +4,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.data.contact_person_info;
 import com.data.employee_info;
 
 //员工信息表数据库映射类
@@ -123,6 +124,19 @@ public class employee_info_dao
 	            session.close();
 	        }
 	        return _employee_info;
+	  }
+	  
+	 public  List<employee_info> get_employee_info_list_by_department_id(int employee_department_id)
+	  {
+		 List<employee_info> employee_info_list=null;
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 employee_info_list = session.selectList("employee_info.select_by_employee_department_id",employee_department_id);
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("select_by_department()--> "+employee_info_list);
+	        return employee_info_list;
 	  }
 	  
 }
