@@ -3,10 +3,10 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.javahash.web</groupId>
-	<artifactId>Spring4MVCHelloWorld</artifactId>
+	<artifactId>guohongoa</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>Spring4MVCHelloWorld Maven Webapp</name>
+	<version>1.0</version>
+	<name>guohongoa</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<spring.version>4.0.1.RELEASE</spring.version>
@@ -108,6 +108,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>guohongoa</finalName>
+      <finalName>guohong</finalName>
 	</build>
 </project>
