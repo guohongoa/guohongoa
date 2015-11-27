@@ -12,7 +12,8 @@
 <body > 
 <form name="form1" method="post" action="check_record_info_by_work_record_id.do"> 
      <input type='hidden' name='work_record_id' value='${param.work_record_id}'/>
-     <input type='hidden' name='record_page' value='${param.record_page}'/> 
+     <input type='hidden' name='record_page' value='${param.record_page}'/>
+     <input type='hidden' name='flag' value='${param.flag}'/>  
 </form> 
 </body> 
 </html> 

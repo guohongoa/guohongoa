@@ -68,7 +68,8 @@ public class record_request_controller
 				@RequestMapping("work/rocord_check_by_user.do")
 				public ModelAndView record_check_by_user_request(
 						 @RequestParam(value="work_record_creatorid")  int work_record_creatorid,
-						 @RequestParam(value="record_page")            int record_page
+						 @RequestParam(value="record_page")            int record_page,
+						 @RequestParam(value="flag")                   int flag 
 						)
 				{
 			     
@@ -82,6 +83,7 @@ public class record_request_controller
 				   ModelAndView mv=new ModelAndView("myrecord.jsp?record_page="+record_page+"&record_total_page="+record_total_page);
 				   
 				   mv.addObject("work_record_info_list", work_record_info_list);
+				   mv.addObject("flag",flag);
 				   return mv;
 				   
 				}
@@ -91,10 +93,11 @@ public class record_request_controller
 				@RequestMapping("work/check_record_info_by_work_record_id.do")
 				  public ModelAndView check_record_info_request(
 						  @RequestParam(value="work_record_id") int work_record_id,
-						  @RequestParam(value="record_page") int record_page
+						  @RequestParam(value="record_page") int record_page,
+						  @RequestParam(value="flag")  int flag
 						  )
 				  {
-					 ModelAndView mv=new ModelAndView("record_detail.jsp?record_page="+record_page);
+					 ModelAndView mv=new ModelAndView("record_detail.jsp?record_page="+record_page+"&flag="+flag);
 					 work_record_info _work_record_info=com.dbconnector.record_db_connector.get_work_record_info_by_work_record_id(work_record_id);
 					 mv.addObject("work_record_info",_work_record_info);
 					 return mv;

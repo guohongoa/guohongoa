@@ -33,7 +33,7 @@
                 <ul class="hide">
                     <li><a href="">你有<span>1</span>条工作提醒</a></li>
                     <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>待带审核记录</a></li>
+                    <li class="bordernone"><a href="">你有<span>3</span>条待审核记录</a></li>
                 </ul>
             </div>
         </div>
@@ -60,11 +60,18 @@
     <div class="left_menu tzlb">
         <h3><a href="">台帐</a></h3>
         <ul>
-            <li><a href="myrecord_request.jsp" class="active">全部台帐</a>
+            <li><a href="myrecord_request.jsp?record_page=1&flag=0" class="active">全部台帐</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="record_add.jsp">添加台帐</a><i></i></dd>
-                    <dd><a href="myrecord_request.jsp?record_page=1">我的台帐</a></dd>
+                    <c:choose>
+                    <c:when test="${flag==1}">
+                       <dd><a href="myrecord_request.jsp?record_page=1&flag=1" class="red">我的台帐</a></dd>
+                    </c:when>
+                    <c:otherwise>
+                        <dd><a href="myrecord_request.jsp?record_page=1&flag=1">我的台帐</a></dd>
+                    </c:otherwise>
+                    </c:choose>
                 </dl>
             </li>
         </ul>
@@ -105,7 +112,7 @@
                 <li>${work_record_info.get_work_record_communist()}</li>
                 <li>${work_record_info.get_work_record_date()}</li>
                 <li>内容</li>
-                <li><a href="myrecord_info_request.jsp?work_record_id=${work_record_info.get_work_record_id()}&record_page=${record_page}">查看详细</a></li>
+                <li><a href="myrecord_info_request.jsp?work_record_id=${work_record_info.get_work_record_id()}&record_page=${record_page}&flag=${flag}">查看详细</a></li>
             </ul>
             </c:forEach>
         </div>
@@ -113,18 +120,19 @@
    <c:choose>
       <c:when test="${record_page==1}">
       <div class="page">
-        <a href="myrecord_request.jsp?record_page=1">上一页</a>
-        <a href="myrecord_request.jsp?record_page=1" class="bulec">1</a>
-        <a href="myrecord_request.jsp?record_page=2">2</a>
-        <a href="myrecord_request.jsp?record_page=3">3</a>
-        <a href="myrecord_request.jsp?record_page=4">4</a>
-        <a href="myrecord_request.jsp?record_page=5">5</a>
-        <a href="myrecord_request.jsp?record_page=2">下一页</a>
+        <a href="myrecord_request.jsp?record_page=1&flag=${flag}">上一页</a>
+        <a href="myrecord_request.jsp?record_page=1&flag=${flag}" class="bulec">1</a>
+        <a href="myrecord_request.jsp?record_page=2&flag=${flag}">2</a>
+        <a href="myrecord_request.jsp?record_page=3&flag=${flag}">3</a>
+        <a href="myrecord_request.jsp?record_page=4&flag=${flag}">4</a>
+        <a href="myrecord_request.jsp?record_page=5&flag=${flag}">5</a>
+        <a href="myrecord_request.jsp?record_page=2&flag=${flag}">下一页</a>
         <a>共${record_total_page}页</a>
         <form method="get" action="rocord_check_by_user.do">
         <a>
            到&nbsp;<input type="text" name="record_page" style="width:15px;">&nbsp;页
              <input type="hidden" name="work_record_creatorid" value="${user_id}" />
+             <input type="hidden" name="flag" value="${flag}"/>
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -132,18 +140,19 @@
       </c:when>
       <c:when test="${record_page==2}">
       <div class="page">
-        <a href="myrecord_request.jsp?record_page=1">上一页</a>
-        <a href="myrecord_request.jsp?record_page=1">1</a>
-        <a href="myrecord_request.jsp?record_page=2" class="bulec">2</a>
-        <a href="myrecord_request.jsp?record_page=3">3</a>
-        <a href="myrecord_request.jsp?record_page=4">4</a>
-        <a href="myrecord_request.jsp?record_page=5">5</a>
-        <a href="myrecord_request.jsp?record_page=3">下一页</a>
+        <a href="myrecord_request.jsp?record_page=1&flag=${flag}">上一页</a>
+        <a href="myrecord_request.jsp?record_page=1&flag=${flag}">1</a>
+        <a href="myrecord_request.jsp?record_page=2&flag=${flag}" class="bulec">2</a>
+        <a href="myrecord_request.jsp?record_page=3&flag=${flag}">3</a>
+        <a href="myrecord_request.jsp?record_page=4&flag=${flag}">4</a>
+        <a href="myrecord_request.jsp?record_page=5&flag=${flag}">5</a>
+        <a href="myrecord_request.jsp?record_page=3&flag=${flag}">下一页</a>
         <a>共${record_total_page}页</a>
         <form method="get" action="rocord_check_by_user.do">
         <a>
            到&nbsp;<input type="text" name="record_page" style="width:15px;">&nbsp;页
              <input type="hidden" name="work_record_creatorid" value="${user_id}" />
+             <input type="hidden" name="flag" value="${flag}"/>
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -151,18 +160,19 @@
       </c:when>
       <c:otherwise>
       <div class="page">
-        <a href="myrecord_request.jsp?record_page=${record_page-1}">上一页</a>
-        <a href="myrecord_request.jsp?record_page=${record_page-2}">${record_page-2}</a>
-        <a href="myrecord_request.jsp?record_page=${record_page-1}">${record_page-1}</a>
-        <a class="bulec" href="myrecord_request.jsp?record_page=${record_page}">${record_page}</a>
-        <a href="myrecord_request.jsp?service_page=${record_page+1}">${record_page+1}</a>
-        <a href="myrecord_request.jsp?service_page=${record_page+2}">${record_page+2}</a>
-        <a href="myrecord_request.jsp?service_page=${record_page+1}">下一页</a>
+        <a href="myrecord_request.jsp?record_page=${record_page-1}&flag=${flag}">上一页</a>
+        <a href="myrecord_request.jsp?record_page=${record_page-2}&flag=${flag}">${record_page-2}</a>
+        <a href="myrecord_request.jsp?record_page=${record_page-1}&flag=${flag}">${record_page-1}</a>
+        <a class="bulec" href="myrecord_request.jsp?record_page=${record_page}&flag=${flag}">${record_page}</a>
+        <a href="myrecord_request.jsp?service_page=${record_page+1}&flag=${flag}">${record_page+1}</a>
+        <a href="myrecord_request.jsp?service_page=${record_page+2}&flag=${flag}">${record_page+2}</a>
+        <a href="myrecord_request.jsp?service_page=${record_page+1}&flag=${flag}">下一页</a>
         <a>共${record_total_page}页</a>
         <form method="get" action="rocord_check_by_user.do">
         <a>
            到&nbsp;<input type="text" name="record_page" style="width:15px;">&nbsp;页
              <input type="hidden" name="work_record_creatorid" value="${user_id}" />
+             <input type="hidden" name="flag" value="${flag}"/>
              <input type="submit" name="submit" value="确定">
         </a>
         </form>

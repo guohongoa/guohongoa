@@ -31,7 +31,7 @@
                 <ul class="hide">
                     <li><a href="">你有<span>1</span>条工作提醒</a></li>
                     <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>待带审核记录</a></li>
+                    <li class="bordernone"><a href="">你有<span>3</span>条   待审核记录</a></li>
                 </ul>
             </div>
         </div>

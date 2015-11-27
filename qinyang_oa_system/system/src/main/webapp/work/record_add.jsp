@@ -54,11 +54,11 @@
     <div class="left_menu tzlb">
         <h3><a href="">台帐</a></h3>
         <ul>
-            <li><a href="myrecord_request.jsp?record_page=1" class="active">全部台帐</a>
+            <li><a href="myrecord_request.jsp?record_page=1&flag=0" class="active">全部台帐</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="#" class="red">添加台帐</a><i></i></dd>
-                    <dd><a href="myrecord_request.jsp?record_page=1">我的台帐</a></dd>
+                    <dd><a href="myrecord_request.jsp?record_page=1&flag=1">我的台帐</a></dd>
                 </dl>
             </li>
         </ul>

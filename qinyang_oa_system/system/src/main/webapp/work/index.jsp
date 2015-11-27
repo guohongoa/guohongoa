@@ -65,11 +65,11 @@
     </div>
     <div class="tz">
         <div class="hover_tt">
-            <a href="myrecord_request.jsp?record_page=1"></a>
+            <a href="myrecord_request.jsp?record_page=1&flag=0"></a>
         </div>
         <ul>
             <li><a href="record_add.jsp">添加台帐</a></li>
-            <li><a href="myrecord_request.jsp?record_page=1">我的台帐</a></li>
+            <li><a href="myrecord_request.jsp?record_page=1&flag=1">我的台帐</a></li>
         </ul>
     </div>
     <div class="fw">
