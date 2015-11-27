@@ -94,11 +94,13 @@
                 <li>${service_village_county_info.get_service_village_county_leader()}</li>
                 <li>${service_village_county_info.get_service_village_county_leaderphone()}</li>
                 <li>
+                    <!--
                     <select>
                         <option>修改</option>
                         <option>删除</option>
                         <option>查看</option>
-                    </select>
+                    </select>  
+                    -->
                     <a href="village_modify_request.jsp?service_village_county_id=${service_village_county_info.get_service_village_county_id()}">
                     修改
                     </a>

@@ -68,7 +68,7 @@
         服务小组的活动内容
     </p>
     <div class="back">
-        <a href="">发布</a> &nbsp; <a href="myservice_request.jsp?service_page=${service_page}">返回</a>
+        <a href="">发布</a> &nbsp; <a href="service_check_by_user.do?service_page=${service_page}&service_sender_id＝${user_id}">返回</a>
     </div>
 </div>
 <div class="footer"></div>

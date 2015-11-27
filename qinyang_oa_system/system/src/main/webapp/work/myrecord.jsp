@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
-
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -112,7 +111,7 @@
                 <li>${work_record_info.get_work_record_communist()}</li>
                 <li>${work_record_info.get_work_record_date()}</li>
                 <li>内容</li>
-                <li><a href="myrecord_info_request.jsp?work_record_id=${work_record_info.get_work_record_id()}&record_page=${record_page}&flag=${flag}">查看详细</a></li>
+                <li><a href="check_record_info_by_work_record_id.do?work_record_id=${work_record_info.get_work_record_id()}&record_page=${record_page}&flag=${flag}">查看详细</a></li>
             </ul>
             </c:forEach>
         </div>

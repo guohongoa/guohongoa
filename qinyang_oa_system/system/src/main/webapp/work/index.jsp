@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    
+    
 </head>
 <body>
 <!--header为导航容器-->
@@ -65,23 +67,23 @@
     </div>
     <div class="tz">
         <div class="hover_tt">
-            <a href="myrecord_request.jsp?record_page=1&flag=0"></a>
+            <a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=1&flag=0"></a>
         </div>
         <ul>
             <li><a href="record_add.jsp">添加台帐</a></li>
-            <li><a href="myrecord_request.jsp?record_page=1&flag=1">我的台帐</a></li>
+            <li><a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=1&flag=1">我的台帐</a></li>
         </ul>
     </div>
     <div class="fw">
         <div class="hover_tt">
-            <a href="myservice_request.jsp?service_page=1"></a>
+            <a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0"></a>
         </div>
         <ul>
-            <li><a href="">政策法规服务</a></li>
-            <li><a href="">经济发展服务</a></li>
-            <li><a href="">和谐稳定服务</a></li>
-            <li><a href="">环境卫生服务</a></li>
-            <li><a href="">文体活动服务</a></li>
+            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">政策法规服务</a></li>
+            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">经济发展服务</a></li>
+            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">和谐稳定服务</a></li>
+            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">环境卫生服务</a></li>
+            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">文体活动服务</a></li>
         </ul>
     </div>
 </div>

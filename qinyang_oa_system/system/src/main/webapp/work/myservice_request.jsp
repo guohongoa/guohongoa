@@ -14,6 +14,7 @@ setTimeout("document.service_check.submit()",10)
 <form name="service_check" method="post" action="service_check_by_user.do"> 
    <input type="hidden" name="service_sender_id" value="${user_id}" />
    <input type='hidden' name='service_page' value='${param.service_page}'/> 
+   <input type='hidden' name='flag' value='${param.flag}'/> 
 </form> 
 </body> 
 </html>

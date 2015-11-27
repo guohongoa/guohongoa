@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
      <c:set var="service_page" value="${param.service_page}"/>
      <c:set var="service_total_page" value="${param.service_total_page}"/>
+     <c:set var="flag" value="${param.flag}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -55,14 +56,21 @@
 <!--主体-->
 <div class="content">
     <!--左侧固定导航-->
-    <div class="left_menu tzlb" style="height: 175px">
+    <div class="left_menu tzlb" style="height: 200px">
         <h3><a href="">五服务</a></h3>
         <ul>
-            <li><a href="" class="active">法政法规服务</a>
+            <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">法政法规服务</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="service_send.jsp">发起服务</a><i></i></dd>
-                    <dd><a href="myservice_request.jsp?service_page=1" >我的服务</a></dd>
+                     <c:choose>
+                       <c:when test="${flag==1}">
+                       <dd><a href="service_check_by_user.do?service_page=1&flag=1&service_sender_id=${user_id}" class="red">我的服务</a></dd>
+                       </c:when>
+                        <c:otherwise>
+                         <dd><a href="service_check_by_user.do?service_page=1&flag=1&service_sender_id=${user_id}" >我的服务</a></dd>
+                        </c:otherwise>
+                    </c:choose>
                 </dl>
             </li>
         </ul>
@@ -92,7 +100,7 @@
                 <li>${service_info.get_service_sender()}</li>
                 <li class="overflow">${service_info.get_service_target()}</li>
                 <li style="line-height: 20px">${service_info.get_service_begintime()}-<br/>${service_info.get_service_endtime()}</li>
-                <li><a href="myservice_info_request.jsp?service_msgid=${service_info.get_service_msgid()}&service_page=${service_page}">查看</a></li>
+                <li><a href="check_service_info_by_service_msgid2.do?service_msgid=${service_info.get_service_msgid()}&service_page=${service_page}">查看</a></li>
                 <li>${service_info.get_service_addtime()}</li>
               </ul>
             </c:forEach>
@@ -101,18 +109,19 @@
    <c:choose>
       <c:when test="${service_page==1}">
       <div class="page">
-        <a href="myservice_request.jsp?service_page=1">上一页</a>
-        <a href="myservice_request.jsp?service_page=1" class="bulec">1</a>
-        <a href="myservice_request.jsp?service_page=2">2</a>
-        <a href="myservice_request.jsp?service_page=3">3</a>
-        <a href="myservice_request.jsp?service_page=4">4</a>
-        <a href="myservice_request.jsp?service_page=5">5</a>
-        <a href="myservice_request.jsp?service_page=2">下一页</a>
+        <a href="service_check_by_user.do?service_page=1&flag=${flag}&service_sender_id=${user_id}">上一页</a>
+        <a href="service_check_by_user.do?service_page=1&flag=${flag}&service_sender_id=${user_id}" class="bulec">1</a>
+        <a href="service_check_by_user.do?service_page=2&flag=${flag}&service_sender_id=${user_id}">2</a>
+        <a href="service_check_by_user.do?service_page=3&flag=${flag}&service_sender_id=${user_id}">3</a>
+        <a href="service_check_by_user.do?service_page=4&flag=${flag}&service_sender_id=${user_id}">4</a>
+        <a href="service_check_by_user.do?service_page=5&flag=${flag}&service_sender_id=${user_id}">5</a>
+        <a href="service_check_by_user.do?service_page=2&flag=${flag}&service_sender_id=${user_id}">下一页</a>
         <a>共${service_total_page}页</a>
         <form method="get" action="service_check_by_user.do">
         <a>
            到&nbsp;<input type="text" name="service_page" style="width:15px;">&nbsp;页
              <input type="hidden" name="service_sender_id" value="${user_id}" />
+             <input type="hidden" name="flag" value="${flag}">
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -120,13 +129,13 @@
       </c:when>
       <c:when test="${service_page==2}">
       <div class="page">
-        <a href="myservice_request.jsp?service_page=1">上一页</a>
-        <a href="myservice_request.jsp?service_page=1">1</a>
-        <a href="myservice_request.jsp?service_page=2" class="bulec">2</a>
-        <a href="myservice_request.jsp?service_page=3">3</a>
-        <a href="myservice_request.jsp?service_page=4">4</a>
-        <a href="myservice_request.jsp?service_page=5">5</a>
-        <a href="myservice_request.jsp?service_page=3">下一页</a>
+        <a href="service_check_by_user.do?service_page=1&flag=${flag}&service_sender_id=${user_id}">上一页</a>
+        <a href="service_check_by_user.do?service_page=1&flag=${flag}&service_sender_id=${user_id}">1</a>
+        <a href="service_check_by_user.do?service_page=2&flag=${flag}&service_sender_id=${user_id}" class="bulec">2</a>
+        <a href="service_check_by_user.do?service_page=3&flag=${flag}&service_sender_id=${user_id}">3</a>
+        <a href="service_check_by_user.do?service_page=4&flag=${flag}&service_sender_id=${user_id}">4</a>
+        <a href="service_check_by_user.do?service_page=5&flag=${flag}&service_sender_id=${user_id}">5</a>
+        <a href="service_check_by_user.do?service_page=3&flag=${flag}&service_sender_id=${user_id}">下一页</a>
         <a>共${service_total_page}页</a>
         <form method="get" action="service_check_by_user.do">
         <a>
@@ -139,13 +148,13 @@
       </c:when>
       <c:otherwise>
       <div class="page">
-        <a href="myservice_request.jsp?service_page=${service_page-1}">上一页</a>
-        <a href="myservice_request.jsp?service_page=${service_page-2}">${service_page-2}</a>
-        <a href="myservice_request.jsp?service_page=${service_page-1}">${service_page-1}</a>
-        <a class="bulec" href="myservice_request.jsp?service_page=${service_page}">${service_page}</a>
-        <a href="myservice_request.jsp?service_page=${service_page+1}">${service_page+1}</a>
-        <a href="myservice_request.jsp?service_page=${service_page+2}">${service_page+2}</a>
-        <a href="myservice_request.jsp?service_page=${service_page+1}">下一页</a>
+        <a href="service_check_by_user.do?service_page=${service_page-1}&flag=${flag}&service_sender_id=${user_id}">上一页</a>
+        <a href="service_check_by_user.do?service_page=${service_page-2}&flag=${flag}&service_sender_id=${user_id}">${service_page-2}</a>
+        <a href="service_check_by_user.do?service_page=${service_page-1}&flag=${flag}&service_sender_id=${user_id}">${service_page-1}</a>
+        <a class="bulec" href="service_check_by_user.do?service_page=${service_page}&flag=${flag}&service_sender_id=${user_id}">${service_page}</a>
+        <a href="service_check_by_user.do?service_page=${service_page+1}&flag=${flag}&service_sender_id=${user_id}">${service_page+1}</a>
+        <a href="service_check_by_user.do?service_page=${service_page+2}&flag=${flag}&service_sender_id=${user_id}">${service_page+2}</a>
+        <a href="service_check_by_user.do?service_page=${service_page+1}&flag=${flag}&service_sender_id=${user_id}">下一页</a>
         <a>共${service_total_page}页</a>
         <form method="get" action="service_check_by_user.do">
         <a>

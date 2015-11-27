@@ -88,11 +88,12 @@
                 <li>${department_info.get_department_parentleader()}</li>
                 <li>${department_info.get_department_leaderphone()}</li>
                 <li>
-                    <select>
+                    <!-- <select>
                         <option>修改</option>
                         <option>删除</option>
                         <option>查看</option>
-                    </select>
+                    </select>  -->
+                   
                      <a href="department_modify_request.jsp?department_id=${department_info.get_department_id()}">
                          修改
                     </a>

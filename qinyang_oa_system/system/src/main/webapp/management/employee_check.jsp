@@ -86,12 +86,13 @@
                 <li>${employee_info.get_employee_leader_id()}</li>
                 <li>${employee_info.get_employee_phone()}</li>
                 <li>
+                    <!--  
                     <select>
                         <option>修改</option>
                         <option>删除</option>
                         <option>查看</option>
                     </select>
-                    
+                    -->
                     <a href="employee_modify_request.jsp?employee_id=${employee_info.get_employee_id()}">
                          修改
                     </a>

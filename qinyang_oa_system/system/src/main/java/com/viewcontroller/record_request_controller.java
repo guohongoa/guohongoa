@@ -65,7 +65,7 @@ public class record_request_controller
 		}
 		
 		//台账根据用户id响应页面
-				@RequestMapping("work/rocord_check_by_user.do")
+				@RequestMapping("work/record_check_by_user.do")
 				public ModelAndView record_check_by_user_request(
 						 @RequestParam(value="work_record_creatorid")  int work_record_creatorid,
 						 @RequestParam(value="record_page")            int record_page,

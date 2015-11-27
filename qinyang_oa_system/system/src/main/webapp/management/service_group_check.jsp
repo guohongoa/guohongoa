@@ -93,11 +93,14 @@
                 <li>${service_group_info.get_service_group_leader()}</li>
                 <li class="width_lg">${service_group_info.get_service_group_member()}</li>
                 <li>
-                    <select>
+                   <!--
+                   <select>
                         <option>修改</option>
                         <option>删除</option>
                         <option>查看</option>
-                    </select>
+                    </select>  
+                    -->
+                    
                     <a href="service_group_modify_request.jsp?service_group_id=${service_group_info.get_service_group_id()}">
                          修改
                     </a>

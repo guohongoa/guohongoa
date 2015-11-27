@@ -83,7 +83,8 @@ import com.data.work_record_info;
 		@RequestMapping("work/service_check_by_user.do")
 		public ModelAndView service_check_by_user_request(
 				 @RequestParam(value="service_sender_id")  int service_sender_id,
-				 @RequestParam(value="service_page")       int service_page
+				 @RequestParam(value="service_page")       int service_page,
+				 @RequestParam(value="flag")       int flag
 				 
 				)
 		{
@@ -95,7 +96,7 @@ import com.data.work_record_info;
 		   
 		   int service_total_page=com.dbconnector.service_db_connector.get_service_total_page_by_user(service_sender_id);
 		   
-		   ModelAndView mv=new ModelAndView("myservice.jsp?service_page="+service_page+"&service_total_page="+service_total_page);
+		   ModelAndView mv=new ModelAndView("myservice.jsp?service_page="+service_page+"&service_total_page="+service_total_page+"&flag="+flag);
 		   mv.addObject("service_info_list", service_info_list);
 		   return mv;
 		}
