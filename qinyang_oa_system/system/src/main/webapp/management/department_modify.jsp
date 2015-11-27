@@ -22,17 +22,10 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
+                <li><a href=""><i class="icon icon_m"></i>消息</a></li>
                 <li><a href=""><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
-            <div>
-                <ul class="hide">
-                    <li><a href="">你有<span>1</span>条工作提醒</a></li>
-                    <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>条带审核记录</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>
