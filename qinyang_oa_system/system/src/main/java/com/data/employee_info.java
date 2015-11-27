@@ -6,8 +6,8 @@ public class employee_info
 	private int    employee_id;        //员工id
 	private String employee_name;      //员工姓名
 	private String employee_position;  //员工职务
-	private String employee_gender;    //员工性别   0为男性 1为女性
-	private int    employee_department_id;//员工部门
+	private int    employee_gender;    //员工性别   0为男性 1为女性
+	private int    employee_department_id;  //员工部门id
 	private int    employee_leader_id;    //部门负责人
 	private String employee_addworktime;//参加工作时间
 	private String employee_phone;      //员工电话
@@ -16,6 +16,8 @@ public class employee_info
 	private String employee_birthdate;   //出生日期
     private String employee_idcode;      //身份证号
     private String employee_duty;        //员工职责
+    
+    private String employee_password;   //用户密码
     
 	
     public employee_info()
@@ -54,12 +56,12 @@ public class employee_info
 		this.employee_position=employee_position;
 	}
 	
-	public String get_employee_gender()
+	public int get_employee_gender()
 	{
 		return this.employee_gender;
 	}
 	
-	public void set_employee_gender(String employee_gender)
+	public void set_employee_gender(int employee_gender)
 	{
 		this.employee_gender=employee_gender;
 	}
@@ -145,6 +147,17 @@ public class employee_info
 	{
 		this.employee_duty=employee_duty;
 	}
+	
+	public String get_employee_password()
+	{
+		return this.employee_password;
+	}
+	
+	public void set_employee_password(String employee_password)
+	{
+		this.employee_password=employee_password;
+	}
+	
 	
 
 }

@@ -77,4 +77,8 @@ public class systeminfo_request_controller
 	  return _system_user_info;
   }
   
+  //----------------------------------------------------------------------------------------
+  
+ 
+  
 }

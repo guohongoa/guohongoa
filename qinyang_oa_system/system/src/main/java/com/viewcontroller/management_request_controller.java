@@ -148,7 +148,7 @@ public class management_request_controller
 				@RequestParam(value="employee_idcode")      String employee_idcode,          //员工身份证号
 				@RequestParam(value="employee_department_id") int employee_department_id,       //员工部门id
 				@RequestParam(value="employee_position")  String employee_position,          //员工职位
-				@RequestParam(value="employee_gender")      String employee_gender,             //员工性别
+				@RequestParam(value="employee_gender")      int employee_gender,             //员工性别
 				@RequestParam(value="employee_addworktime") String employee_addworktime,     //入职时间
 				@RequestParam(value="employee_leader_id") int employee_leader_id,               //部门负责人
 				@RequestParam(value="employee_phone")  String employee_phone,                   //员工电话
@@ -168,6 +168,20 @@ public class management_request_controller
 		     _employee_info.set_employee_phone(employee_phone);
 		     _employee_info.set_employee_name(employee_name);
 		     _employee_info.set_employee_duty(employee_duty);
+		     
+		     String phone=_employee_info.get_employee_phone();
+				String employee_password;
+				if(phone.length()>5)
+				{
+					employee_password=phone.substring(phone.length()-6, phone.length());
+				}
+				else
+				{
+					employee_password="123456";
+				}
+				
+				
+				_employee_info.set_employee_password(employee_password);
 		    
 			
 			
@@ -228,7 +242,7 @@ public class management_request_controller
 			public void employee_modify_commit_request(
 					@RequestParam(value="employee_id")                int     employee_id,
 					@RequestParam(value="employee_name")              String  employee_name,
-					@RequestParam(value="employee_gender")            String  employee_gender,
+					@RequestParam(value="employee_gender")            int     employee_gender,
 					@RequestParam(value="employee_birthdate")         String  employee_birthdate,
 					@RequestParam(value="employee_idcode")            String  employee_idcode,
 					@RequestParam(value="employee_position")          String  employee_position,

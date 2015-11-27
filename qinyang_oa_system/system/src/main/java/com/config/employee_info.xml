@@ -19,6 +19,7 @@
 		<result property="employee_birthdate" column="employee_birthdate" />
 		<result property="employee_idcode" column="employee_idcode" />
 		<result property="employee_duty" column="employee_duty" />
+		<result property="employee_password" column="employee_password" />
 	</resultMap>
 
 	<insert id="insert" parameterType="employee_info">
