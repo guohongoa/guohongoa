@@ -30,7 +30,7 @@
                 <ul class="hide">
                     <li><a href="">你有<span>1</span>条工作提醒</a></li>
                     <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>待带审核记录</a></li>
+                    <li class="bordernone"><a href="">你有<span>3</span>待审核记录</a></li>
                 </ul>
             </div>
         </div>
@@ -55,14 +55,14 @@
 <div class="content" id="content">
     <div class="gz" style="border: none">
         <div class="hover_tt">
-            <a href=""></a>
+            <a href="http://101.200.196.121:8080/guohong2/task/toAdd.do"></a>
         </div>
         <ul>
-            <li><a href="">安排工作</a></li>
-            <li><a href="">汇报工作</a></li>
-            <li><a href="">反馈工作</a></li>
-            <li><a href="">待审批</a></li>
-            <li><a href="">全部工作</a></li>
+            <li><a href="http://101.200.196.121:8080/guohong2/task/toAdd.do">安排工作</a></li>
+            <li><a href="http://101.200.196.121:8080/guohong2/task/toReport.do">汇报工作</a></li>
+            <li><a href="http://101.200.196.121:8080/guohong2/task/toMyTaskList.do">反馈工作</a></li>
+            <li><a href="http://101.200.196.121:8080/guohong2/task/toDsp.do">待审批</a></li>
+            <li><a href="http://101.200.196.121:8080/guohong2/task/list.do">全部工作</a></li>
         </ul>
     </div>
     <div class="tz">

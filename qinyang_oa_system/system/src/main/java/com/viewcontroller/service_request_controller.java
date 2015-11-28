@@ -71,7 +71,7 @@ import com.data.work_record_info;
 			
 			//返回插入结果
 			
-			 ModelAndView mv=new ModelAndView();
+			 ModelAndView mv=new ModelAndView("service_check_by_user.do?service_page=1&flag=1&service_sender_id"+service_sender_id);
 			   
 			   return mv;
 			   
