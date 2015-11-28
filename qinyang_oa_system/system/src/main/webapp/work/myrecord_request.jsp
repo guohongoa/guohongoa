@@ -11,7 +11,7 @@ setTimeout("document.record_check.submit()",10)
 </script> 
 <!-- 提交检索部门信息-->
 <body > 
-<form name="record_check" method="post" action="rocord_check_by_user.do"> 
+<form name="record_check" method="post" action="record_check_by_user.do"> 
    <input type="hidden" name="work_record_creatorid" value="${user_id}" />
    <input type='hidden' name='record_page' value='${param.record_page}'/>
    <input type='hidden' name='flag' value='${param.flag}'/>

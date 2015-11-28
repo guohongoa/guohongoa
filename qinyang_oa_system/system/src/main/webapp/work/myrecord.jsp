@@ -119,13 +119,13 @@
    <c:choose>
       <c:when test="${record_page==1}">
       <div class="page">
-        <a href="myrecord_request.jsp?record_page=1&flag=${flag}">上一页</a>
-        <a href="myrecord_request.jsp?record_page=1&flag=${flag}" class="bulec">1</a>
-        <a href="myrecord_request.jsp?record_page=2&flag=${flag}">2</a>
-        <a href="myrecord_request.jsp?record_page=3&flag=${flag}">3</a>
-        <a href="myrecord_request.jsp?record_page=4&flag=${flag}">4</a>
-        <a href="myrecord_request.jsp?record_page=5&flag=${flag}">5</a>
-        <a href="myrecord_request.jsp?record_page=2&flag=${flag}">下一页</a>
+        <a href="record_check_by_user.do?record_page=1&flag=${flag}&work_record_creatorid=${user_id}">上一页</a>
+        <a href="record_check_by_user.do?record_page=1&flag=${flag}&work_record_creatorid=${user_id}" class="bulec">1</a>
+        <a href="record_check_by_user.do?record_page=2&flag=${flag}&work_record_creatorid=${user_id}">2</a>
+        <a href="record_check_by_user.do?record_page=3&flag=${flag}&work_record_creatorid=${user_id}">3</a>
+        <a href="record_check_by_user.do?record_page=4&flag=${flag}&work_record_creatorid=${user_id}">4</a>
+        <a href="record_check_by_user.do?record_page=5&flag=${flag}&work_record_creatorid=${user_id}">5</a>
+        <a href="record_check_by_user.do?record_page=2&flag=${flag}&work_record_creatorid=${user_id}">下一页</a>
         <a>共${record_total_page}页</a>
         <form method="get" action="rocord_check_by_user.do">
         <a>
@@ -139,13 +139,13 @@
       </c:when>
       <c:when test="${record_page==2}">
       <div class="page">
-        <a href="myrecord_request.jsp?record_page=1&flag=${flag}">上一页</a>
-        <a href="myrecord_request.jsp?record_page=1&flag=${flag}">1</a>
-        <a href="myrecord_request.jsp?record_page=2&flag=${flag}" class="bulec">2</a>
-        <a href="myrecord_request.jsp?record_page=3&flag=${flag}">3</a>
-        <a href="myrecord_request.jsp?record_page=4&flag=${flag}">4</a>
-        <a href="myrecord_request.jsp?record_page=5&flag=${flag}">5</a>
-        <a href="myrecord_request.jsp?record_page=3&flag=${flag}">下一页</a>
+        <a href="record_check_by_user.do?record_page=1&flag=${flag}&work_record_creatorid=${user_id}">上一页</a>
+        <a href="record_check_by_user.do?record_page=1&flag=${flag}&work_record_creatorid=${user_id}">1</a>
+        <a href="record_check_by_user.do?record_page=2&flag=${flag}&work_record_creatorid=${user_id}" class="bulec">2</a>
+        <a href="record_check_by_user.do?record_page=3&flag=${flag}&work_record_creatorid=${user_id}">3</a>
+        <a href="record_check_by_user.do?record_page=4&flag=${flag}&work_record_creatorid=${user_id}">4</a>
+        <a href="record_check_by_user.do?record_page=5&flag=${flag}&work_record_creatorid=${user_id}">5</a>
+        <a href="record_check_by_user.do?record_page=3&flag=${flag}&work_record_creatorid=${user_id}">下一页</a>
         <a>共${record_total_page}页</a>
         <form method="get" action="rocord_check_by_user.do">
         <a>
@@ -159,13 +159,13 @@
       </c:when>
       <c:otherwise>
       <div class="page">
-        <a href="myrecord_request.jsp?record_page=${record_page-1}&flag=${flag}">上一页</a>
-        <a href="myrecord_request.jsp?record_page=${record_page-2}&flag=${flag}">${record_page-2}</a>
-        <a href="myrecord_request.jsp?record_page=${record_page-1}&flag=${flag}">${record_page-1}</a>
-        <a class="bulec" href="myrecord_request.jsp?record_page=${record_page}&flag=${flag}">${record_page}</a>
-        <a href="myrecord_request.jsp?service_page=${record_page+1}&flag=${flag}">${record_page+1}</a>
-        <a href="myrecord_request.jsp?service_page=${record_page+2}&flag=${flag}">${record_page+2}</a>
-        <a href="myrecord_request.jsp?service_page=${record_page+1}&flag=${flag}">下一页</a>
+        <a href="record_check_by_user.do?record_page=${record_page-1}&flag=${flag}&work_record_creatorid=${user_id}">上一页</a>
+        <a href="record_check_by_user.do?record_page=${record_page-2}&flag=${flag}&work_record_creatorid=${user_id}">${record_page-2}</a>
+        <a href="record_check_by_user.do?record_page=${record_page-1}&flag=${flag}&work_record_creatorid=${user_id}">${record_page-1}</a>
+        <a class="bulec" href="record_check_by_user.do?record_page=${record_page}&flag=${flag}&work_record_creatorid=${user_id}">${record_page}</a>
+        <a href="record_check_by_user.do?service_page=${record_page+1}&flag=${flag}&work_record_creatorid=${user_id}">${record_page+1}</a>
+        <a href="record_check_by_user.do?service_page=${record_page+2}&flag=${flag}&work_record_creatorid=${user_id}">${record_page+2}</a>
+        <a href="record_check_by_user.do?service_page=${record_page+1}&flag=${flag}&work_record_creatorid=${user_id}">下一页</a>
         <a>共${record_total_page}页</a>
         <form method="get" action="rocord_check_by_user.do">
         <a>
