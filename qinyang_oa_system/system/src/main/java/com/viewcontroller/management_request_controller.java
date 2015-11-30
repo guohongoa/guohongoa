@@ -174,6 +174,7 @@ public class management_request_controller
 				if(phone.length()>5)
 				{
 					employee_password=phone.substring(phone.length()-6, phone.length());
+					System.out.println("////////////////////"+employee_password);
 				}
 				else
 				{

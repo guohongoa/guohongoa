@@ -24,8 +24,8 @@
 
 	<insert id="insert" parameterType="employee_info">
 		insert into
-		employee_info(employee_name,employee_position,employee_gender,employee_department_id,employee_leader_id,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_duty)
-		values(#{employee_name},#{employee_position},#{employee_gender},#{employee_department_id},#{employee_leader_id},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_duty});
+		employee_info(employee_name,employee_position,employee_gender,employee_department_id,employee_leader_id,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_duty,employee_password)
+		values(#{employee_name},#{employee_position},#{employee_gender},#{employee_department_id},#{employee_leader_id},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_duty},#{employee_password});
 	</insert>
 
 	<select id="select_by_employee_id" parameterType="int" resultMap="result">
