@@ -25,10 +25,10 @@
         <c:when test="${empty user_name}">
            <div class="menu">
             <form id="login" action="login.do" method="post">
-                <i></i><lable for="uname">用户名</lable>
-                <input id="uname" class="input100" name="user_name" type="text"/>
+                <i></i><lable for="uname">手机号</lable>
+                <input id="uname" class="input100" name="employee_phone" type="text"/>
                 <i class="mimatu"></i><lable for="password" >密码</lable>
-                <input id="password" class="input100" name="user_password" type="password"/>
+                <input id="password" class="input100" name="employee_password" type="password"/>&nbsp;
                 <input id="login_btn"  type="submit" value="登录"/>
             </form>
             <div class="login-error"></div>

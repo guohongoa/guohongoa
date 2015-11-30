@@ -5,12 +5,6 @@ package com.viewcontroller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -27,7 +21,7 @@ public class userinfo_request_controller {
 	//注册log4j
 	final static Logger logger=Logger.getLogger(userinfo_request_controller.class);
 
- 
+ /*
 	@RequestMapping("register.do")
 
 	public ModelAndView regiseter_request(
@@ -74,7 +68,7 @@ public class userinfo_request_controller {
 		
 	}
 	
-
+*/
 	//显示所有注册信息
 	public static ModelAndView get_register_display_data(system_user_info _system_user_info,String is_success)
 	{

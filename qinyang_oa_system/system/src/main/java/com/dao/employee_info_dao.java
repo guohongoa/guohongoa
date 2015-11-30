@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.contact_person_info;
 import com.data.employee_info;
+import com.data.system_user_info;
 
 //员工信息表数据库映射类
 public class employee_info_dao 
@@ -138,6 +139,21 @@ public class employee_info_dao
 	        System.out.println("select_by_department()--> "+employee_info_list);
 	        return employee_info_list;
 	  }
+	 
+	 //登陆用用户手机号查询用户信息
+	 public employee_info select_by_user_phone(String employee_phone)
+	 {
+		 employee_info _employee_info = null;
+	        SqlSession session = sqlSessionFactory.openSession();
+	        try {
+	            _employee_info = session.selectOne("employee_info.select_by_employee_phone", employee_phone);
+	 
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("selectByUsername("+employee_phone+") --> "+_employee_info);
+	        return _employee_info;
+	 }
 	  
 }
 

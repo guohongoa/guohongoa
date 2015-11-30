@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dao.system_user_info_dao;
+import com.data.employee_info;
 import com.data.system_user_info;
 import com.mybatis.mybatis_connection_factory;
 
@@ -17,7 +18,7 @@ import com.mybatis.mybatis_connection_factory;
 
 public class systeminfo_request_controller 
 {
-
+/*
 	@RequestMapping("login.do")
   public ModelAndView login_request(
 		  @RequestParam(value="user_name") String user_name,
@@ -59,6 +60,53 @@ public class systeminfo_request_controller
 	  
 	  return mv;
   }
+  
+  */
+	
+	//用户登陆响应
+	@RequestMapping("login.do")
+	  public ModelAndView login_request(
+			  @RequestParam(value="employee_phone")    String employee_phone,
+			  @RequestParam(value="employee_password") String employee_password
+			  )
+	  {
+			
+		  //system_user_info db_user_info=get_system_user_inf_by_user_name(user_name);
+		employee_info _employee_info=com.dbconnector.userinfo_db_connector.get_employee_info_by_employee_phone(employee_phone);
+		  
+		  ModelAndView mv=new ModelAndView("login/login_process.jsp");
+		  
+		  
+		  if(_employee_info!=null)
+		  {
+		  String employee_password_in_db=_employee_info.get_employee_password();  //数据库查询用户密码
+		  int employee_id_in_db=_employee_info.get_employee_id();                 //数据库查询用户id
+		  
+		  String employee_password_in_input=employee_password;   //用户输入密码
+		  
+		  //比较输入密码用数据库中密码是否一致
+		  if(employee_password_in_db.equals(employee_password_in_input))
+		  {
+			  mv.addObject("status", 0);//"登陆成功"
+			  
+			  //登陆成功后设置用户名session
+			  mv.addObject("employee_info", _employee_info);
+		  }
+		  
+		  
+		  else
+		  {
+			  mv.addObject("status", 2);//"用户名或密码错误"
+		  }
+		  }
+		  else
+		  {
+			  mv.addObject("status", 1);//"用户名不存在"
+		  }
+		  
+		  return mv;
+	  }
+	
 	//用户登出
 	@RequestMapping("logout.do")
 	public ModelAndView logout_request()
@@ -67,7 +115,7 @@ public class systeminfo_request_controller
 		return mv;
 	}
   
-  
+  /*
   //根据用户名从数据库返回system_user_info的对象
   private system_user_info get_system_user_inf_by_user_name(String user_name)
   {
@@ -78,7 +126,7 @@ public class systeminfo_request_controller
   }
   
   //----------------------------------------------------------------------------------------
-  
+  */
  
   
 }

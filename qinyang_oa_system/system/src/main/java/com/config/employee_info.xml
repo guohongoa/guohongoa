@@ -68,6 +68,12 @@
 		SELECT * FROM employee_info WHERE employee_department_id = #{employee_department_id};
 	</select>
 	
+	
+	
+	<select id="select_by_employee_phone" parameterType="String"
+		resultMap="result">
+		SELECT * FROM employee_info WHERE employee_phone = #{employee_phone};
+	</select>
 </mapper>
 
 

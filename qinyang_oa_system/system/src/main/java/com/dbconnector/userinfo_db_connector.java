@@ -2,16 +2,13 @@ package com.dbconnector;
 
 import java.util.List;
 
-import org.springframework.web.servlet.ModelAndView;
-
-import com.dao.system_user_info_dao;
-import com.dao.user_info_dao;
-import com.data.system_user_info;
-import com.data.user_info;
+import com.dao.employee_info_dao;
+import com.data.employee_info;
 import com.mybatis.mybatis_connection_factory;
 
 public class userinfo_db_connector 
 {
+	/*
 	public static boolean register_insert_db(system_user_info _system_user_info)
 	{
 		//插入系统用户信息表
@@ -42,7 +39,6 @@ public class userinfo_db_connector
 		}
 		return rs;
 	}
-
 //---------------------------------------------------------------------------------
     //用户信息模块功能函数
     //查询所有
@@ -53,4 +49,13 @@ public class userinfo_db_connector
 		   user_info_list=_user_info_dao.select_all();
 		   return user_info_list;
 	}
+*/	
+	public static employee_info get_employee_info_by_employee_phone(String employee_phone)
+	  {
+		  //system_user_info _system_user_info=new system_user_info();
+		   employee_info _employee_info=new employee_info();
+		   employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		  _employee_info=_employee_info_dao.select_by_user_phone(employee_phone);
+		  return _employee_info;
+	  }
 }
