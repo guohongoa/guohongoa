@@ -15,6 +15,7 @@
        <h1>登陆成功</h1>
        <c:set  var="user_name"  value="${employee_info.get_employee_name()}"  scope="session"  />
        <c:set  var="user_id"  value="${employee_info.get_employee_id()}"  scope="session"  />
+       <c:set var="user_group_type" value="${employee_info.get_employee_service_group()}" scope="session" />
        <a href="index.jsp">3秒后系统会自动跳转，也可点击本处直接跳</a>  
        <script>
         function jumpurl()

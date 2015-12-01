@@ -22,7 +22,7 @@
         <div class="menu">
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
-                <li><a href=""><i class="icon"></i>设置</a></li>
+                <li><a href="#"><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
             <div>
@@ -56,8 +56,8 @@
     <div class="left_menu" style="height: 150px">
         <h3><a href="">设置</a></h3>
         <ul>
-            <li><a href="" class="active">个人信息</a></li>
-            <li><a href="">修改密码</a></li>
+            <li><a href="#" class="active">个人信息</a></li>
+            <li><a href="change_password.jsp">修改密码</a></li>
         </ul>
     </div>
     <!--右侧-->

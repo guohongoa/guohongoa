@@ -163,7 +163,7 @@ $(document).ready(function(){
         <div class="menu">
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
-                <li><a href=""><i class="icon"></i>设置</a></li>
+                <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
             <div>

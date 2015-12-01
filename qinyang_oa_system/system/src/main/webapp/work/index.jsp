@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -23,7 +24,7 @@
         <div class="menu">
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
-                <li><a href=""><i class="icon"></i>设置</a></li>
+                <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
             <div>
@@ -79,11 +80,50 @@
             <a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0"></a>
         </div>
         <ul>
-            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">政策法规服务</a></li>
-            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">经济发展服务</a></li>
-            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">和谐稳定服务</a></li>
-            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">环境卫生服务</a></li>
-            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">文体活动服务</a></li>
+          <c:choose>
+            <c:when test="${user_group_type==0}">
+                <li><a href="#">政策法规服务</a></li>
+                <li><a href="#">经济发展服务</a></li>
+                <li><a href="#">和谐稳定服务</a></li>
+                <li><a href="#">环境卫生服务</a></li>
+                <li><a href="#">文体活动服务</a></li>
+            </c:when>
+            <c:when test="${user_group_type==1 }">
+                <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">政策法规服务</a></li>
+                <li><a href="#">经济发展服务</a></li>
+                <li><a href="#">和谐稳定服务</a></li>
+                <li><a href="#">环境卫生服务</a></li>
+                <li><a href="#">文体活动服务</a></li>
+            </c:when>
+            <c:when test="${user_group_type==2 }">
+                <li><a href="#">政策法规服务</a></li>
+                <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">经济发展服务</a></li>
+                <li><a href="#">和谐稳定服务</a></li>
+                <li><a href="#">环境卫生服务</a></li>
+                <li><a href="#">文体活动服务</a></li>
+            </c:when>
+            <c:when test="${user_group_type==3 }">
+                <li><a href="#">政策法规服务</a></li>
+                <li><a href="#">经济发展服务</a></li>
+                <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">和谐稳定服务</a></li>
+                <li><a href="#">环境卫生服务</a></li>
+                <li><a href="#">文体活动服务</a></li>
+            </c:when>
+            <c:when test="${user_group_type==4 }">
+                <li><a href="#">政策法规服务</a></li>
+                <li><a href="#">经济发展服务</a></li>
+                <li><a href="#">和谐稳定服务</a></li>
+                <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">环境卫生服务</a></li>
+                <li><a href="#">文体活动服务</a></li>
+            </c:when>
+            <c:when test="${user_group_type==5 }">
+                <li><a href="#">政策法规服务</a></li>
+                <li><a href="#">经济发展服务</a></li>
+                <li><a href="#">和谐稳定服务</a></li>
+                <li><a href="#">环境卫生服务</a></li>
+                <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">文体活动服务</a></li>
+            </c:when>
+          </c:choose>
         </ul>
     </div>
 </div>
