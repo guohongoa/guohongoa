@@ -174,7 +174,6 @@ public class management_request_controller
 				if(phone.length()>5)
 				{
 					employee_password=phone.substring(phone.length()-6, phone.length());
-					System.out.println("////////////////////"+employee_password);
 				}
 				else
 				{
@@ -301,7 +300,7 @@ public class management_request_controller
 		{
 			System.out.println(service_type);
 
-			
+			//添加至五服务小组数据库
 			service_group_info _service_group_info=new service_group_info();
 			_service_group_info.set_service_village_county_name(service_village_county_name);
 			_service_group_info.set_service_village_county_id(service_village_county_id);
@@ -322,6 +321,9 @@ public class management_request_controller
 			 
 			   
 			 boolean rs=com.dbconnector.management_db_connector.service_group_insert_db(_service_group_info);
+			 
+             //根据五服务小组成员，修改对应用户的身份信息，修改 employee_is_service_member
+			 com.dbconnector.userinfo_db_connector.add_service_member(service_group_member,service_type);
 			 
 			 ModelAndView mv=new ModelAndView();
 			 mv.addObject("result",rs);

@@ -7,8 +7,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.contact_node;
 import com.data.contact_person_department_info;
+import com.data.department_info;
 import com.data.employee_info;
 
+//四联联络人员机构表数据库联络类
 public class contact_person_department_info_dao 
 {
 	private SqlSessionFactory sqlSessionFactory=null;
@@ -126,5 +128,6 @@ public class contact_person_department_info_dao
 	        System.out.println("selectByUserid("+contact_person_department_id+") --> "+_department_info);
 	        return _department_info;
 	 }
+	
 
 }

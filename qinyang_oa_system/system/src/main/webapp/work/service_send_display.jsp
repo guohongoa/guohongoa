@@ -79,7 +79,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="" class="red">发起服务</a><i></i></dd>
-                    <dd><a href="" >我的服务</a></dd>
+                    <dd><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0" >我的服务</a></dd>
                 </dl>
             </li>
         </ul>

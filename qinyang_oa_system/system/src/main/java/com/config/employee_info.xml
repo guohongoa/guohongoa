@@ -20,6 +20,7 @@
 		<result property="employee_idcode" column="employee_idcode" />
 		<result property="employee_duty" column="employee_duty" />
 		<result property="employee_password" column="employee_password" />
+		<result property="employee_service_group" column="employee_service_group" />
 	</resultMap>
 
 	<insert id="insert" parameterType="employee_info">
@@ -74,6 +75,15 @@
 		resultMap="result">
 		SELECT * FROM employee_info WHERE employee_phone = #{employee_phone};
 	</select>
+	
+	
+	<update id="update_service_type" parameterType="employee_info">
+        UPDATE employee_info
+        SET employee_service_group = #{employee_service_group}
+            
+        WHERE employee_id = #{employee_id} 
+    </update>
+	
 </mapper>
 
 

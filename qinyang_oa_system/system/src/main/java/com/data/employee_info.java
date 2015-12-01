@@ -19,6 +19,14 @@ public class employee_info
     
     private String employee_password;   //用户密码
     
+    private int    employee_service_group;
+    //是否为五服务小组成员，默认为0，不是五服务小组成员，
+    //1为是政策法规服务五服务小组成员，
+    //2为经济发展服务五服务小组成员，
+    //3为和谐稳定服务五服务小组成员，
+    //4为环境卫生服务五服务小组成员
+    //5为文体活动服务五服务成员
+    
 	
     public employee_info()
     {
@@ -159,5 +167,14 @@ public class employee_info
 	}
 	
 	
+	public int get_employee_service_group()
+	{
+		return this.employee_service_group;
+	}
+	
+	public void set_employee_service_group(int employee_service_group)
+	{
+		this.employee_service_group=employee_service_group;
+	}
 
 }

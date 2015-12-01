@@ -1,9 +1,12 @@
 package com.dbconnector;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.dao.employee_info_dao;
 import com.data.employee_info;
+import com.data.service_village_info;
 import com.mybatis.mybatis_connection_factory;
 
 public class userinfo_db_connector 
@@ -58,4 +61,38 @@ public class userinfo_db_connector
 		  _employee_info=_employee_info_dao.select_by_user_phone(employee_phone);
 		  return _employee_info;
 	  }
+	
+	//输入五服务小组成员姓名、手机号，以空格间隔，将输入信息与employee_info核对，
+   //核实后改变employee_info中employee_is_service_member值，将用户身份转换为五服务小组成员，可以使用对应的服务功能
+	public static void add_service_member(String service_group_member,int service_type)
+	{
+		 employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		
+		employee_info _employee_info=new employee_info();
+		String [] service_group_member_info_array=service_group_member.split(" ");
+		int i=0;//循环次数
+		for(String service_group_member_info:service_group_member_info_array)
+		{
+		  i++;
+		 
+		  if(i%2==1)
+		  {
+			  _employee_info.set_employee_name(service_group_member_info);
+		  }
+		  else
+		  {
+			  _employee_info.set_employee_phone(service_group_member_info);
+			  //查询用户信息表，核实后改变用户状态
+			  employee_info new_info=_employee_info_dao.select_by_user_phone(_employee_info.get_employee_phone());
+			  System.out.println("cccccccc"+new_info.get_employee_name());
+			  if(_employee_info.get_employee_name().equals(new_info.get_employee_name()))
+			  {
+				  int employee_service_group=service_type+1;//表单输入依照五服务数据库，与用户信息表五服务类型属性值间相差1
+				  new_info.set_employee_service_group(employee_service_group);
+				  _employee_info_dao.update_employee_service_group_type(new_info);
+			  }
+			  
+		  }
+	    }
+	}
 }

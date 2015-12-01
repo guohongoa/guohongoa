@@ -80,7 +80,7 @@
                 <p><span>责任人</span><input type="text" name="service_group_leader"/></p>
                 <p><span>联系电话</span><input type="text" name="service_group_phone"/></p>
                 <p><span>小组职责</span><textarea name="service_group_duty" form="group_add_form"></textarea></p>
-                <p><span>小组成员</span><textarea name="service_group_member" form="group_add_form"></textarea></p>
+                <p><span>小组成员</span><textarea name="service_group_member" form="group_add_form" placeholder="请输入每个成员姓名及手机号，以空格间隔，例：张三 13812345678 李四 13987654321"></textarea></p>
                 <p class="tztj_btn"><b class="login-error"></b><button>确定添加</button></p>
             </form>
         </div>
