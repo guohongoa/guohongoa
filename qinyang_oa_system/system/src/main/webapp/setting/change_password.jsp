@@ -37,10 +37,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/">四联</a></li>
+        <li><a href="../service/">五服务</a></li>
+        <li><a href="../work/">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -63,11 +63,14 @@
     <div class="right_content">
         <h4><a href="">设置</a>&gt;<span>修改密码</span></h4>
         <div class="set_password">
-            <p><span>当前密码</span><input type="text"/><b></b></p>
-            <p><span>新密码</span><input type="text"/><b></b></p>
-            <p><span>确认密码</span><input type="text"/><b></b></p>
+            <form method="post" action="../change_password.do">
+            <input name="employee_id" type="hidden" value="${user_id}"> <!--从session取出用户id-->
+            <p><span>当前密码</span><input name="employee_password" type="text"/><b></b></p>
+            <p><span>新密码</span><input name="new_password" type="text"/><b></b></p>
+            <p><span>确认密码</span><input name="confirm_password" type="text"/><b></b></p>           
         </div>
-        <div class="tztj_btn"><input type="button" value="保存"/> <input type="reset" value="重置"/></div>
+        <div class="tztj_btn"><input type="submit" value="保存"/> <input type="reset" value="重置"/></div>
+            </form>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>

@@ -95,4 +95,29 @@ public class userinfo_db_connector
 		  }
 	    }
 	}
+	
+	//修改密码前，测试旧密码输入是否正确
+	public static boolean check_passsword_correct(int employee_id,String employee_password)
+	{
+		boolean rs;//测试返回结果标志位
+		employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		
+		//按id从数据库查询用户信息
+		employee_info _employee_info=_employee_info_dao.select_by_employee_id(employee_id);
+		
+	   String employee_password_in_db=_employee_info.get_employee_password();
+	   String employee_password_in_input=employee_password;
+	   
+	   if(employee_password_in_db.equals(employee_password_in_input))
+	   {
+		   rs=true;
+	   }
+	   else
+	   {
+		   rs=false;
+	   }
+	   
+	   return rs;
+	   
+	}
 }
