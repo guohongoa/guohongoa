@@ -59,7 +59,23 @@
     <div class="left_menu tzlb" style="height: 200px">
         <h3><a href="">五服务</a></h3>
         <ul>
-            <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">法政法规服务</a>
+            <c:choose>
+                <c:when test="${user_group_type==1}">
+                  <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">法政法规服务</a>
+                </c:when>
+                 <c:when test="${user_group_type==2}">
+                  <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">经济发展服务</a>
+                </c:when>
+                 <c:when test="${user_group_type==3}">
+                  <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">和谐稳定服务</a>
+                </c:when>
+                <c:when test="${user_group_type==4}">
+                  <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">环境卫生服务</a>
+                </c:when>
+                <c:when test="${user_group_type==4}">
+                  <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">环境卫生服务</a>
+                </c:when>
+            </c:choose>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="service_send.jsp">发起服务</a><i></i></dd>
@@ -77,7 +93,23 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">五服务</a>&gt;<span>法政法规服务</span>
+        <c:choose>
+            <c:when test="${user_group_type==1}">
+               <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>法政法规服务</span>
+            </c:when>
+            <c:when test="${user_group_type==2}">
+               <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>经济发展服务</span>
+            </c:when>
+            <c:when test="${user_group_type==3}">
+               <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>和谐稳定服务</span>
+            </c:when>
+            <c:when test="${user_group_type==4}">
+               <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>环境卫生服务</span>
+            </c:when>
+            <c:otherwise>
+               <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>文体活动服务</span>
+            </c:otherwise>
+        </c:choose>
         </h4>
         <div class="contentlist">
             <ul class="contentlisttt wfwlb_content ">

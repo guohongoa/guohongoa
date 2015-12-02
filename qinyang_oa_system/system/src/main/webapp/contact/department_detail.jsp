@@ -193,7 +193,7 @@ $(document).ready(function(){
 </div>
 <!--主体-->
 <div class="content">
-    <h4><a href="">四联</a>&gt;<span>联系人详情</span></h4>
+    <h4><a href="contact_person_check.do">四联</a>&gt;<span>联系人详情</span></h4>
     <div class="slxq" style="margin-top: 20px" id="level0">
             <h5 id="0" >
             <c:forEach var="contact_node" items="${contact_node_list0}" varStatus="status">

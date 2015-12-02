@@ -57,7 +57,7 @@
 <!--主体-->
 <div class="content">
     <div class="left_menu">
-        <h3><a href="">五服务</a></h3>
+        <h3><a href="service_village_check.do">五服务</a></h3>
         <c:choose>
          <c:when test="${service_type==0}">
             <ul>
@@ -110,19 +110,19 @@
     <div class="right_content">
         <c:choose>
             <c:when test="${service_type==0}">
-              <h4><a href="">服务</a>&gt;<span>法政法规服务</span></h4>
+              <h4><a href="service_village_check.do">服务</a>&gt;<span>法政法规服务</span></h4>
             </c:when>
             <c:when test="${service_type==1}">
-              <h4><a href="">服务</a>&gt;<span>经济发展服务</span></h4>
+              <h4><a href="service_village_check.do">服务</a>&gt;<span>经济发展服务</span></h4>
             </c:when>
             <c:when test="${service_type==2}">
-              <h4><a href="">服务</a>&gt;<span>和谐稳定服务</span></h4>
+              <h4><a href="service_village_check.do">服务</a>&gt;<span>和谐稳定服务</span></h4>
             </c:when>
             <c:when test="${service_type==3}">
-              <h4><a href="">服务</a>&gt;<span>环境卫生服务</span></h4>
+              <h4><a href="service_village_check.do">服务</a>&gt;<span>环境卫生服务</span></h4>
             </c:when>
             <c:when test="${service_type==4}">
-              <h4><a href="">服务</a>&gt;<span>文体活动服务</span></h4>
+              <h4><a href="service_village_check.do">服务</a>&gt;<span>文体活动服务</span></h4>
             </c:when>
         </c:choose>
         <div class="contentlist">
