@@ -47,15 +47,15 @@
     <div class="left_menu tzlb" style="height: 325px">
         <h3>管理</h3>
         <ul>
-            <li><a href="village_check_request.jsp" class="active">村镇管理</a>
+            <li><a href="check_service_village_detail.do" class="active">村镇管理</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="#" class="red">添加村镇</a><i></i></dd>
                 </dl>
             </li>
-            <li><a href="department_check_request.jsp" >部门管理</a></li>
+            <li><a href="department_check.do" >部门管理</a></li>
             <li><a href="employee_check_request.jsp">人员管理</a></li>
-            <li><a href="service_group_check_request.jsp">五服务小组管理</a></li>
+            <li><a href="service_group_check.do">五服务小组管理</a></li>
         </ul>
     </div>
     <!--右侧-->
