@@ -74,7 +74,7 @@
                 <h4><a href="contact/contact_person_check.do" >四联</a></h4>
             </div>
             <div class="mokuai">
-                <a class="mokuaitu"  href="service/">
+                <a class="mokuaitu"  href="service/service_village_check.do">
                     <img src="http://101.200.196.121:8080/oa/css/images/wfw_05.jpg" alt=""/>
                     <i style="display: none"></i>
                     <span style="display: none">· 市委常委联系乡镇（办事处）党（工）委<br/>
@@ -82,7 +82,7 @@
 · 村（社区）党员干部联系党员<br/>
 · 党员联系群众</span>
                 </a>
-                <h4><a href="service/" >五服务</a></h4>
+                <h4><a href="service/service_village_check.do" >五服务</a></h4>
             </div>
             <div class="mokuai marginr">
                 <a class="mokuaitu" href="work/">

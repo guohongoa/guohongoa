@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
-<c:choose>
-<c:when test="${not empty village_list}">
 
 <div class="header">
     <!--头部header区域内容部分-->
@@ -100,11 +98,5 @@
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
-</c:when>
-<c:otherwise>
-    <!--五服务主页面跳转 -->
-    <c:redirect url="check_service_village_request.jsp" />
-</c:otherwise>
-</c:choose>
 </body>
 </html>
