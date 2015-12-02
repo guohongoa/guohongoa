@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.dao.employee_info_dao;
+import com.dao.service_group_info_dao;
 import com.data.employee_info;
 import com.data.service_village_info;
 import com.mybatis.mybatis_connection_factory;
@@ -119,5 +120,19 @@ public class userinfo_db_connector
 	   
 	   return rs;
 	   
+	}
+	
+	public static boolean update_password(int employee_id,String employee_password)
+	{
+		 boolean rs;
+		 //新建employee_info对象，设置id和password，便于数据库更改数据
+		 employee_info _employee_info=new employee_info();
+		 _employee_info.set_employee_id(employee_id);
+		 _employee_info.set_employee_password(employee_password);
+		 
+		 employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		rs=_employee_info_dao.update_employee_password(_employee_info);
+		
+	    return rs;
 	}
 }

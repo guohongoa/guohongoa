@@ -115,21 +115,7 @@ public class systeminfo_request_controller
 		return mv;
 	}
 	
-	@RequestMapping("change_password.do")
-	public ModelAndView change_password_request(
-			 @RequestParam(value="employee_id")         int    employee_id,     //用户id
-			 @RequestParam(value="employee_password")   String employee_password,//现在的密码
-			 @RequestParam(value="new_password")        String new_password,    //新密码
-			 @RequestParam(value="confirm_password")    String confirm_password //第二遍输入的确认密码
-			)
-	{
-		ModelAndView mv=new ModelAndView();
-		
-		boolean is_success=com.dbconnector.userinfo_db_connector.check_passsword_correct(employee_id, employee_password);
-		System.out.println(is_success);
-		
-		return mv;
-	}
+	
   
   /*
   //根据用户名从数据库返回system_user_info的对象

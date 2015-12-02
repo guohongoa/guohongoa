@@ -55,7 +55,7 @@
     <div class="left_menu" style="height: 150px">
         <h3><a href="#">设置</a></h3>
         <ul>
-            <li><a href="setting/check_personal.do?employee_id=${user_id}">个人信息</a></li>
+            <li><a href="check_personal.do?employee_id=${user_id}">个人信息</a></li>
             <li><a href="#" class="active">修改密码</a></li>
         </ul>
     </div>

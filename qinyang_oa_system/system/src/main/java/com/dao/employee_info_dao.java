@@ -178,6 +178,31 @@ public class employee_info_dao
 	        	return true;//修改成功
 	        }
 	 }
+	 
+	 //更改用户密码
+	 public  boolean update_employee_password(employee_info _employee_info)
+	 {
+		 int id = -1;
+	      SqlSession session = sqlSessionFactory.openSession();
+	 
+	      try {
+	          id = session.update("employee_info.update_password",_employee_info);
+	 
+	      } finally {
+	          session.commit();
+	          session.close();
+	      }
+	      System.out.println("update("+_employee_info+") --> updated");
+	      
+	      if(id==-1)
+	        {
+	        	return false;//修改失败
+	        }
+	        else
+	        {
+	        	return true;//修改成功
+	        }
+	 }
 
 	 
 	
