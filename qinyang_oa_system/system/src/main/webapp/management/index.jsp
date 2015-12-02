@@ -9,6 +9,6 @@
 </head>
 <body>
   <!--管理主页面跳转 -->
-  <c:redirect url="village_check_request.jsp" />
+  <c:redirect url="check_service_village_detail.do" />
 </body>
 </html>
