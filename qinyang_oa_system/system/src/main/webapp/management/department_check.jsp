@@ -97,6 +97,9 @@
                      <a href="department_modify_request.jsp?department_id=${department_info.get_department_id()}">
                          修改
                     </a>
+                    <a href="department_del.do?department_id=${department_info.get_department_id()}"> 
+                        删除
+                    </a>
                 </li>
             </ul>
             </c:forEach>

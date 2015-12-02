@@ -3,6 +3,7 @@ package com.dbconnector;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dao.employee_info_dao;
 import com.dao.service_info_dao;
 import com.dao.service_village_county_info_dao;
 import com.dao.service_village_info_dao;
@@ -226,6 +227,12 @@ public class service_db_connector
 						rs=false;
 					}
 				    return rs;
+				}
+				//删除乡镇信息
+				public static void del_service_village_info_by_count_id(int service_village_county_id)
+				{
+					service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					_service_village_county_info_dao.del_county_info_by_id(service_village_county_id);
 				}
 				
 }

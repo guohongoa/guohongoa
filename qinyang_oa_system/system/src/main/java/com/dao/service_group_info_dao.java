@@ -90,4 +90,17 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		        	return true;//修改成功
 		        }
 		}
+		
+		public void del_service_group_info_by_id(int service_group_id)
+		{
+			SqlSession session = sqlSessionFactory.openSession();
+			  
+	        try {
+	            session.delete("service_group_info.delete", service_group_id);
+	        } finally {
+	            session.commit();
+	            session.close();
+	        }
+	        System.out.println("delete("+service_group_id+")");
+		}
 }

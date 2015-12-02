@@ -45,5 +45,10 @@
             service_group_member        = #{service_group_member}
         WHERE service_group_id = #{service_group_id}
     </update>
+    
+    
+    <delete id="delete" parameterType="int">
+        DELETE FROM service_group_info WHERE service_group_id = #{service_group_id};
+    </delete>
 	
 </mapper>

@@ -140,4 +140,10 @@ public class management_db_connector
 		
 	    return rs;
 	 }
+	 
+	 public static void del_service_group_id(int service_group_id)
+	 {
+		 service_group_info_dao _service_group_info_dao=new service_group_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 _service_group_info_dao.del_service_group_info_by_id(service_group_id);
+	 }
 }

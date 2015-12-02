@@ -86,6 +86,19 @@ public class village_request_controller
 		return mv;
 	}
 	
+	//管理页面乡镇下属村镇删除页面显示请求
+	@RequestMapping("management/village_del.do")
+	public ModelAndView village_del_request(
+			@RequestParam(value="service_village_county_id")        int service_village_county_id
+			)
+	{
+		ModelAndView mv=new ModelAndView("village_check_request.jsp");
+		//以乡镇id为标志删除对应行
+		com.dbconnector.service_db_connector.del_service_village_info_by_count_id(service_village_county_id);
+		
+		return mv;
+	}
+	
 	//管理页面村镇管理修改提交请求响应
 	@RequestMapping("management/village_update_commit.do")
 	public void  village_update_commit_request(

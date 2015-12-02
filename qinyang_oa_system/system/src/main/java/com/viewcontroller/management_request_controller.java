@@ -82,11 +82,13 @@ public class management_request_controller
 		}
 		
 		@RequestMapping("management/department_del.do")
-		 public void department_del_request(
+		 public ModelAndView department_del_request(
 				 @RequestParam(value="department_id")    int department_id
 				 )
 		 {
+			ModelAndView mv=new ModelAndView("department_check_request.jsp");
 			com.dbconnector.management_db_connector.del_department_from_id(department_id);
+			return mv;
 		 }
 		
 		//部门管理修改显示页面
@@ -215,12 +217,15 @@ public class management_request_controller
 		   return mv;
 		}
 		
+		//删除用户信息
 		@RequestMapping("management/employee_del.do")
-		 public void employee_del_request(
+		 public ModelAndView employee_del_request(
 				 @RequestParam(value="employee_id")    int employee_id
 				 )
 		 {
+			 ModelAndView mv=new ModelAndView("employee_check_request.jsp");//页面重定向
 			com.dbconnector.management_db_connector.del_employee_from_id(employee_id);
+			return mv;
 		 }
 		
 		//显示员工管理修改内容
@@ -391,6 +396,16 @@ public class management_request_controller
 				boolean rs=com.dbconnector.management_db_connector.update_service_group_info(_service_group_info);
 				
 				
+			}
+			
+			@RequestMapping("management/service_group_del.do")
+			public ModelAndView service_group_del_request(
+					 @RequestParam(value="service_group_id")  int service_group_id
+					)
+			{
+				ModelAndView mv=new ModelAndView("service_group_check_request.jsp");
+				com.dbconnector.management_db_connector.del_service_group_id(service_group_id);
+				return mv;
 			}
 			
 			@RequestMapping("management/employee_add_check.do")

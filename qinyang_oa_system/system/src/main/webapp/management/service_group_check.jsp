@@ -22,7 +22,7 @@
         <div class="menu">
             <ul>
                 <li><a href=""><i class="icon icon_m"></i>消息</a></li>
-                <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
+                <li><a href=""><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
         </div>
@@ -103,6 +103,9 @@
                     
                     <a href="service_group_modify_request.jsp?service_group_id=${service_group_info.get_service_group_id()}">
                          修改
+                    </a>
+                    <a href="service_group_del.do?service_group_id=${service_group_info.get_service_group_id()}">
+                        删除
                     </a>
                 </li>
             </ul>

@@ -96,6 +96,9 @@
                     <a href="employee_modify_request.jsp?employee_id=${employee_info.get_employee_id()}">
                          修改
                     </a>
+                    <a href="employee_del.do?employee_id=${employee_info.get_employee_id()}">
+                         删除
+                    </a>
                 </li>
             </ul>
             </c:forEach>
