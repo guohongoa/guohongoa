@@ -31,6 +31,7 @@
                 <input id="password" class="input100" name="employee_password" type="password"/>&nbsp;
                 <input id="login_btn"  type="submit" value="登录"/>
             </form>
+            <a class="login_admin">管理员登录</a>
             <div class="login-error"></div>
           </div>
         </c:when>
@@ -176,3 +177,5 @@
 <script src="http://101.200.196.121:8080/oa/js/all.js"></script>
 </body>
 </html>
+
+
