@@ -100,6 +100,9 @@
                     <a href="department_del.do?department_id=${department_info.get_department_id()}"> 
                         删除
                     </a>
+                    <a>
+                        详情
+                    </a>
                 </li>
             </ul>
             </c:forEach>

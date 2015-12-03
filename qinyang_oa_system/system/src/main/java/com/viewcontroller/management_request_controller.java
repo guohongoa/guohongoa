@@ -281,6 +281,33 @@ public class management_request_controller
 				
 			}
 		
+		@RequestMapping("management/employee_detail.do")
+		public ModelAndView employee_check_detail_request(
+				 @RequestParam(value="employee_id")    int employee_id
+				)
+		{
+			ModelAndView mv=new ModelAndView("employee_detail_by_id.jsp");
+			employee_info _employee_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id);
+			//使用部门id，获取员工部门信息
+			//使用上级id，获取上级姓名
+			
+			String employee_department=com.dbconnector.management_db_connector.get_department_info_by_id(_employee_info.get_employee_department_id()).get_department_name();
+			 String employee_leader;
+			if(_employee_info.get_employee_leader_id()!=-1)
+			{
+			    employee_leader=com.dbconnector.management_db_connector.get_employee_info_by_id(_employee_info.get_employee_leader_id()).get_employee_name();
+			}
+			else
+			{
+				employee_leader="无";
+			}
+			
+			mv.addObject("employee_department", employee_department);
+			mv.addObject("employee_leader", employee_leader);
+			mv.addObject("employee_info",_employee_info);
+			return mv;
+		}
+		
 	//-------------------------------------------------------------------------------
 		//五服务功能小组管理
 		
@@ -424,5 +451,16 @@ public class management_request_controller
 				return mv;
 				
 				
+			}
+			
+			@RequestMapping("management/service_group_detail.do")
+			public ModelAndView service_group_detail_request(
+					 @RequestParam(value="service_group_id")  int service_group_id
+					)
+			{
+				ModelAndView mv=new ModelAndView("service_group_detail_by_id.jsp");
+				service_group_info _service_group_info=com.dbconnector.management_db_connector.get_service_group_info_by_id(service_group_id);
+				mv.addObject("service_group_info", _service_group_info);
+				return mv;
 			}
 }

@@ -107,6 +107,9 @@
                     <a href="service_group_del.do?service_group_id=${service_group_info.get_service_group_id()}">
                         删除
                     </a>
+                    <a href="service_group_detail.do?service_group_id=${service_group_info.get_service_group_id()}">
+                        详情
+                    </a>
                 </li>
             </ul>
             </c:forEach>

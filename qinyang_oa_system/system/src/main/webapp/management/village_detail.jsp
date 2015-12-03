@@ -107,6 +107,9 @@
                     <a href="village_del.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}">
                       删除
                     </a>
+                    <a href="village_detail.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}">
+                      详情
+                    </a>
                 </li>
             </ul>
             </c:forEach>

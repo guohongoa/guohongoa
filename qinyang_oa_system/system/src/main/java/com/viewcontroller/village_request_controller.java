@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.data.service_info;
 import com.data.service_village_county_info;
 import com.data.service_village_info;
 
@@ -126,5 +127,20 @@ public class village_request_controller
 		boolean rs=com.dbconnector.service_db_connector.update_county_info(_service_village_county_info);
 		boolean rs2=com.dbconnector.service_db_connector.update_villages_name(service_village_county_id, service_village_county_name, service_village_addtime, str_service_village_names);
 		
+	}
+	
+	//村镇信息详细页面
+	@RequestMapping("management/village_detail.do")
+	public ModelAndView village_check_detail_request(
+			@RequestParam(value="service_village_county_id")        int service_village_county_id
+			)
+	{
+		ModelAndView mv=new ModelAndView("village_detail_by_id.jsp");
+		service_village_county_info _service_village_county_info=com.dbconnector.service_db_connector.get_service_village_county_info_by_id(service_village_county_id);
+		String villages=com.dbconnector.service_db_connector.get_service_village_names_by_count_id(service_village_county_id);
+		mv.addObject("service_village_county_info", _service_village_county_info);
+		mv.addObject("villages",villages);
+		return mv;
+
 	}
 }
