@@ -140,7 +140,16 @@ public class service_db_connector
 					     return service_village_county_id;
 				}
 				
-				public static List<service_village_county_info> get_service_village_county_list()
+				//依据页码分页查询
+				public static List<service_village_county_info> get_service_village_county_list(int village_page)
+				   {
+					   List<service_village_county_info> service_village_county_list;
+					   service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					   service_village_county_list=_service_village_county_info_dao.select_by_page(village_page);
+					   return service_village_county_list;
+				   }
+				
+				public static List<service_village_county_info> get_all_service_village_county_list()
 				   {
 					   List<service_village_county_info> service_village_county_list;
 					   service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());

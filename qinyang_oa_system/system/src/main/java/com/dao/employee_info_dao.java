@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.data.contact_person_info;
 import com.data.employee_info;
 import com.data.system_user_info;
+import com.selector.employee_selector;
 
 //员工信息表数据库映射类
 public class employee_info_dao 
@@ -71,6 +72,23 @@ public class employee_info_dao
 		        System.out.println("selectAll() --> "+employee_info_list);
 		        return employee_info_list;
 		 }
+	  
+	  //分页查询员工信息
+	  public List<employee_info> select_by_page(int employee_page)
+	  {
+		  List<employee_info> employee_info_list=null;
+			 SqlSession session=this.sqlSessionFactory.openSession();
+			 try {
+				 employee_selector _employee_selector=new employee_selector();
+				 _employee_selector.set_employee_begin(11*(employee_page-1));
+				 _employee_selector.set_employee_num(11);
+				      employee_info_list = session.selectList("employee_info.select_by_page",_employee_selector);
+		        } finally {
+		            session.close();
+		        }
+		        System.out.println("select_by_page() --> "+employee_info_list);
+		        return employee_info_list;
+	  }
 	  
 	  //根据id删除员工信息
 	  public void delete_from_id(int employee_id)

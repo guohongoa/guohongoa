@@ -16,6 +16,7 @@ import com.data.employee_info;
 import com.data.project_info;
 import com.data.service_group_info;
 import com.data.service_village_county_info;
+import com.data.service_village_info;
 import com.mybatis.mybatis_connection_factory;
 
 //所有管理页面请求
@@ -25,6 +26,133 @@ public class management_request_controller
 	
 //-----------------------------------------------------------------------------------------
 	
+	@RequestMapping("management/village_add.do")
+	public ModelAndView county_add_request(
+			@RequestParam(value="service_village_county_name")        String service_village_county_name,       //五服务覆盖村庄名称 
+			@RequestParam(value="service_village_county_leader")      String service_village_county_leader,     //五服务覆盖村庄负责人名称
+			@RequestParam(value="service_village_county_leaderphone") String service_village_county_leaderphone, //五服务覆盖村庄负责人电话
+			@RequestParam(value="str_service_village_names")          String str_service_village_names            //以空格隔开的多个村庄信息
+			)
+	{
+		//初始化service_village_county_info对象
+		service_village_county_info _service_village_county_info=new service_village_county_info();
+		_service_village_county_info.set_service_village_county_name(service_village_county_name);
+		_service_village_county_info.set_service_village_county_leader(service_village_county_leader);
+		_service_village_county_info.set_service_village_county_leaderphone(service_village_county_leaderphone);
+		
+		
+		//添加系统时间
+		   Date date=new Date();
+		   DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		   String service_village_county_addtime=format.format(date);
+		   _service_village_county_info.set_service_village_county_addtime(service_village_county_addtime);
+		   
+		  int service_village_county_id=com.dbconnector.service_db_connector.service_village_county_insert_db(_service_village_county_info);
+		 
+		  //将村庄信息及对应镇添加入村庄列表
+		  com.dbconnector.service_db_connector.service_village_insert_db(str_service_village_names,service_village_county_id,service_village_county_name,service_village_county_addtime);
+		
+		//返回插入结果
+		
+		 ModelAndView mv=new ModelAndView();
+		   
+		   return mv;
+		   
+		   	
+	}
+	
+	@RequestMapping("management/check_service_village_detail.do")
+	public ModelAndView service_village_check_request(
+			@RequestParam(value="village_page") int village_page
+			)
+	{
+      ModelAndView mv=new ModelAndView("village_check.jsp");
+	   
+	   
+	   //返回
+	   List<service_village_county_info> service_village_county_info_list=com.dbconnector.service_db_connector.get_service_village_county_list(village_page);
+	   List<service_village_info> service_village_info_list=com.dbconnector.service_db_connector.get_service_village_info_list_by_couty_list(service_village_county_info_list);
+	   mv.addObject("service_village_county_info_list", service_village_county_info_list);
+	   mv.addObject("service_village_info_list",service_village_info_list);
+	   return mv;
+	}
+	
+	//管理页面乡镇下属村镇修改页面显示请求
+	@RequestMapping("management/village_modify.do")
+	public ModelAndView village_modify_request(
+			@RequestParam(value="service_village_county_id")        int service_village_county_id
+			)
+	{
+		ModelAndView mv=new ModelAndView("village_modify.jsp");
+		//返回村镇信息
+		service_village_county_info _service_village_county_info=com.dbconnector.service_db_connector.get_service_village_county_info_by_id(service_village_county_id);
+		
+		//返回村镇对应村庄名称，以空格分隔
+		
+		String str_service_village_names=com.dbconnector.service_db_connector.get_service_village_names_by_count_id(service_village_county_id);
+		
+		mv.addObject("service_village_county_info", _service_village_county_info);
+		mv.addObject("str_service_village_names", str_service_village_names);
+		
+		return mv;
+	}
+	
+	//管理页面乡镇下属村镇删除页面显示请求
+	@RequestMapping("management/village_del.do")
+	public ModelAndView village_del_request(
+			@RequestParam(value="service_village_county_id")        int service_village_county_id
+			)
+	{
+		ModelAndView mv=new ModelAndView("village_check_request.jsp");
+		//以乡镇id为标志删除对应行
+		com.dbconnector.service_db_connector.del_service_village_info_by_count_id(service_village_county_id);
+		
+		return mv;
+	}
+	
+	//管理页面村镇管理修改提交请求响应
+	@RequestMapping("management/village_update_commit.do")
+	public void  village_update_commit_request(
+			
+			
+			@RequestParam(value="service_village_county_id")           int    service_village_county_id,
+			@RequestParam(value="service_village_county_name")         String service_village_county_name,
+			@RequestParam(value="service_village_county_leader")       String service_village_county_leader,
+			@RequestParam(value="service_village_county_leaderphone")  String service_village_county_leaderphone,
+			@RequestParam(value="str_service_village_names")           String str_service_village_names
+			
+			)
+	{
+		service_village_county_info _service_village_county_info=new service_village_county_info();
+		_service_village_county_info.set_service_village_county_id(service_village_county_id);
+		_service_village_county_info.set_service_village_county_name(service_village_county_name);
+		_service_village_county_info.set_service_village_county_leader(service_village_county_leader);
+		_service_village_county_info.set_service_village_county_leaderphone(service_village_county_leaderphone);
+		
+		 Date date=new Date();
+		 DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		 String service_village_addtime=format.format(date);
+
+		
+		boolean rs=com.dbconnector.service_db_connector.update_county_info(_service_village_county_info);
+		boolean rs2=com.dbconnector.service_db_connector.update_villages_name(service_village_county_id, service_village_county_name, service_village_addtime, str_service_village_names);
+		
+	}
+	
+	//村镇信息详细页面
+	@RequestMapping("management/village_detail.do")
+	public ModelAndView village_check_detail_request(
+			@RequestParam(value="service_village_county_id")        int service_village_county_id
+			)
+	{
+		ModelAndView mv=new ModelAndView("village_detail_by_id.jsp");
+		service_village_county_info _service_village_county_info=com.dbconnector.service_db_connector.get_service_village_county_info_by_id(service_village_county_id);
+		String villages=com.dbconnector.service_db_connector.get_service_village_names_by_count_id(service_village_county_id);
+		mv.addObject("service_village_county_info", _service_village_county_info);
+		mv.addObject("villages",villages);
+		return mv;
+
+	}
 		//部门管理请求响应
 		@RequestMapping("management/department_insert.do")
 
@@ -69,14 +197,16 @@ public class management_request_controller
 		@RequestMapping("management/department_check.do")
 		//查询所有制度条目
 		
-		public ModelAndView department_check_request()
+		public ModelAndView department_check_request(
+				@RequestParam(value="department_page")    int department_page
+				)
 		{
-			
+		  System.out.println("sgsdgsgds"+department_page);
 		   ModelAndView mv=new ModelAndView("department_check.jsp");//页面重定向
 		   
 		   //得到查询所有条目的list
 		   
-		   List<department_info> department_info_list=com.dbconnector.management_db_connector.get_department_info_list();
+		   List<department_info> department_info_list=com.dbconnector.management_db_connector.get_department_info_list(department_page);
 		   mv.addObject("department_info_list", department_info_list);
 		   return mv;
 		}
@@ -205,14 +335,17 @@ public class management_request_controller
 		@RequestMapping("management/employee_check.do")
 		//查询所有制度条目
 		
-		public ModelAndView employee_check_request()
+		public ModelAndView employee_check_request(
+				@RequestParam(value="employee_page") int employee_page
+				)
 		{
 			
 		   ModelAndView mv=new ModelAndView("employee_check.jsp");//页面重定向
 		   
 		   //得到查询所有条目的list
 		   
-		   List<employee_info> employee_info_list=com.dbconnector.management_db_connector.get_employee_info_list();
+		   //List<employee_info> employee_info_list=com.dbconnector.management_db_connector.get_employee_info_list();
+		   List<employee_info> employee_info_list=com.dbconnector.management_db_connector.get_employee_info_list_by_page(employee_page);
 		   mv.addObject("employee_info_list", employee_info_list);
 		   return mv;
 		}
@@ -365,14 +498,17 @@ public class management_request_controller
 		
 		@RequestMapping("management/service_group_check.do")
 		//五服务小组信息查看
-		public ModelAndView service_group_check_request()
+		public ModelAndView service_group_check_request(
+				
+				@RequestParam(value="service_group_page")        int    service_group_page
+				)
 		{
 			
 		   ModelAndView mv=new ModelAndView("service_group_check.jsp");//页面重定向
 		   
 		   //得到查询所有条目的list
 		   
-		   List<service_group_info> service_group_info_list=com.dbconnector.management_db_connector.get_service_group_list();
+		   List<service_group_info> service_group_info_list=com.dbconnector.management_db_connector.get_service_group_list_by_page(service_group_page);
 		   mv.addObject("service_group_info_list",service_group_info_list);
 		   return mv;
 		}

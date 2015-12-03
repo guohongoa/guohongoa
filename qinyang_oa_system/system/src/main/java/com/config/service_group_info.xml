@@ -50,5 +50,9 @@
     <delete id="delete" parameterType="int">
         DELETE FROM service_group_info WHERE service_group_id = #{service_group_id};
     </delete>
+    
+    <select id="select_by_page" parameterType="service_group_selector" resultMap="result">
+		SELECT * FROM service_group_info limit #{service_group_begin},#{service_group_num};
+	</select>
 	
 </mapper>

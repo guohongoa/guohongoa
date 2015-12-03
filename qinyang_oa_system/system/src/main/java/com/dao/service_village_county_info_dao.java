@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.service_village_county_info;
+import com.selector.village_selector;
 
 public class service_village_county_info_dao 
 {
@@ -39,6 +40,25 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 			 SqlSession session=this.sqlSessionFactory.openSession();
 			 try {
 				 service_village_county_list = session.selectList("service_village_county_info.select_all");
+				 } finally {
+		            session.close();
+		        }
+		        System.out.println("selectAll() --> "+service_village_county_list);
+		        return service_village_county_list;
+		 }
+		 
+		 public List<service_village_county_info> select_by_page(int village_page)
+		 {
+			 List<service_village_county_info> service_village_county_list=null;
+			 SqlSession session=this.sqlSessionFactory.openSession();
+			
+			 
+			 try {
+				 village_selector _village_selector=new village_selector();
+				 _village_selector.set_service_village_county_begin(11*(village_page-1));
+				 _village_selector.set_service_village_county_num(11);
+				  //固定一页最多取十一条数据
+				 service_village_county_list = session.selectList("service_village_county_info.select_by_page",_village_selector);
 		        } finally {
 		            session.close();
 		        }

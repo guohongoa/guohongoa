@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.department_info;
 import com.data.service_group_info;
+import com.selector.service_group_selector;
 
 public class service_group_info_dao 
 {
@@ -102,5 +103,21 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 	            session.close();
 	        }
 	        System.out.println("delete("+service_group_id+")");
+		}
+		
+		public List<service_group_info> select_by_page(int service_group_page)
+		{
+			 List<service_group_info> service_group_info_list=null;
+			 SqlSession session=this.sqlSessionFactory.openSession();
+			 try {
+				 service_group_selector _service_group_selector=new service_group_selector();
+				 _service_group_selector.set_service_group_begin(11*(service_group_page-1));
+				 _service_group_selector.set_service_group_num(11);
+				 service_group_info_list = session.selectList("service_group_info.select_by_page",_service_group_selector);
+		        } finally {
+		            session.close();
+		        }
+		        System.out.println("selectAll() --> "+service_group_info_list);
+		        return service_group_info_list;
 		}
 }

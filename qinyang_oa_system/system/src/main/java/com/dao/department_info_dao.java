@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.department_info;
+import com.selector.department_selector;
 
 public class department_info_dao 
 {
@@ -69,6 +70,22 @@ public class department_info_dao
 		        System.out.println("selectAll() --> "+department_info_list);
 		        return department_info_list;
 		 }
+	  
+	  public List<department_info> select_by_page(int department_page)
+	  {
+		  List<department_info> department_info_list=null;
+			 SqlSession session=this.sqlSessionFactory.openSession();
+			 try {
+				 department_selector _department_selector=new department_selector();
+				 _department_selector.set_department_begin(11*(department_page-1));
+				 _department_selector.set_department_num(11);
+		            department_info_list = session.selectList("department_info.select_by_page",_department_selector);
+		        } finally {
+		            session.close();
+		        }
+		        System.out.println("selectAll() --> "+department_info_list);
+		        return department_info_list;
+	  }
 	  
 	  public void delete_from_id(int department_id)
 	  {

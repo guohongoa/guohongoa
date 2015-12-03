@@ -48,15 +48,15 @@
     <div class="left_menu tzlb" style="height: 325px">
         <h3>管理</h3>
         <ul>
-            <li><a href="check_service_village_detail.do">村镇管理</a></li>
-            <li><a href="department_check.do" class="active">部门管理</a>
+            <li><a href="check_service_village_detail.do?village_page=1">村镇管理</a></li>
+            <li><a href="＃" class="active">部门管理</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="department_add.jsp">添加部门</a><i></i></dd>
                 </dl>
             </li>
-            <li><a href="employee_check.do">人员管理</a></li>
-            <li><a href="service_group_check.do">五服务小组管理</a></li>
+            <li><a href="employee_check.do?employee_page=1">人员管理</a></li>
+            <li><a href="service_group_check.do?service_group_page=1">五服务小组管理</a></li>
         </ul>
     </div>
     <!--右侧-->
@@ -109,8 +109,8 @@
         </div>
     </div>
     <div class="page">
-        <a href="" class="bulec">1</a>
-        <a href="">2</a>
+        <a href="department_check.do?department_page=1" class="bulec">1</a>
+        <a href="department_check.do?department_page=2">2</a>
         <a href="">3</a>
         <a href="">4</a>
         <a href="">5</a>

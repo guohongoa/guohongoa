@@ -37,4 +37,10 @@
     <delete id="delete" parameterType="int">
         DELETE FROM service_village_county_info WHERE service_village_county_id = #{service_village_county_id};
     </delete>
+    
+   
+    
+    <select id="select_by_page" parameterType="village_selector" resultMap="result">
+		SELECT * FROM service_village_county_info limit #{service_village_county_begin},#{service_village_county_num};
+	</select>
 </mapper>

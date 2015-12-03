@@ -177,7 +177,7 @@ import com.data.work_record_info;
 		   
 		   //得到乡镇条目
 		   
-		   List<service_village_county_info> service_village_county_list=com.dbconnector.service_db_connector.get_service_village_county_list();
+		   List<service_village_county_info> service_village_county_list=com.dbconnector.service_db_connector.get_all_service_village_county_list();
 		   mv.addObject("service_village_county_list", service_village_county_list);
 		   return mv;
 		}

@@ -32,11 +32,11 @@ public class management_db_connector
 	 
 	 
 	 
-	 public static List<department_info> get_department_info_list()
+	 public static List<department_info> get_department_info_list(int department_page)
 	   {
 		   List<department_info> department_info_list;
 		   department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		   department_info_list=_department_info_dao.select_all();
+		   department_info_list=_department_info_dao.select_by_page(department_page);
 		   return department_info_list;
 		   
 	   }
@@ -81,6 +81,14 @@ public class management_db_connector
 		   return employee_info_list;
 		   
 	   }
+	 
+	 public static List<employee_info> get_employee_info_list_by_page(int employee_page)
+	 {
+		 List<employee_info> employee_info_list;
+		   employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		   employee_info_list=_employee_info_dao.select_by_page(employee_page);
+		   return employee_info_list;
+	 }
 	 
 	 public static void del_employee_from_id(int employee_id)
 	 {
@@ -145,5 +153,15 @@ public class management_db_connector
 	 {
 		 service_group_info_dao _service_group_info_dao=new service_group_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		 _service_group_info_dao.del_service_group_info_by_id(service_group_id);
+	 }
+	 
+	 //分页查询五服务小组信息
+	 public static List<service_group_info> get_service_group_list_by_page(int service_group_page)
+	 {
+
+		 List<service_group_info> service_group_info_list;
+		 service_group_info_dao _service_group_info_dao=new service_group_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 service_group_info_list=_service_group_info_dao.select_by_page(service_group_page);
+			return service_group_info_list;
 	 }
 }

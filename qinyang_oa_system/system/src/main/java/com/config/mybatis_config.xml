@@ -21,7 +21,11 @@
 		<typeAlias alias="work_record_info" type="com.data.work_record_info"/>
 		<typeAlias alias="service_selector" type="com.selector.service_selector"/>
 		<typeAlias alias="work_record_selector" type="com.selector.work_record_selector"/>
-		<typeAlias alias="service_group_info" type="com.data.service_group_info"/>
+		<typeAlias alias="service_group_info" type="com.data.service_group_info"/>		
+		<typeAlias alias="village_selector" type="com.selector.village_selector"/>
+		<typeAlias alias="department_selector" type="com.selector.department_selector"/>
+		<typeAlias alias="employee_selector" type="com.selector.employee_selector"/>
+		<typeAlias alias="service_group_selector" type="com.selector.service_group_selector"/>
 	</typeAliases>
 
 	<environments default="development">

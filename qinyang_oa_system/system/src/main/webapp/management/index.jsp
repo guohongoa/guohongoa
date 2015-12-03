@@ -9,6 +9,6 @@
 </head>
 <body>
   <!--管理主页面跳转 -->
-  <c:redirect url="check_service_village_detail.do" />
+  <c:redirect url="check_service_village_detail.do?village_page=1" />
 </body>
 </html>

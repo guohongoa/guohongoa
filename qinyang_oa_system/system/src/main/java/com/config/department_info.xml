@@ -47,6 +47,11 @@
             department_leaderphone= #{department_leaderphone}
         WHERE department_id = #{department_id} 
     </update>
+    
+    
+    <select id="select_by_page" parameterType="department_selector" resultMap="result">
+		SELECT * FROM department_info limit #{department_begin},#{department_num};
+	</select>
 
 </mapper>
 

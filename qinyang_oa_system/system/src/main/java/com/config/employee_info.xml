@@ -93,6 +93,12 @@
         WHERE employee_id = #{employee_id} 
     </update>
 	
+	
+	
+	
+	<select id="select_by_page" parameterType="employee_selector" resultMap="result">
+		SELECT * FROM employee_info limit #{employee_begin},#{employee_num};
+	</select>
 </mapper>
 
 
