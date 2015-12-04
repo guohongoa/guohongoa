@@ -208,11 +208,11 @@ $(document).ready(function(){
                 <ul>
                     <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
                     <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
-                    <li>职务：<span>职务</span></li>
-                    <li>职责：<span>职责描述</span></li>
-                    <li>电话：<span>1300000000</span></li>
+                    <li>职务：<span>${contact_node.get_contact_person_position()}</span></li>
+                    <li>职责：<span>${contact_node.get_contact_person_duty()}</span></li>
+                    <li>电话：<span>${contact_node.get_contact_person_phone()}</span></li>
                 </ul>
-                <p>制度：<span>制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述</span></p>
+                <p>制度：<span>${contact_node.get_contact_person_regulation()}</span></p>
             </div>
             </c:forEach>
             <i id="array0"></i>
@@ -230,14 +230,14 @@ $(document).ready(function(){
         <div>
            <c:forEach var="contact_node" items="${contact_node_list1}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
-                <ul>
+                 <ul>
                     <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
                     <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
-                    <li>职务：<span>职务</span></li>
-                    <li>职责：<span>职责描述</span></li>
-                    <li>电话：<span>1300000000</span></li>
+                    <li>职务：<span>${contact_node.get_contact_person_position()}</span></li>
+                    <li>职责：<span>${contact_node.get_contact_person_duty()}</span></li>
+                    <li>电话：<span>${contact_node.get_contact_person_phone()}</span></li>
                 </ul>
-                <p>制度：<span>制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述</span></p>
+                <p>制度：<span>${contact_node.get_contact_person_regulation()}</span></p>
             </div>
             </c:forEach>
             <i id="array1"></i>
@@ -258,11 +258,11 @@ $(document).ready(function(){
                 <ul>
                     <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
                     <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
-                    <li>职务：<span>职务</span></li>
-                    <li>职责：<span>职责描述</span></li>
-                    <li>电话：<span>1300000000</span></li>
+                    <li>职务：<span>${contact_node.get_contact_person_position()}</span></li>
+                    <li>职责：<span>${contact_node.get_contact_person_duty()}</span></li>
+                    <li>电话：<span>${contact_node.get_contact_person_phone()}</span></li>
                 </ul>
-                <p>制度：<span>制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述</span></p>
+                <p>制度：<span>${contact_node.get_contact_person_regulation()}</span></p>
             </div>
             </c:forEach>
             <i id="array2"></i>
@@ -283,11 +283,11 @@ $(document).ready(function(){
                 <ul>
                     <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
                     <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
-                    <li>职务：<span>职务</span></li>
-                    <li>职责：<span>职责描述</span></li>
-                    <li>电话：<span>1300000000</span></li>
+                    <li>职务：<span>${contact_node.get_contact_person_position()}</span></li>
+                    <li>职责：<span>${contact_node.get_contact_person_duty()}</span></li>
+                    <li>电话：<span>${contact_node.get_contact_person_phone()}</span></li>
                 </ul>
-                <p>制度：<span>制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述</span></p>
+                <p>制度：<span>${contact_node.get_contact_person_regulation()}</span></p>
             </div>
             </c:forEach>
             <i id="array3"></i>
@@ -305,14 +305,14 @@ $(document).ready(function(){
         <div>
            <c:forEach var="contact_node" items="${contact_node_list4}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
-                <ul>
+                 <ul>
                     <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
                     <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
-                    <li>职务：<span>职务</span></li>
-                    <li>职责：<span>职责描述</span></li>
-                    <li>电话：<span>1300000000</span></li>
+                    <li>职务：<span>${contact_node.get_contact_person_position()}</span></li>
+                    <li>职责：<span>${contact_node.get_contact_person_duty()}</span></li>
+                    <li>电话：<span>${contact_node.get_contact_person_phone()}</span></li>
                 </ul>
-                <p>制度：<span>制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述</span></p>
+                <p>制度：<span>${contact_node.get_contact_person_regulation()}</span></p>
             </div>
             </c:forEach>
             <i id="array4"></i>
@@ -333,11 +333,11 @@ $(document).ready(function(){
                 <ul>
                     <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
                     <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
-                    <li>职务：<span>职务</span></li>
-                    <li>职责：<span>职责描述</span></li>
-                    <li>电话：<span>1300000000</span></li>
+                    <li>职务：<span>${contact_node.get_contact_person_position()}</span></li>
+                    <li>职责：<span>${contact_node.get_contact_person_duty()}</span></li>
+                    <li>电话：<span>${contact_node.get_contact_person_phone()}</span></li>
                 </ul>
-                <p>制度：<span>制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述</span></p>
+                <p>制度：<span>${contact_node.get_contact_person_regulation()}</span></p>
             </div>
             </c:forEach>
             <i id="array5"></i>
@@ -355,14 +355,14 @@ $(document).ready(function(){
         <div>
            <c:forEach var="contact_node" items="${contact_node_list6}"><!--将所有结点循环入列  -->
             <div class="contacts" id="${contact_node.get_contact_node_code()}">
-                <ul>
+                 <ul>
                     <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
                     <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
-                    <li>职务：<span>职务</span></li>
-                    <li>职责：<span>职责描述</span></li>
-                    <li>电话：<span>1300000000</span></li>
+                    <li>职务：<span>${contact_node.get_contact_person_position()}</span></li>
+                    <li>职责：<span>${contact_node.get_contact_person_duty()}</span></li>
+                    <li>电话：<span>${contact_node.get_contact_person_phone()}</span></li>
                 </ul>
-                <p>制度：<span>制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述</span></p>
+                <p>制度：<span>${contact_node.get_contact_person_regulation()}</span></p>
             </div>
             </c:forEach>
             <i id="array6"></i>
@@ -384,11 +384,11 @@ $(document).ready(function(){
                 <ul>
                     <li>姓名：<span>${contact_node.get_contact_person_name()}</span></li>
                     <li>部门：<span>${contact_node.get_contact_person_department_name()}</span></li>
-                    <li>职务：<span>职务</span></li>
-                    <li>职责：<span>职责描述</span></li>
-                    <li>电话：<span>1300000000</span></li>
+                    <li>职务：<span>${contact_node.get_contact_person_position()}</span></li>
+                    <li>职责：<span>${contact_node.get_contact_person_duty()}</span></li>
+                    <li>电话：<span>${contact_node.get_contact_person_phone()}</span></li>
                 </ul>
-                <p>制度：<span>制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述制度描述</span></p>
+                <p>制度：<span>${contact_node.get_contact_person_regulation()}</span></p>
             </div>
             </c:forEach>
         </div>

@@ -12,6 +12,11 @@ public class contact_node
     private int     contact_person_id;
     private String  contact_person_name;                     //具体联系人姓名，由于是单线联系，所以每个部门最多只有一个人可以联系
     
+    private String  contact_person_position;                //职务
+    private String  contact_person_duty;                    //职责
+    private String  contact_person_phone;                   //电话
+    private String  contact_person_regulation;              //制度
+    
    
     
     
@@ -86,6 +91,46 @@ public class contact_node
     public void set_contact_person_id(int contact_person_id)
     {
     	this.contact_person_id=contact_person_id;
+    }
+    
+    public String get_contact_person_position()
+    {
+    	return this.contact_person_position;
+    }
+    
+    public void set_contact_person_position(String contact_person_position)
+    {
+    	this.contact_person_position=contact_person_position;
+    }
+    
+    public String get_contact_person_duty()
+    {
+    	return this.contact_person_duty;
+    }
+    
+    public void set_contact_person_duty(String contact_person_duty)
+    {
+    	this.contact_person_duty=contact_person_duty;
+    }
+    
+    public String get_contact_person_phone()
+    {
+    	return this.contact_person_phone;
+    }
+    
+    public void set_contact_person_phone(String contact_person_phone)
+    {
+    	this.contact_person_phone=contact_person_phone;
+    }
+    
+    public String get_contact_person_regulation()
+    {
+    	return this.contact_person_regulation;
+    }
+    
+    public void set_contact_person_regulation(String contact_person_regulation)
+    {
+    	this.contact_person_regulation=contact_person_regulation;
     }
 
 }

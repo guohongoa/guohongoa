@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.contact_node;
 import com.data.contact_person_department_info;
+import com.data.department_info;
 import com.data.employee_info;
 
 public class contact_person_department_info_dao 
@@ -98,6 +99,16 @@ public class contact_person_department_info_dao
 	        } finally {
 	            session2.close();
 	        }
+	        
+	        department_info _department_info = null;
+	        SqlSession session3 = sqlSessionFactory.openSession();
+	        try {
+	            _department_info = session3.selectOne("department_info.select_by_department_id", contact_person_department_id);
+	 
+	        } finally {
+	            session2.close();
+	        }
+	        
 	        System.out.println("selectByUserid("+employee_id+") --> "+_employee_info);
 	        
 	        contact_node _contact_node=new contact_node();
@@ -105,9 +116,15 @@ public class contact_person_department_info_dao
 			_contact_node.set_contact_person_department_id(_contact_person_department_info.get_contact_person_department_id());//部门id
 			_contact_node.set_contact_person_department_name(_contact_person_department_info.get_contact_person_department_name());//部门名称
 			_contact_node.set_contact_person_department_type(_contact_person_department_info.get_contact_person_department_type());//部门类型，决定显示红蓝
+			
             _contact_node.set_contact_node_level(node_code.length()-5);//字符串长度决定层级
             _contact_node.set_contact_person_name(_employee_info.get_employee_name());
             _contact_node.set_contact_person_id(_employee_info.get_employee_id());
+            _contact_node.set_contact_person_position(_employee_info.get_employee_position());//职务
+            _contact_node.set_contact_person_duty(_employee_info.get_employee_duty());   //职责
+            _contact_node.set_contact_person_phone(_employee_info.get_employee_phone()); //电话
+            _contact_node.set_contact_person_regulation(_department_info.get_department_regulation());//制度
+            
             
             return _contact_node;
 	 }
