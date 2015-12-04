@@ -43,8 +43,8 @@
 <div class="nav">
     <ul>
         <li><a href="../" class="bordernone">首页</a></li>
-        <li><a href="../contact/">四联</a></li>
-        <li><a href="../service/" class="active">五服务</a></li>
+        <li><a href="../contact/contact_person_check.do">四联</a></li>
+        <li><a href="../service/service_village_check.do" class="active">五服务</a></li>
         <li><a href="../work/">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
