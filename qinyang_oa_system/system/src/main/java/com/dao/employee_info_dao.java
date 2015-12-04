@@ -5,8 +5,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.contact_person_info;
+import com.data.department_info;
 import com.data.employee_info;
 import com.data.system_user_info;
+import com.selector.department_selector;
 import com.selector.employee_selector;
 
 //员工信息表数据库映射类
@@ -220,6 +222,27 @@ public class employee_info_dao
 	        {
 	        	return true;//修改成功
 	        }
+	 }
+	 
+	 public int get_employee_total_num()
+	 {
+		 int employee_total_num;
+		 List<employee_info> employee_info_list=null;
+		 
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 employee_selector _employee_selector=new employee_selector();//五服务加分页信息
+			  _employee_selector.set_employee_begin(0);
+			  _employee_selector.set_employee_num(99999999);
+			  
+			  employee_info_list = session.selectList("employee_info.select_by_page",_employee_selector);
+			  employee_total_num =employee_info_list.size();
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("select_by_page --> "+employee_info_list);
+		 
+		 return employee_total_num;
 	 }
 
 	 

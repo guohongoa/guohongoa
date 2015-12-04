@@ -344,7 +344,9 @@ public class management_request_controller
 				)
 		{
 			
-		   ModelAndView mv=new ModelAndView("employee_check.jsp");//页面重定向
+			int employee_total_page=com.dbconnector.management_db_connector.get_employee_total_page();
+			ModelAndView mv=new ModelAndView("employee_check.jsp?employee_page="+employee_page+"&employee_total_page="+employee_total_page);//页面重定向
+		
 		   
 		   //得到查询所有条目的list
 		   
@@ -507,8 +509,8 @@ public class management_request_controller
 				@RequestParam(value="service_group_page")        int    service_group_page
 				)
 		{
-			
-		   ModelAndView mv=new ModelAndView("service_group_check.jsp");//页面重定向
+		   int service_group_total_page=com.dbconnector.management_db_connector.get_service_group_total_page();
+		   ModelAndView mv=new ModelAndView("service_group_check.jsp?service_group_page="+service_group_page+"&service_group_total_page="+service_group_total_page);//页面重定向
 		   
 		   //得到查询所有条目的list
 		   

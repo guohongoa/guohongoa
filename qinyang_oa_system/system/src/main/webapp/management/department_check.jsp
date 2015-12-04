@@ -120,7 +120,7 @@
         <a href="department_check.do?department_page=3">3</a>
         <a href="department_check.do?department_page=4">4</a>
         <a href="department_check.do?department_page=5">5</a>
-        <a href="record_check_by_user.do?record_page=2&flag=${flag}&work_record_creatorid=${user_id}">下一页</a>
+        <a href="department_check.do?department_page=2">下一页</a>
         <a>共${department_total_page}页</a>
         <form method="get" action="department_check.do">
         <a>
@@ -158,7 +158,7 @@
         <a href="department_check.do?department_page=${department_page+2}">${department_page+2}</a>
         <a href="department_check.do?department_page=${department_page+1}">下一页</a>
         <a>共${department_total_page}页</a>
-        <form method="get" action="rocord_check_by_user.do">
+        <form method="get" action="department_check.do">
         <a>
            到&nbsp;<input type="text" name="department_page" style="width:15px;">&nbsp;页
              <input type="submit" name="submit" value="确定">

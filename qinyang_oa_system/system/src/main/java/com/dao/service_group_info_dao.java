@@ -120,4 +120,27 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		        System.out.println("selectAll() --> "+service_group_info_list);
 		        return service_group_info_list;
 		}
+		
+		
+		
+		 public int get_service_group_total_num()
+		  {
+			  int service_group_total_num;
+				 List<service_group_info> service_group_info_list=null;
+				 
+				 SqlSession session=this.sqlSessionFactory.openSession();
+				 try {
+					 service_group_selector _service_group_selector=new service_group_selector();//五服务加分页信息
+					  _service_group_selector.set_service_group_begin(0);
+					  _service_group_selector.set_service_group_num(99999999);
+					  
+					  service_group_info_list = session.selectList("service_group_info.select_by_page",_service_group_selector);
+					  service_group_total_num =service_group_info_list.size();
+			        } finally {
+			            session.close();
+			        }
+			        System.out.println("select_by_pag --> "+service_group_info_list);
+				 
+				 return service_group_total_num;
+		  }
 }

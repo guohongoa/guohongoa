@@ -54,7 +54,7 @@
             <li><a href="employee_check.do?employee_page=1" class="active">人员管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="＃" class="red">添加人员</a><i></i></dd>
+                    <dd class="activea"><a href="employee_add_check.do" class="red">添加人员</a><i></i></dd>
                 </dl>
             </li>
             <li><a href="service_group_check.do?service_group_page=1">五服务小组管理</a></li>

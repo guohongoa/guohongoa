@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+     <c:set var="employee_page" value="${param.employee_page}"/>
+     <c:set var="employee_total_page" value="${param.employee_total_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -107,16 +109,62 @@
             </c:forEach>
         </div>
     </div>
-    <div class="page">
+    <c:choose>
+      <c:when test="${employee_page==1}">
+      <div class="page">
+        <a href="employee_check.do?employee_page=1">上一页</a>
         <a href="employee_check.do?employee_page=1" class="bulec">1</a>
         <a href="employee_check.do?employee_page=2">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
-        <a href="">上一页</a>
-        <a href="">下一页</a>
-    </div>
+        <a href="employee_check.do?employee_page=3">3</a>
+        <a href="employee_check.do?employee_page=4">4</a>
+        <a href="employee_check.do?employee_page=5">5</a>
+        <a href="employee_check.do?employee_page=2">下一页</a>
+        <a>共${employee_total_page}页</a>
+        <form method="get" action="employee_check.do">
+        <a>
+           到&nbsp;<input type="text" name="employee_page" style="width:15px;">&nbsp;页
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:when test="${employee_page==2}">
+      <div class="page">
+        <a href="employee_check.do?employee_page=1">上一页</a>
+        <a href="employee_check.do?employee_page=1">1</a>
+        <a href="employee_check.do?employee_page=2" class="bulec">2</a>
+        <a href="employee_check.do?employee_page=3">3</a>
+        <a href="employee_check.do?employee_page=4">4</a>
+        <a href="employee_check.do?employee_page=5">5</a>
+        <a href="employee_check.do?employee_page=3">下一页</a>
+        <a>共${employee_total_page}页</a>
+        <form method="get" action="employee_check.do">
+        <a>
+           到&nbsp;<input type="text" name="employee_page" style="width:15px;">&nbsp;页
+            <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:otherwise>
+      <div class="page">
+        <a href="employee_check.do?employee_page=${employee_page-1}">上一页</a>
+        <a href="employee_check.do?employee_page=${employee_page-2}">${employee_page-2}</a>
+        <a href="employee_check.do?employee_page=${employee_page-1}">${employee_page-1}</a>
+        <a class="bulec" href="employee_check.do?employee_page=${employee_page}">${employee_page}</a>
+        <a href="employee_check.do?employee_page=${employee_page+1}">${employee_page+1}</a>
+        <a href="employee_check.do?employee_page=${employee_page+2}">${employee_page+2}</a>
+        <a href="employee_check.do?employee_page=${employee_page+1}">下一页</a>
+        <a>共${employee_total_page}页</a>
+        <form method="get" action="employee_check.do">
+        <a>
+           到&nbsp;<input type="text" name="employee_page" style="width:15px;">&nbsp;页
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:otherwise>
+    </c:choose>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>

@@ -6,8 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.department_info;
+import com.data.service_group_info;
 import com.data.service_info;
 import com.selector.department_selector;
+import com.selector.service_group_selector;
 import com.selector.service_selector;
 
 public class department_info_dao 
@@ -135,9 +137,10 @@ public class department_info_dao
 			 
 			 SqlSession session=this.sqlSessionFactory.openSession();
 			 try {
-				 department_selector _department_selector=new department_selector();//五服务加分页信息
+				 department_selector _department_selector=new department_selector();//部门加分页信息
 				  _department_selector.set_department_begin(0);
 				  _department_selector.set_department_num(99999999);
+		
 				  
 				  department_info_list = session.selectList("department_info.select_by_page",_department_selector);
 				  department_total_num =department_info_list.size();
@@ -148,5 +151,8 @@ public class department_info_dao
 			 
 			 return department_total_num;
 	  }
+
+
+
 }
 

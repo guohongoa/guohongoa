@@ -72,7 +72,7 @@ public class management_db_connector
 	 //获取部门管理列表总页数
 	 public static int get_department_total_page()
 	 {
-		 int department_total_num;
+		    int department_total_num;
 			int department_total_page;
 			department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 			department_total_num=_department_info_dao.get_department_total_num();
@@ -132,6 +132,17 @@ public class management_db_connector
 		    return rs;
 	 }
 	 
+	 //获取后台人员列表总页数
+	 public static int get_employee_total_page()
+	 {
+		    int employee_total_num;
+			int employee_total_page;
+			employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			employee_total_num=_employee_info_dao.get_employee_total_num();
+			employee_total_page=(int)Math.ceil((float)employee_total_num/11.0f);
+			return employee_total_page;
+	 }
+	 
 	 //-------------------------------------------------------
 	 //五服务小组
 	 
@@ -182,5 +193,18 @@ public class management_db_connector
 		 service_group_info_dao _service_group_info_dao=new service_group_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		 service_group_info_list=_service_group_info_dao.select_by_page(service_group_page);
 			return service_group_info_list;
+	 }
+	 
+	 
+	
+	 //获取五服务小组列表总页数
+	 public static int get_service_group_total_page()
+	 {
+		    int service_group_total_num;
+			int service_group_total_page;
+			service_group_info_dao _service_group_info_dao=new service_group_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			service_group_total_num=_service_group_info_dao.get_service_group_total_num();
+			service_group_total_page=(int)Math.ceil((float)service_group_total_num/11.0f);
+			return service_group_total_page;
 	 }
 }
