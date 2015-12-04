@@ -8,6 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
      <c:set var="service_page" value="${param.service_page}"/>
+     <c:set var="flag" value="${param.flag}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -24,7 +25,7 @@
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
                 <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
-                <li><a href=""><i></i>退出</a></li>
+                <li><a href="../logout"><i></i>退出</a></li>
             </ul>
             <div>
                 <ul class="hide">
@@ -57,7 +58,7 @@
     <div class="wfwxq">
         <h5>主题：<span>服务主题</span><b class="red">（已通过）</b></h5>
         <p>服务类型：<span>${service_info.get_service_type()}</span></p>
-        <p>服务目标：<span class="dark_grey">>${service_info.get_service_target()}</span></p>
+        <p>服务目标：<span class="dark_grey">${service_info.get_service_target()}</span></p>
         <p>汇报给：<span>${service_info.get_service_receiver()}</span></p>
         <p>联系电话：<span>${service_info.get_service_sender_phone()}</span></p>
         <p>责任人：<span>${service_info.get_service_sender()}</span></p>
@@ -68,7 +69,7 @@
         服务小组的活动内容
     </p>
     <div class="back">
-        <a href="">发布</a> &nbsp; <a href="service_check_by_user.do?service_page=${service_page}&service_sender_id＝${user_id}">返回</a>
+        <a href="">发布</a> &nbsp; <a href="service_check_by_user.do?service_page=${service_page}&service_sender_id=${user_id}&flag=${flag}">返回</a>
     </div>
 </div>
 <div class="footer"></div>

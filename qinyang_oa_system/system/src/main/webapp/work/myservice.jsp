@@ -26,7 +26,7 @@
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
                 <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
-                <li><a href=""><i></i>退出</a></li>
+                <li><a href="../logout"><i></i>退出</a></li>
             </ul>
             <div>
                 <ul class="hide">
@@ -132,7 +132,7 @@
                 <li>${service_info.get_service_sender()}</li>
                 <li class="overflow">${service_info.get_service_target()}</li>
                 <li style="line-height: 20px">${service_info.get_service_begintime()}-<br/>${service_info.get_service_endtime()}</li>
-                <li><a href="check_service_info_by_service_msgid2.do?service_msgid=${service_info.get_service_msgid()}&service_page=${service_page}">查看</a></li>
+                <li><a href="check_service_info_by_service_msgid2.do?service_msgid=${service_info.get_service_msgid()}&service_page=${service_page}&flag=${flag}">查看</a></li>
                 <li>${service_info.get_service_addtime()}</li>
               </ul>
             </c:forEach>

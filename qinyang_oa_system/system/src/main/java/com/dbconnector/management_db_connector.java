@@ -30,7 +30,13 @@ public class management_db_connector
 			
 		}
 	 
-	 
+	 public static List<department_info> get_all_department_info_list()
+	 {
+		 List<department_info> department_info_list;
+		   department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		   department_info_list=_department_info_dao.select_all();
+		   return department_info_list;
+	 }
 	 
 	 public static List<department_info> get_department_info_list(int department_page)
 	   {

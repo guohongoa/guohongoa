@@ -11,6 +11,8 @@
 <body>
 <!--注销session  -->
 <c:remove  var="user_name"  scope="session"  />
+<c:remove  var="user_id"  scope="session"  />
+<c:remove  var="user_group_type"  scope="session"  />
        <a href="index.jsp">3秒后系统会自动跳转，也可点击本处直接跳</a>  
 <script>
 function jumpurl(){

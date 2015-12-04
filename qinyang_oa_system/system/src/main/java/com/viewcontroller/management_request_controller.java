@@ -577,7 +577,7 @@ public class management_request_controller
 					)
 			{
 				//读取所有部门和人员信息，将其转入下拉框中，下一版改进版实现信息刷选、动态显示、二级联动
-				List<department_info> department_info_list=com.dbconnector.management_db_connector.get_department_info_list(); 
+				List<department_info> department_info_list=com.dbconnector.management_db_connector.get_all_department_info_list(); 
 				List<employee_info> employee_info_list=com.dbconnector.management_db_connector.get_employee_info_list();
 				
 				ModelAndView mv=new ModelAndView("employee_add_display.jsp");
