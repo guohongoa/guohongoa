@@ -69,6 +69,19 @@ public class management_db_connector
 		    return rs;
 	 }
 	 
+	 //获取部门管理列表总页数
+	 public static int get_department_total_page()
+	 {
+		 int department_total_num;
+			int department_total_page;
+			department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			department_total_num=_department_info_dao.get_department_total_num();
+			department_total_page=(int)Math.ceil((float)department_total_num/11.0f);
+			return department_total_page;
+	 }
+	 
+	
+//------------------------------------------------------------------------------------------------------
 	 //人员管理数据库功能函数
 	 public static boolean employee_insert_db(employee_info _employee_info)
 		{

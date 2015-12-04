@@ -89,7 +89,6 @@ import com.data.work_record_info;
 				)
 		{
 	      
-		   System.out.println("dfasdfadfaf"+service_sender_id);
 		   //得到查询所有条目的list
 		   
 		   List<service_info> service_info_list=com.dbconnector.service_db_connector.get_service_info_list_by_service_sender_id(service_sender_id,service_page);

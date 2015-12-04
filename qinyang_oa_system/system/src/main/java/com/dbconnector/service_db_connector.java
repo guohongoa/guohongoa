@@ -3,6 +3,7 @@ package com.dbconnector;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.service_info_dao;
 import com.dao.service_village_county_info_dao;
@@ -62,6 +63,7 @@ public class service_db_connector
 				service_total_page=(int)Math.ceil((float)service_total_num/11.0f);
 				return service_total_page;
 			}
+			
 			
 			
 			
@@ -242,6 +244,17 @@ public class service_db_connector
 				{
 					service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 					_service_village_county_info_dao.del_county_info_by_id(service_village_county_id);
+				}
+				
+				//获取村镇管理页面总页数
+				public static int get_village_total_page()
+				{
+					int village_total_num;
+					int village_total_page;
+					service_village_county_info_dao _service_village_county_info_dao=new service_village_county_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					village_total_num=_service_village_county_info_dao.get_village_total_num();
+					village_total_page=(int)Math.ceil((float)village_total_num/11.0f);
+					return village_total_page;
 				}
 				
 }

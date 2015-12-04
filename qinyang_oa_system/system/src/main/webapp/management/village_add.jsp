@@ -47,13 +47,13 @@
     <div class="left_menu tzlb" style="height: 325px">
         <h3>管理</h3>
         <ul>
-            <li><a href="check_service_village_detail.do" class="active">村镇管理</a>
+            <li><a href="check_service_village_detail.do?village_page=1" class="active">村镇管理</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="#" class="red">添加村镇</a><i></i></dd>
                 </dl>
             </li>
-            <li><a href="department_check.do?village_page=1" >部门管理</a></li>
+            <li><a href="department_check.do?department_page=1" >部门管理</a></li>
             <li><a href="employee_check.do?employee_page=1">人员管理</a></li>
             <li><a href="service_group_check.do?service_group_page=1">五服务小组管理</a></li>
         </ul>

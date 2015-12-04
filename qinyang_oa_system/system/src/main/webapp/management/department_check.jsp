@@ -7,6 +7,9 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    
+     <c:set var="department_page" value="${param.department_page}"/>
+     <c:set var="department_total_page" value="${param.department_total_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -108,16 +111,62 @@
             </c:forEach>
         </div>
     </div>
-    <div class="page">
+    <c:choose>
+      <c:when test="${department_page==1}">
+      <div class="page">
+        <a href="department_check.do?department_page=1">上一页</a>
         <a href="department_check.do?department_page=1" class="bulec">1</a>
         <a href="department_check.do?department_page=2">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
-        <a href="">上一页</a>
-        <a href="">下一页</a>
-    </div>
+        <a href="department_check.do?department_page=3">3</a>
+        <a href="department_check.do?department_page=4">4</a>
+        <a href="department_check.do?department_page=5">5</a>
+        <a href="record_check_by_user.do?record_page=2&flag=${flag}&work_record_creatorid=${user_id}">下一页</a>
+        <a>共${department_total_page}页</a>
+        <form method="get" action="department_check.do">
+        <a>
+           到&nbsp;<input type="text" name="department_page" style="width:15px;">&nbsp;页
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:when test="${department_page==2}">
+      <div class="page">
+        <a href="department_check.do?department_page=1">上一页</a>
+        <a href="department_check.do?department_page=1">1</a>
+        <a href="department_check.do?department_page=2" class="bulec">2</a>
+        <a href="department_check.do?department_page=3">3</a>
+        <a href="department_check.do?department_page=4">4</a>
+        <a href="department_check.do?department_page=5">5</a>
+        <a href="department_check.do?department_page=3">下一页</a>
+        <a>共${department_total_page}页</a>
+        <form method="get" action="department_check.do">
+        <a>
+           到&nbsp;<input type="text" name="department_page" style="width:15px;">&nbsp;页
+            <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:otherwise>
+      <div class="page">
+        <a href="department_check.do?department_page=${department_page-1}">上一页</a>
+        <a href="department_check.do?department_page=${department_page-2}">${department_page-2}</a>
+        <a href="department_check.do?department_page=${department_page-1}">${department_page-1}</a>
+        <a class="bulec" href="department_check.do?department_page=${department_page}">${department_page}</a>
+        <a href="department_check.do?department_page=${department_page+1}">${department_page+1}</a>
+        <a href="department_check.do?department_page=${department_page+2}">${department_page+2}</a>
+        <a href="department_check.do?department_page=${department_page+1}">下一页</a>
+        <a>共${department_total_page}页</a>
+        <form method="get" action="rocord_check_by_user.do">
+        <a>
+           到&nbsp;<input type="text" name="department_page" style="width:15px;">&nbsp;页
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:otherwise>
+    </c:choose>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>

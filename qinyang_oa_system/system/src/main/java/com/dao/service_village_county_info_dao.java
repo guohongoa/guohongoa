@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.data.department_info;
 import com.data.service_village_county_info;
+import com.selector.department_selector;
 import com.selector.village_selector;
 
 public class service_village_county_info_dao 
@@ -117,5 +119,26 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		            session.close();
 		        }
 		        System.out.println("delete("+service_village_county_id+")");
+		 }
+		 
+		 public int get_village_total_num()
+		 {
+			 int village_total_num;
+			 List<service_village_county_info> village_info_list=null;
+			 
+			 SqlSession session=this.sqlSessionFactory.openSession();
+			 try {
+				 village_selector _village_selector=new village_selector();//五服务加分页信息
+				  _village_selector.set_service_village_county_begin(0);
+				  _village_selector.set_service_village_county_num(999999999);
+				  
+				  village_info_list = session.selectList("service_village_county_info.select_by_page",_village_selector);
+				  village_total_num =village_info_list.size();
+		        } finally {
+		            session.close();
+		        }
+		        System.out.println("select_by_pag --> "+village_info_list);
+			 
+			 return village_total_num;
 		 }
 }

@@ -66,8 +66,11 @@ public class management_request_controller
 			@RequestParam(value="village_page") int village_page
 			)
 	{
-      ModelAndView mv=new ModelAndView("village_check.jsp");
+		int village_total_page=com.dbconnector.service_db_connector.get_village_total_page();
+		
+		ModelAndView mv=new ModelAndView("village_check.jsp?village_page="+village_page+"&village_total_page="+village_total_page);
 	   
+      
 	   
 	   //返回
 	   List<service_village_county_info> service_village_county_info_list=com.dbconnector.service_db_connector.get_service_village_county_list(village_page);
@@ -201,10 +204,11 @@ public class management_request_controller
 				@RequestParam(value="department_page")    int department_page
 				)
 		{
-		  System.out.println("sgsdgsgds"+department_page);
-		   ModelAndView mv=new ModelAndView("department_check.jsp");//页面重定向
+		  int department_total_page=com.dbconnector.management_db_connector.get_department_total_page();
+		   ModelAndView mv=new ModelAndView("department_check.jsp?department_page="+department_page+"&department_total_page="+department_total_page);//页面重定向
 		   
 		   //得到查询所有条目的list
+		  
 		   
 		   List<department_info> department_info_list=com.dbconnector.management_db_connector.get_department_info_list(department_page);
 		   mv.addObject("department_info_list", department_info_list);
