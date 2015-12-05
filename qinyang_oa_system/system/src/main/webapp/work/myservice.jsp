@@ -78,7 +78,7 @@
             </c:choose>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="service_send.jsp">发起服务</a><i></i></dd>
+                    <dd class="activea"><a href="service_send_display.do?employee_id=${user_id}">发起服务</a><i></i></dd>
                      <c:choose>
                        <c:when test="${flag==1}">
                        <dd><a href="service_check_by_user.do?service_page=1&flag=1&service_sender_id=${user_id}" class="red">我的服务</a></dd>
