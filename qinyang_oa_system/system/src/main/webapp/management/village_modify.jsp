@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <c:set var="village_page" value="${param.village_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -69,6 +70,7 @@
                 <p><span>负责人</span><input type="text" name="service_village_county_leader" value="${service_village_county_info.get_service_village_county_leader()}"/></p>
                 <p><span>电话</span><input type="text" name="service_village_county_leaderphone" value="${service_village_county_info.get_service_village_county_leaderphone()}"/></p>
                 <p><span>包含村</span><textarea name="str_service_village_names" form="post_city">${str_service_village_names}</textarea></p>
+                <input type="hidden" name="village_page" value="${village_page}">
                 <p class="tztj_btn"><b class="login-error"></b><button>确定修改</button>
                     <a href="czglxg.html">重置</a>
                 </p>

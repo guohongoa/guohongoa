@@ -7,11 +7,14 @@ import java.util.Map;
 
 import com.dao.contact_person_department_info_dao;
 import com.dao.contact_person_info_dao;
+import com.dao.contact_relationship_info_dao;
+import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.relationship_info_dao;
 import com.data.contact_node;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
+import com.data.contact_relationship_info;
 import com.data.employee_info;
 import com.data.relationship_info;
 import com.mybatis.mybatis_connection_factory;
@@ -159,6 +162,94 @@ public class contact_db_connector
 		return current_contact_map;
 	}
 	
+	 //使用用户手机号，查找用户信息
+	 public static employee_info get_employee_info_by_phone(String employee_phone)
+	 {
+		 employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 employee_info _employee_info=_employee_info_dao.select_by_user_phone(employee_phone);
+	     return _employee_info;
+	 }
 
+	 public static int get_contact_relationship_by_id(int owner_employee_id,int friend_employee_id)
+	 {
+		 int contact_relationship_type;
+		 employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 contact_person_department_info_dao _contact_person_department_info_dao=new contact_person_department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 
+		 //获取主客用户信息
+		 employee_info owner_department_employee_info=_employee_info_dao.select_by_employee_id(owner_employee_id);
+		 employee_info friend_department_employee_info=_employee_info_dao.select_by_employee_id(friend_employee_id);
+		 
+		 
+		 if(friend_department_employee_info!=null)
+		 {
+		 //获取主客部门id
+		 int owner_department_id=owner_department_employee_info.get_employee_department_id();
+		 int friend_department_id=friend_department_employee_info.get_employee_department_id();
+		 
+		 contact_person_department_info owner_contact_person_depepartment_info=_contact_person_department_info_dao.get_department_info_by_id(owner_department_id);
+		 contact_person_department_info friend_contact_person_depepartment_info=_contact_person_department_info_dao.get_department_info_by_id(friend_department_id);
+		 boolean is_downer=check_relationship_type(owner_contact_person_depepartment_info, friend_department_id); //是其下级与否
+		 boolean is_upper=check_relationship_type(friend_contact_person_depepartment_info, owner_department_id);  //是其上级与否
+		 
+		 if(is_upper==true)
+		 {
+			 contact_relationship_type=0;//直接上级为0
+		 }
+		 else if(is_downer==true)
+		 {
+			 contact_relationship_type=1;//直接下级为1
+		 }
+		 else
+		 {
+			 contact_relationship_type=2;//无直接关系为2
+		 }
+		 }
+		 else
+		 {
+			 //查不到说明手机号输入错误
+			 contact_relationship_type=2;
+		 }
+		 
+		 return contact_relationship_type;
+		 
+	 }
+	 
+	 private static boolean check_relationship_type(contact_person_department_info owner_department_info,int friend_department_id )
+	 {
+		 boolean is_son;//是否是其子部门,连查数据库四个选项
+		 if(friend_department_id==owner_department_info.get_contact_person_department_sononeid())
+		 {
+			 is_son=true;
+		 }
+		 else if(friend_department_id==owner_department_info.get_contact_person_department_sontwoid())
+		 {
+			 is_son=true;
+		 }
+		 else if(friend_department_id==owner_department_info.get_contact_person_department_sonthreeid())
+		 {
+			 is_son=true;
+		 }
+		 else if(friend_department_id==owner_department_info.get_contact_person_department_sonfourid())
+		 {
+			 is_son=true;
+		 }
+		 else
+		 {
+			 is_son=false;
+		 }
+		 	 
+		 return is_son;
+	 }
+	 
+	 //添加四联用户关系
+	 public static boolean insert_contact_relationship(contact_relationship_info _contact_relationship_info)
+	 {
+		    contact_relationship_info_dao _contact_relationship_ino_dao=new contact_relationship_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			
+			boolean rs=_contact_relationship_ino_dao.insert(_contact_relationship_info);//插入是否成功
+			
+			return rs; 
+	 }
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.data.contact_person_department_info;
 import com.data.contact_person_info;
 import com.data.department_info;
 import com.data.employee_info;
@@ -245,7 +246,7 @@ public class employee_info_dao
 		 return employee_total_num;
 	 }
 
-	 
+	
 	
 	  
 }

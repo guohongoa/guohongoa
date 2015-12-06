@@ -143,6 +143,7 @@ public class management_db_connector
 			return employee_total_page;
 	 }
 	 
+	
 	 //-------------------------------------------------------
 	 //五服务小组
 	 
@@ -207,4 +208,6 @@ public class management_db_connector
 			service_group_total_page=(int)Math.ceil((float)service_group_total_num/11.0f);
 			return service_group_total_page;
 	 }
+	 
+	 
 }

@@ -6,7 +6,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="../css/all.css"/>
+    <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -84,8 +84,8 @@
         <a href="">修改</a> &nbsp; <a href="">返回</a>
     </div>
 </div>
-<script src="../js/jquery-1.11.3.min.js"></script>
-<script src="../js/style.js">
+<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
+<script src="http://101.200.196.121:8080/oa/js/style.js">
 </script>
 <script>
     /*

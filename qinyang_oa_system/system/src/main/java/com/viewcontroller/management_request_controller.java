@@ -54,7 +54,7 @@ public class management_request_controller
 		
 		//返回插入结果
 		
-		 ModelAndView mv=new ModelAndView();
+		 ModelAndView mv=new ModelAndView("redirect:/management/check_service_village_detail.do?village_page=1");
 		   
 		   return mv;
 		   
@@ -83,10 +83,11 @@ public class management_request_controller
 	//管理页面乡镇下属村镇修改页面显示请求
 	@RequestMapping("management/village_modify.do")
 	public ModelAndView village_modify_request(
-			@RequestParam(value="service_village_county_id")        int service_village_county_id
+			@RequestParam(value="service_village_county_id")        int service_village_county_id,
+			@RequestParam(value="village_page")                     int village_page
 			)
 	{
-		ModelAndView mv=new ModelAndView("village_modify.jsp");
+		ModelAndView mv=new ModelAndView("village_modify.jsp?village_page="+village_page);
 		//返回村镇信息
 		service_village_county_info _service_village_county_info=com.dbconnector.service_db_connector.get_service_village_county_info_by_id(service_village_county_id);
 		
@@ -103,10 +104,11 @@ public class management_request_controller
 	//管理页面乡镇下属村镇删除页面显示请求
 	@RequestMapping("management/village_del.do")
 	public ModelAndView village_del_request(
-			@RequestParam(value="service_village_county_id")        int service_village_county_id
+			@RequestParam(value="service_village_county_id")        int service_village_county_id,
+			@RequestParam(value="village_page")                     int village_page
 			)
 	{
-		ModelAndView mv=new ModelAndView("village_check_request.jsp");
+		ModelAndView mv=new ModelAndView("redirect:/management/check_service_village_detail.do?village_page="+village_page);
 		//以乡镇id为标志删除对应行
 		com.dbconnector.service_db_connector.del_service_village_info_by_count_id(service_village_county_id);
 		
@@ -115,14 +117,16 @@ public class management_request_controller
 	
 	//管理页面村镇管理修改提交请求响应
 	@RequestMapping("management/village_update_commit.do")
-	public void  village_update_commit_request(
+	public ModelAndView  village_update_commit_request(
 			
 			
 			@RequestParam(value="service_village_county_id")           int    service_village_county_id,
 			@RequestParam(value="service_village_county_name")         String service_village_county_name,
 			@RequestParam(value="service_village_county_leader")       String service_village_county_leader,
 			@RequestParam(value="service_village_county_leaderphone")  String service_village_county_leaderphone,
-			@RequestParam(value="str_service_village_names")           String str_service_village_names
+			@RequestParam(value="str_service_village_names")           String str_service_village_names,
+			@RequestParam(value="village_page")                     int village_page
+			
 			
 			)
 	{
@@ -140,15 +144,20 @@ public class management_request_controller
 		boolean rs=com.dbconnector.service_db_connector.update_county_info(_service_village_county_info);
 		boolean rs2=com.dbconnector.service_db_connector.update_villages_name(service_village_county_id, service_village_county_name, service_village_addtime, str_service_village_names);
 		
+		ModelAndView mv=new ModelAndView("redirect:/management/check_service_village_detail.do?village_page="+village_page);//页面重定向至查看页面
+		return mv;
+		
 	}
 	
 	//村镇信息详细页面
 	@RequestMapping("management/village_detail.do")
 	public ModelAndView village_check_detail_request(
-			@RequestParam(value="service_village_county_id")        int service_village_county_id
+			@RequestParam(value="service_village_county_id")        int service_village_county_id,
+			@RequestParam(value="village_page")                     int village_page
+			
 			)
 	{
-		ModelAndView mv=new ModelAndView("village_detail_by_id.jsp");
+		ModelAndView mv=new ModelAndView("village_detail_by_id.jsp?service_village_county_id"+service_village_county_id+"&village_page="+village_page);
 		service_village_county_info _service_village_county_info=com.dbconnector.service_db_connector.get_service_village_county_info_by_id(service_village_county_id);
 		String villages=com.dbconnector.service_db_connector.get_service_village_names_by_count_id(service_village_county_id);
 		mv.addObject("service_village_county_info", _service_village_county_info);
@@ -359,11 +368,13 @@ public class management_request_controller
 		//删除用户信息
 		@RequestMapping("management/employee_del.do")
 		 public ModelAndView employee_del_request(
-				 @RequestParam(value="employee_id")    int employee_id
+				 @RequestParam(value="employee_id")    int employee_id,
+				 @RequestParam(value="employee_page")    int employee_page
 				 )
 		 {
-			 ModelAndView mv=new ModelAndView("employee_check_request.jsp");//页面重定向
+			
 			com.dbconnector.management_db_connector.del_employee_from_id(employee_id);
+			 ModelAndView mv=new ModelAndView("redirect:／employee_check.do?employee_page="+employee_page);//页面重定向
 			return mv;
 		 }
 		

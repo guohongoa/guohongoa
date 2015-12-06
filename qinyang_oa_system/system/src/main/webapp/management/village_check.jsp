@@ -51,7 +51,7 @@
     <div class="left_menu tzlb" style="height: 325px">
         <h3>管理</h3>
         <ul>
-            <li><a href="＃" class="active">村镇管理</a>
+            <li><a href="check_service_village_detail.do?village_page=1" class="active">村镇管理</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="village_add.jsp">添加村镇</a><i></i></dd>
@@ -65,7 +65,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<span>村镇管理</span></h4>
+        <h4><a href="../">管理</a>&gt;<span>村镇管理</span></h4>
         <h5><span>镇(县)名</span><input type="text"/>
             <span>村名</span><input type="text"/>
             <a href="">查找</a>
@@ -104,13 +104,13 @@
                         <option>查看</option>
                     </select>  
                     -->
-                    <a href="village_modify.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}">
+                    <a href="village_modify.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}&village_page=${village_page}">
                        修改
                     </a>
-                    <a href="village_del.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}">
+                    <a href="village_del.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}&village_page=${village_page}">
                       删除
                     </a>
-                    <a href="village_detail.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}">
+                    <a href="village_detail.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}&village_page=${village_page}">
                       详情
                     </a>
                 </li>

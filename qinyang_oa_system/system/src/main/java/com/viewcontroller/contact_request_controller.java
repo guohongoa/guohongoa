@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.data.contact_node;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
+import com.data.contact_relationship_info;
 import com.data.employee_info;
 import com.data.relationship_info;
 
@@ -197,7 +198,7 @@ import com.data.relationship_info;
 					Map<String, contact_node> contact_map;//四联人员联络树
 					contact_map=com.dbconnector.contact_db_connector.get_contact_map(contact_person_department_id,employee_id);
 					
-					ModelAndView mv=new ModelAndView("department_detail.jsp");
+					ModelAndView mv=new ModelAndView("redirect:／department_detail.jsp");
 					
 					List<contact_node> contact_node_list=new ArrayList<contact_node>();
 					//遍历map，将联络树数据用key，value模式导入前端页面
@@ -226,6 +227,45 @@ import com.data.relationship_info;
 					return mv;
 					
 					
+				}
+			
+		//四联添加用户关系
+				@RequestMapping("contact/contact_relationship_add.do")
+				public void contact_relationship_add_request(
+						@RequestParam(value="owner_employee_id")                    int    owner_employee_id,      //用户id
+						@RequestParam(value="friend_employee_phone")                String   friend_employee_phone   //添加方用户电话
+						)
+				{
+					System.out.println(owner_employee_id);
+					//利用输入对方电话，查询用户是否存在，存在的话，相关信息是什么
+				    employee_info friend_employee_info=com.dbconnector.contact_db_connector.get_employee_info_by_phone(friend_employee_phone);
+				    int friend_employee_id=friend_employee_info.get_employee_department_id();
+				    if(friend_employee_info.get_employee_name()!=null)
+				    {
+				    	//利用主客方的员工信息中的部门id，在contact_person_department_info（部门关系表）中查询两者关系，
+				    	//返回三种状态，客方为主方直接上级为0，客方为主方直接下级为1，客房不属于以上两种为2，状态值为2时不允许添加
+				    	int relationship_type=com.dbconnector.contact_db_connector.get_contact_relationship_by_id(owner_employee_id, friend_employee_id);
+				    	
+				    	
+				    	if(relationship_type==0||relationship_type==1)
+				    	{
+				    		contact_relationship_info _contact_relationship_info=new contact_relationship_info();
+				    		_contact_relationship_info.set_contact_owner_id(owner_employee_id);
+				    		_contact_relationship_info.set_contact_friend_id(friend_employee_id);
+				    		_contact_relationship_info.set_contact_relationship_type(relationship_type);
+				    		boolean rs=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info);
+				    	}
+				    	else
+				    	{
+				    	    System.out.println("该用户不在您的直接上级或下级部门，请输入其它号码");
+				    	}
+				    	
+				    	System.out.println("ttesf"+relationship_type);
+				    }
+				    else
+				    {
+				    	System.out.println("用户不存在，请核对后重新输入");
+				    }                                         
 				}
 	}
 

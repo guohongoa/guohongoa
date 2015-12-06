@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <c:set var="service_village_county_id" value="${param.service_village_county_id}"/>
+    <c:set var="village_page" value="${param.village_page}"/>
+    
+    
 </head>
 <body>
 <!--header为导航容器-->
@@ -65,7 +70,7 @@
         </div>
     </div>
     <div class="wdtzxq_btn">
-        <a href="">修改</a> &nbsp; <a href="">返回</a>
+        <a href="village_modify.do?service_village_county_id=${service_village_county_id()}&village_page=${village_page}">修改</a> &nbsp; <a href="check_service_village_detail.do?village_page=${village_page}">返回</a>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>

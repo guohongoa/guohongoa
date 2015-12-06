@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="contact_relationship_info">
+
+	 <resultMap id="result" type="contact_relationship_info">
+	    <result property="contact_relationship_id" column="contact_relationship_id" />
+		<result property="contact_owner_id" column="contact_owner_id" />
+		<result property="contact_friend_id" column="contact_friend_id" />
+		<result property="contact_relationship_type" column="contact_relationship_type" />
+	</resultMap>
+
+	<insert id="insert" parameterType="contact_relationship_info">
+		insert into
+		contact_relationship_info(contact_relationship_id,contact_owner_id,contact_friend_id,contact_relationship_type)
+		values(#{contact_relationship_id},#{contact_owner_id},#{contact_friend_id},#{contact_relationship_type});
+	</insert>
+
+	
+
+</mapper>
+
+
