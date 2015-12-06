@@ -70,7 +70,7 @@
         </div>
     </div>
     <div class="wdtzxq_btn">
-        <a href="village_modify.do?service_village_county_id=${service_village_county_id()}&village_page=${village_page}">修改</a> &nbsp; <a href="check_service_village_detail.do?village_page=${village_page}">返回</a>
+        <a href="village_modify.do?service_village_county_id=${service_village_county_id}&village_page=${village_page}">修改</a> &nbsp; <a href="check_service_village_detail.do?village_page=${village_page}">返回</a>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>

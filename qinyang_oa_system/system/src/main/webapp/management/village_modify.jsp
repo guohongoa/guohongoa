@@ -8,6 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
     <c:set var="village_page" value="${param.village_page}"/>
+    <c:set var="service_village_county_id" value="${param.service_village_county_id}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -72,7 +73,7 @@
                 <p><span>包含村</span><textarea name="str_service_village_names" form="post_city">${str_service_village_names}</textarea></p>
                 <input type="hidden" name="village_page" value="${village_page}">
                 <p class="tztj_btn"><b class="login-error"></b><button>确定修改</button>
-                    <a href="czglxg.html">重置</a>
+                    <a href="village_modify.do?service_village_county_id=${service_village_county_id}&village_page=${village_page}">重置</a>
                 </p>
             </form>
         </div>

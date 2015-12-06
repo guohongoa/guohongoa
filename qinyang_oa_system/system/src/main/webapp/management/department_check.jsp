@@ -52,7 +52,7 @@
         <h3>管理</h3>
         <ul>
             <li><a href="check_service_village_detail.do?village_page=1">村镇管理</a></li>
-            <li><a href="＃" class="active">部门管理</a>
+            <li><a href="department_check.do?department_page=1" class="active">部门管理</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="department_add.jsp">添加部门</a><i></i></dd>
@@ -97,13 +97,13 @@
                         <option>查看</option>
                     </select>  -->
                    
-                     <a href="department_modify.do?department_id=${department_info.get_department_id()}">
+                     <a href="department_modify.do?department_id=${department_info.get_department_id()}&department_page=${department_page}">
                          修改
                     </a>
-                    <a href="department_del.do?department_id=${department_info.get_department_id()}"> 
+                    <a href="department_del.do?department_id=${department_info.get_department_id()}&department_page=${department_page}"> 
                         删除
                     </a>
-                    <a>
+                    <a href="department_detail.do?department_id=${department_info.get_department_id()}&department_page=${department_page}">
                         详情
                     </a>
                 </li>

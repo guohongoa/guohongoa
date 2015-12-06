@@ -87,7 +87,7 @@ public class management_request_controller
 			@RequestParam(value="village_page")                     int village_page
 			)
 	{
-		ModelAndView mv=new ModelAndView("village_modify.jsp?village_page="+village_page);
+		ModelAndView mv=new ModelAndView("village_modify.jsp?village_page="+village_page+"&service_village_county_id="+service_village_county_id);
 		//返回村镇信息
 		service_village_county_info _service_village_county_info=com.dbconnector.service_db_connector.get_service_village_county_info_by_id(service_village_county_id);
 		
@@ -238,10 +238,11 @@ public class management_request_controller
 		@RequestMapping("management/department_modify.do")
 		
 		public ModelAndView department_modify_check_request(
-		    @RequestParam(value="department_id")        int    department_id
+		    @RequestParam(value="department_id")        int    department_id,
+		    @RequestParam(value="department_page")      int department_page
 				)
 		{
-			ModelAndView mv=new ModelAndView("department_modify.jsp");
+			ModelAndView mv=new ModelAndView("department_modify.jsp?department_id="+department_id+"&department_page"+department_page);
 			department_info _department_info=com.dbconnector.management_db_connector.get_department_info_by_id(department_id);
 			
 			
@@ -252,7 +253,8 @@ public class management_request_controller
 		
 		@RequestMapping("management/department_modify_commit.do")
 		
-		public void department_modify_commit_request(
+		//部门修改提交
+		public ModelAndView department_modify_commit_request(
 				@RequestParam(value="department_id")              int      department_id,
 				@RequestParam(value="department_name")            String    department_name,
 				@RequestParam(value="department_code")            int      department_code,
@@ -260,7 +262,9 @@ public class management_request_controller
 				@RequestParam(value="department_leader")          String  department_leader,
 				@RequestParam(value="department_parent")          String  department_parent,
 				@RequestParam(value="department_parentleader")    String  department_parentleader,
-				@RequestParam(value="department_leaderphone")    String  department_leaderphone
+				@RequestParam(value="department_leaderphone")    String  department_leaderphone,
+				
+				@RequestParam(value="department_page")          int department_page  //修改前的页数位置
 				
 				)
 		{
@@ -277,9 +281,22 @@ public class management_request_controller
 			
 			boolean rs=com.dbconnector.management_db_connector.update_department_info(_department_info);
 			
-			
+			ModelAndView mv=new ModelAndView("redirect:/management/department_check.do?department_page="+department_page);
+			return mv;
 		}
 		
+		@RequestMapping("management/department_detail.do")
+		
+		public ModelAndView employee_detail_request(
+				@RequestParam(value="department_id")    int department_id,
+				@RequestParam(value="department_page")  int department_page
+				)
+		{
+			ModelAndView mv=new ModelAndView("department_detail_by_id.jsp?department_id="+department_id+"&department_page="+department_page);
+			department_info _department_info=com.dbconnector.management_db_connector.get_department_info_by_id(department_id);
+			mv.addObject("department_info", _department_info);
+			return mv;
+		}
 		
 		//-------------------------------------------------------------------------
 	  

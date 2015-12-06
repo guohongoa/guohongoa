@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+     <c:set var="department_id" value="${param.department_id}"/>
+     <c:set var="department_page" value="${param.department_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -56,24 +58,24 @@
     <h4><a href="">管理</a>&gt;<span>部门详情</span></h4>
     <div class="border">
         <div class="wdtzxq" id="bmglh">
-            <p><b>部门编号：</b><span>编号</span></p>
-            <p><b>部门名称：</b><span>水利部</span></p>
+            <p><b>部门编号：</b><span>${department_info.get_department_code()}</span></p>
+            <p><b>部门名称：</b><span>${department_info.get_department_name()}</span></p>
 
             <p><b>工作制度：</b>
-                <span>工作制度工作制度工作制度工作制度工作制度工作制度工作制度工作制度工作制度工作制度工作制度工作制度工作制度工作制度工作制度工作制度</span>
+                <span>${department_info.get_department_regulation()}</span>
             </p>
-            <p><b>部门负责人：</b><span>张三</span></p>
-            <p><b>上级部门：</b><span>某某部</span></p>
-            <p><b>上级联系人：</b><span>李四</span></p>
-            <p><b>联系电话：</b><span>13800000000</span></p>
+            <p><b>部门负责人：</b><span>${department_info.get_department_leader()}</span></p>
+            <p><b>上级部门：</b><span>${department_info.get_department_parent()}</span></p>
+            <p><b>上级联系人：</b><span>${department_info.get_department_parentleader()}</span></p>
+            <p><b>联系电话：</b><span>${department_info.get_department_leaderphone()}</span></p>
             <p><b>工作流程：</b>
                 <span>
-                    <img id="smjpg" src="../css/images/liuchengshili.png" alt=""/>
+                    <img id="smjpg" src="http://101.200.196.121:8080/oa/css/images/liuchengshili.png" alt=""/>
 
                 </span>
                 <div id="bigjpg">
 
-                    <img  src="../css/images/bigshili.jpg" alt=""/>
+                    <img  src="http://101.200.196.121:8080/oa/css/images/bigshili.jpg" alt=""/>
 
                 </div>
 
@@ -81,7 +83,7 @@
         </div>
     </div>
     <div class="wdtzxq_btn">
-        <a href="">修改</a> &nbsp; <a href="">返回</a>
+        <a href="department_modify.do?department_id=${department_id}&department_page=${department_page}">修改</a> &nbsp; <a href="department_check.do?department_page=${department_page}">返回</a>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>

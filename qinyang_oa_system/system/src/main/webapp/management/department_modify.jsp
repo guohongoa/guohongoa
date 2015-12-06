@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <c:set var="department_id" value="${param.department_id}"/>
+     <c:set var="department_page" value="${param.department_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -65,6 +67,7 @@
         <h4><a href="">管理</a>&gt;<a href="">部门管理</a>&gt;<span>修改信息</span></h4>
         <div class="bmtj ">
             <form action="department_modify_commit.do" method="post">
+                <input type="hidden" name="department_page" value="${department_page}">
                 <input type="hidden" name="department_id" value="${department_info.get_department_id()}">
                 <div>
                     <p><span>部门编号</span>
@@ -96,7 +99,7 @@
                         <input class="input200" type="text"  name="department_leaderphone" value="${department_info.get_department_leaderphone()}"/></p>
                 </div>
                 <div class="clear tianjiabtn">
-                    <input type="submit" name="submit" value="添加"/><input type="reset" value="重置"/>
+                    <input type="submit" name="submit" value="确定修改"/><input type="reset" value="重置"/>
                 </div>
             </form>
         </div>
