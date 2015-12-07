@@ -533,22 +533,6 @@ public class management_request_controller
 		{
 			ModelAndView mv=new ModelAndView("employee_detail_by_id.jsp");
 			employee_info _employee_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id);
-			//使用部门id，获取员工部门信息
-			//使用上级id，获取上级姓名
-			
-			String employee_department=com.dbconnector.management_db_connector.get_department_info_by_id(_employee_info.get_employee_department_id()).get_department_name();
-			 String employee_leader;
-			if(_employee_info.get_employee_leader_id()!=-1)
-			{
-			    employee_leader=com.dbconnector.management_db_connector.get_employee_info_by_id(_employee_info.get_employee_leader_id()).get_employee_name();
-			}
-			else
-			{
-				employee_leader="无";
-			}
-			
-			mv.addObject("employee_department", employee_department);
-			mv.addObject("employee_leader", employee_leader);
 			mv.addObject("employee_info",_employee_info);
 			return mv;
 		}
@@ -602,7 +586,7 @@ public class management_request_controller
              //根据五服务小组成员，修改对应用户的身份信息，修改 employee_is_service_member
 			 com.dbconnector.userinfo_db_connector.add_service_member(service_group_member,service_type);
 			 
-			 ModelAndView mv=new ModelAndView();
+			 ModelAndView mv=new ModelAndView("redirect:/management/service_group_check.do?service_group_page=1");
 			 mv.addObject("result",rs);
 			 
 			 return mv;
@@ -630,10 +614,11 @@ public class management_request_controller
 			//显示五服务小组修改内容
 			@RequestMapping("management/service_group_modify.do")
 			public ModelAndView service_group_modify_check_request(
-				    @RequestParam(value="service_group_id")        int    service_group_id
+				    @RequestParam(value="service_group_id")        int    service_group_id,
+				    @RequestParam(value="service_group_page")      int    service_group_page
 						)
 				{
-					ModelAndView mv=new ModelAndView("service_group_modify.jsp");
+					ModelAndView mv=new ModelAndView("service_group_modify.jsp?service_group_page="+service_group_page);
 					service_group_info _service_group_info=com.dbconnector.management_db_connector.get_service_group_info_by_id(service_group_id);
 					
 					
@@ -643,7 +628,7 @@ public class management_request_controller
 				}
 
 			@RequestMapping("management/service_group_modify_commit.do")
-			public void service_group_modify_commit_request(
+			public ModelAndView service_group_modify_commit_request(
 					@RequestParam(value="service_group_id")                int     service_group_id,
 					@RequestParam(value="service_village_county_name")     String service_village_county_name,
 					@RequestParam(value="service_village_name")            String service_village_name,
@@ -651,7 +636,9 @@ public class management_request_controller
 					@RequestParam(value="service_group_leader")            String service_group_leader,
 					@RequestParam(value="service_group_phone")             String  service_group_phone,
 					@RequestParam(value="service_group_duty")              String  service_group_duty,
-					@RequestParam(value="service_group_member")            String  service_group_member
+					@RequestParam(value="service_group_member")            String  service_group_member,
+
+					@RequestParam(value="service_group_page")              String  service_group_page
 					
 					
 					)
@@ -670,15 +657,19 @@ public class management_request_controller
 				
 				boolean rs=com.dbconnector.management_db_connector.update_service_group_info(_service_group_info);
 				
+				ModelAndView mv=new ModelAndView("redirect:/management/service_group_check.do?service_group_page="+service_group_page);
+				return mv;
+				
 				
 			}
 			
 			@RequestMapping("management/service_group_del.do")
 			public ModelAndView service_group_del_request(
-					 @RequestParam(value="service_group_id")  int service_group_id
+					 @RequestParam(value="service_group_id")  int service_group_id,
+					 @RequestParam(value="service_group_page") int service_group_page
 					)
 			{
-				ModelAndView mv=new ModelAndView("service_group_check_request.jsp");
+				ModelAndView mv=new ModelAndView("redirect:/management/service_group_check.do?service_group_page="+service_group_page);
 				com.dbconnector.management_db_connector.del_service_group_id(service_group_id);
 				return mv;
 			}
@@ -703,10 +694,11 @@ public class management_request_controller
 			
 			@RequestMapping("management/service_group_detail.do")
 			public ModelAndView service_group_detail_request(
-					 @RequestParam(value="service_group_id")  int service_group_id
+					 @RequestParam(value="service_group_id")  int service_group_id,
+					 @RequestParam(value="service_group_page")int service_group_page
 					)
 			{
-				ModelAndView mv=new ModelAndView("service_group_detail_by_id.jsp");
+				ModelAndView mv=new ModelAndView("service_group_detail_by_id.jsp?service_groupp=_page="+service_group_page);
 				service_group_info _service_group_info=com.dbconnector.management_db_connector.get_service_group_info_by_id(service_group_id);
 				mv.addObject("service_group_info", _service_group_info);
 				return mv;

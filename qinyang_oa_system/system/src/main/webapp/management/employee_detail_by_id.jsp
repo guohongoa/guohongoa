@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+     <c:set var="employee_id" value="${param.employee_id}"/>
+     <c:set var="employee_page" value="${param.employee_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -56,26 +58,20 @@
     <div class="border">
         <div class="wdtzxq">
             <p><b>员工姓名：</b><span>${employee_info.get_employee_name()}</span></p>
-            <c:choose>
-               <c:when test="${employee_info.get_employee_gender()==0}">
-                   <p><b>员工性别：</b><span>男</span></p>
-               </c:when>
-               <c:otherwise>
-                   <p><b>员工性别：</b><span>女</span></p>
-               </c:otherwise>
-            </c:choose>
+            <p><b>员工性别：</b><span>${employee_info.get_employee_str_gender()}</span></p>
+              
             <p><b>出生日期：</b><span>${employee_info.get_employee_birthdate()}</span></p>
             <p><b>身份证号：</b><span>${employee_info.get_employee_idcode()}</span></p>
             <p><b>员工职务：</b><span>${employee_info.get_employee_position()}</span></p>
             <p><b>入职日期：</b><span>${employee_info.get_employee_addworktime()}</span></p>
-            <p><b>所属部门：</b><span>${employee_department}</span></p>
-            <p><b>直接上级：</b><span>${employee_leader}</span></p>
+            <p><b>所属部门：</b><span>${employee_info.get_employee_department_name()}</span></p>
+            <p><b>直接上级：</b><span>${employee_info.get_employee_leader_name()}</span></p>
             <p><b>联系电话：</b><span>${employee_info.get_employee_phone()}</span></p>
             <p><b>工作职责：</b><span>${employee_info.get_employee_duty()}</span></p>
         </div>
     </div>
     <div class="wdtzxq_btn">
-        <a href="">修改</a> &nbsp; <a href="">返回</a>
+        <a href="employee_modify.do?employee_id=${employee_id}&employee_page=${employee_page}">修改</a> &nbsp; <a href="employee_check.do?employee_page=${employee_page}">返回</a>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>

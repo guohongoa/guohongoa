@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+     <c:set var="service_group_id" value="${param.service_group_id}"/>
+     <c:set var="service_group_page" value="${param.service_group_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -88,7 +90,7 @@
         </div>
     </div>
     <div class="wdtzxq_btn">
-        <a href="">修改</a> &nbsp; <a href="">返回</a>
+        <a href="service_group_modify.do?service_group_id=${service_group_info.get_service_group_id()}&service_group_page=${service_group_page}">修改</a> &nbsp; <a href="service_group_check.do?service_group_page=${service_group_page}">返回</a>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>

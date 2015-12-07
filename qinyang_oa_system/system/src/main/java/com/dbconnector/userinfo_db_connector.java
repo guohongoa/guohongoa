@@ -85,13 +85,17 @@ public class userinfo_db_connector
 			  _employee_info.set_employee_phone(service_group_member_info);
 			  //查询用户信息表，核实后改变用户状态
 			  employee_info new_info=_employee_info_dao.select_by_user_phone(_employee_info.get_employee_phone());
-			  System.out.println("cccccccc"+new_info.get_employee_name());
-			  if(_employee_info.get_employee_name().equals(new_info.get_employee_name()))
+			  if(new_info!=null)
 			  {
-				  int employee_service_group=service_type+1;//表单输入依照五服务数据库，与用户信息表五服务类型属性值间相差1
-				  new_info.set_employee_service_group(employee_service_group);
-				  _employee_info_dao.update_employee_service_group_type(new_info);
+				  System.out.println("cccccccc"+new_info.get_employee_name());
+				  if(_employee_info.get_employee_name().equals(new_info.get_employee_name()))
+				  {
+					  int employee_service_group=service_type+1;//表单输入依照五服务数据库，与用户信息表五服务类型属性值间相差1
+					  new_info.set_employee_service_group(employee_service_group);
+					  _employee_info_dao.update_employee_service_group_type(new_info);
+				  }
 			  }
+			
 			  
 		  }
 	    }

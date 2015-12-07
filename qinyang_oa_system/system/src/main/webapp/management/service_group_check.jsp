@@ -103,13 +103,13 @@
                     </select>  
                     -->
                     
-                    <a href="service_group_modify.do?service_group_id=${service_group_info.get_service_group_id()}">
+                    <a href="service_group_modify.do?service_group_id=${service_group_info.get_service_group_id()}&service_group_page=${service_group_page}">
                          修改
                     </a>
-                    <a href="service_group_del.do?service_group_id=${service_group_info.get_service_group_id()}">
+                    <a href="service_group_del.do?service_group_id=${service_group_info.get_service_group_id()}&service_group_page=${service_group_page}">
                         删除
                     </a>
-                    <a href="service_group_detail.do?service_group_id=${service_group_info.get_service_group_id()}">
+                    <a href="service_group_detail.do?service_group_id=${service_group_info.get_service_group_id()}&service_group_page=${service_group_page}">
                         详情
                     </a>
                 </li>

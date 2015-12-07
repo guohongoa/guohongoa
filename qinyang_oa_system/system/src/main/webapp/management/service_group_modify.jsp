@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <c:set var="service_group_page" value="${param.service_group_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -67,6 +68,7 @@
            
             <form  action="service_group_modify_commit.do" method="post">
                 <input type="hidden" name="service_group_id" value="${service_group_info.get_service_group_id()}">
+                <input type="hidden" name="service_group_page" value="${service_group_page}">
                 <p><span>镇(县)名</span><input name="service_village_county_name" class="input600" type="text" value="${service_group_info.get_service_village_county_name()}"/></p>
                 <p><span>村名</span><input type="text" name="service_village_name" value="${service_group_info.get_service_village_name()}"/></p>
                 <p><span>服务类型</span>

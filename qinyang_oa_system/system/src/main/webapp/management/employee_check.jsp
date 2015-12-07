@@ -101,7 +101,7 @@
                     <a href="employee_del.do?employee_id=${employee_info.get_employee_id()}&employee_page=${employee_page}">
                          删除
                     </a>
-                    <a href="employee_detail.do?employee_id=${employee_info.get_employee_id()}">
+                    <a href="employee_detail.do?employee_id=${employee_info.get_employee_id()}&employee_page=${employee_page}">
                         详情
                     </a>
                 </li>
