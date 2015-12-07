@@ -21,12 +21,16 @@
 		<result property="employee_duty" column="employee_duty" />
 		<result property="employee_password" column="employee_password" />
 		<result property="employee_service_group" column="employee_service_group" />
+		
+		<result property="employee_str_gender" column="employee_str_gender" />
+		<result property="employee_department_name" column="employee_department_name" />
+		<result property="employee_leader_name" column="employee_leader_name" />
 	</resultMap>
 
 	<insert id="insert" parameterType="employee_info">
 		insert into
-		employee_info(employee_name,employee_position,employee_gender,employee_department_id,employee_leader_id,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_duty,employee_password)
-		values(#{employee_name},#{employee_position},#{employee_gender},#{employee_department_id},#{employee_leader_id},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_duty},#{employee_password});
+		employee_info(employee_name,employee_position,employee_gender,employee_department_id,employee_leader_id,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_duty,employee_password,employee_str_gender,employee_department_name,employee_leader_name)
+		values(#{employee_name},#{employee_position},#{employee_gender},#{employee_department_id},#{employee_leader_id},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_duty},#{employee_password},#{employee_str_gender},#{employee_department_name},#{employee_leader_name});
 	</insert>
 
 	<select id="select_by_employee_id" parameterType="int" resultMap="result">
@@ -52,7 +56,10 @@
             employee_department_id   = #{employee_department_id},
             employee_leader_id       = #{employee_leader_id},
             employee_phone        = #{employee_phone},
-            employee_duty         = #{employee_duty}
+            employee_duty         = #{employee_duty},
+            employee_str_gender   = #{employee_str_gender},
+            employee_department_name = #{employee_department_name},
+            employee_leader_name = #{employee_leader_name}
             
         WHERE employee_id = #{employee_id} 
     </update>

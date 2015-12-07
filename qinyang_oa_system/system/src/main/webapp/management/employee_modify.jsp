@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+     <c:set var="employee_page" value="${param.employee_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -64,8 +65,9 @@
     <div class="right_content">
         <h4><a href="">管理</a>&gt;<a href="">人员管理</a>&gt;<span>修改信息</span></h4>
         <div class="bmtj ">
-            <form action="employee_modify_commit.do" method="post"> 
+            <form action="employee_modify_commit.do" method="post" id="employee_modify"> 
                <input type="hidden" name="employee_id" value="${employee_info.get_employee_id()}"/>
+               <input type="hidden" name="employee_page" value="${employee_page}">
                 <div>
                     <p><span>员工姓名</span>
                         <input class="input200" type="text" name="employee_name" value="${employee_info.get_employee_name()}"/></p>
@@ -96,9 +98,44 @@
                 </div>
                 <div>
                     <p><span>所属部门</span>
-                        <input class="input200" name="employee_department_id" type="text" value="${employee_info.get_employee_department_id()}"/></p>
+                         <select name="employee_department_id" form="employee_modify" >
+                         <c:forEach var="department_info" items="${department_info_list}" >
+                            <!--转队列入下拉框，当前数据处于初始显示状态-->
+                            <c:choose>
+                               <c:when test="${department_info.get_department_id()==employee_info.get_employee_department_id()}">
+                                  <option value ="${department_info.get_department_id()}" selected="selected">${department_info.get_department_name()}</option>
+                               </c:when>
+                               <c:otherwise>
+                                   <option value ="${department_info.get_department_id()}" >${department_info.get_department_name()}</option>
+                               </c:otherwise>
+                            </c:choose>
+                         </c:forEach>    
+                         </select>
+                     </p>
                     <p><span>直接上级</span>
-                        <input class="input200" name="employee_leader_id" type="text" value="${employee_info.get_employee_leader_id()}"/></p>
+                        <select name="employee_leader_id" form="employee_modify" >
+                          <c:forEach var="employee_info2" items="${employee_info_list}" >
+                          <!--转队列入下拉框，当前数据处于初始显示状态-->
+                            <c:choose>
+                            <c:when test="${employee_info2.get_employee_id()==employee_info.get_employee_leader_id()}">
+                                <option value ="${employee_info2.get_employee_id()}" selected="selected">${employee_info2.get_employee_name()}</option>
+                            </c:when>
+                            <c:otherwise>
+                                 <option value ="${employee_info2.get_employee_id()}">${employee_info2.get_employee_name()}</option>
+                            </c:otherwise>
+                            </c:choose>
+                         </c:forEach>
+                         <c:choose>
+                         <c:when test="${employee_info.get_employee_id()==-1}">
+                             <option value="-1" selected="selected">无</option>
+                         </c:when>
+                         <c:otherwise>
+                              <option value="-1">无</option>
+                         </c:otherwise>
+                         </c:choose>   
+                         </select>
+                         
+                    </p>
                 </div>
                 <div>
 

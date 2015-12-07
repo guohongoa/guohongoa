@@ -198,7 +198,7 @@ import com.data.relationship_info;
 					Map<String, contact_node> contact_map;//四联人员联络树
 					contact_map=com.dbconnector.contact_db_connector.get_contact_map(contact_person_department_id,employee_id);
 					
-					ModelAndView mv=new ModelAndView("redirect:／department_detail.jsp");
+					ModelAndView mv=new ModelAndView("department_detail.jsp");
 					
 					List<contact_node> contact_node_list=new ArrayList<contact_node>();
 					//遍历map，将联络树数据用key，value模式导入前端页面

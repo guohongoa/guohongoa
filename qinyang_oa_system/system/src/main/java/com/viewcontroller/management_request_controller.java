@@ -331,6 +331,41 @@ public class management_request_controller
 		     _employee_info.set_employee_name(employee_name);
 		     _employee_info.set_employee_duty(employee_duty);
 		     
+		     
+		        //插入性别字符串，0为男，1为女
+		     if(employee_gender==0)
+		     {
+		    	 _employee_info.set_employee_str_gender("男");
+		     }
+		     else if(employee_gender==1)
+		     {
+		    	 _employee_info.set_employee_str_gender("女");
+		     }
+		     else
+		     {
+		    	 System.out.println("错误");
+		     }
+		     
+		     
+		     //根据部门id，查询部门名称，插入字段
+		     String employee_department_name=com.dbconnector.management_db_connector.get_department_info_by_id(employee_department_id).get_department_name();
+		     System.out.println(employee_department_name);
+		     _employee_info.set_employee_department_name(employee_department_name);
+		     
+		     //根据上级id，查询上级姓名，插入字段
+		     //id为－1表明没有上级，直接插入无
+		     if(employee_leader_id!=-1)
+		     {
+		    	  String employee_leader_name=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_leader_id).get_employee_name();
+				  System.out.println(employee_leader_name);
+				  _employee_info.set_employee_leader_name(employee_leader_name);
+		     }
+		     else
+		     {
+		    	 _employee_info.set_employee_leader_name("无");
+		     }
+		   
+		    
 		     String phone=_employee_info.get_employee_phone();
 				String employee_password;
 				if(phone.length()>5)
@@ -354,7 +389,7 @@ public class management_request_controller
 			   
 			 boolean rs=com.dbconnector.management_db_connector.employee_insert_db(_employee_info);
 			 
-			 ModelAndView mv=new ModelAndView();
+			 ModelAndView mv=new ModelAndView("employee_check.do?employee_page=1");
 			 mv.addObject("result",rs);
 			 return mv;
 			
@@ -391,27 +426,35 @@ public class management_request_controller
 		 {
 			
 			com.dbconnector.management_db_connector.del_employee_from_id(employee_id);
-			 ModelAndView mv=new ModelAndView("redirect:／employee_check.do?employee_page="+employee_page);//页面重定向
+			 ModelAndView mv=new ModelAndView("redirect:employee_check.do?employee_page="+employee_page);//页面重定向
 			return mv;
 		 }
 		
 		//显示员工管理修改内容
 		@RequestMapping("management/employee_modify.do")
 		public ModelAndView employee_modify_check_request(
-			    @RequestParam(value="employee_id")        int    employee_id
+			    @RequestParam(value="employee_id")        int    employee_id,
+			    @RequestParam(value="employee_page")      int    employee_page
+			    
 					)
 			{
-				ModelAndView mv=new ModelAndView("employee_modify.jsp");
+				ModelAndView mv=new ModelAndView("employee_modify.jsp?employee_page="+employee_page);
 				employee_info _employee_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id);
 				
+				//查询所有员工信息，用于列表选择
+				List<employee_info> employee_info_list=com.dbconnector.management_db_connector.get_employee_info_list();
+				List<department_info> department_info_list=com.dbconnector.management_db_connector.get_all_department_info_list();
 				
+				
+				mv.addObject("employee_info_list",employee_info_list);
+				mv.addObject("department_info_list",department_info_list);
 				mv.addObject("employee_info",_employee_info);
 				
 				return mv;
 			}
 		
 		@RequestMapping("management/employee_modify_commit.do")
-			public void employee_modify_commit_request(
+			public ModelAndView employee_modify_commit_request(
 					@RequestParam(value="employee_id")                int     employee_id,
 					@RequestParam(value="employee_name")              String  employee_name,
 					@RequestParam(value="employee_gender")            int     employee_gender,
@@ -422,7 +465,9 @@ public class management_request_controller
 					@RequestParam(value="employee_department_id")     int  employee_department_id,
 					@RequestParam(value="employee_leader_id")         int  employee_leader_id,
 					@RequestParam(value="employee_phone")             String  employee_phone,
-					@RequestParam(value="employee_duty")              String  employee_duty
+					@RequestParam(value="employee_duty")              String  employee_duty,
+					
+					@RequestParam(value="employee_page")              String  employee_page
 					
 					
 					)
@@ -440,11 +485,44 @@ public class management_request_controller
 				_employee_info.set_employee_phone(employee_phone);
 				_employee_info.set_employee_duty(employee_duty);
 				
+				   //插入性别字符串，0为男，1为女
+			     if(employee_gender==0)
+			     {
+			    	 _employee_info.set_employee_str_gender("男");
+			     }
+			     else if(employee_gender==1)
+			     {
+			    	 _employee_info.set_employee_str_gender("女");
+			     }
+			     else
+			     {
+			    	 System.out.println("错误");
+			     }
+			     
+			     
+			     //根据部门id，查询部门名称，插入字段
+			     String employee_department_name=com.dbconnector.management_db_connector.get_department_info_by_id(employee_department_id).get_department_name();
+			     System.out.println(employee_department_name);
+			     _employee_info.set_employee_department_name(employee_department_name);
+			     
+			     //根据上级id，查询上级姓名，插入字段
+			     //id为－1表明没有上级，直接插入无
+			     if(employee_leader_id!=-1)
+			     {
+			    	  String employee_leader_name=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_leader_id).get_employee_name();
+					  System.out.println(employee_leader_name);
+					  _employee_info.set_employee_leader_name(employee_leader_name);
+			     }
+			     else
+			     {
+			    	 _employee_info.set_employee_leader_name("无");
+			     }
 				
 				
 				
 				boolean rs=com.dbconnector.management_db_connector.update_employee_info(_employee_info);
-				
+				ModelAndView mv=new ModelAndView("redirect:/management/employee_check.do?employee_page="+employee_page);
+				return mv;
 				
 			}
 		

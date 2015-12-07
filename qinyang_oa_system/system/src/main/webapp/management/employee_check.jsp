@@ -82,10 +82,10 @@
             <c:forEach var="employee_info" items="${employee_info_list}">
             <ul>
                 <li>${employee_info.get_employee_name()}</li>
-                <li>${employee_info.get_employee_gender()}</li>
+                <li>${employee_info.get_employee_str_gender()}</li>
                 <li>${employee_info.get_employee_position()}</li>
-                <li>${employee_info.get_employee_department_id()}</li>
-                <li>${employee_info.get_employee_leader_id()}</li>
+                <li>${employee_info.get_employee_department_name()}</li>
+                <li>${employee_info.get_employee_leader_name()}</li>
                 <li>${employee_info.get_employee_phone()}</li>
                 <li>
                     <!--  
@@ -95,7 +95,7 @@
                         <option>查看</option>
                     </select>
                     -->
-                    <a href="employee_modify.do?employee_id=${employee_info.get_employee_id()}">
+                    <a href="employee_modify.do?employee_id=${employee_info.get_employee_id()}&employee_page=${employee_page}">
                          修改
                     </a>
                     <a href="employee_del.do?employee_id=${employee_info.get_employee_id()}&employee_page=${employee_page}">

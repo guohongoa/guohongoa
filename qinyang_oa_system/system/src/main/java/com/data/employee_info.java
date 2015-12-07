@@ -27,6 +27,10 @@ public class employee_info
     //4为环境卫生服务五服务小组成员
     //5为文体活动服务五服务成员
     
+    private String employee_str_gender;     //性别中文
+    private String employee_department_name;//部门名称
+    private String employee_leader_name;    //领导名称
+    
 	
     public employee_info()
     {
@@ -175,6 +179,36 @@ public class employee_info
 	public void set_employee_service_group(int employee_service_group)
 	{
 		this.employee_service_group=employee_service_group;
+	}
+	
+	public String get_employee_str_gender()
+	{
+		return this.employee_str_gender;
+	}
+	
+	public void set_employee_str_gender(String employee_str_gender)
+	{
+		this.employee_str_gender=employee_str_gender;
+	}
+	
+	public String get_employee_department_name()
+	{
+		return this.employee_department_name;
+	}
+	
+	public void set_employee_department_name(String employee_department_name)
+	{
+		this.employee_department_name=employee_department_name;
+	}
+	
+	public String get_employee_leader_name()
+	{
+		return this.employee_leader_name;
+	}
+	
+	public void set_employee_leader_name(String employee_leader_name)
+	{
+		this.employee_leader_name=employee_leader_name;
 	}
 
 }
