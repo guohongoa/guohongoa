@@ -10,12 +10,15 @@
 		<result property="contact_owner_id" column="contact_owner_id" />
 		<result property="contact_friend_id" column="contact_friend_id" />
 		<result property="contact_relationship_type" column="contact_relationship_type" />
+		<result property="contact_owner_department_id" column="contact_owner_department_id"/>
+		<result property="contact_friend_department_id" column="contact_friend_department_id"/>
+		
 	</resultMap>
 
 	<insert id="insert" parameterType="contact_relationship_info">
 		insert into
-		contact_relationship_info(contact_relationship_id,contact_owner_id,contact_friend_id,contact_relationship_type)
-		values(#{contact_relationship_id},#{contact_owner_id},#{contact_friend_id},#{contact_relationship_type});
+		contact_relationship_info(contact_relationship_id,contact_owner_id,contact_friend_id,contact_relationship_type,contact_owner_department_id,contact_friend_department_id)
+		values(#{contact_relationship_id},#{contact_owner_id},#{contact_friend_id},#{contact_relationship_type},#{contact_owner_department_id},#{contact_friend_department_id});
 	</insert>
 
 	
