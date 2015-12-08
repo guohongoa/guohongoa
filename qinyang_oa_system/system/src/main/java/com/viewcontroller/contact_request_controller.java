@@ -239,13 +239,15 @@ import com.data.relationship_info;
 					System.out.println(owner_employee_id);
 					//利用输入对方电话，查询用户是否存在，存在的话，相关信息是什么
 				    employee_info friend_employee_info=com.dbconnector.contact_db_connector.get_employee_info_by_phone(friend_employee_phone);
-				    int friend_employee_id=friend_employee_info.get_employee_department_id();
+				    int friend_employee_id=friend_employee_info.get_employee_id();
 				    if(friend_employee_info.get_employee_name()!=null)
 				    {
 				    	//利用主客方的员工信息中的部门id，在contact_person_department_info（部门关系表）中查询两者关系，
 				    	//返回三种状态，客方为主方直接上级为0，客方为主方直接下级为1，客房不属于以上两种为2，状态值为2时不允许添加
+				    	
 				    	int relationship_type=com.dbconnector.contact_db_connector.get_contact_relationship_by_id(owner_employee_id, friend_employee_id);
 				    	
+				    	System.out.println(owner_employee_id+"dafaererrw"+friend_employee_id);
 				    	
 				    	if(relationship_type==0||relationship_type==1)
 				    	{
