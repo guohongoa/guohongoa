@@ -120,7 +120,8 @@ public class contact_db_connector
 	{
 		contact_person_department_info_dao _contact_person_department_info_dao=new contact_person_department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		employee_info_dao                  _employee_info_dao                 =new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory()); 
-		
+		contact_relationship_info_dao      _contact_relationship_info_dao     =new contact_relationship_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		int a=parent_node.get_contact_person_department_id();
 		contact_person_department_info _contact_person_department_info=_contact_person_department_info_dao.get_department_info_by_id(parent_node.get_contact_person_department_id());
 		
 		int node1_id=  _contact_person_department_info.get_contact_person_department_sononeid();
@@ -137,23 +138,32 @@ public class contact_db_connector
 	    int n=0;//循环次数
 	    for(Integer node_son_id_wrapper:node_son_id_list)
 	    {
-	    n++;
+	    
 	    System.out.println(n);
 	    int node_son_id=node_son_id_wrapper.intValue();
 	    if(node_son_id!=0)
 	    {
 	    	
 	    	
-	    	String son_node_code=parent_node_code+n;
+	    	
 	    	int son_employee_id;
-	    	employee_info _employee_info=_employee_info_dao.get_employee_info_by_parent_id_and_department_id(parent_node.get_contact_person_id(),node_son_id);
-	    	if(_employee_info!=null)
+	    	//employee_info _employee_info=_employee_info_dao.get_employee_info_by_parent_id_and_department_id(parent_node.get_contact_person_id(),node_son_id);
+	    	//根据父级结点id，得到所有的子结点id
+	    	List<contact_relationship_info> relationship_list=_contact_relationship_info_dao.get_son_relationship_list_by_parent_id(parent_node.get_contact_person_id(), node_son_id);
+	    	
+	    	for(contact_relationship_info _contact_relationship_info:relationship_list)
 	    	{
-	        son_employee_id=_employee_info.get_employee_id();
+	    	if(_contact_relationship_info!=null)
+	    	{
+	    		n++;
+	    		String son_node_code=parent_node_code+n;
+	        son_employee_id=_contact_relationship_info.get_contact_friend_id();//获取子结点id
+	        System.out.println("test test test"+ son_employee_id);
 	    	contact_node node_son_info=_contact_person_department_info_dao.get_contact_node_by_id(node_son_id, son_employee_id, son_node_code);
             current_contact_map.put(son_node_code,node_son_info);
 	    	
 	    	current_contact_map=get_son_contact_map(current_contact_map, node_son_info, son_node_code);
+	    	}
 	    	}
 	    }
 	    }

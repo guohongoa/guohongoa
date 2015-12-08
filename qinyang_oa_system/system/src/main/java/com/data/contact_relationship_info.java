@@ -7,6 +7,9 @@ public class contact_relationship_info
  int contact_friend_id;             //四联关系客房id
  int contact_relationship_type;    //四联关系的类型，客方为主方的上级为0，下级为1
  
+ int contact_owner_department_id; //四联关系主方部门id
+ int contact_friend_department_id;//四联关系客方部门id
+ 
  public int get_contact_relationship_id()
  {
 	 return this.contact_relationship_id;
@@ -45,5 +48,25 @@ public class contact_relationship_info
  public void set_contact_relationship_type(int contact_relationship_type)
  {
 	 this.contact_relationship_type=contact_relationship_type;
+ }
+ 
+ public int get_contact_owner_department_id()
+ {
+	 return this.contact_owner_department_id;
+ }
+ 
+ public void set_contact_owner_department_id(int contact_owner_department_id)
+ {
+	 this.contact_owner_department_id=contact_owner_department_id;
+ }
+ 
+ public int get_contact_friend_department_id()
+ {
+	 return this.contact_friend_department_id;
+ }
+ 
+ public void set_contact_friend_department_id(int  contact_friend_department_id)
+ {
+	 this.contact_friend_department_id=contact_friend_department_id;
  }
 }

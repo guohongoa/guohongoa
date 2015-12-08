@@ -20,6 +20,12 @@
 		contact_relationship_info(contact_relationship_id,contact_owner_id,contact_friend_id,contact_relationship_type,contact_owner_department_id,contact_friend_department_id)
 		values(#{contact_relationship_id},#{contact_owner_id},#{contact_friend_id},#{contact_relationship_type},#{contact_owner_department_id},#{contact_friend_department_id});
 	</insert>
+	
+	
+	
+	<select id="select_by_owner_id_and_friend_department_id" parameterType="contact_relationship_info" resultMap="result">
+		SELECT * FROM contact_relationship_info WHERE contact_owner_id = #{contact_owner_id} AND contact_friend_department_id = #{contact_friend_department_id} AND contact_relationship_type=#{contact_relationship_type};
+	</select>
 
 	
 
