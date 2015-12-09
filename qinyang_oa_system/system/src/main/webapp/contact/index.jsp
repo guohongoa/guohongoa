@@ -9,24 +9,15 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
     <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript">
-    //键盘点击变红
-    $("#tel").keydown(function(e){
-        if($(this).val()){
-            $("#tel_sbm").css({background:"#cc0000"});
-            $(".slpopone_content").find("span").css({left:"20px"}).next().css({visibility:" visible"})
-        }else{
-            $("#tel_sbm").css({background:"#f5f5f5"})
-        }
-    })
     
     
    
     $(document).ready(function(){
-    	
+    	  $(".sltjpop").hide();
     	
     	 //添加好友弹出事件
     	  $("a#add_friend").click(function(){
-    	    alert("aaa")
+    		  $(".sltjpop").show();
     	  });
     	});
     </script>
@@ -78,7 +69,7 @@
     <div class="sili">
         <!--第一列-->
         <div class="silione">
-            <span><a class="mess_btn" id="add_friend" href="demo.html"></a><a href=""></a></span>  <!--添加联系人  -->
+            <span><a class="mess_btn" id="add_friend" href="javascript:void(0);"></a><a href=""></a></span>  <!--添加联系人  -->
             <div class="swcw sili_content1">
                 <h4> 党员群众服务中心<br>嘉言民生代办员</h4>
                 <div>
@@ -315,18 +306,18 @@
 
 <div class="sltjpop">
     <div class="slpopone">
-        <h6>添加联系人 <a></a><a class="closebtn"></a></h6>
+        <h6>添加联系人 <a class="closebtn"></a></h6>
         <div>
-            <form action="contact_relationship_add.do" method="post">
+            <form action="" method="post">
                 <div class="slpopone_content">
-                    <p>请输入要添加的手机号</p>
-                    <input type="hidden" name="owner_employee_id" value="${user_id}"/>
-                    <input type="text"   name="friend_employee_phone" id="tel"/>
+                    <p id="msg">请输入要添加的手机号</p>
+                    <input id="tel" type="text"/>
+                    <input id="owner_employee_id" type="hidden" value="${user_id}">
                     <span></span>
                     <i></i>
                 </div>
                 <div class="slpopone_btn">
-                    <input id="tel_sbm" type="submit" value="下一步"/>
+                    <input id="tel_sbm" type="button" value="下一步"/>
                 </div>
             </form>
         </div>
@@ -337,5 +328,30 @@
 
 <!--<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>-->
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+<script>
+    $("#tel").keyup(function(e){
+        if($(this).val()){
+            $("#tel_sbm").css({background:"#cc0000",color:"#f5f5f5",borderColor:"#9f0808"});
+            $(".slpopone_content").find("span").css({left:"22px"}).next().css({visibility:" visible"})
+        }else{
+            $("#tel_sbm").css({background:"#f5f5f5"})
+        }
+    })
+    
+    $(document).ready(function(){
+         $("#tel_sbm").click(function(){
+         var employee_phone=$("#tel").val();
+       
+         //用户的id，需做登录检测
+         var owner_employee_id=$("#owner_employee_id").val();
+         console.log(employee_phone);
+         console.log(owner_employee_id);
+         htmlobj=$.ajax({url:"/system/contact/contact_relationship_add_check.do?friend_employee_phone="+employee_phone+"&owner_employee_id="+owner_employee_id, 
+        	       success:function(){  
+        	       $("#msg").html(htmlobj.responseText);
+         }  });
+  });
+});
+</script>
 </body>
 </html>
