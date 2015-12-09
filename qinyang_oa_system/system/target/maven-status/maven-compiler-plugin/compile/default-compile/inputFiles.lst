@@ -2,7 +2,6 @@
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/viewcontroller/record_request_controller.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/dbconnector/management_db_connector.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/dbconnector/record_db_connector.java
-/Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/viewcontroller/userinfo_request_controller.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/viewcontroller/task_request_controller.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/data/system_user_info.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/dao/service_village_county_info_dao.java
@@ -12,14 +11,20 @@
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/viewcontroller/contact_request_controller.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/dao/user_info_dao.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/data/relationship_info.java
+/Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/data/contact_relationship_info.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/data/service_village_county_info.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/viewcontroller/setting_request_controller.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/data/service_group_info.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/viewcontroller/systeminfo_request_controller.java
+/Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/selector/employee_selector.java
+/Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/selector/service_group_selector.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/data/contact_node.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/data/service_info.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/dao/relationship_info_dao.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/mybatis/mybatis_connection_factory.java
+/Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/selector/department_selector.java
+/Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/selector/village_selector.java
+/Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/dao/contact_relationship_info_dao.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/data/employee_info.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/viewcontroller/report_request_controller.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/data/user_info.java
@@ -42,7 +47,6 @@
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/data/report_info.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/dao/service_group_info_dao.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/dbconnector/task_db_connector.java
-/Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/viewcontroller/village_request_controller.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/dbconnector/report_db_connector.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/selector/service_selector.java
 /Users/lance/Desktop/guohongoa/qinyang_oa_system/system/src/main/java/com/viewcontroller/management_request_controller.java

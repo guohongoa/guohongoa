@@ -7,6 +7,29 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+    //键盘点击变红
+    $("#tel").keydown(function(e){
+        if($(this).val()){
+            $("#tel_sbm").css({background:"#cc0000"});
+            $(".slpopone_content").find("span").css({left:"20px"}).next().css({visibility:" visible"})
+        }else{
+            $("#tel_sbm").css({background:"#f5f5f5"})
+        }
+    })
+    
+    
+   
+    $(document).ready(function(){
+    	
+    	
+    	 //添加好友弹出事件
+    	  $("a#add_friend").click(function(){
+    	    alert("aaa")
+    	  });
+    	});
+    </script>
 </head>
 <body>
 <!--header为导航容器-->
@@ -55,7 +78,7 @@
     <div class="sili">
         <!--第一列-->
         <div class="silione">
-            <span><a href="#"></a></span>  <!--添加联系人  -->
+            <span><a class="mess_btn" id="add_friend" href="demo.html"></a><a href=""></a></span>  <!--添加联系人  -->
             <div class="swcw sili_content1">
                 <h4> 党员群众服务中心<br>嘉言民生代办员</h4>
                 <div>
@@ -268,7 +291,7 @@
             </div>
 
             <div class="swcw sili_content11">
-                <h4>农村（社区）事物</h4>
+                <h4>农村（社区）事务</h4>
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list11}">
@@ -289,7 +312,30 @@
     </div>
 
 </div>
-<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
+
+<div class="sltjpop">
+    <div class="slpopone">
+        <h6>添加联系人 <a></a><a class="closebtn"></a></h6>
+        <div>
+            <form action="contact_relationship_add.do" method="post">
+                <div class="slpopone_content">
+                    <p>请输入要添加的手机号</p>
+                    <input type="hidden" name="owner_employee_id" value="${user_id}"/>
+                    <input type="text"   name="friend_employee_phone" id="tel"/>
+                    <span></span>
+                    <i></i>
+                </div>
+                <div class="slpopone_btn">
+                    <input id="tel_sbm" type="submit" value="下一步"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>-->
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
 </body>
 </html>
