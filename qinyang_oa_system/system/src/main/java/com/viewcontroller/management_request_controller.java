@@ -226,10 +226,11 @@ public class management_request_controller
 		
 		@RequestMapping("management/department_del.do")
 		 public ModelAndView department_del_request(
-				 @RequestParam(value="department_id")    int department_id
+				 @RequestParam(value="department_id")    int department_id,
+				 @RequestParam(value="department_page")  int department_page
 				 )
 		 {
-			ModelAndView mv=new ModelAndView("department_check_request.jsp");
+			ModelAndView mv=new ModelAndView("redirect:department_check.do?department_page="+department_page);
 			com.dbconnector.management_db_connector.del_department_from_id(department_id);
 			return mv;
 		 }
@@ -389,7 +390,7 @@ public class management_request_controller
 			   
 			 boolean rs=com.dbconnector.management_db_connector.employee_insert_db(_employee_info);
 			 
-			 ModelAndView mv=new ModelAndView("employee_check.do?employee_page=1");
+			 ModelAndView mv=new ModelAndView("redirect:employee_check.do?employee_page=1");
 			 mv.addObject("result",rs);
 			 return mv;
 			

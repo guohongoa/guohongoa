@@ -17,7 +17,7 @@
     	
     	 //添加好友弹出事件
     	  $("a#add_friend").click(function(){
-    		  $(".sltjpop").show();
+    		  $("#pop1").show();
     	  });
     	});
     </script>
@@ -304,7 +304,7 @@
 
 </div>
 
-<div class="sltjpop">
+<div class="sltjpop" id="pop1">
     <div class="slpopone">
         <h6>添加联系人 <a class="closebtn"></a></h6>
         <div>
@@ -323,8 +323,97 @@
         </div>
     </div>
 </div>
+<div class="sltjpop" id="pop2">
+    <div class="slpopone">
+        <h6>添加联系人 <a class="closebtn"></a></h6>
+        <div>
+            <form action="" method="post">
+                <div class="slpopone_content">
+                    <p>请输入要添加的联系人手机号</p>
+                    <input id="tel" type="text" value="13800000000"/>
+                    <span class="magnifier"></span>
+                    <p>您输入的号码有误，请重新输入</p>
+                </div>
+                <div class="slpopone_btn">
+                    <input id="tel_sbm" type="button" value="下一步"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="sltjpop" id="pop3">
+    <div class="slpopone slpopthree">
+        <h6>添加联系人 <a class="closebtn"></a></h6>
+        <div>
+            <form action="" method="post">
+                <div class="slpopone_content">
+                    <p>请输入要添加的手机号</p>
+                    <input id="tel" type="text" value="13800000000"/>
+                    <span class="magnifier"></span>
+                    <div  style="width:285px;padding:10px 10px 15px 85px;height: 80px;border-top: 1px solid #c9c9c9;margin-left: -10px;margin-top: 7px ">
+                        <p>姓名：<span>王某</span><span>（13800000000）</span></p>
+                        <p>部门：<span>某某部门</span></p>
+                        <p>职务：<span>某某职务</span></p>
+
+                    </div>
+                </div>
+                <div class="slpopone_btn" >
+                    <input id="tel_add" style="margin-top: 3px;color: #fff;border-color: #9b0f0f" type="button" value="添加"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="sltjpop" id="pop4">
+    <div class="slpopone sipopfour">
+        <h6>添加联系人 <a class="closebtn"></a></h6>
+        <div>
+            <form action="" method="post">
+                <div class="slpopone_content">
+                    <p>您将添加以下联系人</p>
+                    <p>（13912345678）</p>
+                    <p>验证人需要验证您的身份，请输入您的请求信息</p>
+                    <textarea></textarea>
+                </div>
+                <div class="slpopone_btn" >
+                    <input  style="margin-right: 10px;margin-top: 7px;font-weight: normal" type="button" value="取消"/>
+                    <input style="font-weight: normal" type="button" value="发送"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="sltjpop" id="pop5">
+    <div class="slpopone sipopfive">
+        <h6>添加联系人 <a class="closebtn"></a></h6>
+        <div>
+                <div class="slpopone_content" style="padding-top: 0px">
+                    <p style="font-size: 12px;">
+                        <span>添加联系人</span><br/>
+                        <span>成功添加对方为直属联系人</span>
+                    </p>
+                    <div class="slpopone_btn">
+                        <input  style="background-color: #cc0000;color: #fff;margin-right: -10px;padding: 0;margin-top: 20px;font-weight: normal;border-color: #9b0f0f" type="button" value="我知道了"/>
+                    </div>
 
 
+                </div>
+                <div class="sltjs"  style="margin-top: 25px;width:268px ">
+                    <p >姓名：<span>王某</span><span>（13800000000）</span></p>
+                    <p>部门：<span>某某部门</span></p>
+                    <p>职务：<span>某某职务</span></p>
+                </div>
+
+                <div class="slpopone_btn">
+                    <input style="color: #000;font-weight: normal;margin-right: 23px" type="button" value="添加"/>
+                </div>
+
+        </div>
+    </div>
+</div>
 
 <!--<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>-->
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
