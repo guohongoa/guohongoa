@@ -253,16 +253,18 @@ import com.data.relationship_info;
 				    	if(relationship_type==0||relationship_type==1)
 				    	{
 				    		  mv.addObject("return_type", 0);
-				    		  mv.addObject("msg","<p>"+friend_employee_info.get_employee_name()+"</p>"+
-				    				             "<p>"+friend_employee_info.get_employee_department_name()+"</p>"+
-				    				             "<p>"+friend_employee_info.get_employee_position()+"</p>"
+				    		  mv.addObject("msg","<p >姓名：<span>"+friend_employee_info.get_employee_name()+"</span><span>（"+friend_employee_info.get_employee_phone()+"）</span></p>"+
+				    				             "<p>部门：<span>"+friend_employee_info.get_employee_department_name()+"</span></p>"+
+				    				             "<p>职位：<span>"+friend_employee_info.get_employee_position()+"</span></p>"
 				    				      );
+				    		  mv.addObject("phone", friend_employee_phone);
 				    	}
 				    	else
 				    	{
 				    	    mv.addObject("return_type", 1);
 				    		mv.addObject("msg","该用户不在您的直接上级或下级部门，请输入其它号码");
 				    		//
+				    		mv.addObject("phone", friend_employee_phone);
 				    	}
 				    	
 				    }
@@ -270,6 +272,7 @@ import com.data.relationship_info;
 				    {
 				    	mv.addObject("return_type", 2);
 				    	mv.addObject("msg", "用户不存在，请核对后重新输入");
+				    	mv.addObject("phone", friend_employee_phone);
 				    }    
 				    
 				    return mv;

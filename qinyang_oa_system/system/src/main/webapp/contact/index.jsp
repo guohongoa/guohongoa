@@ -330,7 +330,26 @@
             <form action="" method="post">
                 <div class="slpopone_content">
                     <p>请输入要添加的联系人手机号</p>
-                    <input id="tel" type="text" value="13800000000"/>
+                    <input id="tel" type="text" >
+                    <span class="magnifier"></span>
+                    <p>该用户不在您的直接上级或下级部门，请输入其它号码</p>
+                </div>
+                <div class="slpopone_btn">
+                    <input id="tel_sbm" type="button" value="下一步"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="sltjpop" id="pop3">
+    <div class="slpopone">
+        <h6>添加联系人 <a class="closebtn"></a></h6>
+        <div>
+            <form action="" method="post">
+                <div class="slpopone_content">
+                    <p>请输入要添加的联系人手机号</p>
+                    <input id="tel" type="text" />
                     <span class="magnifier"></span>
                     <p>您输入的号码有误，请重新输入</p>
                 </div>
@@ -342,16 +361,16 @@
     </div>
 </div>
 
-<div class="sltjpop" id="pop3">
+<div class="sltjpop" id="pop4">
     <div class="slpopone slpopthree">
         <h6>添加联系人 <a class="closebtn"></a></h6>
         <div>
             <form action="" method="post">
                 <div class="slpopone_content">
                     <p>请输入要添加的手机号</p>
-                    <input id="tel" type="text" value="13800000000"/>
+                    <input id="tel4" type="text" value="13800000000"/>
                     <span class="magnifier"></span>
-                    <div  style="width:285px;padding:10px 10px 15px 85px;height: 80px;border-top: 1px solid #c9c9c9;margin-left: -10px;margin-top: 7px ">
+                    <div  id="info" style="width:285px;padding:10px 10px 15px 85px;height: 80px;border-top: 1px solid #c9c9c9;margin-left: -10px;margin-top: 7px ">
                         <p>姓名：<span>王某</span><span>（13800000000）</span></p>
                         <p>部门：<span>某某部门</span></p>
                         <p>职务：<span>某某职务</span></p>
@@ -366,7 +385,7 @@
     </div>
 </div>
 
-<div class="sltjpop" id="pop4">
+<div class="sltjpop" id="pop5">
     <div class="slpopone sipopfour">
         <h6>添加联系人 <a class="closebtn"></a></h6>
         <div>
@@ -386,7 +405,7 @@
     </div>
 </div>
 
-<div class="sltjpop" id="pop5">
+<div class="sltjpop" id="pop6">
     <div class="slpopone sipopfive">
         <h6>添加联系人 <a class="closebtn"></a></h6>
         <div>
@@ -401,7 +420,7 @@
 
 
                 </div>
-                <div class="sltjs"  style="margin-top: 25px;width:268px ">
+                <div class="sltjs" id="info"  style="margin-top: 25px;width:268px ">
                     <p >姓名：<span>王某</span><span>（13800000000）</span></p>
                     <p>部门：<span>某某部门</span></p>
                     <p>职务：<span>某某职务</span></p>
@@ -433,11 +452,27 @@
        
          //用户的id，需做登录检测
          var owner_employee_id=$("#owner_employee_id").val();
-         console.log(employee_phone);
-         console.log(owner_employee_id);
          htmlobj=$.ajax({url:"/system/contact/contact_relationship_add_check.do?friend_employee_phone="+employee_phone+"&owner_employee_id="+owner_employee_id, 
-        	       success:function(){  
-        	       $("#msg").html(htmlobj.responseText);
+        	       success:function(data){  
+        	       $("div[id^='pop']").hide();
+        	       var return_type=$(data).filter('div.return_type')[0].innerHTML;
+                   if(return_type==1)
+                   {
+                	   $("#pop2").show();
+                	   $("#tel").val($(data).filter('div.phone')[0].innerHTML);
+                   }   //用户不属于上级或下级
+                   else if(return_type==2)
+                   {
+                	   $("#pop3").show();
+                	   $("#tel").val($(data).filter('div.phone')[0].innerHTML);
+                   }//用户不存在
+                   else{$("#pop4").show();
+                        var tmp=$(data).filter('div.phone')[0].innerHTML;
+                        $("#tel4").val($(data).filter('div.phone')[0].innerHTML);
+                        var str=$(data).filter('div.msg')[0].innerHTML;
+                        $("#info").html(str);
+                        }//显示用户信息
+                   
          }  });
   });
 });

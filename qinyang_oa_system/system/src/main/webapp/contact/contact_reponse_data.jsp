@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-     ${msg}
+     <div class="return_type">${return_type}</div>
+     <div class="msg">${msg}</div>
+     <div class="phone">${phone}</div>
 </body>
 </html>

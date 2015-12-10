@@ -198,8 +198,8 @@ public class management_request_controller
 			   
 			 boolean rs=com.dbconnector.management_db_connector.department_insert_db(_department_info);
 			 
-			 ModelAndView mv=new ModelAndView();
-			 mv.addObject("result",rs);
+			 ModelAndView mv=new ModelAndView("redirect:/management/department_check.do?department_page=1");
+			 //mv.addObject("result",rs);
 			 return mv;
 			
 			
@@ -275,7 +275,7 @@ public class management_request_controller
 			_department_info.set_department_code(department_code);
 			_department_info.set_department_regulation(department_regulation);
 			_department_info.set_department_leaderphone(department_leaderphone);
-			_department_info.set_department_leader(department_leaderphone);
+			_department_info.set_department_leader(department_leader);
 			_department_info.set_department_parent(department_parent);
 			_department_info.set_department_parentleader(department_parentleader);
 			
