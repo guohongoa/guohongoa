@@ -311,7 +311,10 @@ import com.data.relationship_info;
 					    		if(rs==true)
 					    		{
 					    			mv.addObject("return_type", 1);
-							    	mv.addObject("msg", "添加成功");
+					    			 mv.addObject("msg","<p >姓名：<span>"+friend_employee_info.get_employee_name()+"</span><span>（"+friend_employee_info.get_employee_phone()+"）</span></p>"+
+			    				             "<p>部门：<span>"+friend_employee_info.get_employee_department_name()+"</span></p>"+
+			    				             "<p>职位：<span>"+friend_employee_info.get_employee_position()+"</span></p>"
+			    				      );
 					    		}
 					    		else
 					    		{

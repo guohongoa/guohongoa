@@ -415,12 +415,12 @@
                         <span>成功添加对方为直属联系人</span>
                     </p>
                     <div class="slpopone_btn">
-                        <input  style="background-color: #cc0000;color: #fff;margin-right: -10px;padding: 0;margin-top: 20px;font-weight: normal;border-color: #9b0f0f" type="button" value="我知道了"/>
+                        <input  id="i_know" style="background-color: #cc0000;color: #fff;margin-right: -10px;padding: 0;margin-top: 20px;font-weight: normal;border-color: #9b0f0f" type="button" value="我知道了"/>
                     </div>
 
 
                 </div>
-                <div class="sltjs" id="info"  style="margin-top: 25px;width:268px ">
+                <div class="sltjs" id="info2"  style="margin-top: 25px;width:268px ">
                     <p >姓名：<span>王某</span><span>（13800000000）</span></p>
                     <p>部门：<span>某某部门</span></p>
                     <p>职务：<span>某某职务</span></p>
@@ -487,6 +487,8 @@
         	    if(return_type==1)
         	    {
         	    	 $("#pop6").show();
+        	    	 var str=$(data).filter('div.msg')[0].innerHTML;
+                     $("#info2").html(str);
         	    }
         	    else if(return_type==0)
         	    {
@@ -503,6 +505,12 @@
         	    
         });
          });
+         
+         $("#i_know").click(function()
+         {
+        	 $("div[id^='pop").hide();
+         });
+         
   });
 });
 </script>
