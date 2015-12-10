@@ -237,7 +237,7 @@ import com.data.relationship_info;
 						@RequestParam(value="friend_employee_phone")                String   friend_employee_phone   //添加方用户电话
 						)
 				{
-					ModelAndView mv=new ModelAndView("contact_reponse_data.jsp");
+					ModelAndView mv=new ModelAndView("contact_response_data.jsp");
 					//利用输入对方电话，查询用户是否存在，存在的话，相关信息是什么
 				    employee_info friend_employee_info=com.dbconnector.contact_db_connector.get_employee_info_by_phone(friend_employee_phone);
 				   
@@ -279,11 +279,12 @@ import com.data.relationship_info;
 				}
 				
 				@RequestMapping("contact/contact_relationship_add.do")
-				public void contact_relationship_add_request(
+				public ModelAndView contact_relationship_add_request(
 						@RequestParam(value="owner_employee_id")                    int    owner_employee_id,      //用户id
 						@RequestParam(value="friend_employee_phone")                String   friend_employee_phone   //添加方用户电话
 						)
 				{
+					ModelAndView mv=new ModelAndView("contact_response_data2.jsp");
 					 employee_info friend_employee_info=com.dbconnector.contact_db_connector.get_employee_info_by_phone(friend_employee_phone);
 					   
 					    if(friend_employee_info!=null)
@@ -294,6 +295,8 @@ import com.data.relationship_info;
 					    	
 					    	int relationship_type=com.dbconnector.contact_db_connector.get_contact_relationship_by_id(owner_employee_id, friend_employee_id);
 					    	
+					    	if(relationship_type==1)
+					    	{
 					    	//根据主客双方id查询部门id
 					    	int contact_owner_department_id=com.dbconnector.management_db_connector.get_employee_info_by_id(owner_employee_id).get_employee_department_id();
 					    	int contact_friend_department_id=com.dbconnector.management_db_connector.get_employee_info_by_id(friend_employee_id).get_employee_department_id();
@@ -305,7 +308,34 @@ import com.data.relationship_info;
 					    		_contact_relationship_info.set_contact_owner_department_id(contact_owner_department_id);
 					    		_contact_relationship_info.set_contact_friend_department_id(contact_friend_department_id);
 					    		boolean rs=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info);
+					    		if(rs==true)
+					    		{
+					    			mv.addObject("return_type", 1);
+							    	mv.addObject("msg", "添加成功");
+					    		}
+					    		else
+					    		{
+					    			mv.addObject("return_type", 0);
+							    	mv.addObject("msg", "添加错误");
+					    		}
+					    	}
+					    	else if(relationship_type==0)
+					    	{
+					    		mv.addObject("return_type", 2);//上级需确认后添加
+					    		mv.addObject("msg", "");
+					    	}
+					    	else
+					    	{
+					    		mv.addObject("return_type", 0);
+					    	    mv.addObject("msg","添加错误");
+					    	}
 					    }
+					    else
+					    {
+					    	mv.addObject("return_type", 0);
+					    	mv.addObject("msg", "添加错误");
+					    }
+					    return mv;
 			}
 					    	
 				

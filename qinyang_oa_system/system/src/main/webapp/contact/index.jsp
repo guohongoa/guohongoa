@@ -451,6 +451,7 @@
          var employee_phone=$("#tel").val();
        
          //用户的id，需做登录检测
+         //尝试添加
          var owner_employee_id=$("#owner_employee_id").val();
          htmlobj=$.ajax({url:"/system/contact/contact_relationship_add_check.do?friend_employee_phone="+employee_phone+"&owner_employee_id="+owner_employee_id, 
         	       success:function(data){  
@@ -474,6 +475,34 @@
                         }//显示用户信息
                    
          }  });
+         //实际添加
+         $("#tel_add").click(function(){
+        	 var employee_phone=$("#tel4").val();
+        	 var owner_employee_id=$("#owner_employee_id").val();
+        	 htmlobj=$.ajax({url:"/system/contact/contact_relationship_add.do?friend_employee_phone="+employee_phone+"&owner_employee_id="+owner_employee_id,
+        		 success:function(data)
+        		 {
+        			 $("div[id^='pop']").hide();
+        			 var return_type=$(data).filter('div.return_type')[0].innerHTML;
+        	    if(return_type==1)
+        	    {
+        	    	 $("#pop6").show();
+        	    }
+        	    else if(return_type==0)
+        	    {
+        	    	$("#pop3").show();
+        	    }
+        	    else
+        	    {
+        	    	$("#pop5").show();
+        	    }
+        	    
+        	    
+        		
+        		}
+        	    
+        });
+         });
   });
 });
 </script>
