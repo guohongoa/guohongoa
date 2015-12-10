@@ -392,13 +392,17 @@
             <form action="" method="post">
                 <div class="slpopone_content">
                     <p>您将添加以下联系人</p>
-                    <p>（13912345678）</p>
+                    <p id="info3">（13912345678）</p>
                     <p>验证人需要验证您的身份，请输入您的请求信息</p>
-                    <textarea></textarea>
+                    <textarea name="cotact_reuqest_sendmsg" form="confrim_request_form"></textarea>
                 </div>
                 <div class="slpopone_btn" >
-                    <input  style="margin-right: 10px;margin-top: 7px;font-weight: normal" type="button" value="取消"/>
-                    <input style="font-weight: normal" type="button" value="发送"/>
+                    <form action="confirm_request.do" method="post" id="confrim_request_form">
+                     <input id="contact_request_sender_id" name="contact_request_sender_id" type="hidden"/>
+                     <input id="contact_request_receiver_id" name="contact_request_receiver_id" type="hidden"/>
+                     <input style="margin-right: 10px;margin-top: 7px;font-weight: normal" type="button" value="取消"/>
+                     <input id="confirm_request_btn" style="font-weight: normal" type="submit" value="发送"/>
+                    </form>
                 </div>
             </form>
         </div>
@@ -497,9 +501,16 @@
         	    else
         	    {
         	    	$("#pop5").show();
+        	    	var phone=$(data).filter('div.phone')[0].innerHTML;
+        	    	var contact_request_sender_id  =  $(data).filter('div.contact_request_sender_id')[0].innerHTML;
+        	    	var contact_request_receiver_id=   $(data).filter('div.contact_request_receiver_id')[0].innerHTML;
+        	    	$('#contact_request_sender_id').html(contact_request_sender_id);
+        	    	$('#contact_request_receiver_id').html(contact_request_receiver_id);
+        	 
+        	    	$("#info3").html(phone); 
         	    }
         	    
-        	    
+        	       
         		
         		}
         	    
@@ -507,6 +518,12 @@
          });
          
          $("#i_know").click(function()
+         {
+        	 $("div[id^='pop").hide();
+        	 
+         });
+         
+         $("#confirm_request_btn").click(function()
          {
         	 $("div[id^='pop").hide();
          });

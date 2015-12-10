@@ -7,8 +7,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-     <div class="return_type">${return_type}</div>
-     <div class="msg">${msg}</div>
-     <div class="phone">${phone}</div>
+     <c:choose>
+       <c:when test="${return_type!=2}">
+        <div class="return_type">${return_type}</div>
+        <div class="msg">${msg}</div>
+        <div class="phone">${phone}</div>
+       </c:when>
+       <c:otherwise>
+           <div class="return_type">${return_type}</div>
+           <div class="msg">${msg}</div>
+           <div class="phone">${phone}</div>
+           <div class="contact_request_sender_id">$contact_request_sender_id}</div>
+           <div class="contact_request_receiver_id">${contact_request_receiver_id}</div>
+       </c:otherwise>
+     </c:choose>
 </body>
 </html>

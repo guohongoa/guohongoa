@@ -325,7 +325,9 @@ import com.data.relationship_info;
 					    	else if(relationship_type==0)
 					    	{
 					    		mv.addObject("return_type", 2);//上级需确认后添加
-					    		mv.addObject("msg", "");
+					    		mv.addObject("msg", friend_employee_info.get_employee_phone());
+					    		mv.addObject("contact_request_sender_id",owner_employee_id);
+					    		mv.addObject("contact_request_receiver_id", friend_employee_info.get_employee_id());
 					    	}
 					    	else
 					    	{
@@ -338,10 +340,24 @@ import com.data.relationship_info;
 					    	mv.addObject("return_type", 0);
 					    	mv.addObject("msg", "添加错误");
 					    }
+					    
 					    return mv;
-			}
+				}
+
 					    	
-				
+				@RequestMapping("contact/confirm_request.do")
+				public ModelAndView confirm_request(
+						@RequestParam(value="contact_request_sender_id")  int    contact_request_sender_id,
+						@RequestParam(value="contact_request_receiver_id")int    contact_request_receiver_id,
+						@RequestParam(value="cotact_reuqest_sendmsg")     String cotact_reuqest_sendmsg
+						)
+				{
+					ModelAndView mv=new ModelAndView("contact_person_check.do");
+					System.out.println(contact_request_sender_id);
+					System.out.println(contact_request_receiver_id);
+					System.out.println(cotact_reuqest_sendmsg);
+					return mv;
+				}
 				
 	}
 
