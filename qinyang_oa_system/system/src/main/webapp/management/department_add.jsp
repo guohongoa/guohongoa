@@ -78,7 +78,7 @@
                             <input class="input200" type="text" name="department_code"/></p>
 
                         <p><span>部门名称</span>
-                            <input class="input200" type="text"  name="department_name"/>
+                            <input  class="input200" type="text"  name="department_name"/>
                         </p>
                     </div>
                     <div class="shangchuan">
@@ -113,8 +113,9 @@
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script>
+
     $(".tianjiabtn").children("input[type='submit']").click(function(){
-        if(!$("input").val() && !$("textarea").val()){
+        if(!$("input").val() || !$("textarea").val()||!$('input[name="department_leaderphone"]')||!$('input[name="department_parentleader"]')||!$('input[name="department_parent"]')||!$('input[name="department_leader"]')||!$('input[name="department_name"]')||!$('input[name="department_leader"]')){
             $(".login-error").html("提交不成功：信息填写不完整");
             return false
         }else{
