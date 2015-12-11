@@ -30,9 +30,10 @@
             </ul>
             <div>
                 <ul class="hide">
-                    <li><a href="">你有<span>1</span>条工作提醒</a></li>
-                    <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>条   待审核记录</a></li>
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
                 </ul>
             </div>
         </div>
@@ -56,35 +57,37 @@
 <!--主体-->
 <div class="content">
     <!--左侧固定导航-->
-    <div class="left_menu tzlb" style="height: 200px">
+    <div class="left_menu tzlb" style="height: 180px">
         <h3><a href="">五服务</a></h3>
         <ul>
+        <li>
             <c:choose>
                 <c:when test="${user_group_type==1}">
-                  <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">法政法规服务</a>
+                  <a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">法政法规服务</a>
                 </c:when>
                  <c:when test="${user_group_type==2}">
-                  <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">经济发展服务</a>
+                  <a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">经济发展服务</a>
                 </c:when>
                  <c:when test="${user_group_type==3}">
-                  <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">和谐稳定服务</a>
+                  <a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">和谐稳定服务</a>
                 </c:when>
                 <c:when test="${user_group_type==4}">
-                  <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">环境卫生服务</a>
+                  <a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">环境卫生服务</a>
                 </c:when>
                 <c:when test="${user_group_type==4}">
-                  <li><a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">环境卫生服务</a>
+                  <a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">环境卫生服务</a>
                 </c:when>
             </c:choose>
-                <dl>
+            
+                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="service_send_display.do?employee_id=${user_id}">发起服务</a><i></i></dd>
                      <c:choose>
                        <c:when test="${flag==1}">
-                       <dd><a href="service_check_by_user.do?service_page=1&flag=1&service_sender_id=${user_id}" class="red">我的服务</a></dd>
+                       <dd><a style="border-bottom: 1px solid #c9c9c9;height: 35px" href="service_check_by_user.do?service_page=1&flag=1&service_sender_id=${user_id}" class="red">我的服务</a></dd>
                        </c:when>
                         <c:otherwise>
-                         <dd><a href="service_check_by_user.do?service_page=1&flag=1&service_sender_id=${user_id}" >我的服务</a></dd>
+                         <dd><a style="border-bottom: 1px solid #c9c9c9;height: 35px" href="service_check_by_user.do?service_page=1&flag=1&service_sender_id=${user_id}" >我的服务</a></dd>
                         </c:otherwise>
                     </c:choose>
                 </dl>
@@ -93,24 +96,27 @@
     </div>
     <!--右侧-->
     <div class="right_content">
+        <h4>
         <c:choose>
+        
             <c:when test="${user_group_type==1}">
-               <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>法政法规服务</span>
+               <a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>法政法规服务</span>
             </c:when>
             <c:when test="${user_group_type==2}">
-               <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>经济发展服务</span>
+               <a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>经济发展服务</span>
             </c:when>
             <c:when test="${user_group_type==3}">
-               <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>和谐稳定服务</span>
+               <a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>和谐稳定服务</span>
             </c:when>
             <c:when test="${user_group_type==4}">
-               <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>环境卫生服务</span>
+               <a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>环境卫生服务</span>
             </c:when>
             <c:otherwise>
-               <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>文体活动服务</span>
+               <a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>文体活动服务</span>
             </c:otherwise>
         </c:choose>
         </h4>
+        
         <div class="contentlist">
             <ul class="contentlisttt wfwlb_content ">
                 <li>汇报给</li>
@@ -123,22 +129,22 @@
                 <li>服务内容</li>
                 <li>发送时间</li>
             </ul>
-             <c:forEach var="service_info" items="${service_info_list}">
-             <ul class="wfwlb_content">
+            <c:forEach var="service_info" items="${service_info_list}">
+             <ul class="wfwlb_content clear">
                 <li>${service_info.get_service_receiver()}</li>
                 <li>${service_info.get_service_theme()}</li>
                 <li>${service_info.get_service_type()}</li>
                 <li>${service_info.get_service_sender()}</li>
                 <li>${service_info.get_service_sender()}</li>
                 <li class="overflow">${service_info.get_service_target()}</li>
-                <li style="line-height: 20px">${service_info.get_service_begintime()}-<br/>${service_info.get_service_endtime()}</li>
+                <li style="line-height: 15px;padding-top: 5px">${service_info.get_service_begintime()}-<br/>${service_info.get_service_endtime()}</li>
                 <li><a href="check_service_info_by_service_msgid2.do?service_msgid=${service_info.get_service_msgid()}&service_page=${service_page}&flag=${flag}">查看</a></li>
                 <li>${service_info.get_service_addtime()}</li>
-              </ul>
+            </ul>
             </c:forEach>
         </div>
     </div>
-   <c:choose>
+    <c:choose>
       <c:when test="${service_page==1}">
       <div class="page">
         <a href="service_check_by_user.do?service_page=1&flag=${flag}&service_sender_id=${user_id}">上一页</a>

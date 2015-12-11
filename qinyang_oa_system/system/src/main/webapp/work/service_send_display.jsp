@@ -46,9 +46,10 @@
             </ul>
             <div>
                 <ul class="hide">
-                    <li><a href="">你有<span>1</span>条工作提醒</a></li>
-                    <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>条待审核记录</a></li>
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
                 </ul>
             </div>
         </div>
@@ -72,14 +73,14 @@
 <!--主体-->
 <div class="content">
     <!--左侧固定导航-->
-    <div class="left_menu tzlb" style="height: 175px">
+    <div class="left_menu tzlb">
         <h3><a href="">五服务</a></h3>
         <ul>
             <li><a href="" class="active">${service_type_name}</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="" class="red">发起服务</a><i></i></dd>
-                    <dd><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1" >我的服务</a></dd>
+                    <dd><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1" style="border-bottom: 1px solid #c9c9c9;height: 35px">我的服务</a></dd>
                 </dl>
             </li>
         </ul>
@@ -90,21 +91,21 @@
         <div class="tztj">
             <form id="post_tz" action="send_service.do" method="post">
                 <p><span>汇报给</span><input class="input600" type="text" name="service_receiver" value="${leader}"/></p>
-                 <!--接受人对应id--><input type="hidden" name="service_receiver_id" value="123" />
+                <!--接受人对应id--><input type="hidden" name="service_receiver_id" value="123" />
                 <p><span>服务主题</span><input type="text" name="service_theme"/></p>
-                <p><span>服务类型</span><input type="text" value="${service_type_name}" disabled="disabled"/></p>
+                <p><span>服务类型</span><input class="grey9" type="text" value="和谐稳定服务" value="${service_type_name}" readonly="readonly"/></p>
                 <!--发送法政法规服务对应id--><input type="hidden" name="service_type" value="${service_type}" />
-                <p><span>责任人</span><input type="text" name="service_sender" value="${user_name}" readonly="readonly"/></p>
+                <p><span>责任人</span><input class="grey9" type="text" name="service_sender" value="${user_name}" readonly="readonly"/></p>
                 <!--发送人对应id--><input type="hidden" name="service_sender_id" value="${user_id}" />
-                <p><span>联系电话</span><input type="text" value="12345678" name="service_sender_phone"/></p>
+                <p><span>联系电话</span><input class="grey9" type="text" value="12345678" name="service_sender_phone" readonly="readonly"/></p>
                 <p><span>服务目标</span><input type="text" name="service_target"/></p>
-                <p><span>服务周期</span><input class="input100 timedata" type="text" name="service_begintime"/>-<input class="input100 timedata" type="text" name="service_endtime"/></p>
-                <p><span>服务内容</span><textarea name="service_content"></textarea></p>
+                <p><span>服务周期</span><input class="input100 timedata" type="text" name="service_begintime"/>&nbsp; —— &nbsp;<input class="input100 timedata" type="text" name="service_endtime"/></p>
+                <p><span>服务内容</span><textarea name="service_content" form="post_tz"></textarea></p>
                 <!--发送的隐藏信息-->
                  <!--五服务审批状态--><input type="hidden" name="service_status" value="0"> <!--初始状态均为未审批，值为0-->
                  <!--所属村庄id-->   <input type="hidden" name="service_village_id" value="1">
                  <!--所属村庄名称-->  <input type="hidden" name="service_village_name" value="致富村">
-                <p class="tztj_btn"><b class="login-error"></b><button>提交</button></p>
+                <p class="tztj_btn"><b class="login-error"></b>&nbsp;<button style="margin-right: -30px">提交</button></p>
             </form>
         </div>
     </div>
@@ -112,16 +113,16 @@
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/My97DatePicker/WdatePicker.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
-    <script>
-        //提交不为空的验证
-        $(".tztj_btn button").click(function(){
-            if(!$("input").val() || !$("textarea").val()){
-                $(".login-error").html("提交不成功：信息填写不完整");
-                return false
-            }else{
-                $("#post_tz").submit();
-            }
-        });
-    </script>
+<script>
+    //提交不为空的验证
+    $(".tztj_btn button").click(function(){
+        if(!$("input").val() || !$("textarea").val()){
+            $(".login-error").html("提交不成功：信息填写不完整");
+            return false
+        }else{
+            $("#post_tz").submit();
+        }
+    });
+</script>
 </body>
 </html>

@@ -8,5 +8,5 @@
 </head>
 <body>
    
-	<p style="text-align:center;line-height:500px; font-size:20px;">页面建设中，请稍后再试……</p>
+	<p style="text-align:center;line-height:500px; font-size:20px;">页面建设中，敬请期待……</p>
 </body>

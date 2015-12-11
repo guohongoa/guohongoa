@@ -57,7 +57,7 @@ public class record_request_controller
 			
 			//返回插入结果
 			
-			 ModelAndView mv=new ModelAndView("record_check_by_user.do?record_page=1&work_record_creatorid="+work_record_creatorid+"&flag=0");
+			 ModelAndView mv=new ModelAndView("redirect:record_check_by_user.do?record_page=1&work_record_creatorid="+work_record_creatorid+"&flag=0");
 			   
 			 return mv;
 			   

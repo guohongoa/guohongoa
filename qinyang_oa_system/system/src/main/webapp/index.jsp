@@ -74,7 +74,7 @@
                 <h4><a href="contact/contact_person_check.do" >四联</a></h4>
             </div>
             <div class="mokuai">
-                <a class="mokuaitu">
+                <a class="mokuaitu" href="service/service_village_check.do">
                     <img src="http://101.200.196.121:8080/oa/css/images/wfw_05.jpg" alt=""/>
                     <i style="display: none"></i>
                     <span style="display: none">· 法政法规服务<br/>
@@ -87,7 +87,7 @@
                 <h4><a href="service/service_village_check.do" >五服务</a></h4>
             </div>
             <div class="mokuai marginr">
-                <a class="mokuaitu">
+                <a class="mokuaitu"  href="work/">
                     <img src="http://101.200.196.121:8080/oa/css/images/gz_07.jpg" alt=""/>
                     <i style="display: none"></i>
                     <span style="display: none">· 工作任务<br/>
@@ -101,43 +101,43 @@
         <!--第二行-->
         <div class="section_content_row">
             <div class="mokuai mokuail">
-                <a class="mokuaitu">
+                <a class="mokuaitu" href="error.jsp">
                     <img src="http://101.200.196.121:8080/oa/css/images/dyxx_12.jpg" alt=""/>
                 </a>
-                <h4><a href="" >党员信息</a></h4>
+                <h4><a href="error.jsp" >党员信息</a></h4>
             </div>
             <div class="mokuai">
-                <a class="mokuaitu">
+                <a class="mokuaitu" href="error.jsp">
                     <img src="http://101.200.196.121:8080/oa/css/images/zcfg_14.jpg" alt=""/>
                 </a>
-                <h4><a href="" >政策法规</a></h4>
+                <h4><a href="error.jsp" >政策法规</a></h4>
             </div>
             <div class="mokuai marginr">
-                <a class="mokuaitu">
+                <a class="mokuaitu" href="error.jsp">
                     <img src="http://101.200.196.121:8080/oa/css/images/zxzx_03.jpg" alt=""/>
                 </a>
-                <h4><a href="" >最新资讯</a></h4>
+                <h4><a href="error.jsp" >最新资讯</a></h4>
             </div>
         </div>
         <!--第三行-->
         <div class="section_content_row">
             <div class="mokuai mokuail">
-                <a class="mokuaitu">
+                <a class="mokuaitu" href="error.jsp">
                     <img src="http://101.200.196.121:8080/oa/css/images/jyms_07.jpg" alt=""/>
                 </a>
-                <h4><a href="" >嘉言民生</a></h4>
+                <h4><a href="error.jsp">嘉言民生</a></h4>
             </div>
             <div class="mokuai">
-                <a class="mokuaitu">
+                <a class="mokuaitu" href="error.jsp">
                     <img src="http://101.200.196.121:8080/oa/css/images/xzbg_09.jpg" alt=""/>
                 </a>
-                <h4><a href="" >行政办公</a></h4>
+                <h4><a href="error.jsp" >行政办公</a></h4>
             </div>
             <div class="mokuai">
-                <a class="mokuaitu">
+                <a class="mokuaitu" href="error.jsp">
                     <img src="http://101.200.196.121:8080/oa/css/images/hsjy_11.jpg" alt=""/>
                 </a>
-                <h4><a href="" >红色家园</a></h4>
+                <h4><a href="error.jsp">红色家园</a></h4>
             </div>
         </div>
     </div>
