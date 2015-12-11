@@ -71,7 +71,7 @@
         <div class="silione">
             <span><a class="mess_btn" id="add_friend" href="javascript:void(0);"></a><a href=""></a></span>  <!--添加联系人  -->
             <div class="swcw sili_content1">
-                <h4> 党员群众服务中心<br>嘉言民生代办员</h4>
+                <h4 style="line-height: 20px;padding: 5px 0"> 党员群众服务中心<br>嘉言民生代办员</h4>
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list1}">
@@ -264,7 +264,7 @@
                 </div>
             </div>
             <div class="swcw sili_content10">
-                <h4>乡镇办内设机<br>构和基层站所</h4>
+                <h4 style="line-height: 20px;padding: 5px 0">乡镇办内设机<br>构和基层站所</h4>
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list10}">

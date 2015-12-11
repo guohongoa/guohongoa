@@ -25,9 +25,10 @@
             </ul>
             <div>
                 <ul class="hide">
-                    <li><a href="">你有<span>1</span>条工作提醒</a></li>
-                    <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>条待审核记录</a></li>
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
                 </ul>
             </div>
         </div>
@@ -51,34 +52,35 @@
 <!--主体-->
 <div class="content">
     <!--左侧固定导航-->
-    <div class="left_menu tzlb">
-        <h3><a href="">台帐</a></h3>
+    <div class="left_menu tzlb" style="height: 215px">
+        <h3><a href="">台账</a></h3>
         <ul>
-            <li><a href="myrecord_request.jsp?record_page=1&flag=0" class="active">全部台帐</a>
+            <li><a href="myrecord_request.jsp?record_page=1&flag=0" class="active">全部台账</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="#" class="red">添加台帐</a><i></i></dd>
-                    <dd><a href="myrecord_request.jsp?record_page=1&flag=1">我的台帐</a></dd>
+                    <dd class="activea"><a href="#" class="red">添加台账</a><i></i></dd>
+                    <dd><a href="../error.jsp"  >修改台账</a></dd>
+                    <dd><a href="myrecord_request.jsp?record_page=1&flag=1" style="border-bottom: 1px solid #c9c9c9;height: 35px">我的台账</a></dd>
                 </dl>
             </li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">台帐</a>&gt;<span>添加台帐</span></h4>
+        <h4><a href="">工作</a>&gt;<a href="">台账</a>&gt;<span>添加台账</span></h4>
         <!--需要提交给后台的数据-->
         <div class="tztj">
             <form id="post_tz" action="record_add.do" method="post">
-                <p><span>建账人</span><input class="input600" type="text" name="work_record_creator" value="${user_name}" readonly="readonly"/></p>
-                <!--自动提交建帐人用户id--><input type="hidden" name="work_record_creatorid" value="${user_id}"/>
-                <p><span>职务</span><input type="text" name="work_record_position" value="我的职务" readonly="readonly"/></p>
-                <p><span>所属部门</span><input type="text" name="work_record_department" value="我所属的部门" readonly="readonly"/></p>
-                <p><span>直接上级</span><input type="text" name="work_record_leader" value="我的上级" readonly="readonly"/></p>
-                <p><span style="line-height:15px">党员联系<br>人姓名</span><input type="text" name="work_record_communist"/></p>
-                <p><span>建账日期</span><input type="text" class="timedata" name="work_record_date"/></p>
-                <p><span >工作计划</span><textarea name="work_record_plan"></textarea></p>
-                <p><span>落实情况</span><textarea name="work_record_effect"></textarea></p>
-                <p class="tztj_btn"><b class="login-error"></b><button>提交</button></p>
+                <p><span>建账人</span><input class="input600 grey9" type="text" name="work_record_creator" value="${user_name}" readonly="readonly"/></p>
+                 <!--自动提交建帐人用户id--><input type="hidden" name="work_record_creatorid" value="${user_id}"/>
+                <p><span>职务</span><input class="grey9" type="text" name="work_record_position" value="我的职务" readonly="readonly"/></p>
+                <p><span>所属部门</span><input class="grey9" type="text" name="work_record_department" value="我所属的部门" readonly="readonly"/></p>
+                <p><span>直接上级</span><input class="grey9" type="text" name="work_record_leader" value="我的上级" readonly="readonly"/></p>
+                <p ><span style="line-height:15px;vertical-align: middle">党员联系<br>人姓名</span><input style="margin-bottom: 8px" type="text" name="work_record_communist"/></p>
+                <p ><span>建账日期</span><input type="text" class="timedata" name="work_record_date"/></p>
+                <p style="margin: 25px 0"><span >工作计划</span><textarea name="work_record_plan"></textarea></p>
+                <p ><span>落实情况</span><textarea name="work_record_effect"></textarea></p>
+                <p class="tztj_btn"><b class="login-error"></b>&nbsp;<button style="margin-right: -30px">提交</button></p>
             </form>
         </div>
     </div>

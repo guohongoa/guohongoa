@@ -30,9 +30,10 @@
             </ul>
             <div>
                 <ul class="hide">
-                    <li><a href="">你有<span>1</span>条工作提醒</a></li>
-                    <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>条待审核记录</a></li>
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
                 </ul>
             </div>
         </div>
@@ -56,39 +57,22 @@
 <!--主体-->
 <div class="content">
     <!--左侧固定导航-->
-    <div class="left_menu tzlb">
-        <h3><a href="">台帐</a></h3>
+    <div class="left_menu tzlb" style="height: 215px">
+        <h3><a href="">台账</a></h3>
         <ul>
-            <li><a href="myrecord_request.jsp?record_page=1&flag=0" class="active">全部台帐</a>
+            <li><a href="myrecord_request.jsp?record_page=1&flag=0" class="active">全部台账</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="record_add.jsp">添加台帐</a><i></i></dd>
-                    <c:choose>
-                    <c:when test="${flag==1}">
-                       <dd><a href="myrecord_request.jsp?record_page=1&flag=1" class="red">我的台帐</a></dd>
-                    </c:when>
-                    <c:otherwise>
-                        <dd><a href="myrecord_request.jsp?record_page=1&flag=1">我的台帐</a></dd>
-                    </c:otherwise>
-                    </c:choose>
+                    <dd class="activea"><a href="record_add.jsp">添加台账</a><i></i></dd>
+                    <dd><a href="../error.jsp"  >修改台账</a></dd>
+                    <dd><a href="myrecord_request.jsp?record_page=1&flag=1" class="red" style="border-bottom: 1px solid #c9c9c9;height: 35px">我的台账</a></dd>
                 </dl>
             </li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">台帐</a>&gt;<span>全部台帐</span>
-            <span class="sort">按
-                <select>
-                    <option>请选择</option>
-                    <option>时间</option>
-                    <option>职务</option>
-                    <option>所属部门</option>
-                    <option>建账人</option>
-                    <option>直接上级</option>
-                </select>
-                排序
-            </span>
+        <h4><a href="">工作</a>&gt;<a href="">台账</a>&gt;<span>我的台账</span>
         </h4>
         <div class="contentlist">
             <ul class="contentlisttt tzlb_content">
@@ -96,12 +80,12 @@
                 <li>职务</li>
                 <li>所属部门</li>
                 <li>直接上级</li>
-                <li style="line-height: 20px">党员<br>联系人姓名</li>
+                <li style="line-height: 15px;padding-top: 5px">党员<br>联系人姓名</li>
                 <li>建账日期</li>
                 <li>内容</li>
                 <li>操作</li>
             </ul>
-            <!-- 循环台账列表信息 -->
+           <!-- 循环台账列表信息 -->
             <c:forEach var="work_record_info" items="${work_record_info_list}">
             <ul class="tzlb_content">
                 <li>${work_record_info.get_work_record_creator()}</li>
@@ -111,12 +95,17 @@
                 <li>${work_record_info.get_work_record_communist()}</li>
                 <li>${work_record_info.get_work_record_date()}</li>
                 <li>内容</li>
-                <li><a href="check_record_info_by_work_record_id.do?work_record_id=${work_record_info.get_work_record_id()}&record_page=${record_page}&flag=${flag}">查看详细</a></li>
+                <li>
+                   <a href="check_record_info_by_work_record_id.do?work_record_id=${work_record_info.get_work_record_id()}&record_page=${record_page}&flag=${flag}">查看</a>
+                   <a href="../error.jsp">修改</a>
+                   <a href="../error.jsp">删除</a>
+                </li>
             </ul>
             </c:forEach>
         </div>
     </div>
-   <c:choose>
+    
+    <c:choose>
       <c:when test="${record_page==1}">
       <div class="page">
         <a href="record_check_by_user.do?record_page=1&flag=${flag}&work_record_creatorid=${user_id}">上一页</a>
@@ -189,6 +178,21 @@
     $(".tzxlms").mouseleave(function(){
         $(this).css({overflow:"hidden"}).find("div").hide();
     })
+   /*
+    function func(){
+        var vs = document.getElementById("select");
+        var grade = vs.options[vs.selectedIndex].value;
+        switch(grade){
+            case "1":window.location.href='http://www.taobao.com/';
+                break;
+            case "2":window.location.href='http://www.jd.com/';
+                break;
+            case "3":window.location.href='http://www.baidu.com/';
+        }
+
+    }
+    */
+
 </script>
 </body>
 </html>

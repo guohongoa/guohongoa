@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<!--header为导航容器-->
 <div class="header">
     <!--头部header区域内容部分-->
     <div class="header_content">
@@ -27,9 +28,10 @@
             </ul>
             <div>
                 <ul class="hide">
-                    <li><a href="">你有<span>1</span>条工作提醒</a></li>
-                    <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>条待审核记录</a></li>
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
                 </ul>
             </div>
         </div>
@@ -50,14 +52,14 @@
         <li><a href="">红色家园</a></li>
     </ul>
 </div>
-
 <!--主体-->
 <div class="content">
     <!--所有乡镇-->
     <div class="fuwu">
-        <!--每个乡镇为一个模块-->
+    
+     <!--每个乡镇为一个模块-->
         <c:forEach var="service_village_info_list" items="${village_list}">
-        <div class="fwk">
+        <div class="fwk" style="width:215px">
             <h4><a href="">${service_village_info_list.get(0).get_service_village_county_name()}</a></h4>
             <ul>
                 <c:forEach var="service_village_info" items="${service_village_info_list}">
@@ -70,7 +72,8 @@
         </div>
         </c:forEach>
         
-        <div class="pop">
+        
+       <div class="pop">
             <div class="pop_content">
                 <h4>乡镇一</h4>
                 <ul>

@@ -22,14 +22,15 @@
         <div class="menu">
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
-                <li><a href="#"><i class="icon"></i>设置</a></li>
+                <li><a href=""><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
             <div>
                 <ul class="hide">
-                    <li><a href="">你有<span>1</span>条工作提醒</a></li>
-                    <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>待待审核记录</a></li>
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
                 </ul>
             </div>
         </div>
@@ -38,7 +39,7 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="" class="bordernone">首页</a></li>
         <li><a href="../contact/contact_person_check.do">四联</a></li>
         <li><a href="../service/service_village_check.do">五服务</a></li>
         <li><a href="../work/">工作</a></li>
@@ -67,7 +68,7 @@
             <h6>个人资料</h6>
             <div class="setting_content">
                 <p><span class="spacing">姓名</span>：<b>${employee_info.get_employee_name()}</b></p>
-                <c:choose>
+               <c:choose>
                    <c:when test="${employee_info.get_employee_gender()==0}">
                       <p><span class="spacing">性别</span>：<b>男</b></p>
                    </c:when>
@@ -81,14 +82,15 @@
                 <p><span>入职日期</span>：<b>${employee_info.get_employee_addworktime()}</b></p>
                 <p><span>所属部门</span>：<b>${employee_department}</b></p>
                 <p><span>直接上级</span>：<b>${employee_leader}</b></p>
-                <p><span class="spacing">手机</span>：<b>${employee_info.get_employee_phone()}</b></p>
+                <p><span class="spacing">手机</span>：<b>${employee_info.get_employee_phone()} </b></p>
             </div>
         </div>
-        <div class="tztj_btn"><input type="button" value="提交"/> <input type="reset" value="重置"/></div>
+      
     </div>
 </div>
     <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
     <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+
 
 </body>
 </html>
