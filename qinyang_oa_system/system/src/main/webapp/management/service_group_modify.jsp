@@ -74,24 +74,64 @@
     <div class="right_content">
         <h4><a href="service_group_modify_commit.do">管理</a>&gt;<a href="">五服务小组管理</a>&gt;<span>修改</span></h4>
         <div class="tztj bmtjxg">
-            <form  action="service_group_modify_commit.do" method="post">
+            <form  action="service_group_modify_commit.do" method="post" id="service_group_modify">
                 <input type="hidden" name="service_group_id" value="${service_group_info.get_service_group_id()}">
                 <input type="hidden" name="service_group_page" value="${service_group_page}">
                 <p><span>镇(县)名</span><input name="service_village_county_name" class="input600" type="text" value="${service_group_info.get_service_village_county_name()}"/></p>
                 <p><span>村名</span><input type="text" name="service_village_name" value="${service_group_info.get_service_village_name()}"/></p>
                 <p><span>服务类型</span>
-                    <select name="service_type" style="height: 27px">
-                        <option>法政法规服务</option>
-                        <option>经济发展服务</option>
-                        <option>和谐稳定服务</option>
-                        <option>环境卫生服务</option>
-                        <option>文体活动服务</option>
-                    </select>
+                    <c:choose>
+                      <c:when test="${service_group_info.get_service_type()==0}">
+                       <select name="service_type" style="height: 27px" form="service_group_modify">
+                           <option value="0" selected="selected">法政法规服务</option>
+                           <option value="1">经济发展服务</option>
+                           <option value="2">和谐稳定服务</option>
+                           <option value="3">环境卫生服务</option>
+                           <option value="4">文体活动服务</option>
+                        </select>
+                       </c:when>
+                       <c:when test="${service_group_info.get_service_type()==1}">
+                       <select name="service_type" style="height: 27px" form="service_group_modify">
+                           <option value="0">法政法规服务</option>
+                           <option value="1" selected="selected">经济发展服务</option>
+                           <option value="2">和谐稳定服务</option>
+                           <option value="3">环境卫生服务</option>
+                           <option value="4">文体活动服务</option>
+                        </select>
+                       </c:when>
+                       <c:when test="${service_group_info.get_service_type()==2}">
+                       <select name="service_type" style="height: 27px" form="service_group_modify">
+                           <option value="0">法政法规服务</option>
+                           <option value="1" >经济发展服务</option>
+                           <option value="2" selected="selected" >和谐稳定服务</option>
+                           <option value="3">环境卫生服务</option>
+                           <option value="4">文体活动服务</option>
+                        </select>
+                       </c:when>
+                       <c:when test="${service_group_info.get_service_type()==3}">
+                       <select name="service_type" style="height: 27px" form="service_group_modify">
+                           <option value="0">法政法规服务</option>
+                           <option value="1">经济发展服务</option>
+                           <option value="2">和谐稳定服务</option>
+                           <option value="3" selected="selected">环境卫生服务</option>
+                           <option value="4">文体活动服务</option>
+                        </select>
+                       </c:when>
+                        <c:when test="${service_group_info.get_service_type()==4}">
+                       <select name="service_type" style="height: 27px" form="service_group_modify">
+                           <option value="0">法政法规服务</option>
+                           <option value="1">经济发展服务</option>
+                           <option value="2">和谐稳定服务</option>
+                           <option value="3">环境卫生服务</option>
+                           <option value="4" selected="selected">文体活动服务</option>
+                        </select>
+                       </c:when>
+                    </c:choose>
                 </p>
                 <p><span>责任人</span><input type="text" name="service_group_leader" value="${service_group_info.get_service_group_leader()}"/></p>
                 <p><span>联系电话</span><input type="text"  name="service_group_phone" value="${service_group_info.get_service_group_phone()}"/></p>
-                <p style="margin-bottom: 10px"><span>小组职责</span><textarea name="service_group_duty"> ${service_group_info.get_service_group_duty()}</textarea></p>
-                <p><span>小组成员</span><textarea  name="service_group_member">${service_group_info.get_service_group_member()}</textarea></p>
+                <p style="margin-bottom: 10px"><span>小组职责</span><textarea name="service_group_duty" form="service_group_modify"> ${service_group_info.get_service_group_duty()}</textarea></p>
+                <p><span>小组成员</span><textarea  name="service_group_member" form="service_group_modify">${service_group_info.get_service_group_member()}</textarea></p>
                 <p class="tztj_btn"><b class="login-error"></b><button style="margin: 0 -30px 0 0">确定修改</button></p>
             </form>
         </div>

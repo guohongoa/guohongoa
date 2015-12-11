@@ -100,7 +100,26 @@
             <ul>
                 <li>${service_group_info.get_service_village_county_name()}</li>
                 <li>${service_group_info.get_service_village_name()}</li>
-                <li>${service_group_info.get_service_type()}</li>
+                <c:choose>
+                      <c:when test="${service_group_info.get_service_type()==0}">
+                           <li>法政法规服务</li>
+                       </c:when>
+                       <c:when test="${service_group_info.get_service_type()==1}">
+                           <li>经济发展服务</li>
+                       </c:when>
+                       <c:when test="${service_group_info.get_service_type()==2}">
+                           <li>和谐稳定服务</li>
+                       </c:when>
+                       <c:when test="${service_group_info.get_service_type()==3}">
+                           <li>环境卫生服务</li>
+                       </c:when>
+                        <c:when test="${service_group_info.get_service_type()==4}">
+                           <li>文体活动服务</li>
+                       </c:when>
+                    </c:choose>
+                
+                
+                
                 <li>${service_group_info.get_service_group_leader()}</li>
                 <li class="width_lg">${service_group_info.get_service_group_member()}</li>
                 <li>
