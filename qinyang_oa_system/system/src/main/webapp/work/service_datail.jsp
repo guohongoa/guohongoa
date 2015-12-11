@@ -55,7 +55,7 @@
 <!--主体-->
 <div class="fuwu_content">
     <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>法政法规服务</span></h4>
-    <div class="wfwxq">
+    <div class="wfwxq" style="padding-bottom:15px;">
         <h5>主题：<span>服务主题</span><b class="red">（已通过）</b></h5>
         <p>服务类型：<span>${service_info.get_service_type()}</span></p>
         <p>服务目标：<span class="dark_grey">${service_info.get_service_target()}</span></p>
@@ -65,11 +65,11 @@
         <p>发送时间：<span>2015.10.25</span></p>
         <p>服务周期：<span class="dark_grey">2015.10.10</span>-<span class="dark_grey">2016.1.25</span></p>
     </div>
-    <p>
+    <p style="padding:10px 20px;">
         服务小组的活动内容
     </p>
     <div class="back">
-        <a href="">发布</a> &nbsp; <a href="service_check_by_user.do?service_page=${service_page}&service_sender_id=${user_id}&flag=${flag}">返回</a>
+        <a href="">发布</a> &nbsp; <a style="margin-right:-15px;" href="service_check_by_user.do?service_page=${service_page}&service_sender_id=${user_id}&flag=${flag}">返回</a>
     </div>
 </div>
 <div class="footer"></div>
