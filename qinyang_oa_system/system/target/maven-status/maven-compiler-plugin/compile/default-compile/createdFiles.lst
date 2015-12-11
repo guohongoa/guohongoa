@@ -33,6 +33,7 @@ com/viewcontroller/systeminfo_request_controller.class
 com/dao/service_info_dao.class
 com/dao/service_village_county_info_dao.class
 com/data/contact_node.class
+com/dao/contact_add_request_info_dao.class
 com/dao/service_village_info_dao.class
 com/viewcontroller/FileUploadController.class
 com/data/contact_relationship_info.class
@@ -48,6 +49,7 @@ com/data/department_info.class
 com/viewcontroller/setting_request_controller.class
 com/data/relationship_info.class
 com/dao/contact_person_department_info_dao.class
+com/data/contact_add_request_info.class
 com/dao/user_info_dao.class
 com/dbconnector/task_db_connector.class
 com/dao/employee_info_dao.class

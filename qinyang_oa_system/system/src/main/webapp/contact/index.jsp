@@ -436,7 +436,7 @@
     </div>
 </div>
 
-<!--<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>-->
+<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
 <script>
     $("#tel").keyup(function(e){
