@@ -76,7 +76,7 @@
         <h5><span>员工姓名</span><input type="text"/>
             <span class="marginl">员工电话</span><input type="text"/>
             <a href="../error.jsp">查找</a>
-            <a href="../error.jsp">添加员工</a>
+            <a href="employee_add_check.do">添加员工</a>
         </h5>
         <div class="contentlist">
             <ul class="contentlisttt ">

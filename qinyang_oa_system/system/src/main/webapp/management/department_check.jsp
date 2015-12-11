@@ -82,7 +82,7 @@
         <h5><span>部门编号</span><input type="text"/>
             <span class="marginl">部门名称</span><input type="text"/>
             <a href="../error.jsp">查找</a>
-            <a href="../error.jsp">添加部门</a>
+            <a href="department_add.jsp">添加部门</a>
         </h5>
         <div class="contentlist">
             <ul class="contentlisttt tzlb_content">

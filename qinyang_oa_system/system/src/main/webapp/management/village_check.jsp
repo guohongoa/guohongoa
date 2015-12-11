@@ -78,7 +78,7 @@
         <h5><span>镇(县)名</span><input type="text"/>
             <span class="marginl">村名</span><input type="text"/>
             <a href="../error.jsp">查找</a>
-            <a href="../error.jsp">添加村镇</a>
+            <a href="village_add.jsp">添加村镇</a>
         </h5>
         <div class="contentlist">
             <ul class="contentlisttt czlb">

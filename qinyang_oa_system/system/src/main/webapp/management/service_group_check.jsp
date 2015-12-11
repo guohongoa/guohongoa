@@ -85,7 +85,7 @@
                 </select>
             <span class="marginl">姓名</span><input type="text"/>
             <a href="../error.jsp" class="marginl">查找</a>
-            <a href="../error.jsp" class="marginl">添加成员</a>
+            <a href="service_group_add.jsp" class="marginl">添加成员</a>
         </h6>
         <div class="contentlist">
             <ul class="contentlisttt ">
