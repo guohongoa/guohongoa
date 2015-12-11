@@ -59,7 +59,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="" class="red">添加村镇</a><i></i></dd>
-                    <dd><a href="" >修改</a></dd>
+                    <dd><a href="../error.jsp" >修改</a></dd>
                 </dl>
             </li>
             <li><a href="department_check.do?department_page=1" >部门管理</a></li>

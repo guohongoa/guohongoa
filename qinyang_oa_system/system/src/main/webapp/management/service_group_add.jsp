@@ -63,7 +63,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="service_group_add.jsp" class="red">添加小组成员</a><i></i></dd>
-                    <dd ><a href="" style="border-bottom: 1px solid #c9c9c9;height: 35px">修改</a></dd>
+                    <dd ><a href="../error.jsp" style="border-bottom: 1px solid #c9c9c9;height: 35px">修改</a></dd>
                 </dl>
             </li>
         </ul>
