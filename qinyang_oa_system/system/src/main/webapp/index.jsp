@@ -44,10 +44,11 @@
                   </ul>
                <div>
                    <ul class="hide">
-                    <li><a href="">你有<span>1</span>条工作提醒</a></li>
-                    <li><a href="">你有<span>2</span>条服务提醒</a></li>
-                    <li class="bordernone"><a href="">你有<span>3</span>条待审核记录</a></li>
-                   </ul>
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
+                </ul>
                </div>
             </div>
         </c:otherwise>

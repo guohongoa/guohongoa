@@ -72,7 +72,7 @@
     <div class="right_content">
         <h4><a href="">管理</a>&gt;<a href="">五服务小组管理</a>&gt;<span>添加小组成员</span></h4>
         <div class="tztj">
-            <form  action="service_group_add.do" method="post">
+            <form  action="service_group_add.do" method="post" id="service_add">
                 <div class="checkradio"><input class="shoudong" type="radio" name="cun">&nbsp;手动添加五服务小组</div>
                 <div class="shuru">
                     <p><span>镇(县)名</span>
@@ -115,7 +115,7 @@
                         <span>附件的格式请与<br>表单的格式一致</span>
                     </li>
                 </ul>
-                <p class="tztj_btn"><b class="login-error"></b><button style="margin: 0 -30px 0 0 ">确定添加</button></p>
+                <p class="tztj_btn"><b style="margin-right:10px;" class="login-error"></b><button style="margin: 0 -30px 0 0 ">确定添加</button></p>
             </form>
         </div>
     </div>
@@ -137,6 +137,16 @@
         $(".shuru").css({color:"#999"}).children().children().attr("disabled","disabled");
         $(".batch").css({color:"#333"}).children().children().find("input").removeAttr("disabled");
     })
+    
+     $(".tztj_btn").children("button").click(function(){
+        if(!$("input").val() || !$("textarea").val()){
+            $(".login-error").html("提交不成功：信息填写不完整");
+            return false
+        }else{
+            $("#service_add").submit();
+        }
+    });
+
 </script>
 </body>
 </html>

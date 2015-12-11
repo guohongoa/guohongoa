@@ -143,7 +143,7 @@
                 <br/>
                 <br/>
                 <div class="clear"></div>
-                <div class="checkradio"><input class="piliang" type="radio" name="cun">&nbsp;批量导入人员</div>
+                <div class="checkradio clear"><input class="piliang" type="radio" name="cun">&nbsp;批量导入人员</div>
                 <ul class="batch">
                     <li style="border-right: 1px solid #c9c9c9">
                         <a href="/DownLoad/1.rar">样例下载</a><span>请参照样例的格式<br>编辑上传内容</span>
@@ -157,6 +157,7 @@
                 </ul>
                 <div></div>
                 <div class="tianjiabtn">
+                    <b class="login-error" style="margin-right: 10px;color: #cc0000"></b>
                     <input style="margin:20px 0 3px 0 " type="submit" value="提交" />
                 </div>
             </form>
@@ -180,6 +181,16 @@
         $(".shuru").css({color:"#999"}).children().children().children().attr("disabled","disabled");
         $(".batch").css({color:"#333"}).children().children().find("input").removeAttr("disabled");
     })
+    
+    $(".tianjiabtn").children("input[type='submit']").click(function(){
+        if(!$("input").val() || !$("textarea").val()){
+            $(".login-error").html("提交不成功：信息填写不完整");
+            return false
+        }else{
+            $("#employee_insert").submit();
+        }
+    });
+
 
 </script>
 </body>

@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
     <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript">
     
@@ -65,8 +66,8 @@
     </ul>
 </div>
 <!--主体-->
-<div class="content">
-    <div class="sili">
+<div class="content" style="margin-bootom:200px;">
+    <div class="sili" >
         <!--第一列-->
         <div class="silione">
             <span><a class="mess_btn" id="add_friend" href="javascript:void(0);"></a><a href="contact_msg_display.do?contact_request_receiver_id=${user_id}"></a></span>  <!--添加联系人  -->
@@ -303,6 +304,8 @@
     </div>
 
 </div>
+<div class="clear" style="height:150px;">
+</div>
 
 <div class="sltjpop" id="pop1">
     <div class="slpopone">
@@ -435,9 +438,9 @@
         </div>
     </div>
 </div>
-
-<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
+<!--<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>-->
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+
 <script>
     $("#tel").keyup(function(e){
         if($(this).val()){
@@ -451,11 +454,12 @@
     $(document).ready(function(){
          $("#tel_sbm").click(function(){
          var employee_phone=$("#tel").val();
-       
+         var path="guohong";
+         //var path="system";
          //用户的id，需做登录检测
          //尝试添加
          var owner_employee_id=$("#owner_employee_id").val();
-         htmlobj=$.ajax({url:"/system/contact/contact_relationship_add_check.do?friend_employee_phone="+employee_phone+"&owner_employee_id="+owner_employee_id, 
+         htmlobj=$.ajax({url:"/"+path+"/contact/add.do?friend_employee_phone="+employee_phone+"&owner_employee_id="+owner_employee_id, 
         	       success:function(data){  
         	       $("div[id^='pop']").hide();
         	       var return_type=$(data).filter('div.return_type')[0].innerHTML;
@@ -481,7 +485,7 @@
          $("#tel_add").click(function(){
         	 var employee_phone=$("#tel4").val();
         	 var owner_employee_id=$("#owner_employee_id").val();
-        	 htmlobj=$.ajax({url:"/system/contact/contact_relationship_add.do?friend_employee_phone="+employee_phone+"&owner_employee_id="+owner_employee_id,
+        	 htmlobj=$.ajax({url:"/"+path+"/contact/contact_relationship_add.do?friend_employee_phone="+employee_phone+"&owner_employee_id="+owner_employee_id,
         		 success:function(data)
         		 {
         			 $("div[id^='pop']").hide();

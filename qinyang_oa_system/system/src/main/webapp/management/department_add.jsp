@@ -105,13 +105,24 @@
                             <input class="input200" type="text" name="department_leaderphone"/></p>
                     </div>
                     <div class="clear tianjiabtn">
-                        <input type="submit" value="添加"/><input type="reset" value="重置"/>
+                        <b class="login-error" style="margin-right: 10px;color: #cc0000"></b><input type="submit" value="添加"/><input type="reset" value="重置"/>
                     </div>
                 </form>
             </div>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
+<script>
+    $(".tianjiabtn").children("input[type='submit']").click(function(){
+        if(!$("input").val() || !$("textarea").val()){
+            $(".login-error").html("提交不成功：信息填写不完整");
+            return false
+        }else{
+            $("#department_insert_form").submit();
+        }
+    });
+</script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+
 </body>
 </html>

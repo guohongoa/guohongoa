@@ -232,52 +232,7 @@ import com.data.relationship_info;
 				}
 			
 		//四联添加用户关系
-				@RequestMapping("contact/contact_relationship_add_check.do")
-				public ModelAndView contact_relationship_add_display_request(
-						@RequestParam(value="owner_employee_id")                    int    owner_employee_id,      //用户id
-						@RequestParam(value="friend_employee_phone")                String   friend_employee_phone   //添加方用户电话
-						)
-				{
-					ModelAndView mv=new ModelAndView("contact_response_data.jsp");
-					//利用输入对方电话，查询用户是否存在，存在的话，相关信息是什么
-				    employee_info friend_employee_info=com.dbconnector.contact_db_connector.get_employee_info_by_phone(friend_employee_phone);
-				   
-				    if(friend_employee_info!=null)
-				    {
-				    	 int friend_employee_id=friend_employee_info.get_employee_id();
-				    	//利用主客方的员工信息中的部门id，在contact_person_department_info（部门关系表）中查询两者关系，
-				    	//返回三种状态，客方为主方直接上级为0，客方为主方直接下级为1，客房不属于以上两种为2，状态值为2时不允许添加
-				    	
-				    	int relationship_type=com.dbconnector.contact_db_connector.get_contact_relationship_by_id(owner_employee_id, friend_employee_id);
-				    	
-				    	
-				    	if(relationship_type==0||relationship_type==1)
-				    	{
-				    		  mv.addObject("return_type", 0);
-				    		  mv.addObject("msg","<p >姓名：<span>"+friend_employee_info.get_employee_name()+"</span><span>（"+friend_employee_info.get_employee_phone()+"）</span></p>"+
-				    				             "<p>部门：<span>"+friend_employee_info.get_employee_department_name()+"</span></p>"+
-				    				             "<p>职位：<span>"+friend_employee_info.get_employee_position()+"</span></p>"
-				    				      );
-				    		  mv.addObject("phone", friend_employee_phone);
-				    	}
-				    	else
-				    	{
-				    	    mv.addObject("return_type", 1);
-				    		mv.addObject("msg","该用户不在您的直接上级或下级部门，请输入其它号码");
-				    		//
-				    		mv.addObject("phone", friend_employee_phone);
-				    	}
-				    	
-				    }
-				    else
-				    {
-				    	mv.addObject("return_type", 2);
-				    	mv.addObject("msg", "用户不存在，请核对后重新输入");
-				    	mv.addObject("phone", friend_employee_phone);
-				    }    
-				    
-				    return mv;
-				}
+				
 				
 				@RequestMapping("contact/contact_relationship_add.do")
 				public ModelAndView contact_relationship_add_request(
@@ -440,6 +395,53 @@ import com.data.relationship_info;
 					ModelAndView mv=new ModelAndView("contact_msg_display.do?contact_request_receiver_id="+_contact_add_request_info.get_contact_request_receiver_id());
 					return mv;
 					
+				}
+				
+				//四联添加
+				@RequestMapping("contact/add.do")
+				public ModelAndView contactadd(
+						@RequestParam(value="owner_employee_id")                    int    owner_employee_id,      //用户id
+						@RequestParam(value="friend_employee_phone")                String   friend_employee_phone   //添加方用户电话
+						)
+				{
+					ModelAndView mv=new ModelAndView("contact_response_data.jsp");
+					//利用输入对方电话，查询用户是否存在，存在的话，相关信息是什么
+				    employee_info friend_employee_info=com.dbconnector.contact_db_connector.get_employee_info_by_phone(friend_employee_phone);
+				   
+				    if(friend_employee_info!=null)
+				    {
+				    	 int friend_employee_id=friend_employee_info.get_employee_id();
+				    	//利用主客方的员工信息中的部门id，在contact_person_department_info（部门关系表）中查询两者关系，
+				    	//返回三种状态，客方为主方直接上级为0，客方为主方直接下级为1，客房不属于以上两种为2，状态值为2时不允许添加
+				    	
+				    	int relationship_type=com.dbconnector.contact_db_connector.get_contact_relationship_by_id(owner_employee_id, friend_employee_id);
+				    	
+				    	
+				    	if(relationship_type==0||relationship_type==1)
+				    	{
+				    		  mv.addObject("return_type", 0);
+				    		  mv.addObject("msg","<p >姓名：<span>"+friend_employee_info.get_employee_name()+"</span><span>（"+friend_employee_info.get_employee_phone()+"）</span></p>"+
+				    				             "<p>部门：<span>"+friend_employee_info.get_employee_department_name()+"</span></p>"+
+				    				             "<p>职位：<span>"+friend_employee_info.get_employee_position()+"</span></p>"
+				    				      );
+				    		  mv.addObject("phone", friend_employee_phone);
+				    	}
+				    	else
+				    	{
+				    	    mv.addObject("return_type", 1);
+				    		mv.addObject("msg","该用户不在您的直接上级或下级部门，请输入其它号码");
+				    		//
+				    		mv.addObject("phone", friend_employee_phone);
+				    	}
+				    	
+				    }
+				    else
+				    {
+				    	mv.addObject("return_type", 2);
+				    	mv.addObject("msg", "用户不存在，请核对后重新输入");
+				    	mv.addObject("phone", friend_employee_phone);
+				    }    
+				    return mv;
 				}
 				
 	}

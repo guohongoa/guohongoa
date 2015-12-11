@@ -95,7 +95,7 @@
                   
                 </ul>
                 <div class="clear"></div>
-                <p class="tztj_btn"><b class="login-error"></b><button style="margin-right: -27px;font-size: 14px">提交</button></p>
+                <p class="tztj_btn"><b  style="margin-right: 10px;" class="login-error"></b><button style="margin-right: -27px;font-size: 14px">提交</button></p>
             </form>
         </div>
     </div>
@@ -118,6 +118,16 @@
           $(".shuru").css({color:"#999"}).children().children().attr("disabled","disabled");
           $(".batch").css({color:"#333"}).children().children().find("input").removeAttr("disabled");
         })
+        
+        $(".tztj_btn").children("button").click(function(){
+        if(!$("input").val() || !$("textarea").val()){
+            $(".login-error").html("提交不成功：信息填写不完整");
+            return false
+        }else{
+            $("#post_city").submit();
+        }
+    });
+
 </script>
 </body>
 </html>
