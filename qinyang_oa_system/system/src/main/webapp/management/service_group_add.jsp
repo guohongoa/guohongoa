@@ -72,11 +72,11 @@
     <div class="right_content">
         <h4><a href="">管理</a>&gt;<a href="">五服务小组管理</a>&gt;<span>添加小组成员</span></h4>
         <div class="tztj">
-            <form  action="service_group_add.do" method="post" id="service_add">
+            <form  action="service_group_add.do" method="post" id="group_add_form">
                 <div class="checkradio"><input class="shoudong" type="radio" name="cun">&nbsp;手动添加五服务小组</div>
                 <div class="shuru">
                     <p><span>镇(县)名</span>
-                         <select style="height: 27px" name="service_village_county_name">
+                         <select style="height: 27px" name="service_village_county_name" form="group_add_form">
                             <option value="一镇">一镇</option>
                             <option value="二镇">二镇</option>
                         </select>
@@ -84,25 +84,25 @@
                 <!-- 镇县id--><input type="hidden" name="service_village_county_id" value="123"/>
                     </p>
                     <p><span>村名</span>
-                        <select style="height: 27px" name="service_village_name">
-                            <option>村</option>
-                            <option>村</option>
+                        <select style="height: 27px" name="service_village_name" form="group_add_form">
+                            <option value="一村">一村</option>
+                            <option value="二村">二村</option>
                         </select>
                       </p>
                 <!-- 村id--><input type="hidden" name="service_village_id" value="456"/>
                     </p>
                     <p><span>服务类型</span>
                         <select name="service_type" style="height: 27px">
-                            <option>法政法规服务</option>
-                            <option>经济发展服务</option>
-                            <option>和谐稳定服务</option>
-                            <option>环境卫生服务</option>
-                            <option>文体活动服务</option>
+                            <option value="0">法政法规服务</option>
+                            <option value="1">经济发展服务</option>
+                            <option value="2">和谐稳定服务</option>
+                            <option value="3">环境卫生服务</option>
+                            <option value="4">文体活动服务</option>
                         </select>
                     </p>
                     <p><span>责任人</span><input type="text" name="service_group_leader"/></p>
                     <p><span>联系电话</span><input type="text" name="service_group_phone"/></p>
-                    <p style="margin-bottom: 10px"><span>小组职责</span><textarea name="service_group_phone"></textarea></p>
+                    <p style="margin-bottom: 10px"><span>小组职责</span><textarea name="service_group_duty"></textarea></p>
                     <p><span>小组成员</span><textarea class="srvul" name="service_group_member" form="group_add_form" placeholder=" 请输入每个成员姓名及手机号，以空格间隔，例：张三 13812345678 李四 13987654321 "></textarea></p>
                 </div>
                 <h6>姓名与姓名之间请以一个‘空格’隔开</h6>
@@ -139,7 +139,7 @@
     })
     
      $(".tztj_btn").children("button").click(function(){
-        if(!$("input").val() || !$("textarea").val()){
+        if(!$("input").val() && !$("textarea").val()){
             $(".login-error").html("提交不成功：信息填写不完整");
             return false
         }else{

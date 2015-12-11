@@ -114,7 +114,7 @@
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script>
     $(".tianjiabtn").children("input[type='submit']").click(function(){
-        if(!$("input").val() || !$("textarea").val()){
+        if(!$("input").val() && !$("textarea").val()){
             $(".login-error").html("提交不成功：信息填写不完整");
             return false
         }else{
