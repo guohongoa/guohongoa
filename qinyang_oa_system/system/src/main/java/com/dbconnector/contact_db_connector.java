@@ -270,5 +270,31 @@ public class contact_db_connector
 		 boolean rs=_contact_add_request_info_dao.insert(_contact_add_request_info);  //插入是否成功
 		 return rs;
 	 }
+	 
+	 public static List<contact_add_request_info> get_contact_msg_list_by_receiver_id(int contact_request_receiver_id)
+	 {
+		 contact_add_request_info_dao _contact_add_request_info_dao=new contact_add_request_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 List<contact_add_request_info> contact_msg_list=_contact_add_request_info_dao.get_list_by_receiver_id(contact_request_receiver_id);
+         return contact_msg_list;
+	 }
+	 
+	 public static contact_add_request_info get_contact_msg_info_by_msg_id(int contact_add_msg_id)
+	 {
+		 contact_add_request_info_dao _contact_add_request_info_dao=new contact_add_request_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 contact_add_request_info _contact_add_request_info=_contact_add_request_info_dao.get_info_by_id(contact_add_msg_id);
+         return _contact_add_request_info;
+	 }
+	 
+	 public static boolean update_msg_status(int contact_add_msg_id,int contact_request_status)
+	 {
+		  boolean rs;
+		  contact_add_request_info _contact_add_request_info=new contact_add_request_info();
+		  _contact_add_request_info.set_contact_add_msg_id(contact_add_msg_id);
+		  _contact_add_request_info.set_contact_request_status(contact_request_status);
+		  contact_add_request_info_dao _contact_add_request_info_dao=new contact_add_request_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			rs=_contact_add_request_info_dao.update_msg_status(_contact_add_request_info);
+			
+		    return rs;
+	 }
 
 }

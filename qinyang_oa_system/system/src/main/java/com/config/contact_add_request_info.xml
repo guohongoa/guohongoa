@@ -22,6 +22,25 @@
 		values(#{contact_request_sender_id},#{contact_request_sender_name},#{contact_request_receiver_id},#{contact_request_receiver_name},#{cotact_reuqest_sendmsg},#{contact_request_sendtime},#{contact_request_status});
 	</insert>
 
+     
+     
+     <select id="select_by_receiver_id" parameterType="int" resultMap="result">
+		SELECT * FROM contact_add_request_info WHERE contact_request_receiver_id = #{contact_request_receiver_id};
+	</select>
+	
+	
+	
+	<select id="select_by_id" parameterType="int" resultMap="result">
+		SELECT * FROM contact_add_request_info WHERE contact_add_msg_id = #{contact_add_msg_id};
+	</select>
+	
+	
+	
+	<update id="update_status" parameterType="int">
+        UPDATE contact_add_request_info
+        SET contact_request_status = #{contact_request_status}
+        WHERE contact_add_msg_id = #{contact_add_msg_id} 
+    </update>
 </mapper>
 
 

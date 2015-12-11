@@ -309,7 +309,16 @@ import com.data.relationship_info;
 					    		_contact_relationship_info.set_contact_owner_department_id(contact_owner_department_id);
 					    		_contact_relationship_info.set_contact_friend_department_id(contact_friend_department_id);
 					    		boolean rs=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info);
-					    		if(rs==true)
+					    		
+					    		//正向反向更添加一次
+					    		contact_relationship_info _contact_relationship_info2=new contact_relationship_info();
+					    		_contact_relationship_info2.set_contact_owner_id(friend_employee_id);
+					    		_contact_relationship_info2.set_contact_friend_id(owner_employee_id);
+					    		_contact_relationship_info2.set_contact_relationship_type(0);
+					    		_contact_relationship_info2.set_contact_owner_department_id(contact_friend_department_id);
+					    		_contact_relationship_info2.set_contact_friend_department_id(contact_owner_department_id);
+					    		boolean rs2=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info2);
+					    		if(rs&&rs2==true)
 					    		{
 					    			mv.addObject("return_type", 1);
 					    			 mv.addObject("msg","<p >姓名：<span>"+friend_employee_info.get_employee_name()+"</span><span>（"+friend_employee_info.get_employee_phone()+"）</span></p>"+
@@ -373,6 +382,64 @@ import com.data.relationship_info;
 					System.out.println("---------------------"+contact_request_receiver_id);
 					System.out.println("---------------------"+cotact_reuqest_sendmsg);
 					return mv;
+				}
+				
+				//四联好友添加显示功能
+				@RequestMapping("contact/contact_msg_display.do")
+				public ModelAndView contact_msg_display_request(
+						
+						@RequestParam(value="contact_request_receiver_id")  int    contact_request_receiver_id
+						)
+				{
+					ModelAndView mv=new ModelAndView("contact_msg.jsp");
+					List<contact_add_request_info> contact_msg_list=com.dbconnector.contact_db_connector.get_contact_msg_list_by_receiver_id(contact_request_receiver_id);
+					mv.addObject("contact_msg_list", contact_msg_list);
+					return mv;
+				}
+				
+				//四联好友审批处理
+				@RequestMapping("contact/contact_deal_commit.do")
+				public ModelAndView contact_deal_commit(
+				
+						@RequestParam(value="contact_msg_id")  int    contact_msg_id,
+						@RequestParam(value="is_agreed")       int    is_agreed
+						
+						)
+				{
+					contact_add_request_info _contact_add_request_info=com.dbconnector.contact_db_connector.get_contact_msg_info_by_msg_id(contact_msg_id);
+					if(is_agreed==0)
+					{
+						com.dbconnector.contact_db_connector.update_msg_status(contact_msg_id,1);//通过
+						
+						int contact_owner_department_id=com.dbconnector.management_db_connector.get_employee_info_by_id(_contact_add_request_info.get_contact_request_sender_id()).get_employee_department_id();
+				    	int contact_friend_department_id=com.dbconnector.management_db_connector.get_employee_info_by_id(_contact_add_request_info.get_contact_request_receiver_id()).get_employee_department_id();
+				    	
+				    	contact_relationship_info _contact_relationship_info=new contact_relationship_info();
+			    		_contact_relationship_info.set_contact_owner_id(_contact_add_request_info.get_contact_request_sender_id());
+			    		_contact_relationship_info.set_contact_friend_id(_contact_add_request_info.get_contact_request_receiver_id());
+			    		_contact_relationship_info.set_contact_relationship_type(0);
+			    		_contact_relationship_info.set_contact_owner_department_id(contact_owner_department_id);
+			    		_contact_relationship_info.set_contact_friend_department_id(contact_friend_department_id);
+			    		boolean rs1=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info);
+			    		
+			    		//正向，反向更添加一次
+			    		
+			    		contact_relationship_info _contact_relationship_info2=new contact_relationship_info();
+			    		_contact_relationship_info2.set_contact_owner_id(_contact_add_request_info.get_contact_request_receiver_id());
+			    		_contact_relationship_info2.set_contact_friend_id(_contact_add_request_info.get_contact_request_sender_id());
+			    		_contact_relationship_info2.set_contact_relationship_type(1);
+			    		_contact_relationship_info2.set_contact_owner_department_id(contact_friend_department_id);
+			    		_contact_relationship_info2.set_contact_friend_department_id(contact_owner_department_id);
+			    		boolean rs2=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info2);
+			    		
+					}
+					else
+					{
+						com.dbconnector.contact_db_connector.update_msg_status(contact_msg_id,2);//未通过
+					}
+					ModelAndView mv=new ModelAndView("contact_msg_display.do?contact_request_receiver_id="+_contact_add_request_info.get_contact_request_receiver_id());
+					return mv;
+					
 				}
 				
 	}
