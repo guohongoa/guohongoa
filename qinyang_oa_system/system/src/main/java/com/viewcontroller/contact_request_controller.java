@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.data.contact_add_request_info;
 import com.data.contact_node;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
@@ -352,10 +353,25 @@ import com.data.relationship_info;
 						@RequestParam(value="cotact_reuqest_sendmsg")     String cotact_reuqest_sendmsg
 						)
 				{
+					contact_add_request_info _contact_add_request_info=new contact_add_request_info();
+					_contact_add_request_info.set_contact_request_sender_id(contact_request_sender_id);
+					_contact_add_request_info.set_contact_request_receiver_id(contact_request_receiver_id);
+					_contact_add_request_info.set_cotact_reuqest_sendmsg(cotact_reuqest_sendmsg);
+					String contact_request_sender_name=com.dbconnector.management_db_connector.get_employee_info_by_id(contact_request_sender_id).get_employee_name();
+					String contact_request_receiver_name=com.dbconnector.management_db_connector.get_employee_info_by_id(contact_request_receiver_id).get_employee_name();
+					
+					_contact_add_request_info.set_contact_request_sender_name(contact_request_sender_name);
+					_contact_add_request_info.set_contact_request_receiver_name(contact_request_receiver_name);
+					_contact_add_request_info.set_contact_request_status(0);//默认为0
+					
+					com.dbconnector.contact_db_connector.insert_confirm_request_form(_contact_add_request_info);
+					
+					
+					
 					ModelAndView mv=new ModelAndView("contact_person_check.do");
-					System.out.println(contact_request_sender_id);
-					System.out.println(contact_request_receiver_id);
-					System.out.println(cotact_reuqest_sendmsg);
+					System.out.println("---------------------"+contact_request_sender_id);
+					System.out.println("---------------------"+contact_request_receiver_id);
+					System.out.println("---------------------"+cotact_reuqest_sendmsg);
 					return mv;
 				}
 				

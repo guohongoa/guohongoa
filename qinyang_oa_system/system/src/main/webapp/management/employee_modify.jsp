@@ -22,20 +22,28 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href=""><i class="icon icon_m"></i>消息</a></li>
+                <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
                 <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
+            <div>
+                <ul class="hide">
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/contact_person_check.do">四联</a></li>
+        <li><a href="../service/service_village_check.do">五服务</a></li>
+        <li><a href="../work/">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -46,16 +54,17 @@
 </div>
 <!--主体-->
 <div class="content">
-    <div class="left_menu tzlb" style="height: 325px">
-        <h3>管理</h3>
+    <div class="left_menu tzlb" style="height: 290px">
+        <h3><a href="">管理</a></h3>
         <ul>
             <li><a href="check_service_village_detail.do?village_page=1">村镇管理</a></li>
             <li><a href="department_check.do?department_page=1">部门管理</a>
             </li>
-            <li><a href="employee_check.do?employee_page=1" class="active">人员管理</a>
+            <li style="margin-bottom: -7px"> <a href="employee_check.do?employee_page=1" class="active">人员管理</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="employee_add.jsp" class="red">添加人员</a><i></i></dd>
+                    <dd><a href="">修改</a></dd>
                 </dl>
             </li>
             <li><a href="service_group_check.do?service_group_page=1">五服务小组管理</a></li>
@@ -63,23 +72,23 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<a href="">人员管理</a>&gt;<span>修改信息</span></h4>
-        <div class="bmtj ">
-            <form action="employee_modify_commit.do" method="post" id="employee_modify"> 
-               <input type="hidden" name="employee_id" value="${employee_info.get_employee_id()}"/>
-               <input type="hidden" name="employee_page" value="${employee_page}">
+        <h4><a href="">管理</a> &gt;<a href="">人员管理</a> &gt;<span>添加人员</span></h4>
+        <div class="bmtj bmtjxg">
+            <form action="employee_modify_commit.do" method="post" id="employee_modify">
+                 <input type="hidden" name="employee_id" value="${employee_info.get_employee_id()}"/>
+                 <input type="hidden" name="employee_page" value="${employee_page}">
                 <div>
                     <p><span>员工姓名</span>
                         <input class="input200" type="text" name="employee_name" value="${employee_info.get_employee_name()}"/></p>
                     <p><span>员工性别</span>
-                      <c:choose>
+                        <c:choose>
                          <c:when test="${employee_info.get_employee_gender()==0}">
-                             <input  type="radio" name="employee_gender" value="0" checked/>男
-                             <input  type="radio" name="employee_gender" value="1"/>女
+                             <input  type="radio" name="employee_gender" value="0" checked/>&nbsp;男&nbsp;&nbsp;
+                             <input  type="radio" name="employee_gender" value="1"/>&nbsp;女
                          </c:when>
                          <c:otherwise>
-                               <input  type="radio" name="employee_gender" value="0"/>男
-                               <input  type="radio" name="employee_gender" value="1" checked/>女
+                               <input  type="radio" name="employee_gender" value="0"/>&nbsp;男&nbsp;&nbsp;
+                               <input  type="radio" name="employee_gender" value="1" checked/>&nbsp;女
                          </c:otherwise>
                       </c:choose>
                     </p>
@@ -94,11 +103,11 @@
                     <p><span>职&nbsp;&nbsp;务</span>
                         <input class="input200" type="text" name="employee_position" value="${employee_info.get_employee_position()}"/></p>
                     <p><span>入职日期</span>
-                        <input class="input200 timedata" name="employee_addworktime" type="text" value="${employee_info.get_employee_addworktime()}"/></p>
+                        <input class="input200 timedata" type="text" name="employee_addworktime" type="text" value="${employee_info.get_employee_addworktime()}"/></p>
                 </div>
                 <div>
                     <p><span>所属部门</span>
-                         <select name="employee_department_id" form="employee_modify" >
+                        <select class="selectsz" name="employee_department_id" form="employee_modify" >
                          <c:forEach var="department_info" items="${department_info_list}" >
                             <!--转队列入下拉框，当前数据处于初始显示状态-->
                             <c:choose>
@@ -111,9 +120,8 @@
                             </c:choose>
                          </c:forEach>    
                          </select>
-                     </p>
                     <p><span>直接上级</span>
-                        <select name="employee_leader_id" form="employee_modify" >
+                         <select class="selectsz" name="employee_leader_id" form="employee_modify" >
                           <c:forEach var="employee_info2" items="${employee_info_list}" >
                           <!--转队列入下拉框，当前数据处于初始显示状态-->
                             <c:choose>
@@ -134,8 +142,6 @@
                          </c:otherwise>
                          </c:choose>   
                          </select>
-                         
-                    </p>
                 </div>
                 <div>
 

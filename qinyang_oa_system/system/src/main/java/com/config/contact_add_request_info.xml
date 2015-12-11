@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="contact_add_request_info">
+
+	<resultMap id="result" type="contact_add_request_info">
+		<result property="contact_add_msg_id" column="contact_add_msg_id" />
+		<result property="contact_request_sender_id" column="contact_request_sender_id" />
+		
+		<result property="contact_request_sender_name" column="contact_request_sender_name" />
+		<result property="contact_request_receiver_id" column="contact_request_receiver_id" />
+		<result property="contact_request_receiver_name" column="contact_request_receiver_name" />
+		<result property="cotact_reuqest_sendmsg" column="cotact_reuqest_sendmsg" />
+		<result property="contact_request_sendtime" column="contact_request_sendtime" />
+		<result property="contact_request_status" column="contact_request_status" />
+	</resultMap>
+	<insert id="insert" parameterType="contact_add_request_info">
+		insert into
+		contact_add_request_info(contact_request_sender_id,contact_request_sender_name,contact_request_receiver_id,contact_request_receiver_name,cotact_reuqest_sendmsg,contact_request_sendtime,contact_request_status)
+		values(#{contact_request_sender_id},#{contact_request_sender_name},#{contact_request_receiver_id},#{contact_request_receiver_name},#{cotact_reuqest_sendmsg},#{contact_request_sendtime},#{contact_request_status});
+	</insert>
+
+</mapper>
+
+

@@ -16,8 +16,7 @@
        <c:otherwise>
            <div class="return_type">${return_type}</div>
            <div class="msg">${msg}</div>
-           <div class="phone">${phone}</div>
-           <div class="contact_request_sender_id">$contact_request_sender_id}</div>
+           <div class="contact_request_sender_id">${contact_request_sender_id}</div>
            <div class="contact_request_receiver_id">${contact_request_receiver_id}</div>
        </c:otherwise>
      </c:choose>

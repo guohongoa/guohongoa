@@ -26,7 +26,8 @@
 		<typeAlias alias="department_selector" type="com.selector.department_selector"/>
 		<typeAlias alias="employee_selector" type="com.selector.employee_selector"/>
 		<typeAlias alias="service_group_selector" type="com.selector.service_group_selector"/>
-		<typeAlias alias="contact_relationship_info" type="com.data.contact_relationship_info"/>		
+		<typeAlias alias="contact_relationship_info" type="com.data.contact_relationship_info"/>
+		<typeAlias alias="contact_add_request_info" type="com.data.contact_add_request_info"/>		
 	</typeAliases>
 
 	<environments default="development">
@@ -59,6 +60,7 @@
 		<mapper resource="com/config/work_record_info.xml"/>
 		<mapper resource="com/config/service_group_info.xml"/>
 		<mapper resource="com/config/contact_relationship_info.xml"/>
+		<mapper resource="com/config/contact_add_request_info.xml"/>
 	
 				
 	</mappers>

@@ -21,20 +21,28 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href=""><i class="icon icon_m"></i>消息</a></li>
+                <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
                 <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
+            <div>
+                <ul class="hide">
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/contact_person_check.do">四联</a></li>
+        <li><a href="../service/service_village_check.do">五服务</a></li>
+        <li><a href="../work/">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -45,14 +53,15 @@
 </div>
 <!--主体-->
 <div class="content">
-    <div class="left_menu tzlb" style="height: 325px">
-        <h3>管理</h3>
+    <div class="left_menu tzlb" style="height: 290px">
+        <h3><a href="">管理</a></h3>
         <ul>
-            <li><a href="check_service_village_detail.do?village_page=1"">村镇管理</a></li>
-            <li><a href="department_check.do?department_page=1" class="active">部门管理</a>
+            <li><a href="check_service_village_detail.do?village_page=1">村镇管理</a></li>
+            <li style="margin-bottom: -7px"><a href="department_check.do?department_page=1" class="active">部门管理</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="#" class="red">添加部门</a><i></i></dd>
+                    <dd><a href="../error.jsp">修改</a></dd>
                 </dl>
             </li>
             <li><a href="employee_check.do?employee_page=1">人员管理</a></li>
@@ -61,7 +70,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<a href="">部门管理</a>&gt;<span>添加部门</span></h4>
+        <h4><a href="">管理</a> &gt;<a href="">部门管理</a> &gt;<span>添加部门</span></h4>
             <div class="bmtj ">
                 <form action="department_insert.do" method="post" id="department_insert_form">
                     <div>
@@ -69,15 +78,16 @@
                             <input class="input200" type="text" name="department_code"/></p>
 
                         <p><span>部门名称</span>
-                            <input class="input200" type="text"  name="department_name"/></p>
+                            <input class="input200" type="text"  name="department_name"/>
+                        </p>
                     </div>
                     <div class="shangchuan">
                         <p><span>工作制度</span>
-                            <textarea name="department_regulation" form="department_insert_form"></textarea></p>
-
+                            <textarea name="department_regulation" form="department_insert_form" placeholder="输入不超过30个字"></textarea>
+                        </p>
                         <p><span>上传流程</span>
                             <!--department_resourceurl--><input type="file"/>
-                             <input type="hidden" name="department_resourceurl" value="url">
+                             <input type="hidden" name="department_resourceurl" value="url"/>
                         </p>
                     </div>
                     <div class="clear">

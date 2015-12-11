@@ -23,20 +23,28 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href=""><i class="icon icon_m"></i>消息</a></li>
+                <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
                 <li><a href=""><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
+            <div>
+                <ul class="hide">
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/contact_person_check.do">四联</a></li>
+        <li><a href="../service/service_village_check.do">五服务</a></li>
+        <li><a href="../work/">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -47,7 +55,7 @@
 </div>
 <!--主体-->
 <div class="content">
-    <div class="left_menu tzlb" style="height: 325px">
+    <div class="left_menu tzlb" style="height: 335px">
         <h3><a href="">管理</a></h3>
         <ul>
             <li><a href="check_service_village_detail.do?village_page=1">村镇管理</a></li>
@@ -58,6 +66,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="service_group_add.jsp">添加小组成员</a><i></i></dd>
+                    <dd><a href="../error.jsp" style="border-bottom: 1px solid #c9c9c9;height: 35px" >修改</a></dd>
                 </dl>
             </li>
         </ul>
@@ -66,7 +75,7 @@
     <div class="right_content">
         <h4><a href="">管理</a>&gt;<span>五服务小组管理</span></h4>
         <h6><span>村名</span><input type="text"/>
-            <span>服务小组名</span>
+            <span class="marginl">服务小组名</span>
                 <select>
                     <option>法政法规服务</option>
                     <option>经济发展服务</option>
@@ -74,9 +83,9 @@
                     <option>环境卫生服务</option>
                     <option>文体活动服务</option>
                 </select>
-            <span>姓名</span><input type="text"/>
-            <a href="">查找</a>
-            <a href="">添加成员</a>
+            <span class="marginl">姓名</span><input type="text"/>
+            <a href="../error.jsp" class="marginl">查找</a>
+            <a href="../error.jsp" class="marginl">添加成员</a>
         </h6>
         <div class="contentlist">
             <ul class="contentlisttt ">
@@ -87,7 +96,7 @@
                 <li class="width_lg">小组成员</li>
                 <li>操作</li>
             </ul>
-            <c:forEach var="service_group_info" items="${service_group_info_list}">
+           <c:forEach var="service_group_info" items="${service_group_info_list}">
             <ul>
                 <li>${service_group_info.get_service_village_county_name()}</li>
                 <li>${service_group_info.get_service_village_name()}</li>
@@ -95,14 +104,6 @@
                 <li>${service_group_info.get_service_group_leader()}</li>
                 <li class="width_lg">${service_group_info.get_service_group_member()}</li>
                 <li>
-                   <!--
-                   <select>
-                        <option>修改</option>
-                        <option>删除</option>
-                        <option>查看</option>
-                    </select>  
-                    -->
-                    
                     <a href="service_group_modify.do?service_group_id=${service_group_info.get_service_group_id()}&service_group_page=${service_group_page}">
                          修改
                     </a>
@@ -116,6 +117,7 @@
             </ul>
             </c:forEach>
         </div>
+         
     </div>
     <c:choose>
       <c:when test="${service_group_page==1}">

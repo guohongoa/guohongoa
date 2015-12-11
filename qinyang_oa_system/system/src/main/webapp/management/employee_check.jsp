@@ -23,20 +23,28 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href=""><i class="icon icon_m"></i>消息</a></li>
+                <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
                 <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
+            <div>
+                <ul class="hide">
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/contact_person_check.do">四联</a></li>
+        <li><a href="../service/service_village_check.do">五服务</a></li>
+        <li><a href="../work/">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -47,15 +55,16 @@
 </div>
 <!--主体-->
 <div class="content">
-    <div class="left_menu tzlb" style="height: 325px">
-        <h3>管理</h3>
+    <div class="left_menu tzlb" style="height: 290px">
+        <h3><a href="">管理</a></h3>
         <ul>
             <li><a href="check_service_village_detail.do?village_page=1">村镇管理</a></li>
             <li><a href="department_check.do?department_page=1">部门管理</a></li>
-            <li><a href="employee_check.do?employee_page=1"  class="active">人员管理</a>
+            <li style="margin-bottom: -7px"><a href="employee_check.do?employee_page=1"  class="active">人员管理</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="employee_add_check.do">添加人员</a><i></i></dd>
+                    <dd><a href="../error.jsp" >修改</a></dd>
                 </dl>
             </li>
             <li><a href="service_group_check.do?service_group_page=1">五服务小组管理</a></li>
@@ -65,9 +74,9 @@
     <div class="right_content">
         <h4><a href="">管理</a>&gt;<span>员工管理</span></h4>
         <h5><span>员工姓名</span><input type="text"/>
-            <span>员工电话</span><input type="text"/>
-            <a href="">查找</a>
-            <a href="">添加员工</a>
+            <span class="marginl">员工电话</span><input type="text"/>
+            <a href="../error.jsp">查找</a>
+            <a href="../error.jsp">添加员工</a>
         </h5>
         <div class="contentlist">
             <ul class="contentlisttt ">
@@ -79,7 +88,7 @@
                 <li>联系电话</li>
                 <li>操作</li>
             </ul>
-            <c:forEach var="employee_info" items="${employee_info_list}">
+           <c:forEach var="employee_info" items="${employee_info_list}">
             <ul>
                 <li>${employee_info.get_employee_name()}</li>
                 <li>${employee_info.get_employee_str_gender()}</li>
@@ -88,14 +97,7 @@
                 <li>${employee_info.get_employee_leader_name()}</li>
                 <li>${employee_info.get_employee_phone()}</li>
                 <li>
-                    <!--  
-                    <select>
-                        <option>修改</option>
-                        <option>删除</option>
-                        <option>查看</option>
-                    </select>
-                    -->
-                    <a href="employee_modify.do?employee_id=${employee_info.get_employee_id()}&employee_page=${employee_page}">
+                   <a href="employee_modify.do?employee_id=${employee_info.get_employee_id()}&employee_page=${employee_page}">
                          修改
                     </a>
                     <a href="employee_del.do?employee_id=${employee_info.get_employee_id()}&employee_page=${employee_page}">

@@ -20,10 +20,18 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href=""><i class="icon icon_m"></i>消息</a></li>
+                <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
                 <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
+            <div>
+                <ul class="hide">
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -44,13 +52,14 @@
 </div>
 <!--主体-->
 <div class="content">
-    <div class="left_menu tzlb" style="height: 325px">
-        <h3>管理</h3>
+    <div class="left_menu tzlb" style="height: 290px">
+        <h3><a href="">管理</a></h3>
         <ul>
-            <li><a href="check_service_village_detail.do?village_page=1" class="active">村镇管理</a>
+            <li style="margin-bottom: -7px"><a href="check_service_village_detail.do?village_page=1" class="active">村镇管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="#" class="red">添加村镇</a><i></i></dd>
+                    <dd class="activea"><a href="" class="red">添加村镇</a><i></i></dd>
+                    <dd><a href="" >修改</a></dd>
                 </dl>
             </li>
             <li><a href="department_check.do?department_page=1" >部门管理</a></li>
@@ -60,20 +69,24 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<a href="">村镇管理</a>&gt;<span>添加村镇</span></h4>
+        <h4><a href="">管理</a> &gt;<a href="">村镇管理</a> &gt;<span>添加村镇</span></h4>
         <div class="tztj">
             <form id="post_city" action="village_add.do" method="post">
-                <div class="checkradio"><input class="shoudong" type="radio" name="cun">手动添加村</div>
+                <div class="checkradio"><input class="shoudong" type="radio" name="cun">&nbsp;手动添加村</div>
                 <div class="shuru">
                     <p><span>镇(县)名</span><input class="input600" type="text" name="service_village_county_name"/></p>
                     <p><span>负责人</span><input type="text" name="service_village_county_leader"/></p>
                     <p><span>电话</span><input type="text" name="service_village_county_leaderphone"/></p>
-                    <p><span>包含村</span><textarea class="srvul" name="str_service_village_names" form="post_city"></textarea></p>
+                    <p><span>包含村</span><textarea class="srvul" name="str_service_village_names" form="post_city" placeholder=" 某村 某村 某某村（示例）"></textarea></p>
                 </div>
                 <h6>村与村之间请以一个‘空格’隔开</h6>
-                <div class="checkradio"><input class="piliang" type="radio" name="cun">批量导入村</div>
+                <div class="checkradio"><input class="piliang" type="radio" name="cun">&nbsp;批量导入村</div>
                 <ul class="batch">
-                    <li style="border-right: 1px solid #c9c9c9"><a href="/DownLoad/1.rar">样例下载</a><span>请参照样例的格式<br>编辑上传内容</span></li>
+                    <li style="border-right: 1px solid #c9c9c9">
+
+                        <a href="/DownLoad/1.rar">样例下载</a><span>请参照样例的格式<br>编辑上传内容</span>
+
+                    </li>
                     <li><a  style="position: relative">
                         <input  class="filew" type="file" style="position: absolute;top:30px;opacity: 0;"/>
                         添加附件</a>
@@ -82,7 +95,7 @@
                   
                 </ul>
                 <div class="clear"></div>
-                <p class="tztj_btn"><b class="login-error"></b><button>提交</button></p>
+                <p class="tztj_btn"><b class="login-error"></b><button style="margin-right: -27px;font-size: 14px">提交</button></p>
             </form>
         </div>
     </div>
@@ -93,19 +106,17 @@
 
     //手动添加与批量导入的选择
     $(".shoudong").click(function(){
-            $(".shuru").css({background:"#fff"});
+            $(".shuru").css({color:"#333"});
             $(".shuru input").removeAttr("disabled");
-            $(".srvul").removeAttr("disabled").val("村与村之间请以一个‘空格’隔开");
-            $(".batch").css({background:"#eee"}).children().children().find("input").attr("disabled","disabled");
-
-
+            $(".srvul").removeAttr("disabled") //.val("村与村之间请以一个‘空格’隔开");
+            $(".batch").css({color:"#999"}).children().children().find("input").attr("disabled","disabled");
     })
     $(".srvul").focus(function(){
         $(this).val("")
     })
         $(".piliang").click(function(){
-          $(".shuru").css({background:"#eee"}).children().children().attr("disabled","disabled");
-          $(".batch").css({background:"#fff"}).children().children().find("input").removeAttr("disabled");
+          $(".shuru").css({color:"#999"}).children().children().attr("disabled","disabled");
+          $(".batch").css({color:"#333"}).children().children().find("input").removeAttr("disabled");
         })
 </script>
 </body>

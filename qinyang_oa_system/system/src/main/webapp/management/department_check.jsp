@@ -1,3 +1,8 @@
+
+
+
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
@@ -24,10 +29,18 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href=""><i class="icon icon_m"></i>消息</a></li>
-                <li><a href=""><i class="icon"></i>设置</a></li>
+                <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
+                <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
+            <div>
+                <ul class="hide">
+                    <li><a href=""><span>888</span>条工作提醒</a></li>
+                    <li><a href=""><span>2</span>条服务提醒</a></li>
+                    <li><a href=""><span>3</span>条待审核记录</a></li>
+                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -35,9 +48,9 @@
 <div class="nav">
     <ul>
         <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="">工作</a></li>
+        <li><a href="../contact/contact_person_check.do">四联</a></li>
+        <li><a href="../service/service_village_check.do">五服务</a></li>
+        <li><a href="../work/">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -48,14 +61,15 @@
 </div>
 <!--主体-->
 <div class="content">
-    <div class="left_menu tzlb" style="height: 325px">
-        <h3>管理</h3>
+    <div class="left_menu tzlb" style="height: 290px">
+        <h3><a href="">管理</a></h3>
         <ul>
             <li><a href="check_service_village_detail.do?village_page=1">村镇管理</a></li>
-            <li><a href="department_check.do?department_page=1" class="active">部门管理</a>
+            <li style="margin-bottom: -7px"><a href="department_check.do?department_page=1" class="active" >部门管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="department_add.jsp">添加部门</a><i></i></dd>
+                    <dd class="activea"><a href="department_add.jsp" >添加部门</a><i></i></dd>
+                    <dd><a href="../error.jsp" >修改</a></dd>
                 </dl>
             </li>
             <li><a href="employee_check.do?employee_page=1">人员管理</a></li>
@@ -64,11 +78,11 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<span>部门管理</span></h4>
+        <h4><a href="">管理</a> &gt;<span>部门管理</span></h4>
         <h5><span>部门编号</span><input type="text"/>
-            <span>部门名称</span><input type="text"/>
-            <a href="">查找</a>
-            <a href="">添加部门</a>
+            <span class="marginl">部门名称</span><input type="text"/>
+            <a href="../error.jsp">查找</a>
+            <a href="../error.jsp">添加部门</a>
         </h5>
         <div class="contentlist">
             <ul class="contentlisttt tzlb_content">
@@ -91,13 +105,7 @@
                 <li>${department_info.get_department_parentleader()}</li>
                 <li>${department_info.get_department_leaderphone()}</li>
                 <li>
-                    <!-- <select>
-                        <option>修改</option>
-                        <option>删除</option>
-                        <option>查看</option>
-                    </select>  -->
-                   
-                     <a href="department_modify.do?department_id=${department_info.get_department_id()}&department_page=${department_page}">
+                   <a href="department_modify.do?department_id=${department_info.get_department_id()}&department_page=${department_page}">
                          修改
                     </a>
                     <a href="department_del.do?department_id=${department_info.get_department_id()}&department_page=${department_page}"> 
@@ -111,7 +119,7 @@
             </c:forEach>
         </div>
     </div>
-    <c:choose>
+     <c:choose>
       <c:when test="${department_page==1}">
       <div class="page">
         <a href="department_check.do?department_page=1">上一页</a>

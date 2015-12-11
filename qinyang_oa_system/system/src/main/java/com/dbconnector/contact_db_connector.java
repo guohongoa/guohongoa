@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.dao.contact_add_request_info_dao;
 import com.dao.contact_person_department_info_dao;
 import com.dao.contact_person_info_dao;
 import com.dao.contact_relationship_info_dao;
 import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.relationship_info_dao;
+import com.data.contact_add_request_info;
 import com.data.contact_node;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
@@ -260,6 +262,13 @@ public class contact_db_connector
 			boolean rs=_contact_relationship_ino_dao.insert(_contact_relationship_info);//插入是否成功
 			
 			return rs; 
+	 }
+	 
+	 public static boolean insert_confirm_request_form(contact_add_request_info _contact_add_request_info)
+	 {
+		 contact_add_request_info_dao _contact_add_request_info_dao=new contact_add_request_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 boolean rs=_contact_add_request_info_dao.insert(_contact_add_request_info);  //插入是否成功
+		 return rs;
 	 }
 
 }
