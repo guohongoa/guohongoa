@@ -139,7 +139,7 @@
     })
     
      $(".tztj_btn").children("button").click(function(){
-        if(!$("input").val() && !$("textarea").val()){
+        if(!$("input").val() || !$("textarea").val()||!$('input[name="service_group_phone"]').val()||!$('textarea[name="service_group_member"]').val()){
             $(".login-error").html("提交不成功：信息填写不完整");
             return false
         }else{
