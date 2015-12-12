@@ -100,7 +100,7 @@
                          </select>
                          -->
                          <c:forEach var="service_village_county_info" items="${service_village_county_info_list}">
-                           <select  name="service_village_id" id="${service_village_county_info.get_service_village_county_id()}" class="village">
+                           <select   id="${service_village_county_info.get_service_village_county_id()}" class="village">
                                <c:forEach var="service_village_info" items="${service_village_info_list}">
                                   <c:choose>
                                      <c:when test="${service_village_county_info.get_service_village_county_id()==service_village_info.get_service_village_county_id()}">
@@ -199,6 +199,13 @@ $(document).ready(function(){
 		   });
 	   });
 	   $("#county").change();
+	   
+	   $(".village").each(function(){
+		     
+		   $(this).change(function(){
+			   $("input[name='service_village_id']").val($(this).val());
+		   });
+	   });
 	});
 
  </script>

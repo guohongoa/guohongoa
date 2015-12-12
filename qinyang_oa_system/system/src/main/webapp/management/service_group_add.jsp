@@ -77,7 +77,7 @@
                 <div class="checkradio"><input class="shoudong" type="radio" name="cun">&nbsp;手动添加五服务小组</div>
                 <div class="shuru">
                     <p><span>镇(县)名</span>
-                         <select style="height: 27px" name="service_village_county_id" form="group_add_form" id="county" form="group_add_form">
+                         <select style="height: 27px" name="service_village_county_id" id="county" form="group_add_form">
                            <!--   <option selected="selected" value="-1">请选择</option>-->
                             <c:forEach var="service_village_county_info" items="${service_village_county_info_list}">
                                  <option value="${service_village_county_info.get_service_village_county_id()}">${service_village_county_info.get_service_village_county_name()}</option>
@@ -178,6 +178,14 @@ $(document).ready(function(){
 	   });
    });
    $("#county").change();
+   
+   $(".village").each(function(){
+	     
+	   $(this).change(function(){
+		   $("input[name='service_village_id']").val($(this).val());
+	   });
+   });
+   
 });
 
 </script>
