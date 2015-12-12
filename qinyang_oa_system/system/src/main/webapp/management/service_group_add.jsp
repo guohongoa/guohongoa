@@ -164,7 +164,6 @@
     
     //--------------------------------
     //二级联动
-   var currentShowCity=0;
 
 $(document).ready(function(){
    $("#county").change(function(){

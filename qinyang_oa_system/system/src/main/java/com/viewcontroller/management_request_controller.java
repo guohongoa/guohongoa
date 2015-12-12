@@ -623,6 +623,12 @@ public class management_request_controller
 					ModelAndView mv=new ModelAndView("service_group_modify.jsp?service_group_page="+service_group_page);
 					service_group_info _service_group_info=com.dbconnector.management_db_connector.get_service_group_info_by_id(service_group_id);
 					
+
+					List<service_village_county_info> service_village_county_info_list=com.dbconnector.service_db_connector.get_all_service_village_county_list();
+					List<service_village_info> service_village_info_list=com.dbconnector.service_db_connector.get_service_village_info_list_by_couty_list(service_village_county_info_list);
+					mv.addObject("service_village_county_info_list", service_village_county_info_list);
+					mv.addObject("service_village_info_list",service_village_info_list);
+					
 					
 					mv.addObject("service_group_info",_service_group_info);
 					

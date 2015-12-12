@@ -77,8 +77,50 @@
             <form  action="service_group_modify_commit.do" method="post" id="service_group_modify">
                 <input type="hidden" name="service_group_id" value="${service_group_info.get_service_group_id()}">
                 <input type="hidden" name="service_group_page" value="${service_group_page}">
-                <p><span>镇(县)名</span><input name="service_village_county_name" class="input600" type="text" value="${service_group_info.get_service_village_county_name()}"/></p>
-                <p><span>村名</span><input type="text" name="service_village_name" value="${service_group_info.get_service_village_name()}"/></p>
+                
+                <p><span>镇(县)名</span>
+                         <select style="height: 27px" name="service_village_county_id" id="county" form="service_group_modify">
+                           <!--   <option selected="selected" value="-1">请选择</option>-->
+                            <c:forEach var="service_village_county_info" items="${service_village_county_info_list}">
+                                 <c:choose>
+                                    <c:when test="${service_group_info.get_service_village_county_id()==service_village_county_info.get_service_village_county_id()}">
+                                       <option value="${service_village_county_info.get_service_village_county_id()}" selected="selected">${service_village_county_info.get_service_village_county_name()}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                      <option value="${service_village_county_info.get_service_village_county_id()}">${service_village_county_info.get_service_village_county_name()}</option>
+                                    </c:otherwise>
+                                 </c:choose>
+                            </c:forEach>
+                        </select>
+                     </p>
+                    <p><span>村名</span>
+                         <!--  
+                         <select id="-1" class="village">
+                            <option>请选择</option>
+                         </select>
+                         -->
+                         <c:forEach var="service_village_county_info" items="${service_village_county_info_list}">
+                           <select  name="service_village_id" id="${service_village_county_info.get_service_village_county_id()}" class="village">
+                               <c:forEach var="service_village_info" items="${service_village_info_list}">
+                                  <c:choose>
+                                     <c:when test="${service_village_county_info.get_service_village_county_id()==service_village_info.get_service_village_county_id()}">
+                                        <c:choose>
+                                          <c:when test="${service_group_info.get_service_village_id()==service_village_county_info.get_service_village_county_id() }">
+                                               <option  value="${service_village_info.get_service_village_id()}" selected="selected">${service_village_info.get_service_village_name()}</option>
+                                           </c:when>
+                                           <c:otherwise>
+                                               <option  value="${service_village_info.get_service_village_id()}">${service_village_info.get_service_village_name()}</option>
+                                           </c:otherwise>
+                                        </c:choose>
+                                     </c:when>
+                                   </c:choose>
+                                 </c:forEach>
+                            </select>
+                          
+                        </c:forEach>
+                        
+                      </p>
+                <input type="hidden" name="service_village_id">
                 <p><span>服务类型</span>
                     <c:choose>
                       <c:when test="${service_group_info.get_service_type()==0}">
@@ -141,5 +183,24 @@
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+<script src="http://101.200.196.121:8080/oa/js/jquery-1.5.2.min.js"></script>
+
+<script>
+$(document).ready(function(){
+	   $("#county").change(function(){
+		   $("#county option").each(function(i,o){
+			   if($(this).attr("selected"))
+			   {
+			       var county_id=$(this).val();
+				   $(".village").hide();
+				   $("select[id='"+county_id+"']").show();
+				   $("input[name='service_village_id']").val($("select[id='"+county_id+"']").val());
+			   }
+		   });
+	   });
+	   $("#county").change();
+	});
+
+ </script>
 </body>
 </html>
