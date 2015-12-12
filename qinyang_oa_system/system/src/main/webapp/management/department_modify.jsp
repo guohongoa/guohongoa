@@ -80,10 +80,10 @@
                 <input type="hidden" name="department_id" value="${department_info.get_department_id()}">
                 <div>
                     <p><span>部门编号</span>
-                        <input class="input200" type="text"  value="${department_info.get_department_code()}"/></p>
+                        <input class="input200" type="text" name="department_code" value="${department_info.get_department_code()}"/></p>
 
                     <p><span>部门名称</span>
-                        <input class="input200" type="text"  value="${department_info.get_department_name()}"/></p>
+                        <input class="input200" type="text" name="department_name" value="${department_info.get_department_name()}"/></p>
                 </div>
                 <div class="shangchuan">
                     <p><span>工作制度</span>

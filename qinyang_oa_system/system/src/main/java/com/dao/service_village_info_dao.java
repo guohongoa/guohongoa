@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.data.department_info;
 import com.data.service_info;
 import com.data.service_village_info;
 
@@ -77,4 +78,17 @@ public class service_village_info_dao
 	 
 	    }
 		
+		public service_village_info get_service_village_info_by_id(int service_village_id)
+		{
+			service_village_info _service_village_info = null;
+		        SqlSession session = sqlSessionFactory.openSession();
+		        try {
+		        	_service_village_info = session.selectOne("service_village_info.select_by_id", service_village_id);
+		 
+		        } finally {
+		            session.close();
+		        }
+		        System.out.println("selectByUserid("+service_village_id+") --> "+_service_village_info);
+		        return _service_village_info;
+		}
 }

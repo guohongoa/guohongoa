@@ -257,4 +257,11 @@ public class service_db_connector
 					return village_total_page;
 				}
 				
+				public static service_village_info get_service_village_info_by_id(int service_village_id)
+				{
+					service_village_info_dao _service_village_info_dao=new service_village_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					service_village_info _service_village_info=_service_village_info_dao.get_service_village_info_by_id(service_village_id);
+					return _service_village_info;
+				}
+				
 }

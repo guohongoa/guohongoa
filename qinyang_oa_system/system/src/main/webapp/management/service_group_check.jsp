@@ -65,7 +65,7 @@
             <li><a href="service_group_check.do?service_group_page=1" class="active">五服务小组管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="service_group_add.jsp">添加小组成员</a><i></i></dd>
+                    <dd class="activea"><a href="service_group_add_display.do">添加小组成员</a><i></i></dd>
                     <dd><a href="../error.jsp" style="border-bottom: 1px solid #c9c9c9;height: 35px" >修改</a></dd>
                 </dl>
             </li>
@@ -85,7 +85,7 @@
                 </select>
             <span class="marginl">姓名</span><input type="text"/>
             <a href="../error.jsp" class="marginl">查找</a>
-            <a href="service_group_add.jsp" class="marginl">添加成员</a>
+            <a href="service_group_add_display.do" class="marginl">添加成员</a>
         </h6>
         <div class="contentlist">
             <ul class="contentlisttt ">

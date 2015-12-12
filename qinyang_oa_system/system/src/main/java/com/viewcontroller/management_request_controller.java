@@ -544,10 +544,8 @@ public class management_request_controller
 		@RequestMapping("management/service_group_add.do")
 		public ModelAndView group_add_request(
 				
-				@RequestParam(value="service_village_county_name")  String    service_village_county_name,  //五服务功能小组所属乡镇名称
 				
 				@RequestParam(value="service_village_county_id")    int          service_village_county_id,    //五服务乡镇id
-				@RequestParam(value="service_village_name")         String       service_village_name,         //五服务小组所属村名
 				@RequestParam(value="service_village_id")           int       service_village_id,      //五服务小组所属村庄id
 				
 				@RequestParam(value="service_type")                 int       service_type,              //五服务小组服务类别
@@ -560,14 +558,17 @@ public class management_request_controller
 				
 				)
 		{
-			System.out.println(service_type);
-
+			System.out.println("dafadafasdfafa"+service_village_county_id);
+			System.out.println("derararearaafdafdafaf"+service_village_id);
 			//添加至五服务小组数据库
 			service_group_info _service_group_info=new service_group_info();
-			_service_group_info.set_service_village_county_name(service_village_county_name);
 			_service_group_info.set_service_village_county_id(service_village_county_id);
-			_service_group_info.set_service_village_name(service_village_name);
 			_service_group_info.set_service_village_id(service_village_id);
+			
+			service_village_info _service_village_info=com.dbconnector.service_db_connector.get_service_village_info_by_id(service_village_id);
+			_service_group_info.set_service_village_county_name(_service_village_info.get_service_village_county_name());
+			_service_group_info.set_service_village_name(_service_village_info.get_service_village_name());
+			
 			_service_group_info.set_service_type(service_type);
 			_service_group_info.set_service_group_leader(service_group_leader);
 			_service_group_info.set_service_group_phone(service_group_phone);
@@ -631,8 +632,8 @@ public class management_request_controller
 			@RequestMapping("management/service_group_modify_commit.do")
 			public ModelAndView service_group_modify_commit_request(
 					@RequestParam(value="service_group_id")                int     service_group_id,
-					@RequestParam(value="service_village_county_name")     String service_village_county_name,
-					@RequestParam(value="service_village_name")            String service_village_name,
+					@RequestParam(value="service_village_county_id")       int service_village_county_id,
+					@RequestParam(value="service_village_id")              int service_village_id,
 					@RequestParam(value="service_type")                    int    service_type,
 					@RequestParam(value="service_group_leader")            String service_group_leader,
 					@RequestParam(value="service_group_phone")             String  service_group_phone,
@@ -646,8 +647,13 @@ public class management_request_controller
 			{
 				service_group_info _service_group_info=new service_group_info();
 				_service_group_info.set_service_group_id(service_group_id);
-				_service_group_info.set_service_village_county_name(service_village_county_name);
-				_service_group_info.set_service_village_name(service_village_name);
+				_service_group_info.set_service_village_county_id(service_village_county_id);
+				_service_group_info.set_service_village_id(service_village_id);
+				
+				service_village_info _service_village_info=com.dbconnector.service_db_connector.get_service_village_info_by_id(service_village_id);
+				_service_group_info.set_service_village_county_name(_service_village_info.get_service_village_county_name());
+				_service_group_info.set_service_village_name(_service_village_info.get_service_village_name());
+				
 				_service_group_info.set_service_type(service_type);
 				_service_group_info.set_service_group_leader(service_group_leader);
 				_service_group_info.set_service_group_phone(service_group_phone);
@@ -703,5 +709,18 @@ public class management_request_controller
 				service_group_info _service_group_info=com.dbconnector.management_db_connector.get_service_group_info_by_id(service_group_id);
 				mv.addObject("service_group_info", _service_group_info);
 				return mv;
+			}
+			
+			//五服务小组添加显示，将村镇信息转入其中
+			@RequestMapping("management/service_group_add_display.do")
+			public ModelAndView service_group_add_display()
+			{
+				ModelAndView mv=new ModelAndView("service_group_add.jsp");
+				 
+				List<service_village_county_info> service_village_county_info_list=com.dbconnector.service_db_connector.get_all_service_village_county_list();
+				List<service_village_info> service_village_info_list=com.dbconnector.service_db_connector.get_service_village_info_list_by_couty_list(service_village_county_info_list);
+				mv.addObject("service_village_county_info_list", service_village_county_info_list);
+				mv.addObject("service_village_info_list",service_village_info_list);
+			   return mv;
 			}
 }

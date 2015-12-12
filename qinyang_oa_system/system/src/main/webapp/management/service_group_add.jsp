@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -76,22 +77,35 @@
                 <div class="checkradio"><input class="shoudong" type="radio" name="cun">&nbsp;手动添加五服务小组</div>
                 <div class="shuru">
                     <p><span>镇(县)名</span>
-                         <select style="height: 27px" name="service_village_county_name" form="group_add_form">
-                            <option value="一镇">一镇</option>
-                            <option value="二镇">二镇</option>
+                         <select style="height: 27px" name="service_village_county_id" form="group_add_form" id="county" form="group_add_form">
+                           <!--   <option selected="selected" value="-1">请选择</option>-->
+                            <c:forEach var="service_village_county_info" items="${service_village_county_info_list}">
+                                 <option value="${service_village_county_info.get_service_village_county_id()}">${service_village_county_info.get_service_village_county_name()}</option>
+                            </c:forEach>
                         </select>
                      </p>
-                <!-- 镇县id--><input type="hidden" name="service_village_county_id" value="123"/>
-                    </p>
                     <p><span>村名</span>
-                        <select style="height: 27px" name="service_village_name" form="group_add_form">
-                            <option value="一村">一村</option>
-                            <option value="二村">二村</option>
-                        </select>
+                         <!--  
+                         <select id="-1" class="village">
+                            <option>请选择</option>
+                         </select>
+                         -->
+                         <c:forEach var="service_village_county_info" items="${service_village_county_info_list}">
+                           <select  id="${service_village_county_info.get_service_village_county_id()}" class="village">
+                               <c:forEach var="service_village_info" items="${service_village_info_list}">
+                                  <c:choose>
+                                     <c:when test="${service_village_county_info.get_service_village_county_id()==service_village_info.get_service_village_county_id()}">
+                                        <option  value="${service_village_info.get_service_village_id()}">${service_village_info.get_service_village_name()}</option>
+                                     </c:when>
+                                   </c:choose>
+                                 </c:forEach>
+                            </select>
+                          
+                        </c:forEach>
+                        
                       </p>
-                <!-- 村id--><input type="hidden" name="service_village_id" value="456"/>
-                    </p>
                     <p><span>服务类型</span>
+                       <input type="hidden" name="service_village_id">
                         <select name="service_type" style="height: 27px">
                             <option value="0">法政法规服务</option>
                             <option value="1">经济发展服务</option>
@@ -121,6 +135,7 @@
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
+<script src="http://101.200.196.121:8080/oa/js/jquery-1.5.2.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
 <script>
     //手动添加与批量导入的选择
@@ -146,6 +161,25 @@
             $("#service_add").submit();
         }
     });
+    
+    //--------------------------------
+    //二级联动
+   var currentShowCity=0;
+
+$(document).ready(function(){
+   $("#county").change(function(){
+	   $("#county option").each(function(i,o){
+		   if($(this).attr("selected"))
+		   {
+		       var county_id=$(this).val();
+			   $(".village").hide();
+			   $("select[id='"+county_id+"']").show();
+			   $("input[name='service_village_id']").val($("select[id='"+county_id+"']").val());
+		   }
+	   });
+   });
+   $("#county").change();
+});
 
 </script>
 </body>
