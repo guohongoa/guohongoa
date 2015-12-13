@@ -20,6 +20,8 @@ public class service_info
   private int     service_village_id;   //所属村庄id
   private String  service_village_name; //所属村庄名称
   
+  private int     service_group_id;     //五服务小组id
+  
   //类对象读写方法
   public int get_service_msgid()
   {
@@ -189,5 +191,15 @@ public class service_info
   public void set_service_village_name(String service_village_name)
   {
 	  this.service_village_name=service_village_name;
+  }
+  
+  public int get_service_group_id()
+  {
+	  return this.service_group_id;
+  }
+  
+  public void set_service_group_id(int service_group_id)
+  {
+	  this.service_group_id=service_group_id;
   }
 }

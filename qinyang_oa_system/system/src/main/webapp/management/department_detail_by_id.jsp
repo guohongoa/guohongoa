@@ -55,7 +55,7 @@
 </div>
 <!--主体-->
 <div class="content">
-    <h4><a href="">管理</a>&gt;<span>部门详情</span></h4>
+    <h4 style="font-weight:normal;"><a href="department_check.do?department_page=1">管理</a>&gt;<span>部门详情</span></h4>
     <div class="border">
         <div class="wdtzxq" id="bmglh">
             <p><b>部门编号：</b><span>${department_info.get_department_code()}</span></p>

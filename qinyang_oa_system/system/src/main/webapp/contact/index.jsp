@@ -80,21 +80,14 @@
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                <li><a href="">代办员1</a></li>
-                                <li><a href="">代办员2</a></li>
-                                <li><a href="">代办员3</a></li>
-                                <li><a href="">代办员4</a></li>
-                                <li><a href="">代办员5</a></li>
-                                <li><a href="">代办员6</a></li>
-                                <li><a href="">代办员7</a></li>
-                                <li><a href="">代办员8</a></li>
-                                <li><a href="">代办员9</a></li>
-                                <li><a href="">代办员10</a></li>
+                                 <c:forEach var="contact_person_info" items="${contact_info_list1}">
+                                   <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                                 </c:forEach>
                             </ul>
                             <p class="clear"><a href="" class="openclose">收起</a></p>
                         </li>
                     </ul>
-                    <p class="clear"><a href="" class="closeopen">展开</a></p>
+                    <p class="clear"><a class="closeopen">展开</a></p>
                     <i></i>
                 </div>
 
@@ -111,12 +104,14 @@
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                <li><a href="">常委</a></li>
+                                 <c:forEach var="contact_person_info" items="${contact_info_list2}">
+                                    <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                                 </c:forEach>
                             </ul>
                             <p class="clear"><a href="" class="openclose">收起</a></p>
                         </li>
                     </ul>
-                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <p class="clear"><a class="closeopen">...展开</a></p>
                     <i></i>
                     <b></b>
                     <em></em>
@@ -132,12 +127,14 @@
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                <li><a href="">党员委</a></li>
+                                <c:forEach var="contact_person_info" items="${contact_info_list3}">
+                                    <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                                </c:forEach>
                             </ul>
                             <p class="clear"><a href="" class="openclose">收起</a></p>
                         </li>
                     </ul>
-                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <p class="clear"><a class="closeopen">...展开</a></p>
                     <i></i>
                     <b></b>
                     <em></em>
@@ -153,12 +150,14 @@
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                <li><a href="">党员干部</a></li>
+                                <c:forEach var="contact_person_info" items="${contact_info_list4}">
+                                  <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                                </c:forEach>
                             </ul>
                             <p class="clear"><a href="" class="openclose">收起</a></p>
                         </li>
                     </ul>
-                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <p class="clear"><a class="closeopen">...展开</a></p>
                     <b></b>
                     <em></em>
                     <i></i>
@@ -177,12 +176,14 @@
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                <li><a href="">党员</a></li>
+                                <c:forEach var="contact_person_info" items="${contact_info_list5}">
+                                  <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                                </c:forEach>
                             </ul>
                             <p class="clear"><a href="" class="openclose">收起</a></p>
                         </li>
                     </ul>
-                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <p class="clear"><a class="closeopen">...展开</a></p>
                     <i></i>
                 </div>
             </div>
@@ -195,12 +196,14 @@
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                <li><a href="">群众</a></li>
+                               <c:forEach var="contact_person_info" items="${contact_info_list6}">
+                                 <li><a href="ccontact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                               </c:forEach>
                             </ul>
                             <p class="clear"><a href="" class="openclose">收起</a></p>
                         </li>
                     </ul>
-                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <p class="clear"><a class="closeopen">...展开</a></p>
                     <i></i>
                     <b></b>
                 </div>
@@ -217,12 +220,14 @@
                         </c:forEach>
                        <li class="pop">
                            <ul>
-                               <li><a href="">小组</a></li>
+                              <c:forEach var="contact_person_info" items="${contact_info_list7}">
+                                 <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_contact_person_name()}</a></li>
+                              </c:forEach>
                            </ul>
                            <p class="clear"><a href="" class="openclose">收起</a></p>
                        </li>
                    </ul>
-                   <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                   <p class="clear"><a class="closeopen">...展开</a></p>
                </div>
             </div>
         </div>
@@ -237,12 +242,14 @@
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                <li><a href="">市政府</a></li>
+                               <c:forEach var="contact_person_info" items="${contact_info_list8}">
+                                 <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                                </c:forEach>
                             </ul>
                             <p class="clear"><a href="" class="openclose">收起</a></p>
                         </li>
                     </ul>
-                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <p class="clear"><a class="closeopen">...展开</a></p>
                     <i></i>
                 </div>
             </div>
@@ -255,12 +262,14 @@
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                <li><a href="">市职能</a></li>
+                                <c:forEach var="contact_person_info" items="${contact_info_list9}">
+                                   <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                                </c:forEach>
                             </ul>
                             <p class="clear"><a href="" class="openclose">收起</a></p>
                         </li>
                     </ul>
-                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <p class="clear"><a class="closeopen">...展开</a></p>
                     <i></i>
                 </div>
             </div>
@@ -273,12 +282,14 @@
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                <li><a href="">乡镇办</a></li>
+                                <c:forEach var="contact_person_info" items="${contact_info_list10}">
+                                   <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                                 </c:forEach>
                             </ul>
                             <p class="clear"><a href="" class="openclose">收起</a></p>
                         </li>
                     </ul>
-                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <p class="clear"><a class="closeopen">...展开</a></p>
                 </div>
             </div>
 
@@ -291,12 +302,14 @@
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                <li><a href="">党员</a></li>
+                                 <c:forEach var="contact_person_info" items="${contact_info_list11}">
+                                    <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                                 </c:forEach>
                             </ul>
                             <p class="clear"><a href="" class="openclose">收起</a></p>
                         </li>
                     </ul>
-                    <p class="clear"><a href="" class="closeopen">...展开</a></p>
+                    <p class="clear"><a class="closeopen">...展开</a></p>
                 </div>
             </div>
         </div>

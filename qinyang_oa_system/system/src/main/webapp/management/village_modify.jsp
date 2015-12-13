@@ -72,7 +72,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a> &gt;<a href="">村镇管理</a> &gt;<span>添加村镇</span></h4>
+        <h4><a href="check_service_village_detail.do?village_page=1">管理</a> &gt;<a href="check_service_village_detail.do?village_page=1">村镇管理</a> &gt;<span>村镇详情修改</span></h4>
         <div class="tztj bmtjxg">
             <form id="post_city" action="village_update_commit.do" method="post">
             <input type="hidden" name="service_village_county_id" value="${service_village_county_info.get_service_village_county_id()}">

@@ -54,7 +54,7 @@
 </div>
 <!--主体-->
 <div class="content">
-    <h4><a href="">管理</a>&gt;<span>五服务小组详情</span></h4>
+    <h4 style="font-weight:normal;"><a href="service_group_check.do?service_group_page=1">管理</a>&gt;<span>五服务小组详情</span></h4>
     <div class="border">
         <div class="wdtzxq">
             <p><b>镇(县)名：</b><span>${service_group_info.get_service_village_county_name()}</span></p>

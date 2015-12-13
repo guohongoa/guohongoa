@@ -72,7 +72,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">台账</a>&gt;<span>我的台账</span>
+        <h4><a href="../work">工作</a>&gt;<a href="record_check_by_user.do?work_record_creatorid=60&record_page=1&flag=1">台账</a>&gt;<span>我的台账</span>
         </h4>
         <div class="contentlist">
             <ul class="contentlisttt tzlb_content">

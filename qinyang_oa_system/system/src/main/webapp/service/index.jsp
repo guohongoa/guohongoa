@@ -64,10 +64,10 @@
             <ul>
                 <c:forEach var="service_village_info" items="${service_village_info_list}">
                 <li>
-                  <a href="check_service_detail_request.jsp?service_village_id=${service_village_info.get_service_village_id()}&service_type=0&service_page=1">${service_village_info.get_service_village_name()}</a>
+                  <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info.get_service_village_id()}&service_type=0&service_page=1">${service_village_info.get_service_village_name()}</a>
                 </li>
                 </c:forEach>
-                <li><a href="" class="clickall">全部&gt;&gt;</a></li>
+                <li><a href="javascript:(0)" class="clickall">全部&gt;&gt;</a></li>
             </ul>
         </div>
         </c:forEach>
@@ -75,23 +75,9 @@
         
        <div class="pop">
             <div class="pop_content">
-                <h4>乡镇一</h4>
+                <h4>乡镇</h4>
                 <ul>
-                    <li><a href="">清平村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
-                    <li><a href="">某某村</a></li>
+                    <li style="width:300px;text-align:center;margin:0 auto;line-height:200px;">页面建设中......</li>
                 </ul>
                 <p><a href="" class="clickhide">关闭</a></p>
             </div>

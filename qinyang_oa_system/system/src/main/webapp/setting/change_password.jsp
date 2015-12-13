@@ -65,9 +65,9 @@
         <div class="set_password">
             <form method="post" action="../change_password.do">
             <input name="employee_id" type="hidden" value="${user_id}"> <!--从session取出用户id-->
-            <p><span>当前密码</span><input name="employee_password" type="text"/><b></b></p>
-            <p><span>新密码</span><input name="new_password" type="text"/><b></b></p>
-            <p><span>确认密码</span><input name="confirm_password" type="text"/><b></b></p>           
+            <p><span>当前密码</span><input name="employee_password" type="password"/><b></b></p>
+            <p><span>新密码</span><input name="new_password" type="password"/><b></b></p>
+            <p><span>确认密码</span><input name="confirm_password" type="password"/><b></b></p>           
         </div>
         <div class="tztj_btn"><input type="submit" value="保存"/> <input type="reset" value="重置"/></div>
             </form>

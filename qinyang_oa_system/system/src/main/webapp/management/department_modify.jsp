@@ -73,7 +73,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a> &gt;<a href="">部门管理</a> &gt;<span>修改</span></h4>
+        <h4><a href="department_check.do?department_page=1">管理</a> &gt;<a href="department_check.do?department_page=1">部门管理</a> &gt;<span>部门详情修改</span></h4>
         <div class="bmtj bmtjxg">
             <form action="department_modify_commit.do" method="post">
                <input type="hidden" name="department_page" value="${department_page}">

@@ -52,22 +52,41 @@
 </div>
 <!--主体-->
 <div class="fuwu_content">
-    <h4><a href="">五服务</a>&gt;<a href="">某某镇</a>&gt;<a href="">某某村</a>&gt;<span>服务主题</span></h4>
-    <div class="wfwxq">
+    <h4><a href="">五服务</a>&gt;<a href="service_village_check.do">${service_group_info.get_service_village_county_name()}</a>&gt;<a href="service_village_check.do">${service_group_info.get_service_village_name()}</a>&gt;<span>${service_info.get_service_theme()}</span></h4>
+    <div class="wfwxq" style="padding-bottom: 12px;padding-top:8px">
         <h5>主题：<span>${service_info.get_service_theme()}</span></h5>
-        <p>负责人：<span class="dark_grey">${service_info.get_service_sender()}</span></p>
+        <p>负 责 人 ：<span class="dark_grey">${service_info.get_service_sender()}</span></p>
         <p>联系电话：<span class="dark_grey">${service_info.get_service_sender_phone()}</span></p>
-        <p>小组成员：<span>李某、王某、张某</span></p>
-        <p>工作职责：<span>工作职责描述</span></p>
-        <p>活动时间：<span>2015.12.25</span></p>
-        <p>服务类型：<span>${service_info.get_service_type()}</span></p>
+        <p>小组成员：<span>${service_group_info.get_service_group_member()}</span></p>
+        <p>工作职责：<span>${service_group_info.get_service_group_duty()}</span></p>
+        <p>活动时间：<span>${service_info.get_service_begintime()}－－${service_info.get_service_endtime()}</span></p>
+        <p>服务类型：
+        <c:choose>
+            <c:when test="${service_type==0}">
+              <span>法政法规服务</span>
+            </c:when>
+            <c:when test="${service_type==1}">
+              <span>经济发展服务</span>
+            </c:when>
+            <c:when test="${service_type==2}">
+              <span>和谐稳定服务</span>
+            </c:when>
+            <c:when test="${service_type==3}">
+              <span>环境卫生服务</span>
+            </c:when>
+            <c:when test="${service_type==4}">
+              <span>文体活动服务</span>
+            </c:when>
+        </c:choose>
+        </p>
+        
         <p>活动周期：<span class="dark_grey">${service_info.get_service_begintime()}</span>-<span class="dark_grey">${service_info.get_service_endtime()}</span></p>
     </div>
-    <p>
-        服务小组的活动内容
+    <p style="padding: 10px 20px">
+        ${service_info.get_service_content()}
     </p>
     <div class="back">
-        <a href="check_service_detail_request.jsp?service_village_id=${service_info.get_service_village_id()}&service_type=${service_info.get_service_type()}&service_page=${service_page}">返回</a>
+        <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_info.get_service_village_id()}&service_type=${service_info.get_service_type()}&service_page=${service_page}">返回</a>
     </div>
 </div>
 <div class="footer"></div>

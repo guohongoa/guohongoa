@@ -72,7 +72,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="service_group_modify_commit.do">管理</a>&gt;<a href="">五服务小组管理</a>&gt;<span>修改</span></h4>
+        <h4><a href="service_group_check.do?service_group_page=1">管理</a>&gt;<a href="service_group_check.do?service_group_page=1">五服务小组管理</a>&gt;<span>五服务小组详情修改</span></h4>
         <div class="tztj bmtjxg">
             <form  action="service_group_modify_commit.do" method="post" id="service_group_modify">
                 <input type="hidden" name="service_group_id" value="${service_group_info.get_service_group_id()}">

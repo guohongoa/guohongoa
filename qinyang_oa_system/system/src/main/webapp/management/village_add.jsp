@@ -69,7 +69,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a> &gt;<a href="">村镇管理</a> &gt;<span>添加村镇</span></h4>
+        <h4><a href="javascirpt:(0)">管理</a> &gt;<a href="check_service_village_detail.do?village_page=1">村镇管理</a> &gt;<span>添加村镇</span></h4>
         <div class="tztj">
             <form id="post_city" action="village_add.do" method="post">
                 <div class="checkradio"><input class="shoudong" type="radio" name="cun">&nbsp;手动添加村</div>

@@ -66,6 +66,7 @@ import com.data.work_record_info;
             _service_info.set_service_status(service_status);
             _service_info.set_service_target(service_target);
             _service_info.set_service_sender_phone(service_sender_phone);
+            _service_info.set_service_group_id(service_group_id);
             
             //使用五服务小组id，传入村庄id和村庄名字
             service_group_info _service_group_info=com.dbconnector.management_db_connector.get_service_group_info_by_id(service_group_id);
@@ -235,8 +236,13 @@ import com.data.work_record_info;
 			{
 				
 				service_info _service_info=com.dbconnector.service_db_connector.get_service_info_by_service_msgid(service_msgid);
+				int service_group_id=_service_info.get_service_group_id();//获取五服务小组id
+				service_group_info _service_group_info=com.dbconnector.management_db_connector.get_service_group_info_by_id(service_group_id);
+				
 				ModelAndView mv=new ModelAndView("service_detail_by_msg.jsp?service_page="+service_page);
 				mv.addObject("service_info", _service_info);
+				mv.addObject("service_group_info", _service_group_info);
+				
 				return mv;
 			}
 			

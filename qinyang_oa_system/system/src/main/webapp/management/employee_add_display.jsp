@@ -71,7 +71,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<a href="">人员管理</a>&gt;<span>添加人员</span></h4>
+        <h4><a href="employee_check.do?employee_page=1">管理</a>&gt;<a href="employee_check.do?employee_page=1">人员管理</a>&gt;<span>添加人员</span></h4>
 
         <div class="bmtj ">
             <form action="./employee_insert.do" method="post" id="employee_insert">

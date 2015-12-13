@@ -1,3 +1,4 @@
 activeuserprofiles=Lance;Team
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=lance
+useridperkey=Lance.Local\=lance;

@@ -70,7 +70,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a> &gt;<a href="">部门管理</a> &gt;<span>添加部门</span></h4>
+        <h4><a href="department_check.do?department_page=1">管理</a> &gt;<a href="department_check.do?department_page=1">部门管理</a> &gt;<span>添加部门</span></h4>
             <div class="bmtj ">
                 <form action="department_insert.do" method="post" id="department_insert_form">
                     <div>

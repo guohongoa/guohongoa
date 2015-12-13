@@ -54,7 +54,7 @@
 </div>
 <!--主体-->
 <div class="content">
-    <h4><a href="">管理</a>&gt;<span>人员详情</span></h4>
+    <h4 style="font-weight:normal;"><a href="employee_check.do?employee_page=1">管理</a>&gt;<span>人员详情</span></h4>
     <div class="border">
         <div class="wdtzxq">
             <p><b>员工姓名：</b><span>${employee_info.get_employee_name()}</span></p>

@@ -71,7 +71,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">管理</a>&gt;<a href="">五服务小组管理</a>&gt;<span>添加小组成员</span></h4>
+        <h4><a href="service_group_check.do?service_group_page=1">管理</a>&gt;<a href="service_group_check.do?service_group_page=1">五服务小组管理</a>&gt;<span>添加小组成员</span></h4>
         <div class="tztj">
             <form  action="service_group_add.do" method="post" id="group_add_form">
                 <div class="checkradio"><input class="shoudong" type="radio" name="cun">&nbsp;手动添加五服务小组</div>

@@ -82,42 +82,42 @@
         <ul>
           <c:choose>
             <c:when test="${user_group_type==0}">
-                <li><a href="#">政策法规服务</a></li>
+                <li><a href="#">法政法规服务</a></li>
                 <li><a href="#">经济发展服务</a></li>
                 <li><a href="#">和谐稳定服务</a></li>
                 <li><a href="#">环境卫生服务</a></li>
                 <li><a href="#">文体活动服务</a></li>
             </c:when>
             <c:when test="${user_group_type==1 }">
-                <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">政策法规服务</a></li>
+                <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">法政法规服务</a></li>
                 <li><a href="#">经济发展服务</a></li>
                 <li><a href="#">和谐稳定服务</a></li>
                 <li><a href="#">环境卫生服务</a></li>
                 <li><a href="#">文体活动服务</a></li>
             </c:when>
             <c:when test="${user_group_type==2 }">
-                <li><a href="#">政策法规服务</a></li>
+                <li><a href="#">法政法规服务</a></li>
                 <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">经济发展服务</a></li>
                 <li><a href="#">和谐稳定服务</a></li>
                 <li><a href="#">环境卫生服务</a></li>
                 <li><a href="#">文体活动服务</a></li>
             </c:when>
             <c:when test="${user_group_type==3 }">
-                <li><a href="#">政策法规服务</a></li>
+                <li><a href="#">法政法规服务</a></li>
                 <li><a href="#">经济发展服务</a></li>
                 <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">和谐稳定服务</a></li>
                 <li><a href="#">环境卫生服务</a></li>
                 <li><a href="#">文体活动服务</a></li>
             </c:when>
             <c:when test="${user_group_type==4 }">
-                <li><a href="#">政策法规服务</a></li>
+                <li><a href="#">法政法规服务</a></li>
                 <li><a href="#">经济发展服务</a></li>
                 <li><a href="#">和谐稳定服务</a></li>
                 <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1">环境卫生服务</a></li>
                 <li><a href="#">文体活动服务</a></li>
             </c:when>
             <c:when test="${user_group_type==5 }">
-                <li><a href="#">政策法规服务</a></li>
+                <li><a href="#">法政法规服务</a></li>
                 <li><a href="#">经济发展服务</a></li>
                 <li><a href="#">和谐稳定服务</a></li>
                 <li><a href="#">环境卫生服务</a></li>

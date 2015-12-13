@@ -67,7 +67,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">台账</a>&gt;<span>添加台账</span></h4>
+        <h4><a href="../work">工作</a>&gt;<a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=1&flag=1">台账</a>&gt;<span>添加台账</span></h4>
         <!--需要提交给后台的数据-->
         <div class="tztj">
             <form id="post_tz" action="record_add.do" method="post">

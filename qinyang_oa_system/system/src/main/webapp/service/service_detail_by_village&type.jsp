@@ -129,20 +129,23 @@
             <ul class="contentlisttt wufuwu">
                 <li class="lg_li">服务主题</li>
                 <li>负责人</li>
-                <li>活动时间</li>
+                <li>审批人</li>
                 <li>起始时间</li>
                 <li class="lg_li">服务内容</li>
                 <li>操作</li>
             </ul>
             <!-- 循环对应村和类型五服务信息 -->
             <c:forEach var="service_info" items="${service_info_list}">
-            <ul class="wufuwu">
+            <ul class="wufuwu clear">
                 <li class="lg_li">${service_info.get_service_theme()}</li>
                 <li>${service_info.get_service_sender()}</li>
-                <li>2015.10.10</li>
-                <li class="sm_lh"><span>${service_info.get_service_begintime()}</span>-<br/><span>${service_info.get_service_endtime()}</span></li>
-                <li class="lg_li"><span>服务内容描述服务内容描述服务内容描述服务内容描述服务内容描述服务内容描述服务内容描述</span></li>
-                <li><a href="check_service_info_request.jsp?service_msgid=${service_info.get_service_msgid()}&service_page=${service_page}">查看详细</a></li>
+                <li>${service_info.get_service_receiver()}</li>
+                <li class="sm_lh" style="width: 80px"><span>${service_info.get_service_begintime()}</span>-<br/><span>${service_info.get_service_endtime()}</span></li>
+                <li class="lg_li" style="*position:relative">
+                <span class="pop_click">点击查看</span>
+                <div class="pop_fwcontent">${service_info.get_service_content()}</div>
+                </li>
+                <li><a href="check_service_info_by_service_msgid.do?service_msgid=${service_info.get_service_msgid()}&service_page=${service_page}">查看详细</a></li>
             </ul>
             </c:forEach>
         </div>

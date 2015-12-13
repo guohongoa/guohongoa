@@ -76,10 +76,10 @@
     <div class="left_menu tzlb">
         <h3><a href="">五服务</a></h3>
         <ul>
-            <li><a href="" class="active">${service_type_name}</a>
+            <li><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0" class="active">${service_type_name}</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="" class="red">发起服务</a><i></i></dd>
+                    <dd class="activea"><a href="javasrcipt:(0)" class="red">发起服务</a><i></i></dd>
                     <dd><a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=1" style="border-bottom: 1px solid #c9c9c9;height: 35px">我的服务</a></dd>
                 </dl>
             </li>
@@ -87,7 +87,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">五服务</a>&gt;<span>${service_type_name}</span></h4>
+        <h4><a href="../work">工作</a>&gt;<a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0">五服务</a>&gt;<span>${service_type_name}</span></h4>
         <div class="tztj">
             <form id="post_tz" action="send_service.do" method="post">
              

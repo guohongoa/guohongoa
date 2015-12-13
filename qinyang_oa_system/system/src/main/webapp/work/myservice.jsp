@@ -100,19 +100,19 @@
         <c:choose>
         
             <c:when test="${user_group_type==1}">
-               <a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>法政法规服务</span>
+               <a href="../work">工作</a>&gt;<a href="#">五服务</a>&gt;<span>法政法规服务</span>
             </c:when>
             <c:when test="${user_group_type==2}">
-               <a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>经济发展服务</span>
+               <a href="../work">工作</a>&gt;<a href="#">五服务</a>&gt;<span>经济发展服务</span>
             </c:when>
             <c:when test="${user_group_type==3}">
-               <a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>和谐稳定服务</span>
+               <a href="../work">工作</a>&gt;<a href="#">五服务</a>&gt;<span>和谐稳定服务</span>
             </c:when>
             <c:when test="${user_group_type==4}">
-               <a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>环境卫生服务</span>
+               <a href="../wrok">工作</a>&gt;<a href="#">五服务</a>&gt;<span>环境卫生服务</span>
             </c:when>
             <c:otherwise>
-               <a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>文体活动服务</span>
+               <a href="../work">工作</a>&gt;<a href="#">五服务</a>&gt;<span>文体活动服务</span>
             </c:otherwise>
         </c:choose>
         </h4>
