@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.data.employee_info;
+import com.data.service_group_info;
 import com.data.service_info;
 import com.data.service_village_county_info;
 import com.data.service_village_info;
@@ -36,8 +37,9 @@ import com.data.work_record_info;
 	            @RequestParam(value="service_status") int service_status,
 	            @RequestParam(value="service_target") String service_target,
 	            @RequestParam(value="service_sender_phone") String service_sender_phone,
-	            @RequestParam(value="service_village_id") int service_village_id,
-	            @RequestParam(value="service_village_name") String service_village_name
+	            @RequestParam(value="service_group_id") int service_group_id
+	            //@RequestParam(value="service_village_id") int service_village_id,
+	            //@RequestParam(value="service_village_name") String service_village_name
 				)
 		{
 			//初始化service_info对象
@@ -45,7 +47,15 @@ import com.data.work_record_info;
 			_service_info.set_service_sender(service_sender);
 			System.out.println(service_sender);
 			_service_info.set_service_sender_id(service_sender_id);
-			String service_receiver=com.dbconnector.management_db_connector.get_employee_info_by_id(service_receiver_id).get_employee_name();
+			String service_receiver;
+			if(service_receiver_id!=-1)
+			{
+				service_receiver=com.dbconnector.management_db_connector.get_employee_info_by_id(service_receiver_id).get_employee_name();
+			}
+			else
+			{
+				service_receiver="无";
+			}
 			_service_info.set_service_receiver(service_receiver);
 			_service_info.set_service_receiver_id(service_receiver_id);
             _service_info.set_service_type(service_type);
@@ -56,6 +66,12 @@ import com.data.work_record_info;
             _service_info.set_service_status(service_status);
             _service_info.set_service_target(service_target);
             _service_info.set_service_sender_phone(service_sender_phone);
+            
+            //使用五服务小组id，传入村庄id和村庄名字
+            service_group_info _service_group_info=com.dbconnector.management_db_connector.get_service_group_info_by_id(service_group_id);
+            int    service_village_id=_service_group_info.get_service_village_id();
+            String service_village_name=_service_group_info.get_service_village_name();
+            
             _service_info.set_service_village_id(service_village_id);
             _service_info.set_service_village_name(service_village_name);
             

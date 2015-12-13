@@ -133,8 +133,24 @@
              <ul class="wfwlb_content clear">
                 <li>${service_info.get_service_receiver()}</li>
                 <li>${service_info.get_service_theme()}</li>
-                <li>${service_info.get_service_type()}</li>
-                <li>${service_info.get_service_sender()}</li>
+                <c:choose>
+                  <c:when test="${service_info.get_service_type()==0}">
+                   <li>法政法规</li>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==1}">
+                   <li>经济发展</li>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==2}">
+                   <li>和谐稳定</li>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==3}">
+                   <li>环境卫生</li>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==4}">
+                   <li>文体活动</li>
+                  </c:when>
+                </c:choose>
+                <li>${service_info.get_service_receiver()}</li>
                 <li>${service_info.get_service_sender()}</li>
                 <li class="overflow">${service_info.get_service_target()}</li>
                 <li style="line-height: 15px;padding-top: 5px">${service_info.get_service_begintime()}-<br/>${service_info.get_service_endtime()}</li>

@@ -57,7 +57,26 @@
     <h4><a href="../">工作</a>&gt;<a href="#">五服务</a>&gt;<span>法政法规服务</span></h4>
     <div class="wfwxq" style="padding-bottom:15px;">
         <h5>主题：<span>服务主题</span><b class="red">（已通过）</b></h5>
-        <p>服务类型：<span>${service_info.get_service_type()}</span></p>
+        <p>服务类型：
+        <c:choose>
+                  <c:when test="${service_info.get_service_type()==0}">
+                    <span>法政法规</span>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==1}">
+                     <span>经济发展</span>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==2}">
+                     <span>和谐稳定</span>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==3}">
+                     <span>环境卫生</span>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==4}">
+                     <span>文体活动</span>
+                  </c:when>
+        </c:choose>
+        </p>
+       
         <p>服务目标：<span class="dark_grey">${service_info.get_service_target()}</span></p>
         <p>汇报给：<span>${service_info.get_service_receiver()}</span></p>
         <p>联系电话：<span>${service_info.get_service_sender_phone()}</span></p>

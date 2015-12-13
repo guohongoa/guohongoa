@@ -123,9 +123,7 @@ public class contact_db_connector
 	private static Map<String, contact_node> get_son_contact_map( Map<String, contact_node> current_contact_map,contact_node parent_node,String parent_node_code)
 	{
 		contact_person_department_info_dao _contact_person_department_info_dao=new contact_person_department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		employee_info_dao                  _employee_info_dao                 =new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory()); 
 		contact_relationship_info_dao      _contact_relationship_info_dao     =new contact_relationship_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-		int a=parent_node.get_contact_person_department_id();
 		contact_person_department_info _contact_person_department_info=_contact_person_department_info_dao.get_department_info_by_id(parent_node.get_contact_person_department_id());
 		
 		int node1_id=  _contact_person_department_info.get_contact_person_department_sononeid();
