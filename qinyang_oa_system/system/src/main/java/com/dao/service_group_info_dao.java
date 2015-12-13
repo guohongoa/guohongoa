@@ -18,27 +18,21 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		this.sqlSessionFactory=sqlSessionFactory;
 	}
 		
-		public boolean insert(service_group_info _service_group_info)
+		public int insert(service_group_info _service_group_info)
 		{
 		       int id = -1;
 		        SqlSession session = this.sqlSessionFactory.openSession();
 		 
 		        try {
-		            id = session.insert("service_group_info.insert",_service_group_info);
+		             session.insert("service_group_info.insert",_service_group_info);
+		            id=_service_group_info.get_service_group_id();
 		        } finally {
 		            session.commit();
 		            session.close();
 		        }
 		        System.out.println("insert("+_service_group_info+") --> "+_service_group_info.get_service_group_id());
 		        
-		        if(id==-1)
-		        {
-		        	return false;//插入失败
-		        }
-		        else
-		        {
-		        	return true;//插入成功
-		        }
+		       return id;
 		 }
 		
 		public List<service_group_info> select_all()

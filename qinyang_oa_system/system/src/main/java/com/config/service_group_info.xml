@@ -5,7 +5,7 @@
 
 <mapper namespace="service_group_info">
 
-	<resultMap id="result" type="service_group_info">
+	<resultMap id="result" type="service_group_info"  >
 		<result property="service_group_id" column="service_group_id" />
 		<result property="service_village_name" column="service_village_name" />
 		<result property="service_village_id" column="service_village_id" />
@@ -20,7 +20,7 @@
 
 	</resultMap>
 
-	<insert id="insert" parameterType="service_group_info">
+	<insert id="insert" parameterType="service_group_info" useGeneratedKeys="true" keyProperty="service_group_id">
 		insert into
 		service_group_info(service_village_name,service_village_id,service_village_county_name,service_village_county_id,service_type,service_group_leader,service_group_phone,service_group_duty,service_group_member,service_group_addtime)
 		values(#{service_village_name},#{service_village_id},#{service_village_county_name},#{service_village_county_id},#{service_type},#{service_group_leader},#{service_group_phone},#{service_group_duty},#{service_group_member},#{service_group_addtime})

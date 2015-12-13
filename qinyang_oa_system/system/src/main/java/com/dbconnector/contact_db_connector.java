@@ -12,6 +12,7 @@ import com.dao.contact_relationship_info_dao;
 import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.relationship_info_dao;
+import com.dao.work_contact_info_dao;
 import com.data.contact_add_request_info;
 import com.data.contact_node;
 import com.data.contact_person_department_info;
@@ -19,6 +20,7 @@ import com.data.contact_person_info;
 import com.data.contact_relationship_info;
 import com.data.employee_info;
 import com.data.relationship_info;
+import com.data.work_contact_info;
 import com.mybatis.mybatis_connection_factory;
 
 public class contact_db_connector 
@@ -295,6 +297,24 @@ public class contact_db_connector
 			rs=_contact_add_request_info_dao.update_msg_status(_contact_add_request_info);
 			
 		    return rs;
+	 }
+	 
+	 public static boolean insert_work_contact_info(int owner_id,int friend_id,int relationship_type,String owner_name,String friend_name)
+	 {
+		 boolean rs;
+		 work_contact_info _work_contact_info=new work_contact_info();
+		 
+		 _work_contact_info.set_owner_id(owner_id);
+		 _work_contact_info.set_friend_id(friend_id);
+		 _work_contact_info.set_relationship_type(relationship_type);
+		 _work_contact_info.set_owner_name(owner_name); 
+		 _work_contact_info.set_friend_name(friend_name);
+		 
+		 work_contact_info_dao _work_contact_info_dao=new work_contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 rs=_work_contact_info_dao.insert(_work_contact_info);
+		 
+		 
+		 return rs;
 	 }
 
 }

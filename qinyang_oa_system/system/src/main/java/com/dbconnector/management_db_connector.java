@@ -83,13 +83,14 @@ public class management_db_connector
 	
 //------------------------------------------------------------------------------------------------------
 	 //人员管理数据库功能函数
-	 public static boolean employee_insert_db(employee_info _employee_info)
+	 public static int employee_insert_db(employee_info _employee_info)
 		{
 			employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 			
-			boolean employeeinsert_rs=_employee_info_dao.insert(_employee_info);
+			int employee_id=_employee_info_dao.insert(_employee_info);
+			System.out.println("dafdsafdasfdasfsafsadf"+employee_id);
 			
-			return employeeinsert_rs;
+			return employee_id;
 		}
 	 
 	 public static List<employee_info> get_employee_info_list()
@@ -147,13 +148,13 @@ public class management_db_connector
 	 //-------------------------------------------------------
 	 //五服务小组
 	 
-	 public static boolean service_group_insert_db(service_group_info _service_group_info)
+	 public static int service_group_insert_db(service_group_info _service_group_info)
 	 {
 		    service_group_info_dao _service_group_info_dao=new service_group_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 			
-			boolean serviceinsert_rs=_service_group_info_dao.insert( _service_group_info);
+			int service_group_id=_service_group_info_dao.insert( _service_group_info);
 			
-			return serviceinsert_rs;
+			return  service_group_id;
 	 }
 	 
 	 public static List<service_group_info> get_service_group_list()

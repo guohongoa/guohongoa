@@ -24,27 +24,23 @@ public class employee_info_dao
 		this.sqlSessionFactory=sqlSessionFactory;
 	}
 	
-	 public boolean insert(employee_info _employee_info)
+	 public int insert(employee_info _employee_info)
 	 {
-	       int id = -1;
+	       int employee_id = -1;
 	        SqlSession session = sqlSessionFactory.openSession();
 	 
 	        try {
-	            id = session.insert("employee_info.insert", _employee_info);
+	            session.insert("employee_info.insert", _employee_info);
+	           
+	            employee_id=_employee_info.get_employee_id();
+	            System.out.println("ooodafdfa"+employee_id);
 	        } finally {
 	            session.commit();
 	            session.close();
 	        }
 	        System.out.println("insert("+_employee_info+") --> "+_employee_info.get_employee_id());
+	        return employee_id;
 	        
-	        if(id==-1)
-	        {
-	        	return false;//插入失败
-	        }
-	        else
-	        {
-	        	return true;//插入成功
-	        }
 	  }
 	 
 	 //根据员工id查询员工信息

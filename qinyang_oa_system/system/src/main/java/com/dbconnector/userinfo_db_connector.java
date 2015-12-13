@@ -65,7 +65,7 @@ public class userinfo_db_connector
 	
 	//输入五服务小组成员姓名、手机号，以空格间隔，将输入信息与employee_info核对，
    //核实后改变employee_info中employee_is_service_member值，将用户身份转换为五服务小组成员，可以使用对应的服务功能
-	public static void add_service_member(String service_group_member,int service_type)
+	public static void add_service_member(String service_group_member,int service_type,int service_group_id)
 	{
 		 employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		
@@ -87,13 +87,14 @@ public class userinfo_db_connector
 			  employee_info new_info=_employee_info_dao.select_by_user_phone(_employee_info.get_employee_phone());
 			  if(new_info!=null)
 			  {
-				  System.out.println("cccccccc"+new_info.get_employee_name());
-				  if(_employee_info.get_employee_name().equals(new_info.get_employee_name()))
-				  {
+				  System.out.println("dafdfasdfdsafasdfasdfasdfadsfadsf111111");
+				  //if(_employee_info.get_employee_name().equals(new_info.get_employee_name()))
+				  //{
 					  int employee_service_group=service_type+1;//表单输入依照五服务数据库，与用户信息表五服务类型属性值间相差1
 					  new_info.set_employee_service_group(employee_service_group);
+					  new_info.set_service_group_id(service_group_id);
 					  _employee_info_dao.update_employee_service_group_type(new_info);
-				  }
+				  //}
 			  }
 			
 			  

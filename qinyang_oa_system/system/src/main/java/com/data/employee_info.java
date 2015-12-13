@@ -31,6 +31,8 @@ public class employee_info
     private String employee_department_name;//部门名称
     private String employee_leader_name;    //领导名称
     
+    private int    service_group_id;//所属五服务小组id 不属于置空
+    
 	
     public employee_info()
     {
@@ -209,6 +211,16 @@ public class employee_info
 	public void set_employee_leader_name(String employee_leader_name)
 	{
 		this.employee_leader_name=employee_leader_name;
+	}
+	
+	public int get_service_group_id()
+	{
+		return this.service_group_id;
+	}
+	
+	public void set_service_group_id(int service_group_id)
+	{
+		this.service_group_id=service_group_id;
 	}
 
 }

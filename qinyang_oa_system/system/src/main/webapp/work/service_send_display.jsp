@@ -90,14 +90,44 @@
         <h4><a href="">工作</a>&gt;<a href="">五服务</a>&gt;<span>${service_type_name}</span></h4>
         <div class="tztj">
             <form id="post_tz" action="send_service.do" method="post">
-                <p><span>汇报给</span><input class="input600" type="text" name="service_receiver" value="${leader}"/></p>
-                <!--接受人对应id--><input type="hidden" name="service_receiver_id" value="123" />
+             
+                <p><span>汇报给</span>
+                <c:forEach var="work_contact_info" items="${work_contact_list}">
+                <select name="service_receiver_id" id="post_tz">
+                    <option value="${work_contact_info.get_friend_id()}">${work_contact_info.get_friend_name()}</option>
+                </select>
+                </c:forEach>  
+                </p>
+           
                 <p><span>服务主题</span><input type="text" name="service_theme"/></p>
-                <p><span>服务类型</span><input class="grey9" type="text" value="和谐稳定服务" value="${service_type_name}" readonly="readonly"/></p>
-                <!--发送法政法规服务对应id--><input type="hidden" name="service_type" value="${service_type}" />
-                <p><span>责任人</span><input class="grey9" type="text" name="service_sender" value="${user_name}" readonly="readonly"/></p>
+                 
+                <c:choose>
+                  <c:when test="${service_type==0}">
+                   <p><span>服务类型</span><input class="grey9" type="text" value="法政法规服务" /></p>
+                                          <input name="service_type"  type="hidden"  value="${service_type}" />
+                  </c:when>
+                  <c:when test="${service_type==1}">
+                   <p><span>服务类型</span><input name="service_type" class="grey9" type="text" value="经济发展服务"/></p>
+                                         <input name="service_type" type="hidden"  value="${service_type}" />
+                  </c:when>
+                  <c:when test="${service_type==2}">
+                   <p><span>服务类型</span><input name="service_type" class="grey9" type="text" value="和谐稳定服务" /></p>
+                                          <input name="service_type" type="hidden"  value="${service_type}" />
+                  </c:when>
+                  <c:when test="${service_type==3}">
+                   <p><span>服务类型</span><input name="service_type" class="grey9" type="text" value="环境卫生服务" /></p>
+                                          <input name="service_type" type="hidden"  value="${service_type}" />
+                  </c:when>
+                  <c:when test="${service_type==4}">
+                   <p><span>服务类型</span><input name="service_type" class="grey9" type="text" value="文体活动服务"/></p>
+                                          <input name="service_type" type="hidden"  value="${service_type}" />
+                  </c:when>
+                </c:choose>
+            
+                 
+                <p><span>责任人</span><input class="grey9" type="text" name="service_sender" value="${user_name}" /></p>
                 <!--发送人对应id--><input type="hidden" name="service_sender_id" value="${user_id}" />
-                <p><span>联系电话</span><input class="grey9" type="text" value="12345678" name="service_sender_phone" readonly="readonly"/></p>
+                <p><span>联系电话</span><input name="service_sender_phone" class="grey9" type="text" value="${user_phone}" /></p>
                 <p><span>服务目标</span><input type="text" name="service_target"/></p>
                 <p><span>服务周期</span><input class="input100 timedata" type="text" name="service_begintime"/>&nbsp; —— &nbsp;<input class="input100 timedata" type="text" name="service_endtime"/></p>
                 <p><span>服务内容</span><textarea name="service_content" form="post_tz"></textarea></p>
@@ -105,6 +135,8 @@
                  <!--五服务审批状态--><input type="hidden" name="service_status" value="0"> <!--初始状态均为未审批，值为0-->
                  <!--所属村庄id-->   <input type="hidden" name="service_village_id" value="1">
                  <!--所属村庄名称-->  <input type="hidden" name="service_village_name" value="致富村">
+                 <!--  input type="hidden" name="service_group_id" value="${user_service_group_id}"-->
+                 
                 <p class="tztj_btn"><b class="login-error"></b>&nbsp;<button style="margin-right: -30px">提交</button></p>
             </form>
         </div>

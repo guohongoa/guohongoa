@@ -25,9 +25,10 @@
 		<result property="employee_str_gender" column="employee_str_gender" />
 		<result property="employee_department_name" column="employee_department_name" />
 		<result property="employee_leader_name" column="employee_leader_name" />
+		<result property="service_group_id" column="service_group_id" />
 	</resultMap>
 
-	<insert id="insert" parameterType="employee_info">
+	<insert id="insert" parameterType="employee_info" useGeneratedKeys="true" keyProperty="employee_id">
 		insert into
 		employee_info(employee_name,employee_position,employee_gender,employee_department_id,employee_leader_id,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_duty,employee_password,employee_str_gender,employee_department_name,employee_leader_name)
 		values(#{employee_name},#{employee_position},#{employee_gender},#{employee_department_id},#{employee_leader_id},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_duty},#{employee_password},#{employee_str_gender},#{employee_department_name},#{employee_leader_name});
@@ -86,7 +87,8 @@
 	
 	<update id="update_service_type" parameterType="employee_info">
         UPDATE employee_info
-        SET employee_service_group = #{employee_service_group}
+        SET employee_service_group = #{employee_service_group},
+            service_group_id       = #{service_group_id}
             
         WHERE employee_id = #{employee_id} 
     </update>

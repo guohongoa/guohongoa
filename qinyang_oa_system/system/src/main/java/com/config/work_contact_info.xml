@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="work_contact_info">
+
+	<resultMap id="result" type="work_contact_info">
+		<result property="contact_id" column="contact_id" />
+		<result property="owner_id"   column="owner_id" />
+	    <result property="owner_name" column="owner_name" />
+		<result property="friend_id" column="friend_id" />
+		<result property="friend_name" column="friend_name" />
+		<result property="relationship_type" column="relationship_type" />
+		
+	</resultMap>
+
+	<insert id="insert" parameterType="work_contact_info">
+		insert into
+		work_contact_info(owner_id,friend_id,relationship_type,owner_name,friend_name)
+		values(#{owner_id},#{friend_id},#{relationship_type},#{owner_name},#{friend_name});
+	</insert>	
+	
+	
+	
+	<select id="select_by_owner_id" parameterType="work_contact_info" resultMap="result">
+		SELECT * FROM work_contact_info WHERE owner_id = #{owner_id} AND relationship_type = #{relationship_type};
+	</select>
+</mapper>
+
+

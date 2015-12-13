@@ -17,6 +17,7 @@ import com.data.project_info;
 import com.data.service_group_info;
 import com.data.service_village_county_info;
 import com.data.service_village_info;
+import com.data.work_contact_info;
 import com.mybatis.mybatis_connection_factory;
 
 //所有管理页面请求
@@ -358,8 +359,9 @@ public class management_request_controller
 		     if(employee_leader_id!=-1)
 		     {
 		    	  String employee_leader_name=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_leader_id).get_employee_name();
-				  System.out.println(employee_leader_name);
 				  _employee_info.set_employee_leader_name(employee_leader_name);
+				  
+				 
 		     }
 		     else
 		     {
@@ -388,10 +390,15 @@ public class management_request_controller
 			 String employee_addtime=format.format(date);
 			 _employee_info.set_employee_addtime(employee_addtime);
 			   
-			 boolean rs=com.dbconnector.management_db_connector.employee_insert_db(_employee_info);
+			 int employee_id=com.dbconnector.management_db_connector.employee_insert_db(_employee_info);
+			 
+			 String owner_name=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id).get_employee_name();
+			 String friend_name=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_leader_id).get_employee_name();
+			 
+			 com.dbconnector.contact_db_connector.insert_work_contact_info(employee_id,employee_leader_id,0,owner_name,friend_name);
+			 com.dbconnector.contact_db_connector.insert_work_contact_info(employee_leader_id,employee_id,1,friend_name,owner_name);
 			 
 			 ModelAndView mv=new ModelAndView("redirect:employee_check.do?employee_page=1");
-			 mv.addObject("result",rs);
 			 return mv;
 			
 			
@@ -583,13 +590,14 @@ public class management_request_controller
 			 _service_group_info.set_service_group_addtime(service_group_addtime);
 			 
 			   
-			 boolean rs=com.dbconnector.management_db_connector.service_group_insert_db(_service_group_info);
+			 int service_group_id=com.dbconnector.management_db_connector.service_group_insert_db(_service_group_info);
+
 			 
              //根据五服务小组成员，修改对应用户的身份信息，修改 employee_is_service_member
-			 com.dbconnector.userinfo_db_connector.add_service_member(service_group_member,service_type);
+			 System.out.println("service_group_member"+service_group_member);
+			 com.dbconnector.userinfo_db_connector.add_service_member(service_group_member,service_type,service_group_id);
 			 
 			 ModelAndView mv=new ModelAndView("redirect:/management/service_group_check.do?service_group_page=1");
-			 mv.addObject("result",rs);
 			 
 			 return mv;
 		}

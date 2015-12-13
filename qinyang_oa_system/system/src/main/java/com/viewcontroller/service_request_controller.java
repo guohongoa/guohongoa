@@ -15,6 +15,7 @@ import com.data.employee_info;
 import com.data.service_info;
 import com.data.service_village_county_info;
 import com.data.service_village_info;
+import com.data.work_contact_info;
 import com.data.work_record_info;
 
 	
@@ -26,7 +27,6 @@ import com.data.work_record_info;
 		public ModelAndView send_service_request(
 				@RequestParam(value="service_sender") String service_sender ,
 			    @RequestParam(value="service_sender_id") int service_sender_id,
-				@RequestParam(value="service_receiver") String service_receiver,
 				@RequestParam(value="service_receiver_id") int service_receiver_id,
 	            @RequestParam(value="service_type") int service_type,
 	            @RequestParam(value="service_begintime") String service_begintime,
@@ -45,6 +45,7 @@ import com.data.work_record_info;
 			_service_info.set_service_sender(service_sender);
 			System.out.println(service_sender);
 			_service_info.set_service_sender_id(service_sender_id);
+			String service_receiver=com.dbconnector.management_db_connector.get_employee_info_by_id(service_receiver_id).get_employee_name();
 			_service_info.set_service_receiver(service_receiver);
 			_service_info.set_service_receiver_id(service_receiver_id);
             _service_info.set_service_type(service_type);
@@ -253,7 +254,10 @@ import com.data.work_record_info;
 				{
 				leader_name=partent_info.get_employee_name();
 				}
+				//工作联系人列表
+				List<work_contact_info> work_contact_list=com.dbconnector.service_db_connector.get_work_contact_list_by_owner_id(employee_id);
 				mv.addObject("leader",leader_name);
+				mv.addObject("work_contact_list",work_contact_list);
 				
 				return mv;
 			}
