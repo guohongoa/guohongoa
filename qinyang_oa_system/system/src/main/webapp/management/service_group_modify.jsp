@@ -54,7 +54,7 @@
 </div>
 <!--主体-->
 <div class="content">
-    <div class="left_menu tzlb" style="height: 335px">
+    <div class="left_menu tzlb" style="height: 330px">
         <h3><a href="">管理</a></h3>
         <ul>
             <li><a href="check_service_village_detail.do?village_page=1">村镇管理</a></li>
@@ -64,7 +64,7 @@
             <li><a href="service_group_check.do?service_group_page=1" class="active">五服务小组管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="service_group_add.jsp" >添加小组成员</a><i></i></dd>
+                    <dd class="activea"><a href="service_group_add_display.do" >添加小组成员</a><i></i></dd>
                     <dd><a href="" class="red" style="border-bottom: 1px solid #c9c9c9;height: 35px">修改</a></dd>
                 </dl>
             </li>

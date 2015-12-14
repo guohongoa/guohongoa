@@ -56,7 +56,7 @@
 <div class="fuwu_content">
     <h4><a href="../work">工作</a>&gt;<a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0">五服务</a>&gt;<span>法政法规服务</span></h4>
     <div class="wfwxq" style="padding-bottom:15px;">
-        <h5>主题：<span>服务主题</span><b class="red">（已通过）</b></h5>
+        <h5>主题：<span>服务主题</span><b class="red">（未通过）</b></h5>
         <p>服务类型：
         <c:choose>
                   <c:when test="${service_info.get_service_type()==0}">

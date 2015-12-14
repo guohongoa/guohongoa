@@ -51,7 +51,8 @@ public class management_request_controller
 		  int service_village_county_id=com.dbconnector.service_db_connector.service_village_county_insert_db(_service_village_county_info);
 		 
 		  //将村庄信息及对应镇添加入村庄列表
-		  com.dbconnector.service_db_connector.service_village_insert_db(str_service_village_names,service_village_county_id,service_village_county_name,service_village_county_addtime);
+		  
+		  com.dbconnector.service_db_connector.service_village_insert_db(f(str_service_village_names),service_village_county_id,service_village_county_name,service_village_county_addtime);
 		
 		//返回插入结果
 		
@@ -143,7 +144,7 @@ public class management_request_controller
 
 		
 		boolean rs=com.dbconnector.service_db_connector.update_county_info(_service_village_county_info);
-		boolean rs2=com.dbconnector.service_db_connector.update_villages_name(service_village_county_id, service_village_county_name, service_village_addtime, str_service_village_names);
+		boolean rs2=com.dbconnector.service_db_connector.update_villages_name(service_village_county_id, service_village_county_name, service_village_addtime, f(str_service_village_names));
 		
 		ModelAndView mv=new ModelAndView("redirect:/management/check_service_village_detail.do?village_page="+village_page);//页面重定向至查看页面
 		return mv;
@@ -392,12 +393,14 @@ public class management_request_controller
 			   
 			 int employee_id=com.dbconnector.management_db_connector.employee_insert_db(_employee_info);
 			 
+			 if(employee_leader_id!=-1)
+			 {
 			 String owner_name=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id).get_employee_name();
 			 String friend_name=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_leader_id).get_employee_name();
 			 
 			 com.dbconnector.contact_db_connector.insert_work_contact_info(employee_id,employee_leader_id,0,owner_name,friend_name);
 			 com.dbconnector.contact_db_connector.insert_work_contact_info(employee_leader_id,employee_id,1,friend_name,owner_name);
-			 
+			 }
 			 ModelAndView mv=new ModelAndView("redirect:employee_check.do?employee_page=1");
 			 return mv;
 			
@@ -736,5 +739,22 @@ public class management_request_controller
 				mv.addObject("service_village_county_info_list", service_village_county_info_list);
 				mv.addObject("service_village_info_list",service_village_info_list);
 			   return mv;
+			}
+			
+			//去除空格
+			public static String f(String s){
+			    for(int i=0;i<s.length();i++){
+			            if(s.charAt(i)!=' '){
+
+			                    s=s.substring(i,s.length());
+
+			                    break;
+
+			             }
+
+			    }
+
+			    return s;
+
 			}
 }

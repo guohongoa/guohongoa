@@ -186,14 +186,30 @@ public class service_db_connector
 					for(service_village_info sinfo:service_village_info_list)
 					{
 						i++;
-						if(i!=0)
+						if(i!=1)
 						{
 							str_service_village_names=str_service_village_names+" ";
 						}
 						str_service_village_names=str_service_village_names+sinfo.get_service_village_name();
 					}
-					
+					str_service_village_names=f(str_service_village_names);
 					return str_service_village_names;
+				}
+				
+				public static String f(String s){
+				    for(int i=0;i<s.length();i++){
+				            if(s.charAt(i)!=' '){
+
+				                    s=s.substring(i,s.length());
+
+				                    break;
+
+				             }
+
+				    }
+
+				    return s;
+
 				}
 				
 				//更新乡镇信息

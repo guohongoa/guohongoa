@@ -100,11 +100,11 @@
                 <li>${department_info.get_department_code()}</li>
                 <li>${department_info.get_department_name()}</li>
                 <li>${department_info.get_department_leader()}</li>
-                <li><a href="">详细</a></li>
+                <li><a href="../error.jsp">详细</a></li>
                 <li>${department_info.get_department_parent()}</li>
                 <li>${department_info.get_department_parentleader()}</li>
-                <li>${department_info.get_department_leaderphone()}</li>
-                <li>
+                <li style="width:72px;">${department_info.get_department_leaderphone()}</li>
+                <li style="width:85px;">
                    <a href="department_modify.do?department_id=${department_info.get_department_id()}&department_page=${department_page}">
                          修改
                     </a>
