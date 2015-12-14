@@ -309,16 +309,17 @@ public class management_request_controller
 		@RequestMapping("management/employee_insert.do")
 
 		public ModelAndView employee_insert_request(
-				@RequestParam(value="employee_birthdate")  String    employee_birthdate,     //员工出生日期
-				@RequestParam(value="employee_idcode")      String employee_idcode,          //员工身份证号
-				@RequestParam(value="employee_department_id") int employee_department_id,       //员工部门id
-				@RequestParam(value="employee_position")  String employee_position,          //员工职位
-				@RequestParam(value="employee_gender")      int employee_gender,             //员工性别
-				@RequestParam(value="employee_addworktime") String employee_addworktime,     //入职时间
-				@RequestParam(value="employee_leader_id") int employee_leader_id,               //部门负责人
-				@RequestParam(value="employee_phone")  String employee_phone,                   //员工电话
-				@RequestParam(value="employee_name")  String employee_name,                 //员工姓名
-				@RequestParam(value="employee_duty")  String employee_duty
+				@RequestParam(value="employee_birthdate")       String    employee_birthdate,     //员工出生日期
+				@RequestParam(value="employee_idcode")          String    employee_idcode,          //员工身份证号
+				@RequestParam(value="employee_department_id")   int       employee_department_id,       //员工部门id
+				@RequestParam(value="employee_position")        String    employee_position,          //员工职位
+				@RequestParam(value="employee_gender")          int       employee_gender,             //员工性别
+				@RequestParam(value="employee_addworktime")     String    employee_addworktime,     //入职时间
+				@RequestParam(value="employee_leader_id")       int       employee_leader_id,       //部门负责人
+				@RequestParam(value="employee_phone")           String    employee_phone,           //员工电话
+				@RequestParam(value="employee_name")            String    employee_name,            //员工姓名
+				@RequestParam(value="employee_duty")            String    employee_duty,
+				@RequestParam(value="is_admin")                 int       is_admin                  //是否是管理员
 				)
 		{
 			//将表单响应结果插入员工信息数据库
@@ -333,6 +334,7 @@ public class management_request_controller
 		     _employee_info.set_employee_phone(employee_phone);
 		     _employee_info.set_employee_name(employee_name);
 		     _employee_info.set_employee_duty(employee_duty);
+		     _employee_info.set_is_admin(is_admin);
 		     
 		     
 		        //插入性别字符串，0为男，1为女

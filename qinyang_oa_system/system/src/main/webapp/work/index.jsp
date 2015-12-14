@@ -59,11 +59,12 @@
             <a href="http://101.200.196.121:8080/guohong2/task/toAdd.do"></a>
         </div>
         <ul>
-            <li><a href="http://101.200.196.121:8080/guohong2/task/toAdd.do">安排工作</a></li>
-            <li><a href="http://101.200.196.121:8080/guohong2/task/toReport.do">汇报工作</a></li>
-            <li><a href="http://101.200.196.121:8080/guohong2/task/toMyTaskList.do">反馈工作</a></li>
-            <li><a href="http://101.200.196.121:8080/guohong2/task/toDsp.do">待审批</a></li>
-            <li><a href="http://101.200.196.121:8080/guohong2/task/list.do">全部工作</a></li>
+            <li><a href="http://101.200.196.121:8080/guohong2/task/toAdd.do?id=${user_id}">安排工作</a></li>
+            <li><a href="http://101.200.196.121:8080/guohong2/task/toReport.do?id=${user_id}">汇报工作</a></li>
+            <li><a href="http://101.200.196.121:8080/guohong2/task/toMyTaskList.do?id=${user_id}">反馈工作</a></li>
+            <li><a href="http://101.200.196.121:8080/guohong2/task/toDsp.do?id=${user_id}">待审批</a></li>
+            <li><a href="http://101.200.196.121:8080/guohong2/task/list.do?id=${user_id}
+            ">全部工作</a></li>
         </ul>
     </div>
     <div class="tz">
@@ -77,7 +78,14 @@
     </div>
     <div class="fw">
         <div class="hover_tt">
-            <a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0"></a>
+            <c:choose>
+                <c:when test="${user_group_type!=0}">
+                    <a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0"></a>
+                </c:when>
+                <c:otherwise>
+                    <a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0"></a>
+                </c:otherwise>
+            </c:choose>
         </div>
         <ul>
           <c:choose>

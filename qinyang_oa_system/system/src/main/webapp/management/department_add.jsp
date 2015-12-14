@@ -111,7 +111,7 @@
             </div>
     </div>
 </div>
-<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
+<script src="	/oa/js/jquery-1.11.3.min.js"></script>
 <script>
 
     $(".tianjiabtn").children("input[type='submit']").click(function(){

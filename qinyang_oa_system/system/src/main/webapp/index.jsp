@@ -31,7 +31,7 @@
                 <input id="password" class="input100" name="employee_password" type="password"/>&nbsp;
                 <input id="login_btn"  type="submit" value="登录"/>
             </form>
-            <a class="login_admin">管理员登录</a>
+             <a class="login_admin">管理员登录<input name="is_admin" type="checkbox" value="1" form="login"></a>
             <div class="login-error"></div>
         </div>
     </c:when>
@@ -57,6 +57,8 @@
 </div>
 <!--主体-->
 <!--section为主体容器-->
+<c:choose>
+ <c:when test="${not empty user_name}">
 <div class="section clear">
     <!--section_content为内容主体全部内容-->
     <div class="section_content" >
@@ -143,10 +145,103 @@
         </div>
     </div>
 </div>
+</c:when>
+<c:otherwise>
+  <div class="section clear">
+    <!--section_content为内容主体全部内容-->
+    <div class="section_content" >
+        <!--第一行-->
+        <div class="section_content_row">
+            <!--第一行第一列 四联模块-->
+            <div class="mokuai mokuail">
+                <a class="mokuaitu" href="login/login.jsp">
+                    <img src="http://101.200.196.121:8080/oa/css/images/sl_03.jpg" alt=""/>
+                    <i style="display: none"></i>
+                    <span style="display: none">· 市委常委联系乡镇（办事处）党（工）委<br/>
+· 乡镇（办事处）党员领导干部联系村级党组织<br/>
+· 村（社区）党员干部联系党员<br/>
+· 党员联系群众</span>
+                </a>
+                <h4><a href="login/login.jsp" >四联</a></h4>
+            </div>
+            <div class="mokuai">
+                <a class="mokuaitu" href="login/login.jsp">
+                    <img src="http://101.200.196.121:8080/oa/css/images/wfw_05.jpg" alt=""/>
+                    <i style="display: none"></i>
+                    <span style="display: none">· 法政法规服务<br/>
+· 经济发展服务<br/>
+· 和谐稳定服务<br/>
+· 环境卫生服务<br>
+· 文体活动服务<br>
+                    </span>
+                </a>
+                <h4><a href="login/login.jsp" >五服务</a></h4>
+            </div>
+            <div class="mokuai marginr">
+                <a class="mokuaitu"  href="login/login.jsp">
+                    <img src="http://101.200.196.121:8080/oa/css/images/gz_07.jpg" alt=""/>
+                    <i style="display: none"></i>
+                    <span style="display: none">· 工作任务<br/>
+· 台账<br/>
+· 五服务<br/>
+                    </span>
+                </a>
+                <h4><a href="login/login.jsp" >工作</a></h4>
+            </div>
+        </div>
+        <!--第二行-->
+        <div class="section_content_row">
+            <div class="mokuai mokuail">
+                <a class="mokuaitu" href="login/login.jsp">
+                    <img src="http://101.200.196.121:8080/oa/css/images/dyxx_12.jpg" alt=""/>
+                </a>
+                <h4><a href="login/login.jsp" >党员信息</a></h4>
+            </div>
+            <div class="mokuai">
+                <a class="mokuaitu" href="login/login.jsp">
+                    <img src="http://101.200.196.121:8080/oa/css/images/zcfg_14.jpg" alt=""/>
+                </a>
+                <h4><a href="login/login.jsp" >政策法规</a></h4>
+            </div>
+            <div class="mokuai marginr">
+                <a class="mokuaitu" href="login/login.jsp">
+                    <img src="http://101.200.196.121:8080/oa/css/images/zxzx_03.jpg" alt=""/>
+                </a>
+                <h4><a href="login/login.jsp" >最新资讯</a></h4>
+            </div>
+        </div>
+        <!--第三行-->
+        <div class="section_content_row">
+            <div class="mokuai mokuail">
+                <a class="mokuaitu" href="login/login.jsp">
+                    <img src="http://101.200.196.121:8080/oa/css/images/jyms_07.jpg" alt=""/>
+                </a>
+                <h4><a href="login/login.jsp">嘉言民生</a></h4>
+            </div>
+            <div class="mokuai">
+                <a class="mokuaitu" href="login/login.jsp">
+                    <img src="http://101.200.196.121:8080/oa/css/images/xzbg_09.jpg" alt=""/>
+                </a>
+                <h4><a href="login/login.jsp" >行政办公</a></h4>
+            </div>
+            <div class="mokuai">
+                <a class="mokuaitu" href="login/login.jsp">
+                    <img src="http://101.200.196.121:8080/oa/css/images/hsjy_11.jpg" alt=""/>
+                </a>
+                <h4><a href="login/login.jsp">红色家园</a></h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+</c:otherwise>
+</c:choose>
 <br/><br/><br/><br/><br/>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/all.js"></script>
+<script>
+</script>
 </body>
 </html>
 

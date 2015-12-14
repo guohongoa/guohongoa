@@ -33,6 +33,8 @@ public class employee_info
     
     private int    service_group_id;//所属五服务小组id 不属于置空
     
+    private int    is_admin;
+    
 	
     public employee_info()
     {
@@ -221,6 +223,16 @@ public class employee_info
 	public void set_service_group_id(int service_group_id)
 	{
 		this.service_group_id=service_group_id;
+	}
+	
+	public int get_is_admin()
+	{
+		return this.is_admin;
+	}
+	
+	public void set_is_admin(int is_admin)
+	{
+		this.is_admin=is_admin;
 	}
 
 }

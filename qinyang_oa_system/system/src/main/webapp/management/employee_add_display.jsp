@@ -133,8 +133,9 @@
                     <div>
                         <p>
                             是否有管理员权限&nbsp;&nbsp;&nbsp;
-                            <input type="radio" name="admin"/>&nbsp; 有  &nbsp; &nbsp;
-                            <input type="radio" name="admin" checked="checked"/>&nbsp; 无 
+                            <input type="radio" name="is_admin" value="1"/>&nbsp; 有  &nbsp; &nbsp;
+                            <input type="radio" name="is_admin" value="0" checked="checked"/>&nbsp; 无 
+                            
                         </p>
 
                     </div>

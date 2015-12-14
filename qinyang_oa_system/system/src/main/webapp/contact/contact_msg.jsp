@@ -53,7 +53,7 @@
 </div>
 <!--主体-->
 <div class="content siltjlb">
-    <p>共<span>15</span>条消息</p>
+    <!--  <p>共<span>15</span>条消息</p>-->
     <div class="clear" style="background-color: #f8f8f8;height: 800px">
         <div class="sili">
             <!--左侧图标-->
