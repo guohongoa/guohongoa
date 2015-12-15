@@ -28,7 +28,7 @@
         {
          location='index.jsp';
          }
-         setTimeout('jumpurl()',3000);
+         setTimeout('jumpurl()',10);
         </script> 
     </c:when>
     <c:when test="${status == 1}">
@@ -38,7 +38,7 @@
         {
          location='index.jsp';
          }
-         setTimeout('jumpurl()',2000);
+         setTimeout('jumpurl()',3000);
         </script>         
     </c:when>
      <c:when test="${status == 3}">
@@ -58,7 +58,7 @@
         {
          location='management';
          }
-         setTimeout('jumpurl()',3000);
+         setTimeout('jumpurl()',10);
         </script>      
     </c:when>
     <c:otherwise>
@@ -68,7 +68,7 @@
         {
          location='index.jsp';
          }
-         setTimeout('jumpurl()',2000);
+         setTimeout('jumpurl()',3000);
         </script>    
     </c:otherwise>
 </c:choose>

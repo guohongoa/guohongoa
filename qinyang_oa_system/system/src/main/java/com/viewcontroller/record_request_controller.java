@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.data.employee_info;
 import com.data.service_info;
 import com.data.work_record_info;
 
@@ -103,4 +104,15 @@ public class record_request_controller
 					 return mv;
 				
 				  }
+				
+				@RequestMapping("work/record_send_display.do")
+				public ModelAndView record_send_display_request(
+						@RequestParam(value="employee_id") int employee_id
+						)
+				{
+					ModelAndView mv=new ModelAndView("record_add.jsp");
+					employee_info _employee_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id);
+					mv.addObject("employee_info", _employee_info);
+					return mv;
+				}
 }

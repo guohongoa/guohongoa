@@ -44,12 +44,12 @@
         <li><a href="../contact/contact_person_check.do">四联</a></li>
         <li><a href="#" class="active">五服务</a></li>
         <li><a href="../work">工作</a></li>
-        <li><a href="">嘉言民生</a></li>
-        <li><a href="">政策法规</a></li>
-        <li><a href="">最新资讯</a></li>
-        <li><a href="">党员信息</a></li>
-        <li><a href="">行政办公</a></li>
-        <li><a href="">红色家园</a></li>
+        <li><a href="#">嘉言民生</a></li>
+        <li><a href="#">政策法规</a></li>
+        <li><a href="#">最新资讯</a></li>
+        <li><a href="#">党员信息</a></li>
+        <li><a href="#">行政办公</a></li>
+        <li><a href="#">红色家园</a></li>
     </ul>
 </div>
 <!--主体-->
@@ -62,11 +62,27 @@
         <div class="fwk" style="width:215px">
             <h4><a href="">${service_village_info_list.get(0).get_service_village_county_name()}</a></h4>
             <ul>
-                <c:forEach var="service_village_info" items="${service_village_info_list}">
-                <li>
-                  <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info.get_service_village_id()}&service_type=0&service_page=1">${service_village_info.get_service_village_name()}</a>
-                </li>
+                <c:choose>
+                <c:when test="${service_village_info_list.size()<10}">
+                   <c:forEach var="service_village_info" items="${service_village_info_list}">
+                     <li>
+                       <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info.get_service_village_id()}&service_type=0&service_page=1">${service_village_info.get_service_village_name()}</a>
+                     </li>
                 </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(0).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(0).get_service_village_name()}</a></li>
+                    <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(1).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(1).get_service_village_name()}</a></li>
+                    <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(2).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(2).get_service_village_name()}</a></li>
+                    <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(3).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(3).get_service_village_name()}</a></li>
+                    <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(4).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(4).get_service_village_name()}</a></li>
+                    <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(5).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(5).get_service_village_name()}</a></li>
+                    <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(6).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(6).get_service_village_name()}</a></li>
+                    <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(7).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(7).get_service_village_name()}</a></li>
+                    <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(8).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(8).get_service_village_name()}</a></li>
+                    <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(9).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(9).get_service_village_name()}</a></li>
+                </c:otherwise>
+                </c:choose>
                 <li><a href="javascript:(0)" class="clickall">全部&gt;&gt;</a></li>
             </ul>
         </div>

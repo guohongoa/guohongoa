@@ -42,8 +42,8 @@
     <ul>
         <li><a href="../" class="bordernone">首页</a></li>
         <li><a href="../contact/contact_person_check.do">四联</a></li>
-        <li><a href="../service/service_village_check.do" class="active">五服务</a></li>
-        <li><a href="../work/">工作</a></li>
+        <li><a href="../service/service_village_check.do" >五服务</a></li>
+        <li><a href="../work/" class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -56,7 +56,7 @@
 <div class="fuwu_content">
     <h4><a href="../work">工作</a>&gt;<a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0">五服务</a>&gt;<span>法政法规服务</span></h4>
     <div class="wfwxq" style="padding-bottom:15px;">
-        <h5>主题：<span>服务主题</span><b class="red">（未通过）</b></h5>
+        <h5>主题：<span>服务主题</span></h5>
         <p>服务类型：
         <c:choose>
                   <c:when test="${service_info.get_service_type()==0}">
@@ -88,7 +88,7 @@
         服务小组的活动内容
     </p>
     <div class="back">
-        <a href="">发布</a> &nbsp; <a style="margin-right:-15px;" href="service_check_by_user.do?service_page=${service_page}&service_sender_id=${user_id}&flag=${flag}">返回</a>
+         &nbsp; <a style="margin-right:-15px;" href="service_check_by_user.do?service_page=${service_page}&service_sender_id=${user_id}&flag=${flag}">返回</a>
     </div>
 </div>
 <div class="footer"></div>

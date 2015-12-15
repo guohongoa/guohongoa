@@ -72,7 +72,7 @@
             <a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=1&flag=0"></a>
         </div>
         <ul>
-            <li><a href="record_add.jsp">添加台帐</a></li>
+            <li><a href="record_send_display.do?employee_id=${user_id}">添加台帐</a></li>
             <li><a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=1&flag=1">我的台帐</a></li>
         </ul>
     </div>
@@ -83,7 +83,7 @@
                     <a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0"></a>
                 </c:when>
                 <c:otherwise>
-                    <a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0"></a>
+                    <a href="#"></a>
                 </c:otherwise>
             </c:choose>
         </div>

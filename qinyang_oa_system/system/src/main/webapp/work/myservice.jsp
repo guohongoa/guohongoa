@@ -74,8 +74,8 @@
                 <c:when test="${user_group_type==4}">
                   <a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">环境卫生服务</a>
                 </c:when>
-                <c:when test="${user_group_type==4}">
-                  <a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">环境卫生服务</a>
+                <c:when test="${user_group_type==5}">
+                  <a href="service_check_by_user.do?service_page=1&flag=0&service_sender_id=${user_id}" class="active">文体活动服务</a>
                 </c:when>
             </c:choose>
             
@@ -111,9 +111,9 @@
             <c:when test="${user_group_type==4}">
                <a href="../wrok">工作</a>&gt;<a href="#">五服务</a>&gt;<span>环境卫生服务</span>
             </c:when>
-            <c:otherwise>
+            <c:when test="${user_group_type==5}">
                <a href="../work">工作</a>&gt;<a href="#">五服务</a>&gt;<span>文体活动服务</span>
-            </c:otherwise>
+            </c:when>
         </c:choose>
         </h4>
         

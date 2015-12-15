@@ -192,7 +192,7 @@
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list6}">
-                           <li><a href="ccontact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
+                           <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>

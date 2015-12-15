@@ -9,21 +9,20 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
-<c:set var="service_type" scope="session" value="0"/>
 <c:choose>
-  <c:when test="${service_type==0}">
+  <c:when test="${user_group_type==1}">
       <c:set var="service_type_name" value="法政法规服务"/>
   </c:when>
-  <c:when test="${service_type==1}">
+  <c:when test="${user_group_type==2}">
       <c:set var="service_type_name" value="经济发展服务"/>
   </c:when>
-  <c:when test="${service_type==2}">
+  <c:when test="${user_group_type==3}">
       <c:set var="service_type_name" value="和谐稳定服务"/>
   </c:when>
-  <c:when test="${service_type==3}">
+  <c:when test="${user_group_type==4}">
       <c:set var="service_type_name" value="环境卫生服务"/>
   </c:when>
-  <c:when test="${service_type==4}">
+  <c:when test="${user_group_type==5}">
       <c:set var="service_type_name" value="文体活动服务"/>
   </c:when>          
 </c:choose>
@@ -110,25 +109,25 @@
                 <p><span>服务主题</span><input type="text" name="service_theme"/></p>
                  
                 <c:choose>
-                  <c:when test="${service_type==0}">
+                  <c:when test="${user_group_type==1}">
                    <p><span>服务类型</span><input class="grey9" type="text" value="法政法规服务" readonly="readonly"/></p>
-                                          <input name="service_type"  type="hidden"  value="${service_type}" />
+                                          <input name="service_type"  type="hidden"  value="${user_group_type－1}" />
                   </c:when>
-                  <c:when test="${service_type==1}">
-                   <p><span>服务类型</span><input name="service_type" class="grey9" type="text" value="经济发展服务"  readonly="readonly"/></p>
-                                         <input name="service_type" type="hidden"  value="${service_type}" />
+                  <c:when test="${user_group_type==2}">
+                   <p><span>服务类型</span><input  class="grey9" type="text" value="经济发展服务"  readonly="readonly"/></p>
+                                         <input name="service_type" type="hidden"  value="${user_group_type-1}" />
                   </c:when>
-                  <c:when test="${service_type==2}">
-                   <p><span>服务类型</span><input name="service_type" class="grey9" type="text" value="和谐稳定服务"  readonly="readonly" /></p>
-                                          <input name="service_type" type="hidden"  value="${service_type}" />
+                  <c:when test="${user_group_type==3}">
+                   <p><span>服务类型</span><input class="grey9" type="text" value="和谐稳定服务"  readonly="readonly" /></p>
+                                          <input name="service_type" type="hidden"  value="${user_group_type-1}" />
                   </c:when>
-                  <c:when test="${service_type==3}">
-                   <p><span>服务类型</span><input name="service_type" class="grey9" type="text" value="环境卫生服务"  readonly="readonly"/></p>
-                                          <input name="service_type" type="hidden"  value="${service_type}" />
+                  <c:when test="${user_group_type==4}">
+                   <p><span>服务类型</span><input class="grey9" type="text" value="环境卫生服务"  readonly="readonly"/></p>
+                                          <input name="service_type" type="hidden"  value="${user_group_type-1}" />
                   </c:when>
-                  <c:when test="${service_type==4}">
-                   <p><span>服务类型</span><input name="service_type" class="grey9" type="text" value="文体活动服务"  readonly="readonly"/></p>
-                                          <input name="service_type" type="hidden"  value="${service_type}" />
+                  <c:when test="${user_group_type==5}">
+                   <p><span>服务类型</span><input  class="grey9" type="text" value="文体活动服务"  readonly="readonly"/></p>
+                                          <input name="service_type" type="hidden"  value="${user_group_type-1}" />
                   </c:when>
                 </c:choose>
             

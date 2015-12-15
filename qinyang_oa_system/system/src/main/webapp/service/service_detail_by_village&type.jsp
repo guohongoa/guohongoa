@@ -46,12 +46,12 @@
         <li><a href="../contact/contact_person_check.do">四联</a></li>
         <li><a href="../service/service_village_check.do" class="active">五服务</a></li>
         <li><a href="../work/">工作</a></li>
-        <li><a href="">嘉言民生</a></li>
-        <li><a href="">政策法规</a></li>
-        <li><a href="">最新资讯</a></li>
-        <li><a href="">党员信息</a></li>
-        <li><a href="">行政办公</a></li>
-        <li><a href="">红色家园</a></li>
+        <li><a href="#">嘉言民生</a></li>
+        <li><a href="#">政策法规</a></li>
+        <li><a href="#">最新资讯</a></li>
+        <li><a href="#">党员信息</a></li>
+        <li><a href="#">行政办公</a></li>
+        <li><a href="#">红色家园</a></li>
     </ul>
 </div>
 <!--主体-->
