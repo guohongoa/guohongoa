@@ -31,9 +31,10 @@ public class work_db_connector
 		}
 		
 		//根据用户id查询对应工作任务信息
-		public List<work_info> get_work_info_by_owner_id(int owner_id)
+		public static List<work_info> get_work_info_by_owner_id(int owner_id)
 		{
 			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 			List<work_info> work_info_list=_work_info_dao.get_by_work_sender_id(owner_id);
+			return work_info_list;
 		}
 }

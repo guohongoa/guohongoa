@@ -6,7 +6,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="../css/all.css"/>
+    <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -96,36 +96,19 @@
                 <li>查看</li>
             </ul>
             <!--数据-->
+            <c:forEach var="work_info" items="${work_info_list}">
             <ul class="gzdspcontent clear">
-                <li>赵某</li>
-                <li>主题</li>
-                <li>安排</li>
-                <li style="line-height: 15px;padding-top: 5px">2015.10.10-<br>2016.12.25</li>
-                <li>2015.10.10</li>
-                <li>
-                    <a href="">详细</a>
-                </li>
-            </ul>
-            <ul class="gzdspcontent clear">
-                <li>赵某</li>
-                <li>主题</li>
+                <li>${work_info.get_work_receiver()}</li>
+                <li>${work_info.get_work_theme()}</li>
                 <li>反馈</li>
-                <li style="line-height: 20px">2015.10.10-<br>2016.12.25</li>
-                <li>2015.10.10</li>
+                <li style="line-height: 15px;padding-top: 5px">${work_info.get_work_begintime()}-<br>${work_info.get_work_endtime()}</li>
+                <li>${work_info.get_work_addtime()}</li>
                 <li>
                     <a href="">详细</a>
                 </li>
             </ul>
-            <ul class="gzdspcontent clear">
-                <li>赵某</li>
-                <li>主题</li>
-                <li>汇报</li>
-                <li style="line-height: 15px;padding-top: 5px">2015.10.10-<br>2016.12.25</li>
-                <li>2015.10.10</li>
-                <li>
-                    <a href="">详细</a>
-                </li>
-            </ul>
+            </c:forEach>
+           
 
         </div>
     </div>
@@ -140,8 +123,8 @@
         <a href="">下一页</a>
     </div>
 </div>
-<script src="../js/jquery-1.11.3.min.js"></script>
-<script src="../js/style.js"></script>
+<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
+<script src="http://101.200.196.121:8080/oa/js/style.js"></script>
 
 </body>
 </html>

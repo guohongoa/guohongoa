@@ -32,7 +32,7 @@
 	</insert>
 
      <select id="select_by_sender_id" parameterType="work_info" resultMap="result">
-		SELECT * FROM work_info WHERE sender_id = #{sender_id};
+		SELECT * FROM work_info WHERE work_sender_id = #{work_sender_id};
 	</select>
      
      

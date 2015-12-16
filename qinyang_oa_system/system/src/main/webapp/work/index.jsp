@@ -60,11 +60,10 @@
         </div>
         <ul>
             <li><a href="work_arrange_display.do?employee_id=${user_id}">安排工作</a></li>
-            <li><a href="http://101.200.196.121:8080/guohong2/task/toReport.do?id=${user_id}">汇报工作</a></li>
+            <li><a href="work_report_display.do?employee_id=${user_id}">汇报工作</a></li>
             <li><a href="http://101.200.196.121:8080/guohong2/task/toMyTaskList.do?id=${user_id}">反馈工作</a></li>
             <li><a href="http://101.200.196.121:8080/guohong2/task/toDsp.do?id=${user_id}">待审批</a></li>
-            <li><a href="http://101.200.196.121:8080/guohong2/task/list.do?id=${user_id}
-            ">全部工作</a></li>
+            <li><a href="work_all_check.do?employee_id=${user_id}">全部工作</a></li>
         </ul>
     </div>
     <div class="tz">

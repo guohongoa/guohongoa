@@ -6,7 +6,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="http://101.200.196.121:8080/oa//css/all.css"/>
+    <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -57,8 +57,8 @@
     <div class="left_menu" style="height: 290px">
         <h3><a href="">工作任务</a></h3>
         <ul>
-            <li><a href="" class="active">安排工作</a></li>
-            <li><a href="">汇报工作</a></li>
+            <li><a href="">安排工作</a></li>
+            <li><a href="" class="active">汇报工作</a></li>
             <li><a href="">反馈工作</a></li>
             <li><a href="">待审批</a></li>
             <li><a href="">全部工作</a></li>
@@ -66,14 +66,13 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a> &gt;<a href="">工作任务</a> &gt;<span>安排工作</span></h4>
+        <h4><a href="">工作</a> &gt;<a href="">工作任务</a> &gt;<span>汇报工作</span></h4>
         <div class="tztj">
-            <form id="post_gzap" action="work_arrange.do" method="post">
-                <p>
+            <form id="post_gzhb" action="work_report.do" method="post">
                 <input type="hidden" name="work_sender_id" value="${user_id}">
                 <input type="hidden" name="work_sender" value="${user_name}"> 
                 <input type="hidden" name="work_type" value="0">
-                 <span>责任人</span>
+                <p><span>上级领导</span>
                  <c:choose>
                  <c:when test="${work_contact_list.size()!=0}">
                   <c:forEach var="work_contact_info" items="${work_contact_list}">
@@ -89,11 +88,11 @@
                   </c:choose>
                 </p>
                 <p><span>工作主题</span><input name="work_theme" type="text"/></p>
-                <p><span>达成目标</span><input name="work_target" type="text"/></p>
-                <p><span>执行周期</span><input class="input100 timedata" name="work_begintime" type="text"/>&nbsp; ——&nbsp; <input class="input100 timedata" name="work_endtime" type="text"/></p>
-                <p><span>上传附件</span><input  style="border: none;margin: 10px 0 20px 0" type="file"/></p>
-                <p><span>内容描述</span><textarea name="work_content" style="height: 260px;" form="post_gzap"></textarea></p>
-                <p class="tztj_btn" ><b class="login-error"></b><input type="reset" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="重置"><input type="submit" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="提交"/></p>
+                <p><span>达成目标</span><input  name="work_target" type="text"/></p>
+                <p><span>执行周期</span><input class="input100 timedata" type="text"/>&nbsp; ——&nbsp; <input class="input100 timedata" name="work_endtime"  type="text"/></p>
+                <p><span>上传附件</span><input  name="work_begintime" style="border: none;margin: 10px 0 20px" type="file"/></p>
+                <p><span>内容描述</span><textarea name="work_content" style="height: 260px"></textarea></p>
+                <p class="tztj_btn"><b class="login-error"></b><input type="reset" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="重置"><input type="submit" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="提交"/></p>
             </form>
         </div>
     </div>
@@ -108,7 +107,7 @@
             $(".login-error").html("提交不成功：信息填写不完整");
             return false
         }else{
-            $("#post_gzap").submit();
+            $("#post_gzhb").submit();
         }
     });
 </script>
