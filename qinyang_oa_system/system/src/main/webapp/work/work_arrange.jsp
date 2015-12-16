@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -67,14 +68,33 @@
     <div class="right_content">
         <h4><a href="">工作</a> &gt;<a href="">工作任务</a> &gt;<span>安排工作</span></h4>
         <div class="tztj">
-            <form id="post_gzap" action="" method="post">
-                <p><span>责任人</span><input class="input600" type="text"/></p>
-                <p><span>工作主题</span><input type="text"/></p>
-                <p><span>达成目标</span><input type="text"/></p>
-                <p><span>执行周期</span><input class="input100 timedata" type="text"/>&nbsp; ——&nbsp; <input class="input100 timedata" type="text"/></p>
+            <form id="post_gzap" action="work_arrange.do" method="post">
+                <p>
+                <input type="hidden" name="">
+                <input type="hidden" name="work_sender_id" value="${user_id}">
+                <input type="hidden" name="work_sender" value="${user_name}"> 
+                <input type="hidden" name="work_type" value="0">
+                 <span>责任人</span>
+                 <c:choose>
+                 <c:when test="${work_contact_list.size()!=0}">
+                  <c:forEach var="work_contact_info" items="${work_contact_list}">
+                     <select name="work_receiver_id" >
+                        <option value="${work_contact_info.get_friend_id()}">${work_contact_info.get_friend_name()}</option>
+                     </select>
+                   </c:forEach>
+                   </c:when>
+                   <c:otherwise>
+                       <input style="width:593px;" type="text" value="无" readonly="readonly">
+                       <input type="hidden" name="work_receiver_id" value="-1">
+                   </c:otherwise>
+                  </c:choose>
+                </p>
+                <p><span>工作主题</span><input name="work_theme" type="text"/></p>
+                <p><span>达成目标</span><input name="work_target" type="text"/></p>
+                <p><span>执行周期</span><input class="input100 timedata" name="work_begintime" type="text"/>&nbsp; ——&nbsp; <input class="input100 timedata" name="work_endtime" type="text"/></p>
                 <p><span>上传附件</span><input  style="border: none;margin: 10px 0 20px 0" type="file"/></p>
-                <p><span>内容描述</span><textarea style="height: 260px;"></textarea></p>
-                <p class="tztj_btn" ><b class="login-error"></b><a href="gzap.html" style="font-size: 14px">重置</a><a style="margin: 0 -30px 0 20px;font-size: 14px">提交</a></p>
+                <p><span>内容描述</span><textarea name="work_content" style="height: 260px;" form="post_gzap"></textarea></p>
+                <p class="tztj_btn" ><b class="login-error"></b><input type="reset" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="重置"><input type="submit" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="提交"/></p>
             </form>
         </div>
     </div>

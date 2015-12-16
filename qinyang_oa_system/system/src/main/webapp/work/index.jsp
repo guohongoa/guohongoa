@@ -59,7 +59,7 @@
             <a href="http://101.200.196.121:8080/guohong2/task/toAdd.do"></a>
         </div>
         <ul>
-            <li><a href="http://101.200.196.121:8080/guohong2/task/toAdd.do?id=${user_id}">安排工作</a></li>
+            <li><a href="work_arrange_display.do?employee_id=${user_id}">安排工作</a></li>
             <li><a href="http://101.200.196.121:8080/guohong2/task/toReport.do?id=${user_id}">汇报工作</a></li>
             <li><a href="http://101.200.196.121:8080/guohong2/task/toMyTaskList.do?id=${user_id}">反馈工作</a></li>
             <li><a href="http://101.200.196.121:8080/guohong2/task/toDsp.do?id=${user_id}">待审批</a></li>

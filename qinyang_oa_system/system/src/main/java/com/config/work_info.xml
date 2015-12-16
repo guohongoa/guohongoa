@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="work_info">
+
+	<resultMap id="result" type="work_info">
+		<result property="work_id" column="work_id" />
+		<result property="work_sender_id" column="work_sender_id" />
+		
+		<result property="work_sender" column="work_sender" />
+		<result property="work_receiver_id" column="work_receiver_id" />
+		<result property="work_receiver" column="work_receiver" />
+		<result property="work_theme" column="work_theme" />
+		<result property="work_begintime" column="work_begintime" />
+		<result property="work_endtime" column="work_endtime" />
+		<result property="work_content" column="work_content" />
+		<result property="work_status"  column="work_status" />
+		<result property="work_file_url" column="work_file_url" />
+		<result property="work_type" column="work_type" />
+		<result property="work_percentage" column="work_percentage"/>
+		<result property="work_addtime" column="work_addtime"/>
+		<result property="work_file_url" column="work_file_url"/>
+		
+	</resultMap>
+	
+	<insert id="insert" parameterType="work_info">
+		insert into
+		  work_info(work_sender,work_sender_id,work_receiver_id,work_receiver,work_theme,work_target,work_begintime,work_endtime,work_content,work_type,work_status,work_percentage,work_addtime)
+		values(#{work_sender},#{work_sender_id},#{work_receiver_id},#{work_receiver},#{work_theme},#{work_target},#{work_begintime},#{work_endtime},#{work_content},#{work_type},#{work_status},#{work_percentage},#{work_addtime});
+	</insert>
+
+     <select id="select_by_sender_id" parameterType="work_info" resultMap="result">
+		SELECT * FROM work_info WHERE sender_id = #{sender_id};
+	</select>
+     
+     
+</mapper>
+
+
