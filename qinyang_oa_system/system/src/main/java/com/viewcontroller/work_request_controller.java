@@ -160,6 +160,24 @@ public class work_request_controller
 		   return mv;
 	}
 	
+	@RequestMapping("work/work_feedback.do")
+	//查询所有制度条目
+	
+	public ModelAndView work_feedback_request(
+			@RequestParam(value="employee_id") int employee_id
+			)
+	{
+		
+		ModelAndView mv=new ModelAndView("work_feedback.jsp");//页面重定向
+	
+	   
+	   //得到查询所有条目的list
+	   
+	   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_owner_id(employee_id);
+	   mv.addObject("work_info_list", work_info_list);
+	   return mv;
+	}
+	
 	@RequestMapping("work/work_all_check.do")
 	//查询所有制度条目
 	
@@ -177,4 +195,6 @@ public class work_request_controller
 	   mv.addObject("work_info_list", work_info_list);
 	   return mv;
 	}
+	
+	
 }
