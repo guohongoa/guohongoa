@@ -25,7 +25,7 @@
 		
 	</resultMap>
 	
-	<insert id="insert" parameterType="work_info">
+	<insert id="insert" parameterType="work_info" useGeneratedKeys="true" keyProperty="work_id">
 		insert into
 		  work_info(work_sender,work_sender_id,work_receiver_id,work_receiver,work_theme,work_target,work_begintime,work_endtime,work_content,work_type,work_status,work_percentage,work_addtime)
 		values(#{work_sender},#{work_sender_id},#{work_receiver_id},#{work_receiver},#{work_theme},#{work_target},#{work_begintime},#{work_endtime},#{work_content},#{work_type},#{work_status},#{work_percentage},#{work_addtime});

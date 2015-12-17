@@ -13,6 +13,7 @@ import com.data.employee_info;
 import com.data.relationship_info;
 import com.data.work_contact_info;
 import com.data.work_info;
+import com.data.work_waiting_info;
 
 //工作模块所有服务器响应接口
 @Controller
@@ -147,9 +148,21 @@ public class work_request_controller
 		   _work_info.set_work_addtime(work_addtime);
 		   //插入数据库
 		  //relationship_insert_db(_relationship_info);
-		  com.dbconnector.work_db_connector.work_insert_db(_work_info);
+		  int work_id=com.dbconnector.work_db_connector.work_insert_db(_work_info);
 		
-		
+		  //工作待审批
+		  work_waiting_info _work_wating_info=new work_waiting_info();
+		  _work_wating_info.set_work_theme(work_theme);
+		  _work_wating_info.set_work_category(0);
+		  _work_wating_info.set_work_sender_id(work_sender_id);
+		  _work_wating_info.set_work_sender(work_sender);
+		  _work_wating_info.set_work_sender_id(work_sender_id);
+		  _work_wating_info.set_work_receiver(work_receiver);
+		  _work_wating_info.set_work_content(work_content);
+		  _work_wating_info.set_work_addtime(work_addtime);
+		  _work_wating_info.set_work_id(work_id);
+		  
+		  boolean rs=com.dbconnector.work_db_connector.waiting_insert_db(_work_wating_info);
 	
 		
 		
@@ -169,6 +182,26 @@ public class work_request_controller
 	{
 		
 		ModelAndView mv=new ModelAndView("work_feedback.jsp");//页面重定向
+	
+	   
+	   //得到查询所有条目的list
+	   
+	   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_owner_id(employee_id);
+	   mv.addObject("work_info_list", work_info_list);
+	   return mv;
+	}
+	
+	
+		
+		@RequestMapping("work/work_pending.do")
+	//查询所有制度条目
+	
+	public ModelAndView work_pending_request(
+			@RequestParam(value="employee_id") int employee_id
+			)
+	{
+		
+		ModelAndView mv=new ModelAndView("work_pending.jsp");//页面重定向
 	
 	   
 	   //得到查询所有条目的list

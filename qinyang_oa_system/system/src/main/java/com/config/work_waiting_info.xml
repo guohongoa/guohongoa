@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="work_waiting_info">
+
+	<resultMap id="result" type="work_waiting_info">
+		<result property="waiting_id" column="waiting_id" />
+		<result property="work_theme" column="work_theme" />
+		<result property="work_category" column="work_category" />
+		<result property="work_sender_id" column="work_sender_id" />
+		<result property="work_sender" column="work_sender" />
+		<result property="work_receiver_id" column="work_receiver_id" />
+		<result property="work_receiver" column="work_receiver" />
+		<result property="work_content" column="work_content" />
+		<result property="work_addtime" column="work_addtime" />
+		<result property="work_id"  column="work_id" />		
+		
+	</resultMap>
+	
+     <insert id="insert" parameterType="work_waiting_info">
+		insert into
+		work_waiting_info(work_theme,work_category,work_sender_id,work_sender,work_receiver_id,work_receiver,work_content,work_addtime,work_id)
+		values(#{work_theme},#{work_category},#{work_sender_id},#{work_sender},#{work_receiver_id},#{work_receiver},#{work_content},#{work_addtime},#{work_id});
+	</insert>
+     
+</mapper>
+
+

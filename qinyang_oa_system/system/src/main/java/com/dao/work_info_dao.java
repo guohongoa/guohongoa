@@ -19,7 +19,7 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		this.sqlSessionFactory=sqlSessionFactory;
 	}
 	
-	 public boolean insert(work_info _work_info)
+	 public int insert(work_info _work_info)
 	 {
 	       int id = -1;
 	        SqlSession session = sqlSessionFactory.openSession();
@@ -30,16 +30,10 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 	            session.commit();
 	            session.close();
 	        }
-	        System.out.println("insert("+_work_info+") --> "+_work_info.get_work_id());
+	       id=_work_info.get_work_id();
+	       return id;
 	        
-	        if(id==-1)
-	        {
-	        	return false;//插入失败
-	        }
-	        else
-	        {
-	        	return true;//插入成功
-	        }
+	       
 	  }
 	 
 	
