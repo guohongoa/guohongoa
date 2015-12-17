@@ -21,28 +21,22 @@ public class work_record_info_dao
 		this.sqlSessionFactory=sqlSessionFactory;
 	} 
 	
-	public boolean insert(work_record_info _work_record_info)
+	public int insert(work_record_info _work_record_info)
 	{
-	       int id = -1;
+	       int record_id = -1;
 	        SqlSession session = this.sqlSessionFactory.openSession();
 	 
 	        try {
-	            id = session.insert("work_record_info.insert", _work_record_info);
+	            int rs = session.insert("work_record_info.insert", _work_record_info);
+	            record_id=_work_record_info.get_work_record_id();
 	        } finally {
 	            session.commit();
 	            session.close();
 	        }
 	        System.out.println("insert("+_work_record_info+") --> "+_work_record_info.get_work_record_id());
 	        
-	        if(id==-1)
-	        {
-	        	return false;//插入失败
-	        }
-	        else
-	        {
-	        	return true;//插入成功
-	        }
-	 }
+	       return record_id;
+	}
 	
 
 	//根据用户id查询台账信息

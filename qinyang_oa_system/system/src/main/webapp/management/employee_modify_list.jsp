@@ -64,7 +64,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="employee_add_check.do">添加人员</a><i></i></dd>
-                    <dd><a href="employee_modify_list.do?employee_page=1" >修改</a></dd>
+                    <dd><a href="＃" class="red">修改</a></dd>
                 </dl>
             </li>
             <li><a href="service_group_check.do?service_group_page=1">五服务小组管理</a></li>
@@ -97,12 +97,9 @@
                 <li>${employee_info.get_employee_leader_name()}</li>
                 <li>${employee_info.get_employee_phone()}</li>
                 <li>
-                    <a href="employee_del.do?employee_id=${employee_info.get_employee_id()}&employee_page=${employee_page}">
-                         删除
-                    </a>
-                    <a href="employee_detail.do?employee_id=${employee_info.get_employee_id()}&employee_page=${employee_page}">
-                        详情
-                    </a>
+                   <a href="employee_modify.do?employee_id=${employee_info.get_employee_id()}&employee_page=${employee_page}">
+                         修改
+                   </a>
                 </li>
             </ul>
             </c:forEach>

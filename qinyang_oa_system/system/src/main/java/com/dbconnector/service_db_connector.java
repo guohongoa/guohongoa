@@ -18,12 +18,12 @@ import com.mybatis.mybatis_connection_factory;
 public class service_db_connector 
 {
 	//五服务消息信息对应数据库功能函数
-			public static boolean send_service_insert_db(service_info _service_info)  
+			public static int  send_service_insert_db(service_info _service_info)  
 			{
 				service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 				
-				boolean rs=_service_info_dao.insert(_service_info);
-				return rs;
+				int service_id=_service_info_dao.insert(_service_info);
+				return service_id;
 			}
 			
 			public static List<service_info> get_service_info_list_by_service_sender_id(int service_sender_id,int service_page)

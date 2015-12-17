@@ -66,7 +66,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="service_group_add_display.do">添加小组成员</a><i></i></dd>
-                    <dd><a href="service_group_modify_list.do?service_group_page=1" style="border-bottom: 1px solid #c9c9c9;height: 35px" >修改</a></dd>
+                    <dd><a href="service_group_modify_list.do?service_group_page=1" style="border-bottom: 1px solid #c9c9c9;height: 35px" class="red" >修改</a></dd>
                 </dl>
             </li>
         </ul>
@@ -123,11 +123,8 @@
                 <li>${service_group_info.get_service_group_leader()}</li>
                 <li class="width_lg">${service_group_info.get_service_group_member()}</li>
                 <li>
-                    <a href="service_group_del.do?service_group_id=${service_group_info.get_service_group_id()}&service_group_page=${service_group_page}">
-                        删除
-                    </a>
-                    <a href="service_group_detail.do?service_group_id=${service_group_info.get_service_group_id()}&service_group_page=${service_group_page}">
-                        详情
+                    <a href="service_group_modify.do?service_group_id=${service_group_info.get_service_group_id()}&service_group_page=${service_group_page}">
+                         修改
                     </a>
                 </li>
             </ul>

@@ -64,7 +64,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="department_add.jsp" >添加部门</a><i></i></dd>
-                    <dd><a href="department_modify_list.do?department_page=1" >修改</a></dd>
+                    <dd><a href="#" class="red">修改</a></dd>
                 </dl>
             </li>
             <li><a href="employee_check.do?employee_page=1">人员管理</a></li>
@@ -100,11 +100,8 @@
                 <li>${department_info.get_department_parentleader()}</li>
                 <li style="width:72px;">${department_info.get_department_leaderphone()}</li>
                 <li style="width:85px;">
-                    <a href="department_del.do?department_id=${department_info.get_department_id()}&department_page=${department_page}"> 
-                        删除
-                    </a>
-                    <a href="department_detail.do?department_id=${department_info.get_department_id()}&department_page=${department_page}">
-                        详情
+                   <a href="department_modify.do?department_id=${department_info.get_department_id()}&department_page=${department_page}">
+                         修改
                     </a>
                 </li>
             </ul>

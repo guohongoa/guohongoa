@@ -17,13 +17,15 @@
 		<result property="work_record_plan" column="work_record_plan" />
 		<result property="work_record_effect" column="work_record_effect" />
 		<result property="work_record_addtime" column="work_record_addtime" />
+		<result property="work_record_theme" column="work_record_theme" />
+		<result property="work_record_leader_id" column="work_record_leader_id" />
 		
 	</resultMap>
 
-	<insert id="insert" parameterType="work_record_info">
+	<insert id="insert" parameterType="work_record_info" useGeneratedKeys="true" keyProperty="work_record_id">
 		insert into
-		work_record_info(work_record_creator,work_record_creatorid,work_record_position,work_record_department,work_record_leader,work_record_communist,work_record_date,work_record_plan,work_record_effect,work_record_addtime)
-		values(#{work_record_creator},#{work_record_creatorid},#{work_record_position},#{work_record_department},#{work_record_leader},#{work_record_communist},#{work_record_date},#{work_record_plan},#{work_record_effect},#{work_record_addtime});
+		work_record_info(work_record_creator,work_record_creatorid,work_record_position,work_record_department,work_record_leader,work_record_communist,work_record_date,work_record_plan,work_record_effect,work_record_addtime,work_record_theme,work_record_leader_id)
+		values(#{work_record_creator},#{work_record_creatorid},#{work_record_position},#{work_record_department},#{work_record_leader},#{work_record_communist},#{work_record_date},#{work_record_plan},#{work_record_effect},#{work_record_addtime},#{work_record_theme},#{work_record_leader_id});
 	</insert>
 	
 	

@@ -61,7 +61,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="#" class="red">添加部门</a><i></i></dd>
-                    <dd><a href="../error.jsp">修改</a></dd>
+                    <dd><a href="department_modify_list.do?department_page=1">修改</a></dd>
                 </dl>
             </li>
             <li><a href="employee_check.do?employee_page=1">人员管理</a></li>

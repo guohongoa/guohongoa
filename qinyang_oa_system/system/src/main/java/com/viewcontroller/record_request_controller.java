@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.data.employee_info;
 import com.data.service_info;
 import com.data.work_record_info;
+import com.data.work_waiting_info;
 
 //台账模块请求响应模块类
 @Controller
@@ -30,7 +31,10 @@ public class record_request_controller
 	            @RequestParam(value="work_record_communist")  String    work_record_communist,   //党员联系人姓名
 	            @RequestParam(value="work_record_date")       String    work_record_date,        //建帐日期
 	            @RequestParam(value="work_record_plan")       String    work_record_plan,        //台账工作计划
-	            @RequestParam(value="work_record_effect")     String    work_record_effect       //台账落实情况
+	            @RequestParam(value="work_record_effect")     String    work_record_effect,      //台账落实情况
+	            
+	            @RequestParam(value="work_record_theme")     String     work_record_theme,
+	            @RequestParam(value="work_record_leader_id") int     work_record_leader_id
 				)
 		{
 			//初始化work_record_info对象
@@ -44,6 +48,8 @@ public class record_request_controller
 			_work_record_info.set_work_record_date(work_record_date);
 			_work_record_info.set_work_record_plan(work_record_plan);
 			_work_record_info.set_work_record_effect(work_record_effect);
+			_work_record_info.set_work_record_theme(work_record_theme);
+			_work_record_info.set_work_record_leader_id(work_record_leader_id);
             
 			
 			
@@ -53,8 +59,21 @@ public class record_request_controller
 			   String record_addtime=format.format(date);
 			   _work_record_info.set_work_record_addtime(record_addtime);
 			   
-			   com.dbconnector.record_db_connector.record_insert_db(_work_record_info);
+			   int record_id=com.dbconnector.record_db_connector.record_insert_db(_work_record_info);
 			
+			 //插入工作待审批
+				  work_waiting_info _work_wating_info=new work_waiting_info();
+				  _work_wating_info.set_work_theme(work_record_theme);
+				  _work_wating_info.set_work_category(2);
+				  _work_wating_info.set_work_sender_id(work_record_creatorid);
+				  _work_wating_info.set_work_sender(work_record_creator);
+				  _work_wating_info.set_work_receiver_id(work_record_leader_id);
+				  _work_wating_info.set_work_receiver(work_record_leader);
+				  _work_wating_info.set_work_content(work_record_plan);
+				  _work_wating_info.set_work_addtime(record_addtime);
+				  _work_wating_info.set_work_id(record_id);
+				  
+				  boolean rs=com.dbconnector.work_db_connector.waiting_insert_db(_work_wating_info);
 			
 			//返回插入结果
 			

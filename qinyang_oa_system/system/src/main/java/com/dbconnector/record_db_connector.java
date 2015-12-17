@@ -12,12 +12,12 @@ import com.mybatis.mybatis_connection_factory;
 
 public class record_db_connector 
 {
-	public static boolean record_insert_db(work_record_info _work_record_info)  
+	public static int record_insert_db(work_record_info _work_record_info)  
 	{
 		work_record_info_dao _record_info_dao=new work_record_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		
-		boolean rs=_record_info_dao.insert(_work_record_info);
-		return rs;
+		int record_id=_record_info_dao.insert(_work_record_info);
+		return record_id;
 	}
 	
 	public static List<work_record_info>  get_work_record_info_list_by_work_record_creatorid(int work_record_creatorid,int record_page)

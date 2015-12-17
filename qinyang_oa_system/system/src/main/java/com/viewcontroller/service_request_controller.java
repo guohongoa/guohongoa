@@ -19,6 +19,7 @@ import com.data.service_village_county_info;
 import com.data.service_village_info;
 import com.data.work_contact_info;
 import com.data.work_record_info;
+import com.data.work_waiting_info;
 
 	
 	@Controller
@@ -51,7 +52,16 @@ import com.data.work_record_info;
 			String service_receiver;
 			if(service_receiver_id!=-1)
 			{
-				service_receiver=com.dbconnector.management_db_connector.get_employee_info_by_id(service_receiver_id).get_employee_name();
+				employee_info _employee_info=com.dbconnector.management_db_connector.get_employee_info_by_id(service_receiver_id);
+				if(_employee_info!=null)
+				{
+					service_receiver=_employee_info.get_employee_name();
+				}
+				else
+				{
+					service_receiver="无";
+				}
+				
 			}
 			else
 			{
@@ -85,7 +95,21 @@ import com.data.work_record_info;
 			   String service_addtime=format.format(date);
 			   _service_info.set_service_addtime(service_addtime);
 			   
-			com.dbconnector.service_db_connector.send_service_insert_db(_service_info);
+			int service_id=com.dbconnector.service_db_connector.send_service_insert_db(_service_info);
+			//--------------------------------------------------------------------------
+			//插入待审批列表
+			  work_waiting_info _work_wating_info=new work_waiting_info();
+			  _work_wating_info.set_work_theme(service_theme);
+			  _work_wating_info.set_work_category(1);
+			  _work_wating_info.set_work_sender_id(service_sender_id);
+			  _work_wating_info.set_work_sender(service_sender);
+			  _work_wating_info.set_work_receiver_id(service_receiver_id);
+			  _work_wating_info.set_work_receiver(service_receiver);
+			  _work_wating_info.set_work_content(service_content);
+			  _work_wating_info.set_work_addtime(service_addtime);
+			  _work_wating_info.set_work_id(service_id);
+			  
+			  boolean rs=com.dbconnector.work_db_connector.waiting_insert_db(_work_wating_info);
 			
 			
 			//返回插入结果

@@ -63,7 +63,7 @@
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="village_add.jsp">添加村镇</a><i></i></dd>
-                    <dd><a href="service_village_modify_list.do?village_page=1" >修改</a></dd>
+                    <dd><a href="service_village_modify_list.do?village_page=1" class="red" >修改</a></dd>
                 </dl>
             </li>
             <li><a href="department_check.do?department_page=1">部门管理</a></li>
@@ -106,11 +106,8 @@
                 <li>${service_village_county_info.get_service_village_county_leader()}</li>
                 <li>${service_village_county_info.get_service_village_county_leaderphone()}</li>
                 <li>
-                    <a href="village_del.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}&village_page=${village_page}">
-                      删除
-                    </a>
-                    <a href="village_detail.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}&village_page=${village_page}">
-                      详情
+                     <a href="village_modify.do?service_village_county_id=${service_village_county_info.get_service_village_county_id()}&village_page=${village_page}">
+                       修改
                     </a>
                 </li>
             </ul>

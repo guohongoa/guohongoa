@@ -156,7 +156,7 @@ public class work_request_controller
 		  _work_wating_info.set_work_category(0);
 		  _work_wating_info.set_work_sender_id(work_sender_id);
 		  _work_wating_info.set_work_sender(work_sender);
-		  _work_wating_info.set_work_sender_id(work_sender_id);
+		  _work_wating_info.set_work_receiver_id(work_receiver_id);
 		  _work_wating_info.set_work_receiver(work_receiver);
 		  _work_wating_info.set_work_content(work_content);
 		  _work_wating_info.set_work_addtime(work_addtime);

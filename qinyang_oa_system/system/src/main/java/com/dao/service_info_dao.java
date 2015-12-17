@@ -20,27 +20,21 @@ public class service_info_dao
 		this.sqlSessionFactory=sqlSessionFactory;
 	}
 		
-		public boolean insert(service_info _service_info)
+		public int insert(service_info _service_info)
 		{
-		       int id = -1;
+		       int service_id = -1;
 		        SqlSession session = this.sqlSessionFactory.openSession();
 		 
 		        try {
-		            id = session.insert("service_info.insert", _service_info);
+		            int rs = session.insert("service_info.insert", _service_info);
+		            service_id=_service_info.get_service_msgid();
 		        } finally {
 		            session.commit();
 		            session.close();
 		        }
 		        System.out.println("insert("+_service_info+") --> "+_service_info.get_service_msgid());
 		        
-		        if(id==-1)
-		        {
-		        	return false;//插入失败
-		        }
-		        else
-		        {
-		        	return true;//插入成功
-		        }
+		      return service_id;
 		 }
 		
 		//返回所有service 服务信息

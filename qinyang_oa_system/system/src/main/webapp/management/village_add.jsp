@@ -58,8 +58,8 @@
             <li style="margin-bottom: -7px"><a href="check_service_village_detail.do?village_page=1" class="active">村镇管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="" class="red">添加村镇</a><i></i></dd>
-                    <dd><a href="../error.jsp" >修改</a></dd>
+                    <dd class="activea"><a href="#" class="red">添加村镇</a><i></i></dd>
+                    <dd><a href="service_village_modify_list.do?village_page=1">修改</a></dd>
                 </dl>
             </li>
             <li><a href="department_check.do?department_page=1" >部门管理</a></li>

@@ -27,7 +27,7 @@
 		
 	</resultMap>
 
-	<insert id="insert" parameterType="service_info">
+	<insert id="insert" parameterType="service_info" useGeneratedKeys="true" keyProperty="service_msgid">
 		insert into
 		service_info(service_theme,service_type,service_sender_id,service_sender,service_receiver_id,service_receiver,service_addtime,service_begintime,service_endtime,service_content,service_sender_phone,service_target,service_village_id,service_village_name,service_status,service_group_id)
 		values(#{service_theme},#{service_type},#{service_sender_id},#{service_sender},#{service_receiver_id},#{service_receiver},#{service_addtime},#{service_begintime},#{service_endtime},#{service_content},#{service_sender_phone},#{service_target},#{service_village_id},#{service_village_name},#{service_status},#{service_group_id});

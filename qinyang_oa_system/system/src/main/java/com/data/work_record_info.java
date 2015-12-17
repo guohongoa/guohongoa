@@ -8,11 +8,13 @@ public class work_record_info
   private String work_record_position;   //台账创建人职务
   private String work_record_department; //台账创建人部门
   private String work_record_leader;     //台账创建人上级联系人
+  private int    work_record_leader_id;  //上级联系人id
   private String work_record_communist;  //台账党员联系人姓名
   private String work_record_date;       //台账建帐日期
   private String work_record_plan;       //台账工作计划
   private String work_record_effect;     //台账工作落实情况
   private String work_record_addtime;    //系统添加时间
+  private String work_record_theme;      //台账主题
   
   public int get_work_record_id()
   {
@@ -122,6 +124,26 @@ public class work_record_info
   public void set_work_record_addtime(String work_record_addtime)
   {
 	  this.work_record_addtime=work_record_addtime;
+  }
+  
+  public String get_work_record_theme()
+  {
+	  return this.work_record_theme;
+  }
+  
+  public void set_work_record_theme(String work_record_theme)
+  {
+	  this.work_record_theme=work_record_theme;
+  }
+  
+  public int get_work_record_leader_id()
+  {
+	  return this.work_record_leader_id;
+  }
+  
+  public void set_work_record_leader_id(int work_record_leader_id)
+  {
+	  this.work_record_leader_id=work_record_leader_id;
   }
   
   

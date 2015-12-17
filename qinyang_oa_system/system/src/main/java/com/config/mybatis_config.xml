@@ -42,6 +42,8 @@
 				<property name="url" value="jdbc:mysql://101.200.196.121:3306/guohong_oa" />
 				<property name="username" value="root" />
 				<property name="password" value="19880226" />
+				<property name="poolMaximumActiveConnections" value="20"/>
+                <property name="poolMaximumIdleConnections" value="5"/>
 				<property name="poolPingQuery" value="SELECT NOW" />
 				<property name="poolPingEnabled" value="true" />
 			</dataSource>

@@ -82,6 +82,25 @@ public class management_request_controller
 	   return mv;
 	}
 	
+	@RequestMapping("management/service_village_modify_list.do")
+	public ModelAndView service_village_modify_list_request(
+			@RequestParam(value="village_page") int village_page
+			)
+	{
+		int village_total_page=com.dbconnector.service_db_connector.get_village_total_page();
+		
+		ModelAndView mv=new ModelAndView("village_modify_list.jsp?village_page="+village_page+"&village_total_page="+village_total_page);
+	   
+      
+	   
+	   //返回
+	   List<service_village_county_info> service_village_county_info_list=com.dbconnector.service_db_connector.get_service_village_county_list(village_page);
+	   List<service_village_info> service_village_info_list=com.dbconnector.service_db_connector.get_service_village_info_list_by_couty_list(service_village_county_info_list);
+	   mv.addObject("service_village_county_info_list", service_village_county_info_list);
+	   mv.addObject("service_village_info_list",service_village_info_list);
+	   return mv;
+	}
+	
 	//管理页面乡镇下属村镇修改页面显示请求
 	@RequestMapping("management/village_modify.do")
 	public ModelAndView village_modify_request(
@@ -217,6 +236,24 @@ public class management_request_controller
 		{
 		  int department_total_page=com.dbconnector.management_db_connector.get_department_total_page();
 		   ModelAndView mv=new ModelAndView("department_check.jsp?department_page="+department_page+"&department_total_page="+department_total_page);//页面重定向
+		   
+		   //得到查询所有条目的list
+		  
+		   
+		   List<department_info> department_info_list=com.dbconnector.management_db_connector.get_department_info_list(department_page);
+		   mv.addObject("department_info_list", department_info_list);
+		   return mv;
+		}
+		
+		@RequestMapping("management/department_modify_list.do")
+		//查询所有制度条目
+		
+		public ModelAndView department_modify_list_request(
+				@RequestParam(value="department_page")    int department_page
+				)
+		{
+		  int department_total_page=com.dbconnector.management_db_connector.get_department_total_page();
+		   ModelAndView mv=new ModelAndView("department_modify_list.jsp?department_page="+department_page+"&department_total_page="+department_total_page);//页面重定向
 		   
 		   //得到查询所有条目的list
 		  
@@ -430,6 +467,26 @@ public class management_request_controller
 		   return mv;
 		}
 		
+		@RequestMapping("management/employee_modify_list.do")
+		//查询所有制度条目
+		
+		public ModelAndView employee_modify_list_request(
+				@RequestParam(value="employee_page") int employee_page
+				)
+		{
+			
+			int employee_total_page=com.dbconnector.management_db_connector.get_employee_total_page();
+			ModelAndView mv=new ModelAndView("employee_modify_list.jsp?employee_page="+employee_page+"&employee_total_page="+employee_total_page);//页面重定向
+		
+		   
+		   //得到查询所有条目的list
+		   
+		   //List<employee_info> employee_info_list=com.dbconnector.management_db_connector.get_employee_info_list();
+		   List<employee_info> employee_info_list=com.dbconnector.management_db_connector.get_employee_info_list_by_page(employee_page);
+		   mv.addObject("employee_info_list", employee_info_list);
+		   return mv;
+		}
+		
 		//删除用户信息
 		@RequestMapping("management/employee_del.do")
 		 public ModelAndView employee_del_request(
@@ -624,6 +681,22 @@ public class management_request_controller
 		   return mv;
 		}
 		
+		@RequestMapping("management/service_group_modify_list.do")
+		//五服务小组信息查看
+		public ModelAndView service_group_modify_list_request(
+				
+				@RequestParam(value="service_group_page")        int    service_group_page
+				)
+		{
+		   int service_group_total_page=com.dbconnector.management_db_connector.get_service_group_total_page();
+		   ModelAndView mv=new ModelAndView("service_group_modify_list.jsp?service_group_page="+service_group_page+"&service_group_total_page="+service_group_total_page);//页面重定向
+		   
+		   //得到查询所有条目的list
+		   
+		   List<service_group_info> service_group_info_list=com.dbconnector.management_db_connector.get_service_group_list_by_page(service_group_page);
+		   mv.addObject("service_group_info_list",service_group_info_list);
+		   return mv;
+		}
 		
 
 			//显示五服务小组修改内容

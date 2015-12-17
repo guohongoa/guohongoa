@@ -72,6 +72,8 @@
         <div class="tztj">
             <form id="post_tz" action="record_add.do" method="post">
                 <p><span>建账人</span><input class="input600 grey9" type="text" name="work_record_creator" value="${user_name}" readonly="readonly"/></p>
+                <p><span>主题</span><input class="input600 grey9" name="work_record_theme" type="text"></p>
+                <input name="work_record_leader_id" type="hidden" value="1"/>
                  <!--自动提交建帐人用户id--><input type="hidden" name="work_record_creatorid" value="${user_id}"/>
                 <p><span>职务</span><input class="grey9" type="text" name="work_record_position" value="${employee_info.get_employee_position()}" readonly="readonly"/></p>
                 <p><span>所属部门</span><input class="grey9" type="text" name="work_record_department" value="${employee_info.get_employee_department_name()}" readonly="readonly"/></p>
