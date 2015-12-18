@@ -1,8 +1,11 @@
 package com.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.data.department_info;
 import com.data.work_waiting_info;
 
 public class work_waiting_info_dao 
@@ -37,4 +40,17 @@ public class work_waiting_info_dao
 	        	return true;//插入成功
 	        }
 	  }	
+	 
+	 public List<work_waiting_info> get_all_by_work_receiver_id(int work_receiver_id)
+	 {
+		 List<work_waiting_info> work_waiting_list=null;
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 work_waiting_list = session.selectList("work_waiting_info.select_by_receiver_id",work_receiver_id);
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("selectAll() --> "+work_waiting_list);
+	        return work_waiting_list;
+	 }
 }

@@ -22,8 +22,8 @@
         <div class="menu">
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
-                <li><a href=""><i class="icon"></i>设置</a></li>
-                <li><a href=""><i></i>退出</a></li>
+                <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
+                <li><a href="../logout"><i></i>退出</a></li>
             </ul>
             <div>
                 <ul class="hide">
@@ -39,10 +39,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="" class="active">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/contact_person_check.do">四联</a></li>
+        <li><a href="../service/service_village_check.do">五服务</a></li>
+        <li><a href="../work" class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -57,16 +57,16 @@
     <div class="left_menu" style="height: 290px">
         <h3><a href="">工作任务</a></h3>
         <ul>
-            <li><a href="">安排工作</a></li>
-            <li><a href="" >汇报工作</a></li>
+            <li><a href="work_arrange_display.do?employee_id=${user_id}">安排工作</a></li>
+            <li><a href="work_report_display.do?employee_id=${user_id}" >汇报工作</a></li>
             <li><a href="" class="active">反馈工作</a></li>
-            <li><a href="">待审批</a></li>
-            <li><a href="">全部工作</a></li>
+            <li><a href="work_pending.do?employee_id=${user_id}">待审批</a></li>
+            <li><a href="work_all_check.do?employee_id=${user_id}">全部工作</a></li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="../error.jsp">工作</a>&gt;<a href="">工作任务</a>&gt;<span>反馈工作</span>
+        <h4><a href="../work">工作</a>&gt;<a href="">工作任务</a>&gt;<span>反馈工作</span>
             <span class="sort">按
                 <select>
                     <option>请选择</option>

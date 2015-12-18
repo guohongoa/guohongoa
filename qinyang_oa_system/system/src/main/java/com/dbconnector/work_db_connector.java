@@ -41,6 +41,50 @@ public class work_db_connector
 			return work_info_list;
 		}
 		
+		//以接受者id查询安排工作
+		public static List<work_info> get_work_info_by_receiver_id_and_type(int receiver_id,int work_type)
+		{
+			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			
+			work_info _work_info=new work_info();
+			_work_info.set_work_receiver_id(receiver_id);
+			_work_info.set_work_type(work_type);
+			
+			List<work_info> work_info_list=_work_info_dao.get_work_info_by_receiver_id_and_type(_work_info);
+			return work_info_list;
+		}
+		
+		//以发送者和id查询安排工作
+		public static List<work_info> get_work_info_by_sender_id_and_type(int sender_id,int work_type)
+		{
+            work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			
+			work_info _work_info=new work_info();
+			_work_info.set_work_sender_id( sender_id);
+			_work_info.set_work_type(work_type);
+			
+			List<work_info> work_info_list=_work_info_dao.get_work_info_by_sender_id_and_type(_work_info);
+			return work_info_list;
+		}
+		
+		
+		
+		public static List<work_info> get_work_info_by_approved(int sender_id,int work_type,int work_status)
+		{
+            work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			
+			work_info _work_info=new work_info();
+			_work_info.set_work_sender_id( sender_id);
+			_work_info.set_work_type(work_type);
+			_work_info.set_work_status(work_status);
+			
+			List<work_info> work_info_list=_work_info_dao.get_work_info_by_approved(_work_info);
+			return work_info_list;
+		}
+		
+		//-------------------------------------------------------------------
+		//待审批模块数据库操作函数
+		
 		public static boolean waiting_insert_db(work_waiting_info _work_waiting_info)
 		{
             work_waiting_info_dao _work_waiting_info_dao=new work_waiting_info_dao(mybatis_connection_factory.getSqlSessionFactory());
@@ -49,4 +93,17 @@ public class work_db_connector
 			//返回id
 			return rs;
 		}
+		
+		
+		//待审批页面显示
+		public static List<work_waiting_info> get_work_waiting_inf_by_work_receiver_id(int work_receiver_id)
+		{
+			work_waiting_info_dao _work_waiting_info_dao=new work_waiting_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			List<work_waiting_info> work_waiting_list=_work_waiting_info_dao.get_all_by_work_receiver_id(work_receiver_id);
+			return work_waiting_list;
+		}
+		
+		
+		
+		
 }

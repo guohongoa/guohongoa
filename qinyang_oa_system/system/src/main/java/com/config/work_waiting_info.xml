@@ -23,7 +23,13 @@
 		insert into
 		work_waiting_info(work_theme,work_category,work_sender_id,work_sender,work_receiver_id,work_receiver,work_content,work_addtime,work_id)
 		values(#{work_theme},#{work_category},#{work_sender_id},#{work_sender},#{work_receiver_id},#{work_receiver},#{work_content},#{work_addtime},#{work_id});
-	</insert>
+	</insert>   
+     
+   
+     
+     <select id="select_by_receiver_id" parameterType="int" resultMap="result">
+		SELECT * FROM work_waiting_info WHERE work_receiver_id = #{work_receiver_id};
+	</select>
      
 </mapper>
 

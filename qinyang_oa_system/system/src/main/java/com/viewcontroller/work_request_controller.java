@@ -66,7 +66,6 @@ public class work_request_controller
 		
 		
 		work_info _work_info=new work_info();
-		_work_info.set_work_sender("dafa");
 		_work_info.set_work_sender_id(work_sender_id);
 		
 		_work_info.set_work_sender(work_sender);
@@ -76,9 +75,27 @@ public class work_request_controller
 		_work_info.set_work_endtime(work_endtime);
 		_work_info.set_work_receiver_id(work_receiver_id);
 	    _work_info.set_work_content(work_content);
+		String work_receiver;
+	    //查询工作任务接受人
+		if(work_receiver_id==-1)
+		{
+			work_receiver="无";
+		}
+		else
+		{
+			employee_info _employee_info=com.dbconnector.management_db_connector.get_employee_info_by_id(work_receiver_id);
+			if(_employee_info!=null)
+			{
+				work_receiver=_employee_info.get_employee_name();
+			}
+			else
+			{
+				work_receiver="无";
+			}
+			
+		}
 		
-		
-		
+		_work_info.set_work_receiver(work_receiver);
 		//添加系统时间
 		   Date date=new Date();
 		   DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -93,7 +110,7 @@ public class work_request_controller
 		
 		
 		
-		 ModelAndView mv=new ModelAndView();
+		 ModelAndView mv=new ModelAndView("redirect:work_all_check.do?employee_id="+work_sender_id);
 		  
 		   
 		   return mv;
@@ -167,13 +184,14 @@ public class work_request_controller
 		
 		
 		
-		 ModelAndView mv=new ModelAndView();
+		 ModelAndView mv=new ModelAndView("redirect:work_all_check.do?employee_id="+work_sender_id);
 		  
 		   
 		   return mv;
 	}
 	
-	@RequestMapping("work/work_feedback.do")
+	//显示工作反馈列表
+	@RequestMapping("work/work_feedback_list.do")
 	//查询所有制度条目
 	
 	public ModelAndView work_feedback_request(
@@ -181,12 +199,15 @@ public class work_request_controller
 			)
 	{
 		
-		ModelAndView mv=new ModelAndView("work_feedback.jsp");//页面重定向
+		ModelAndView mv=new ModelAndView("work_feedback_list.jsp");//页面重定向
 	
 	   
 	   //得到查询所有条目的list
-	   
-	   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_owner_id(employee_id);
+	   int work_receiver_id=employee_id;
+	   int work_type=0;//显示被安排的工作，所以类型为0
+			   
+			   
+	   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_receiver_id_and_type(work_receiver_id,work_type);//查询被安排的工作，以便后续反馈
 	   mv.addObject("work_info_list", work_info_list);
 	   return mv;
 	}
@@ -196,6 +217,8 @@ public class work_request_controller
 		@RequestMapping("work/work_pending.do")
 	//查询所有制度条目
 	
+		
+    //待审批页面服务器响应
 	public ModelAndView work_pending_request(
 			@RequestParam(value="employee_id") int employee_id
 			)
@@ -206,13 +229,13 @@ public class work_request_controller
 	   
 	   //得到查询所有条目的list
 	   
-	   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_owner_id(employee_id);
-	   mv.addObject("work_info_list", work_info_list);
+	   List<work_waiting_info> work_waiting_list=com.dbconnector.work_db_connector.get_work_waiting_inf_by_work_receiver_id(employee_id);
+	   mv.addObject("work_waiting_list", work_waiting_list);
 	   return mv;
 	}
 	
 	@RequestMapping("work/work_all_check.do")
-	//查询所有制度条目
+	//查询所有工作条目
 	
 	public ModelAndView work_all_request(
 			@RequestParam(value="employee_id") int employee_id
@@ -226,6 +249,69 @@ public class work_request_controller
 	   
 	   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_owner_id(employee_id);
 	   mv.addObject("work_info_list", work_info_list);
+	   return mv;
+	}
+	
+	@RequestMapping("work/work_all_arrange.do")
+	public ModelAndView work_all_arrange_request(
+			@RequestParam(value="employee_id") int employee_id
+			)
+	{
+		
+		ModelAndView mv=new ModelAndView("work_all_arrange.jsp");//页面重定向
+	    int sender_id=employee_id;
+		int work_type=0;//安排的工作为0
+		List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_sender_id_and_type(sender_id,work_type);
+		mv.addObject("work_info_list", work_info_list);
+	
+	   
+	   return mv;
+	}
+	
+	@RequestMapping("work/work_all_feedback.do")
+	public ModelAndView work_all_feedback_request(
+			@RequestParam(value="employee_id") int employee_id
+			)
+	{
+		
+		ModelAndView mv=new ModelAndView("work_all_feedback.jsp");//页面重定向
+		 int receiver_id=employee_id;
+			int work_type=0;//反馈的工作为被安排的工作，类型为0
+			List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_receiver_id_and_type(receiver_id,work_type);
+			mv.addObject("work_info_list", work_info_list);
+	        return mv;
+	   
+	}
+	
+	@RequestMapping("work/work_all_report.do")
+	public ModelAndView work_all_report_request(
+			@RequestParam(value="employee_id") int employee_id
+			)
+	{
+		
+		ModelAndView mv=new ModelAndView("work_all_report.jsp");//页面重定向
+		 int sender_id=employee_id;
+			int work_type=1;//汇报的工作为1
+			List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_sender_id_and_type(sender_id,work_type);
+			mv.addObject("work_info_list", work_info_list);
+	
+	   
+	   return mv;
+	}
+	
+	@RequestMapping("work/work_all_approved.do")
+	public ModelAndView work_all_approved_request(
+			@RequestParam(value="employee_id") int employee_id
+			)
+	{
+		
+		ModelAndView mv=new ModelAndView("work_all_approved.jsp");//页面重定向
+		int receiver_id=employee_id;
+		int work_type=0;//已审批的工作为被汇报的工作，类型为0
+		int work_status=1;
+		List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_approved(receiver_id,work_type,work_status);
+	
+	   
 	   return mv;
 	}
 	

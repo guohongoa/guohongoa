@@ -22,8 +22,8 @@
         <div class="menu">
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
-                <li><a href=""><i class="icon"></i>设置</a></li>
-                <li><a href=""><i></i>退出</a></li>
+                <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
+                <li><a href="../logout"><i></i>退出</a></li>
             </ul>
             <div>
                 <ul class="hide">
@@ -39,10 +39,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href="" class="active">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/contact_person_check.do">四联</a></li>
+        <li><a href="../service/service_village_check.do">五服务</a></li>
+        <li><a href="../work" class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -58,15 +58,15 @@
         <h3><a href="">工作任务</a></h3>
         <ul>
             <li><a href="" class="active">安排工作</a></li>
-            <li><a href="">汇报工作</a></li>
-            <li><a href="">反馈工作</a></li>
-            <li><a href="">待审批</a></li>
-            <li><a href="">全部工作</a></li>
+            <li><a href="work_report_display.do?employee_id=${user_id}">汇报工作</a></li>
+            <li><a href="work_feedback_list.do?employee_id=${user_id}">反馈工作</a></li>
+            <li><a href="work_pending.do?employee_id=${user_id}">待审批</a></li>
+            <li><a href="work_all_check.do?employee_id=${user_id}">全部工作</a></li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a> &gt;<a href="">工作任务</a> &gt;<span>安排工作</span></h4>
+        <h4><a href="../work">工作</a> &gt;<a href="#">工作任务</a> &gt;<span>安排工作</span></h4>
         <div class="tztj">
             <form id="post_gzap" action="work_arrange.do" method="post">
                 <p>
@@ -91,7 +91,7 @@
                 <p><span>工作主题</span><input name="work_theme" type="text"/></p>
                 <p><span>达成目标</span><input name="work_target" type="text"/></p>
                 <p><span>执行周期</span><input class="input100 timedata" name="work_begintime" type="text"/>&nbsp; ——&nbsp; <input class="input100 timedata" name="work_endtime" type="text"/></p>
-                <p><span>上传附件</span><input  style="border: none;margin: 10px 0 20px 0" type="file"/></p>
+                <p><span>上传附件</span><input  style="width:150px;border: none;margin: 10px 0 20px 0" type="file"/></p>
                 <p><span>内容描述</span><textarea name="work_content" style="height: 260px;" form="post_gzap"></textarea></p>
                 <p class="tztj_btn" ><b class="login-error"></b><input type="reset" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="重置"><input type="submit" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="提交"/></p>
             </form>

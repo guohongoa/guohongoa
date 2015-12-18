@@ -54,24 +54,32 @@
 <!--主体-->
 <div class="content">
     <!--左侧固定导航-->
-    <div class="left_menu" style="height: 290px">
+    <div class="left_menu w_menu">
         <h3><a href="">工作任务</a></h3>
         <ul>
             <li><a href="work_arrange_display.do?employee_id=${user_id}">安排工作</a></li>
             <li><a href="work_report_display.do?employee_id=${user_id}" >汇报工作</a></li>
             <li><a href="work_feedback_list.do?employee_id=${user_id}">反馈工作</a></li>
-            <li><a href="" class="active">待审批</a></li>
-            <li><a href="work_all_check.do?employee_id=${user_id}">全部工作</a></li>
+            <li><a href="work_pending.do?employee_id=${user_id}" >待审批</a></li>
+            <li><a href="work_all_check.do?employee_id=${user_id}" class="active">全部工作</a>
+                <dl>
+                    <dt></dt>
+                    <dd class="activea"><a href="work_all_arrange.do?employee_id=${user_id}" >安排的工作</a><i></i></dd>
+                    <dd><a href="work_all_feedback.do?employee_id=${user_id}" >反馈的工作</a></dd>
+                    <dd><a href="work_all_report.do?employee_id=${user_id}" >汇报的工作</a></dd>
+                    <dd><a href="work_all_approved.do?employee_id=${user_id}" class="red"  style="border-bottom: 1px solid #c9c9c9;height: 35px">已审批</a></dd>
+                </dl>
+            </li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="../work">工作</a> &gt;<a href="">工作任务</a> &gt;<span>待审批</span>
+        <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>已审批</span>
             <span class="sort">按
                 <select>
                     <option>请选择</option>
                     <option>时间</option>
-                    <option>申请人</option>
+                    <option>负责人</option>
                     <option>工作主题</option>
                 </select>
                 排序
@@ -80,46 +88,27 @@
         <div class="contentlist">
             <!--表格标题-->
             <ul class="contentlisttt gzdspcontent">
-                <!--
-                <li>申请人</li>
+                <li>负责人</li>
                 <li>工作主题</li>
-                <li>工作目标</li>
+                <li>任务类型</li>
                 <li>执行周期</li>
                 <li>发送时间</li>
-                <li>操作</li>
-            -->
-            <li>审批类型</li>
-            <li>申请人</li>
-             <li>工作主题</li>
-             <li>工作内容</li>
-             <li>发送时间</li>
-             <li>操作</li>
-
-
+                <li>查看</li>
             </ul>
             <!--数据-->
-          <c:forEach var="work_waiting_info" items="${work_waiting_list}">
+           <c:forEach var="work_info" items="${work_info_list}">
             <ul class="gzdspcontent clear">
-               <c:choose>
-                 <c:when test="${work_waiting_info.get_work_category()==0}">
-                   <li>工作</li>
-                 </c:when>
-                 <c:when test="${work_waiting_info.get_work_category()==1}">
-                   <li>五服务</li>
-                 </c:when>
-                 <c:when test="${work_waiting_info.get_work_category()==2}">
-                   <li>台账</li>
-                 </c:when>
-               </c:choose>
-                <li>${work_waiting_info.get_work_sender()}</li>
-                <li>${work_waiting_info.get_work_theme()}</li>
-                <li>${work_waiting_info.get_work_content()}</li>
-                <li>${work_waiting_info.get_work_addtime()}</li>
+                <li>${work_info.get_work_sender()}</li>
+                <li>${work_info.get_work_theme()}</li>
+                <li>已通过</li>
+                <li style="line-height: 15px;padding-top: 5px">${work_info.get_work_begintime()}-<br>${work_info.get_work_endtime()}</li>
+                <li>{work_info.get_work_addtime()}</li>
                 <li>
                     <a href="">详细</a>
                 </li>
             </ul>
-           </c:forEach>
+            </c:forEach>
+
         </div>
     </div>
     <div class="page">

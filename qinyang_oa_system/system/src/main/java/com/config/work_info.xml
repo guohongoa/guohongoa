@@ -31,11 +31,26 @@
 		values(#{work_sender},#{work_sender_id},#{work_receiver_id},#{work_receiver},#{work_theme},#{work_target},#{work_begintime},#{work_endtime},#{work_content},#{work_type},#{work_status},#{work_percentage},#{work_addtime});
 	</insert>
 
-     <select id="select_by_sender_id" parameterType="work_info" resultMap="result">
+     <select id="select_by_sender_id" parameterType="int" resultMap="result">
 		SELECT * FROM work_info WHERE work_sender_id = #{work_sender_id};
+	</select>
+	
+	
+     <select id="select_by_receiver_id_and_type" parameterType="work_info" resultMap="result">
+		SELECT * FROM work_info WHERE work_receiver_id = #{work_receiver_id} AND work_type = #{work_type};
+	</select>
+	
+	
+	
+	<select id="select_by_sender_id_and_type" parameterType="work_info" resultMap="result">
+		SELECT * FROM work_info WHERE work_sender_id = #{work_sender_id} AND work_type = #{work_type};
 	</select>
      
      
+     
+     <select id="select_by_receiver_id_and_type_and_status" parameterType="work_info" resultMap="result">
+		SELECT * FROM work_info WHERE work_receiver_id = #{work_receiver_id} AND work_type = #{work_type} AND work_status = #{work_status};
+	</select>
 </mapper>
 
 

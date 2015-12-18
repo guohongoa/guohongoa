@@ -135,15 +135,15 @@
     <c:choose>
       <c:when test="${service_group_page==1}">
       <div class="page">
-        <a href="service_group_check.do?service_group_page=1">上一页</a>
-        <a href="service_group_check.do?service_group_page=1" class="bulec">1</a>
-        <a href="service_group_check.do?service_group_page=2">2</a>
-        <a href="service_group_check.do?service_group_page=3">3</a>
-        <a href="service_group_check.do?service_group_page=4">4</a>
-        <a href="service_group_check.do?service_group_page=5">5</a>
-        <a href="service_group_check.do?service_group_page=2">下一页</a>
+        <a href="service_group_modify_list.do?service_group_page=1">上一页</a>
+        <a href="service_group_modify_list.do?service_group_page=1" class="bulec">1</a>
+        <a href="service_group_modify_list.do?service_group_page=2">2</a>
+        <a href="service_group_modify_list.do?service_group_page=3">3</a>
+        <a href="service_group_modify_list.do?service_group_page=4">4</a>
+        <a href="service_group_modify_list.do?service_group_page=5">5</a>
+        <a href="service_group_modify_list.do?service_group_page=2">下一页</a>
         <a>共${service_group_total_page}页</a>
-        <form method="get" action="service_group_check.do">
+        <form method="get" action="service_group_modify_list.do">
         <a>
            到&nbsp;<input type="text" name="service_group_page" style="width:15px;">&nbsp;页
              <input type="submit" name="submit" value="确定">
@@ -153,15 +153,15 @@
       </c:when>
       <c:when test="${service_group_page==2}">
       <div class="page">
-        <a href="service_group_check.do?service_group_page=1">上一页</a>
-        <a href="service_group_check.do?service_group_page=1">1</a>
-        <a href="service_group_check.do?service_group_page=2" class="bulec">2</a>
-        <a href="service_group_check.do?service_group_page=3">3</a>
-        <a href="service_group_check.do?service_group_page=4">4</a>
-        <a href="service_group_check.do?service_group_page=5">5</a>
-        <a href="service_group_check.do?service_group_page=3">下一页</a>
+        <a href="service_group_modify_list.do?service_group_page=1">上一页</a>
+        <a href="service_group_modify_list.do?service_group_page=1">1</a>
+        <a href="service_group_modify_list.do?service_group_page=2" class="bulec">2</a>
+        <a href="service_group_modify_list.do?service_group_page=3">3</a>
+        <a href="service_group_modify_list.do?service_group_page=4">4</a>
+        <a href="service_group_modify_list.do?service_group_page=5">5</a>
+        <a href="service_group_modify_list.do?service_group_page=3">下一页</a>
         <a>共${service_group_total_page}页</a>
-        <form method="get" action="service_group_check.do">
+        <form method="get" action="service_group_modify_list.do">
         <a>
            到&nbsp;<input type="text" name="service_group_page" style="width:15px;">&nbsp;页
             <input type="submit" name="submit" value="确定">
@@ -171,15 +171,15 @@
       </c:when>
       <c:otherwise>
       <div class="page">
-        <a href="service_group_check.do?service_group_page=${service_group_page-1}">上一页</a>
-        <a href="service_group_check.do?service_group_page=${service_group_page-2}">${service_group_page-2}</a>
-        <a href="service_group_check.do?service_group_page=${service_group_page-1}">${service_group_page-1}</a>
-        <a class="bulec" href="service_group_check.do?service_group_page=${service_group_page}">${service_group_page}</a>
-        <a href="service_group_check.do?service_group_page=${service_group_page+1}">${service_group_page+1}</a>
-        <a href="service_group_check.do?service_group_page=${service_group_page+2}">${service_group_page+2}</a>
-        <a href="service_group_check.do?service_group_page=${service_group_page+1}">下一页</a>
+        <a href="service_group_modify_list.do?service_group_page=${service_group_page-1}">上一页</a>
+        <a href="service_group_modify_list.do?service_group_page=${service_group_page-2}">${service_group_page-2}</a>
+        <a href="service_group_modify_list.do?service_group_page=${service_group_page-1}">${service_group_page-1}</a>
+        <a class="bulec" href="service_group_modify_list.do?service_group_page=${service_group_page}">${service_group_page}</a>
+        <a href="service_group_modify_list.do?service_group_page=${service_group_page+1}">${service_group_page+1}</a>
+        <a href="sservice_group_modify_list.do?service_group_page=${service_group_page+2}">${service_group_page+2}</a>
+        <a href="service_group_modify_list.do?service_group_page=${service_group_page+1}">下一页</a>
         <a>共${service_group_total_page}页</a>
-        <form method="get" action="service_group_check.do">
+        <form method="get" action="service_group_modify_list.do">
         <a>
            到&nbsp;<input type="text" name="service_group_page" style="width:15px;">&nbsp;页
              <input type="submit" name="submit" value="确定">
