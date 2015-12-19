@@ -98,9 +98,29 @@
             <!--数据-->
             <c:forEach var="work_info" items="${work_info_list}">
             <ul class="gzdspcontent clear">
+            <c:choose>
+              <c:when test="${work_info.get_work_type()==0}"><!--安排、被安排工作，接受人为负责人-->
                 <li>${work_info.get_work_receiver()}</li>
+              </c:when>
+              <c:when test="${work_info.get_work_type()==1}"><!--汇报、被汇报工作，发送人为负责人-->
+                 <li>${work_info.get_work_sender()}</li>
+              </c:when>
+            </c:choose>
                 <li>${work_info.get_work_theme()}</li>
+            <c:choose>
+             <c:when test="${work_info.get_work_type()==0 and work_info.get_work_sender_id()==user_id}">
+                <li>安排</li>
+             </c:when>
+              <c:when test="${work_info.get_work_type()==0 and work_info.get_work_receiver_id()==user_id}">
                 <li>反馈</li>
+              </c:when>
+               <c:when test="${work_info.get_work_type()==1 and work_info.get_work_sender_id()==user_id}">
+                <li>汇报</li>
+               </c:when>
+               <c:when test="${work_info.get_work_type()==1 and work_info.get_work_receiver_id()==user_id}">
+                <li>审批</li>
+               </c:when>
+            </c:choose>
                 <li style="line-height: 15px;padding-top: 5px">${work_info.get_work_begintime()}-<br>${work_info.get_work_endtime()}</li>
                 <li>${work_info.get_work_addtime()}</li>
                 <li>

@@ -90,4 +90,17 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 	        //System.out.println("selectAll() --> "+department_info_list);
 	        return work_info_list;
 	 }
+	 
+	 public List<work_info> get_all_work_all_by_owner(work_info _work_info)
+	 {
+		 List<work_info> work_info_list=null;
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+	            work_info_list = session.selectList("work_info.select_by_owner",_work_info);
+	        } finally {
+	            session.close();
+	        }
+	        //System.out.println("selectAll() --> "+department_info_list);
+	        return work_info_list;
+	 }
 }

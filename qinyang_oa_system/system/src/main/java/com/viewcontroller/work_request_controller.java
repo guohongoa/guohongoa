@@ -155,6 +155,7 @@ public class work_request_controller
 		_work_info.set_work_receiver_id(work_receiver_id);
 		_work_info.set_work_receiver(work_receiver);
 	    _work_info.set_work_content(work_content);
+	    _work_info.set_work_type(work_type);
 		
 		
 		
@@ -247,7 +248,7 @@ public class work_request_controller
 	   
 	   //得到查询所有条目的list
 	   
-	   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_info_by_owner_id(employee_id);
+	   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_all_work_info_by_owner_id(employee_id);
 	   mv.addObject("work_info_list", work_info_list);
 	   return mv;
 	}

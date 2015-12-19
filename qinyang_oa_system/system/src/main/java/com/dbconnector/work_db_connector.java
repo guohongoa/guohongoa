@@ -82,6 +82,17 @@ public class work_db_connector
 			return work_info_list;
 		}
 		
+		//全部的工作
+		public static List<work_info> get_all_work_info_by_owner_id(int employee_id)
+		{
+			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			work_info _work_info=new work_info();
+			//将发送人和接受人均设置成用户id,状态设置为0
+			_work_info.set_work_sender_id(employee_id);
+			_work_info.set_work_receiver_id(employee_id);
+			List<work_info> work_info_list=_work_info_dao.get_all_work_all_by_owner(_work_info);
+			return work_info_list;
+		}
 		//-------------------------------------------------------------------
 		//待审批模块数据库操作函数
 		
