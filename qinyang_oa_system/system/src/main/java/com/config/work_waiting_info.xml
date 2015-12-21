@@ -30,6 +30,10 @@
      <select id="select_by_receiver_id" parameterType="int" resultMap="result">
 		SELECT * FROM work_waiting_info WHERE work_receiver_id = #{work_receiver_id};
 	</select>
+	
+	 <select id="select_by_page" parameterType="work_waiting_selector" resultMap="result">
+		SELECT * FROM work_waiting_info WHERE work_receiver_id = #{work_receiver_id} limit #{work_begin},#{work_num};
+	</select>
      
 </mapper>
 

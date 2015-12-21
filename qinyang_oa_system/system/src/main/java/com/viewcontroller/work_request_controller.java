@@ -222,16 +222,18 @@ public class work_request_controller
 		
     //待审批页面服务器响应
 	public ModelAndView work_pending_request(
-			@RequestParam(value="employee_id") int employee_id
+			@RequestParam(value="employee_id") int employee_id,
+			@RequestParam(value="work_page") int work_page
+			
 			)
 	{
+		int work_total_page=com.dbconnector.work_db_connector.get_work_waiting_total_page_by_owner_id(employee_id);
+		ModelAndView mv=new ModelAndView("work_pending.jsp?work_page="+work_page+"&work_total_page="+work_total_page);//页面重定向
 		
-		ModelAndView mv=new ModelAndView("work_pending.jsp");//页面重定向
-	
 	   
 	   //得到查询所有条目的list
 	   
-	   List<work_waiting_info> work_waiting_list=com.dbconnector.work_db_connector.get_work_waiting_inf_by_work_receiver_id(employee_id);
+	   List<work_waiting_info> work_waiting_list=com.dbconnector.work_db_connector.get_work_waiting_inf_by_work_receiver_id_and_page(employee_id,work_page);
 	   mv.addObject("work_waiting_list", work_waiting_list);
 	   return mv;
 	}
@@ -331,6 +333,32 @@ public class work_request_controller
 	   
 	   return mv;
 	}
+	
+	@RequestMapping("work/work_feedback_detail.do")
+	public ModelAndView work_feedback_detail_request(
+			@RequestParam(value="work_id") int work_id,
+			@RequestParam(value="work_page") int work_page
+			)
+	{
+		ModelAndView mv=new ModelAndView("work_feedback_detail.jsp?work_page="+work_page);
+		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
+		mv.addObject("work_info", _work_info);
+		return mv;
+	}
+	
+	@RequestMapping("work/work_feedback.do")
+	public ModelAndView work_feedback_input_request(
+			@RequestParam(value="work_id") int work_id,
+			@RequestParam(value="work_page") int work_page
+			)
+	{
+		ModelAndView mv=new ModelAndView("work_feedback.jsp?work_page="+work_page);
+		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
+		mv.addObject("work_info", _work_info);
+		return mv;
+	}
+	
+	
 	
 	
 }

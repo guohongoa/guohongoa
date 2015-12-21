@@ -62,7 +62,7 @@
             <li><a href="work_arrange_display.do?employee_id=${user_id}">安排工作</a></li>
             <li><a href="work_report_display.do?employee_id=${user_id}" >汇报工作</a></li>
             <li><a href="work_feedback_list.do?employee_id=${user_id}&work_page=1">反馈工作</a></li>
-            <li><a href="work_pending.do?employee_id=${user_id}" >待审批</a></li>
+            <li><a href="work_pending.do?employee_id=${user_id}&work_page=1" >待审批</a></li>
             <li><a href="work_all_check.do?employee_id=${user_id}&work_page=1" class="active">全部工作</a>
                 <dl>
                     <dt></dt>

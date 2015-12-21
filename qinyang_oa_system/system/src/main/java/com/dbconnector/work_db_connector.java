@@ -2,11 +2,13 @@ package com.dbconnector;
 
 import java.util.List;
 
+import com.dao.employee_info_dao;
 import com.dao.relationship_info_dao;
 import com.dao.service_info_dao;
 import com.dao.work_contact_info_dao;
 import com.dao.work_info_dao;
 import com.dao.work_waiting_info_dao;
+import com.data.employee_info;
 import com.data.relationship_info;
 import com.data.service_info;
 import com.data.work_contact_info;
@@ -204,10 +206,35 @@ public class work_db_connector
 		
 		public static List<work_info> get_work_info_by_approved_and_page(int receiver_id,int work_type,int work_status,int work_page)
 		{
-			List<work_info> work_info_list;
+			 List<work_info> work_info_list;
 			 work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 			 work_info_list=_work_info_dao.get_all_approved_by_employee_id_and_page(receiver_id,work_type,work_status,work_page);
 			 return work_info_list;
+		}
+		
+		public static int get_work_waiting_total_page_by_owner_id(int work_receiver_id)
+		{
+			int work_total_num;
+			int work_total_page;
+			work_waiting_info_dao _work_waiting_info_dao=new work_waiting_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			work_total_num=_work_waiting_info_dao.get_waiting_total_num_by_by_user(work_receiver_id);
+			work_total_page=(int)Math.ceil((float)work_total_num/11.0f);
+			return work_total_page;
+		}
+		
+		public static List<work_waiting_info> get_work_waiting_inf_by_work_receiver_id_and_page(int employee_id,int work_page)
+		{
+			List<work_waiting_info> work_waiting_list;
+			work_waiting_info_dao _work_waiting_info_dao=new work_waiting_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			work_waiting_list=_work_waiting_info_dao.get_all_by_work_receiver_id_and_page(employee_id,work_page);
+			return work_waiting_list;
+		}
+		
+		public static work_info get_work_info_by_work_id(int work_id)
+		{
+			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			 work_info _work_info=_work_info_dao.select_by_work_id(work_id);
+		     return _work_info;
 		}
 		
 }

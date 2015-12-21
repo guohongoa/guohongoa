@@ -338,4 +338,18 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		    System.out.println("select_approved_by_page --> "+_work_task_selector);
 	        return work_info_list;
 	 }
+	 
+	 public work_info select_by_work_id(int work_id)
+	 {
+		 work_info _work_info = null;
+	        SqlSession session = sqlSessionFactory.openSession();
+	        try {
+	            _work_info = session.selectOne("work_info.select_by_work_id", work_id);
+	 
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("select_by_workid("+work_id+") --> "+_work_info);
+	        return _work_info;
+	 }
 }

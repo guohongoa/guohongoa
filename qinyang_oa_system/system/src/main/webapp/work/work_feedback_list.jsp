@@ -62,7 +62,7 @@
             <li><a href="work_arrange_display.do?employee_id=${user_id}">安排工作</a></li>
             <li><a href="work_report_display.do?employee_id=${user_id}" >汇报工作</a></li>
             <li><a href="" class="active">反馈工作</a></li>
-            <li><a href="work_pending.do?employee_id=${user_id}">待审批</a></li>
+            <li><a href="work_pending.do?employee_id=${user_id}&work_page=1">待审批</a></li>
             <li><a href="work_all_check.do?employee_id=${user_id}&work_page=1">全部工作</a></li>
         </ul>
     </div>
@@ -98,11 +98,8 @@
                 <li style="line-height: 15px;padding-top: 5px">${work_info.get_work_begintime()}-<br>${work_info.get_work_endtime()}</li>
                 <li>${work_info.get_work_addtime()}</li>
                 <li>
-                    <select>
-                        <option><a href="">请选择</a></option>
-                        <option><a href="">反馈</a></option>
-                        <option><a href="">查看</a></option>
-                    </select>
+                        <a href="work_feedback.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">反馈</a>
+                        <a href="work_feedback_detail.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">查看</a>
                 </li>
             </ul>
             </c:forEach>

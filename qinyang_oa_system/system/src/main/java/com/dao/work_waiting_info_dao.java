@@ -6,7 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.department_info;
+import com.data.work_info;
 import com.data.work_waiting_info;
+import com.selector.work_task_selector;
+import com.selector.work_waiting_selector;
 
 public class work_waiting_info_dao 
 {
@@ -51,6 +54,51 @@ public class work_waiting_info_dao
 	            session.close();
 	        }
 	        System.out.println("selectAll() --> "+work_waiting_list);
+	        return work_waiting_list;
+	 }
+	 
+	 public int get_waiting_total_num_by_by_user(int work_receiver_id)
+	 {
+		 int work_total_num;
+		 //work_task_selector _work_task_selector=new work_task_selector();
+		 work_waiting_selector _work_waiting_selector=new work_waiting_selector();
+		 List<work_info> work_info_list=null;
+		 
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 
+			 _work_waiting_selector.set_work_receiver_id(work_receiver_id);
+			 _work_waiting_selector.set_work_begin(0);
+			 _work_waiting_selector.set_work_num(99999999);
+	
+			  
+			  work_info_list = session.selectList("work_waiting_info.select_by_page",_work_waiting_selector);
+			  work_total_num =work_info_list.size();
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("select_waiting_by_page --> "+_work_waiting_selector);
+		 
+		 return work_total_num;
+	 }
+	 
+	 public List<work_waiting_info> get_all_by_work_receiver_id_and_page(int work_receiver_id,int work_page)
+	 {
+		 List<work_waiting_info> work_waiting_list=null;
+		 work_waiting_selector _work_waiting_selector=new work_waiting_selector();//全部工作加分页信息
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 
+			 _work_waiting_selector.set_work_receiver_id(work_receiver_id);
+
+			  //固定一页最多取十一条数据
+			 _work_waiting_selector.set_work_begin(11*(work_page-1));
+			 _work_waiting_selector.set_work_num(11);
+			 work_waiting_list = session.selectList("work_waiting_info.select_by_page",_work_waiting_selector);
+	        } finally {
+	            session.close();
+	        }
+		    System.out.println("select_waiting_by_page --> "+_work_waiting_selector);
 	        return work_waiting_list;
 	 }
 }

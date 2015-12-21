@@ -86,6 +86,11 @@
 		SELECT * FROM work_info WHERE  work_sender_id = #{work_sender_id} AND work_type = #{work_type} AND  work_status = #{work_status} limit #{work_begin},#{work_num};
 	</select>
 	
+	
+	<select id="select_by_work_id" parameterType="int" resultMap="result">
+		SELECT * FROM work_info WHERE work_id = #{work_id};
+	</select>
+	
 </mapper>
 
 

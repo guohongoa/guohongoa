@@ -31,7 +31,8 @@
 		<typeAlias alias="work_contact_info" type="com.data.work_contact_info"/>
 		<typeAlias alias="work_info" type="com.data.work_info"/>
 		<typeAlias alias="work_waiting_info" type="com.data.work_waiting_info"/>
-		<typeAlias alias="work_task_selector" type="com.selector.work_task_selector"/>					
+		<typeAlias alias="work_task_selector" type="com.selector.work_task_selector"/>
+		<typeAlias alias="work_waiting_selector" type="com.selector.work_waiting_selector"/>							
 	</typeAliases>
 
 	<environments default="development">
