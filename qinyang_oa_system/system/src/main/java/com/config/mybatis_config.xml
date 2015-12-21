@@ -30,7 +30,8 @@
 		<typeAlias alias="contact_add_request_info" type="com.data.contact_add_request_info"/>
 		<typeAlias alias="work_contact_info" type="com.data.work_contact_info"/>
 		<typeAlias alias="work_info" type="com.data.work_info"/>
-		<typeAlias alias="work_waiting_info" type="com.data.work_waiting_info"/>					
+		<typeAlias alias="work_waiting_info" type="com.data.work_waiting_info"/>
+		<typeAlias alias="work_task_selector" type="com.selector.work_task_selector"/>					
 	</typeAliases>
 
 	<environments default="development">

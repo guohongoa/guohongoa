@@ -3,10 +3,12 @@ package com.dbconnector;
 import java.util.List;
 
 import com.dao.relationship_info_dao;
+import com.dao.service_info_dao;
 import com.dao.work_contact_info_dao;
 import com.dao.work_info_dao;
 import com.dao.work_waiting_info_dao;
 import com.data.relationship_info;
+import com.data.service_info;
 import com.data.work_contact_info;
 import com.data.work_info;
 import com.data.work_waiting_info;
@@ -114,7 +116,98 @@ public class work_db_connector
 			return work_waiting_list;
 		}
 		
+		//所有工作
+		public static int get_work_all_total_page_by_owner_id(int employee_id,int work_status)
+		{
+			int work_total_num;
+			int work_total_page;
+			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			work_total_num=_work_info_dao.get_all_work_total_num_by_by_user(employee_id,work_status);
+			work_total_page=(int)Math.ceil((float)work_total_num/11.0f);
+			return work_total_page;
+		}
 		
 		
+		//得到全部工作信息
+		public static List<work_info> get_all_work_list_by_employee_id_and_page(int employee_id,int work_stauts,int work_page)
+		{
+			 List<work_info> work_info_list;
+			 work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			 work_info_list=_work_info_dao.get_all_work_list_by_employee_id_and_page(employee_id,work_stauts,work_page);
+			   return work_info_list;
+		}
+		
+		public static int get_work_all_feedback_total_page_by_owner_id(int employee_id,int work_type)
+		{
+			int work_total_num;
+			int work_total_page;
+			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			work_total_num=_work_info_dao.get_all_feedback_total_num_by_by_user(employee_id,work_type);
+			work_total_page=(int)Math.ceil((float)work_total_num/11.0f);
+			return work_total_page;
+		}
+		
+		public static List<work_info> get_all_work_all_feedback_by_employee_id_and_page(int employee_id,int work_type,int work_page)
+		{
+			 List<work_info> work_info_list;
+			 work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			 work_info_list=_work_info_dao.get_all_work_all_feedback_by_employee_id_and_page(employee_id,work_type,work_page);
+			   return work_info_list;
+		}
+		
+		public static int get_arrange_all_total_page_by_owner_id(int sender_id,int work_type)
+		{
+			int work_total_num;
+			int work_total_page;
+			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			work_total_num=_work_info_dao.get_all_arrange_total_num_by_by_user(sender_id,work_type);
+			work_total_page=(int)Math.ceil((float)work_total_num/11.0f);
+			return work_total_page;
+		}
+		
+		public static List<work_info> get_work_arrange_all_by_page(int sender_id,int work_type,int work_page)
+		{
+
+			 List<work_info> work_info_list;
+			 work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			 work_info_list=_work_info_dao.get_all_work_all_arrange_by_employee_id_and_page(sender_id,work_type,work_page);
+			 return work_info_list;
+		}
+		
+		public static int get_work_all_report_total_page_by_owner_id(int sender_id,int work_type)
+		{
+			int work_total_num;
+			int work_total_page;
+			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			work_total_num=_work_info_dao.get_all_report_total_num_by_by_user(sender_id,work_type);
+			work_total_page=(int)Math.ceil((float)work_total_num/11.0f);
+			return work_total_page;
+		}
+		
+		public static List<work_info> get_work_all_report_by_sender_id_and_type(int sender_id,int work_type,int work_page)
+		{
+			 List<work_info> work_info_list;
+			 work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			 work_info_list=_work_info_dao.get_all_work_all_report_by_employee_id_and_page(sender_id,work_type,work_page);
+			 return work_info_list;
+		}
+		
+		public static int get_work_all_approved_total_page_by_owner_id(int receiver_id,int work_type,int work_status)
+		{
+			int work_total_num;
+			int work_total_page;
+			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			work_total_num=_work_info_dao.get_all_approved_total_num_by_by_user(receiver_id,work_type,work_status);
+			work_total_page=(int)Math.ceil((float)work_total_num/11.0f);
+			return work_total_page;
+		}
+		
+		public static List<work_info> get_work_info_by_approved_and_page(int receiver_id,int work_type,int work_status,int work_page)
+		{
+			List<work_info> work_info_list;
+			 work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			 work_info_list=_work_info_dao.get_all_approved_by_employee_id_and_page(receiver_id,work_type,work_status,work_page);
+			 return work_info_list;
+		}
 		
 }

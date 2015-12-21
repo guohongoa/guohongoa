@@ -57,6 +57,35 @@
 	 <select id="select_by_owner" parameterType="work_info" resultMap="result">
 		SELECT * FROM work_info WHERE work_receiver_id = #{work_receiver_id} OR work_sender_id = #{work_sender_id};
 	</select>
+	
+	
+	<select id="select_all_work_by_page" parameterType="work_task_selector" resultMap="result">
+		SELECT * FROM work_info WHERE (work_receiver_id = #{work_receiver_id} AND work_type = 0) OR(work_receiver_id = #{work_receiver_id} AND work_type = 1 AND work_status=1) OR (work_sender_id = #{work_sender_id}) limit #{work_begin},#{work_num};
+	</select>
+	
+	
+	
+	<select id="select_feedback_work_by_page" parameterType="work_task_selector" resultMap="result">
+		SELECT * FROM work_info WHERE  work_receiver_id = #{work_receiver_id} AND work_type = #{work_type} limit #{work_begin},#{work_num};
+	</select>
+	
+	
+	
+	<select id="select_arrange_work_by_page" parameterType="work_task_selector" resultMap="result">
+		SELECT * FROM work_info WHERE  work_sender_id = #{work_sender_id} AND work_type = #{work_type} limit #{work_begin},#{work_num};
+	</select>
+	
+	
+	<select id="select_report_work_by_page" parameterType="work_task_selector" resultMap="result">
+		SELECT * FROM work_info WHERE  work_sender_id = #{work_sender_id} AND work_type = #{work_type} limit #{work_begin},#{work_num};
+	</select>
+	
+	
+	
+	<select id="select_approved_work_by_page" parameterType="work_task_selector" resultMap="result">
+		SELECT * FROM work_info WHERE  work_sender_id = #{work_sender_id} AND work_type = #{work_type} AND  work_status = #{work_status} limit #{work_begin},#{work_num};
+	</select>
+	
 </mapper>
 
 

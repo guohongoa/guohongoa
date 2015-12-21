@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa//css/all.css"/>
+    <c:set var="work_page" value="${param.work_page}"/>
+    <c:set var="work_total_page" value="${param.work_total_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -61,7 +63,7 @@
             <li><a href="work_report_display.do?employee_id=${user_id}" >汇报工作</a></li>
             <li><a href="" class="active">反馈工作</a></li>
             <li><a href="work_pending.do?employee_id=${user_id}">待审批</a></li>
-            <li><a href="work_all_check.do?employee_id=${user_id}">全部工作</a></li>
+            <li><a href="work_all_check.do?employee_id=${user_id}&work_page=1">全部工作</a></li>
         </ul>
     </div>
     <!--右侧-->
@@ -107,14 +109,66 @@
         </div>
     </div>
     <div class="page">
-        <a href="" class="bulec">1</a>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
-        <a href="">上一页</a>
-        <a href="">下一页</a>
+        
+     <c:choose>
+      <c:when test="${work_page==1}">
+      <div class="page">
+        <a href="work_feedback_list.do?work_page=1&employee_id=${user_id}">上一页</a>
+        <a href="work_feedback_list.do?work_page=1&employee_id=${user_id}" class="bulec">1</a>
+        <a href="work_feedback_list.do?work_page=2&employee_id=${user_id}">2</a>
+        <a href="work_feedback_list.do?work_page=3&employee_id=${user_id}">3</a>
+        <a href="work_feedback_list.do?work_page=4&employee_id=${user_id}">4</a>
+        <a href="work_feedback_list.do?work_page=5&employee_id=${user_id}">5</a>
+        <a href="work_feedback_list.do?work_page=2&employee_id=${user_id}">下一页</a>
+        <a>共${work_total_page}页</a>
+        <form method="get" action="work_feedback_list.do">
+        <a>
+           到&nbsp;<input type="text" name="work_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="employee_id" value="${user_id}" />
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:when test="${work_page==2}">
+      <div class="page">
+        <a href="work_feedback_list.do?work_page=1&employee_id=${user_id}">上一页</a>
+        <a href="work_feedback_list.do?work_page=1&employee_id=${user_id}">1</a>
+        <a href="work_feedback_list.do?work_page=2&employee_id=${user_id}" class="bulec">2</a>
+        <a href="work_feedback_list.do?work_page=3&employee_id=${user_id}">3</a>
+        <a href="work_feedback_list.do?work_page=4&employee_id=${user_id}">4</a>
+        <a href="work_feedback_list.do?work_page=5&employee_id=${user_id}">5</a>
+        <a href="work_feedback_list.do?work_page=3&employee_id=${user_id}">下一页</a>
+        <a>共${work_total_page}页</a>
+        <form method="get" action="work_feedback_list.do">
+        <a>
+           到&nbsp;<input type="text" name="work_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="employee_id" value="${user_id}" />
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:otherwise>
+      <div class="page">
+        <a href="work_feedback_list.do?work_page=${work_page-1}&employee_id=${user_id}">上一页</a>
+        <a href="work_feedback_list.do?work_page=${work_page-2}&employee_id=${user_id}">${work_page-2}</a>
+        <a href="work_feedback_list.do?work_page=${work_page-1}&employee_id=${user_id}">${work_page-1}</a>
+        <a class="bulec" href="work_feedback_list.do?work_page=${work_page}&employee_id=${user_id}">${work_page}</a>
+        <a href="work_feedback_list.do?work_page=${work_page+1}&employee_id=${user_id}">${work_page+1}</a>
+        <a href="work_feedback_list.do?work_page=${work_page+2}&employee_id=${user_id}">${work_page+2}</a>
+        <a href="work_feedback_list.do?work_page=${work_page+1}&employee_id=${user_id}">下一页</a>
+        <a>共${service_total_page}页</a>
+        <form method="get" action="work_feedback_list.do">
+        <a>
+           到&nbsp;<input type="text" name="work_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="employee_id" value="${user_id}" />
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:otherwise>
+    </c:choose>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>

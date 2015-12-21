@@ -147,7 +147,7 @@ public class department_info_dao
 		        } finally {
 		            session.close();
 		        }
-		        System.out.println("select_by_pag --> "+department_info_list);
+		        System.out.println("select_by_page --> "+department_info_list);
 			 
 			 return department_total_num;
 	  }
