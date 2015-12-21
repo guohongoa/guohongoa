@@ -62,14 +62,13 @@
             <li><a href="work_arrange_display.do?employee_id=${user_id}">安排工作</a></li>
             <li><a href="work_report_display.do?employee_id=${user_id}" >汇报工作</a></li>
             <li><a href="work_feedback_list.do?employee_id=${user_id}&work_page=1">反馈工作</a></li>
-            <li><a href="work_pending.do?employee_id=${user_id}&work_page=1" >待审批</a></li>
+            <li><a href="work_pending.do?employee_id=${user_id}&work_page=1" >审批工作</a></li>
             <li><a href="work_all_check.do?employee_id=${user_id}&work_page=1" class="active">全部工作</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="work_all_arrange.do?employee_id=${user_id}&work_page=1" >安排的工作</a><i></i></dd>
                     <dd><a href="work_all_feedback.do?employee_id=${user_id}&work_page=1" >反馈的工作</a></dd>
-                    <dd><a href="work_all_report.do?employee_id=${user_id}&work_page=1" class="red" >汇报的工作</a></dd>
-                    <dd><a href="work_all_approved.do?employee_id=${user_id}&work_page=1" style="border-bottom: 1px solid #c9c9c9;height: 35px">已审批</a></dd>
+                    <dd><a href="work_all_report.do?employee_id=${user_id}&work_page=1" class="red" style="border-bottom: 1px solid #c9c9c9;height: 35px">汇报的工作</a></dd>
                 </dl>
             </li>
         </ul>

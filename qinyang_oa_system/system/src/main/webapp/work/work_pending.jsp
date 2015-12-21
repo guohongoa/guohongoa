@@ -62,13 +62,13 @@
             <li><a href="work_arrange_display.do?employee_id=${user_id}">安排工作</a></li>
             <li><a href="work_report_display.do?employee_id=${user_id}" >汇报工作</a></li>
             <li><a href="work_feedback_list.do?employee_id=${user_id}&work_page=1">反馈工作</a></li>
-            <li><a href="" class="active">待审批</a></li>
+            <li><a href="" class="active">审批工作</a></li>
             <li><a href="work_all_check.do?employee_id=${user_id}&work_page=1">全部工作</a></li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="../work">工作</a> &gt;<a href="">工作任务</a> &gt;<span>待审批</span>
+        <h4><a href="../work">工作</a> &gt;<a href="">工作任务</a> &gt;<span>审批工作</span>
             <span class="sort">按
                 <select>
                     <option>请选择</option>
@@ -91,10 +91,10 @@
                 <li>操作</li>
             -->
             <li>审批类型</li>
+            <li>工作主题</li>
             <li>申请人</li>
-             <li>工作主题</li>
-             <li>工作内容</li>
              <li>发送时间</li>
+             <li>状态</li>
              <li>操作</li>
 
 
@@ -113,10 +113,17 @@
                    <li>台账</li>
                  </c:when>
                </c:choose>
-                <li>${work_waiting_info.get_work_sender()}</li>
                 <li>${work_waiting_info.get_work_theme()}</li>
-                <li>${work_waiting_info.get_work_content()}</li>
+                <li>${work_waiting_info.get_work_sender()}</li>
                 <li>${work_waiting_info.get_work_addtime()}</li>
+                <c:choose>
+                    <c:when test="${work_waiting_info.get_work_status()==0}">
+                        <li class="red">未审批</li>
+                    </c:when>
+                    <c:when test="${work_waiting_info.get_work_status()==1}">
+                        <li>已审批</li>
+                    </c:when>
+                </c:choose>
                 <li>
                     <a href="">详细</a>
                 </li>

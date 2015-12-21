@@ -12,6 +12,7 @@ public class work_waiting_info
    private String  work_content;    //内容
    private String  work_addtime;    //添加时间
    private int     work_id;         //原始id
+   private int     work_status;     //审批状态
    
    public int get_waiting_id()
    {
@@ -112,5 +113,14 @@ public class work_waiting_info
 	   this.work_id=work_id;
    }
    
+   public int get_work_status()
+   {
+	   return this.work_status;
+   }
+   
+   public void set_work_status(int work_status)
+   {
+	   this.work_status=work_status;
+   }
    
 }
