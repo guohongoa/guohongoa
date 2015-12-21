@@ -23,8 +23,8 @@
         <div class="menu">
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
-                <li><a href=""><i class="icon"></i>设置</a></li>
-                <li><a href=""><i></i>退出</a></li>
+                <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
+                <li><a href="../logout"><i></i>退出</a></li>
             </ul>
             <div>
                 <ul class="hide">
@@ -40,10 +40,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href=""  class="active">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/contact_person_check.do">四联</a></li>
+        <li><a href="../service/service_village_check.do">五服务</a></li>
+        <li><a href="../work"  class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -68,7 +68,7 @@
        ${work_info.get_work_content()}
     </p>
     <div class="back">
-        <a href="work_feedback.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">反馈</a> &nbsp; <a href="work_feedback_list?work_page=${work_page}" style="margin-right: -15px">返回</a>
+        <a href="work_feedback.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">反馈</a> &nbsp; <a href="work_feedback_list.do?work_page=${work_page}employee_id=${user_id}" style="margin-right: -15px">返回</a>
     </div>
 </div>
 <div class="footer"></div>
