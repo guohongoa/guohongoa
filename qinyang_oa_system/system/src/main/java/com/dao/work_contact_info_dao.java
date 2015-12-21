@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import com.data.task_info;
 import com.data.user_info;
 import com.data.work_contact_info;
 

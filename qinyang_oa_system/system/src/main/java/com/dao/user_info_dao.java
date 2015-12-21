@@ -5,8 +5,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
-
-import com.data.task_info;
 import com.data.user_info;
 
 //system_user_info数据对象映射
