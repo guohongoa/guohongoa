@@ -30,7 +30,8 @@
 		<typeAlias alias="work_info" type="com.data.work_info"/>
 		<typeAlias alias="work_waiting_info" type="com.data.work_waiting_info"/>
 		<typeAlias alias="work_task_selector" type="com.selector.work_task_selector"/>
-		<typeAlias alias="work_waiting_selector" type="com.selector.work_waiting_selector"/>							
+		<typeAlias alias="work_waiting_selector" type="com.selector.work_waiting_selector"/>
+		<typeAlias alias="contact_info" type="com.data.contact_info"/>							
 	</typeAliases>
 
 	<environments default="development">
@@ -67,5 +68,6 @@
 		<mapper resource="com/config/work_contact_info.xml"/>
 		<mapper resource="com/config/work_info.xml"/>
 		<mapper resource="com/config/work_waiting_info.xml"/>
+		<mapper resource="com/config/contact_info.xml"/>
 	</mappers>
 </configuration>

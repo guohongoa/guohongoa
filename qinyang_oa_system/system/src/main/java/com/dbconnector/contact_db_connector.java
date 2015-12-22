@@ -6,14 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import com.dao.contact_add_request_info_dao;
+import com.dao.contact_info_dao;
 import com.dao.contact_person_department_info_dao;
 import com.dao.contact_person_info_dao;
 import com.dao.contact_relationship_info_dao;
-import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.relationship_info_dao;
 import com.dao.work_contact_info_dao;
 import com.data.contact_add_request_info;
+import com.data.contact_info;
 import com.data.contact_node;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
@@ -314,7 +315,128 @@ public class contact_db_connector
 		 
 		 return rs;
 	 }
+//－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+public static void insert_contact(contact_info _contact_info)
+{
+	contact_info_dao _contact_info_dao=new contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	//添加上级只添加一个直接上级，不需要递归
+	if(_contact_info.get_contact_type()==0)
+	{
+		
+		int is_direct=1;//直接联系人为1
+		_contact_info.set_is_direct(is_direct);
+		_contact_info_dao.insert(_contact_info);
+	}
+	//需要递归
+	else if(_contact_info.get_contact_type()==1)
+	{
+		int is_direct=1;//直接联系人为1
+		_contact_info.set_is_direct(is_direct);
+		_contact_info_dao.insert(_contact_info);
+		
+		//递归的间接联系人
+		List<employee_info> indirect_friend_list=new ArrayList<employee_info>();
+		indirect_friend_list=get_indirect_friend_list(_contact_info_dao,_employee_info_dao,_contact_info.get_friend_id(),indirect_friend_list);
+		//将所有间接联系人插入数据库
+		for(employee_info friend_info:indirect_friend_list)
+		{
+			contact_info _contact_info2=new contact_info();
+			_contact_info2.set_owner_id(_contact_info.get_owner_id());
+			_contact_info2.set_owner_name(_contact_info.get_owner_name());
+			_contact_info2.set_friend_id(friend_info.get_employee_id());
+			_contact_info2.set_friend_name(friend_info.get_employee_name());
+			_contact_info2.set_contact_type(1);//下属为1
+			_contact_info2.set_is_direct(0);//非直接联系人
+			_contact_info_dao.insert(_contact_info2);
+			
+		}
+	}
+	else
+	{
+		System.out.println("错误");
+	}
+}
+
+//根据id查询该用户所有显示所有联系人
+public  static List<List<employee_info>>  get_contact_list_by_id(int owner_id)
+{
+	employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	contact_info_dao _contact_info_dao=new contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	//初始化存储显示人员list
+	List<employee_info> person_list=new ArrayList<employee_info>();
+	 List<contact_info> contact_info_list=_contact_info_dao.select_contact_by_id(owner_id);
+	 employee_info owner_info=_employee_info_dao.select_by_employee_id(owner_id);
+	 //加入用户信息
+	 person_list.add(owner_info);
+	 for(contact_info contact_info_temp:contact_info_list)
+	 {
+		 int friend_id=contact_info_temp.get_friend_id();
+		 employee_info friend_info=_employee_info_dao.select_by_employee_id(friend_id);
+		 person_list.add(friend_info);
+	 }
 	 
+	 List<List<employee_info>> contact_list=new ArrayList<List<employee_info>>();
+	 for(int i=1;i<=11;i++)
+	 {
+		 List<employee_info> contact_child_list=new ArrayList<employee_info>();
+		 for(employee_info temp_info:person_list)
+		 {
+			 if(temp_info.get_employee_department_id()==i)
+			 {
+				 contact_child_list.add(temp_info);
+			 }
+		 }
+		 contact_list.add(contact_child_list);
+	 }
+	 
+	 return contact_list;
+}
+
+public static List<employee_info> get_direct_child_list_by_id(int employee_id)
+{
+	employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	contact_info_dao _contact_info_dao=new contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	
+	 contact_info _contact_info=new contact_info();
+	    _contact_info.set_owner_id(employee_id);//查询人
+	    _contact_info.set_is_direct(1);//查询直接联系人
+	    _contact_info.set_contact_type(1);//查询下级
+	List<contact_info> contact_list=_contact_info_dao.get_direct_contact_list_by_id(_contact_info);
+	List<employee_info> employee_list=new ArrayList<employee_info>();
+	for(contact_info temp_contact:contact_list)
+	{
+		int friend_id=temp_contact.get_friend_id();
+		employee_info temp_info=_employee_info_dao.select_by_employee_id(friend_id);
+		employee_list.add(temp_info);
+	}
+	
+	return employee_list;
+}
+
+//递归调用
+private static  List<employee_info> get_indirect_friend_list(contact_info_dao _contact_info_dao,employee_info_dao _employee_info_dao,int firend_id,List<employee_info> indirect_friend_list)
+{
+    contact_info _contact_info=new contact_info();
+    _contact_info.set_owner_id(firend_id);//查询人
+    _contact_info.set_is_direct(1);//查询直接联系人
+    _contact_info.set_contact_type(1);//查询下级
+    
+    List<contact_info> contact_info_list=_contact_info_dao.get_direct_contact_list_by_id(_contact_info);
+    
+    for(contact_info _contact_info_temp:contact_info_list)
+    {
+    	int next_friend_id=_contact_info_temp.get_friend_id();
+    	employee_info next_friend_employee_info=_employee_info_dao.select_by_employee_id(next_friend_id);
+    	indirect_friend_list.add(next_friend_employee_info);
+    	indirect_friend_list=get_indirect_friend_list(_contact_info_dao, _employee_info_dao, next_friend_id, indirect_friend_list);
+    }
+    
+    
+	return indirect_friend_list;
+}
+
+
 	 
 
 }

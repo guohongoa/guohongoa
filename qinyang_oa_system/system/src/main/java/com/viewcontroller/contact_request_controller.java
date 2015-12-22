@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.data.contact_add_request_info;
+import com.data.contact_info;
 import com.data.contact_node;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
 import com.data.contact_relationship_info;
+import com.data.department_info;
 import com.data.employee_info;
 import com.data.relationship_info;
 
@@ -122,12 +124,14 @@ import com.data.relationship_info;
 		}
 		
 		@RequestMapping("contact/contact_person_check.do")
-		public ModelAndView contact_person_check_request()
+		public ModelAndView contact_person_check_request(
+				@RequestParam(value="employee_id")          int    employee_id
+				)
 		{
 			 ModelAndView mv=new ModelAndView("index.jsp");
 			   //根据组织机构id分组，得到全部四联人员信息的二维数组
-			   List<List<employee_info>> contact_list= com.dbconnector.contact_db_connector.get_contact_list_by_department();
-			   
+			   //List<List<employee_info>> contact_list= com.dbconnector.contact_db_connector.get_contact_list_by_department();
+			 List<List<employee_info>> contact_list= com.dbconnector.contact_db_connector.get_contact_list_by_id(employee_id);
 			   for(List<employee_info >contact_info_list:contact_list)
 			   {
 				   if(contact_info_list.size()!=0)  //判断查询队列是否为非空
@@ -195,7 +199,7 @@ import com.data.relationship_info;
 						@RequestParam(value="employee_id")                          int    employee_id                      //查询人员id
 						)
 				{
-	
+	                /*
 					Map<String, contact_node> contact_map;//四联人员联络树
 					contact_map=com.dbconnector.contact_db_connector.get_contact_map(contact_person_department_id,employee_id);
 					
@@ -209,7 +213,6 @@ import com.data.relationship_info;
 						contact_node_list.add(contact_map.get(node_code));
 						int id=contact_map.get(node_code).get_contact_person_id();
 						
-						System.out.println("try try try"+id);
 					}
 					
 					for(int i=0;i<=7;i++)
@@ -228,7 +231,24 @@ import com.data.relationship_info;
 					
 					return mv;
 					
+					*/
 					
+					ModelAndView mv=new ModelAndView("department_detail2.jsp");
+					
+					//直接下级部门list
+					List<department_info> department_list=new ArrayList<department_info>();
+					//直接下级部门人员
+					List<employee_info> friend_list=new ArrayList<employee_info>();
+					employee_info owner_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id);
+					
+					friend_list=com.dbconnector.contact_db_connector.get_direct_child_list_by_id(employee_id);
+					
+					
+					mv.addObject("department_list", department_list);
+					mv.addObject("owner_info",owner_info);
+					mv.addObject("friend_list", friend_list);
+					
+					return mv;
 				}
 			
 		//四联添加用户关系
@@ -264,6 +284,19 @@ import com.data.relationship_info;
 					    		_contact_relationship_info.set_contact_owner_department_id(contact_owner_department_id);
 					    		_contact_relationship_info.set_contact_friend_department_id(contact_friend_department_id);
 					    		boolean rs=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info);
+					    		//-----------------------------------------------
+					    		String owner_name=com.dbconnector.management_db_connector.get_employee_info_by_id(owner_employee_id).get_employee_name();
+					    		String friend_name=com.dbconnector.management_db_connector.get_employee_info_by_id(friend_employee_id).get_employee_name();
+					    		contact_info _contact_info=new contact_info();
+					    		_contact_info.set_owner_id(owner_employee_id);
+					    		_contact_info.set_friend_id(friend_employee_id);
+					    		_contact_info.set_contact_type(relationship_type);
+					    		_contact_info.set_owner_name(owner_name);
+					    		_contact_info.set_friend_name(friend_name);
+					    		//向下插递归插入
+					    		com.dbconnector.contact_db_connector.insert_contact(_contact_info);
+					    		
+					    		//-----------------------------------------------
 					    		
 					    		//正向反向更添加一次
 					    		contact_relationship_info _contact_relationship_info2=new contact_relationship_info();
@@ -273,6 +306,18 @@ import com.data.relationship_info;
 					    		_contact_relationship_info2.set_contact_owner_department_id(contact_friend_department_id);
 					    		_contact_relationship_info2.set_contact_friend_department_id(contact_owner_department_id);
 					    		boolean rs2=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info2);
+					    		//--------------------------------------------------
+					    		contact_info _contact_info2=new contact_info();
+					    		_contact_info2.set_owner_id(friend_employee_id);
+					    		_contact_info2.set_friend_id(owner_employee_id);
+					    		_contact_info2.set_contact_type(0);
+					    		_contact_info2.set_owner_name(friend_name);
+					    		_contact_info2.set_friend_name(owner_name);
+					    		
+					    	   //向上非递归插入
+					    		com.dbconnector.contact_db_connector.insert_contact(_contact_info2);
+					    		
+					    		//---------------------------------------------------
 					    		if(rs&&rs2==true)
 					    		{
 					    			mv.addObject("return_type", 1);

@@ -66,7 +66,7 @@
         <div class="section_content_row">
             <!--第一行第一列 四联模块-->
             <div class="mokuai mokuail">
-                <a class="mokuaitu" href="contact/contact_person_check.do">
+                <a class="mokuaitu" href="contact/contact_person_check.do?employee_id=${user_id}">
                     <img src="http://101.200.196.121:8080/oa/css/images/sl_03.jpg" alt=""/>
                     <i style="display: none"></i>
                     <span style="display: none">· 市委常委联系乡镇（办事处）党（工）委<br/>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="contact_info">
+
+	 <resultMap id="result" type="contact_info">
+	    <result property="contact_id" column="contact_id" />
+		<result property="owner_id" column="owner_id" />
+		<result property="owner_name" column="owner_name" />
+		<result property="friend_id" column="friend_id" />
+		<result property="friend_name" column="friend_name"/>
+		<result property="contact_type" column="contact_type"/>
+		<result property="is_direct" column="is_direct"/>
+		
+	</resultMap>
+
+	<insert id="insert" parameterType="contact_info">
+		insert into
+		contact_info(contact_id,owner_id,owner_name,friend_id,friend_name,contact_type,is_direct)
+		values(#{contact_id},#{owner_id},#{owner_name},#{friend_id},#{friend_name},#{contact_type},#{is_direct});
+	</insert>
+	
+	
+    
+    
+    <select id="select_direct_by_id" parameterType="contact_info" resultMap="result">
+		SELECT * FROM contact_info WHERE owner_id = #{owner_id} AND contact_type = #{contact_type} AND is_direct = #{is_direct};
+	</select>
+	
+	
+	
+	 <select id="select_contact_by_id" parameterType="int" resultMap="result">
+		SELECT * FROM contact_info WHERE owner_id = #{owner_id};
+	</select>
+
+</mapper>
+
+
