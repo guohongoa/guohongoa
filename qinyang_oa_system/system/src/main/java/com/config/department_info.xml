@@ -15,6 +15,9 @@
 		<result property="department_addtime" column="department_addtime" />
 		<result property="department_leaderphone" column="department_leaderphone" />
 		<result property="department_parentleader" column="department_parentleader" />
+		
+		<result property="department_group_id" column="department_group_id" />
+		<result property="department_group_name" column="department_group_name" />
 	</resultMap>
 
 	<insert id="insert" parameterType="department_info">

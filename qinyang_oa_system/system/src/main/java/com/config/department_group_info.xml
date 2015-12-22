@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="department_group_info">
+
+	<resultMap id="result" type="department_info">
+		<result property="department_group_id" column="department_group_id" />
+		<result property="department_group_name" column="department_group_name" />
+		<result property="department_group_type" column="department_group_type" />
+		
+	</resultMap>
+
+
+</mapper>
+
+

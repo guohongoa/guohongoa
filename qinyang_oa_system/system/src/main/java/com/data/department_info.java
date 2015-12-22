@@ -13,6 +13,9 @@ public class department_info
    private String  department_resourceurl;//部门业务流程
    private String  department_parentleader;
    
+   private int     department_group_id;
+   private String  department_group_name;
+   
    public int get_department_id()
    {
 	   return this.department_id;
@@ -113,6 +116,27 @@ public class department_info
    {
 	   this.department_parentleader=department_parentleader;
    }
+   
+   public int get_department_group_id()
+   {
+	   return this.department_group_id;
+   }
+   
+   public void set_department_group_id(int department_group_id)
+   {
+	   this.department_group_id=department_group_id;
+   }
+   
+   public String get_department_group_name()
+   {
+	   return this.department_group_name;
+   }
+   
+   public void set_department_group_name(String  department_group_name)
+   {
+	   this.department_group_name= department_group_name;
+   }
+   
    
    
 }
