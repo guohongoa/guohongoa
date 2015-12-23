@@ -242,6 +242,7 @@ import com.data.relationship_info;
 					employee_info owner_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id);
 					
 					friend_list=com.dbconnector.contact_db_connector.get_direct_child_list_by_id(employee_id);
+					department_list=com.dbconnector.contact_db_connector.get_department_list(friend_list);
 					
 					
 					mv.addObject("department_list", department_list);
@@ -487,6 +488,30 @@ import com.data.relationship_info;
 				    	mv.addObject("phone", friend_employee_phone);
 				    }    
 				    return mv;
+				}
+				
+				
+				//点击显示下级联系人
+				@RequestMapping("contact/contact_child_check.do")
+				public ModelAndView contact_child_check(
+						@RequestParam(value="employee_id")                          int    employee_id                      //查询人员id
+						)
+				{
+                    ModelAndView mv=new ModelAndView("dep_data.jsp");
+					
+					//直接下级部门list
+					List<department_info> department_list=new ArrayList<department_info>();
+					//直接下级部门人员
+					List<employee_info> friend_list=new ArrayList<employee_info>();
+					
+					friend_list=com.dbconnector.contact_db_connector.get_direct_child_list_by_id(employee_id);
+					department_list=com.dbconnector.contact_db_connector.get_department_list(friend_list);
+					
+					
+					mv.addObject("department_list", department_list);
+					mv.addObject("friend_list", friend_list);
+					
+					return mv;
 				}
 				
 	}

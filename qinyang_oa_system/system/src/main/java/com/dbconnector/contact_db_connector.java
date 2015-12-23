@@ -10,6 +10,7 @@ import com.dao.contact_info_dao;
 import com.dao.contact_person_department_info_dao;
 import com.dao.contact_person_info_dao;
 import com.dao.contact_relationship_info_dao;
+import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.relationship_info_dao;
 import com.dao.work_contact_info_dao;
@@ -19,6 +20,7 @@ import com.data.contact_node;
 import com.data.contact_person_department_info;
 import com.data.contact_person_info;
 import com.data.contact_relationship_info;
+import com.data.department_info;
 import com.data.employee_info;
 import com.data.relationship_info;
 import com.data.work_contact_info;
@@ -412,6 +414,42 @@ public static List<employee_info> get_direct_child_list_by_id(int employee_id)
 	}
 	
 	return employee_list;
+}
+
+//根据下属信息list，提取部门list
+public static List<department_info> get_department_list(List<employee_info> friend_list)
+{
+	department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	List<department_info> department_list=new ArrayList<department_info>();
+	//存储不重复部门的人员list
+	List<employee_info> temp_list=new ArrayList<employee_info>();
+	for(employee_info friend_info:friend_list)
+	{
+		
+		boolean is_exist=false;//查看是已有该部门id
+		for(employee_info temp_info:temp_list)
+		{
+			if(temp_info.get_employee_department_id()==friend_info.get_employee_department_id())
+			{
+				is_exist=true;
+			}
+		}
+		if(is_exist==false)
+		{
+			temp_list.add(friend_info);
+		}
+	}
+	
+	for(employee_info temp_info:temp_list)
+	{
+
+		System.out.println("dfadfadfad"+temp_info.get_employee_department_id());
+		department_info _department_info=_department_info_dao.select_by_department_id(temp_info.get_employee_department_id());
+		
+		department_list.add(_department_info);
+	}
+	
+	return department_list;
 }
 
 //递归调用
