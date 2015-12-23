@@ -494,7 +494,8 @@ import com.data.relationship_info;
 				//点击显示下级联系人
 				@RequestMapping("contact/contact_child_check.do")
 				public ModelAndView contact_child_check(
-						@RequestParam(value="employee_id")                          int    employee_id                      //查询人员id
+						@RequestParam(value="employee_id")                          int    employee_id,//查询人员id
+						@RequestParam(value="level")                                int    level       //层级
 						)
 				{
                     ModelAndView mv=new ModelAndView("dep_data.jsp");
@@ -508,8 +509,10 @@ import com.data.relationship_info;
 					department_list=com.dbconnector.contact_db_connector.get_department_list(friend_list);
 					
 					
+					
 					mv.addObject("department_list", department_list);
 					mv.addObject("friend_list", friend_list);
+					mv.addObject("level", level);
 					
 					return mv;
 				}

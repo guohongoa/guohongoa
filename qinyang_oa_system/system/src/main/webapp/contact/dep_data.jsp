@@ -3,10 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
 <body>
+<c:choose>
+
+<c:when test="${friend_list.size()!=0}">
+<form>
+  <input type="hidden" name="is_empty${level}" value="0" >
+</form>
 <h5 class="bulec" style="font-weight: normal">
         <c:forEach var="department_info" items="${department_list}">
-             ${department_info.get_department_name()}
-             &nbsp;
+             <span id="title${department_info.get_department_id()}">
+                ${department_info.get_department_name()}
+             </span>
         </c:forEach>
         
         </h5>
@@ -24,7 +31,18 @@
                
                 <p>制度：<span>制度</span></p>
             </div>
+             <form>
+               <input type="hidden" name="department_id" value="${friend_info.get_employee_department_id()}" >
+            </form>
              </c:forEach>
+              <i id="arrow${level}"></i>
         </div>
+</c:when>
+<c:otherwise>
+  <form>
+     <input type="hidden" name="is_empty${level}" value="1" >
+  </form>
+</c:otherwise>
+</c:choose>
 <body>     
 </html>

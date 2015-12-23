@@ -55,7 +55,9 @@
 <div class="content">
     <h4 style="font-weight: normal"><a href="">四联</a>&gt;<span>联系人详情</span></h4>
     <div class="slxq" style="margin-top: 20px" id="level1">
-        <h5 style="font-weight: normal">${owner_info.get_employee_department_name()}</h5>
+        <h5 style="font-weight: normal">
+        <span id="title${owner_info.get_employee_department_id()}">${owner_info.get_employee_department_name()}</span>
+        </h5>
         <div>
             <div class="contacts" id="${owner_info.get_employee_id() }">
                 <ul>
@@ -67,14 +69,19 @@
                 </ul>
                 <p>制度：<span>制度</span></p>
             </div>
-            <i></i>
+            <c:choose>
+             <c:when test="${friend_list.size()!=0}">
+               <i id="arrow1"></i>
+             </c:when>
+            </c:choose>
         </div>
     </div>
     <div class="slxq" id="level2">
+      <c:choose>
+        <c:when test="${friend_list.size()!=0}">
         <h5 class="bulec" style="font-weight: normal">
         <c:forEach var="department_info" items="${department_list}">
-             ${department_info.get_department_name()}
-             &nbsp;
+             <span id="title${department_info.get_department_id()}">${department_info.get_department_name()}</span>
         </c:forEach>
         
         </h5>
@@ -92,13 +99,27 @@
                
                 <p>制度：<span>制度</span></p>
             </div>
+            <form>
+               <input type="hidden" name="department_id" value="${friend_info.get_employee_department_id()}" >
+            </form>
              </c:forEach>
+              <i id="arrow2"></i>
         </div>
+        </c:when>
+        </c:choose>
     </div>
     
     <div class="slxq" id="level3">
     </div>
     <div class="slxq" id="level4">
+    </div>
+    <div class="slxq" id="level5">
+    </div>
+    <div class="slxq" id="level6">
+    </div>
+    <div class="slxq" id="level7">
+    </div>
+    <div class="slxq" id="level8">
     </div>
     
 
@@ -111,6 +132,10 @@
     //var path="guohong";
     var path="system";
     var last_index=2;
+    $(function(){
+    	 $("#arrow2").hide();
+    })
+    
     function add_child()
     {
     	 $(".contacts").mousemove(function(){
@@ -120,9 +145,9 @@
     	        $(this).children().css({color:"#999"}).find("li").css({color:"#666"});
     	    })	
     	
-    	
+   
+    
     $(".contacts").click(function(){
-    	console.log();
     	var temp=$(this).parent().parent().attr("id");
     	var prefix=temp.substr(0,temp.length-1)
     	var index=temp.substr(temp.length-1,temp.length)
@@ -136,8 +161,28 @@
     		  var i=parseInt(index)+1;
     		  var employee_id=$(this).attr("id");//点击人员id
     		  $(this).siblings().hide();
-    		  htmlobj=$.ajax({url:"/"+path+"/contact/contact_child_check.do?employee_id="+employee_id,async:false});
+    		  var department_id=$(this).next().children("input[name='department_id']").val();
+    		  console.log("department_id"+department_id);
+    		  $("#title"+department_id).siblings().hide();
+    		  htmlobj=$.ajax({url:"/"+path+"/contact/contact_child_check.do?employee_id="+employee_id+"&level="+i,async:false});
+    		 
+    		  
     		  $("#level"+i).html(htmlobj.responseText);
+    		  
+    		  
+              console.log("last_index:"+last_index);
+              //console.log("sddfdafa"+$(".is_empty").attr("id"));
+              if($("input[name=is_empty"+i+"]").attr("value")=="1")
+            	  {
+            	   console.log("ddfdafadfdaeewrwww");
+            	  }
+              else
+            	  {
+            	  $("#arrow"+last_index).show();
+            	  }
+              
+    		  $("#arrow"+(last_index+1)).hide();
+    		  
     		  add_child();
     		  last_index=i;
     		  }
@@ -149,19 +194,20 @@
       	    		 if(i==m)
       	    		  {
       	    			var employee_id=$(this).attr("id");
-      	    		  console.log("tttttt"+employee_id);
       	    			 $("#level"+i).html(" ");
-      	    			 htmlobj=$.ajax({url:"/"+path+"/contact/contact_child_check.do?employee_id="+employee_id,async:false});
+      	    			 htmlobj=$.ajax({url:"/"+path+"/contact/contact_child_check.do?employee_id="+employee_id+"&level="+i,async:false});
+      	    			 console.log("times times times"+i)
       	     		     $("#level"+i).html(htmlobj.responseText);
-      	    			 
       	    		  }
       	    		 else
       	    		  {
+      	    			console.log("uuuuu"+i)
       	    		    $("#level"+i).html(" ");
       	    		  }
       	    		}
-      	    	add_child();
+      	    	 $("#arrow"+(last_index)).hide();
       	    	last_index=m;
+      	    	add_child();
       	    	console.log("teetsdfdfa"+last_index);
       	    	
       	    }
