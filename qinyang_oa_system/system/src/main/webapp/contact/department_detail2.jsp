@@ -55,8 +55,15 @@
 <div class="content">
     <h4 style="font-weight: normal"><a href="">四联</a>&gt;<span>联系人详情</span></h4>
     <div class="slxq" style="margin-top: 20px" id="level1">
-        <h5 style="font-weight: normal">
-        <span id="title${owner_info.get_employee_department_id()}">${owner_info.get_employee_department_name()}</span>
+        <c:choose>
+           <c:when test="${owner_department.get_department_group_type()==0}">
+            <h5 style="font-weight: normal">
+           </c:when>
+           <c:otherwise> 
+             <h5 class="bulec" style="font-weight: normal">
+           </c:otherwise>
+        </c:choose>
+        <span id="title${owner_info.get_employee_department_id()}" >${owner_info.get_employee_department_name()}</span>
         </h5>
         <div>
             <div class="contacts" id="${owner_info.get_employee_id() }">
@@ -79,9 +86,23 @@
     <div class="slxq" id="level2">
       <c:choose>
         <c:when test="${friend_list.size()!=0}">
-        <h5 class="bulec" style="font-weight: normal">
+        <c:choose>
+           <c:when test="${department_list.size()!=1}">
+            <h5 style="font-weight: normal">
+           </c:when>
+           <c:otherwise>
+             <c:choose> 
+                <c:when test="${department_list.get(0).get_department_group_type()==1 }">
+                   <h5 class="bulec" style="font-weight: normal">
+                </c:when>
+                <c:otherwise>
+                  <h5 style="font-weight: normal">
+                </c:otherwise>
+             </c:choose>
+           </c:otherwise>
+        </c:choose>
         <c:forEach var="department_info" items="${department_list}">
-             <span id="title${department_info.get_department_id()}">${department_info.get_department_name()}</span>
+             <span id="title${department_info.get_department_id()}" class="color${department_info.get_department_group_type()}">${department_info.get_department_name()}</span>
         </c:forEach>
         
         </h5>
@@ -164,6 +185,18 @@
     		  var department_id=$(this).next().children("input[name='department_id']").val();
     		  console.log("department_id"+department_id);
     		  $("#title"+department_id).siblings().hide();
+    		  console.log(department_id+"lllll");
+    		  if($("#title"+department_id).attr("class")=="color0")
+    			  {
+    			    $(this).parent().prev().css({backgroundColor:"#cc0000"});
+    			  }
+    		  else
+    			  {
+    			    $(this).parent().prev().css({backgroundColor:"#00a0e9"});
+    			    console.log('dfdfdfadfdafadfasfasfa');
+    			  }
+    		  
+    		  
     		  htmlobj=$.ajax({url:"/"+path+"/contact/contact_child_check.do?employee_id="+employee_id+"&level="+i,async:false});
     		 
     		  
@@ -201,15 +234,13 @@
       	    		  }
       	    		 else
       	    		  {
-      	    			console.log("uuuuu"+i)
       	    		    $("#level"+i).html(" ");
       	    		  }
       	    		}
-      	    	 $("#arrow"+(last_index)).hide();
+      	    	$("#arrow"+(last_index)).hide();
       	    	last_index=m;
       	    	add_child();
-      	    	console.log("teetsdfdfa"+last_index);
-      	    	
+      	    	//console.log("teetsdfdfa"+last_index);
       	    }
     		}
     	    

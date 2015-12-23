@@ -9,9 +9,23 @@
 <form>
   <input type="hidden" name="is_empty${level}" value="0" >
 </form>
-<h5 class="bulec" style="font-weight: normal">
+<c:choose>
+           <c:when test="${department_list.size()!=1}">
+            <h5 style="font-weight: normal">
+           </c:when>
+           <c:otherwise>
+             <c:choose> 
+                <c:when test="${department_list.get(0).get_department_group_type()==1 }">
+                   <h5 class="bulec" style="font-weight: normal">
+                </c:when>
+                <c:otherwise>
+                  <h5 style="font-weight: normal">
+                </c:otherwise>
+             </c:choose>
+           </c:otherwise>
+        </c:choose>
         <c:forEach var="department_info" items="${department_list}">
-             <span id="title${department_info.get_department_id()}">
+             <span id="title${department_info.get_department_id()}" class="color${department_info.get_department_group_type()}">
                 ${department_info.get_department_name()}
              </span>
         </c:forEach>
@@ -31,9 +45,10 @@
                
                 <p>制度：<span>制度</span></p>
             </div>
-             <form>
+            <form>
                <input type="hidden" name="department_id" value="${friend_info.get_employee_department_id()}" >
             </form>
+            
              </c:forEach>
               <i id="arrow${level}"></i>
         </div>

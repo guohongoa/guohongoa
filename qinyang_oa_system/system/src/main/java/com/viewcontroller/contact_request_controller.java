@@ -240,6 +240,7 @@ import com.data.relationship_info;
 					//直接下级部门人员
 					List<employee_info> friend_list=new ArrayList<employee_info>();
 					employee_info owner_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id);
+					department_info owner_department=com.dbconnector.management_db_connector.get_department_info_by_id(owner_info.get_employee_department_id());
 					
 					friend_list=com.dbconnector.contact_db_connector.get_direct_child_list_by_id(employee_id);
 					department_list=com.dbconnector.contact_db_connector.get_department_list(friend_list);
@@ -247,6 +248,7 @@ import com.data.relationship_info;
 					
 					mv.addObject("department_list", department_list);
 					mv.addObject("owner_info",owner_info);
+					mv.addObject("owner_department",owner_department);
 					mv.addObject("friend_list", friend_list);
 					
 					return mv;
