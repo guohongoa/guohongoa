@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -38,10 +39,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="../" class="bordernone">首页</a></li>
-        <li><a href="../contact/contact_person_check.do?employee_id=${user_id}">四联</a></li>
-        <li><a href="../service/service_village_check.do">五服务</a></li>
-        <li><a href="../work"  class="active">工作</a></li>
+        <li><a href="" class="bordernone">首页</a></li>
+        <li><a href="">四联</a></li>
+        <li><a href="">五服务</a></li>
+        <li><a href=""  class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -52,39 +53,21 @@
 </div>
 <!--主体-->
 <div class="fuwu_content">
-    <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<a href="">反馈工作</a>&gt;<span>我的反馈</span></h4>
+    <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<a href="">汇报工作</a></h4>
     <div class="wfwxq">
-        <h5>工作主题：<span>${work_info.get_work_theme()}</span></h5>
+        <h5>工作主题：<span>${work_info.get_work_theme()}</span><!--  b class="red">（已通过）</b></h5>-->
         <p>工作目标：<span>${work_info.get_work_target()}</span></p>
-        <p>发送人：<span>${work_info.get_work_sender()}</span></p>
-        <p>联系电话：<span>${work_info.get_work_sender()}</span></p>
-        <p>督导人：<span>${work_info.get_work_receiver()}</span></p>
+        <p>汇报人：<span>${work_info.get_work_sender()}</span></p>
+        <p>联系电话：<span>${sender_phone}</span></p>
+        <p>直接上级：<span>${work_info.get_work_receiver()}</span></p>
         <p>发送时间：<span>${work_info.get_work_addtime()}</span></p>
         <p>执行周期：<span class="dark_grey">${work_info.get_work_begintime()}</span>-<span class="dark_grey">${work_info.get_work_endtime()}</span></p>
     </div>
-    <div style="margin:20px 0 10px;font-size: 14px">
-        <span>完成进度</span>
-        <span>
-           <c:choose>
-              <c:when test="${work_info.get_work_percentage()==0}">
-                   0%
-              </c:when>
-              <c:otherwise>
-                  ${work_info.get_work_percentage()}0%
-              </c:otherwise>
-           </c:choose>
-        </span>
-       
-    </div>
     <p style="padding: 10px 20px">
-        反馈的内容
-    </p>
-
-    <p style="border-top: none;padding: 10px 20px">
-        上一封发给我的内容
+        ${work_info.get_work_content()}
     </p>
     <div class="back">
-        <a href="">再反馈</a> &nbsp;<a href="" style="margin-right: -15px">返回</a>
+        <a href="" style="margin-right: -15px">返回</a>
     </div>
 </div>
 <div class="footer"></div>

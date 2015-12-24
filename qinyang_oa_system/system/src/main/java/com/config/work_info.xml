@@ -23,12 +23,16 @@
 		<result property="work_addtime" column="work_addtime"/>
 		<result property="work_file_url" column="work_file_url"/>
 		
+		<result property="work_start" column="work_start"/>
+		<result property="work_related_id" column="work_related_id"/>
+		<result property="work_times" column="work_times"/>
+		
 	</resultMap>
 	
 	<insert id="insert" parameterType="work_info" useGeneratedKeys="true" keyProperty="work_id">
 		insert into
-		  work_info(work_sender,work_sender_id,work_receiver_id,work_receiver,work_theme,work_target,work_begintime,work_endtime,work_content,work_type,work_status,work_percentage,work_addtime)
-		values(#{work_sender},#{work_sender_id},#{work_receiver_id},#{work_receiver},#{work_theme},#{work_target},#{work_begintime},#{work_endtime},#{work_content},#{work_type},#{work_status},#{work_percentage},#{work_addtime});
+		  work_info(work_sender,work_sender_id,work_receiver_id,work_receiver,work_theme,work_target,work_begintime,work_endtime,work_content,work_type,work_status,work_percentage,work_addtime,work_start,work_related_id,work_times)
+		values(#{work_sender},#{work_sender_id},#{work_receiver_id},#{work_receiver},#{work_theme},#{work_target},#{work_begintime},#{work_endtime},#{work_content},#{work_type},#{work_status},#{work_percentage},#{work_addtime},#{work_start},#{work_related_id},#{work_times});
 	</insert>
 
      <select id="select_by_sender_id" parameterType="int" resultMap="result">

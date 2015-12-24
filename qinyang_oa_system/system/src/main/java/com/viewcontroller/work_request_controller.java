@@ -76,6 +76,12 @@ public class work_request_controller
 		_work_info.set_work_endtime(work_endtime);
 		_work_info.set_work_receiver_id(work_receiver_id);
 	    _work_info.set_work_content(work_content);
+	    int work_status=0;//初始状态未处理为0
+	    _work_info.set_work_status(work_status);
+	    int work_start=0; //发起消息为0
+	    _work_info.set_work_start(work_start);
+	    int work_times=1;//主题中消息序列号为1
+	    _work_info.set_work_times(work_times);
 		String work_receiver;
 	    //查询工作任务接受人
 		if(work_receiver_id==-1)
@@ -334,13 +340,13 @@ public class work_request_controller
 	   return mv;
 	}
 	
-	@RequestMapping("work/work_feedback_detail.do")
-	public ModelAndView work_feedback_detail_request(
+	@RequestMapping("work/work_feedback_check.do")
+	public ModelAndView work_feedback_check_request(
 			@RequestParam(value="work_id") int work_id,
 			@RequestParam(value="work_page") int work_page
 			)
 	{
-		ModelAndView mv=new ModelAndView("work_feedback_detail.jsp?work_page="+work_page);
+		ModelAndView mv=new ModelAndView("work_feedback_check.jsp?work_page="+work_page);
 		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
 		mv.addObject("work_info", _work_info);
 		return mv;
@@ -373,6 +379,32 @@ public class work_request_controller
 		return mv;
 	}
 	
+	@RequestMapping("work/work_report_detail.do")
+	public ModelAndView work_report_detail_request(
+			@RequestParam(value="work_id") int work_id,
+			@RequestParam(value="work_page") int work_page
+			)
+	{
+		ModelAndView mv=new ModelAndView("work_report_detail.jsp?work_page="+work_page);
+		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
+		employee_info sender_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_work_info.get_work_sender_id());
+		mv.addObject("sender_phone",sender_info.get_employee_phone());
+		mv.addObject("work_info", _work_info);
+		return mv;
+	}
 	
-	
+	@RequestMapping("work/work_feedback_detail.do")
+	public ModelAndView work_feedback_detail_request(
+			@RequestParam(value="work_id") int work_id,
+			@RequestParam(value="work_page") int work_page
+			)
+	{
+		
+		ModelAndView mv=new ModelAndView("work_feedback_detail.jsp?work_page="+work_page);
+		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
+		employee_info sender_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_work_info.get_work_sender_id());
+		mv.addObject("sender_phone",sender_info.get_employee_phone());
+		mv.addObject("work_info", _work_info);
+		return mv;
+	}
 }

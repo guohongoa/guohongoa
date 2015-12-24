@@ -118,9 +118,6 @@
                <c:when test="${work_info.get_work_type()==1 and work_info.get_work_sender_id()==user_id}">
                 <li>汇报</li>
                </c:when>
-               <c:when test="${work_info.get_work_type()==1 and work_info.get_work_receiver_id()==user_id}">
-                <li>审批</li>
-               </c:when>
             </c:choose>
                 <li style="line-height: 15px;padding-top: 5px">${work_info.get_work_begintime()}-<br>${work_info.get_work_endtime()}</li>
                 <li>${work_info.get_work_addtime()}</li>

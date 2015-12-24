@@ -99,7 +99,7 @@
                 <li>${work_info.get_work_addtime()}</li>
                 <li>
                         <a href="work_feedback.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">反馈</a>
-                        <a href="work_feedback_detail.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">查看</a>
+                        <a href="work_feedback_check.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">查看</a>
                 </li>
             </ul>
             </c:forEach>

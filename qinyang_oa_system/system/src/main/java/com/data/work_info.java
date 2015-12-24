@@ -13,10 +13,14 @@ public class work_info
   private String  work_content;   //工作内容
   private int     work_status;    //0为默认未审批，1为已审批，，2为未通过
   private int     work_percentage; //完成工作百分比，0为0%,1为10%，2为20%，依次类推，10为100%
-  private int     work_type;      //工作消息种类，0为安排工作，1为反馈工作，2为安排的反馈
+  private int     work_type;      //工作消息种类，起点为下达为0，起点为上传为1
   private String  work_target;    //工作目标
   private String  work_addtime;   //工作添加时间
   private String  work_file_url;   //文件url
+  
+  private int     work_start;     //是否是起始发起信息
+  private int     work_related_id;//关联的工作id，work_start为0时置空，为1时显示，id显示为关联起始位置
+  private int     work_times;     //针对一个主题的信息来往序数，发起为1，回复为2，发起人回复为3，依次类推
   
   public int get_work_id()
   {
@@ -167,5 +171,37 @@ public class work_info
   {
 	  this.work_file_url=work_file_url;
   }
+  
+  public int get_work_start()
+  {
+	  return this.work_start;
+  }
+  
+  public void set_work_start(int work_start)
+  {
+	  this.work_start=work_start;
+  }
+  
+  public int get_work_related_id()
+  {
+	  return this.work_related_id;
+  }
+  
+  public void set_work_related_id(int work_related_id)
+  {
+	  this.work_related_id=work_related_id;
+  }
+  
+  public int get_work_times()
+  {
+	  return this.work_times;
+  }
+  
+  public void set_work_times(int work_times)
+  {
+	  this.work_times=work_times;
+  }
+  
+  
   
 }

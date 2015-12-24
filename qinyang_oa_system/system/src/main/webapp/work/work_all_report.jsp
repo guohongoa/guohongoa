@@ -105,7 +105,7 @@
                 <li style="line-height: 15px;padding-top: 5px">${work_info.get_work_begintime()}-<br>${work_info.get_work_endtime()}</li>
                 <li>${work_info.get_work_addtime()}</li>
                 <li>
-                    <a href="">详细</a>
+                    <a href="work_report_detail.do?work_id=${work_info.get_work_id()}&work_page=1">详细</a>
                 </li>
             </ul>
             </c:forEach>

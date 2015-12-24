@@ -100,8 +100,14 @@
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/My97DatePicker/WdatePicker.js"></script>
-<script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+<!--script src="http://101.200.196.121:8080/oa/js/style.js"></script-->
 <script>
+   $(".timedata").focus(function(){
+         WdatePicker({
+           dateFmt : 'yyyy/MM/dd',
+           isShowWeek : true
+         });
+    });
     //提交不为空的验证
     $(".tztj_btn button").click(function(){
         if(!$("input").val() || !$("textarea").val()){
