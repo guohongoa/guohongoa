@@ -358,6 +358,20 @@ public class work_request_controller
 		return mv;
 	}
 	
+	//工作安排详情
+	@RequestMapping("work/work_arrange_detail.do")
+	public ModelAndView work_arrange_detail_request(
+			@RequestParam(value="work_id") int work_id,
+			@RequestParam(value="work_page") int work_page
+			)
+	{
+		ModelAndView mv=new ModelAndView("work_arrange_detail.jsp?work_page="+work_page);
+		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
+		employee_info receiver_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_work_info.get_work_receiver_id());
+		mv.addObject("receiver_phone",receiver_info.get_employee_phone());
+		mv.addObject("work_info", _work_info);
+		return mv;
+	}
 	
 	
 	
