@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://m.ybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="msg_info">
+
+	<resultMap id="result" type="msg_info">
+		<result property="msg_id" column="msg_id" />
+		<result property="msg_owner_id" column="msg_owner_id" />
+		<result property="msg_owner_name" column="msg_owner_name" />
+		<result property="msg_type" column="msg_type" />
+		<result property="msg_addtime" column="msg_addtime" />
+		<result property="msg_content" column="msg_content" />
+		<result property="msg_status" column="msg_status" />
+	
+	</resultMap>
+
+	<insert id="insert" parameterType="msg_info">
+		insert into
+		relationship_info(msg_id,msg_owner_id,msg_owner_name,msg_type,msg_addtime,msg_content,msg_status)
+		values(#{msg_id},#{msg_owner_id},#{msg_owner_name},#{msg_type},#{msg_addtime},#{msg_content},#{msg_status})
+	</insert>
+
+</mapper>
+
+
