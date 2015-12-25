@@ -63,24 +63,24 @@
         <c:choose>
         <c:when test="${flag==0}">
         <ul>
-            <li><a href="myrecord_request.jsp?record_page=1&flag=0" class="active">全部台账</a>
+            <li><a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=1&flag=0" class="active">全部台账</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="record_send_display.do?employee_id=${user_id}">添加台账</a><i></i></dd>
                     <dd><a href="../error.jsp"  >修改台账</a></dd>
-                    <dd><a href="myrecord_request.jsp?record_page=1&flag=1" style="border-bottom: 1px solid #c9c9c9;height: 35px">我的台账</a></dd>
+                    <dd><a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=1&flag=1" style="border-bottom: 1px solid #c9c9c9;height: 35px">我的台账</a></dd>
                 </dl>
             </li>
         </ul>
         </c:when>
         <c:otherwise>
               <ul>
-            <li><a href="myrecord_request.jsp?record_page=1&flag=0" class="active">全部台账</a>
+            <li><a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=1&flag=0" class="active">全部台账</a>
                 <dl>
                     <dt></dt>
                     <dd class="activea"><a href="record_send_display.do?employee_id=${user_id}">添加台账</a><i></i></dd>
                     <dd><a href="../error.jsp"  >修改台账</a></dd>
-                    <dd><a href="myrecord_request.jsp?record_page=1&flag=1" class="red" style="border-bottom: 1px solid #c9c9c9;height: 35px" >我的台账</a></dd>
+                    <dd><a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=1&flag=1" class="red" style="border-bottom: 1px solid #c9c9c9;height: 35px" >我的台账</a></dd>
                 </dl>
             </li>
         </ul>
