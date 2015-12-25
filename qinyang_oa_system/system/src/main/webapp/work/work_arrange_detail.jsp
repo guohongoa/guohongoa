@@ -64,14 +64,14 @@
         <p>执行周期：<span class="dark_grey">${work_info.get_work_begintime()}</span>-<span class="dark_grey">${work_info.get_work_endtime()}</span></p>
     </div>
     <div style="margin:20px 0 10px;font-size: 14px">
-        <span>完成进度</span>
+        <span style="padding-left:20px;">完成进度</span>
         <span>
            <c:choose>
               <c:when test="${work_info.get_work_percentage()==0}">
-                   0%
+                  <span style="color:#cc0000;font-size:16px;">  0%</span>
               </c:when>
               <c:otherwise>
-                  ${work_info.get_work_percentage()}0%
+                  <span style="color:#cc0000;font-size:16px;">${work_info.get_work_percentage()}0%</span>
               </c:otherwise>
            </c:choose>
         </span>

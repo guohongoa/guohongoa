@@ -111,7 +111,7 @@
                 <c:choose>
                   <c:when test="${user_group_type==1}">
                    <p><span>服务类型</span><input class="grey9" type="text" value="法政法规服务" readonly="readonly"/></p>
-                                          <input name="service_type"  type="hidden"  value="${user_group_type－1}" />
+                                          <input name="service_type"  type="hidden"  value="${user_group_type-1}" />
                   </c:when>
                   <c:when test="${user_group_type==2}">
                    <p><span>服务类型</span><input  class="grey9" type="text" value="经济发展服务"  readonly="readonly"/></p>

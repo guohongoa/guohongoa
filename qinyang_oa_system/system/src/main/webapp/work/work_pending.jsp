@@ -128,13 +128,15 @@
                 </c:choose>
                 <c:choose>
                     <c:when test="${work_waiting_info.get_work_category()==0}">
-                        <li><a href="work_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}">详细</a></li>
+                        <li><a href="work_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}">详细</a>／<a href="">删除</a></li>
+              
                      </c:when>
                  <c:when test="${work_waiting_info.get_work_category()==1}">
-                        <li><a href="service_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}">详细</a></li>
+                        <li><a href="service_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}">详细</a>／<a href="">删除</a></li>
+                  
                  </c:when>
                  <c:when test="${work_waiting_info.get_work_category()==2}">
-                        <li><a href="record_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}">详细</a></li>
+                        <li><a href="record_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}">详细</a>／<a href="">删除</a></li>
                  </c:when>
                </c:choose>
             </ul>

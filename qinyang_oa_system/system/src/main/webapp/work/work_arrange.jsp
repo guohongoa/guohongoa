@@ -91,9 +91,9 @@
                 <p><span>工作主题</span><input name="work_theme" type="text"/></p>
                 <p><span>达成目标</span><input name="work_target" type="text"/></p>
                 <p><span>执行周期</span><input class="input100 timedata" name="work_begintime" type="text"/>&nbsp; ——&nbsp; <input class="input100 timedata" name="work_endtime" type="text"/></p>
-                <p><span>上传附件</span><input  style="width:150px;border: none;margin: 10px 0 20px 0" type="file"/></p>
+                <p><span>上传附件</span><input  style="width:155px;border: none;margin: 10px 0 20px 0" type="file"/></p>
                 <p><span>内容描述</span><textarea name="work_content" style="height: 260px;" form="post_gzap"></textarea></p>
-                <p class="tztj_btn" ><b class="login-error"></b><input type="reset" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="重置"><input type="submit" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="提交"/></p>
+                <p class="tztj_btn" ><b class="login-error"></b><input type="reset" style="font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="重置"><input type="submit" style="margin-right:-30px;font-size: 14px;width:100px;height:25px;background-color:#efefef;" value="提交"/></p>
             </form>
         </div>
     </div>

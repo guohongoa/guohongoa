@@ -55,7 +55,7 @@
 <!--主体-->
 <div class="fuwu_content">
     <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>待审批</span></h4>
-    <div class="wfwxq">
+    <div class="wfwxq" style="padding-bottom:5px;">
         <p><b>建账人：</b><span>${work_record_info.get_work_record_creator()}</span></p>
         <p><b>职务：</b><span>${work_record_info.get_work_record_position()}</span></p>
         <p><b>所属部门：</b><span>${work_record_info.get_work_record_department()}</span></p>
@@ -65,10 +65,10 @@
         <p><b>工作计划：</b><span>${work_record_info.get_work_record_plan()}</span></p>
         <p><b>落实情况：</b><span>${work_record_info.get_work_record_effect()}</span></p>
     </div>
-    <p style="padding: 10px 20px">
-    <span style="display:block;width:900px;line-height:50px;">台账的工作计划</span>
+    <p style="padding: 10px 20px;border-bottom:none;border-top:1px solid #ccc;">
+    <span style="display:block;width:900px;line-height:50px;text-align:center;color:#ccc;">台账的工作计划</span>
         ${work_record_info.get_work_record_plan()}
-    <span style="display:block;width:900px;line-height:50px;">台账的落实情况</span>
+    <span style="display:block;width:900px;line-height:50px;text-align:center;color:#ccc;">台账的落实情况</span>
         ${work_record_info.get_work_record_effect()}
     </p>
     <p style="border: none;margin-top: 10px">

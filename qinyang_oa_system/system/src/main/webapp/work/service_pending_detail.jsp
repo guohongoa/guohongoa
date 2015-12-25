@@ -55,7 +55,7 @@
 <!--主体-->
 <div class="fuwu_content">
     <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>待审批</span></h4>
-    <div class="wfwxq">
+    <div class="wfwxq" style="padding-bottom:15px;">
        <h5>主题：<span>服务主题</span></h5>
         <p>服务类型：
         <c:choose>
@@ -84,8 +84,8 @@
         <p>发送时间：<span>${service_info.get_service_addtime()}</span></p>
         <p>服务周期：<span class="dark_grey">${service_info.get_service_begintime()}</span>-<span class="dark_grey">${service_info.get_service_endtime()}</span></p>
     </div>
-    <p style="padding: 10px 20px">
-         <span style="display:block;width:900px;line-height:50px;">服务小组的活动内容</span>
+    <p style="padding: 10px 20px;border-bottom:none;border-top:1px solid #eee">
+         <span style="display:block;width:900px;line-height:50px;text-align:center;color:#ccc">服务小组的活动内容</span>
             ${service_info.get_service_content()}
    
     </p>

@@ -64,8 +64,8 @@
         <p>发送时间：<span>${work_info.get_work_addtime()}</span></p>
         <p>执行周期：<span class="dark_grey">${work_info.get_work_begintime()}</span>-<span class="dark_grey">${work_info.get_work_endtime()}</span></p>
     </div>
-    <p style="padding: 10px 20px">
-    <span style="display:block;width:900px;line-height:50px;">汇报的工作内容</span>
+    <p style="padding: 10px 20px;border-bottom:none;border-top:1px solid #eee">
+    <span style="display:block;width:900px;line-height:50px;color:#ccc;text-align:center;">汇报的工作内容</span>
         ${work_info.get_work_content()}
     </p>
     <p style="border: none;margin-top: 10px">

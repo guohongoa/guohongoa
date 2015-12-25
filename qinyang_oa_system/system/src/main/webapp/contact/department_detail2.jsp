@@ -150,8 +150,8 @@
 <script>
    
     
-    var path="guohong";
-    //var path="system";
+    //var path="guohong";
+    var path="system";
     var last_index=2;
     $(function(){
     	 $("#arrow2").hide();
