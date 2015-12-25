@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <c:set var="work_page" value="${param.work_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -77,14 +79,16 @@
        
     </div>
     <p style="padding: 10px 20px">
-        反馈的内容
+          ${work_info.get_work_content()}
     </p>
 
     <p style="border-top: none;padding: 10px 20px">
-        上一封发给我的内容
+        <span style="display:block;width:900px;line-height:50px;">安排的工作内容</span>
+        ${theme_work_info.get_work_content()}
+        
     </p>
     <div class="back">
-        <a href="">再反馈</a> &nbsp;<a href="" style="margin-right: -15px">返回</a>
+        <a href="work_all_feedback.do?employee_id=${user_id}&work_page=${work_page}" style="margin-right: -15px">返回</a>
     </div>
 </div>
 <div class="footer"></div>

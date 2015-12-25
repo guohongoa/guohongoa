@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -73,11 +74,25 @@
             <form id="post_tz" action="record_add.do" method="post">
                 <p><span>建账人</span><input class="input600 grey9" type="text" name="work_record_creator" value="${user_name}" readonly="readonly"/></p>
                 <p><span>主题</span><input class="input600 grey9" name="work_record_theme" type="text"></p>
-                <input name="work_record_leader_id" type="hidden" value="1"/>
                  <!--自动提交建帐人用户id--><input type="hidden" name="work_record_creatorid" value="${user_id}"/>
+                
                 <p><span>职务</span><input class="grey9" type="text" name="work_record_position" value="${employee_info.get_employee_position()}" readonly="readonly"/></p>
                 <p><span>所属部门</span><input class="grey9" type="text" name="work_record_department" value="${employee_info.get_employee_department_name()}" readonly="readonly"/></p>
-                <p><span>直接上级</span><input class="grey9" type="text" name="work_record_leader" value="${employee_info.get_employee_leader_name()}" readonly="readonly"/></p>
+                <p><span>直接上级</span>
+                <c:choose>
+                 <c:when test="${work_contact_list.size()!=0}">
+                  <c:forEach var="work_contact_info" items="${work_contact_list}">
+                     <select name="work_record_leader_id" >
+                        <option value="${work_contact_info.get_friend_id()}">${work_contact_info.get_friend_name()}</option>
+                     </select>
+                   </c:forEach>
+                   </c:when>
+                   <c:otherwise>
+                       <input style="width:593px;" type="text" value="无" readonly="readonly">
+                       <input type="hidden" name="work_receiver_id" value="-1">
+                   </c:otherwise>
+                  </c:choose>
+                </p>
                 <p ><span style="line-height:15px;vertical-align: middle">党员联系<br>人姓名</span><input style="margin-bottom: 8px" type="text" name="work_record_communist"/></p>
                 <p ><span>建账日期</span><input type="text" class="timedata" name="work_record_date"/></p>
                 <p style="margin: 25px 0"><span >工作计划</span><textarea name="work_record_plan"></textarea></p>

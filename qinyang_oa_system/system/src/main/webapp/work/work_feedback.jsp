@@ -66,27 +66,44 @@
     <p style="padding: 10px 20px">
         ${work_info.get_work_content()}
     </p>
+    <!--由于回复信息，收发双方位置需交换-->
+    <form action="feedback_commit.do" method="post" name="feedback_form" id="feedback_commit_form">
+    <input type="hidden" name="work_sender_id" value="${work_info.get_work_receiver_id()}">
+    <input type="hidden" name="work_sender" value="${work_info.get_work_receiver()}">
+    <input type="hidden" name="work_receiver_id" value="${work_info.get_work_sender_id()}">
+     <input type="hidden" name="work_receiver" value="${work_info.get_work_sender()}">
+    <input type="hidden" name="work_theme" value="${work_info.get_work_theme()}">
+    <input type="hidden" name="work_begintime" value="${work_info.get_work_begintime()}">
+    <input type="hidden" name="work_endtime" value="${work_info.get_work_endtime()}">
+    <input type="hidden" name="work_type" value="${work_info.get_work_type()}">
+    <input type="hidden" name="work_target" value="${work_info.get_work_target()}">
+    <input type="hidden" name="work_start" value="1">
+     <input type="hidden" name="work_related_id" value="${work_info.get_work_id()}">
+     
+     <input type="hidden" name="work_times" value="${work_info.get_work_times()+1}">
+    
     <div style="padding:20px 0px;font-size: 14px;">
         <span>完成进度</span>
-        <select style="width: 80px;margin-left: 5px">
-            <option>100%</option>
-            <option>90%</option>
-            <option>80%</option>
-            <option>70%</option>
-            <option>60%</option>
-            <option>50%</option>
-            <option>40%</option>
-            <option>30%</option>
-            <option>20%</option>
-            <option>10%</option>
+        <select style="width: 80px;margin-left: 5px" name="work_percentage" form="feedback_commit_form">
+            <option value="10">100%</option>
+            <option value="9">90%</option>
+            <option value="8">80%</option>
+            <option value="7">70%</option>
+            <option value="6">60%</option>
+            <option value="5">50%</option>
+            <option value="4">40%</option>
+            <option value="3">30%</option>
+            <option value="2">20%</option>
+            <option value="1">10%</option>
         </select>
     </div>
     <p style="border: none">
-        <textarea style="width:880px;height:300px;font-size: 14px;padding: 10px">输入反馈信息</textarea>
+        <textarea name="work_content" form="feedback_commit_form"  style="width:880px;height:300px;font-size: 14px;padding: 10px">输入反馈信息</textarea>
     </p>
     <div class="back">
-        <a href="">反馈</a> &nbsp;<a href="work_feedback_list.do?work_page=${work_page}employee_id=${user_id}" style="margin: 0 -15px 0 0 ">返回</a>
+        <a href="javascript:document.feedback_form.submit();">反馈</a> &nbsp;<a href="work_feedback_list.do?work_page=${work_page}employee_id=${user_id}" style="margin: 0 -15px 0 0 ">返回</a>
     </div>
+    </form>
 </div>
 <div class="footer"></div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>

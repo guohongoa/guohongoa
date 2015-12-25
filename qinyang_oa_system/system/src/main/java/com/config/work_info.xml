@@ -26,13 +26,14 @@
 		<result property="work_start" column="work_start"/>
 		<result property="work_related_id" column="work_related_id"/>
 		<result property="work_times" column="work_times"/>
+		<result property="work_category" column="work_category"/>
 		
 	</resultMap>
 	
 	<insert id="insert" parameterType="work_info" useGeneratedKeys="true" keyProperty="work_id">
 		insert into
-		  work_info(work_sender,work_sender_id,work_receiver_id,work_receiver,work_theme,work_target,work_begintime,work_endtime,work_content,work_type,work_status,work_percentage,work_addtime,work_start,work_related_id,work_times)
-		values(#{work_sender},#{work_sender_id},#{work_receiver_id},#{work_receiver},#{work_theme},#{work_target},#{work_begintime},#{work_endtime},#{work_content},#{work_type},#{work_status},#{work_percentage},#{work_addtime},#{work_start},#{work_related_id},#{work_times});
+		  work_info(work_sender,work_sender_id,work_receiver_id,work_receiver,work_theme,work_target,work_begintime,work_endtime,work_content,work_type,work_status,work_percentage,work_addtime,work_start,work_related_id,work_times,work_category)
+		values(#{work_sender},#{work_sender_id},#{work_receiver_id},#{work_receiver},#{work_theme},#{work_target},#{work_begintime},#{work_endtime},#{work_content},#{work_type},#{work_status},#{work_percentage},#{work_addtime},#{work_start},#{work_related_id},#{work_times},#{work_category});
 	</insert>
 
      <select id="select_by_sender_id" parameterType="int" resultMap="result">
@@ -64,19 +65,25 @@
 	
 	
 	<select id="select_all_work_by_page" parameterType="work_task_selector" resultMap="result">
-		SELECT * FROM work_info WHERE (work_receiver_id = #{work_receiver_id} AND work_type = 0) OR(work_receiver_id = #{work_receiver_id} AND work_type = 1 AND work_status=1) OR (work_sender_id = #{work_sender_id}) limit #{work_begin},#{work_num};
+		SELECT * FROM work_info WHERE work_sender_id = #{work_sender_id} limit #{work_begin},#{work_num};
 	</select>
 	
 	
 	
 	<select id="select_feedback_work_by_page" parameterType="work_task_selector" resultMap="result">
-		SELECT * FROM work_info WHERE  work_receiver_id = #{work_receiver_id} AND work_type = #{work_type} limit #{work_begin},#{work_num};
+		SELECT * FROM work_info WHERE  work_receiver_id = #{work_receiver_id} AND work_type = #{work_type} AND work_start = #{work_start} limit #{work_begin},#{work_num};
+	</select>
+	
+	
+	
+	<select id="select_send_feedback_work_by_page" parameterType="work_task_selector" resultMap="result">
+		SELECT * FROM work_info WHERE  work_sender_id = #{work_sender_id} AND work_type = #{work_type} AND work_start = #{work_start} limit #{work_begin},#{work_num};
 	</select>
 	
 	
 	
 	<select id="select_arrange_work_by_page" parameterType="work_task_selector" resultMap="result">
-		SELECT * FROM work_info WHERE  work_sender_id = #{work_sender_id} AND work_type = #{work_type} limit #{work_begin},#{work_num};
+		SELECT * FROM work_info WHERE work_category=#{work_category} AND work_start = #{work_start} AND work_sender_id = #{work_sender_id} AND work_type = #{work_type} limit #{work_begin},#{work_num};
 	</select>
 	
 	

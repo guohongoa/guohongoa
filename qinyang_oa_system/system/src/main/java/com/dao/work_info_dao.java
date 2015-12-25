@@ -143,7 +143,6 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		 try {
 			 
 			 _work_task_selector.set_work_sender_id(employee_id);
-			 _work_task_selector.set_work_receiver_id(employee_id);
 			 _work_task_selector.set_work_status(work_stauts);
 			  //固定一页最多取十一条数据
 			 _work_task_selector.set_work_begin(11*(work_page-1));
@@ -157,7 +156,7 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 	 }
 	 
 	 //反馈列表
-	 public int get_all_feedback_total_num_by_by_user(int employee_id,int work_type)
+	 public int get_feedback_list_total_num_by_by_user(int work_start,int employee_id,int work_type)
 	 {
 		 int work_total_num;
 		 work_task_selector _work_task_selector=new work_task_selector();
@@ -168,6 +167,7 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 			 
 			 _work_task_selector.set_work_receiver_id(employee_id);
 			 _work_task_selector.set_work_type(work_type);
+			 _work_task_selector.set_work_start(work_start);
 			  _work_task_selector.set_work_begin(0);
 			  _work_task_selector.set_work_num(99999999);
 	
@@ -182,7 +182,7 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		 return work_total_num;
 	 }
 	 
-	 public List<work_info> get_all_work_all_feedback_by_employee_id_and_page(int employee_id,int work_type,int work_page)
+	 public List<work_info> get_feedback_list_by_employee_id_and_page(int work_start,int employee_id,int work_type,int work_page)
 	 {
 		 List<work_info> work_info_list=null;
 		 work_task_selector _work_task_selector=new work_task_selector();//全部工作加分页信息
@@ -191,6 +191,7 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 			 
 			 _work_task_selector.set_work_receiver_id(employee_id);
 			 _work_task_selector.set_work_type(work_type);
+			 _work_task_selector.set_work_start(work_start);
 			  //固定一页最多取十一条数据
 			 _work_task_selector.set_work_begin(11*(work_page-1));
 			 _work_task_selector.set_work_num(11);
@@ -202,7 +203,57 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 	        return work_info_list;
 	 }
 	 
-	 public int get_all_arrange_total_num_by_by_user(int sender_id,int work_type)
+	 //反馈列表
+	 public int get_all_feedback_total_num_by_by_user(int work_start,int employee_id,int work_type)
+	 {
+		 int work_total_num;
+		 work_task_selector _work_task_selector=new work_task_selector();
+		 List<work_info> work_info_list=null;
+		 
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 
+			 _work_task_selector.set_work_sender_id(employee_id);
+			 _work_task_selector.set_work_type(work_type);
+			 _work_task_selector.set_work_start(work_start);
+			  _work_task_selector.set_work_begin(0);
+			  _work_task_selector.set_work_num(99999999);
+	
+			  
+			  work_info_list = session.selectList("work_info.select_send_feedback_work_by_page",_work_task_selector);
+			  work_total_num =work_info_list.size();
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("select_feedback_by_page --> "+_work_task_selector);
+		 
+		 return work_total_num;
+	 }
+	 
+	 public List<work_info> get_all_feedback_by_employee_id_and_page(int work_start,int employee_id,int work_type,int work_page)
+	 {
+		 List<work_info> work_info_list=null;
+		 work_task_selector _work_task_selector=new work_task_selector();//全部工作加分页信息
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 
+			 _work_task_selector.set_work_sender_id(employee_id);
+			 _work_task_selector.set_work_type(work_type);
+			 _work_task_selector.set_work_start(work_start);
+			  //固定一页最多取十一条数据
+			 _work_task_selector.set_work_begin(11*(work_page-1));
+			 _work_task_selector.set_work_num(11);
+			 work_info_list = session.selectList("work_info.select_send_feedback_work_by_page",_work_task_selector);
+	        } finally {
+	            session.close();
+	        }
+		    System.out.println("select_by_page --> "+_work_task_selector);
+	        return work_info_list;
+	 }
+	 
+	 
+	 
+	 public int get_all_arrange_total_num_by_by_user(int work_category,int work_start,int sender_id,int work_type)
 	 {
 		 int work_total_num;
 		 work_task_selector _work_task_selector=new work_task_selector();
@@ -213,6 +264,8 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 			 
 			 _work_task_selector.set_work_sender_id(sender_id);
 			 _work_task_selector.set_work_type(work_type);
+			 _work_task_selector.set_work_start(work_start);
+			 _work_task_selector.set_work_category(work_category);
 			  _work_task_selector.set_work_begin(0);
 			  _work_task_selector.set_work_num(99999999);
 	
@@ -227,7 +280,7 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 		 return work_total_num;
 	 }
 	 
-	 public List<work_info> get_all_work_all_arrange_by_employee_id_and_page(int sender_id,int work_type,int work_page)
+	 public List<work_info> get_all_work_all_arrange_by_employee_id_and_page(int work_category,int work_start,int sender_id,int work_type,int work_page)
 	 {
 		 List<work_info> work_info_list=null;
 		 work_task_selector _work_task_selector=new work_task_selector();//全部工作加分页信息
@@ -236,6 +289,8 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 			 
 			 _work_task_selector.set_work_sender_id(sender_id);
 			 _work_task_selector.set_work_type(work_type);
+			 _work_task_selector.set_work_start(work_start);
+			 _work_task_selector.set_work_category(work_category);
 			  //固定一页最多取十一条数据
 			 _work_task_selector.set_work_begin(11*(work_page-1));
 			 _work_task_selector.set_work_num(11);

@@ -21,6 +21,12 @@ public class work_task_selector
 	  private int     work_begin;   //开始的条目数
 	  private int     work_num;     //查询的条目数量
 	  
+	  private int     work_start;     //是否是起始发起信息
+	  private int     work_related_id;//关联的工作id，work_start为0时置空，为1时显示，id显示为关联起始位置
+	  private int     work_times;     //针对一个主题的信息来往序数，发起为1，回复为2，发起人回复为3，依次类推
+	  
+	  private int     work_category;  //接受者为发送者的上级为0，接受者为发送者下级为1
+	  
 	  public int get_work_id()
 	  {
 		  return this.work_id;
@@ -189,5 +195,45 @@ public class work_task_selector
 	  public void set_work_num(int work_num)
 	  {
 		  this.work_num=work_num;
+	  }
+	  
+	  public int get_work_start()
+	  {
+		  return this.work_start;
+	  }
+	  
+	  public void set_work_start(int work_start)
+	  {
+		  this.work_start=work_start;
+	  }
+	  
+	  public int get_work_related_id()
+	  {
+		  return this.work_related_id;
+	  }
+	  
+	  public void set_work_related_id(int work_related_id)
+	  {
+		  this.work_related_id=work_related_id;
+	  }
+	  
+	  public int get_work_times()
+	  {
+		  return this.work_times;
+	  }
+	  
+	  public void set_work_times(int work_times)
+	  {
+		  this.work_times=work_times;
+	  }
+	  
+	  public int get_work_category()
+	  {
+		  return this.work_category;
+	  }
+	  
+	  public void set_work_category(int work_category)
+	  {
+		  this.work_category=work_category;
 	  }
 }

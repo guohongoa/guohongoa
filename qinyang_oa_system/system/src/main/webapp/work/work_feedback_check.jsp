@@ -68,7 +68,7 @@
        ${work_info.get_work_content()}
     </p>
     <div class="back">
-        <a href="work_feedback.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">反馈</a> &nbsp; <a href="work_feedback_list.do?work_page=${work_page}employee_id=${user_id}" style="margin-right: -15px">返回</a>
+        <a href="work_feedback.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">反馈</a> &nbsp; <a href="work_feedback_list.do?work_page=${work_page}&employee_id=${user_id}" style="margin-right: -15px">返回</a>
     </div>
 </div>
 <div class="footer"></div>

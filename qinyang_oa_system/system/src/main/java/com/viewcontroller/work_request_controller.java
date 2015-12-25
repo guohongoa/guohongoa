@@ -76,12 +76,21 @@ public class work_request_controller
 		_work_info.set_work_endtime(work_endtime);
 		_work_info.set_work_receiver_id(work_receiver_id);
 	    _work_info.set_work_content(work_content);
+	    
 	    int work_status=0;//初始状态未处理为0
 	    _work_info.set_work_status(work_status);
+	    
 	    int work_start=0; //发起消息为0
 	    _work_info.set_work_start(work_start);
+	    
 	    int work_times=1;//主题中消息序列号为1
 	    _work_info.set_work_times(work_times);
+	    
+	    int work_related_id=-1;
+	    _work_info.set_work_related_id(work_related_id);
+	    
+	    int work_category=1;
+	    _work_info.set_work_category(work_category);
 		String work_receiver;
 	    //查询工作任务接受人
 		if(work_receiver_id==-1)
@@ -139,7 +148,6 @@ public class work_request_controller
 	{
         System.out.println(work_receiver_id);
 		work_info _work_info=new work_info();
-		_work_info.set_work_sender("dafa");
 		_work_info.set_work_sender_id(work_sender_id);
 		String work_receiver;
 
@@ -163,6 +171,21 @@ public class work_request_controller
 		_work_info.set_work_receiver(work_receiver);
 	    _work_info.set_work_content(work_content);
 	    _work_info.set_work_type(work_type);
+	    
+	    int work_status=0;//初始状态未处理为0
+	    _work_info.set_work_status(work_status);
+	    
+	    int work_start=0; //发起消息为0
+	    _work_info.set_work_start(work_start);
+	    
+	    int work_times=1;//主题中消息序列号为1
+	    _work_info.set_work_times(work_times);
+	    
+	    int work_related_id=-1;
+	    _work_info.set_work_related_id(work_related_id);
+	    
+	    int work_category=0;
+	    _work_info.set_work_category(work_category);
 		
 		
 		
@@ -207,15 +230,16 @@ public class work_request_controller
 			@RequestParam(value="work_page")   int work_page
 			)
 	{
+		int work_start=0;//为起始显示
 		int work_type=0;//显示被安排的工作，所以类型为0
-		int work_total_page=com.dbconnector.work_db_connector.get_work_all_feedback_total_page_by_owner_id(employee_id,work_type);
+		int work_total_page=com.dbconnector.work_db_connector.get_work_feedback_list_page_by_owner_id(work_start,employee_id,work_type);
 		ModelAndView mv=new ModelAndView("work_feedback_list.jsp?work_page="+work_page+"&work_total_page="+work_total_page);//页面重定向
 	
 	   
 	   //得到查询所有条目的list
 			   
 			   
-	   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_all_work_all_feedback_by_employee_id_and_page(employee_id, work_type, work_page);
+	   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_feedback_list_by_employee_id_and_page(work_start, employee_id, work_type, work_page);
 	   mv.addObject("work_info_list", work_info_list);
 	   return mv;
 	}
@@ -269,19 +293,21 @@ public class work_request_controller
 			
 			)
 	{
+		int work_start=0;//起始信息
+		int work_category=1;
 	    int sender_id=employee_id;
 		int work_type=0;//安排的工作为0
 		
-		int work_total_page=com.dbconnector.work_db_connector.get_arrange_all_total_page_by_owner_id(sender_id,work_type);
+		int work_total_page=com.dbconnector.work_db_connector.get_arrange_all_total_page_by_owner_id(work_category,work_start,sender_id,work_type);
 		ModelAndView mv=new ModelAndView("work_all_arrange.jsp?work_page="+work_page+"&work_total_page="+work_total_page);//页面重定向
 	   
-		List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_arrange_all_by_page(sender_id,work_type,work_page);
+		List<work_info> work_info_list=com.dbconnector.work_db_connector.get_work_arrange_all_by_page(work_category,work_start,sender_id,work_type,work_page);
 		mv.addObject("work_info_list", work_info_list);
 	
 	   
 	   return mv;
 	}
-	
+	//显示所有发出的反馈
 	@RequestMapping("work/work_all_feedback.do")
 	public ModelAndView work_all_feedback_request(
 			@RequestParam(value="employee_id") int employee_id,
@@ -291,14 +317,16 @@ public class work_request_controller
 		
 	        
 	        int work_type=0;//显示被安排的工作，所以类型为0
-			int work_total_page=com.dbconnector.work_db_connector.get_work_all_feedback_total_page_by_owner_id(employee_id,work_type);
+	        int work_start=1;//非开始
+			int work_total_page=com.dbconnector.work_db_connector.get_work_all_feedback_page_by_owner_id(work_start, employee_id, work_type);
+					
 			ModelAndView mv=new ModelAndView("work_all_feedback.jsp?work_page="+work_page+"&work_total_page="+work_total_page);//页面重定向
 		
 		   
 		   //得到查询所有条目的list
 				   
 				   
-		   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_all_work_all_feedback_by_employee_id_and_page(employee_id, work_type, work_page);
+		   List<work_info> work_info_list=com.dbconnector.work_db_connector.get_all_feedback_by_employee_id_and_page(work_start, employee_id, work_type, work_page);
 		   mv.addObject("work_info_list", work_info_list);
 		   return mv;
 	   
@@ -363,6 +391,57 @@ public class work_request_controller
 		mv.addObject("work_info", _work_info);
 		return mv;
 	}
+	//
+	@RequestMapping("work/feedback_commit.do")
+	public ModelAndView work_feedback_commit_request(
+			@RequestParam(value="work_sender_id")     int    work_sender_id,//发送人id
+			@RequestParam(value="work_sender")        String work_sender,//发送人id
+			@RequestParam(value="work_receiver_id")   int    work_receiver_id,//发送人id
+			@RequestParam(value="work_receiver")      String work_receiver,//发送人id
+			@RequestParam(value="work_theme")         String work_theme,//工作主题
+			@RequestParam(value="work_type")          int    work_type, //工作类型
+			@RequestParam(value="work_target")        String work_target,//工作目标
+			@RequestParam(value="work_content")        String work_content,//工作内容
+			@RequestParam(value="work_begintime")     String work_begintime,//工作开始时间
+			@RequestParam(value="work_endtime")       String work_endtime,   //工作结束时间
+			@RequestParam(value="work_start")         int work_start,       //是否为起始信息
+			@RequestParam(value="work_related_id")    int work_related_id,   //关联工作信息id
+			@RequestParam(value="work_times")         int work_times,        //关联主题序号
+			@RequestParam(value="work_percentage")    int work_percentage    //完成进度百分比
+			)
+	{
+	   ModelAndView mv=new ModelAndView("redirect:work_all_check.do?employee_id="+work_sender_id+"&work_page=1");
+
+		work_info _work_info=new work_info();
+		_work_info.set_work_sender_id(work_sender_id);
+		
+		_work_info.set_work_sender(work_sender);
+		_work_info.set_work_theme(work_theme);
+		_work_info.set_work_target(work_target);
+		_work_info.set_work_begintime(work_begintime);
+		_work_info.set_work_endtime(work_endtime);
+		_work_info.set_work_receiver_id(work_receiver_id);
+		_work_info.set_work_receiver(work_receiver);
+		_work_info.set_work_related_id(work_related_id);
+	    _work_info.set_work_content(work_content);
+	    _work_info.set_work_start(work_start);
+	    _work_info.set_work_times(work_times);
+		
+		_work_info.set_work_receiver(work_receiver);
+		_work_info.set_work_percentage(work_percentage);
+		
+		int work_category=0;//向上级发出反馈工作，所以接受者为发送者上级
+		_work_info.set_work_category(work_category);
+		//添加系统时间
+		   Date date=new Date();
+		   DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		   String work_addtime=format.format(date);
+		   _work_info.set_work_addtime(work_addtime);
+		   //插入数据库
+		  //relationship_insert_db(_relationship_info);
+		  com.dbconnector.work_db_connector.work_insert_db(_work_info);
+	     return mv;
+	}
 	
 	//工作安排详情
 	@RequestMapping("work/work_arrange_detail.do")
@@ -402,8 +481,10 @@ public class work_request_controller
 		
 		ModelAndView mv=new ModelAndView("work_feedback_detail.jsp?work_page="+work_page);
 		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
+		work_info theme_work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(_work_info.get_work_related_id()); 
 		employee_info sender_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_work_info.get_work_sender_id());
 		mv.addObject("sender_phone",sender_info.get_employee_phone());
+		mv.addObject("theme_work_info",theme_work_info); //安排工作内容
 		mv.addObject("work_info", _work_info);
 		return mv;
 	}

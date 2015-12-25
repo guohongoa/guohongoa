@@ -109,10 +109,10 @@
             </c:choose>
                 <li>${work_info.get_work_theme()}</li>
             <c:choose>
-             <c:when test="${work_info.get_work_type()==0 and work_info.get_work_sender_id()==user_id}">
+             <c:when test="${work_info.get_work_type()==0 and work_info.get_work_start()==0 and work_info.get_work_sender_id()==user_id}">
                 <li>安排</li>
              </c:when>
-              <c:when test="${work_info.get_work_type()==0 and work_info.get_work_receiver_id()==user_id}">
+              <c:when test="${work_info.get_work_type()==0 and work_info.get_work_start()==1 and work_info.get_work_sender_id()==user_id}">
                 <li>反馈</li>
               </c:when>
                <c:when test="${work_info.get_work_type()==1 and work_info.get_work_sender_id()==user_id}">

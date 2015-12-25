@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.data.employee_info;
 import com.data.service_info;
+import com.data.work_contact_info;
 import com.data.work_record_info;
 import com.data.work_waiting_info;
 
@@ -26,8 +27,7 @@ public class record_request_controller
 				
 				@RequestParam(value="work_record_creatorid")   int       work_record_creatorid,  //台账建帐人id
 			    @RequestParam(value="work_record_position")   String    work_record_position,    //台账创建人职务
-				@RequestParam(value="work_record_department") String    work_record_department,  //台账创建人部门
-				@RequestParam(value="work_record_leader")     String    work_record_leader,      //台账创建人上级联系人
+				@RequestParam(value="work_record_department") String    work_record_department,  //台账创建人部
 	            @RequestParam(value="work_record_communist")  String    work_record_communist,   //党员联系人姓名
 	            @RequestParam(value="work_record_date")       String    work_record_date,        //建帐日期
 	            @RequestParam(value="work_record_plan")       String    work_record_plan,        //台账工作计划
@@ -43,6 +43,8 @@ public class record_request_controller
 			_work_record_info.set_work_record_creatorid(work_record_creatorid);
 			_work_record_info.set_work_record_position(work_record_position);
 			_work_record_info.set_work_record_department(work_record_department);
+			employee_info leader_info=com.dbconnector.management_db_connector.get_employee_info_by_id(work_record_leader_id);
+			String work_record_leader=leader_info.get_employee_name();
 			_work_record_info.set_work_record_leader(work_record_leader);
 			_work_record_info.set_work_record_communist(work_record_communist);
 			_work_record_info.set_work_record_date(work_record_date);
@@ -130,6 +132,8 @@ public class record_request_controller
 						)
 				{
 					ModelAndView mv=new ModelAndView("record_add.jsp");
+					List<work_contact_info> work_contact_list=com.dbconnector.work_db_connector.get_work_contact_list_by_owner_id(employee_id, 0);
+					mv.addObject("work_contact_list",work_contact_list);
 					employee_info _employee_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id);
 					mv.addObject("employee_info", _employee_info);
 					return mv;

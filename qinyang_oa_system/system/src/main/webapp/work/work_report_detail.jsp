@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <c:set var="work_page" value="${param.work_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -67,7 +68,7 @@
         ${work_info.get_work_content()}
     </p>
     <div class="back">
-        <a href="" style="margin-right: -15px">返回</a>
+        <a href="work_all_report.do?employee_id=${user_id}&work_page=${work_page}" style="margin-right: -15px">返回</a>
     </div>
 </div>
 <div class="footer"></div>
