@@ -12,8 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.data.department_info;
 import com.data.employee_info;
 import com.data.relationship_info;
+import com.data.service_info;
 import com.data.work_contact_info;
 import com.data.work_info;
+import com.data.work_record_info;
 import com.data.work_waiting_info;
 
 //工作模块所有服务器响应接口
@@ -486,6 +488,44 @@ public class work_request_controller
 		mv.addObject("sender_phone",sender_info.get_employee_phone());
 		mv.addObject("theme_work_info",theme_work_info); //安排工作内容
 		mv.addObject("work_info", _work_info);
+		return mv;
+	}
+	
+	@RequestMapping("work/work_pending_detail.do")
+	public ModelAndView work_pending_detail_request(
+			@RequestParam(value="work_id")     int  work_id,
+			@RequestParam(value="work_page")   int  work_page
+			)
+	{
+		ModelAndView mv=new ModelAndView("work_pending_detail.jsp?work_page="+work_page);
+		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
+		employee_info sender_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_work_info.get_work_sender_id());
+		mv.addObject("sender_phone",sender_info.get_employee_phone());
+		mv.addObject("work_info", _work_info);
+		return mv;
+	}
+	
+	@RequestMapping("work/record_pending_detail.do")
+	public ModelAndView record_pending_detail_request(
+			@RequestParam(value="work_id")     int  work_id,
+			@RequestParam(value="work_page")   int  work_page
+			)
+	{
+		ModelAndView mv=new ModelAndView("record_pending_detail.jsp?work_page="+work_page);
+		work_record_info _work_record_info=com.dbconnector.record_db_connector.get_work_record_info_by_work_record_id(work_id);
+		mv.addObject("work_record_info", _work_record_info);
+		return mv;
+	}
+	
+	@RequestMapping("work/service_pending_detail.do")
+	public ModelAndView service_pending_detail_request(
+			@RequestParam(value="work_id")     int  work_id,
+			@RequestParam(value="work_page")   int  work_page
+			)
+	{
+		ModelAndView mv=new ModelAndView("service_pending_detail.jsp?work_page="+work_page);
+		service_info _service_info=com.dbconnector.service_db_connector.get_service_info_by_service_msgid(work_id);
+		mv.addObject("service_info",  _service_info);
 		return mv;
 	}
 }

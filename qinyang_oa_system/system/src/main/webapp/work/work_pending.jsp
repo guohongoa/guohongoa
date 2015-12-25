@@ -9,6 +9,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <c:set var="work_page" value="${param.work_page}"/>
+    <c:set var="work_total_page" value="${param.work_total_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -124,9 +126,17 @@
                         <li>已审批</li>
                     </c:when>
                 </c:choose>
-                <li>
-                    <a href="">详细</a>
-                </li>
+                <c:choose>
+                    <c:when test="${work_waiting_info.get_work_category()==0}">
+                        <li><a href="work_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}">详细</a></li>
+                     </c:when>
+                 <c:when test="${work_waiting_info.get_work_category()==1}">
+                        <li><a href="service_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}">详细</a></li>
+                 </c:when>
+                 <c:when test="${work_waiting_info.get_work_category()==2}">
+                        <li><a href="record_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}">详细</a></li>
+                 </c:when>
+               </c:choose>
             </ul>
            </c:forEach>
         </div>
