@@ -8,6 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
      <c:set var="work_page" value="${param.work_page}"/>
+     <c:set var="waiting_id" value="${param.waiting_id}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -23,8 +24,8 @@
         <div class="menu">
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
-                <li><a href=""><i class="icon"></i>设置</a></li>
-                <li><a href=""><i></i>退出</a></li>
+                <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
+                <li><a href="../logout"><i></i>退出</a></li>
             </ul>
             <div>
                 <ul class="hide">
@@ -40,10 +41,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href=""  class="active">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/contact_person_check.do?employee_id=${user_id}">四联</a></li>
+        <li><a href="../service/service_village_check.do">五服务</a></li>
+        <li><a href="../work"  class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -55,15 +56,14 @@
 <!--主体-->
 <div class="fuwu_content">
     <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>待审批</span></h4>
-    <div class="wfwxq" style="padding-bottom:5px;">
+    <div class="wfwxq" style="padding-bottom:0px;">
+        <p><b>审批类型：</b>台账</p>
         <p><b>建账人：</b><span>${work_record_info.get_work_record_creator()}</span></p>
         <p><b>职务：</b><span>${work_record_info.get_work_record_position()}</span></p>
         <p><b>所属部门：</b><span>${work_record_info.get_work_record_department()}</span></p>
         <p><b>直接上级：</b><span>${work_record_info.get_work_record_leader()}</span></p>
         <p><b>党员联系人姓名：</b><span>${work_record_info.get_work_record_communist()}</span></p>
         <p><b>建账日期：</b><span>${work_record_info.get_work_record_date()}</span></p>
-        <p><b>工作计划：</b><span>${work_record_info.get_work_record_plan()}</span></p>
-        <p><b>落实情况：</b><span>${work_record_info.get_work_record_effect()}</span></p>
     </div>
     <p style="padding: 10px 20px;border-bottom:none;border-top:1px solid #ccc;">
     <span style="display:block;width:900px;line-height:50px;text-align:center;color:#ccc;">台账的工作计划</span>
@@ -75,7 +75,9 @@
         <textarea  style="width: 880px;height: 225px;border: 1px solid #c9c9c9;font-size: 14px;padding:10px" placeholder="请输入评论或建议"></textarea>
     </p>
     <div class="back">
-        <a href="">同意</a> &nbsp; <a href="" style="margin-right: -15px">不同意</a>
+        <a href="record_pending_commit.do?waiting_id=${waiting_id}">同意</a> 
+        &nbsp; 
+        <a href="record_pending_commit.do?waiting_id=${waiting_id}" style="margin-right: -15px">不同意</a>
     </div>
 </div>
 <div class="footer"></div>

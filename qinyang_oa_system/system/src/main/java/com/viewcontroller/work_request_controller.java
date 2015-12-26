@@ -494,10 +494,11 @@ public class work_request_controller
 	@RequestMapping("work/work_pending_detail.do")
 	public ModelAndView work_pending_detail_request(
 			@RequestParam(value="work_id")     int  work_id,
-			@RequestParam(value="work_page")   int  work_page
+			@RequestParam(value="work_page")   int  work_page,
+			@RequestParam(value="waiting_id")  int waiting_id
 			)
 	{
-		ModelAndView mv=new ModelAndView("work_pending_detail.jsp?work_page="+work_page);
+		ModelAndView mv=new ModelAndView("work_pending_detail.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
 		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
 		employee_info sender_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_work_info.get_work_sender_id());
 		mv.addObject("sender_phone",sender_info.get_employee_phone());
@@ -508,10 +509,11 @@ public class work_request_controller
 	@RequestMapping("work/record_pending_detail.do")
 	public ModelAndView record_pending_detail_request(
 			@RequestParam(value="work_id")     int  work_id,
-			@RequestParam(value="work_page")   int  work_page
+			@RequestParam(value="work_page")   int  work_page,
+			@RequestParam(value="waiting_id")  int waiting_id
 			)
 	{
-		ModelAndView mv=new ModelAndView("record_pending_detail.jsp?work_page="+work_page);
+		ModelAndView mv=new ModelAndView("record_pending_detail.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
 		work_record_info _work_record_info=com.dbconnector.record_db_connector.get_work_record_info_by_work_record_id(work_id);
 		mv.addObject("work_record_info", _work_record_info);
 		return mv;
@@ -520,12 +522,46 @@ public class work_request_controller
 	@RequestMapping("work/service_pending_detail.do")
 	public ModelAndView service_pending_detail_request(
 			@RequestParam(value="work_id")     int  work_id,
-			@RequestParam(value="work_page")   int  work_page
+			@RequestParam(value="work_page")   int  work_page,
+			@RequestParam(value="waiting_id")  int  waiting_id
 			)
 	{
-		ModelAndView mv=new ModelAndView("service_pending_detail.jsp?work_page="+work_page);
+		ModelAndView mv=new ModelAndView("service_pending_detail.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
 		service_info _service_info=com.dbconnector.service_db_connector.get_service_info_by_service_msgid(work_id);
 		mv.addObject("service_info",  _service_info);
+		return mv;
+	}
+	
+	@RequestMapping("work/work_pending_commit.do")
+	public ModelAndView work_pending_commit_request(
+			@RequestParam(value="waiting_id")  int waiting_id,
+			@RequestParam(value="work_status") int work_status,
+			@RequestParam(value="work_comment") String work_comment
+			)
+	{
+		ModelAndView mv=new ModelAndView();
+		return mv;
+	}
+	
+	@RequestMapping("work/record_pending_commit.do")
+	public ModelAndView record_pending_commit_request(
+			@RequestParam(value="waiting_id")  int waiting_id,
+			@RequestParam(value="work_status") int work_status,
+			@RequestParam(value="work_comment") String work_comment
+			)
+	{
+		ModelAndView mv=new ModelAndView();
+		return mv;
+	}
+	
+	@RequestMapping("work/service_pending_commit.do")
+	public ModelAndView service_pending_commit_request(
+			@RequestParam(value="waiting_id")  int waiting_id,
+			@RequestParam(value="work_status") int work_status,
+			@RequestParam(value="work_comment") String work_comment
+			)
+	{
+		ModelAndView mv=new ModelAndView();
 		return mv;
 	}
 }

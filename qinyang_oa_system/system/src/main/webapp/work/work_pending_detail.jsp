@@ -8,6 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
      <c:set var="work_page" value="${param.work_page}"/>
+     <c:set var="waiting_id" value="${param.waiting_id}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -23,8 +24,8 @@
         <div class="menu">
             <ul>
                 <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
-                <li><a href=""><i class="icon"></i>设置</a></li>
-                <li><a href=""><i></i>退出</a></li>
+                <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
+                <li><a href="../logout"><i></i>退出</a></li>
             </ul>
             <div>
                 <ul class="hide">
@@ -56,6 +57,7 @@
 <div class="fuwu_content">
     <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>待审批</span></h4>
     <div class="wfwxq">
+        <p><b>审批类型：</b>工作</p>
         <h5>工作主题：<span>${work_info.get_work_theme()}</span></h5>
         <p>工作目标：<span>${work_info.get_work_target()}</span></p>
         <p>申请人：<span>${work_info.get_work_sender()}</span></p>
@@ -72,7 +74,9 @@
         <textarea  style="width: 880px;height: 225px;border: 1px solid #c9c9c9;font-size: 14px;padding:10px" placeholder="请输入评论或建议"></textarea>
     </p>
     <div class="back">
-        <a href="">同意</a> &nbsp; <a href="" style="margin-right: -15px">不同意</a>
+        <a href="work_pending_commit.do?waiting_id=${waiting_id}">同意</a> 
+        &nbsp; 
+        <a href="work_pending_commit.do?waiting_id=${waiting_id}" style="margin-right: -15px">不同意</a>
     </div>
 </div>
 <div class="footer"></div>

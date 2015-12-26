@@ -121,9 +121,23 @@
             </c:choose>
                 <li style="line-height: 15px;padding-top: 5px">${work_info.get_work_begintime()}-<br>${work_info.get_work_endtime()}</li>
                 <li>${work_info.get_work_addtime()}</li>
+                <c:choose>
+             <c:when test="${work_info.get_work_type()==0 and work_info.get_work_start()==0 and work_info.get_work_sender_id()==user_id}">
                 <li>
-                    <a href="">详细</a>
+                    <a href="work_arrange_detail.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">详细</a>
                 </li>
+             </c:when>
+              <c:when test="${work_info.get_work_type()==0 and work_info.get_work_start()==1 and work_info.get_work_sender_id()==user_id}">
+                 <li>
+                    <a href="work_feedback_detail.do?work_id=${work_info.get_work_id()}&work_page=${work_page}">详细</a>
+                </li>
+              </c:when>
+               <c:when test="${work_info.get_work_type()==1 and work_info.get_work_sender_id()==user_id}">
+                 <li>
+                    <a href="work_report_detail.do?work_id=${work_info.get_work_id()}&work_page=1">详细</a>
+                </li>
+               </c:when>
+            </c:choose>
             </ul>
             </c:forEach>
            

@@ -40,10 +40,10 @@
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="" class="bordernone">首页</a></li>
-        <li><a href="">四联</a></li>
-        <li><a href="">五服务</a></li>
-        <li><a href=""  class="active">工作</a></li>
+        <li><a href="../" class="bordernone">首页</a></li>
+        <li><a href="../contact/contact_person_check.do?employee_id=${user_id}">四联</a></li>
+        <li><a href="../service/service_village_check.do">五服务</a></li>
+        <li><a href="../work"  class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -68,7 +68,7 @@
         ${work_info.get_work_content()}
     </p>
     <div class="back">
-        <a href="work_all_report.do?employee_id=${user_id}&work_page=${work_page}" style="margin-right: -15px">返回</a>
+        <a href="javascript:history.go(-1);" style="margin-right: -15px">返回</a>
     </div>
 </div>
 <div class="footer"></div>

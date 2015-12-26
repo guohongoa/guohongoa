@@ -16,7 +16,8 @@
 		<result property="work_content" column="work_content" />
 		<result property="work_addtime" column="work_addtime" />
 		<result property="work_id"  column="work_id" />
-		<result property="work_status"  column="work_status" />				
+		<result property="work_status"  column="work_status" />
+		<result property="work_comment"  column="work_comment" />				
 		
 	</resultMap>
 	
