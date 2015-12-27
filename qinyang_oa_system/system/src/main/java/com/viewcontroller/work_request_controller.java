@@ -142,6 +142,7 @@ public class work_request_controller
 		 _msg_info.set_msg_oid(work_id);
 		 _msg_info.set_msg_addtime(work_addtime);
 		 _msg_info.set_msg_content(work_content);
+		 _msg_info.set_msg_type(0);//安排为0
 		 
 		 
 		 boolean rs=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
@@ -228,6 +229,22 @@ public class work_request_controller
 		  _work_wating_info.set_work_id(work_id);
 		  
 		  boolean rs=com.dbconnector.work_db_connector.waiting_insert_db(_work_wating_info);
+		  
+		  //插入消息列表
+			 msg_info _msg_info=new msg_info();
+			 _msg_info.set_msg_owner_id(work_receiver_id);
+			 _msg_info.set_msg_owner_name(work_receiver);
+			 _msg_info.set_msg_sender_id(work_sender_id);
+			 _msg_info.set_msg_sender(work_sender);;
+			 int msg_status=0;//未读消息为0
+			 _msg_info.set_msg_status(msg_status);
+			 _msg_info.set_msg_oid(work_id);
+			 _msg_info.set_msg_addtime(work_addtime);
+			 _msg_info.set_msg_content(work_content);
+			 _msg_info.set_msg_type(1);//汇报为1
+			 
+			 
+			 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
 	
 		
 		

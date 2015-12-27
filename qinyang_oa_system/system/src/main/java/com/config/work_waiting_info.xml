@@ -45,6 +45,12 @@
             work_comment       = #{work_comment}
         WHERE waiting_id = #{waiting_id} 
 	</select>
+	
+	
+	
+	<select id="get_wating_info_by_work_id" parameterType="int" resultMap="result">
+		SELECT * FROM work_waiting_info WHERE work_id = #{work_id};
+	</select>
      
 </mapper>
 

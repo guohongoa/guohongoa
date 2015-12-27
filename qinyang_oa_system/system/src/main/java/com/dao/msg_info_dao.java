@@ -46,7 +46,7 @@ public class msg_info_dao
 	  }
 	
 	
-	public int get_msg_total_num_by_by_user(int msg_owner_id)
+	public int get_msg_total_num_by_by_user(int msg_owner_id,int msg_status)
 	 {
 		 int msg_total_num;
 		 List<msg_info> msg_info_list=null;
@@ -55,6 +55,7 @@ public class msg_info_dao
 		 try {
 			 msg_selector _msg_selector=new msg_selector();//台账加分页信息
 			 _msg_selector.set_msg_owner_id(msg_owner_id);
+			 _msg_selector.set_msg_status(msg_status);
 			  
 			   _msg_selector.set_msg_begin(0);
 			  _msg_selector.set_msg_num(99999999);
@@ -69,13 +70,14 @@ public class msg_info_dao
 		 return msg_total_num;
 	 }
 	
-	public List<msg_info> select_by_owner_id(int owner_id,int msg_page)
+	public List<msg_info> select_by_owner_id(int owner_id,int msg_status,int msg_page)
 	{
 		List<msg_info> msg_info_list=null;
 		 SqlSession session=this.sqlSessionFactory.openSession();
 		 try {
 			  msg_selector _msg_selector=new msg_selector();//台账加分页信息
 			  _msg_selector.set_msg_owner_id(owner_id);
+			  _msg_selector.set_msg_status(msg_status);
 			  
 			  //固定一页最多取十一条数据
 			  _msg_selector.set_msg_begin(11*(msg_page-1));
@@ -87,5 +89,29 @@ public class msg_info_dao
 	        }
 	        System.out.println("select_by_work_record_creatorid() --> "+msg_info_list);
 	        return msg_info_list;
+	}
+	
+	public boolean update_msg_status(msg_info _msg_info)
+	{
+		int id = -1;
+	      SqlSession session = sqlSessionFactory.openSession();
+	 
+	      try {
+	          id = session.update("msg_info.update_msg_status",_msg_info);
+	 
+	      } finally {
+	          session.commit();
+	          session.close();
+	      }
+	      System.out.println("update_msg_status --> updated");
+	      
+	      if(id==-1)
+	        {
+	        	return false;//修改失败
+	        }
+	        else
+	        {
+	        	return true;//修改成功
+	        }
 	}
 }

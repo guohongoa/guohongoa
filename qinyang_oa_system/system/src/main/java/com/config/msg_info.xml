@@ -27,8 +27,15 @@
 	</insert>
 	
 	<select id="select_by_msg_owner_id" parameterType="msg_selector" resultMap="result">
-		SELECT * FROM msg_info WHERE msg_owner_id = #{msg_owner_id} limit #{msg_begin},#{msg_num};
+		SELECT * FROM msg_info WHERE msg_owner_id = #{msg_owner_id} AND msg_status = #{msg_status}  limit #{msg_begin},#{msg_num};
 	</select>
+	
+	
+	<select id="update_msg_status" parameterType="msg_info" resultMap="result">
+		UPDATE msg_info
+        SET msg_status       = #{msg_status}
+        WHERE msg_id = #{msg_id} 
+     </select>
 
 </mapper>
 

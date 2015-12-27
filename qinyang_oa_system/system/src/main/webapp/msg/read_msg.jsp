@@ -57,8 +57,8 @@
     <div class="left_menu" style="height: 150px">
         <h3><a href="">消息</a></h3>
         <ul>
-            <li><a href="" class="active">未读消息</a></li>
-            <li><a href="check_read_msg.do?employee_id=${user_id}&msg_page=1">已读消息</a></li>
+            <li><a href="check_unread_msg.do?employee_id=${user_id}&msg_page=1" >未读消息</a></li>
+            <li><a href="" class="active">已读消息</a></li>
         </ul>
     </div>
     <!--右侧-->
