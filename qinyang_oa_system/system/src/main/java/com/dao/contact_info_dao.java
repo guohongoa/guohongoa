@@ -51,7 +51,7 @@ private SqlSessionFactory sqlSessionFactory=null;
 	        } finally {
 	            session.close();
 	        }
-	        System.out.println("selectAll() --> "+contact_info_list);
+	        System.out.println("tttt --> "+contact_info_list);
 	        return contact_info_list;
 	}
 	
@@ -66,5 +66,19 @@ private SqlSessionFactory sqlSessionFactory=null;
 	        }
 	        System.out.println("selectAll() --> "+contact_info_list);
 	        return contact_info_list;
+	}
+	
+	public contact_info get_by_double_id(contact_info _contact_info)
+	{
+		contact_info _contact_info2=null;
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+        	_contact_info2= session.selectOne("contact_info.get_by_double_id", _contact_info);
+ 
+        } finally {
+            session.close();
+        }
+        System.out.println("selectBydoubleid --> "+_contact_info);
+        return _contact_info2;
 	}
 }

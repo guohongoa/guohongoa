@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.data.department_info;
 import com.data.service_info;
+import com.data.work_info;
 import com.selector.service_selector;
 
 
@@ -159,6 +160,32 @@ public class service_info_dao
 		            session.close();
 		        }
 		        System.out.println("delete("+service_msgid+")");
+		 }
+		 
+		;
+		 
+		 public boolean  update_service_status(service_info _service_info)
+		 {
+			 int id = -1;
+		      SqlSession session = sqlSessionFactory.openSession();
+		 
+		      try {
+		          id = session.update("service_info.update_service_status",_service_info);
+		 
+		      } finally {
+		          session.commit();
+		          session.close();
+		      }
+		      System.out.println("update("+_service_info+") --> updated");
+		      
+		      if(id==-1)
+		        {
+		        	return false;//修改失败
+		        }
+		        else
+		        {
+		        	return true;//修改成功
+		        }
 		 }
 		 
 		 

@@ -20,9 +20,9 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
+                <li><a href="../msg/check_unread_msg.do?employee_id=${user_id}&msg_page=1"><i class="icon icon_m"><em>99</em></i>消息</a></li>
                 <li><a href="check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
-                <li><a href=""><i></i>退出</a></li>
+                <li><a href="../logout"><i></i>退出</a></li>
             </ul>
             <div>
                 <ul class="hide">
@@ -38,7 +38,7 @@
 <div class="nav">
     <ul>
         <li><a href="../" class="bordernone">首页</a></li>
-        <li><a href="../contact/contact_person_check.do">四联</a></li>
+        <li><a href="../contact/contact_person_check.do?employee_id=${user_id}">四联</a></li>
         <li><a href="../service/service_village_check.do">五服务</a></li>
         <li><a href="../work/">工作</a></li>
         <li><a href="">嘉言民生</a></li>

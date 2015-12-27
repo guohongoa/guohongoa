@@ -26,6 +26,7 @@ public class work_task_selector
 	  private int     work_times;     //针对一个主题的信息来往序数，发起为1，回复为2，发起人回复为3，依次类推
 	  
 	  private int     work_category;  //接受者为发送者的上级为0，接受者为发送者下级为1
+	  private String  work_comment;
 	  
 	  public int get_work_id()
 	  {
@@ -235,5 +236,15 @@ public class work_task_selector
 	  public void set_work_category(int work_category)
 	  {
 		  this.work_category=work_category;
+	  }
+	  
+	  public String get_work_comment()
+	  {
+		  return this.work_comment;
+	  }
+	  
+	  public void set_work_comment(String work_comment)
+	  {
+		  this.work_comment=work_comment;
 	  }
 }

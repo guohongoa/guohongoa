@@ -13,14 +13,22 @@
 		<result property="msg_addtime" column="msg_addtime" />
 		<result property="msg_content" column="msg_content" />
 		<result property="msg_status" column="msg_status" />
+		
+		<result property="msg_oid" column="msg_oid" />
+		<result property="msg_sender_id" column="msg_sender_id" />
+		<result property="msg_sender" column="msg_sender" />
 	
 	</resultMap>
 
 	<insert id="insert" parameterType="msg_info">
 		insert into
-		relationship_info(msg_id,msg_owner_id,msg_owner_name,msg_type,msg_addtime,msg_content,msg_status)
-		values(#{msg_id},#{msg_owner_id},#{msg_owner_name},#{msg_type},#{msg_addtime},#{msg_content},#{msg_status})
+		msg_info(msg_id,msg_owner_id,msg_owner_name,msg_type,msg_addtime,msg_content,msg_status,msg_oid,msg_sender_id,msg_sender)
+		values(#{msg_id},#{msg_owner_id},#{msg_owner_name},#{msg_type},#{msg_addtime},#{msg_content},#{msg_status},#{msg_oid},#{msg_sender_id},#{msg_sender});
 	</insert>
+	
+	<select id="select_by_msg_owner_id" parameterType="msg_selector" resultMap="result">
+		SELECT * FROM msg_info WHERE msg_owner_id = #{msg_owner_id} limit #{msg_begin},#{msg_num};
+	</select>
 
 </mapper>
 

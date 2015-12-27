@@ -58,7 +58,6 @@
     <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>待审批</span></h4>
     <div class="wfwxq" style="padding-bottom:15px;">
        <h5>主题：<span>服务主题</span></h5>
-        <p><b>审批类型：</b>五服务</p>
         <p>服务类型：
         <c:choose>
                   <c:when test="${service_info.get_service_type()==0}">
@@ -92,12 +91,18 @@
    
     </p>
     <p style="border: none;margin-top: 10px">
-        <textarea  style="width: 880px;height: 225px;border: 1px solid #c9c9c9;font-size: 14px;padding:10px" placeholder="请输入评论或建议"></textarea>
+        <form method="post" name="pending_form" id="form">
+        <textarea form="form" name="work_comment"  style="width: 880px;height: 225px;border: 1px solid #c9c9c9;font-size: 14px;padding:10px" placeholder="请输入评论或建议"></textarea>
+        <input type="hidden" name="waiting_id" value="${waiting_id}" >
+        <input type="hidden" name="work_page" value="${work_page}"/>
+        <input type="hidden" name="employee_id" value="${user_id}"/>
+        <input type="hidden" name="work_id" value="${service_info.get_service_msgid()}">
+        </form>
     </p>
     <div class="back">
-        <a href="service_pending_commit.do?waiting_id=${waiting_id}">同意</a> 
+         <a href="javascript:document.pending_form.action='service_pending_agree.do';document.pending_form.submit();">同意</a> 
         &nbsp; 
-        <a href="service_pending_commit.do?waiting_id=${waiting_id}" style="margin-right: -15px">不同意</a>
+        <a href="javascript:document.pending_form.action='service_pending_disagree.do';document.pending_form.submit();" style="margin-right: -15px">不同意</a>
     </div>
 </div>
 <div class="footer"></div>

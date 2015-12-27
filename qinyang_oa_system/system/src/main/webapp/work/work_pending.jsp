@@ -123,7 +123,10 @@
                         <li class="red">未审批</li>
                     </c:when>
                     <c:when test="${work_waiting_info.get_work_status()==1}">
-                        <li>已审批</li>
+                        <li>已通过</li>
+                    </c:when>
+                    <c:when test="${work_waiting_info.get_work_status()==2}">
+                        <li>未通过</li>
                     </c:when>
                 </c:choose>
                 <c:choose>
@@ -132,11 +135,11 @@
               
                      </c:when>
                  <c:when test="${work_waiting_info.get_work_category()==1}">
-                        <li><a href="service_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}&waiting_id=${work_waiting_info.get_waiting_id()">详细</a>／<a href="">删除</a></li>
+                        <li><a href="service_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}&waiting_id=${work_waiting_info.get_waiting_id()}">详细</a>／<a href="">删除</a></li>
                   
                  </c:when>
                  <c:when test="${work_waiting_info.get_work_category()==2}">
-                        <li><a href="record_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}&waiting_id=${work_waiting_info.get_waiting_id()">详细</a>／<a href="">删除</a></li>
+                        <li><a href="record_pending_detail.do?work_id=${work_waiting_info.get_work_id()}&work_page=${work_page}&waiting_id=${work_waiting_info.get_waiting_id()}">详细</a>／<a href="">删除</a></li>
                  </c:when>
                </c:choose>
             </ul>

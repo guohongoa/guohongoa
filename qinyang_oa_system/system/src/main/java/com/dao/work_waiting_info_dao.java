@@ -101,4 +101,29 @@ public class work_waiting_info_dao
 		    System.out.println("select_waiting_by_page --> "+_work_waiting_selector);
 	        return work_waiting_list;
 	 }
+	 
+	 public boolean update_waiting_status(work_waiting_info _waiting_info)
+	 {
+		 int id = -1;
+	      SqlSession session = sqlSessionFactory.openSession();
+	 
+	      try {
+	          id = session.update("work_waiting_info.update_waiting_status",_waiting_info);
+	 
+	      } finally {
+	          session.commit();
+	          session.close();
+	      }
+	      System.out.println("update("+_waiting_info+") --> updated");
+	      
+	      if(id==-1)
+	        {
+	        	return false;//修改失败
+	        }
+	        else
+	        {
+	        	return true;//修改成功
+	        }
+	 }
+		
 }

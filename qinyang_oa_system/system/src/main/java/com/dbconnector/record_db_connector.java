@@ -3,6 +3,7 @@ package com.dbconnector;
 import java.util.List;
 
 import com.dao.service_info_dao;
+import com.dao.work_info_dao;
 import com.dao.work_record_info_dao;
 import com.data.service_info;
 import com.data.work_record_info;
@@ -45,5 +46,12 @@ public class record_db_connector
 		record_total_num=_work_record_dao.get_record_total_num_by_by_user(work_record_creatorid);
 		record_total_page=(int)Math.ceil((float)record_total_num/11.0f);
 		return record_total_page;
+	}
+	
+	public static boolean update_record_status(work_record_info _work_record_info)
+	{
+		work_record_info_dao _work_record_dao=new work_record_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		boolean rs=_work_record_dao.update_record_status(_work_record_info);
+		return rs;
 	}
 }

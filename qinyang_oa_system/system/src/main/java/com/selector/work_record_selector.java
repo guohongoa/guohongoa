@@ -14,8 +14,12 @@ public class work_record_selector
 	 private String work_record_effect;     //台账工作落实情况
 	 private String work_record_addtime;    //系统添加时间
 	 
+	 private int    work_record_status;     //台账状态，0为未审批，1为已通过，2为未通过
+	 private String work_record_comment;    //审批附言
+	 
 	 private int          work_record_begin;   //开始的条目数
 	 private int          work_record_num;     //查询的条目数量
+	 
 	 
 	 public int get_work_record_begin()
 	 {
@@ -145,6 +149,26 @@ public class work_record_selector
 	  public void set_work_record_addtime(String work_record_addtime)
 	  {
 		  this.work_record_addtime=work_record_addtime;
+	  }
+	  
+	  public  int get_work_record_status()
+	  {
+		  return this. work_record_status;
+	  }
+	  
+	  public void set_work_record_status(int work_record_status)
+	  {
+		  this. work_record_status= work_record_status;
+	  }
+	  
+	  public String get_work_record_comment()
+	  {
+		  return this.work_record_comment;
+	  }
+	  
+	  public void set_work_record_comment(String work_record_comment)
+	  {
+		  this.work_record_comment=work_record_comment;
 	  }
 	 
 	 

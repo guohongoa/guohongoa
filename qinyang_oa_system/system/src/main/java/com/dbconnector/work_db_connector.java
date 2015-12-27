@@ -257,4 +257,18 @@ public class work_db_connector
 		     return _work_info;
 		}
 		
+		public static boolean update_waiting_status(work_waiting_info _waiting_info)
+		{
+			work_waiting_info_dao _work_waiting_info_dao=new work_waiting_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			boolean rs=_work_waiting_info_dao.update_waiting_status(_waiting_info);
+			return rs;
+		}
+		
+		public static boolean update_work_status(work_info _work_info)
+		{
+			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			boolean rs=_work_info_dao.update_work_status(_work_info);
+			return rs;
+		}
+		
 }

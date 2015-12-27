@@ -276,6 +276,7 @@ import com.data.relationship_info;
 					    	
 					    	if(relationship_type==1)
 					    	{
+					    		/*
 					    	//根据主客双方id查询部门id
 					    	int contact_owner_department_id=com.dbconnector.management_db_connector.get_employee_info_by_id(owner_employee_id).get_employee_department_id();
 					    	int contact_friend_department_id=com.dbconnector.management_db_connector.get_employee_info_by_id(friend_employee_id).get_employee_department_id();
@@ -287,6 +288,7 @@ import com.data.relationship_info;
 					    		_contact_relationship_info.set_contact_owner_department_id(contact_owner_department_id);
 					    		_contact_relationship_info.set_contact_friend_department_id(contact_friend_department_id);
 					    		boolean rs=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info);
+					    		*/
 					    		//-----------------------------------------------
 					    		String owner_name=com.dbconnector.management_db_connector.get_employee_info_by_id(owner_employee_id).get_employee_name();
 					    		String friend_name=com.dbconnector.management_db_connector.get_employee_info_by_id(friend_employee_id).get_employee_name();
@@ -300,7 +302,7 @@ import com.data.relationship_info;
 					    		com.dbconnector.contact_db_connector.insert_contact(_contact_info);
 					    		
 					    		//-----------------------------------------------
-					    		
+					    		/*
 					    		//正向反向更添加一次
 					    		contact_relationship_info _contact_relationship_info2=new contact_relationship_info();
 					    		_contact_relationship_info2.set_contact_owner_id(friend_employee_id);
@@ -308,7 +310,9 @@ import com.data.relationship_info;
 					    		_contact_relationship_info2.set_contact_relationship_type(0);
 					    		_contact_relationship_info2.set_contact_owner_department_id(contact_friend_department_id);
 					    		_contact_relationship_info2.set_contact_friend_department_id(contact_owner_department_id);
-					    		boolean rs2=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info2);
+					    		boolean rs2=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info2);]
+					    		8
+					    		*/
 					    		//--------------------------------------------------
 					    		contact_info _contact_info2=new contact_info();
 					    		_contact_info2.set_owner_id(friend_employee_id);
@@ -321,19 +325,12 @@ import com.data.relationship_info;
 					    		com.dbconnector.contact_db_connector.insert_contact(_contact_info2);
 					    		
 					    		//---------------------------------------------------
-					    		if(rs&&rs2==true)
-					    		{
 					    			mv.addObject("return_type", 1);
 					    			 mv.addObject("msg","<p >姓名：<span>"+friend_employee_info.get_employee_name()+"</span><span>（"+friend_employee_info.get_employee_phone()+"）</span></p>"+
 			    				             "<p>部门：<span>"+friend_employee_info.get_employee_department_name()+"</span></p>"+
 			    				             "<p>职位：<span>"+friend_employee_info.get_employee_position()+"</span></p>"
 			    				      );
-					    		}
-					    		else
-					    		{
-					    			mv.addObject("return_type", 0);
-							    	mv.addObject("msg", "添加错误");
-					    		}
+					    		
 					    	}
 					    	else if(relationship_type==0)
 					    	{
@@ -380,7 +377,7 @@ import com.data.relationship_info;
 					
 					
 					
-					ModelAndView mv=new ModelAndView("contact_person_check.do");
+					ModelAndView mv=new ModelAndView("contact_person_check.do?employee_id="+contact_request_sender_id);
 					System.out.println("---------------------"+contact_request_sender_id);
 					System.out.println("---------------------"+contact_request_receiver_id);
 					System.out.println("---------------------"+cotact_reuqest_sendmsg);
@@ -414,26 +411,29 @@ import com.data.relationship_info;
 					{
 						com.dbconnector.contact_db_connector.update_msg_status(contact_msg_id,1);//通过
 						
-						int contact_owner_department_id=com.dbconnector.management_db_connector.get_employee_info_by_id(_contact_add_request_info.get_contact_request_sender_id()).get_employee_department_id();
-				    	int contact_friend_department_id=com.dbconnector.management_db_connector.get_employee_info_by_id(_contact_add_request_info.get_contact_request_receiver_id()).get_employee_department_id();
-				    	
-				    	contact_relationship_info _contact_relationship_info=new contact_relationship_info();
-			    		_contact_relationship_info.set_contact_owner_id(_contact_add_request_info.get_contact_request_sender_id());
-			    		_contact_relationship_info.set_contact_friend_id(_contact_add_request_info.get_contact_request_receiver_id());
-			    		_contact_relationship_info.set_contact_relationship_type(0);
-			    		_contact_relationship_info.set_contact_owner_department_id(contact_owner_department_id);
-			    		_contact_relationship_info.set_contact_friend_department_id(contact_friend_department_id);
-			    		boolean rs1=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info);
+						
+			    		
+			    		String owner_name=com.dbconnector.management_db_connector.get_employee_info_by_id(_contact_add_request_info.get_contact_request_sender_id()).get_employee_name();
+			    		String friend_name=com.dbconnector.management_db_connector.get_employee_info_by_id(_contact_add_request_info.get_contact_request_receiver_id()).get_employee_name();
+			    		contact_info _contact_info=new contact_info();
+			    		_contact_info.set_owner_id(_contact_add_request_info.get_contact_request_sender_id());
+			    		_contact_info.set_friend_id(_contact_add_request_info.get_contact_request_receiver_id());
+			    		_contact_info.set_contact_type(0);
+			    		_contact_info.set_owner_name(owner_name);
+			    		_contact_info.set_friend_name(friend_name);
+			    		//向下插递归插入
+			    		com.dbconnector.contact_db_connector.insert_contact(_contact_info);
 			    		
 			    		//正向，反向更添加一次
 			    		
-			    		contact_relationship_info _contact_relationship_info2=new contact_relationship_info();
-			    		_contact_relationship_info2.set_contact_owner_id(_contact_add_request_info.get_contact_request_receiver_id());
-			    		_contact_relationship_info2.set_contact_friend_id(_contact_add_request_info.get_contact_request_sender_id());
-			    		_contact_relationship_info2.set_contact_relationship_type(1);
-			    		_contact_relationship_info2.set_contact_owner_department_id(contact_friend_department_id);
-			    		_contact_relationship_info2.set_contact_friend_department_id(contact_owner_department_id);
-			    		boolean rs2=com.dbconnector.contact_db_connector.insert_contact_relationship(_contact_relationship_info2);
+			    		contact_info _contact_info2=new contact_info();
+			    		_contact_info2.set_owner_id(_contact_add_request_info.get_contact_request_receiver_id());
+			    		_contact_info2.set_friend_id(_contact_add_request_info.get_contact_request_sender_id());
+			    		_contact_info2.set_contact_type(1);
+			    		_contact_info2.set_owner_name(friend_name);
+			    		_contact_info2.set_friend_name(owner_name);
+			    		//向下插递归插入
+			    		com.dbconnector.contact_db_connector.insert_contact(_contact_info2);
 			    		
 					}
 					else

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.data.department_info;
 import com.data.employee_info;
+import com.data.msg_info;
 import com.data.relationship_info;
 import com.data.service_info;
 import com.data.work_contact_info;
@@ -121,7 +122,7 @@ public class work_request_controller
 		   _work_info.set_work_addtime(work_addtime);
 		   //插入数据库
 		  //relationship_insert_db(_relationship_info);
-		  com.dbconnector.work_db_connector.work_insert_db(_work_info);
+		  int work_id=com.dbconnector.work_db_connector.work_insert_db(_work_info);
 		
 		
 	
@@ -130,6 +131,20 @@ public class work_request_controller
 		
 		 ModelAndView mv=new ModelAndView("redirect:work_all_check.do?employee_id="+work_sender_id+"&work_page=1");
 		  
+		 //插入消息列表
+		 msg_info _msg_info=new msg_info();
+		 _msg_info.set_msg_owner_id(work_receiver_id);
+		 _msg_info.set_msg_owner_name(work_receiver);
+		 _msg_info.set_msg_sender_id(work_sender_id);
+		 _msg_info.set_msg_sender(work_sender);;
+		 int msg_status=0;//未读消息为0
+		 _msg_info.set_msg_status(msg_status);
+		 _msg_info.set_msg_oid(work_id);
+		 _msg_info.set_msg_addtime(work_addtime);
+		 _msg_info.set_msg_content(work_content);
+		 
+		 
+		 boolean rs=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
 		   
 		   return mv;
 	}
@@ -524,6 +539,7 @@ public class work_request_controller
 			@RequestParam(value="work_id")     int  work_id,
 			@RequestParam(value="work_page")   int  work_page,
 			@RequestParam(value="waiting_id")  int  waiting_id
+			
 			)
 	{
 		ModelAndView mv=new ModelAndView("service_pending_detail.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
@@ -532,36 +548,193 @@ public class work_request_controller
 		return mv;
 	}
 	
-	@RequestMapping("work/work_pending_commit.do")
+	//工作审批通过
+	@RequestMapping("work/work_pending_agree.do")
 	public ModelAndView work_pending_commit_request(
 			@RequestParam(value="waiting_id")  int waiting_id,
-			@RequestParam(value="work_status") int work_status,
-			@RequestParam(value="work_comment") String work_comment
+			@RequestParam(value="work_comment") String work_comment,
+			@RequestParam(value="employee_id")  int employee_id,
+			@RequestParam(value="work_page")    int work_page,
+			@RequestParam(value="work_id")      int work_id
+			
 			)
 	{
-		ModelAndView mv=new ModelAndView();
+		System.out.println(employee_id);
+		System.out.println(work_page);
+		ModelAndView mv=new ModelAndView("redirect:work_pending.do?employee_id="+employee_id+"&work_page="+work_page);
+		work_waiting_info _waiting_info=new work_waiting_info();
+		
+	   System.out.println("waiting_id:"+waiting_id);
+		
+		_waiting_info.set_waiting_id(waiting_id);
+		int work_status=1;
+		_waiting_info.set_work_status(work_status);
+		_waiting_info.set_work_comment(work_comment);
+		
+		work_info _work_info=new work_info();
+		_work_info.set_work_id(work_id);
+		_work_info.set_work_comment(work_comment);
+		_work_info.set_work_status(work_status);
+		boolean rs2=com.dbconnector.work_db_connector.update_work_status(_work_info);
+		
+		boolean rs=com.dbconnector.work_db_connector.update_waiting_status(_waiting_info);
 		return mv;
 	}
 	
-	@RequestMapping("work/record_pending_commit.do")
-	public ModelAndView record_pending_commit_request(
+
+	//工作审批未通过
+	@RequestMapping("work/work_pending_disagree.do")
+	public ModelAndView work_pending_disagree_request(
 			@RequestParam(value="waiting_id")  int waiting_id,
-			@RequestParam(value="work_status") int work_status,
-			@RequestParam(value="work_comment") String work_comment
+			@RequestParam(value="work_comment") String work_comment,
+			@RequestParam(value="employee_id")  int employee_id,
+			@RequestParam(value="work_page")    int work_page,
+			@RequestParam(value="work_id")      int work_id
 			)
 	{
-		ModelAndView mv=new ModelAndView();
+		ModelAndView mv=new ModelAndView("redirect:work_pending.do?employee_id="+employee_id+"&work_page="+work_page);
+		work_waiting_info _waiting_info=new work_waiting_info();
+		
+		_waiting_info.set_waiting_id(waiting_id);
+		int work_status=2;
+		_waiting_info.set_work_status(work_status);
+		_waiting_info.set_work_comment(work_comment);
+		
+		boolean rs=com.dbconnector.work_db_connector.update_waiting_status(_waiting_info);
+		
+		work_info _work_info=new work_info();
+		_work_info.set_work_id(work_id);
+		_work_info.set_work_comment(work_comment);
+		_work_info.set_work_status(work_status);
+		boolean rs2=com.dbconnector.work_db_connector.update_work_status(_work_info);
 		return mv;
 	}
 	
-	@RequestMapping("work/service_pending_commit.do")
-	public ModelAndView service_pending_commit_request(
-			@RequestParam(value="waiting_id")  int waiting_id,
-			@RequestParam(value="work_status") int work_status,
-			@RequestParam(value="work_comment") String work_comment
-			)
-	{
-		ModelAndView mv=new ModelAndView();
-		return mv;
-	}
+	//工作审批通过
+		@RequestMapping("work/record_pending_agree.do")
+		public ModelAndView record_pending_commit_request(
+				@RequestParam(value="waiting_id")  int waiting_id,
+				@RequestParam(value="work_comment") String work_comment,
+				@RequestParam(value="employee_id")  int employee_id,
+				@RequestParam(value="work_page")    int work_page,
+				@RequestParam(value="work_id")      int work_id
+				
+				)
+		{
+			System.out.println(employee_id);
+			System.out.println(work_page);
+			ModelAndView mv=new ModelAndView("redirect:work_pending.do?employee_id="+employee_id+"&work_page="+work_page);
+			work_waiting_info _waiting_info=new work_waiting_info();
+			
+		   System.out.println("waiting_id:"+waiting_id);
+			
+			_waiting_info.set_waiting_id(waiting_id);
+			int work_status=1;
+			_waiting_info.set_work_status(work_status);
+			_waiting_info.set_work_comment(work_comment);
+			boolean rs=com.dbconnector.work_db_connector.update_waiting_status(_waiting_info);
+			
+			work_record_info _work_record_info=new work_record_info();
+			_work_record_info.set_work_record_id(work_id);
+			_work_record_info.set_work_record_comment(work_comment);
+			_work_record_info.set_work_record_status(work_status);
+			boolean rs2=com.dbconnector.record_db_connector.update_record_status(_work_record_info);
+			
+			
+			return mv;
+		}
+		
+
+		//工作审批未通过
+		@RequestMapping("work/record_pending_disagree.do")
+		public ModelAndView work_record_disagree_request(
+				@RequestParam(value="waiting_id")  int waiting_id,
+				@RequestParam(value="work_comment") String work_comment,
+				@RequestParam(value="employee_id")  int employee_id,
+				@RequestParam(value="work_page")    int work_page,
+				@RequestParam(value="work_id")      int work_id
+				)
+		{
+			ModelAndView mv=new ModelAndView("redirect:work_pending.do?employee_id="+employee_id+"&work_page="+work_page);
+			work_waiting_info _waiting_info=new work_waiting_info();
+			
+			_waiting_info.set_waiting_id(waiting_id);
+			int work_status=2;
+			_waiting_info.set_work_status(work_status);
+			_waiting_info.set_work_comment(work_comment);
+			
+			boolean rs=com.dbconnector.work_db_connector.update_waiting_status(_waiting_info);
+			
+			work_record_info _work_record_info=new work_record_info();
+			_work_record_info.set_work_record_id(work_id);
+			_work_record_info.set_work_record_comment(work_comment);
+			_work_record_info.set_work_record_status(work_status);
+			boolean rs2=com.dbconnector.record_db_connector.update_record_status(_work_record_info);
+			return mv;
+		}
+		
+		//工作审批通过
+		@RequestMapping("work/service_pending_agree.do")
+		public ModelAndView service_pending_commit_request(
+				@RequestParam(value="waiting_id")  int waiting_id,
+				@RequestParam(value="work_comment") String work_comment,
+				@RequestParam(value="employee_id")  int employee_id,
+				@RequestParam(value="work_page")    int work_page,
+				@RequestParam(value="work_id")      int work_id
+				
+				)
+		{
+			System.out.println(employee_id);
+			System.out.println(work_page);
+			ModelAndView mv=new ModelAndView("redirect:work_pending.do?employee_id="+employee_id+"&work_page="+work_page);
+			work_waiting_info _waiting_info=new work_waiting_info();
+			
+		   System.out.println("waiting_id:"+waiting_id);
+			
+			_waiting_info.set_waiting_id(waiting_id);
+			int work_status=1;
+			_waiting_info.set_work_status(work_status);
+			_waiting_info.set_work_comment(work_comment);
+			
+			service_info _service_info=new service_info();
+			_service_info.set_service_msgid(work_id);
+			_service_info.set_service_comment(work_comment);
+			_service_info.set_service_status(work_status);
+
+			boolean rs2=com.dbconnector.service_db_connector.update_service_status(_service_info);
+			
+			boolean rs=com.dbconnector.work_db_connector.update_waiting_status(_waiting_info);
+			return mv;
+		}
+		
+
+		//工作审批未通过
+		@RequestMapping("work/service_pending_disagree.do")
+		public ModelAndView service_pending_disagree_request(
+				@RequestParam(value="waiting_id")  int waiting_id,
+				@RequestParam(value="work_comment") String work_comment,
+				@RequestParam(value="employee_id")  int employee_id,
+				@RequestParam(value="work_page")    int work_page,
+				@RequestParam(value="work_id")      int work_id
+				)
+		{
+			ModelAndView mv=new ModelAndView("redirect:work_pending.do?employee_id="+employee_id+"&work_page="+work_page);
+			work_waiting_info _waiting_info=new work_waiting_info();
+			
+			_waiting_info.set_waiting_id(waiting_id);
+			int work_status=2;
+			_waiting_info.set_work_status(work_status);
+			_waiting_info.set_work_comment(work_comment);
+			
+			boolean rs=com.dbconnector.work_db_connector.update_waiting_status(_waiting_info);
+			
+			service_info _service_info=new service_info();
+			_service_info.set_service_msgid(work_id);
+			_service_info.set_service_comment(work_comment);
+			_service_info.set_service_status(work_status);
+			boolean rs2=com.dbconnector.service_db_connector.update_service_status(_service_info);
+			return mv;
+		}
+	
+	
 }

@@ -55,9 +55,8 @@
 </div>
 <!--主体-->
 <div class="fuwu_content">
-    <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>待审批</span></h4>
+    <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>汇报审批</span></h4>
     <div class="wfwxq">
-        <p><b>审批类型：</b>工作</p>
         <h5>工作主题：<span>${work_info.get_work_theme()}</span></h5>
         <p>工作目标：<span>${work_info.get_work_target()}</span></p>
         <p>申请人：<span>${work_info.get_work_sender()}</span></p>
@@ -71,12 +70,18 @@
         ${work_info.get_work_content()}
     </p>
     <p style="border: none;margin-top: 10px">
-        <textarea  style="width: 880px;height: 225px;border: 1px solid #c9c9c9;font-size: 14px;padding:10px" placeholder="请输入评论或建议"></textarea>
+        <form method="post" name="pending_form" id="form">
+        <textarea form="form" name="work_comment"  style="width: 880px;height: 225px;border: 1px solid #c9c9c9;font-size: 14px;padding:10px" placeholder="请输入评论或建议"></textarea>
+        <input type="hidden" name="waiting_id" value="${waiting_id}" >
+        <input type="hidden" name="work_page" value="${work_page}"/>
+        <input type="hidden" name="employee_id" value="${user_id}"/>
+        <input type="hidden" name="work_id" value="${work_info.get_work_id()}">
+        </form>
     </p>
     <div class="back">
-        <a href="work_pending_commit.do?waiting_id=${waiting_id}">同意</a> 
+        <a href="javascript:document.pending_form.action='work_pending_agree.do';document.pending_form.submit();">同意</a> 
         &nbsp; 
-        <a href="work_pending_commit.do?waiting_id=${waiting_id}" style="margin-right: -15px">不同意</a>
+        <a href="javascript:document.pending_form.action='work_pending_disagree.do';document.pending_form.submit();" style="margin-right: -15px">不同意</a>
     </div>
 </div>
 <div class="footer"></div>

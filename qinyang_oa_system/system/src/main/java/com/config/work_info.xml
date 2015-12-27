@@ -27,6 +27,7 @@
 		<result property="work_related_id" column="work_related_id"/>
 		<result property="work_times" column="work_times"/>
 		<result property="work_category" column="work_category"/>
+		<result property="work_comment" column="work_comment"/>
 		
 	</resultMap>
 	
@@ -101,6 +102,15 @@
 	<select id="select_by_work_id" parameterType="int" resultMap="result">
 		SELECT * FROM work_info WHERE work_id = #{work_id};
 	</select>
+	
+	
+	
+	<select id="update_work_status" parameterType="work_info" resultMap="result">
+		UPDATE work_info
+        SET work_status       = #{work_status},
+            work_comment       = #{work_comment}
+        WHERE work_id = #{work_id} 
+     </select>
 	
 </mapper>
 

@@ -407,4 +407,28 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 	        System.out.println("select_by_workid("+work_id+") --> "+_work_info);
 	        return _work_info;
 	 }
+	 
+	 public boolean update_work_status(work_info _work_info)
+	 {
+		 int id = -1;
+	      SqlSession session = sqlSessionFactory.openSession();
+	 
+	      try {
+	          id = session.update("work_info.update_work_status",_work_info);
+	 
+	      } finally {
+	          session.commit();
+	          session.close();
+	      }
+	      System.out.println("update("+_work_info+") --> updated");
+	      
+	      if(id==-1)
+	        {
+	        	return false;//修改失败
+	        }
+	        else
+	        {
+	        	return true;//修改成功
+	        }
+	 }
 }

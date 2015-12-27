@@ -56,11 +56,18 @@
 		SELECT * FROM service_info WHERE service_village_id = #{service_village_id} AND service_type= #{service_type} limit #{service_begin},#{service_num};
 	</select>
 
-    
-     
      <select id=" select_by_service_msgid" parameterType="int" resultMap="result">
 		SELECT * FROM service_info WHERE service_msgid = #{service_msgid};
 	</select>
+	
+	
+	
+	<select id="update_service_status" parameterType="service_info" resultMap="result">
+		UPDATE service_info
+        SET service_status       = #{service_status},
+            service_comment      = #{service_comment}
+        WHERE service_msgid = #{service_msgid} 
+     </select>
      
 </mapper>
 

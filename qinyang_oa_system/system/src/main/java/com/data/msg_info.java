@@ -10,6 +10,10 @@ public class msg_info
   private String  msg_content;       //消息内容
   private int     msg_status;        //消息状态
   
+  private int     msg_oid;           //消息原始id
+  private int     msg_sender_id;     //消息发送者id
+  private String  msg_sender;
+  
   public int get_msg_id()
   {
 	  return this.msg_id;
@@ -78,6 +82,36 @@ public class msg_info
   public void set_msg_status(int  msg_status)
   {
 	  this.msg_status=msg_status;
+  }
+  
+  public int get_msg_oid()
+  {
+	  return this.msg_oid;
+  }
+  
+  public void set_msg_oid(int msg_oid)
+  {
+	  this.msg_oid=msg_oid;
+  }
+  
+  public int get_msg_sender_id()
+  {
+	  return this.msg_sender_id;
+  }
+  
+  public void set_msg_sender_id(int msg_sender_id)
+  {
+	  this.msg_sender_id=msg_sender_id;
+  }
+  
+  public String get_msg_sender()
+  {
+	  return this.msg_sender;
+  }
+  
+  public void set_msg_sender(String msg_sender)
+  {
+	  this.msg_sender=msg_sender;
   }
   
   

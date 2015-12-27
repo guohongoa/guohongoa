@@ -20,6 +20,9 @@
 		<result property="work_record_theme" column="work_record_theme" />
 		<result property="work_record_leader_id" column="work_record_leader_id" />
 		
+		<result property="work_record_status" column="work_record_status" />
+		<result property="work_record_comment" column="work_record_comment" />
+		
 	</resultMap>
 
 	<insert id="insert" parameterType="work_record_info" useGeneratedKeys="true" keyProperty="work_record_id">
@@ -38,6 +41,15 @@
 	<select id="select_by_work_record_id" parameterType="int" resultMap="result">
 		SELECT * FROM work_record_info WHERE work_record_id = #{work_record_id};
 	</select>
+	
+	
+	
+	<select id="update_record_status" parameterType="work_record_info" resultMap="result">
+		UPDATE work_record_info
+        SET work_record_status  = #{work_record_status},
+            work_record_comment = #{work_record_comment}
+        WHERE work_record_id = #{work_record_id} 
+     </select>
 
 </mapper>
 

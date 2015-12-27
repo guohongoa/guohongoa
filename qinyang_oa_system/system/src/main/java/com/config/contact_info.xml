@@ -34,6 +34,12 @@
 	 <select id="select_contact_by_id" parameterType="int" resultMap="result">
 		SELECT * FROM contact_info WHERE owner_id = #{owner_id};
 	</select>
+	
+	
+	
+	<select id="get_by_double_id" parameterType="contact_info" resultMap="result">
+		SELECT * FROM contact_info WHERE owner_id = #{owner_id} AND friend_id = #{friend_id};
+	</select>
 
 </mapper>
 

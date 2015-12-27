@@ -322,13 +322,32 @@ public static void insert_contact(contact_info _contact_info)
 {
 	contact_info_dao _contact_info_dao=new contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 	employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-	//添加上级只添加一个直接上级，不需要递归
+	//添加上级，添加一个直属上级，同时递归该上级的上级添加显示添加人
 	if(_contact_info.get_contact_type()==0)
 	{
 		
 		int is_direct=1;//直接联系人为1
 		_contact_info.set_is_direct(is_direct);
 		_contact_info_dao.insert(_contact_info);
+		int contact_type=0;
+		List<employee_info> indirect_friend_list=new ArrayList<employee_info>();
+		indirect_friend_list=get_indirect_friend_list(_contact_info_dao,_employee_info_dao,_contact_info.get_friend_id(),indirect_friend_list,contact_type);
+		for(employee_info friend_info:indirect_friend_list)
+		{
+		    System.out.println("dafdafdfa");
+			contact_info _contact_info2=new contact_info();
+			_contact_info2.set_owner_id(friend_info.get_employee_id());
+			_contact_info2.set_owner_name(friend_info.get_employee_name());
+			_contact_info2.set_friend_id(_contact_info.get_owner_id());
+			_contact_info2.set_friend_name(_contact_info.get_owner_name());
+			_contact_info2.set_contact_type(0);//上级
+			_contact_info2.set_is_direct(0);//非直接联系人
+			if(not_exist(_contact_info_dao,_contact_info2))
+			{
+			_contact_info_dao.insert(_contact_info2);
+			}
+			
+		}
 	}
 	//需要递归
 	else if(_contact_info.get_contact_type()==1)
@@ -339,18 +358,23 @@ public static void insert_contact(contact_info _contact_info)
 		
 		//递归的间接联系人
 		List<employee_info> indirect_friend_list=new ArrayList<employee_info>();
-		indirect_friend_list=get_indirect_friend_list(_contact_info_dao,_employee_info_dao,_contact_info.get_friend_id(),indirect_friend_list);
+		int contact_type=1;
+		indirect_friend_list=get_indirect_friend_list(_contact_info_dao,_employee_info_dao,_contact_info.get_friend_id(),indirect_friend_list,contact_type);
 		//将所有间接联系人插入数据库
 		for(employee_info friend_info:indirect_friend_list)
 		{
+			System.out.println("oooo");
 			contact_info _contact_info2=new contact_info();
 			_contact_info2.set_owner_id(_contact_info.get_owner_id());
 			_contact_info2.set_owner_name(_contact_info.get_owner_name());
 			_contact_info2.set_friend_id(friend_info.get_employee_id());
 			_contact_info2.set_friend_name(friend_info.get_employee_name());
-			_contact_info2.set_contact_type(1);//下属为1
+			_contact_info2.set_contact_type(1);//上级为0
 			_contact_info2.set_is_direct(0);//非直接联系人
+			if(not_exist(_contact_info_dao,_contact_info2))
+			{
 			_contact_info_dao.insert(_contact_info2);
+			}
 			
 		}
 	}
@@ -453,12 +477,12 @@ public static List<department_info> get_department_list(List<employee_info> frie
 }
 
 //递归调用
-private static  List<employee_info> get_indirect_friend_list(contact_info_dao _contact_info_dao,employee_info_dao _employee_info_dao,int firend_id,List<employee_info> indirect_friend_list)
+private static  List<employee_info> get_indirect_friend_list(contact_info_dao _contact_info_dao,employee_info_dao _employee_info_dao,int firend_id,List<employee_info> indirect_friend_list,int contact_type)
 {
     contact_info _contact_info=new contact_info();
     _contact_info.set_owner_id(firend_id);//查询人
     _contact_info.set_is_direct(1);//查询直接联系人
-    _contact_info.set_contact_type(1);//查询下级
+    _contact_info.set_contact_type(contact_type);
     
     List<contact_info> contact_info_list=_contact_info_dao.get_direct_contact_list_by_id(_contact_info);
     
@@ -467,11 +491,30 @@ private static  List<employee_info> get_indirect_friend_list(contact_info_dao _c
     	int next_friend_id=_contact_info_temp.get_friend_id();
     	employee_info next_friend_employee_info=_employee_info_dao.select_by_employee_id(next_friend_id);
     	indirect_friend_list.add(next_friend_employee_info);
-    	indirect_friend_list=get_indirect_friend_list(_contact_info_dao, _employee_info_dao, next_friend_id, indirect_friend_list);
+    	indirect_friend_list=get_indirect_friend_list(_contact_info_dao, _employee_info_dao, next_friend_id, indirect_friend_list,contact_type);
     }
     
     
 	return indirect_friend_list;
+}
+
+//判断是否添加过，避免重复添加,未添加过为true，添加过为false
+private static boolean not_exist(contact_info_dao _contact_info_dao,contact_info _contact_info)
+{
+	boolean not_exist;
+	contact_info _contact_info2=_contact_info_dao.get_by_double_id(_contact_info);
+	
+	if(_contact_info2!=null)
+	{
+		not_exist=false;
+	}
+	else
+	{
+		not_exist=true;
+	}
+	
+	
+	return not_exist;
 }
 
 

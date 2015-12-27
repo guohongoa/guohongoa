@@ -32,7 +32,8 @@
 		<typeAlias alias="work_task_selector" type="com.selector.work_task_selector"/>
 		<typeAlias alias="work_waiting_selector" type="com.selector.work_waiting_selector"/>
 		<typeAlias alias="contact_info" type="com.data.contact_info"/>
-		<typeAlias alias="msg_info" type="com.data.msg_info"/>								
+		<typeAlias alias="msg_info" type="com.data.msg_info"/>
+		<typeAlias alias="msg_selector" type="com.selector.msg_selector"/>								
 	</typeAliases>
 
 	<environments default="development">

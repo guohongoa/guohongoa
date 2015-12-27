@@ -9,6 +9,7 @@ import com.dao.service_info_dao;
 import com.dao.service_village_county_info_dao;
 import com.dao.service_village_info_dao;
 import com.dao.work_contact_info_dao;
+import com.dao.work_info_dao;
 import com.data.service_info;
 import com.data.service_village_county_info;
 import com.data.service_village_info;
@@ -287,6 +288,13 @@ public class service_db_connector
 					work_contact_info_dao _work_contact_info_dao=new work_contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 					 List<work_contact_info> work_contact_list= _work_contact_info_dao.get_work_contact_list_by_owner_id(owner_id);
 					 return work_contact_list;
+				}
+				
+				public static boolean update_service_status(service_info _service_info)
+				{
+					service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					boolean rs=_service_info_dao.update_service_status(_service_info);
+					return rs;
 				}
 				
 }

@@ -95,4 +95,28 @@ public class work_record_info_dao
 	        System.out.println("select_by_work_record_id --> "+_work_record_info.get_work_record_id());
 	        return _work_record_info;
 	 }
+	 
+	 public boolean update_record_status(work_record_info _work_record_info)
+	 {
+		 int id = -1;
+	      SqlSession session = sqlSessionFactory.openSession();
+	 
+	      try {
+	          id = session.update("work_record_info.update_record_status",_work_record_info);
+	 
+	      } finally {
+	          session.commit();
+	          session.close();
+	      }
+	      System.out.println("update("+_work_record_info+") --> updated");
+	      
+	      if(id==-1)
+	        {
+	        	return false;//修改失败
+	        }
+	        else
+	        {
+	        	return true;//修改成功
+	        }
+	 }
 }
