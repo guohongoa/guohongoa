@@ -123,6 +123,13 @@ public class management_db_connector
 		 employee_info _employee_info=_employee_info_dao.select_by_employee_id(employee_id);
 	     return _employee_info;
 	 }
+	 //根据手机号查询用户信息
+	 public static employee_info get_employee_info_by_phone(String employee_phone)
+	 {
+		 employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 employee_info _employee_info=_employee_info_dao.select_by_user_phone(employee_phone);
+	     return _employee_info;
+	 }
 	 
 	 public static boolean update_employee_info(employee_info _employee_info)
 	 {

@@ -2,7 +2,6 @@ package com.viewcontroller;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +16,7 @@ import com.data.service_group_info;
 import com.data.service_village_county_info;
 import com.data.service_village_info;
 import com.data.work_contact_info;
-import com.mybatis.mybatis_connection_factory;
+
 
 //所有管理页面请求
 @Controller
@@ -408,16 +407,7 @@ public class management_request_controller
 		     }
 		   
 		    
-		     String phone=_employee_info.get_employee_phone();
-				String employee_password;
-				if(phone.length()>5)
-				{
-					employee_password=phone.substring(phone.length()-6, phone.length());
-				}
-				else
-				{
-					employee_password="123456";
-				}
+			 String employee_password="123456";
 				
 				
 				_employee_info.set_employee_password(employee_password);
@@ -428,7 +418,11 @@ public class management_request_controller
 			 DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			 String employee_addtime=format.format(date);
 			 _employee_info.set_employee_addtime(employee_addtime);
+			 
+			 employee_info _employee_info3=com.dbconnector.management_db_connector.get_employee_info_by_phone(employee_phone);
 			   
+			 if(_employee_info3==null)
+			 {
 			 int employee_id=com.dbconnector.management_db_connector.employee_insert_db(_employee_info);
 			 
 			 if(employee_leader_id!=-1)
@@ -438,6 +432,7 @@ public class management_request_controller
 			 
 			 com.dbconnector.contact_db_connector.insert_work_contact_info(employee_id,employee_leader_id,0,owner_name,friend_name);
 			 com.dbconnector.contact_db_connector.insert_work_contact_info(employee_leader_id,employee_id,1,friend_name,owner_name);
+			 }
 			 }
 			 ModelAndView mv=new ModelAndView("redirect:employee_check.do?employee_page=1");
 			 return mv;
@@ -493,8 +488,14 @@ public class management_request_controller
 				 @RequestParam(value="employee_page")    int employee_page
 				 )
 		 {
+			//将所有联系人相关关系均删除
+			employee_info _employee_info=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id); 
+			int employee_old_leader_id=_employee_info.get_employee_leader_id();
+			com.dbconnector.contact_db_connector.del_work_contact_by_double_id(employee_id,employee_old_leader_id);
+			
 			
 			com.dbconnector.management_db_connector.del_employee_from_id(employee_id);
+			
 			 ModelAndView mv=new ModelAndView("redirect:employee_check.do?employee_page="+employee_page);//页面重定向
 			return mv;
 		 }
@@ -514,6 +515,14 @@ public class management_request_controller
 				List<employee_info> employee_info_list=com.dbconnector.management_db_connector.get_employee_info_list();
 				List<department_info> department_info_list=com.dbconnector.management_db_connector.get_all_department_info_list();
 				
+				
+				//去除自己
+				  for(int i=0;i<employee_info_list.size();i++){  
+			            if(employee_info_list.get(i).get_employee_id()==employee_id)
+			            {  
+			            	employee_info_list.remove(i);  
+			            }  
+			        }  
 				
 				mv.addObject("employee_info_list",employee_info_list);
 				mv.addObject("department_info_list",department_info_list);
@@ -536,6 +545,7 @@ public class management_request_controller
 					@RequestParam(value="employee_phone")             String  employee_phone,
 					@RequestParam(value="employee_duty")              String  employee_duty,
 					
+					@RequestParam(value="employee_old_leader_id")      int employee_old_leader_id,
 					@RequestParam(value="employee_page")              String  employee_page
 					
 					
@@ -581,15 +591,30 @@ public class management_request_controller
 			    	  String employee_leader_name=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_leader_id).get_employee_name();
 					  System.out.println(employee_leader_name);
 					  _employee_info.set_employee_leader_name(employee_leader_name);
+					//修改联系人
+					  
+					  
+			
+						 String owner_name=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_id).get_employee_name();
+						 String friend_name=com.dbconnector.management_db_connector.get_employee_info_by_id(employee_leader_id).get_employee_name();
+						 
+						 com.dbconnector.contact_db_connector.insert_work_contact_info(employee_id,employee_leader_id,0,owner_name,friend_name);
+						 com.dbconnector.contact_db_connector.insert_work_contact_info(employee_leader_id,employee_id,1,friend_name,owner_name);
+
 			     }
 			     else
 			     {
 			    	 _employee_info.set_employee_leader_name("无");
+						
+					
 			     }
 				
-				
+			     com.dbconnector.contact_db_connector.del_work_contact_by_double_id(employee_id,employee_old_leader_id);
 				
 				boolean rs=com.dbconnector.management_db_connector.update_employee_info(_employee_info);
+				
+				
+				
 				ModelAndView mv=new ModelAndView("redirect:/management/employee_check.do?employee_page="+employee_page);
 				return mv;
 				

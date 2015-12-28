@@ -74,4 +74,19 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 	        System.out.println("selectAll() --> "+ work_contact_info_list);
 	        return  work_contact_info_list;
 	 }
+	
+	public void del_by_double_id(work_contact_info _work_contact_info)
+	{
+		 SqlSession session = sqlSessionFactory.openSession();
+		  
+	        try {
+	            session.delete("work_contact_info.delete_by_double_id", _work_contact_info);
+	        } finally {
+	            session.commit();
+	            session.close();
+	        }
+	        System.out.println("delete("+_work_contact_info+")");
+	}
+	
+	
 }

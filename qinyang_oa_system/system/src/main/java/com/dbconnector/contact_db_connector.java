@@ -517,6 +517,22 @@ private static boolean not_exist(contact_info_dao _contact_info_dao,contact_info
 	return not_exist;
 }
 
+//删除工作联系人
+public static void del_work_contact_by_double_id(int employee_id,int employee_old_leader_id)
+{
+	 work_contact_info_dao _work_contact_info_dao=new work_contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	 work_contact_info contact_info1=new work_contact_info();
+	 contact_info1.set_friend_id(employee_id);
+	 contact_info1.set_owner_id(employee_old_leader_id);
+	 work_contact_info contact_info2=new work_contact_info();
+	 contact_info2.set_friend_id(employee_old_leader_id);
+	 contact_info2.set_owner_id(employee_id);
+	 _work_contact_info_dao.del_by_double_id(contact_info1);
+	 _work_contact_info_dao.del_by_double_id(contact_info2);
+}
+
+
+
 
 	 
 

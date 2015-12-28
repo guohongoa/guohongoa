@@ -23,28 +23,20 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href=""><i class="icon icon_m"><em>99</em></i>消息</a></li>
+                <li><a href=""><i class="icon icon_m"></i>消息</a></li>
                 <li><a href=""><i class="icon"></i>设置</a></li>
                 <li><a href=""><i></i>退出</a></li>
             </ul>
-            <div>
-                <ul class="hide">
-                    <li><a href=""><span>888</span>条工作提醒</a></li>
-                    <li><a href=""><span>2</span>条服务提醒</a></li>
-                    <li><a href=""><span>3</span>条待审核记录</a></li>
-                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>
 <!--nav为导航条部分-->
 <div class="nav">
     <ul>
-        <li><a href="../" class="bordernone">首页</a></li>
-        <li><a href="../contact/contact_person_check.do">四联</a></li>
-        <li><a href="../service/service_village_check.do">五服务</a></li>
-        <li><a href="../work/">工作</a></li>
+        <li><a href="" class="bordernone">首页</a></li>
+        <li><a href="">四联</a></li>
+        <li><a href="">五服务</a></li>
+        <li><a href="">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>

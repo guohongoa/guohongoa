@@ -25,18 +25,10 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href="../msg/check_unread_msg.do?employee_id=${user_id}&msg_page=1"><i class="icon icon_m"><em>99</em></i>消息</a></li>
+                <li><a href="../msg/check_unread_msg.do?employee_id=${user_id}&msg_page=1"><i class="icon icon_m"></i>消息</a></li>
                 <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
                 <li><a href="../logout"><i></i>退出</a></li>
             </ul>
-            <div>
-                <ul class="hide">
-                    <li><a href=""><span>888</span>条工作提醒</a></li>
-                    <li><a href=""><span>2</span>条服务提醒</a></li>
-                    <li><a href=""><span>3</span>条待审核记录</a></li>
-                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>

@@ -468,8 +468,8 @@
     $(document).ready(function(){
          $("#tel_sbm").click(function(){
          var employee_phone=$("#tel").val();
-         //var path="guohong";
-         var path="system";
+         var path="guohong";
+         //var path="system";
          //用户的id，需做登录检测
          //尝试添加
          var owner_employee_id=$("#owner_employee_id").val();

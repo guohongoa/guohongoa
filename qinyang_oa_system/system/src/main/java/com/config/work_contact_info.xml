@@ -26,6 +26,12 @@
 	<select id="select_by_owner_id" parameterType="work_contact_info" resultMap="result">
 		SELECT * FROM work_contact_info WHERE owner_id = #{owner_id} AND relationship_type = #{relationship_type};
 	</select>
+	
+	<delete id="delete_by_double_id" parameterType="work_contact_info">
+        DELETE FROM work_contact_info WHERE owner_id = #{owner_id} AND friend_id = #{friend_id};
+    </delete>
+    
+      
 </mapper>
 
 
