@@ -474,6 +474,23 @@ public class work_request_controller
 		   //插入数据库
 		  //relationship_insert_db(_relationship_info);
 		  com.dbconnector.work_db_connector.work_insert_db(_work_info);
+		  
+		//插入消息列表
+			 msg_info _msg_info=new msg_info();
+			 _msg_info.set_msg_owner_id(work_receiver_id);
+			 _msg_info.set_msg_owner_name(work_receiver);
+			 _msg_info.set_msg_sender_id(work_sender_id);
+			 _msg_info.set_msg_sender(work_sender);;
+			 int msg_status=0;//未读消息为0
+			 _msg_info.set_msg_status(msg_status);
+			 _msg_info.set_msg_oid(work_related_id);
+			 _msg_info.set_msg_addtime(work_addtime);
+			 _msg_info.set_msg_content(work_content);
+			 _msg_info.set_msg_type(4);//进度反馈为4
+			 
+			 
+			 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
+			 
 	     return mv;
 	}
 	
@@ -484,11 +501,23 @@ public class work_request_controller
 			@RequestParam(value="work_page") int work_page
 			)
 	{
+		String feedback_content=null;//反馈的内容
+		int feedback_ratio=0;        //完成进度
+		
 		ModelAndView mv=new ModelAndView("work_arrange_detail.jsp?work_page="+work_page);
 		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
 		employee_info receiver_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_work_info.get_work_receiver_id());
+		work_info feedback_info=com.dbconnector.work_db_connector.get_work_info_by_work_related_id(work_id);
+		if(feedback_info!=null)
+		{
+			feedback_content=feedback_info.get_work_content();
+			feedback_ratio=feedback_info.get_work_percentage();
+		}
+		
 		mv.addObject("receiver_phone",receiver_info.get_employee_phone());
 		mv.addObject("work_info", _work_info);
+		mv.addObject("feedback_content",feedback_content);
+		mv.addObject("feedback_ratio",feedback_ratio);
 		return mv;
 	}
 	
@@ -498,9 +527,12 @@ public class work_request_controller
 			@RequestParam(value="work_page") int work_page
 			)
 	{
+		
+		
 		ModelAndView mv=new ModelAndView("work_report_detail.jsp?work_page="+work_page);
 		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
 		employee_info sender_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_work_info.get_work_sender_id());
+		
 		mv.addObject("sender_phone",sender_info.get_employee_phone());
 		mv.addObject("work_info", _work_info);
 		return mv;
@@ -595,6 +627,29 @@ public class work_request_controller
 		boolean rs2=com.dbconnector.work_db_connector.update_work_status(_work_info);
 		
 		boolean rs=com.dbconnector.work_db_connector.update_waiting_status(_waiting_info);
+		
+		work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+		
+		
+		//插入消息列表
+		Date date=new Date();
+		DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String work_addtime=format.format(date);
+		
+		 msg_info _msg_info=new msg_info();
+		 _msg_info.set_msg_owner_id(_work_waiting_info.get_work_sender_id());
+		 _msg_info.set_msg_owner_name(_work_waiting_info.get_work_sender());
+		 _msg_info.set_msg_sender_id(_work_waiting_info.get_work_receiver_id());
+		 _msg_info.set_msg_sender(_work_waiting_info.get_work_receiver());;
+		 int msg_status=0;//未读消息为0
+		 _msg_info.set_msg_status(msg_status);
+		 _msg_info.set_msg_oid(_work_waiting_info.get_work_id());
+		 _msg_info.set_msg_addtime(work_addtime);
+		 _msg_info.set_msg_content(work_comment);
+		 _msg_info.set_msg_type(5);//工作审批反馈为5
+		 
+		 
+		 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
 		return mv;
 	}
 	
@@ -624,6 +679,30 @@ public class work_request_controller
 		_work_info.set_work_comment(work_comment);
 		_work_info.set_work_status(work_status);
 		boolean rs2=com.dbconnector.work_db_connector.update_work_status(_work_info);
+		
+work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+		
+		
+		//插入消息列表
+		Date date=new Date();
+		DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String work_addtime=format.format(date);
+		
+		 msg_info _msg_info=new msg_info();
+		 _msg_info.set_msg_owner_id(_work_waiting_info.get_work_sender_id());
+		 _msg_info.set_msg_owner_name(_work_waiting_info.get_work_sender());
+		 _msg_info.set_msg_sender_id(_work_waiting_info.get_work_receiver_id());
+		 _msg_info.set_msg_sender(_work_waiting_info.get_work_receiver());;
+		 int msg_status=0;//未读消息为0
+		 _msg_info.set_msg_status(msg_status);
+		 _msg_info.set_msg_oid(_work_waiting_info.get_work_id());
+		 _msg_info.set_msg_addtime(work_addtime);
+		 _msg_info.set_msg_content(work_comment);
+		 _msg_info.set_msg_type(5);//工作审批樊哙为5
+		 
+		 
+		 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
+		
 		return mv;
 	}
 	
@@ -657,6 +736,28 @@ public class work_request_controller
 			_work_record_info.set_work_record_status(work_status);
 			boolean rs2=com.dbconnector.record_db_connector.update_record_status(_work_record_info);
 			
+			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+			
+			
+			//插入消息列表
+			Date date=new Date();
+			DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String work_addtime=format.format(date);
+			
+			 msg_info _msg_info=new msg_info();
+			 _msg_info.set_msg_owner_id(_work_waiting_info.get_work_sender_id());
+			 _msg_info.set_msg_owner_name(_work_waiting_info.get_work_sender());
+			 _msg_info.set_msg_sender_id(_work_waiting_info.get_work_receiver_id());
+			 _msg_info.set_msg_sender(_work_waiting_info.get_work_receiver());;
+			 int msg_status=0;//未读消息为0
+			 _msg_info.set_msg_status(msg_status);
+			 _msg_info.set_msg_oid(_work_waiting_info.get_work_id());
+			 _msg_info.set_msg_addtime(work_addtime);
+			 _msg_info.set_msg_content(work_comment);
+			 _msg_info.set_msg_type(7);//台账审批反馈为7
+			 
+			 
+			 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
 			
 			return mv;
 		}
@@ -687,6 +788,29 @@ public class work_request_controller
 			_work_record_info.set_work_record_comment(work_comment);
 			_work_record_info.set_work_record_status(work_status);
 			boolean rs2=com.dbconnector.record_db_connector.update_record_status(_work_record_info);
+			
+			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+			
+			
+			//插入消息列表
+			Date date=new Date();
+			DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String work_addtime=format.format(date);
+			
+			 msg_info _msg_info=new msg_info();
+			 _msg_info.set_msg_owner_id(_work_waiting_info.get_work_sender_id());
+			 _msg_info.set_msg_owner_name(_work_waiting_info.get_work_sender());
+			 _msg_info.set_msg_sender_id(_work_waiting_info.get_work_receiver_id());
+			 _msg_info.set_msg_sender(_work_waiting_info.get_work_receiver());;
+			 int msg_status=0;//未读消息为0
+			 _msg_info.set_msg_status(msg_status);
+			 _msg_info.set_msg_oid(_work_waiting_info.get_work_id());
+			 _msg_info.set_msg_addtime(work_addtime);
+			 _msg_info.set_msg_content(work_comment);
+			 _msg_info.set_msg_type(7);//台账审批反馈为7
+			 
+			 
+			 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
 			return mv;
 		}
 		
@@ -721,6 +845,29 @@ public class work_request_controller
 			boolean rs2=com.dbconnector.service_db_connector.update_service_status(_service_info);
 			
 			boolean rs=com.dbconnector.work_db_connector.update_waiting_status(_waiting_info);
+			
+			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+			
+			
+			//插入消息列表
+			Date date=new Date();
+			DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String work_addtime=format.format(date);
+			
+			 msg_info _msg_info=new msg_info();
+			 _msg_info.set_msg_owner_id(_work_waiting_info.get_work_sender_id());
+			 _msg_info.set_msg_owner_name(_work_waiting_info.get_work_sender());
+			 _msg_info.set_msg_sender_id(_work_waiting_info.get_work_receiver_id());
+			 _msg_info.set_msg_sender(_work_waiting_info.get_work_receiver());;
+			 int msg_status=0;//未读消息为0
+			 _msg_info.set_msg_status(msg_status);
+			 _msg_info.set_msg_oid(_work_waiting_info.get_work_id());
+			 _msg_info.set_msg_addtime(work_addtime);
+			 _msg_info.set_msg_content(work_comment);
+			 _msg_info.set_msg_type(6);//五服务审批反馈为6
+			 
+			 
+			 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
 			return mv;
 		}
 		
@@ -750,6 +897,29 @@ public class work_request_controller
 			_service_info.set_service_comment(work_comment);
 			_service_info.set_service_status(work_status);
 			boolean rs2=com.dbconnector.service_db_connector.update_service_status(_service_info);
+			
+			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+			
+			
+			//插入消息列表
+			Date date=new Date();
+			DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String work_addtime=format.format(date);
+			
+			 msg_info _msg_info=new msg_info();
+			 _msg_info.set_msg_owner_id(_work_waiting_info.get_work_sender_id());
+			 _msg_info.set_msg_owner_name(_work_waiting_info.get_work_sender());
+			 _msg_info.set_msg_sender_id(_work_waiting_info.get_work_receiver_id());
+			 _msg_info.set_msg_sender(_work_waiting_info.get_work_receiver());;
+			 int msg_status=0;//未读消息为0
+			 _msg_info.set_msg_status(msg_status);
+			 _msg_info.set_msg_oid(_work_waiting_info.get_work_id());
+			 _msg_info.set_msg_addtime(work_addtime);
+			 _msg_info.set_msg_content(work_comment);
+			 _msg_info.set_msg_type(6);//五服务审批反馈为6
+			 
+			 
+			 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
 			return mv;
 		}
 	

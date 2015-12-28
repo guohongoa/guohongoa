@@ -274,8 +274,15 @@ public class work_db_connector
 		public static work_waiting_info get_work_waiting_info_by_work_id(int work_id)
 		{
 			work_waiting_info_dao _work_waiting_info_dao=new work_waiting_info_dao(mybatis_connection_factory.getSqlSessionFactory());
-			work_waiting_info _work_waiting_info=_work_waiting_info_dao.get_wating_info_by_work_id(work_id);
+			work_waiting_info _work_waiting_info=_work_waiting_info_dao.get_waiting_info_by_work_id(work_id);
 			return _work_waiting_info;
+		}
+		
+		public static work_info get_work_info_by_work_related_id(int work_related_id)
+		{
+			work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			work_info _work_info=_work_info_dao.get_work_info_by_work_related_id(work_related_id);
+			return _work_info;
 		}
 		
 }

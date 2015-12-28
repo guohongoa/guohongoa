@@ -431,4 +431,18 @@ private SqlSessionFactory sqlSessionFactory=null;  //数据库链接器
 	        	return true;//修改成功
 	        }
 	 }
+	 
+	public work_info get_work_info_by_work_related_id(int work_related_id)
+	 {
+		 work_info _work_info = null;
+	        SqlSession session = sqlSessionFactory.openSession();
+	        try {
+	            _work_info = session.selectOne("work_info.get_work_info_by_work_related_id", work_related_id);
+	 
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("ccc("+work_related_id+") --> "+_work_info);
+	        return _work_info;
+	 }
 }

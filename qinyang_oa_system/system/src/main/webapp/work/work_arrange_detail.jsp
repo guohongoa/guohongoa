@@ -67,11 +67,11 @@
         <span style="padding-left:20px;">完成进度</span>
         <span>
            <c:choose>
-              <c:when test="${work_info.get_work_percentage()==0}">
+              <c:when test="${feedback_ratio==0}">
                   <span style="color:#cc0000;font-size:16px;">  0%</span>
               </c:when>
               <c:otherwise>
-                  <span style="color:#cc0000;font-size:16px;">${work_info.get_work_percentage()}0%</span>
+                  <span style="color:#cc0000;font-size:16px;">${feedback_ratio}0%</span>
               </c:otherwise>
            </c:choose>
         </span>
@@ -80,7 +80,14 @@
       ${work_info.get_work_content()}
     </p>
     <p style="border-top: none;padding: 10px 20px">
-       下级反馈的内容
+       <c:choose>
+              <c:when test="${empty feedback_content}">
+                  尚无反馈内容
+              </c:when>
+              <c:otherwise>
+                  ${feedback_content}
+              </c:otherwise>
+           </c:choose>
     </p>
     
      

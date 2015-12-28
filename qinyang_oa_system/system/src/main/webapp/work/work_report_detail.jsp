@@ -56,7 +56,15 @@
 <div class="fuwu_content">
     <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<a href="">汇报工作</a></h4>
     <div class="wfwxq">
-        <h5>工作主题：<span>${work_info.get_work_theme()}</span><!--  b class="red">（已通过）</b></h5>-->
+        <h5>工作主题：<span>${work_info.get_work_theme()}</span>
+        <c:choose>
+           <c:when test="${work_info.get_work_status()==1}">
+            <b class="red">（已通过）</b></h5>
+           </c:when>
+           <c:when test="${work_info.get_work_status()==2}">
+            <b class="red">（未通过）</b></h5>
+           </c:when>
+        </c:choose>
         <p>工作目标：<span>${work_info.get_work_target()}</span></p>
         <p>汇报人：<span>${work_info.get_work_sender()}</span></p>
         <p>联系电话：<span>${sender_phone}</span></p>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.data.employee_info;
+import com.data.msg_info;
 import com.data.service_group_info;
 import com.data.service_info;
 import com.data.service_village_county_info;
@@ -110,7 +111,21 @@ import com.data.work_waiting_info;
 			  _work_wating_info.set_work_id(service_id);
 			  
 			  boolean rs=com.dbconnector.work_db_connector.waiting_insert_db(_work_wating_info);
-			
+			//--------------------------------------------------
+			  msg_info _msg_info=new msg_info();
+				 _msg_info.set_msg_owner_id(service_receiver_id);
+				 _msg_info.set_msg_owner_name(service_receiver);
+				 _msg_info.set_msg_sender_id(service_sender_id);
+				 _msg_info.set_msg_sender(service_sender);;
+				 int msg_status=0;//未读消息为0
+				 _msg_info.set_msg_status(msg_status);
+				 _msg_info.set_msg_oid(service_id);
+				 _msg_info.set_msg_addtime(service_addtime);
+				 _msg_info.set_msg_content(service_content);
+				 _msg_info.set_msg_type(2);//五服务为2
+				 
+				 
+				 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
 			
 			//返回插入结果
 			

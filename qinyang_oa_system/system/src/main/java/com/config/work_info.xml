@@ -112,6 +112,11 @@
         WHERE work_id = #{work_id} 
      </select>
 	
+	
+	
+	<select id="get_work_info_by_work_related_id" parameterType="int" resultMap="result">
+		SELECT * FROM work_info WHERE work_related_id = #{work_related_id};
+	</select>
 </mapper>
 
 

@@ -7,6 +7,9 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <c:set var="msg_page" value="${param.msg_page}"/>
+     <c:set var="msg_total_page" value="${param.msg_total_page}"/>
+    
 </head>
 <body>
 <!--header为导航容器-->
@@ -63,8 +66,7 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">消息</a>&gt;<span>未读消息</span></h4>
-        <div class="mess"><span>您有 <b>14</b> 条未读消息</span> <input type="text"/><a href="">查找</a></div>
+        <h4><a href="">消息</a>&gt;<span>已读消息</span></h4>
         <div class="contentlist">
             <ul class="contentlisttt wufuwu">
                 <li class="lg_li" style="font-size: 14px">主题</li>
@@ -81,10 +83,10 @@
                 
                 <c:choose>
                    <c:when test="${msg_info.get_msg_type()==0}">
-                    <li>安排</li>
+                    <li>工作安排</li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==1}">
-                    <li>汇报</li>
+                    <li>工作汇报</li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==2}">
                     <li>五服务</li>
@@ -93,10 +95,10 @@
                     <li>台账</li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==4}">
-                    <li>审批反馈</li>
+                    <li>进度反馈</li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==5}">
-                    <li>好友请求</li>
+                    <li>审批反馈</li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==6}">
                     <li>其它</li>
@@ -115,19 +117,19 @@
                        <li><a href="msg_read.do?msg_oid=${msg_info.get_msg_oid()}&msg_id=${msg_info.get_msg_id()}&msg_type=0">查看</a></li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==1}">
-                       <li><a href="msg_read.do?msg_oid=${msg_info.get_msg_oid()}&msg_id=${msg_info.get_msg_id()}&msg_type=0">查看</a></li>
+                       <li><a href="msg_read.do?msg_oid=${msg_info.get_msg_oid()}&msg_id=${msg_info.get_msg_id()}&msg_type=1">查看</a></li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==2}">
-                       <li><a href="">查看</a></li>
+                       <li><a href="msg_read.do?msg_oid=${msg_info.get_msg_oid()}&msg_id=${msg_info.get_msg_id()}&msg_type=2">查看</a></li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==3}">
-                       <li><a href="">查看</a></li>
+                       <li><a href="msg_read.do?msg_oid=${msg_info.get_msg_oid()}&msg_id=${msg_info.get_msg_id()}&msg_type=3">查看</a></li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==4}">
-                       <li><a href="">查看</a></li>
+                       <li><a href="msg_read.do?msg_oid=${msg_info.get_msg_oid()}&msg_id=${msg_info.get_msg_id()}&msg_type=4">查看</a></li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==5}">
-                        <li><a href="">查看</a></li>
+                        <li><a href="msg_read.do?msg_oid=${msg_info.get_msg_oid()}&msg_id=${msg_info.get_msg_id()}&msg_type=5">查看</a></li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==6}">
                         <li><a href="">查看</a></li>
@@ -138,17 +140,66 @@
             
     </div>
 </div>
-    <div class="page">
-        <a href="" class="bulec">1</a>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
-        <a href="">上一页</a>
-        <a href="">下一页</a>
+       <c:choose>
+      <c:when test="${msg_page==1}">
+      <div class="page">
+        <a href="check_read_msg.do?msg_page=1&employee_id=${user_id}">上一页</a>
+        <a href="check_read_msg.do?msg_page=1&employee_id=${user_id}" class="bulec">1</a>
+        <a href="check_read_msg.do?msg_page=2&employee_id=${user_id}">2</a>
+        <a href="check_read_msg.do?msg_page=3&employee_id=${user_id}">3</a>
+        <a href="check_read_msg.do?msg_page=4&employee_id=${user_id}">4</a>
+        <a href="check_read_msg.do?msg_page=5&employee_id=${user_id}">5</a>
+        <a href="check_read_msg.do?msg_page=2&employee_id=${user_id}">下一页</a>
+        <a>共${msg_total_page}页</a>
+        <form method="get" action="check_read_msg.do">
+        <a>
+           到&nbsp;<input type="text" name="msg_page" style="width:15px;">&nbsp;页
+             <input type="hidden" name="employee_id" value="${user_id}">
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:when test="${msg_page==2}">
+      <div class="page">
+        <a href="check_read_msg.do?msg_page=1&employee_id=${user_id}">上一页</a>
+        <a href="check_read_msg.do?msg_page=1&employee_id=${user_id}">1</a>
+        <a href="check_read_msg.do?msg_page=2&employee_id=${user_id}" class="bulec">2</a>
+        <a href="check_read_msg.do?msg_page=3&employee_id=${user_id}">3</a>
+        <a href="check_read_msg.do?msg_page=4&employee_id=${user_id}">4</a>
+        <a href="check_read_msg.do?msg_page=5&employee_id=${user_id}">5</a>
+        <a href="check_read_msg.do?msg_page=3&employee_id=${user_id}">下一页</a>
+        <a>共${msg_total_page}页</a>
+        <form method="get" action="check_read_msg.do">
+        <a>
+           到&nbsp;<input type="text" name="msg_page" style="width:15px;">&nbsp;页
+           <input type="hidden" name="employee_id" value="${user_id}">
+            <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:otherwise>
+      <div class="page">
+        <a href="check_read_msg.do?msg_page=${msg_page-1}&employee_id=${user_id}">上一页</a>
+        <a href="check_read_msg.do?msg_page=${msg_page-2}&employee_id=${user_id}">${msg_page-2}</a>
+        <a href="check_read_msg.do?msg_page=${msg_page-1}&employee_id=${user_id}">${msg_page-1}</a>
+        <a class="bulec" href="check_read_msg.do?msg_page=${msg_page}&employee_id=${user_id}">${msg_page}</a>
+        <a href="check_read_msg.do?msg_page=${msg_page+1}&employee_id=${user_id}">${msg_page+1}</a>
+        <a href="check_read_msg.do?msg_page=${msg_page+2}&employee_id=${user_id}">${msg_page+2}</a>
+        <a href="check_read_msg.do?msg_page=${msg_page+1}&employee_id=${user_id}">下一页</a>
+        <a>共${msg_total_page}页</a>
+        <form method="get" action="check_read_msg.do">
+        <a>
+           到&nbsp;<input type="text" name="msg_page" style="width:15px;">&nbsp;页
+           <input type="hidden" name="employee_id" value="${user_id}">
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:otherwise>
+    </c:choose>
     </div>
-</div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
 

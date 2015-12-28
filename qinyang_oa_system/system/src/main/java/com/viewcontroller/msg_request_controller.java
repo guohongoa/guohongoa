@@ -24,7 +24,7 @@ public class msg_request_controller
 	{
 	  int msg_status=0;//查询未读消息为0
 	  int msg_total_page=com.dbconnector.msg_db_connector.get_msg_total_page(employee_id,msg_status);
-	   ModelAndView mv=new ModelAndView("unread_msg.jsp?department_page="+msg_page+"&msg_total_page="+msg_total_page);//页面重定向
+	   ModelAndView mv=new ModelAndView("unread_msg.jsp?msg_page="+msg_page+"&msg_total_page="+msg_total_page);//页面重定向
 	   
 	   //得到查询所有条目的list
 	  
@@ -45,7 +45,7 @@ public class msg_request_controller
 	{
 	  int msg_status=1;//查询未读消息为0
 	  int msg_total_page=com.dbconnector.msg_db_connector.get_msg_total_page(employee_id,msg_status);
-	   ModelAndView mv=new ModelAndView("read_msg.jsp?department_page="+msg_page+"&msg_total_page="+msg_total_page);//页面重定向
+	   ModelAndView mv=new ModelAndView("read_msg.jsp?msg_page="+msg_page+"&msg_total_page="+msg_total_page);//页面重定向
 	   
 	   //得到查询所有条目的list
 	  
@@ -72,14 +72,41 @@ public class msg_request_controller
 		
 		if(msg_type==0)
 		{
+			//工作安排为0
 			mv=new ModelAndView("../work/work_feedback_check.do?work_page=1&work_id="+msg_oid);
 		}
 		else if(msg_type==1)
 		{
+			//工作汇报为1
 			work_waiting_info _waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(msg_oid);
 			int waiting_id=_waiting_info.get_waiting_id();
 			mv=new ModelAndView("../work/work_pending_detail.do?work_page=1&work_id="+msg_oid+"&waiting_id="+waiting_id);
 		}
+		else if(msg_type==2)
+		{
+			//五服务待审批为2
+			work_waiting_info _waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(msg_oid);
+			int waiting_id=_waiting_info.get_waiting_id();
+			mv=new ModelAndView("../work/service_pending_detail.do?work_page=1&work_id="+msg_oid+"&waiting_id="+waiting_id);
+		}
+		else if(msg_type==3)
+		{
+			//台账待审批为3
+			work_waiting_info _waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(msg_oid);
+			int waiting_id=_waiting_info.get_waiting_id();
+			mv=new ModelAndView("../work/record_pending_detail.do?work_page=1&work_id="+msg_oid+"&waiting_id="+waiting_id);
+		}
+		else if(msg_type==4)
+		{
+			//工作进度反馈为4
+			mv=new ModelAndView("../work/work_arrange_detail.do?work_page=1&work_id="+msg_oid);
+		}
+		else if(msg_type==5)
+		{
+			//工作审批反馈为5
+			mv=new ModelAndView("../work/work_arrange_detail.do?work_page=1&work_id="+msg_oid);
+		}
+		
 		else
 		{
 			mv=new ModelAndView("");

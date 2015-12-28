@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.data.employee_info;
+import com.data.msg_info;
 import com.data.service_info;
 import com.data.work_contact_info;
 import com.data.work_record_info;
@@ -78,6 +79,22 @@ public class record_request_controller
 				  boolean rs=com.dbconnector.work_db_connector.waiting_insert_db(_work_wating_info);
 			
 			//返回插入结果
+				  
+				//插入消息列表
+					 msg_info _msg_info=new msg_info();
+					 _msg_info.set_msg_owner_id(work_record_leader_id);
+					 _msg_info.set_msg_owner_name(work_record_leader);
+					 _msg_info.set_msg_sender_id(work_record_creatorid);
+					 _msg_info.set_msg_sender(work_record_creator);;
+					 int msg_status=0;//未读消息为0
+					 _msg_info.set_msg_status(msg_status);
+					 _msg_info.set_msg_oid(record_id);
+					 _msg_info.set_msg_addtime(record_addtime);
+					 _msg_info.set_msg_content(work_record_effect);
+					 _msg_info.set_msg_type(3);//台账为3
+					 
+					 
+					 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
 			
 			 ModelAndView mv=new ModelAndView("redirect:record_check_by_user.do?record_page=1&work_record_creatorid="+work_record_creatorid+"&flag=0");
 			   

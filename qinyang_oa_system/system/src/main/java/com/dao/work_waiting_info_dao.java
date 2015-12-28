@@ -126,12 +126,12 @@ public class work_waiting_info_dao
 	        }
 	 }
 	 
-	 public work_waiting_info get_wating_info_by_work_id(int work_id)
+	 public work_waiting_info get_waiting_info_by_work_id(int work_id)
 	 {
 		 work_waiting_info _work_wating_info = null;
 	        SqlSession session = sqlSessionFactory.openSession();
 	        try {
-	        	_work_wating_info = session.selectOne("work_wating_info.get_wating_info_by_work_id", work_id);
+	        	_work_wating_info = session.selectOne("work_waiting_info.get_waiting_info_by_work_id", work_id);
 	 
 	        } finally {
 	            session.close();
