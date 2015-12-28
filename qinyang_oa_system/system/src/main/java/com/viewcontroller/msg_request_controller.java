@@ -104,9 +104,18 @@ public class msg_request_controller
 		else if(msg_type==5)
 		{
 			//工作审批反馈为5
-			mv=new ModelAndView("../work/work_arrange_detail.do?work_page=1&work_id="+msg_oid);
+			mv=new ModelAndView("../work/work_report_detail.do?work_page=1&work_id="+msg_oid);
 		}
-		
+		else if(msg_type==6)
+		{
+			//五服务审批反馈为6
+			mv=new ModelAndView("../work/check_service_info_by_service_msgid2.do?service_page=1&service_msgid="+msg_oid);
+		}
+		else if(msg_type==7)
+		{
+			//台账审批反馈为7
+			mv=new ModelAndView("../work/check_record_info_by_work_record_id.do?record_page=1&flag=1&work_record_id="+msg_oid);
+		}	
 		else
 		{
 			mv=new ModelAndView("");

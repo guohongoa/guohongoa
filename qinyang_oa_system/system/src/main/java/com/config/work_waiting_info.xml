@@ -51,6 +51,10 @@
 	<select id="get_waiting_info_by_work_id" parameterType="int" resultMap="result">
 		SELECT * FROM work_waiting_info WHERE work_id = #{work_id};
 	</select>
+	
+	<select id="get_work_waiting_info_by_waiting_id" parameterType="int" resultMap="result">
+		SELECT * FROM work_waiting_info WHERE waiting_id = #{waiting_id};
+	</select>
      
 </mapper>
 

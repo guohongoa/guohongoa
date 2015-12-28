@@ -139,5 +139,20 @@ public class work_waiting_info_dao
 	        System.out.println("selectByWorkId("+work_id+") --> "+_work_wating_info);
 	        return _work_wating_info;
 	 }
+	 
+
+	 public work_waiting_info  get_work_waiting_info_by_waiting_id(int waiting_id)
+	 {
+		 work_waiting_info _work_wating_info = null;
+	        SqlSession session = sqlSessionFactory.openSession();
+	        try {
+	        	_work_wating_info = session.selectOne("work_waiting_info.get_work_waiting_info_by_waiting_id", waiting_id);
+	 
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("selectByWaitingId("+waiting_id+") --> "+_work_wating_info);
+	        return _work_wating_info;
+	 }
 		
 }

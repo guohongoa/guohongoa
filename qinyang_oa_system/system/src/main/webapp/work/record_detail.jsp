@@ -55,6 +55,15 @@
     <h4><a href="">工作</a>&gt;<a href="">台帐</a>&gt;<span>我的台帐</span></h4>
     <div class="border">
         <div class="wdtzxq">
+             <c:choose>
+                <c:when test="${work_record_info.get_work_record_status()==1}">
+                   <p><b class="red">（已通过）</b></p>
+                </c:when>
+               <c:when test="${work_record_info.get_work_record_status()==2}">
+                    <p><b class="red">（未通过）</b></p>
+               </c:when>
+             </c:choose>
+             <p><b>台账主题：</b><span>${work_record_info.get_work_record_theme()}</span>
             <p><b>建账人：</b><span>${work_record_info.get_work_record_creator()}</span></p>
             <p><b>职务：</b><span>${work_record_info.get_work_record_position()}</span></p>
             <p><b>所属部门：</b><span>${work_record_info.get_work_record_department()}</span></p>
@@ -67,7 +76,7 @@
     </div>
 
     <div class="wdtzxq_btn">
-        <a href="">修改</a> &nbsp; <a href="rocord_check_by_user.do?work_record_creatorid=${user_id}&record_page=${param.record_page}&flag=${param.flag}">返回</a>
+        <a href="">修改</a> &nbsp; <a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=${param.record_page}&flag=${param.flag}">返回</a>
     </div>
 </div>
 <div class="footer"></div>

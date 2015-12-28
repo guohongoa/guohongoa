@@ -54,9 +54,35 @@
 </div>
 <!--主体-->
 <div class="fuwu_content">
-    <h4><a href="../work">工作</a>&gt;<a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0">五服务</a>&gt;<span>法政法规服务</span></h4>
+    <h4><a href="../work">工作</a>&gt;<a href="service_check_by_user.do?service_page=1&service_sender_id=${user_id}&flag=0">五服务</a>&gt;
+    
+     <c:choose>
+                <c:when test="${user_group_type==1}">
+                  <span>法政法规服务</span></h4>
+                </c:when>
+                 <c:when test="${user_group_type==2}">
+                  <span>经济发展服务</span></h4>
+                </c:when>
+                 <c:when test="${user_group_type==3}">
+                  <span>和谐稳定服务</span></h4>
+                </c:when>
+                <c:when test="${user_group_type==4}">
+                  <span>环境卫生服务</span></h4>
+                </c:when>
+                <c:when test="${user_group_type==5}">
+                  <span>文体活动服务/span></h4>
+                </c:when>
+    </c:choose>
     <div class="wfwxq" style="padding-bottom:15px;">
-        <h5>主题：<span>服务主题</span></h5>
+        <h5>主题：<span>服务主题</span>
+        <c:choose>
+           <c:when test="${service_info.get_service_status()==1}">
+            <b class="red">（已通过）</b></h5>
+           </c:when>
+           <c:when test="${service_info.get_service_status()==2}">
+            <b class="red">（未通过）</b></h5>
+           </c:when>
+        </c:choose>
         <p>服务类型：
         <c:choose>
                   <c:when test="${service_info.get_service_type()==0}">

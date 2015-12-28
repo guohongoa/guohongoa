@@ -95,13 +95,16 @@
                     <li>台账</li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==4}">
-                    <li>进度反馈</li>
+                    <li>工作进度反馈</li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==5}">
-                    <li>审批反馈</li>
+                    <li>工作审批反馈</li>
                    </c:when>
-                   <c:when test="${msg_info.get_msg_type()==6}">
-                    <li>其它</li>
+                    <c:when test="${msg_info.get_msg_type()==6}">
+                    <li>五服务审批反馈</li>
+                   </c:when>
+                   <c:when test="${msg_info.get_msg_type()==7}">
+                    <li>台账审批反馈</li>
                    </c:when>
                    
                    
@@ -132,8 +135,11 @@
                         <li><a href="msg_read.do?msg_oid=${msg_info.get_msg_oid()}&msg_id=${msg_info.get_msg_id()}&msg_type=5">查看</a></li>
                    </c:when>
                    <c:when test="${msg_info.get_msg_type()==6}">
-                        <li><a href="">查看</a></li>
-                   </c:when>    
+                        <li><a href="msg_read.do?msg_oid=${msg_info.get_msg_oid()}&msg_id=${msg_info.get_msg_id()}&msg_type=6">查看</a></li>
+                   </c:when>  
+                   <c:when test="${msg_info.get_msg_type()==7}">
+                        <li><a href="msg_read.do?msg_oid=${msg_info.get_msg_oid()}&msg_id=${msg_info.get_msg_id()}&msg_type=7">查看</a></li>
+                   </c:when>   
                 </c:choose>
             </ul>
           </c:forEach>

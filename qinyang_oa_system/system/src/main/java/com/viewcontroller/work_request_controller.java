@@ -627,8 +627,7 @@ public class work_request_controller
 		boolean rs2=com.dbconnector.work_db_connector.update_work_status(_work_info);
 		
 		boolean rs=com.dbconnector.work_db_connector.update_waiting_status(_waiting_info);
-		
-		work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+		work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_waiting_id(waiting_id);
 		
 		
 		//插入消息列表
@@ -680,7 +679,7 @@ public class work_request_controller
 		_work_info.set_work_status(work_status);
 		boolean rs2=com.dbconnector.work_db_connector.update_work_status(_work_info);
 		
-work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_waiting_id(waiting_id);
 		
 		
 		//插入消息列表
@@ -736,7 +735,7 @@ work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_
 			_work_record_info.set_work_record_status(work_status);
 			boolean rs2=com.dbconnector.record_db_connector.update_record_status(_work_record_info);
 			
-			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_waiting_id(waiting_id);
 			
 			
 			//插入消息列表
@@ -789,7 +788,7 @@ work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_
 			_work_record_info.set_work_record_status(work_status);
 			boolean rs2=com.dbconnector.record_db_connector.update_record_status(_work_record_info);
 			
-			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_waiting_id(waiting_id);
 			
 			
 			//插入消息列表
@@ -846,7 +845,7 @@ work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_
 			
 			boolean rs=com.dbconnector.work_db_connector.update_waiting_status(_waiting_info);
 			
-			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_waiting_id(waiting_id);
 			
 			
 			//插入消息列表
@@ -898,7 +897,7 @@ work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_
 			_service_info.set_service_status(work_status);
 			boolean rs2=com.dbconnector.service_db_connector.update_service_status(_service_info);
 			
-			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(waiting_id);
+			work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_waiting_id(waiting_id);
 			
 			
 			//插入消息列表

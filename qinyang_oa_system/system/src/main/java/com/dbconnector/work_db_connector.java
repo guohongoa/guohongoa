@@ -285,4 +285,13 @@ public class work_db_connector
 			return _work_info;
 		}
 		
+		
+		
+		public static work_waiting_info get_work_waiting_info_by_waiting_id(int waiting_id)
+		{
+			work_waiting_info_dao _work_waiting_info_dao=new work_waiting_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+			work_waiting_info _work_waiting_info=_work_waiting_info_dao.get_work_waiting_info_by_waiting_id(waiting_id);
+			return _work_waiting_info;
+		}
+		
 }
