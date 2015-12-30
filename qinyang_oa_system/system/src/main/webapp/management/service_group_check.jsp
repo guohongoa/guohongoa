@@ -140,7 +140,7 @@
         <a>共${service_group_total_page}页</a>
         <form method="get" action="service_group_check.do">
         <a>
-           到&nbsp;<input type="text" name="service_group_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="service_group_page" style="width:15px;" value="${service_group_page}">&nbsp;页
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -158,7 +158,7 @@
         <a>共${service_group_total_page}页</a>
         <form method="get" action="service_group_check.do">
         <a>
-           到&nbsp;<input type="text" name="service_group_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="service_group_page" style="width:15px;" value="${service_group_page}">&nbsp;页
             <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -176,7 +176,7 @@
         <a>共${service_group_total_page}页</a>
         <form method="get" action="service_group_check.do">
         <a>
-           到&nbsp;<input type="text" name="service_group_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="service_group_page" style="width:15px;" value="${service_group_page}">&nbsp;页
              <input type="submit" name="submit" value="确定">
         </a>
         </form>

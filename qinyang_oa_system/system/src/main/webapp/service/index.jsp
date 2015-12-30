@@ -50,8 +50,15 @@
     <div class="fuwu">
     
      <!--每个乡镇为一个模块-->
-        <c:forEach var="service_village_info_list" items="${village_list}">
-        <div class="fwk" style="width:215px">
+        <c:forEach var="service_village_info_list" items="${village_list}" varStatus="loop">
+        <c:choose>
+           <c:when test="${loop.index%4==3}">
+               <div class="fwk clearstyle" >
+           </c:when>
+           <c:otherwise>
+               <div class="fwk">
+           </c:otherwise>
+        </c:choose>
             <h4><a href="">${service_village_info_list.get(0).get_service_village_county_name()}</a></h4>
             <ul>
                 <c:choose>
@@ -60,7 +67,7 @@
                      <li>
                        <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info.get_service_village_id()}&service_type=0&service_page=1">${service_village_info.get_service_village_name()}</a>
                      </li>
-                </c:forEach>
+                   </c:forEach>
                 </c:when>
                 <c:otherwise>
                     <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(0).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(0).get_service_village_name()}</a></li>

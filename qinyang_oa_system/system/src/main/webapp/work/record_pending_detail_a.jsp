@@ -63,19 +63,8 @@
     <span style="display:block;width:900px;line-height:50px;text-align:center;color:#ccc;">台账的落实情况</span>
         ${work_record_info.get_work_record_effect()}
     </p>
-    <p style="border: none;margin-top: 10px">
-       <form method="post" name="pending_form" id="form">
-        <textarea form="form" name="work_comment"  style="width: 880px;height: 225px;border: 1px solid #c9c9c9;font-size: 14px;padding:10px" placeholder="请输入评论或建议"></textarea>
-        <input type="hidden" name="waiting_id" value="${waiting_id}" >
-        <input type="hidden" name="work_page" value="${work_page}"/>
-        <input type="hidden" name="employee_id" value="${user_id}"/>
-        <input type="hidden" name="work_id" value="${work_record_info.get_work_record_id()}">
-        </form>
-    </p>
     <div class="back">
-        <a href="javascript:document.pending_form.action='../work/record_pending_agree.do';document.pending_form.submit();">同意</a> 
-        &nbsp; 
-        <a href="javascript:document.pending_form.action='../work/record_pending_disagree.do';document.pending_form.submit();" style="margin-right: -15px">不同意</a>
+       <a href="javascript:history.go(-1);">返回</a> 
     </div>
 </div>
 <div class="footer"></div>

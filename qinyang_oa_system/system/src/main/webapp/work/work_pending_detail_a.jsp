@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+     <c:set var="work_page" value="${param.work_page}"/>
+     <c:set var="waiting_id" value="${param.waiting_id}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -45,48 +47,34 @@
 </div>
 <!--主体-->
 <div class="fuwu_content">
-    <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<a href="">安排工作</a>&gt;<span>我的安排</span></h4>
+    <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>汇报审批</span></h4>
     <div class="wfwxq">
-        <h5>工作主题：<span>${work_info.get_work_theme()}</span></h5>
+        <h5>工作主题：<span>${work_info.get_work_theme()}</span>
+         <c:choose>
+           <c:when test="${work_info.get_work_status()==1}">
+            <b class="red">（已通过）</b></h5>
+           </c:when>
+           <c:when test="${work_info.get_work_status()==2}">
+            <b class="red">（未通过）</b></h5>
+           </c:when>
+           <c:otherwise>
+           </h5>
+           </c:otherwise>
+        </c:choose>
+        
         <p>工作目标：<span>${work_info.get_work_target()}</span></p>
-        <p>发送给：<span>${work_info.get_work_receiver()}</span></p>
-        <p>联系电话：<span>${receiver_phone}</span></p>
-        <p>发送人：<span>${work_info.get_work_sender()}</span></p>
+        <p>申请人：<span>${work_info.get_work_sender()}</span></p>
+        <p>联系电话：<span>${sender_phone}</span></p>
+        <p>直接上级：<span>${work_info.get_work_receiver()}</span></p>
         <p>发送时间：<span>${work_info.get_work_addtime()}</span></p>
         <p>执行周期：<span class="dark_grey">${work_info.get_work_begintime()}</span>-<span class="dark_grey">${work_info.get_work_endtime()}</span></p>
     </div>
-    <div style="margin:20px 0 10px;font-size: 14px">
-        <span style="padding-left:20px;">完成进度</span>
-        <span>
-           <c:choose>
-              <c:when test="${feedback_ratio==0}">
-                  <span style="color:#cc0000;font-size:16px;">0%</span>
-              </c:when>
-              <c:otherwise>
-                  <span style="color:#cc0000;font-size:16px;">${feedback_ratio}0%</span>
-              </c:otherwise>
-           </c:choose>
-        </span>
-    </div>
-    <p style="padding: 10px 20px;"> 
-      ${work_info.get_work_content()}
+    <p style="padding: 10px 20px;border-bottom:none;border-top:1px solid #eee">
+    <span style="display:block;width:900px;line-height:50px;color:#ccc;text-align:center;">汇报的工作内容</span>
+        ${work_info.get_work_content()}
     </p>
-    <p style="border-top: none;padding: 10px 20px">
-       <c:choose>
-              <c:when test="${empty feedback_content}">
-                  尚无反馈内容
-              </c:when>
-              <c:otherwise>
-                  ${feedback_content}
-              </c:otherwise>
-           </c:choose>
-    </p>
-    
-     
-    
-    
     <div class="back">
-        <a href="javascript:history.go(-1);" style="margin-right: -15px">返回</a>
+        <a href="javascript:history.go(-1);">返回</a> 
     </div>
 </div>
 <div class="footer"></div>

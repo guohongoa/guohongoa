@@ -116,7 +116,7 @@
         <a>共${department_total_page}页</a>
         <form method="get" action="department_check.do">
         <a>
-           到&nbsp;<input type="text" name="department_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="department_page" style="width:15px;" value="${department_page}">&nbsp;页
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -134,7 +134,7 @@
         <a>共${department_total_page}页</a>
         <form method="get" action="department_check.do">
         <a>
-           到&nbsp;<input type="text" name="department_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="department_page" style="width:15px;" value="${department_page}">&nbsp;页
             <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -152,7 +152,7 @@
         <a>共${department_total_page}页</a>
         <form method="get" action="department_check.do">
         <a>
-           到&nbsp;<input type="text" name="department_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="department_page" style="width:15px;" value="${department_page}">&nbsp;页
              <input type="submit" name="submit" value="确定">
         </a>
         </form>

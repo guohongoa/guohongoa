@@ -129,7 +129,7 @@
                 <p><span>联系电话</span><input name="service_sender_phone" class="grey9" type="text" value="${user_phone}"  readonly="readonly"/></p>
                 <p><span>服务目标</span><input type="text" name="service_target"/></p>
                 <p><span>服务周期</span><input class="input100 timedata" type="text" name="service_begintime"/>&nbsp; —— &nbsp;<input class="input100 timedata" type="text" name="service_endtime"/></p>
-                <p><span>服务内容</span><textarea name="service_content" form="post_tz"></textarea></p>
+                <p><span>服务内容</span><textarea maxlength="150" name="service_content" form="post_tz"></textarea></p>
                 <!--发送的隐藏信息-->
                  <!--五服务审批状态--><input type="hidden" name="service_status" value="0"> <!--初始状态均为未审批，值为0-->
                  <!--所属村庄id   <input type="hidden" name="service_village_id" value="1">-->

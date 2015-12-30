@@ -66,7 +66,7 @@
 · 村（社区）党员干部联系党员<br/>
 · 党员联系群众</span>
                 </a>
-                <h4><a href="contact/contact_person_check.do" >四联</a></h4>
+                <h4><a href="contact/contact_person_check.do?employee_id=${user_id}" >四联</a></h4>
             </div>
             <div class="mokuai">
                 <a class="mokuaitu" href="service/service_village_check.do">

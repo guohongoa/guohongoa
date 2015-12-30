@@ -56,13 +56,16 @@
            <c:when test="${work_info.get_work_status()==2}">
             <b class="red">（未通过）</b></h5>
            </c:when>
+           <c:otherwise>
+           </h5>
+           </c:otherwise>
         </c:choose>
         <p>工作目标：<span>${work_info.get_work_target()}</span></p>
         <p>汇报人：<span>${work_info.get_work_sender()}</span></p>
-        <p>联系电话：<span>${sender_phone}</span></p>
-        <p>直接上级：<span>${work_info.get_work_receiver()}</span></p>
-        <p>发送时间：<span>${work_info.get_work_addtime()}</span></p>
-        <p>执行周期：<span class="dark_grey">${work_info.get_work_begintime()}</span>-<span class="dark_grey">${work_info.get_work_endtime()}</span></p>
+        <p style="font-weight:normal">联系电话：<span>${sender_phone}</span></p>
+        <p style="font-weight:normal">直接上级：<span>${work_info.get_work_receiver()}</span></p>
+        <p style="font-weight:normal">发送时间：<span>${work_info.get_work_addtime()}</span></p>
+        <p style="font-weight:normal">执行周期：<span class="dark_grey">${work_info.get_work_begintime()}</span>-<span class="dark_grey">${work_info.get_work_endtime()}</span></p>
     </div>
     <p style="padding: 10px 20px">
         ${work_info.get_work_content()}

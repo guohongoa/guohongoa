@@ -55,19 +55,19 @@
         <p>活动时间：<span>${service_info.get_service_begintime()}－－${service_info.get_service_endtime()}</span></p>
         <p>服务类型：
         <c:choose>
-            <c:when test="${service_type==0}">
+            <c:when test="${service_info.get_service_type()==0}">
               <span>法政法规服务</span>
             </c:when>
-            <c:when test="${service_type==1}">
+            <c:when test="${service_info.get_service_type()==1}">
               <span>经济发展服务</span>
             </c:when>
-            <c:when test="${service_type==2}">
+            <c:when test="${service_info.get_service_type()==2}">
               <span>和谐稳定服务</span>
             </c:when>
-            <c:when test="${service_type==3}">
+            <c:when test="${service_info.get_service_type()==3}">
               <span>环境卫生服务</span>
             </c:when>
-            <c:when test="${service_type==4}">
+            <c:when test="${service_info.get_service_type()==4}">
               <span>文体活动服务</span>
             </c:when>
         </c:choose>
@@ -75,7 +75,8 @@
         
         <p>活动周期：<span class="dark_grey">${service_info.get_service_begintime()}</span>-<span class="dark_grey">${service_info.get_service_endtime()}</span></p>
     </div>
-    <p style="padding: 10px 20px">
+    <p style="padding:10px 20px;border-color:#ccc">
+        <span style="display:block;width:900px;line-height:50px;text-align:center;color:#ccc">服务小组的活动内容</span>
         ${service_info.get_service_content()}
     </p>
     <div class="back">

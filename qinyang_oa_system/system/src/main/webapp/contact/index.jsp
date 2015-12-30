@@ -36,18 +36,10 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href="../msg/check_unread_msg.do?employee_id=${user_id}&msg_page=1"><i class="icon icon_m"><em>99</em></i>消息</a></li>
+                <li><a href="../msg/check_unread_msg.do?employee_id=${user_id}&msg_page=1"><i class="icon icon_m"></i>消息</a></li>
                 <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
                 <li><a href="../logout"><i></i>退出</a></li>
             </ul>
-            <div>
-                 <ul class="hide">
-                    <li><a href=""><span>888</span>条工作提醒</a></li>
-                    <li><a href=""><span>2</span>条服务提醒</a></li>
-                    <li><a href=""><span>3</span>条待审核记录</a></li>
-                    <li class="bordernone"><a href=""><span>99</span>条添加信息</a></li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>
@@ -143,7 +135,7 @@
 
             </div>
             <div class="swcw sili_content4">
-                <h4>农村（社区）党员干部</h4>
+                <h4>农村（社区）党员组织</h4>
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list4}">
@@ -169,7 +161,7 @@
 
             </div>
             <div class="swcw sili_content5">
-                <h4>农村（社区）党员组织</h4>
+                <h4>农村（社区）党员干部</h4>
                 <div>
                     <ul>
                          <c:forEach var="contact_person_info" items="${contact_info_list5}">
@@ -213,16 +205,16 @@
         <!--第三列-->
         <div>
             <div class="swcw sili_content7">
-                <h4>村民小组</h4>
+                <h4>农村（社区）事务</h4>
                <div>
                    <ul>
-                       <c:forEach var="contact_person_info" items="${contact_info_list7}">
-                           <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_contact_person_name()}</a></li>
+                       <c:forEach var="contact_person_info" items="${contact_info_list11}">
+                           <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                        <li class="pop">
                            <ul>
-                              <c:forEach var="contact_person_info" items="${contact_info_list7}">
-                                 <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_contact_person_name()}</a></li>
+                              <c:forEach var="contact_person_info" items="${contact_info_list11}">
+                                 <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                               </c:forEach>
                            </ul>
                            <p class="clear"><a href="" class="openclose">收起</a></p>
@@ -295,15 +287,15 @@
             </div>
 
             <div class="swcw sili_content11">
-                <h4>农村（社区）事务</h4>
+                <h4>村民小组</h4>
                 <div>
                     <ul>
-                         <c:forEach var="contact_person_info" items="${contact_info_list11}">
+                         <c:forEach var="contact_person_info" items="${contact_info_list7}">
                            <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                         </c:forEach>
                         <li class="pop">
                             <ul>
-                                 <c:forEach var="contact_person_info" items="${contact_info_list11}">
+                                 <c:forEach var="contact_person_info" items="${contact_info_list7}">
                                     <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
                                  </c:forEach>
                             </ul>

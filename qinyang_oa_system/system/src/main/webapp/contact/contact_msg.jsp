@@ -21,9 +21,9 @@
         <!--右侧导航部分-->
         <div class="menu">
             <ul>
-                <li><a href=""><i class="icon icon_m"></i>消息</a></li>
-                <li><a href=""><i class="icon"></i>设置</a></li>
-                <li><a href=""><i></i>退出</a></li>
+                <li><a href="../msg/check_unread_msg.do?employee_id=${user_id}&msg_page=1"><i class="icon icon_m"></i>消息</a></li>
+                <li><a href="../setting/check_personal.do?employee_id=${user_id}"><i class="icon"></i>设置</a></li>
+                <li><a href="../logout"><i></i>退出</a></li>
             </ul>
         </div>
     </div>
@@ -57,7 +57,8 @@
         
            <c:forEach var="contact_msg" items="${contact_msg_list}">
             <li>
-                <span><b>${contact_msg.get_contact_request_sender_name()}</b>申请添加你为联系人&nbsp;${contact_msg.get_cotact_reuqest_sendmsg()}</span>
+                <span><b>${contact_msg.get_contact_request_sender_name()}</b>申请添加你为联系人</span>
+                <span class="message">${contact_msg.get_cotact_reuqest_sendmsg()}</span>
                 <span class="slxxlbtime">2015-12-09 11:30</span>
                 <!--  
                 <select>

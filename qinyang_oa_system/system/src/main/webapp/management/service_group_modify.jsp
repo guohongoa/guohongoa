@@ -164,7 +164,7 @@
                 </p>
                 <p><span>责任人</span><input type="text" name="service_group_leader" value="${service_group_info.get_service_group_leader()}"/></p>
                 <p><span>联系电话</span><input type="text"  name="service_group_phone" value="${service_group_info.get_service_group_phone()}"/></p>
-                <p style="margin-bottom: 10px"><span>小组职责</span><textarea name="service_group_duty" form="service_group_modify"> ${service_group_info.get_service_group_duty()}</textarea></p>
+                <p style="margin-bottom: 10px"><span>小组职责</span><textarea  maxlength="100" name="service_group_duty" form="service_group_modify"> ${service_group_info.get_service_group_duty()}</textarea></p>
                 <p><span>小组成员</span><textarea  name="service_group_member" form="service_group_modify">${service_group_info.get_service_group_member()}</textarea></p>
                 <p class="tztj_btn"><b class="login-error"></b><button style="margin: 0 -30px 0 0">确定修改</button></p>
             </form>

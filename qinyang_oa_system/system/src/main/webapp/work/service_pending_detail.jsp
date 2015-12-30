@@ -92,9 +92,9 @@
         </form>
     </p>
     <div class="back">
-         <a href="javascript:document.pending_form.action='service_pending_agree.do';document.pending_form.submit();">同意</a> 
+         <a href="javascript:document.pending_form.action='../work/service_pending_agree.do';document.pending_form.submit();">同意</a> 
         &nbsp; 
-        <a href="javascript:document.pending_form.action='service_pending_disagree.do';document.pending_form.submit();" style="margin-right: -15px">不同意</a>
+        <a href="javascript:document.pending_form.action='../work/service_pending_disagree.do';document.pending_form.submit();" style="margin-right: -15px">不同意</a>
     </div>
 </div>
 <div class="footer"></div>

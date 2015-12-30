@@ -297,4 +297,11 @@ public class service_db_connector
 					return rs;
 				}
 				
+				public static boolean update_published_status(service_info _service_info)
+				{
+					service_info_dao _service_info_dao=new service_info_dao(mybatis_connection_factory.getSqlSessionFactory());work_info_dao _work_info_dao=new work_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					boolean rs=_service_info_dao.update_published_status(_service_info);
+					return rs;
+				}
+				
 }

@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.data.department_info;
 import com.data.employee_info;
 import com.data.msg_info;
-import com.data.relationship_info;
+
 import com.data.service_info;
 import com.data.work_contact_info;
 import com.data.work_info;
@@ -557,12 +556,22 @@ public class work_request_controller
 	
 	@RequestMapping("work/work_pending_detail.do")
 	public ModelAndView work_pending_detail_request(
-			@RequestParam(value="work_id")     int  work_id,
-			@RequestParam(value="work_page")   int  work_page,
-			@RequestParam(value="waiting_id")  int waiting_id
+			@RequestParam(value="work_id")       int  work_id,
+			@RequestParam(value="work_page")     int  work_page,
+			@RequestParam(value="waiting_id")    int waiting_id
 			)
 	{
-		ModelAndView mv=new ModelAndView("work_pending_detail.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
+		int work_status=com.dbconnector.work_db_connector.get_work_waiting_info_by_waiting_id(waiting_id).get_work_status();
+		ModelAndView mv;
+		if(work_status==0)
+		{
+			mv=new ModelAndView("work_pending_detail.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
+		}
+		else
+		{
+			mv=new ModelAndView("work_pending_detail_a.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
+		}
+		
 		work_info _work_info=com.dbconnector.work_db_connector.get_work_info_by_work_id(work_id);
 		employee_info sender_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_work_info.get_work_sender_id());
 		mv.addObject("sender_phone",sender_info.get_employee_phone());
@@ -576,8 +585,16 @@ public class work_request_controller
 			@RequestParam(value="work_page")   int  work_page,
 			@RequestParam(value="waiting_id")  int waiting_id
 			)
-	{
-		ModelAndView mv=new ModelAndView("record_pending_detail.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
+	{   int work_status=com.dbconnector.work_db_connector.get_work_waiting_info_by_waiting_id(waiting_id).get_work_status();
+		ModelAndView mv;
+		if(work_status==0)
+		{
+		   mv=new ModelAndView("record_pending_detail.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
+		}
+		else
+		{
+			mv=new ModelAndView("record_pending_detail_a.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
+		}
 		work_record_info _work_record_info=com.dbconnector.record_db_connector.get_work_record_info_by_work_record_id(work_id);
 		mv.addObject("work_record_info", _work_record_info);
 		return mv;
@@ -591,7 +608,18 @@ public class work_request_controller
 			
 			)
 	{
-		ModelAndView mv=new ModelAndView("service_pending_detail.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
+		
+		int work_status=com.dbconnector.work_db_connector.get_work_waiting_info_by_waiting_id(waiting_id).get_work_status();
+		ModelAndView mv;
+		if(work_status==0)
+		{
+			mv=new ModelAndView("service_pending_detail.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
+		}
+		else
+		{
+			mv=new ModelAndView("service_pending_detail_a.jsp?work_page="+work_page+"&waiting_id"+waiting_id);
+		}
+		
 		service_info _service_info=com.dbconnector.service_db_connector.get_service_info_by_service_msgid(work_id);
 		mv.addObject("service_info",  _service_info);
 		return mv;
@@ -919,6 +947,24 @@ work_waiting_info _work_waiting_info=com.dbconnector.work_db_connector.get_work_
 			 
 			 
 			 boolean rs3=com.dbconnector.msg_db_connector.insert_msg(_msg_info);
+			return mv;
+		}
+		
+		//五服务发布
+		@RequestMapping("work/service_publish.do")
+		public ModelAndView service_publish_request(
+				@RequestParam(value="service_msgid")       int service_msgid,
+				@RequestParam(value="service_page")        int service_page,
+				@RequestParam(value="service_sender_id")  int service_sender_id,
+				@RequestParam(value="flag")                int flag
+				)
+		{
+			ModelAndView mv=new ModelAndView("redirect:service_check_by_user.do?service_page="+service_page+"&service_sender_id="+service_sender_id+"&flag="+flag);
+			int service_published=1;
+			service_info _service_info=new service_info();
+			_service_info.set_service_msgid(service_msgid);
+			_service_info.set_service_published(service_published);
+			boolean rs=com.dbconnector.service_db_connector.update_published_status(_service_info);
 			return mv;
 		}
 	

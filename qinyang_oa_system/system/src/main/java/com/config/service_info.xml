@@ -24,6 +24,7 @@
 		<result property="service_village_id" column="service_village_id" />
 		<result property="service_village_name" column="service_village_name" />
 		<result property="service_group_id" column="service_group_id" />
+		<result property="service_published" column="service_published" />
 		
 	</resultMap>
 
@@ -53,7 +54,7 @@
 	
 	<select id="select_by_service_village_id_and_service_type" parameterType="service_selector"
 		resultMap="result">
-		SELECT * FROM service_info WHERE service_village_id = #{service_village_id} AND service_type= #{service_type} limit #{service_begin},#{service_num};
+		SELECT * FROM service_info WHERE service_village_id = #{service_village_id} AND service_type= #{service_type} AND service_published= #{service_published} limit #{service_begin},#{service_num};
 	</select>
 
      <select id=" select_by_service_msgid" parameterType="int" resultMap="result">
@@ -69,6 +70,13 @@
         WHERE service_msgid = #{service_msgid} 
      </select>
      
+     
+     
+     <select id="update_published_status" parameterType="service_info" resultMap="result">
+		UPDATE service_info
+        SET service_published       = #{service_published}
+        WHERE service_msgid = #{service_msgid} 
+     </select>
 </mapper>
 
 

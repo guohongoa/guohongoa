@@ -108,7 +108,7 @@
                     </p>
                     <p><span>责任人</span><input type="text" name="service_group_leader"/></p>
                     <p><span>联系电话</span><input type="text" name="service_group_phone"/></p>
-                    <p style="margin-bottom: 10px"><span>小组职责</span><textarea name="service_group_duty"></textarea></p>
+                    <p style="margin-bottom: 10px"><span>小组职责</span><textarea  maxlength="100" name="service_group_duty"></textarea></p>
                     <p><span>小组成员</span><textarea class="srvul" name="service_group_member" form="group_add_form" placeholder=" 请输入每个成员姓名及手机号，以空格间隔，例：张三 13812345678 李四 13987654321 "></textarea></p>
                 </div>
                 <h6>姓名与姓名之间请以一个‘空格’隔开</h6>

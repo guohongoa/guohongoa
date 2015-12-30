@@ -103,11 +103,16 @@
         <p>发送时间：<span>${service_info.get_service_addtime()}</span></p>
         <p>服务周期：<span class="dark_grey">${service_info.get_service_begintime()}</span>-<span class="dark_grey">${service_info.get_service_endtime()}</span></p>
     </div>
-    <p style="padding:10px 20px;">
-        <span style="display:block;width:900px;line-height:50px;">服务小组的活动内容</span>
+    <p style="padding:10px 20px;border-color:#ccc">
+        <span style="display:block;width:900px;line-height:50px;text-align:center;color:#ccc">服务小组的活动内容</span>
         ${service_info.get_service_content()}
     </p>
     <div class="back">
+         <c:choose>
+              <c:when test="${service_info.get_service_status()==1&&service_info.get_service_published()==0}">
+                   <a href="../work/service_publish.do?service_msgid=${service_info.get_service_msgid()}&service_page=${service_page}&service_sender_id=${user_id}&flag=${flag}">发布</a>
+              </c:when>
+         </c:choose>
          &nbsp; <a style="margin-right:-15px;" href="service_check_by_user.do?service_page=${service_page}&service_sender_id=${user_id}&flag=${flag}">返回</a>
     </div>
 </div>

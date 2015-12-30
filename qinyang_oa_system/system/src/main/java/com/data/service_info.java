@@ -22,6 +22,8 @@ public class service_info
   
   private int     service_group_id;     //五服务小组id
   
+  private int    service_published;     //发布，未发布
+  
   //类对象读写方法
   public int get_service_msgid()
   {
@@ -201,5 +203,15 @@ public class service_info
   public void set_service_group_id(int service_group_id)
   {
 	  this.service_group_id=service_group_id;
+  }
+  
+  public int get_service_published()
+  {
+	  return this.service_published;
+  }
+  
+  public void set_service_published(int service_published)
+  {
+	  this.service_published=service_published;
   }
 }

@@ -87,14 +87,14 @@ public class msg_request_controller
 			//五服务待审批为2
 			work_waiting_info _waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(msg_oid);
 			int waiting_id=_waiting_info.get_waiting_id();
-			mv=new ModelAndView("../work/service_pending_detail.do?work_page=1&work_id="+msg_oid+"&waiting_id="+waiting_id);
+			mv=new ModelAndView("../work/service_pending_detail.do?flag=1&work_page=1&work_id="+msg_oid+"&waiting_id="+waiting_id);
 		}
 		else if(msg_type==3)
 		{
 			//台账待审批为3
 			work_waiting_info _waiting_info=com.dbconnector.work_db_connector.get_work_waiting_info_by_work_id(msg_oid);
 			int waiting_id=_waiting_info.get_waiting_id();
-			mv=new ModelAndView("../work/record_pending_detail.do?work_page=1&work_id="+msg_oid+"&waiting_id="+waiting_id);
+			mv=new ModelAndView("../work/record_pending_detail.do?flag=1&work_page=1&work_id="+msg_oid+"&waiting_id="+waiting_id);
 		}
 		else if(msg_type==4)
 		{

@@ -36,7 +36,7 @@
         <li><a href="../" class="bordernone">首页</a></li>
         <li><a href="../contact/contact_person_check.do?employee_id=${user_id}">四联</a></li>
         <li><a href="../service/service_village_check.do">五服务</a></li>
-        <li><a href="../work"  class="active">工作</a></li>
+        <li><a href="../work/"  class="active">工作</a></li>
         <li><a href="">嘉言民生</a></li>
         <li><a href="">政策法规</a></li>
         <li><a href="">最新资讯</a></li>
@@ -47,33 +47,43 @@
 </div>
 <!--主体-->
 <div class="fuwu_content">
-    <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>汇报审批</span></h4>
-    <div class="wfwxq">
-        <h5>工作主题：<span>${work_info.get_work_theme()}</span></h5>
-        <p>工作目标：<span>${work_info.get_work_target()}</span></p>
-        <p>申请人：<span>${work_info.get_work_sender()}</span></p>
-        <p>联系电话：<span>${sender_phone}</span></p>
-        <p>直接上级：<span>${work_info.get_work_receiver()}</span></p>
-        <p>发送时间：<span>${work_info.get_work_addtime()}</span></p>
-        <p>执行周期：<span class="dark_grey">${work_info.get_work_begintime()}</span>-<span class="dark_grey">${work_info.get_work_endtime()}</span></p>
+    <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>待审批</span></h4>
+    <div class="wfwxq" style="padding-bottom:15px;">
+       <h5>主题：<span>服务主题</span></h5>
+        <p>服务类型：
+        <c:choose>
+                  <c:when test="${service_info.get_service_type()==0}">
+                    <span>法政法规</span>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==1}">
+                     <span>经济发展</span>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==2}">
+                     <span>和谐稳定</span>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==3}">
+                     <span>环境卫生</span>
+                  </c:when>
+                  <c:when test="${service_info.get_service_type()==4}">
+                     <span>文体活动</span>
+                  </c:when>
+        </c:choose>
+        </p>
+       
+        <p>服务目标：<span class="dark_grey">${service_info.get_service_target()}</span></p>
+        <p>汇报给：<span>${service_info.get_service_receiver()}</span></p>
+        <p>联系电话：<span>${service_info.get_service_sender_phone()}</span></p>
+        <p>责任人：<span>${service_info.get_service_sender()}</span></p>
+        <p>发送时间：<span>${service_info.get_service_addtime()}</span></p>
+        <p>服务周期：<span class="dark_grey">${service_info.get_service_begintime()}</span>-<span class="dark_grey">${service_info.get_service_endtime()}</span></p>
     </div>
     <p style="padding: 10px 20px;border-bottom:none;border-top:1px solid #eee">
-    <span style="display:block;width:900px;line-height:50px;color:#ccc;text-align:center;">汇报的工作内容</span>
-        ${work_info.get_work_content()}
-    </p>
-    <p style="border: none;margin-top: 10px">
-        <form method="post" name="pending_form" id="form">
-        <textarea form="form" name="work_comment"  style="width: 880px;height: 225px;border: 1px solid #c9c9c9;font-size: 14px;padding:10px" placeholder="请输入评论或建议"></textarea>
-        <input type="hidden" name="waiting_id" value="${waiting_id}" >
-        <input type="hidden" name="work_page" value="${work_page}"/>
-        <input type="hidden" name="employee_id" value="${user_id}"/>
-        <input type="hidden" name="work_id" value="${work_info.get_work_id()}">
-        </form>
+         <span style="display:block;width:900px;line-height:50px;text-align:center;color:#ccc">服务小组的活动内容</span>
+            ${service_info.get_service_content()}
+   
     </p>
     <div class="back">
-        <a href="javascript:document.pending_form.action='../work/work_pending_agree.do';document.pending_form.submit();">同意</a> 
-        &nbsp; 
-        <a href="javascript:document.pending_form.action='../work/work_pending_disagree.do';document.pending_form.submit();" style="margin-right: -15px">不同意</a>
+         <a href="javascript:history.go(-1);">返回</a> 
     </div>
 </div>
 <div class="footer"></div>

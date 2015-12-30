@@ -101,6 +101,7 @@ public class service_info_dao
 				  service_selector _service_selector=new service_selector();//五服务加分页信息
 				  _service_selector.set_service_village_id(_service_info.get_service_village_id());
 				  _service_selector.set_service_type(_service_info.get_service_type());
+				  _service_selector.set_service_published(_service_info.get_service_published());
 				  //固定一页最多取十一条数据
 				  _service_selector.set_servcie_begin(11*(service_page-1));
 				  _service_selector.set_service_num(11);
@@ -122,6 +123,7 @@ public class service_info_dao
 				 service_selector _service_selector=new service_selector();//五服务加分页信息
 				  _service_selector.set_service_village_id(_service_info.get_service_village_id());
 				  _service_selector.set_service_type(_service_info.get_service_type()); 
+				  _service_selector.set_service_published(_service_info.get_service_published());
 				  _service_selector.set_servcie_begin(0);
 				  _service_selector.set_service_num(99999999);
 				  
@@ -171,6 +173,30 @@ public class service_info_dao
 		 
 		      try {
 		          id = session.update("service_info.update_service_status",_service_info);
+		 
+		      } finally {
+		          session.commit();
+		          session.close();
+		      }
+		      System.out.println("update("+_service_info+") --> updated");
+		      
+		      if(id==-1)
+		        {
+		        	return false;//修改失败
+		        }
+		        else
+		        {
+		        	return true;//修改成功
+		        }
+		 }
+		 
+		 public boolean update_published_status(service_info _service_info)
+		 {
+			 int id = -1;
+		      SqlSession session = sqlSessionFactory.openSession();
+		 
+		      try {
+		          id = session.update("service_info.update_published_status",_service_info);
 		 
 		      } finally {
 		          session.commit();

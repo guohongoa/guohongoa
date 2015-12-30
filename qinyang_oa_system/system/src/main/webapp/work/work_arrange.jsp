@@ -68,11 +68,11 @@
                  <span>责任人</span>
                  <c:choose>
                  <c:when test="${work_contact_list.size()!=0}">
-                  <c:forEach var="work_contact_info" items="${work_contact_list}">
-                     <select name="work_receiver_id" >
+                  <select name="work_receiver_id" >
+                       <c:forEach var="work_contact_info" items="${work_contact_list}">
                         <option value="${work_contact_info.get_friend_id()}">${work_contact_info.get_friend_name()}</option>
-                     </select>
-                   </c:forEach>
+                       </c:forEach>
+                    </select>
                    </c:when>
                    <c:otherwise>
                        <input style="width:593px;" type="text" value="无" readonly="readonly">

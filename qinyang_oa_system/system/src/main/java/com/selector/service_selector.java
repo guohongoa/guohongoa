@@ -22,8 +22,10 @@ public class service_selector
 	private int     service_village_id;   //所属村庄id
 	private String  service_village_name; //所属村庄名称	
 	
-    private int          service_begin;   //开始的条目数
-    private int          service_num;     //查询的条目数量
+    private int    service_begin;         //开始的条目数
+    private int    service_num;           //查询的条目数量
+    
+    private int    service_published;     //是否发布
    
    
    public int get_servcie_begin()
@@ -216,5 +218,14 @@ public class service_selector
  	  this.service_village_name=service_village_name;
    }
    
+   public int get_service_published()
+   {
+	   return this.service_published;
+   }
+   
+   public void set_service_published(int service_published)
+   {
+	   this.service_published=service_published;
+   }
    
 }

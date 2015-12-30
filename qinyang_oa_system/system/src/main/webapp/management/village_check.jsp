@@ -122,7 +122,7 @@
         <a>共${village_total_page}页</a>
         <form method="get" action="check_service_village_detail.do">
         <a>
-           到&nbsp;<input type="text" name="village_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="village_page" style="width:15px;" value="${village_page}">&nbsp;页
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -140,7 +140,7 @@
         <a>共${village_total_page}页</a>
         <form method="get" action="check_service_village_detail.do">
         <a>
-           到&nbsp;<input type="text" name="village_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="village_page" style="width:15px;" value="${village_page}">&nbsp;页
             <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -158,7 +158,7 @@
         <a>共${village_total_page}页</a>
         <form method="get" action="check_service_village_detail.do">
         <a>
-           到&nbsp;<input type="text" name="village_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="village_page" style="width:15px;" value="${village_page}">&nbsp;页
              <input type="submit" name="submit" value="确定">
         </a>
         </form>

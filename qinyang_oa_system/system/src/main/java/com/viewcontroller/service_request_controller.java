@@ -252,6 +252,9 @@ import com.data.work_waiting_info;
 			service_info _service_info=new service_info();
 			_service_info.set_service_village_id(service_village_id);
 			_service_info.set_service_type(service_type);
+			//发布后的才能查看
+			int service_published=1;
+			_service_info.set_service_published(service_published);
 			
 			//使用服务种类、村庄id及页数条件查询对应的服务对象list
 			
@@ -325,6 +328,8 @@ import com.data.work_waiting_info;
 			}
 		   
 	}
+	
+	
 	
 	
 	

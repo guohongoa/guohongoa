@@ -69,7 +69,7 @@
     </div>
 
     <div class="wdtzxq_btn">
-        <a href="">修改</a> &nbsp; <a href="record_check_by_user.do?work_record_creatorid=${user_id}&record_page=${param.record_page}&flag=${param.flag}">返回</a>
+        <a href="">修改</a> &nbsp; <a href="../work/record_check_by_user.do?work_record_creatorid=${user_id}&record_page=${param.record_page}&flag=${param.flag}">返回</a>
     </div>
 </div>
 <div class="footer"></div>

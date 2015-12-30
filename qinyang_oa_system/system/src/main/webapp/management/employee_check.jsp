@@ -113,7 +113,7 @@
         <a>共${employee_total_page}页</a>
         <form method="get" action="employee_check.do">
         <a>
-           到&nbsp;<input type="text" name="employee_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="employee_page" style="width:15px;" value="${employee_page}">&nbsp;页
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -131,7 +131,7 @@
         <a>共${employee_total_page}页</a>
         <form method="get" action="employee_check.do">
         <a>
-           到&nbsp;<input type="text" name="employee_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="employee_page" style="width:15px;" value="${employee_page}">&nbsp;页
             <input type="submit" name="submit" value="确定">
         </a>
         </form>
@@ -149,7 +149,7 @@
         <a>共${employee_total_page}页</a>
         <form method="get" action="employee_check.do">
         <a>
-           到&nbsp;<input type="text" name="employee_page" style="width:15px;">&nbsp;页
+           到&nbsp;<input type="text" name="employee_page" style="width:15px;" value="${employee_page}">&nbsp;页
              <input type="submit" name="submit" value="确定">
         </a>
         </form>
