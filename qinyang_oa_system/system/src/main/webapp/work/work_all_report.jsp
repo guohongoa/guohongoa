@@ -60,15 +60,15 @@
                     <dt></dt>
                     <dd class="activea"><a href="work_all_arrange.do?employee_id=${user_id}&work_page=1" >安排的工作</a><i></i></dd>
                     <dd><a href="work_all_feedback.do?employee_id=${user_id}&work_page=1" >反馈的工作</a></dd>
-                    <dd><a href="work_all_report.do?employee_id=${user_id}&work_page=1" class="red" style="border-bottom: 1px solid #c9c9c9;height: 35px">汇报的工作</a></dd>
+                    <dd><a href="" class="red" style="border-bottom: 1px solid #c9c9c9;height: 35px">汇报的工作</a></dd>
                 </dl>
             </li>
         </ul>
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>汇报的工作</span>
-            <span class="sort">按
+        <h4><a href="../work">工作</a>&gt;<a href="work_all_check.do?employee_id=${user_id}&work_page=1">工作任务</a>&gt;<a href="work_all_check.do?employee_id=${user_id}&work_page=1">全部工作</a>&gt;<span>汇报的工作</span>
+            <span class="sort" style="margin-left:320px;">按
                 <select>
                     <option>请选择</option>
                     <option>时间</option>

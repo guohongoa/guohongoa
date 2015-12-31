@@ -46,7 +46,7 @@
 </div>
 <!--主体-->
 <div class="fuwu_content">
-    <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<a href="">反馈工作</a>&gt;<span>我的反馈</span></h4>
+    <h4><a href="../work">工作</a>&gt;<a href="work_all_check.do?employee_id=${user_id}&work_page=1">工作任务</a>&gt;<a href="work_all_check.do?employee_id=${user_id}&work_page=1">全部工作</a>&gt;<a href="work_all_feedback.do?employee_id=${user_id}&work_page=1">反馈的工作</a>&gt;详情
     <div class="wfwxq">
         <h5>工作主题：<span>${work_info.get_work_theme()}</span></h5>
         <p>工作目标：<span>${work_info.get_work_target()}</span></p>

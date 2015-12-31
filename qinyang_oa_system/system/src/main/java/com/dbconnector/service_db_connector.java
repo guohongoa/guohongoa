@@ -304,4 +304,12 @@ public class service_db_connector
 					return rs;
 				}
 				
+				public static List<service_village_info> get_village_list_by_county_id(int county_id)
+				{
+					service_village_info_dao _service_village_info_dao=new service_village_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+					List<service_village_info> service_village_info_list=_service_village_info_dao.get_service_village_info_list_by_county_id(county_id);
+					return service_village_info_list;
+				
+				}
+				
 }

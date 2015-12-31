@@ -326,6 +326,18 @@ import com.data.work_waiting_info;
 				
 				return mv;
 			}
+			
+			@RequestMapping("service/service_village_by_county_id.do")
+			public ModelAndView service_village_by_county_request(
+					@RequestParam(value="county_id")        int county_id    //五服务乡镇id 
+					)
+			{ 
+				ModelAndView mv=new ModelAndView("village_data_by_county_id.jsp");
+				List<service_village_info> service_village_info_list=com.dbconnector.service_db_connector.get_village_list_by_county_id(county_id);
+				mv.addObject("service_village_info_list", service_village_info_list);
+				return mv;
+				
+			}
 		   
 	}
 	

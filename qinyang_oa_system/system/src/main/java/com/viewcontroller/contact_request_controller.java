@@ -519,6 +519,29 @@ import com.data.relationship_info;
 					return mv;
 				}
 				
+				//点击全部显示
+				
+				@RequestMapping("contact/contact_all_by_user_and_department.do")
+				public ModelAndView contact_show_all_request(
+						@RequestParam(value="employee_id")                          int    employee_id,    //查询人员id
+						@RequestParam(value="department_id")                        int    department_id   //层级
+						)
+				{
+					ModelAndView mv=new ModelAndView("contact_data_show_all.jsp");
+					List<contact_info> contact_info_list=com.dbconnector.contact_db_connector.get_contact_info_list_by_owner(employee_id);
+					List<employee_info> contact_info_list2=new ArrayList<employee_info>();
+					for(contact_info _contact_info:contact_info_list)
+					{
+						employee_info friend_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_contact_info.get_friend_id());
+						if(friend_info.get_employee_department_id()==department_id)
+						{
+						   contact_info_list2.add(friend_info);						
+						}
+					}
+					mv.addObject("contact_info_list",  contact_info_list2);
+					return mv;
+				}
+				
 				
 	}
 

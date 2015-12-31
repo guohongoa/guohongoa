@@ -82,7 +82,7 @@
                     <li> <a href="check_service_detail_by_service_village_id.do?service_village_id=${service_village_info_list.get(9).get_service_village_id()}&service_type=0&service_page=1">${service_village_info_list.get(9).get_service_village_name()}</a></li>
                 </c:otherwise>
                 </c:choose>
-                <li><a href="javascript:(0)" class="clickall">全部&gt;&gt;</a></li>
+                <li><a id="${service_village_info_list.get(0).get_service_village_county_id()}" href="" class="clickall">全部&gt;&gt;</a></li>
             </ul>
         </div>
         </c:forEach>
@@ -91,8 +91,9 @@
        <div class="pop">
             <div class="pop_content">
                 <h4>乡镇</h4>
-                <ul>
+                <ul class="all_contents">
                     <li style="width:300px;text-align:center;margin:0 auto;line-height:200px;">页面建设中......</li>
+                    
                 </ul>
                 <p><a href="" class="clickhide">关闭</a></p>
             </div>
@@ -102,5 +103,16 @@
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+<script>
+var path="guohong";
+//var path="system";
+$(".clickall").click(function()
+{
+	var id=$(this).attr("id");
+	console.log("id:"+id);
+	htmlobj=$.ajax({url:"/"+path+"/service/service_village_by_county_id.do?county_id="+id,async:false});
+	$(".all_contents").html(htmlobj.responseText);
+});
+</script>
 </body>
 </html>

@@ -67,8 +67,8 @@
     </div>
     <!--右侧-->
     <div class="right_content">
-        <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>安排的工作</span>
-            <span class="sort">按
+        <h4><a href="../work">工作</a>&gt;<a href="work_all_check.do?employee_id=${user_id}&work_page=1">工作任务</a>&gt;<a href="work_all_check.do?employee_id=${user_id}&work_page=1">全部工作</a>&gt;<span>安排的工作</span>
+            <span class="sort" style="margin-left:320px;">按
                 <select>
                     <option>请选择</option>
                     <option>时间</option>

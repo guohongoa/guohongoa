@@ -47,7 +47,7 @@
 </div>
 <!--主体-->
 <div class="fuwu_content">
-    <h4><a href="">工作</a>&gt;<a href="">工作任务</a>&gt;<span>待审批</span></h4>
+    <h4><a href="../work">工作</a>&gt;<a href="../work/work_pending.do?employee_id=${user_id}&work_page=${work_page}">工作任务</a>&gt;<a href="../work/work_pending.do?employee_id=${user_id}&work_page=${work_page}">审批工作</a>&gt;<span>详情</span></h4>
     <div class="wfwxq" style="padding-bottom:0px;">
         <p><b>审批类型：</b>台账</p>
         <p><b>建账人：</b><span>${work_record_info.get_work_record_creator()}</span></p>

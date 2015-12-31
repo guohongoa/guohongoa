@@ -23,8 +23,9 @@
         <!--右侧导航部分-->
         <c:choose>
         <c:when test="${empty user_name}">
-        <div class="menu">
-            <form id="login" action="login.do" method="post">
+        <div  class="menu">
+           
+                <form id="login" action="login.do" method="post">
                 <i></i><lable for="uname">手机号</lable>
                 <input id="uname" class="input100" name="employee_phone" type="text"/>
                 <i class="mimatu"></i><lable for="password" >密码</lable>
@@ -231,7 +232,7 @@
 <br/><br/><br/><br/><br/>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
-<script src="http://101.200.196.121:8080/oa/js/all.js"></script>
+<!--  script src="http://101.200.196.121:8080/oa/js/all.js"></script-->
 <script>
 </script>
 </body>

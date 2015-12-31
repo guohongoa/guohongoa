@@ -410,7 +410,10 @@ public  static List<List<employee_info>>  get_contact_list_by_id(int owner_id)
 		 {
 			 if(temp_info.get_employee_department_id()==i)
 			 {
+				 if(contact_child_list.size()<8)
+				 {
 				 contact_child_list.add(temp_info);
+				 }
 			 }
 		 }
 		 contact_list.add(contact_child_list);
@@ -531,7 +534,12 @@ public static void del_work_contact_by_double_id(int employee_id,int employee_ol
 	 _work_contact_info_dao.del_by_double_id(contact_info2);
 }
 
-
+public static List<contact_info> get_contact_info_list_by_owner(int employee_id)
+{
+	contact_info_dao _contact_info_dao=new contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	List<contact_info> contact_list=_contact_info_dao.select_contact_by_id(employee_id);
+	return contact_list;
+}
 
 
 	 
