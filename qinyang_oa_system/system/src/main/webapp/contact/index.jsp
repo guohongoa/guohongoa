@@ -63,7 +63,7 @@
     <div class="sili" >
         <!--第一列-->
         <div class="silione">
-            <span><a class="mess_btn" id="add_friend" href="javascript:void(0);"></a><a href="contact_msg_display.do?contact_request_receiver_id=${user_id}"></a></span>  <!--添加联系人  -->
+            <span><a class="mess_btn" id="add_friend" href="javascript:void(0);"></a><a href="contact_msg_display.do?contact_request_receiver_id=${user_id}&contact_page=1"></a></span>  <!--添加联系人  -->
             <div class="swcw sili_content1">
                 <h4 style="line-height: 20px;padding: 5px 0"> 党员群众服务中心<br>嘉言民生代办员</h4>
                 <div>
@@ -444,6 +444,26 @@
         </div>
     </div>
 </div>
+
+<div class="sltjpop" id="pop7">
+    <div class="slpopone">
+        <h6>添加联系人 <a class="closebtn"></a></h6>
+        <div>
+            <form action="" method="post">
+                <div class="slpopone_content">
+                    <p>请输入要添加的联系人手机号</p>
+                    <input id="tel" type="text" />
+                    <span class="magnifier"></span>
+                    <p>此好友已在您的好友名单中</p>
+                </div>
+                <div class="slpopone_btn">
+                    <input id="tel_sbm" type="button" value="下一步"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!--<script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>-->
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
 
@@ -460,8 +480,8 @@
     $(document).ready(function(){
          $("#tel_sbm").click(function(){
          var employee_phone=$("#tel").val();
-         //var path="guohong";
-         var path="system";
+         var path="guohong";
+         //var path="system";
          //用户的id，需做登录检测
          //尝试添加
          var owner_employee_id=$("#owner_employee_id").val();
@@ -479,6 +499,11 @@
                 	   $("#pop3").show();
                 	   $("#tel").val($(data).filter('div.phone')[0].innerHTML);
                    }//用户不存在
+                   else if(return_type==3)
+                   {
+                	   $("#pop7").show();
+                	   $("#tel").val($(data).filter('div.phone')[0].innerHTML);
+                   }
                    else{$("#pop4").show();
                         var tmp=$(data).filter('div.phone')[0].innerHTML;
                         $("#tel4").val($(data).filter('div.phone')[0].innerHTML);

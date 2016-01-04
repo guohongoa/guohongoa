@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
+    <c:set var="contact_page" value="${param.contact_page}"/>
+    <c:set var="contact_total_page" value="${param.contact_total_page}"/>
 </head>
 <body>
 <!--header为导航容器-->
@@ -58,7 +60,7 @@
            <c:forEach var="contact_msg" items="${contact_msg_list}">
             <li>
                 <span><b>${contact_msg.get_contact_request_sender_name()}</b>申请添加你为联系人</span>
-                <span class="message">${contact_msg.get_cotact_reuqest_sendmsg()}</span>
+                <span class="message">${contact_msg.get_contact_reuqest_sendmsg()}</span>
                 <span class="slxxlbtime">2015-12-09 11:30</span>
                 <!--  
                 <select>
@@ -84,14 +86,65 @@
         </ul>
     </div>
     <div class="page">
-        <a href="" class="bulec">1</a>
-        <a href="">2</a>
-        <a href="">3</a>
-        <a href="">4</a>
-        <a href="">5</a>
-        <a href="">6</a>
-        <a href="">上一页</a>
-        <a href="">下一页</a>
+        <c:choose>
+      <c:when test="${contact_page==1}">
+      <div class="page">
+        <a href="contact_msg_display.do?contact_page=1&contact_request_receiver_id=${user_id}">上一页</a>
+        <a href="contact_msg_display.do?contact_page=1&contact_request_receiver_id=${user_id}" class="bulec">1</a>
+        <a href="contact_msg_display.do?contact_page=2&contact_request_receiver_id=${user_id}">2</a>
+        <a href="contact_msg_display.do?contact_page=3&contact_request_receiver_id=${user_id}">3</a>
+        <a href="contact_msg_display.do?contact_page=4&contact_request_receiver_id=${user_id}">4</a>
+        <a href="contact_msg_display.do?contact_page=5&contact_request_receiver_id=${user_id}">5</a>
+        <a href="contact_msg_display.do?contact_page=2&contact_request_receiver_id=${user_id}">下一页</a>
+        <a>共${contact_total_page}页</a>
+        <form method="get" action="contact_page">
+        <a>
+           到&nbsp;<input type="text" name="contact_page" style="width:15px;" value="${contact_page}">&nbsp;页
+             <input type="hidden" name="contact_request_receiver_id" value="${user_id}" >
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:when test="${contact_page==2}">
+      <div class="page">
+        <a href="contact_msg_display.do?contact_page=1&contact_request_receiver_id=${user_id}">上一页</a>
+        <a href="contact_msg_display.do?contact_page=1&contact_request_receiver_id=${user_id}">1</a>
+        <a href="contact_msg_display.do?contact_page=2&contact_request_receiver_id=${user_id}" class="bulec">2</a>
+        <a href="contact_msg_display.do?contact_page=3&contact_request_receiver_id=${user_id}">3</a>
+        <a href="contact_msg_display.do?contact_page=4&contact_request_receiver_id=${user_id}">4</a>
+        <a href="contact_msg_display.do?contact_page=5&contact_request_receiver_id=${user_id}">5</a>
+        <a href="contact_msg_display.do?contact_page=3&contact_request_receiver_id=${user_id}">下一页</a>
+        <a>共${contact_total_page}页</a>
+        <form method="get" action="contact_msg_display.do">
+        <a>
+           到&nbsp;<input type="text" name="contact_page" style="width:15px;" value="${contact_page}">&nbsp;页
+           <input type="hidden" name="contact_request_receiver_id" value="${user_id}" >
+            <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:when>
+      <c:otherwise>
+      <div class="page">
+        <a href="contact_msg_display.do?contact_page=${contact_page-1}&contact_request_receiver_id=${user_id}">上一页</a>
+        <a href="contact_msg_display.do?contact_page=${contact_page-2}&contact_request_receiver_id=${user_id}">${contact_page-2}</a>
+        <a href="contact_msg_display.do?contact_page=${contact_page-1}&contact_request_receiver_id=${user_id}">${contact_page-1}</a>
+        <a class="bulec" href="contact_msg_display.do?contact_page=${contact_page}&contact_request_receiver_id=${user_id}">${contact_page}</a>
+        <a href="contact_msg_display.do?contact_page=${contact_page+1}&contact_request_receiver_id=${user_id}">${contact_page+1}</a>
+        <a href="contact_msg_display.do?contact_page=${contact_page+2}&contact_request_receiver_id=${user_id}">${contact_page+2}</a>
+        <a href="contact_msg_display.do?contact_page=${contact_page+1}&contact_request_receiver_id=${user_id}">下一页</a>
+        <a>共${contact_total_page}页</a>
+        <form method="get" action="contact_msg_display.do">
+        <a>
+           到&nbsp;<input type="text" name="contact_page" style="width:15px;" value="${contact_page}">&nbsp;页
+             <input type="hidden" name="contact_request_receiver_id" value="${user_id}" >
+             <input type="submit" name="submit" value="确定">
+        </a>
+        </form>
+      </div>
+      </c:otherwise>
+    </c:choose>
     </div>
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>

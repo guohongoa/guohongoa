@@ -12,14 +12,14 @@
 		<result property="contact_request_sender_name" column="contact_request_sender_name" />
 		<result property="contact_request_receiver_id" column="contact_request_receiver_id" />
 		<result property="contact_request_receiver_name" column="contact_request_receiver_name" />
-		<result property="cotact_reuqest_sendmsg" column="cotact_reuqest_sendmsg" />
+		<result property="contact_reuqest_sendmsg" column="contact_reuqest_sendmsg" />
 		<result property="contact_request_sendtime" column="contact_request_sendtime" />
 		<result property="contact_request_status" column="contact_request_status" />
 	</resultMap>
 	<insert id="insert" parameterType="contact_add_request_info">
 		insert into
-		contact_add_request_info(contact_request_sender_id,contact_request_sender_name,contact_request_receiver_id,contact_request_receiver_name,cotact_reuqest_sendmsg,contact_request_sendtime,contact_request_status)
-		values(#{contact_request_sender_id},#{contact_request_sender_name},#{contact_request_receiver_id},#{contact_request_receiver_name},#{cotact_reuqest_sendmsg},#{contact_request_sendtime},#{contact_request_status});
+		contact_add_request_info(contact_request_sender_id,contact_request_sender_name,contact_request_receiver_id,contact_request_receiver_name,contact_reuqest_sendmsg,contact_request_sendtime,contact_request_status)
+		values(#{contact_request_sender_id},#{contact_request_sender_name},#{contact_request_receiver_id},#{contact_request_receiver_name},#{contact_reuqest_sendmsg},#{contact_request_sendtime},#{contact_request_status});
 	</insert>
 
      
@@ -41,6 +41,12 @@
         SET contact_request_status = #{contact_request_status}
         WHERE contact_add_msg_id = #{contact_add_msg_id} 
     </update>
+    
+   
+    
+    <select id="select_by_receiver_id_and_page" parameterType="contact_add_request_selector" resultMap="result">
+		SELECT * FROM contact_add_request_info WHERE contact_request_receiver_id = #{contact_request_receiver_id} limit #{contact_request_begin},#{contact_request_num};
+	</select>
 </mapper>
 
 

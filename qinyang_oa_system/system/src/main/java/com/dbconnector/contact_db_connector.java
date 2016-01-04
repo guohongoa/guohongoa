@@ -12,6 +12,7 @@ import com.dao.contact_person_info_dao;
 import com.dao.contact_relationship_info_dao;
 import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
+import com.dao.msg_info_dao;
 import com.dao.relationship_info_dao;
 import com.dao.work_contact_info_dao;
 import com.data.contact_add_request_info;
@@ -22,6 +23,7 @@ import com.data.contact_person_info;
 import com.data.contact_relationship_info;
 import com.data.department_info;
 import com.data.employee_info;
+import com.data.msg_info;
 import com.data.relationship_info;
 import com.data.work_contact_info;
 import com.mybatis.mybatis_connection_factory;
@@ -539,6 +541,33 @@ public static List<contact_info> get_contact_info_list_by_owner(int employee_id)
 	contact_info_dao _contact_info_dao=new contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 	List<contact_info> contact_list=_contact_info_dao.select_contact_by_id(employee_id);
 	return contact_list;
+}
+
+//根据好友添加表的接受者id，得到显示总页数
+public static int get_contact_total_page(int contact_request_receiver_id)
+{
+	int contact_total_num;   //总台账查询条目
+	int contact_total_page;  //台账查询显示总页数
+	contact_add_request_info_dao _contact_add_request_info_dao=new contact_add_request_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	contact_total_num=_contact_add_request_info_dao.get_contact_total_num_by_user(contact_request_receiver_id);
+	contact_total_page=(int)Math.ceil((float)contact_total_num/11.0f);
+	return contact_total_page;
+}
+
+public static List<contact_add_request_info> get_contact_add_list_by_receiver_id(int contact_request_receiver_id,int contact_page)
+{
+	 List<contact_add_request_info> contact_msg_list;
+	 contact_add_request_info_dao _contact_add_request_info_dao=new contact_add_request_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	 contact_msg_list= _contact_add_request_info_dao.select_by_receiver_id_and_page(contact_request_receiver_id,contact_page);
+	 return contact_msg_list;
+}
+
+public static boolean not_exist_in_contact(contact_info _contact_info)
+{
+	boolean rs;
+	contact_info_dao _contact_info_dao=new contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	rs=not_exist(_contact_info_dao,_contact_info);
+	return rs;
 }
 
 

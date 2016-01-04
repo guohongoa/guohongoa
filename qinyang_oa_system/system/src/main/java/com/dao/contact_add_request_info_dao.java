@@ -8,6 +8,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.data.contact_add_request_info;
 import com.data.contact_person_department_info;
 import com.data.department_info;
+import com.data.msg_info;
+import com.selector.contact_add_request_selector;
+import com.selector.msg_selector;
 
 public class contact_add_request_info_dao 
 {
@@ -92,4 +95,48 @@ public class contact_add_request_info_dao
 	        	return true;//修改成功
 	        }
 	  }
+	 
+	 public int get_contact_total_num_by_user(int contact_request_receiver_id)
+	 {
+		 int contact_total_num;
+		 List<contact_add_request_info> contact_add_request_info_list=null;
+		 
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 contact_add_request_selector _contact_add_request_selector=new contact_add_request_selector();//好友添加加分页信息
+			 _contact_add_request_selector.set_contact_request_receiver_id(contact_request_receiver_id);
+			  
+			 _contact_add_request_selector.set_contact_request_begin(0);
+			 _contact_add_request_selector.set_contact_request_num(999999);
+			  
+			  contact_add_request_info_list = session.selectList("contact_add_request_info.select_by_receiver_id_and_page", _contact_add_request_selector);
+			  contact_total_num =contact_add_request_info_list.size();
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("contact_add_request_info.select_by_id --> "+contact_add_request_info_list);
+		 
+		 return contact_total_num;
+	 }
+	 
+	 public List<contact_add_request_info> select_by_receiver_id_and_page(int contact_request_receiver_id,int contact_page)
+	 {
+		 List<contact_add_request_info> contact_msg_list=null;
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			 contact_add_request_selector _contact_add_request_selector=new contact_add_request_selector();//好友添加加分页信息
+			 _contact_add_request_selector.set_contact_request_receiver_id(contact_request_receiver_id);
+
+			  
+			  //固定一页最多取十一条数据
+			 _contact_add_request_selector.set_contact_request_begin(11*(contact_page-1));
+			 _contact_add_request_selector.set_contact_request_num(11);
+			 
+			 contact_msg_list = session.selectList("contact_add_request_info.select_by_receiver_id_and_page", _contact_add_request_selector);
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("contact_add_request_info.select_by_id --> "+contact_msg_list);
+	        return contact_msg_list;
+	 }
 }

@@ -31,7 +31,7 @@ import com.data.relationship_info;
 		@RequestMapping("contact/relationship_add.do")
 		public ModelAndView relationship_add_request(
 				@RequestParam(value="relationship_owner_id")     int    relationship_owner_id , //主方id
-			    @RequestParam(value="relationship_owner_name")  String relationship_owner_name,
+			    @RequestParam(value="relationship_owner_name")   String relationship_owner_name,
 				@RequestParam(value="relationship_friend_id")    int    relationship_friend_id,
 				@RequestParam(value="relationship_friend_name")  String relationship_friend_name,
 	            @RequestParam(value="relationship_category")     int    relationship_category
@@ -365,7 +365,7 @@ import com.data.relationship_info;
 					contact_add_request_info _contact_add_request_info=new contact_add_request_info();
 					_contact_add_request_info.set_contact_request_sender_id(contact_request_sender_id);
 					_contact_add_request_info.set_contact_request_receiver_id(contact_request_receiver_id);
-					_contact_add_request_info.set_cotact_reuqest_sendmsg(cotact_reuqest_sendmsg);
+					_contact_add_request_info.set_contact_reuqest_sendmsg(cotact_reuqest_sendmsg);
 					String contact_request_sender_name=com.dbconnector.management_db_connector.get_employee_info_by_id(contact_request_sender_id).get_employee_name();
 					String contact_request_receiver_name=com.dbconnector.management_db_connector.get_employee_info_by_id(contact_request_receiver_id).get_employee_name();
 					
@@ -388,11 +388,16 @@ import com.data.relationship_info;
 				@RequestMapping("contact/contact_msg_display.do")
 				public ModelAndView contact_msg_display_request(
 						
-						@RequestParam(value="contact_request_receiver_id")  int    contact_request_receiver_id
+						@RequestParam(value="contact_request_receiver_id")  int    contact_request_receiver_id,
+						@RequestParam(value="contact_page")  int    contact_page
+						
 						)
 				{
-					ModelAndView mv=new ModelAndView("contact_msg.jsp");
-					List<contact_add_request_info> contact_msg_list=com.dbconnector.contact_db_connector.get_contact_msg_list_by_receiver_id(contact_request_receiver_id);
+				    int contact_total_page=com.dbconnector.contact_db_connector.get_contact_total_page(contact_request_receiver_id);
+				    System.out.println("total_page:"+contact_total_page);
+				    System.out.println("contact_page"+contact_page);
+					ModelAndView mv=new ModelAndView("contact_msg.jsp?contact_page="+contact_page+"&contact_total_page="+contact_total_page);
+					List<contact_add_request_info> contact_msg_list=com.dbconnector.contact_db_connector.get_contact_add_list_by_receiver_id(contact_request_receiver_id,contact_page);
 					mv.addObject("contact_msg_list", contact_msg_list);
 					return mv;
 				}
@@ -467,12 +472,26 @@ import com.data.relationship_info;
 				    	
 				    	if(relationship_type==0||relationship_type==1)
 				    	{
+				    		contact_info _contact_info=new contact_info();
+				    		_contact_info.set_owner_id(owner_employee_id);
+				    		_contact_info.set_friend_id(friend_employee_id);
+				    		boolean not_exist=com.dbconnector.contact_db_connector.not_exist_in_contact(_contact_info);
+				    		  if(not_exist==true)
+				    		  {
 				    		  mv.addObject("return_type", 0);
 				    		  mv.addObject("msg","<p >姓名：<span>"+friend_employee_info.get_employee_name()+"</span><span>（"+friend_employee_info.get_employee_phone()+"）</span></p>"+
 				    				             "<p>部门：<span>"+friend_employee_info.get_employee_department_name()+"</span></p>"+
 				    				             "<p>职位：<span>"+friend_employee_info.get_employee_position()+"</span></p>"
 				    				      );
 				    		  mv.addObject("phone", friend_employee_phone);
+				    		  }
+				    		  else
+				    		  {
+				    			  mv.addObject("return_type", 3);
+						    	  mv.addObject("msg","该用户已经是您的好友");
+						    		//
+						    	  mv.addObject("phone", friend_employee_phone);
+				    		  }
 				    	}
 				    	else
 				    	{
