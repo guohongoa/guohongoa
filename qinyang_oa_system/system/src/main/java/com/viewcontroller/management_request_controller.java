@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.data.department_group_info;
 import com.data.department_info;
 import com.data.employee_info;
 import com.data.service_group_info;
@@ -184,6 +185,16 @@ public class management_request_controller
 		return mv;
 
 	}
+	
+	    @RequestMapping("management/department_add_display.do")
+	    public ModelAndView department_add_display_request()
+	    {
+	    	ModelAndView mv=new ModelAndView("department_add.jsp");
+	    	List<department_group_info> department_group_list=com.dbconnector.management_db_connector.get_department_group_list();
+			mv.addObject("department_group_list", department_group_list);
+	    	return mv;
+	    }
+	
 		//部门管理请求响应
 		@RequestMapping("management/department_insert.do")
 
@@ -195,7 +206,8 @@ public class management_request_controller
 				@RequestParam(value="department_parent")      String department_parent,
 				@RequestParam(value="department_parentleader")String department_parentleader,
 				@RequestParam(value="department_leaderphone") String    department_leaderphone,
-				@RequestParam(value="department_resourceurl") String    department_resourceurl
+				
+				@RequestParam(value="department_group_id")        int     department_group_id
 				)
 		{
 			//将表单响应结果插入系统信息数据库
@@ -207,7 +219,11 @@ public class management_request_controller
 			_department_info.set_department_parent(department_parent);
 			_department_info.set_department_parentleader(department_parentleader);
 			_department_info.set_department_leaderphone(department_leaderphone);
-			_department_info.set_department_resourceurl(department_resourceurl);
+			
+			department_group_info _department_group_info=com.dbconnector.management_db_connector.get_department_group_info_by_id(department_group_id);
+			_department_info.set_department_group_id(_department_group_info.get_department_group_id());
+			_department_info.set_department_group_name(_department_group_info.get_department_group_name());
+			_department_info.set_department_group_type(_department_group_info.get_department_group_type());
 			
 			
 			 Date date=new Date();
@@ -283,7 +299,8 @@ public class management_request_controller
 			ModelAndView mv=new ModelAndView("department_modify.jsp?department_id="+department_id+"&department_page"+department_page);
 			department_info _department_info=com.dbconnector.management_db_connector.get_department_info_by_id(department_id);
 			
-			
+			List<department_group_info> department_group_list=com.dbconnector.management_db_connector.get_department_group_list();
+			mv.addObject("department_group_list", department_group_list);	
 			mv.addObject("department_info",_department_info);
 			
 			return mv;
@@ -293,16 +310,18 @@ public class management_request_controller
 		
 		//部门修改提交
 		public ModelAndView department_modify_commit_request(
-				@RequestParam(value="department_id")              int      department_id,
-				@RequestParam(value="department_name")            String    department_name,
-				@RequestParam(value="department_code")            int      department_code,
-				@RequestParam(value="department_regulation")      String   department_regulation,
+				@RequestParam(value="department_id")              int     department_id,
+				@RequestParam(value="department_name")            String  department_name,
+				@RequestParam(value="department_code")            int     department_code,
+				@RequestParam(value="department_regulation")      String  department_regulation,
 				@RequestParam(value="department_leader")          String  department_leader,
 				@RequestParam(value="department_parent")          String  department_parent,
 				@RequestParam(value="department_parentleader")    String  department_parentleader,
-				@RequestParam(value="department_leaderphone")    String  department_leaderphone,
+				@RequestParam(value="department_leaderphone")     String  department_leaderphone,
 				
-				@RequestParam(value="department_page")          int department_page  //修改前的页数位置
+				@RequestParam(value="department_group_id")        int     department_group_id,  
+				
+				@RequestParam(value="department_page")            int department_page  //修改前的页数位置
 				
 				)
 		{
@@ -315,6 +334,11 @@ public class management_request_controller
 			_department_info.set_department_leader(department_leader);
 			_department_info.set_department_parent(department_parent);
 			_department_info.set_department_parentleader(department_parentleader);
+			
+			department_group_info _department_group_info=com.dbconnector.management_db_connector.get_department_group_info_by_id(department_group_id);
+			_department_info.set_department_group_id(_department_group_info.get_department_group_id());
+			_department_info.set_department_group_name(_department_group_info.get_department_group_name());
+			_department_info.set_department_group_type(_department_group_info.get_department_group_type());
 			
 			
 			boolean rs=com.dbconnector.management_db_connector.update_department_info(_department_info);
@@ -856,4 +880,17 @@ public class management_request_controller
 			    return s;
 
 			}
+			
+			
+			//获取部门分组列表
+			@RequestMapping("management/department_group_check.do")
+			public ModelAndView department_group_check_request()
+			{
+				ModelAndView mv=new ModelAndView("department_group_check.jsp");
+				List<department_group_info> department_group_list=com.dbconnector.management_db_connector.get_department_group_list();
+				mv.addObject("department_group_list", department_group_list);
+				return mv;
+				
+			}
+			
 }

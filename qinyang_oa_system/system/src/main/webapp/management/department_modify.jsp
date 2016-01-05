@@ -55,8 +55,8 @@
             <li style="margin-bottom: -7px"><a href="department_check.do?department_page=1" class="active">部门管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="employee_add.jsp">添加部门</a><i></i></dd>
-                    <dd><a href="employee_add.jsp" class="red" >修改</a></dd>
+                    <dd class="activea"><a href="department_add.jsp">添加部门</a><i></i></dd>
+                    <dd><a href="" class="red" >修改</a></dd>
                 </dl>
             </li>
             <li><a href="employee_check.do?employee_page=1">人员管理</a></li>
@@ -67,7 +67,7 @@
     <div class="right_content">
         <h4><a href="department_check.do?department_page=1">管理</a> &gt;<a href="department_check.do?department_page=1">部门管理</a> &gt;<span>部门详情修改</span></h4>
         <div class="bmtj bmtjxg">
-            <form action="department_modify_commit.do" method="post">
+            <form action="department_modify_commit.do" method="post" id="department_modify">
                <input type="hidden" name="department_page" value="${department_page}">
                 <input type="hidden" name="department_id" value="${department_info.get_department_id()}">
                 <div>
@@ -81,8 +81,13 @@
                     <p><span>工作制度</span>
                         <textarea name="department_regulation">${department_info.get_department_regulation()}</textarea></p>
 
-                    <p><span>上传流程</span>
-                        <input class="filebtn" type="file" value=""/> </p>
+                    <p><span>所属架构</span>
+                        <select name="department_group_id" form="department_modify">
+                            <c:forEach var="department_group_info" items="${department_group_list}">
+                                <option value ="${department_group_info.get_department_group_id()}">${department_group_info.get_department_group_name()}</option>
+                            </c:forEach>
+                         </select>
+                    </p>
                 </div>
                 <div class="clear">
                     <p><span>部门负责人</span>

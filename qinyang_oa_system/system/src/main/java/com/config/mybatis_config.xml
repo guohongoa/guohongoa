@@ -34,7 +34,8 @@
 		<typeAlias alias="contact_info" type="com.data.contact_info"/>
 		<typeAlias alias="msg_info" type="com.data.msg_info"/>
 		<typeAlias alias="msg_selector" type="com.selector.msg_selector"/>
-		<typeAlias alias="contact_add_request_selector" type="com.selector.contact_add_request_selector"/>								
+		<typeAlias alias="contact_add_request_selector" type="com.selector.contact_add_request_selector"/>
+		<typeAlias alias="department_group_info" type="com.data.department_group_info"/>								
 	</typeAliases>
 
 	<environments default="development">
@@ -73,5 +74,6 @@
 		<mapper resource="com/config/work_waiting_info.xml"/>
 		<mapper resource="com/config/contact_info.xml"/>
 		<mapper resource="com/config/msg_info.xml"/>
+		<mapper resource="com/config/department_group_info.xml"/>
 	</mappers>
 </configuration>

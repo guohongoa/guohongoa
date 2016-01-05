@@ -2,11 +2,13 @@ package com.dbconnector;
 
 import java.util.List;
 
+import com.dao.department_group_info_dao;
 import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.service_group_info_dao;
 import com.dao.service_info_dao;
 import com.dao.service_village_county_info_dao;
+import com.data.department_group_info;
 import com.data.department_info;
 import com.data.employee_info;
 import com.data.service_group_info;
@@ -215,6 +217,23 @@ public class management_db_connector
 			service_group_total_num=_service_group_info_dao.get_service_group_total_num();
 			service_group_total_page=(int)Math.ceil((float)service_group_total_num/11.0f);
 			return service_group_total_page;
+	 }
+	 
+	 public static List<department_group_info > get_department_group_list()
+	 {
+	 	List<department_group_info> department_group_list;
+	 	department_group_info_dao _department_group_info_dao=new department_group_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+	 	department_group_list=_department_group_info_dao.get_department_group_list();
+	 	return department_group_list;
+	 }
+	 
+	 //使用id获取
+	 public static department_group_info get_department_group_info_by_id(int department_group_id)
+	 {
+		 department_group_info _department_group_info;
+		 department_group_info_dao _department_group_info_dao=new department_group_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 _department_group_info=_department_group_info_dao.get_by_id(department_group_id);
+		 return _department_group_info;
 	 }
 	 
 	 

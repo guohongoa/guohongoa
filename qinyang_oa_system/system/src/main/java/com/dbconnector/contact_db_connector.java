@@ -12,7 +12,6 @@ import com.dao.contact_person_info_dao;
 import com.dao.contact_relationship_info_dao;
 import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
-import com.dao.msg_info_dao;
 import com.dao.relationship_info_dao;
 import com.dao.work_contact_info_dao;
 import com.data.contact_add_request_info;
@@ -23,7 +22,6 @@ import com.data.contact_person_info;
 import com.data.contact_relationship_info;
 import com.data.department_info;
 import com.data.employee_info;
-import com.data.msg_info;
 import com.data.relationship_info;
 import com.data.work_contact_info;
 import com.mybatis.mybatis_connection_factory;
@@ -569,6 +567,7 @@ public static boolean not_exist_in_contact(contact_info _contact_info)
 	rs=not_exist(_contact_info_dao,_contact_info);
 	return rs;
 }
+
 
 
 	 

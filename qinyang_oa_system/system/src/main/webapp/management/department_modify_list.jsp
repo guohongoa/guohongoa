@@ -55,8 +55,8 @@
             <li style="margin-bottom: -7px"><a href="department_check.do?department_page=1" class="active" >部门管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="department_add.jsp" >添加部门</a><i></i></dd>
-                    <dd><a href="#" class="red">修改</a></dd>
+                    <dd class="activea"><a href="department_add_display.do" >添加部门</a><i></i></dd>
+                    <dd><a href="" class="red">修改</a></dd>
                 </dl>
             </li>
             <li><a href="employee_check.do?employee_page=1">人员管理</a></li>

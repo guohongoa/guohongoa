@@ -55,7 +55,7 @@
             <li style="margin-bottom: -7px"><a href="department_check.do?department_page=1" class="active" >部门管理</a>
                 <dl>
                     <dt></dt>
-                    <dd class="activea"><a href="department_add.jsp" >添加部门</a><i></i></dd>
+                    <dd class="activea"><a href="department_add_display.do" >添加部门</a><i></i></dd>
                     <dd><a href="department_modify_list.do?department_page=1" >修改</a></dd>
                 </dl>
             </li>
@@ -90,8 +90,8 @@
                 <li><a href="../error.jsp">详细</a></li>
                 <li>${department_info.get_department_parent()}</li>
                 <li>${department_info.get_department_parentleader()}</li>
-                <li style="width:72px;">${department_info.get_department_leaderphone()}</li>
-                <li style="width:85px;">
+                <li style="width:76px;">${department_info.get_department_leaderphone()}</li>
+                <li style="width:83px;">
                     <a href="department_del.do?department_id=${department_info.get_department_id()}&department_page=${department_page}"> 
                         删除
                     </a>

@@ -18,12 +18,13 @@
 		
 		<result property="department_group_id" column="department_group_id" />
 		<result property="department_group_name" column="department_group_name" />
+		<result property="department_group_type" column="department_group_type" />
 	</resultMap>
 
 	<insert id="insert" parameterType="department_info">
 		insert into
-		department_info(department_name,department_code,department_parent,department_regulation,department_leader,department_addtime,department_leaderphone,department_parentleader)
-		values(#{department_name},#{department_code},#{department_parent},#{department_regulation},#{department_leader},#{department_addtime},#{department_leaderphone},#{department_parentleader});
+		department_info(department_name,department_code,department_parent,department_regulation,department_leader,department_addtime,department_leaderphone,department_parentleader,department_group_id,department_group_name,department_group_type)
+		values(#{department_name},#{department_code},#{department_parent},#{department_regulation},#{department_leader},#{department_addtime},#{department_leaderphone},#{department_parentleader},#{department_group_id},#{department_group_name},#{department_group_type});
 	</insert>
 
 	<select id="select_by_department_id" parameterType="int" resultMap="result">
@@ -47,7 +48,10 @@
             department_leader     = #{department_leader},
             department_parent     = #{department_parent},
             department_parentleader=#{department_parentleader},
-            department_leaderphone= #{department_leaderphone}
+            department_leaderphone = #{department_leaderphone},
+            department_group_id    = #{department_group_id},
+            department_group_name    = #{department_group_name},
+            department_group_type   = #{department_group_type}
         WHERE department_id = #{department_id} 
     </update>
     

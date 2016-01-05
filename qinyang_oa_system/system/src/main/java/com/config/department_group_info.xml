@@ -5,13 +5,24 @@
 
 <mapper namespace="department_group_info">
 
-	<resultMap id="result" type="department_info">
+	<resultMap id="result" type="department_group_info">
 		<result property="department_group_id" column="department_group_id" />
 		<result property="department_group_name" column="department_group_name" />
 		<result property="department_group_type" column="department_group_type" />
 		
 	</resultMap>
 
+
+    
+    <select id="select_all" resultMap="result">
+		SELECT * FROM department_group_info;
+	</select>
+	
+	
+	
+	<select id="select_by_department_group_id" resultMap="result">
+		SELECT * FROM department_group_info WHERE department_group_id = #{department_group_id};
+	</select>
 
 </mapper>
 

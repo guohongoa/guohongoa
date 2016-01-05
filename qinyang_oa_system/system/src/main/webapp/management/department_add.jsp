@@ -77,10 +77,13 @@
                         <p><span>工作制度</span>
                             <textarea name="department_regulation" form="department_insert_form" placeholder="输入不超过30个字"></textarea>
                         </p>
-                        <p><span>上传流程</span>
-                            <!--department_resourceurl--><input type="file"/>
-                             <input type="hidden" name="department_resourceurl" value="url"/>
-                        </p>
+                        <p><span>所属架构</span>
+                        <select name="department_group_id" form="department_insert_form">
+                            <c:forEach var="department_group_info" items="${department_group_list}">
+                                <option value ="${department_group_info.get_department_group_id()}">${department_group_info.get_department_group_name()}</option>
+                            </c:forEach>
+                         </select>
+                    </p>
                     </div>
                     <div class="clear">
                         <p><span>部门负责人</span>
