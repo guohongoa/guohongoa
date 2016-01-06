@@ -136,7 +136,7 @@ import com.data.relationship_info;
 			   {
 				   if(contact_info_list.size()!=0)  //判断查询队列是否为非空
 				   {
-				   switch(contact_info_list.get(0).get_employee_department_id())
+				   switch(contact_info_list.get(0).get_department_group_id())
 				   {
 					case 1: mv.addObject("contact_info_list2", contact_info_list);   break;
 					case 2: mv.addObject("contact_info_list8", contact_info_list);   break;
@@ -543,7 +543,7 @@ import com.data.relationship_info;
 				@RequestMapping("contact/contact_all_by_user_and_department.do")
 				public ModelAndView contact_show_all_request(
 						@RequestParam(value="employee_id")                          int    employee_id,    //查询人员id
-						@RequestParam(value="department_id")                        int    department_id   //层级
+						@RequestParam(value="department_id")                        int    department_id   //
 						)
 				{
 					ModelAndView mv=new ModelAndView("contact_data_show_all.jsp");
@@ -552,7 +552,9 @@ import com.data.relationship_info;
 					for(contact_info _contact_info:contact_info_list)
 					{
 						employee_info friend_info=com.dbconnector.management_db_connector.get_employee_info_by_id(_contact_info.get_friend_id());
-						if(friend_info.get_employee_department_id()==department_id)
+						department_info _department_info=com.dbconnector.management_db_connector.get_department_info_by_id(department_id);
+						int department_group_id=_department_info.get_department_group_id();
+						if(department_group_id==department_id)
 						{
 						   contact_info_list2.add(friend_info);						
 						}

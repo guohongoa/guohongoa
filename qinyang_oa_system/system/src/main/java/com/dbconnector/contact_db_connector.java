@@ -10,6 +10,7 @@ import com.dao.contact_info_dao;
 import com.dao.contact_person_department_info_dao;
 import com.dao.contact_person_info_dao;
 import com.dao.contact_relationship_info_dao;
+import com.dao.department_group_info_dao;
 import com.dao.department_info_dao;
 import com.dao.employee_info_dao;
 import com.dao.relationship_info_dao;
@@ -189,6 +190,7 @@ public class contact_db_connector
 	 {
 		 int contact_relationship_type;
 		 employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		 department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		 contact_person_department_info_dao _contact_person_department_info_dao=new contact_person_department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 		 
 		 //获取主客用户信息
@@ -198,14 +200,19 @@ public class contact_db_connector
 		 
 		 if(friend_department_employee_info!=null)
 		 {
-		 //获取主客部门id
+		 //获取主客部门分类（department_group_id）id
 		 int owner_department_id=owner_department_employee_info.get_employee_department_id();
 		 int friend_department_id=friend_department_employee_info.get_employee_department_id();
 		 
-		 contact_person_department_info owner_contact_person_depepartment_info=_contact_person_department_info_dao.get_department_info_by_id(owner_department_id);
-		 contact_person_department_info friend_contact_person_depepartment_info=_contact_person_department_info_dao.get_department_info_by_id(friend_department_id);
-		 boolean is_downer=check_relationship_type(owner_contact_person_depepartment_info, friend_department_id); //是其下级与否
-		 boolean is_upper=check_relationship_type(friend_contact_person_depepartment_info, owner_department_id);  //是其上级与否
+		 department_info owner_department_info=_department_info_dao.select_by_department_id(owner_department_id);
+		 department_info friend_department_info=_department_info_dao.select_by_department_id(friend_department_id);
+		 int owner_department_group_id=owner_department_info.get_department_group_id();
+		 int friend_department_group_id=friend_department_info.get_department_group_id();
+		 
+		 contact_person_department_info owner_contact_person_depepartment_info=_contact_person_department_info_dao.get_department_info_by_id(owner_department_group_id);
+		 contact_person_department_info friend_contact_person_depepartment_info=_contact_person_department_info_dao.get_department_info_by_id(friend_department_group_id);
+		 boolean is_downer=check_relationship_type(owner_contact_person_depepartment_info, friend_department_group_id); //是其下级与否
+		 boolean is_upper=check_relationship_type(friend_contact_person_depepartment_info, owner_department_group_id);  //是其上级与否
 		 
 		 if(is_upper==true)
 		 {
@@ -334,7 +341,6 @@ public static void insert_contact(contact_info _contact_info)
 		indirect_friend_list=get_indirect_friend_list(_contact_info_dao,_employee_info_dao,_contact_info.get_friend_id(),indirect_friend_list,contact_type);
 		for(employee_info friend_info:indirect_friend_list)
 		{
-		    System.out.println("dafdafdfa");
 			contact_info _contact_info2=new contact_info();
 			_contact_info2.set_owner_id(friend_info.get_employee_id());
 			_contact_info2.set_owner_name(friend_info.get_employee_name());
@@ -387,6 +393,7 @@ public static void insert_contact(contact_info _contact_info)
 //根据id查询该用户所有显示所有联系人
 public  static List<List<employee_info>>  get_contact_list_by_id(int owner_id)
 {
+	department_info_dao _department_info_dao=new department_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 	employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 	contact_info_dao _contact_info_dao=new contact_info_dao(mybatis_connection_factory.getSqlSessionFactory());
 	//初始化存储显示人员list
@@ -408,7 +415,8 @@ public  static List<List<employee_info>>  get_contact_list_by_id(int owner_id)
 		 List<employee_info> contact_child_list=new ArrayList<employee_info>();
 		 for(employee_info temp_info:person_list)
 		 {
-			 if(temp_info.get_employee_department_id()==i)
+					 
+			 if(temp_info.get_department_group_id()==i)
 			 {
 				 if(contact_child_list.size()<8)
 				 {

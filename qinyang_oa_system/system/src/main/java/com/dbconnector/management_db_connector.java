@@ -153,6 +153,15 @@ public class management_db_connector
 			return employee_total_page;
 	 }
 	 
+	 //根据部门查询人员列表
+	 public static List<employee_info> get_employee_info_list_by_department_id(int department_id)
+	 {
+		   List<employee_info> employee_info_list;
+		   employee_info_dao _employee_info_dao=new employee_info_dao(mybatis_connection_factory.getSqlSessionFactory());
+		   employee_info_list=_employee_info_dao.select_department_id(department_id);
+		   return employee_info_list;
+	 }
+	 
 	
 	 //-------------------------------------------------------
 	 //五服务小组

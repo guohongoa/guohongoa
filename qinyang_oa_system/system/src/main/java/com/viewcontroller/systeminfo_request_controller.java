@@ -119,6 +119,7 @@ public class systeminfo_request_controller
 			  if(_employee_info!=null)
 			  {
 			  String employee_password_in_db=_employee_info.get_employee_password();  //数据库查询用户密码
+			  int is_admin_in_db=_employee_info.get_is_admin();
 			  
 			  String employee_password_in_input=employee_password;   //用户输入密码
 			  
@@ -126,11 +127,20 @@ public class systeminfo_request_controller
 			  if(employee_password_in_db.equals(employee_password_in_input))
 			  {
 				 
-				 
+				 if(is_admin_in_db==1)
+				 {
 				  mv.addObject("status", 3);//"登陆成功"
 				  
 				  //登陆成功后设置用户名session
 				  mv.addObject("employee_info", _employee_info);
+				 }
+				 else
+				 {
+					 mv.addObject("status", 4);//"登陆成功，但没有管理员权限"
+					  
+					  //登陆成功后设置用户名session
+					  mv.addObject("employee_info", _employee_info);
+				 }
 				 
 			  }
 			  

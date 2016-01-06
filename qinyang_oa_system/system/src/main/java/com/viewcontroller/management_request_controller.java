@@ -343,6 +343,18 @@ public class management_request_controller
 			
 			boolean rs=com.dbconnector.management_db_connector.update_department_info(_department_info);
 			
+			//将所有对应部门人员的，部门名称、部门所属架构信息全部更新
+			List<employee_info> employee_list=com.dbconnector.management_db_connector.get_employee_info_list_by_department_id(department_id);
+			for(employee_info _employee_info:employee_list)
+			{
+				_employee_info.set_employee_department_name(department_name);
+				_employee_info.set_department_group_id(_department_group_info.get_department_group_id());
+				_employee_info.set_department_group_name(_department_group_info.get_department_group_name());
+				com.dbconnector.management_db_connector.update_employee_info(_employee_info);
+			}
+			
+			
+			
 			ModelAndView mv=new ModelAndView("redirect:/management/department_check.do?department_page="+department_page);
 			return mv;
 		}
@@ -394,6 +406,10 @@ public class management_request_controller
 		     _employee_info.set_employee_name(employee_name);
 		     _employee_info.set_employee_duty(employee_duty);
 		     _employee_info.set_is_admin(is_admin);
+		     
+		     department_info _department_info=com.dbconnector.management_db_connector.get_department_info_by_id(employee_department_id);
+		     _employee_info.set_department_group_id(_department_info.get_department_group_id());
+		     _employee_info.set_department_group_name(_department_info.get_department_group_name());
 		     
 		     
 		        //插入性别字符串，0为男，1为女

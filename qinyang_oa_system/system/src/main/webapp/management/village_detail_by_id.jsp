@@ -13,6 +13,8 @@
     
 </head>
 <body>
+<c:choose>
+        <c:when test="${not empty user_admin}">
 <!--header为导航容器-->
 <div class="header">
     <!--头部header区域内容部分-->
@@ -68,5 +70,7 @@
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+</c:when>
+</c:choose>
 </body>
 </html>

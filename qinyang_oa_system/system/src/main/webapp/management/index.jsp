@@ -8,7 +8,11 @@
 <title>管理</title>
 </head>
 <body>
-  <!--管理主页面跳转 -->
-  <c:redirect url="check_service_village_detail.do?village_page=1" />
+  <c:choose>
+        <c:when test="${not empty user_admin}">
+        <!--管理主页面跳转 -->
+           <c:redirect url="check_service_village_detail.do?village_page=1" />
+        </c:when>
+  </c:choose>
 </body>
 </html>

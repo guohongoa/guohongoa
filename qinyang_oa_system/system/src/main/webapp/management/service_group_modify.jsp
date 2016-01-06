@@ -10,6 +10,8 @@
     <c:set var="service_group_page" value="${param.service_group_page}"/>
 </head>
 <body>
+<c:choose>
+        <c:when test="${not empty user_admin}">
 <!--header为导航容器-->
 <div class="header">
     <!--头部header区域内容部分-->
@@ -201,5 +203,7 @@ $(document).ready(function(){
 	});
 
  </script>
+ </c:when>
+ </c:choose>
 </body>
 </html>

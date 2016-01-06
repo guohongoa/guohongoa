@@ -12,6 +12,8 @@
      <c:set var="department_total_page" value="${param.department_total_page}"/>
 </head>
 <body>
+<c:choose>
+        <c:when test="${not empty user_admin}">
 <!--header为导航容器-->
 <div class="header">
     <!--头部header区域内容部分-->
@@ -73,7 +75,7 @@
         </h5>
         <div class="contentlist">
             <ul class="contentlisttt tzlb_content">
-                <li>部门编号</li>
+                <li>所属架构</li>
                 <li>部门名称</li>
                 <li>负责人</li>
                 <li>工作制度</li>
@@ -84,7 +86,7 @@
             </ul>
             <c:forEach var="department_info" items="${department_info_list}">
             <ul class="tzlb_content">
-                <li>${department_info.get_department_code()}</li>
+                <li>${department_info.get_department_group_name()}</li>
                 <li>${department_info.get_department_name()}</li>
                 <li>${department_info.get_department_leader()}</li>
                 <li><a href="../error.jsp">详细</a></li>
@@ -159,5 +161,7 @@
 </div>
 <script src="http://101.200.196.121:8080/oa/js/jquery-1.11.3.min.js"></script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
+</c:when>
+</c:choose>
 </body>
 </html>

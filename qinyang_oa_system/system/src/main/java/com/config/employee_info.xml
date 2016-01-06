@@ -27,12 +27,19 @@
 		<result property="employee_leader_name" column="employee_leader_name" />
 		<result property="service_group_id" column="service_group_id" />
 		<result property="is_admin" column="is_admin" />
+		
+		
+		<result property="department_group_id" column="department_group_id" />
+		<result property="department_group_name" column="department_group_name" />
+		
+		
+		
 	</resultMap>
 
 	<insert id="insert" parameterType="employee_info" useGeneratedKeys="true" keyProperty="employee_id">
 		insert into
-		employee_info(employee_name,employee_position,employee_gender,employee_department_id,employee_leader_id,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_duty,employee_password,employee_str_gender,employee_department_name,employee_leader_name,is_admin)
-		values(#{employee_name},#{employee_position},#{employee_gender},#{employee_department_id},#{employee_leader_id},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_duty},#{employee_password},#{employee_str_gender},#{employee_department_name},#{employee_leader_name},#{is_admin});
+		employee_info(employee_name,employee_position,employee_gender,employee_department_id,employee_leader_id,employee_addworktime,employee_phone,employee_addtime,employee_birthdate,employee_idcode,employee_duty,employee_password,employee_str_gender,employee_department_name,employee_leader_name,is_admin,department_group_id,department_group_name)
+		values(#{employee_name},#{employee_position},#{employee_gender},#{employee_department_id},#{employee_leader_id},#{employee_addworktime},#{employee_phone},#{employee_addtime},#{employee_birthdate},#{employee_idcode},#{employee_duty},#{employee_password},#{employee_str_gender},#{employee_department_name},#{employee_leader_name},#{is_admin},#{department_group_id},#{department_group_name});
 	</insert>
 
 	<select id="select_by_employee_id" parameterType="int" resultMap="result">
@@ -61,7 +68,9 @@
             employee_duty         = #{employee_duty},
             employee_str_gender   = #{employee_str_gender},
             employee_department_name = #{employee_department_name},
-            employee_leader_name = #{employee_leader_name}
+            employee_leader_name = #{employee_leader_name},
+            department_group_id = #{department_group_id},
+            department_group_name = #{department_group_name}
             
         WHERE employee_id = #{employee_id} 
     </update>
@@ -108,6 +117,12 @@
 	
 	<select id="select_by_page" parameterType="employee_selector" resultMap="result">
 		SELECT * FROM employee_info limit #{employee_begin},#{employee_num};
+	</select>
+	
+	
+	
+	<select id="select_department_id" parameterType="int" resultMap="result">
+		SELECT * FROM employee_info where employee_department_id = #{employee_department_id};
 	</select>
 </mapper>
 

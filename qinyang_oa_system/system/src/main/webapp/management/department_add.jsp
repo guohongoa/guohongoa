@@ -10,6 +10,8 @@
 </head>
 <body>
 <!--header为导航容器-->
+<c:choose>
+        <c:when test="${not empty user_admin}">
 <div class="header">
     <!--头部header区域内容部分-->
     <div class="header_content">
@@ -120,5 +122,7 @@
 </script>
 <script src="http://101.200.196.121:8080/oa/js/style.js"></script>
 
+</c:when>
+</c:choose>
 </body>
 </html>

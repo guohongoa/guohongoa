@@ -11,6 +11,8 @@
      <c:set var="department_page" value="${param.department_page}"/>
 </head>
 <body>
+<c:choose>
+        <c:when test="${not empty user_admin}">
 <!--header为导航容器-->
 <div class="header">
     <!--头部header区域内容部分-->
@@ -113,5 +115,7 @@
        $(this).hide();
   })
 </script>
+</c:when>
+</c:choose>
 </body>
 </html>

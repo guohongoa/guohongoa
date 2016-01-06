@@ -33,7 +33,10 @@ public class employee_info
     
     private int    service_group_id;//所属五服务小组id 不属于置空
     
-    private int    is_admin;
+    private int    is_admin;  //是否是管理员
+    
+    private int    department_group_id;  //人员所属部门架构id
+    private String department_group_name;//人员所属部门架构名称
     
 	
     public employee_info()
@@ -233,6 +236,26 @@ public class employee_info
 	public void set_is_admin(int is_admin)
 	{
 		this.is_admin=is_admin;
+	}
+	
+	public int get_department_group_id()
+	{
+		return this.department_group_id;
+	}
+	
+	public void set_department_group_id(int department_group_id)
+	{
+		this.department_group_id=department_group_id;
+	}
+	
+	public String get_department_group_name()
+	{
+		return this.department_group_name;
+	}
+	
+	public void set_department_group_name(String department_group_name)
+	{
+		this.department_group_name=department_group_name;
 	}
 
 }

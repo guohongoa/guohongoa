@@ -8,6 +8,7 @@ import com.data.contact_person_department_info;
 import com.data.contact_person_info;
 import com.data.department_info;
 import com.data.employee_info;
+import com.data.service_village_info;
 import com.data.system_user_info;
 import com.selector.department_selector;
 import com.selector.employee_selector;
@@ -240,6 +241,19 @@ public class employee_info_dao
 	        System.out.println("select_by_page --> "+employee_info_list);
 		 
 		 return employee_total_num;
+	 }
+	 
+	 public List<employee_info> select_department_id(int department_id)
+	 {
+		 List<employee_info> employee_info_list=null;
+		 SqlSession session=this.sqlSessionFactory.openSession();
+		 try {
+			    employee_info_list = session.selectList("employee_info.select_department_id",department_id);
+	        } finally {
+	            session.close();
+	        }
+	        System.out.println("select_department_id --> "+employee_info_list);
+	        return employee_info_list;
 	 }
 
 	

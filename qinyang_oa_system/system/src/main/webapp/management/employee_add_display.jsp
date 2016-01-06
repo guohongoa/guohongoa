@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="http://101.200.196.121:8080/oa/css/all.css"/>
 </head>
 <body>
+<c:choose>
+        <c:when test="${not empty user_admin}">
 <!--header为导航容器-->
 <div class="header">
     <!--头部header区域内容部分-->
@@ -186,5 +188,7 @@
 
 
 </script>
+</c:when>
+</c:choose>
 </body>
 </html>
