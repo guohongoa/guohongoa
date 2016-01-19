@@ -106,7 +106,6 @@
                     </ul>
                     <p class="clear"><a  id="pop_contact_2" class="closeopen">...展开</a></p>
                     <i></i>
-                    <b></b>
                     <em></em>
                 </div>
 
@@ -154,7 +153,6 @@
                     <b></b>
                     <em></em>
                     <i></i>
-                    <sub></sub>
                     <sup></sup>
 
                 </div>
@@ -198,14 +196,13 @@
                     </ul>
                     <p class="clear"><a id="pop_contact_6" class="closeopen">...展开</a></p>
                     <i></i>
-                    <b></b>
                 </div>
             </div>
         </div>
         <!--第三列-->
         <div>
             <div class="swcw sili_content7">
-                <h4>农村（社区）事务</h4>
+                <h4>村民小组</h4>
                <div>
                    <ul>
                        <c:forEach var="contact_person_info" items="${contact_info_list11}">
@@ -286,25 +283,6 @@
                 </div>
             </div>
 
-            <div class="swcw sili_content11">
-                <h4>村民小组</h4>
-                <div>
-                    <ul>
-                         <c:forEach var="contact_person_info" items="${contact_info_list7}">
-                           <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
-                        </c:forEach>
-                        <li class="pop" id="all_11">
-                            <ul>
-                                 <c:forEach var="contact_person_info" items="${contact_info_list7}">
-                                    <li><a href="contact_department_detail_check.do?employee_id=${contact_person_info.get_employee_id()}&contact_person_department_id=${contact_person_info.get_employee_department_id()}">${contact_person_info.get_employee_name()}</a></li>
-                                 </c:forEach>
-                            </ul>
-                            <p class="clear"><a href="" class="openclose">收起</a></p>
-                        </li>
-                    </ul>
-                    <p class="clear"><a id="pop_contact_11" class="closeopen">...展开</a></p>
-                </div>
-            </div>
         </div>
 
     </div>
